@@ -25,3 +25,4 @@
 | 2026-10-01 19:03 | QA round 2 on bundle 006: APPROVED (all checks pass; new fir tree OK at stated minimum sizes) | Ready to list once uploads can run |
 | 2026-10-01 19:39 | Added owner push-notification rule to FACTORY.md; sent first push: gingerbread letters, soccer, Etsy auth | Owner asked for a reliable way to see decisions |
 | 2026-10-01 19:42 | Owner decisions: gingerbread letters as a full A–Z bundle (26 designs); soccer stays at the end; owner will finish the Etsy login | Answers to open questions |
+| 2026-10-01 20:13 | Push to owner: price for the A–Z gingerbread alphabet (default $6 at 05:56 UTC) | Open decision; pricing rule covers 6-design bundles only |
