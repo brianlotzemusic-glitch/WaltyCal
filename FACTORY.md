@@ -17,7 +17,7 @@ One scheduled **Manager** run fires every hour. The Manager decides which specia
 | Worker | Job | Due when |
 |---|---|---|
 | Manager | Reads state, assigns work, updates `office/status.json`, writes the weekly report (Mondays) | Every run |
-| Researcher | Web-searches Etsy trends and seasonal timing; reorders `queue.md`; adds themes when fewer than 8 remain | Last research older than 24 h |
+| Researcher | Web-searches Etsy trends and seasonal timing across **all digital product types** (see "Product formats"); reorders `queue.md`; adds themes when fewer than 8 remain; proposes new formats | Last research older than 24 h |
 | Designer | Builds ONE bundle from the top unchecked theme (spec below) | Last bundle older than 11 h (so at most 2 per day) |
 | QA | Independent review of the Designer's bundle: looks at the contact sheet, runs the checks, sends it back to the Designer with specific fixes or approves it. Max 2 rounds; a bundle that still fails is moved to `bundles/_rejected/` and not listed | Right after the Designer |
 | Lister | Uploads approved bundles that have no `etsy_listing_id` (`python3 tools/etsy.py upload bundles/NNN-slug`) | Etsy variables set and fewer than 2 uploads today |
@@ -32,7 +32,7 @@ The owner wants a wide range of themes, not gothic everything. Duskwood's look i
 - Gothic, spooky and dark-holiday themes: no more than 1 in 3 of the unchecked queue, and never two in a row.
 - Mix seasonal themes (in time for their sales windows) with year-round ones.
 - Existing themes stay only if they still rank well against the new ones.
-- Proven sellers first: on each run the Researcher looks for cut-file listings selling heavily now (about the last 60 days; 1,000+ sales is the owner's bar). Evidence comes from sales estimators, Bestseller and "bought in the last 24 hours" signals, and marketplace bestseller lists. Every figure is labelled as an estimate with its source. Themes with proven demand go to the top of the queue.
+- Proven sellers first: on each run the Researcher looks for digital-download listings of any type selling heavily now (about the last 60 days; 1,000+ sales is the owner's bar). Evidence comes from sales estimators, Bestseller and "bought in the last 24 hours" signals, and marketplace bestseller lists. Every figure is labelled as an estimate with its source. Themes with proven demand go to the top of the queue.
 - Take the subject and format from a proven seller, never the design. The Designer makes original designs only. Never trace, redraw or closely imitate another seller's listing, composition, style or text.
 
 ## Bundle spec (Designer + QA)
@@ -43,6 +43,28 @@ The owner wants a wide range of themes, not gothic everything. Duskwood's look i
 - 4 listing images at 3000×2250
 - `LISTING.md` + `listing.json` (with `"taxonomy_id": 12394`, Etsy's Craft Supplies & Tools > Patterns & How To > Craft Machine Files > Cutting Machine Files): title ≤140 chars, exactly 13 tags each ≤20 chars, this exact disclosure line at the end of the description (no separate heading): "Designed with the help of digital and AI tools, and checked by hand for clean cuts.", price per the pricing rule
 - Every design must clearly read as what it is at thumbnail size and look balanced. Never ship a bundle you would not pay for.
+
+## Product formats (Researcher + Designer + QA)
+Cut files are the core, but the shop can sell any digital download the factory can produce to a sellable standard with code (vector drawing, rendering, PDF generation). There is no AI image generator here, so painterly or photographic styles are out; flat, vector, linework and graphic styles are in. The bundle spec above applies to cut files; other formats use their own spec, written into `formats/<format>.md` the first time the format is built.
+
+Candidate formats (the Researcher checks current demand, prices and competition before proposing one):
+- Printable wall art: PDF + JPG at the standard ratios (2:3, 3:4, 4:5, 11×14, ISO A-series), 300 DPI, largest size at least 24×36 in
+- Clipart / PNG element sets: transparent PNG, 300 DPI, longest side at least 3600 px, plus SVG where it helps
+- Sublimation and tumbler wraps: PNG at 300 DPI in the standard blank sizes (e.g. 20 oz skinny tumbler)
+- Digital papers / seamless patterns: 12×12 in, 3600 px JPG, tiles seamlessly (test by tiling 2×2)
+- Printable and Print-Then-Cut sticker sheets: PDF sheets + PNG; Cricut Print Then Cut max printable area 6.75×9.25 in
+- Coloring pages: PDF in US Letter and A4, clean closed line art
+- Printable planners, trackers, gift tags, cards, party printables: PDF, US Letter and A4
+- Laser-cut files: SVG/DXF with laser-specific notes (material thickness, kerf), possibly layered/multi-piece
+- Machine embroidery files (PES/DST via pyembroidery) only after a test stitch-out plan exists; otherwise skip
+- Not possible here: Canva templates (need the owner's Canva account), Procreate brushes, fonts that need hand-tuned kerning, anything needing photos of real products
+
+Rules for a new format:
+- The Researcher adds it to `queue.md` with a `[format]` tag and evidence (proven sellers, price range, competition).
+- The first listing in a new format is a pilot: the Designer writes `formats/<format>.md` (files, sizes, checks, listing images), QA checks against it, and the Lister lists it. Build more of that format only after the pilot is listed and passes QA.
+- Look up the right Etsy category with `python3 tools/etsy.py taxonomy <word>` and put its `taxonomy_id` in `listing.json`.
+- Disclosure line for non-cut-file formats: "Designed with the help of digital and AI tools, and checked by hand."
+- Once at least one other format is validated, keep at least 1 in 3 unchecked queue items in formats other than cut files, chosen by demand.
 
 ## New businesses (Scout + Launcher)
 Owner's limits for every new business:
