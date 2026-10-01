@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-01T19:13:10Z",
+ "updated_at": "2026-10-01T19:42:48Z",
  "next_run_at": "2026-10-01T20:13:10Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -26,7 +26,7 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Bundle 006 approved. Next up after 05:56 UTC tomorrow: Gingerbread letter ornaments.",
+   "task": "Next up after 05:56 UTC: Gingerbread letter ornaments, a full A\u2013Z bundle of 26 designs (owner's decision).",
    "since": "2026-10-01T19:03:56Z"
   },
   {
@@ -40,7 +40,7 @@
    "id": "lister",
    "name": "Lister",
    "state": "blocked",
-   "task": "6 approved bundles ready to list. The Etsy app key is set, but ETSY_REFRESH_TOKEN and ETSY_USER_ID are missing: run tools/etsy_auth.py once and add both to the environment settings.",
+   "task": "6 approved bundles ready to list. The owner will finish the Etsy login (ETSY_REFRESH_TOKEN, ETSY_USER_ID) at their computer.",
    "since": "2026-10-01T19:13:10Z"
   },
   {
@@ -73,6 +73,11 @@
   "Nativity silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T19:42:48Z",
+   "who": "manager",
+   "msg": "Owner decided: gingerbread letters as a full A\u2013Z bundle; soccer stays at the end of the queue."
+  },
   {
    "t": "2026-10-01T19:13:10Z",
    "who": "manager",

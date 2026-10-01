@@ -24,3 +24,4 @@
 | 2026-10-01 18:44 | QA round 1 on bundle 006: SEND BACK (missing taxonomy_id 12394; pinecone side blots). Designer fixing, plus stem, fir needles and sizing text | Spec change e3f2eeb; visible defect on a cut piece |
 | 2026-10-01 19:03 | QA round 2 on bundle 006: APPROVED (all checks pass; new fir tree OK at stated minimum sizes) | Ready to list once uploads can run |
 | 2026-10-01 19:39 | Added owner push-notification rule to FACTORY.md; sent first push: gingerbread letters, soccer, Etsy auth | Owner asked for a reliable way to see decisions |
+| 2026-10-01 19:42 | Owner decisions: gingerbread letters as a full A–Z bundle (26 designs); soccer stays at the end; owner will finish the Etsy login | Answers to open questions |
