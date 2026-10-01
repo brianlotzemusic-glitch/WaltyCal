@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-01T12:50:00Z",
+ "updated_at": "2026-10-01T13:00:00Z",
  "next_run_at": "2026-10-01T13:37:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -53,9 +53,9 @@
   {
    "id": "scout",
    "name": "Scout",
-   "state": "working",
-   "task": "Researching which business to open next: fees, AI policies and demand across 8+ options.",
-   "since": "2026-10-01T12:50:00Z"
+   "state": "idle",
+   "task": "Ranked 12 options. #1: laser-cut file shop. Next check in 7 days.",
+   "since": "2026-10-01T13:00:00Z"
   },
   {
    "id": "launcher",
@@ -73,6 +73,11 @@
   "Spooky winter village"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T13:00:00Z",
+   "who": "scout",
+   "msg": "Finished first research: laser-cut files, gothic print-on-demand and a Payhip store are the top 3."
+  },
   {
    "t": "2026-10-01T12:50:00Z",
    "who": "manager",
@@ -124,6 +129,6 @@
   "days_live_target": 30,
   "first_listing_live_at": null,
   "met": false,
-  "next_pick": "Researching now"
+  "next_pick": "Laser-cut file shop (Etsy sister shop)"
  }
 }
