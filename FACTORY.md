@@ -41,7 +41,7 @@ The owner wants a wide range of themes, not gothic everything. Duskwood's look i
 - 6 original designs, each ONE connected closed shape, no hole under 600 units² (1000-unit design space), SVG 6 in, PNG 1800 px transparent, DXF in inches that re-opens in ezdxf
 - Buyer ZIP with SVG/, PNG/, DXF/, README-LICENSE.txt
 - 4 listing images at 3000×2250
-- `LISTING.md` + `listing.json` (with `"taxonomy_id": 12394`, Etsy's Craft Supplies & Tools > Patterns & How To > Craft Machine Files > Cutting Machine Files): title ≤140 chars, exactly 13 tags each ≤20 chars, AI-disclosure line in the description, price per the pricing rule
+- `LISTING.md` + `listing.json` (with `"taxonomy_id": 12394`, Etsy's Craft Supplies & Tools > Patterns & How To > Craft Machine Files > Cutting Machine Files): title ≤140 chars, exactly 13 tags each ≤20 chars, this exact disclosure line at the end of the description (no separate heading): "Designed with the help of digital and AI tools, and checked by hand for clean cuts.", price per the pricing rule
 - Every design must clearly read as what it is at thumbnail size and look balanced. Never ship a bundle you would not pay for.
 
 ## New businesses (Scout + Launcher)

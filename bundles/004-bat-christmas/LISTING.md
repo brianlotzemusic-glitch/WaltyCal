@@ -29,8 +29,7 @@ Personal use, plus small-business use on up to 500 finished physical items per d
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. Files are available right after purchase in a single ZIP.
 
-AI DISCLOSURE
-These designs were created with AI assistance and checked and finalized by the shop owner.
+Designed with the help of digital and AI tools, and checked by hand for clean cuts.
 
 **13 tags (each ≤20 chars)**
 bat christmas svg, gothic christmas, bat svg, spooky christmas, goth holiday decor, bat cut file, christmas bat png, bat santa hat svg, cricut christmas, halloween christmas, dark christmas svg, silhouette dxf, bat garland svg

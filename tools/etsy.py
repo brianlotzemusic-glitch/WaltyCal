@@ -5,6 +5,7 @@ Commands:
   python3 tools/etsy.py whoami                  check the login works; prints shop id and name
   python3 tools/etsy.py taxonomy <word>         find taxonomy ids by name
   python3 tools/etsy.py upload <bundle_dir>     create a listing from listing.json
+  python3 tools/etsy.py update <bundle_dir>     push edited listing.json text to an uploaded listing
   python3 tools/etsy.py stats                   write stats/listings.csv (views, favorites, sales)
 
 Environment (set in the cloud environment settings, never committed):
@@ -108,6 +109,16 @@ def upload(bundle_dir):
     print(f"listing {lid} {'published' if os.environ.get('ETSY_PUBLISH') == '1' else 'saved as draft'}: {spec['title']}")
 
 
+def update(bundle_dir):
+    """Push listing.json's title, description, tags and price to an uploaded listing."""
+    spec = json.load(open(os.path.join(bundle_dir, "listing.json")))
+    lid = open(os.path.join(bundle_dir, "etsy_listing_id")).read().strip()
+    call("PATCH", f"/shops/{shop_id()}/listings/{lid}", form={
+        "title": spec["title"], "description": spec["description"],
+        "tags": ",".join(spec["tags"]), "price": spec["price"]})
+    print(f"listing {lid} updated: {spec['title']}")
+
+
 def stats():
     shop = shop_id()
     sold = {}
@@ -159,6 +170,8 @@ if __name__ == "__main__":
         taxonomy(sys.argv[2])
     elif cmd == "upload":
         upload(sys.argv[2])
+    elif cmd == "update":
+        update(sys.argv[2])
     elif cmd == "stats":
         stats()
     else:

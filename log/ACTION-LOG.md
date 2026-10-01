@@ -28,3 +28,4 @@
 | 2026-10-01 20:13 | Push to owner: price for the A–Z gingerbread alphabet (default $6 at 05:56 UTC) | Open decision; pricing rule covers 6-design bundles only |
 | 2026-10-01 20:13 | Owner set the A–Z gingerbread alphabet price at $6.00 | Answer to open pricing question |
 | 2026-10-01 22:27 | Uploaded bundle 003 (skull holiday) to Etsy as DRAFT, listing 4586729007; verified draft, 4 images, 1 file, 13 tags, $4.00, taxonomy 12394 | First live upload; no etsy.py changes needed |
+| 2026-10-01 22:34 | Shortened AI disclosure to one line in all listings and shop profile; removed AI FAQ; added etsy.py update | Owner asked to minimise the disclosure (kept the required line) |

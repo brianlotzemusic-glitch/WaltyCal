@@ -34,7 +34,7 @@ Duskwood Designs Co makes cut files for crafters who love the quieter side of na
 
 Every design is built as a clean, single-layer cut path: no stray points, no slivers too small to cut, and no hours spent welding pieces together. Each bundle comes with SVG, DXF and PNG files sized at 6 inches, ready for Cricut, Silhouette or a laser cutter.
 
-How the designs are made: designs are created with the help of AI tools, then checked and finalized before anything is listed. Each file is tested for cut-ready geometry (one connected shape, no tiny holes) and reviewed at full size and thumbnail size so it actually looks like what it's meant to be.
+Designed with the help of digital and AI tools, and checked by hand for clean cuts: every file is tested to be one connected shape with no tiny holes.
 
 New themes arrive every week. If there's something you'd love to see, a woodland wreath, a moon-phase garland, a design for a laser rather than a Cricut, send a message. Requests genuinely shape what gets made next.
 
@@ -103,9 +103,6 @@ A: Yes. Each design is one connected shape with one clean cut path, so there's n
 
 Q: Can I sell things I make with these designs?
 A: Yes, up to 500 finished physical items per design. You can't share or resell the digital files themselves.
-
-Q: Were these designs made with AI?
-A: Yes. Designs are created with the help of AI tools, then checked and finalized by me before they're listed. Every file is tested to make sure it cuts cleanly.
 
 Q: My file won't upload to Cricut Design Space. What do I do?
 A: Make sure you've unzipped the download first and are uploading a file from the SVG folder, not the ZIP itself. If it still won't work, message me with a screenshot and I'll help.
