@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-01T18:10:34Z",
- "next_run_at": "2026-10-01T18:14:18Z",
+ "updated_at": "2026-10-01T18:13:16Z",
+ "next_run_at": "2026-10-01T19:13:16Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 0,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "working",
-   "task": "Running Designer then QA on the first proven-seller theme.",
-   "since": "2026-10-01T18:10:34Z"
+   "task": "Hourly shift: Designer still building bundle 006; QA reviews it next.",
+   "since": "2026-10-01T18:13:16Z"
   },
   {
    "id": "researcher",
