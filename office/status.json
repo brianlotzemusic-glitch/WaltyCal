@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-01T19:03:56Z",
- "next_run_at": "2026-10-01T19:13:00Z",
+ "updated_at": "2026-10-01T19:13:10Z",
+ "next_run_at": "2026-10-01T20:13:10Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 0,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "Bundle 006 approved. Waiting for the next shift.",
-   "since": "2026-10-01T19:03:56Z"
+   "task": "Shift ran from the dedicated Manager session; nothing due.",
+   "since": "2026-10-01T19:13:10Z"
   },
   {
    "id": "researcher",
@@ -40,15 +40,15 @@
    "id": "lister",
    "name": "Lister",
    "state": "blocked",
-   "task": "6 approved bundles ready to list. The Etsy key works in another session, but this Manager session can't see the Etsy variables; it needs to run in a new session.",
-   "since": "2026-10-01T19:03:56Z"
+   "task": "6 approved bundles ready to list. The Etsy app key is set, but ETSY_REFRESH_TOKEN and ETSY_USER_ID are missing: run tools/etsy_auth.py once and add both to the environment settings.",
+   "since": "2026-10-01T19:13:10Z"
   },
   {
    "id": "analyst",
    "name": "Analyst",
    "state": "blocked",
-   "task": "No shop data yet. Starts once Etsy is connected.",
-   "since": "2026-10-01T12:38:00Z"
+   "task": "Needs the same two Etsy values (ETSY_REFRESH_TOKEN, ETSY_USER_ID) before it can pull shop stats.",
+   "since": "2026-10-01T19:13:10Z"
   },
   {
    "id": "scout",
@@ -73,6 +73,11 @@
   "Nativity silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T19:13:10Z",
+   "who": "manager",
+   "msg": "Etsy app key is now set. Uploads still need the one-time Etsy login (refresh token and user ID)."
+  },
   {
    "t": "2026-10-01T19:03:56Z",
    "who": "qa",
