@@ -36,7 +36,7 @@ The owner wants a wide range of themes, not gothic everything. Duskwood's look i
 - Take the subject and format from a proven seller, never the design. The Designer makes original designs only. Never trace, redraw or closely imitate another seller's listing, composition, style or text.
 
 ## Bundle spec (Designer + QA)
-- `pip install shapely ezdxf pillow` first. Playwright + Chromium are preinstalled; run node scripts with `NODE_PATH=$(npm root -g)`.
+- `pip install shapely ezdxf pillow potracer numpy` first. Playwright + Chromium are preinstalled; run node scripts with `NODE_PATH=$(npm root -g)`.
 - Follow an existing bundle in `bundles/` as the template (002–005 are the strongest).
 - 6 original designs, each ONE connected closed shape, no hole under 600 units² (1000-unit design space), SVG 6 in, PNG 1800 px transparent, DXF in inches that re-opens in ezdxf
 - Buyer ZIP with SVG/, PNG/, DXF/, README-LICENSE.txt
@@ -45,7 +45,7 @@ The owner wants a wide range of themes, not gothic everything. Duskwood's look i
 - Every design must clearly read as what it is at thumbnail size and look balanced. Never ship a bundle you would not pay for.
 
 ## Product formats (Researcher + Designer + QA)
-Cut files are the core, but the shop can sell any digital download the factory can produce to a sellable standard with code (vector drawing, rendering, PDF generation). There is no AI image generator here, so painterly or photographic styles are out; flat, vector, linework and graphic styles are in. The bundle spec above applies to cut files; other formats use their own spec, written into `formats/<format>.md` the first time the format is built.
+Cut files are the core, but the shop can sell any digital download the factory can produce to a sellable standard with code (vector drawing, rendering, PDF generation). AI images: when `OPENAI_API_KEY` is set, the Designer may use `tools/imagegen.py` (OpenAI Images API). `gen` makes a PNG (use `--transparent` for clipart and stickers); `trace` turns black-on-white artwork into a single-path SVG for cut files, which must then pass the normal cut-file checks (prompt for bold black silhouettes on plain white, no gradients). Rules: prompts describe original designs only (never artist names, brands, characters, trademarked phrases or other sellers' work); keep prompts in the bundle's `PROMPTS.md`; respect the monthly cap (`imagegen.py spend`); QA reviews every AI image at full size for artefacts, garbled text, extra limbs or broken shapes and rejects anything off. Without the key, painterly or photographic styles are out and the Designer draws with code. The bundle spec above applies to cut files; other formats use their own spec, written into `formats/<format>.md` the first time the format is built.
 
 Candidate formats (the Researcher checks current demand, prices and competition before proposing one):
 - Printable wall art: PDF + JPG at the standard ratios (2:3, 3:4, 4:5, 11×14, ISO A-series), 300 DPI, largest size at least 24×36 in
@@ -57,7 +57,7 @@ Candidate formats (the Researcher checks current demand, prices and competition 
 - Printable planners, trackers, gift tags, cards, party printables: PDF, US Letter and A4
 - Laser-cut files: SVG/DXF with laser-specific notes (material thickness, kerf), possibly layered/multi-piece
 - Machine embroidery files (PES/DST via pyembroidery) only after a test stitch-out plan exists; otherwise skip
-- Not possible here: Canva templates (need the owner's Canva account), Procreate brushes, fonts that need hand-tuned kerning, anything needing photos of real products
+- Not possible here: Canva templates (need the owner's Canva account), Procreate brushes, fonts that need hand-tuned kerning. Product mockups (a design shown on a mug, shirt or wall) are fine with AI images; photos of real physical products are not.
 
 Rules for a new format:
 - The Researcher adds it to `queue.md` with a `[format]` tag and evidence (proven sellers, price range, competition).

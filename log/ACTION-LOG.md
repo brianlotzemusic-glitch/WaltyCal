@@ -40,3 +40,4 @@
 | 2026-10-01 22:45 | Found listing 4586729007 (bundle 003) ACTIVE: it went live ~22:37 UTC, which matches the other session's be608fe; not published by this Manager session | Status corrected to 4 live; first-live time set to 22:37 |
 | 2026-10-01 22:51 | Researcher scope widened to all digital product types; added Product formats rules | Owner asked to consider digital files beyond cut files |
 | 2026-10-01 23:03 | Researcher format scan: pilots for cross-stitch (#3), coloring pages (#7) and Christmas bingo (#12); evidence in research/formats-2026-10-01.md; asked owner to confirm pilot prices | Owner request via main session |
+| 2026-10-01 22:57 | Added tools/imagegen.py (OpenAI image generation + tracing to SVG) and AI-image rules | Owner asked to connect an AI image generator (ChatGPT/OpenAI) |
