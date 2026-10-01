@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-01T22:52:34Z",
+ "updated_at": "2026-10-01T23:03:34Z",
  "next_run_at": "2026-10-01T23:13:53Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -18,9 +18,9 @@
   {
    "id": "researcher",
    "name": "Researcher",
-   "state": "working",
-   "task": "Researching which digital formats beyond cut files sell now (wall art, clipart, coloring pages, stickers, papers and more).",
-   "since": "2026-10-01T22:52:34Z"
+   "state": "idle",
+   "task": "Format research done: cross-stitch, coloring pages and Christmas bingo added as pilots. Next refresh after 22:55 UTC tomorrow.",
+   "since": "2026-10-01T23:03:34Z"
   },
   {
    "id": "designer",
@@ -68,11 +68,16 @@
  "queue": [
   "Gingerbread letter ornaments",
   "Christmas village silhouettes",
+  "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts",
   "Witchy crystals",
-  "Butterflies & dragonflies",
-  "Nativity silhouettes"
+  "Butterflies & dragonflies"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T23:03:34Z",
+   "who": "researcher",
+   "msg": "New format pilots queued: woodland cross-stitch ornaments (#3), winter coloring pages (#7), woodland Christmas bingo (#12)."
+  },
   {
    "t": "2026-10-01T22:52:34Z",
    "who": "researcher",
