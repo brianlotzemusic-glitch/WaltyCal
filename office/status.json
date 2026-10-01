@@ -1,11 +1,11 @@
 {
- "updated_at": "2026-10-01T22:40:03Z",
+ "updated_at": "2026-10-01T22:43:41Z",
  "next_run_at": "2026-10-01T23:13:53Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 1,
+ "listings_live": 3,
  "bundles_built": 6,
- "uploads_pending": 4,
+ "uploads_pending": 2,
  "etsy_connected": true,
  "workers": [
   {
@@ -40,8 +40,8 @@
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Published bundle 001 (listing 4586738084). Daily cap reached (003 draft + 001). Next 2 uploads after 00:00 UTC: 002 and 004.",
-   "since": "2026-10-01T22:40:03Z"
+   "task": "Published 001, 002 and 004 (003 is a draft for the owner). Temporary 4-a-day cap reached. 005 and 006 publish after 00:00 UTC.",
+   "since": "2026-10-01T22:43:41Z"
   },
   {
    "id": "analyst",
@@ -73,6 +73,11 @@
   "Nativity silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T22:43:41Z",
+   "who": "lister",
+   "msg": "Published Gothic Christmas ornaments (4586736511) and Bat Christmas (4586739694). 3 listings live."
+  },
   {
    "t": "2026-10-01T22:40:03Z",
    "who": "lister",

@@ -34,3 +34,5 @@
 | 2026-10-01 22:38 | Lister paused; push to owner to confirm auto-publish | FACTORY now publishes immediately (be608fe), which incurs listing fees; the hourly rules forbid spending money without the owner's OK |
 | 2026-10-01 22:40 | Owner confirmed auto-publish ($0.20 Etsy fee per listing, max 2/day) | Answer in the Manager chat |
 | 2026-10-01 22:40 | Lister published bundle 001 (spiderweb snowflakes) as Etsy listing 4586738084; venture-gate 30-day clock started | First live listing; daily cap now reached with the 003 draft |
+| 2026-10-01 22:43 | Daily listing cap raised to 4 until the backlog clears (FACTORY.md) | Owner's decision |
+| 2026-10-01 22:43 | Lister published bundle 002 (Etsy 4586736511) and 004 (Etsy 4586739694) | Backlog; 4/day cap |

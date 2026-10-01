@@ -101,6 +101,7 @@ Tick finished themes in `queue.md`, append to `log/ACTION-LOG.md`, update `offic
 - No weapons, hate content, medical claims, or adult content.
 - Pricing: $4.00 per 6-design bundle until stats exist; after that, match the median of the shop's converting listings.
 - At most 2 new listings per day (avoid looking like a bulk-AI shop).
+  - Temporary (owner, 1 Oct): up to 4 a day until the backlog of approved, unlisted bundles is cleared (`uploads_pending` reaches 0). Then the limit goes back to 2 and this line is removed.
 - New listings are published immediately (owner's choice, 1 Oct). `ETSY_PUBLISH=0` in the environment switches back to drafts. Bundle 003 (listing 4586729007) was uploaded as a draft for the owner to review and publish by hand; don't publish it. If publishing fails (e.g. shop billing not set up), mark the Lister blocked with Etsy's message.
 - Optimization, once listings have data:
   - Below 0.5% conversion after 200 views → rewrite title, tags and thumbnail once; if still below after another 200 views, deactivate.
