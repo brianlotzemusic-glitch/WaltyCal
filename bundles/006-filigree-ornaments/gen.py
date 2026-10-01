@@ -1,9 +1,9 @@
 """Filigree Christmas Ornaments - 6 single-path SVG/DXF cut files.
 
-Light, lacy openwork: every design is a thin outline frame filled with
+Light, lacy openwork: most designs are a thin outline frame filled with
 botanical filigree strokes (snowflake lace, holly, fern, pine sprigs,
-scrollwork). The strokes are the material; the gaps between them are the
-cut-outs. Everything is unioned into ONE connected polygon with a hanging
+scrollwork); the tree is built from needled fir boughs. The strokes are the
+material; the gaps between them are the cut-outs. Everything is unioned into ONE connected polygon with a hanging
 loop at the top. Strokes are 13-20 units wide, and smooth() ends with an
 opening pass so no material anywhere is narrower than 10 units (0.06 in at
 6 in); cut-out corners are rounded and holes under MIN_HOLE are filled.
@@ -148,11 +148,18 @@ def finish(g, simplify=0.15):
                         for p in polys])
 
 
+def areal(g):
+    """Only the polygon parts of a geometry (make_valid can return stray lines)."""
+    if g.geom_type in ("Polygon", "MultiPolygon"):
+        return g
+    return unary_union([p for p in getattr(g, "geoms", []) if p.geom_type in ("Polygon", "MultiPolygon")])
+
+
 def smooth(g, r=4):
     """Round off acute inside corners of cut-outs (opening each hole by r),
     then remove any hairline point of material thinner than 10 units.
     Done hole-by-hole because a whole-shape closing can misfire in GEOS."""
-    g = set_precision(make_valid(g), 0.05)
+    g = areal(set_precision(areal(make_valid(g)), 0.05))
     ref = g
     out = []
     for p in (g.geoms if g.geom_type == "MultiPolygon" else [g]):
@@ -167,7 +174,8 @@ def smooth(g, r=4):
 
 def no_big_fill(ref, new, limit=400):
     """Guard against GEOS buffer glitches that fill a whole cut-out."""
-    extra = shapely.difference(make_valid(new), make_valid(ref.buffer(0.5, join_style=1)), grid_size=0.05)
+    extra = shapely.difference(areal(make_valid(new)), areal(make_valid(ref.buffer(0.5, join_style=1))),
+                               grid_size=0.05)
     for p in (extra.geoms if hasattr(extra, "geoms") else [extra]):
         assert p.area < limit, f"cut-out filled by mistake near {p.centroid}"
 
@@ -293,31 +301,55 @@ def fir_branch(pts, w=14, nw=13, every=36, needle=40, spread=48, taper=0.45):
     return unary_union(parts + [Point(tip.x, tip.y).buffer(w * 0.6)])
 
 
+def needled_branch(pts, keep_clear, room, w=15, nw=13, every=34, needle=40, spread=45, taper=0.35, start=30):
+    """Fir bough along pts: a stem plus needle ticks on both sides, angled to the tip.
+    A needle is kept only if it stays at least 11 units clear of keep_clear (other
+    boughs and their needles, trunk, frame) and of the previous needle on its own
+    side, and its tip lies inside room, so every gap stays cuttable."""
+    ls = LineString(pts)
+    stem = line(pts, w)
+    needles, last = [], {-1: None, 1: None}
+    d = start
+    while d < ls.length - 10:
+        p, q = ls.interpolate(d), ls.interpolate(min(d + 2, ls.length))
+        a = math.degrees(math.atan2(q.y - p.y, q.x - p.x))
+        nl = needle * (1 - taper * d / ls.length)
+        for sgn in (-1, 1):
+            tip = polar(p.x, p.y, nl, a + sgn * spread)
+            probe = line([polar(p.x, p.y, 10, a + sgn * spread), tip], nw).buffer(11)
+            if room.contains(Point(tip)) and not probe.intersects(keep_clear) \
+                    and (last[sgn] is None or not probe.intersects(last[sgn])):
+                last[sgn] = line([(p.x, p.y), tip], nw)
+                needles.append(last[sgn])
+        d += every
+    return stem, needles
+
+
 def d4_fir_tree():
+    """A tree built from drooping fir boughs: trunk, six pairs of needled branches
+    getting longer toward the base, star topper and a little pot."""
     cx = 500
-    tiers = [(170, 390, 165), (290, 575, 265), (430, 770, 360)]   # y top, y bottom, half width
-    sil = []
-    for yt, yb, hw in tiers:
-        pts = [(cx, yt), (cx + hw, yb)] + bez((cx + hw, yb), (cx, yb - 36), (cx - hw, yb), 24)[1:-1] + [(cx - hw, yb)]
-        sil.append(Polygon(pts).buffer(0))
-    tree = unary_union(sil).buffer(-10, join_style=1).buffer(10, join_style=1)
-    parts = [outline(tree, WF)]
-    parts.append(line([(cx, 180), (cx, 760)], 20))         # trunk line
-    inside = tree.buffer(-6, join_style=1)               # keep strokes from poking past the frame
-    for i, (yt, yb, hw) in enumerate(tiers):
-        region = sil[i].difference(unary_union(sil[:i])) if i else sil[i]
-        if i:      # swag along the bottom edge of the tier above
-            a_yt, a_yb, a_hw = tiers[i - 1]
-            parts.append(line(bez((cx + a_hw, a_yb), (cx, a_yb - 36), (cx - a_hw, a_yb), 30), 18).intersection(tree))
-        y = yt + 52 if i == 0 else tiers[i - 1][1] + 26
-        while y < yb - 34:
-            for ang in (32, 148):
-                parts.append(line([(cx, y), polar(cx, y, 420, ang)], 16).intersection(region.buffer(2)).intersection(inside))
-            y += 50
-    trunk = Polygon([(cx - 48, 745), (cx + 48, 745), (cx + 54, 850), (cx - 54, 850)]).buffer(6)
-    trunk = trunk.difference(Polygon([(cx - 24, 778), (cx + 24, 778), (cx + 28, 824), (cx - 28, 824)]).buffer(4))
+    trunk_line = line([(cx, 190), (cx, 770)], 20)
+    pot = Polygon([(cx - 50, 760), (cx + 50, 760), (cx + 56, 860), (cx - 56, 860)]).buffer(6)
+    pot = pot.difference(Polygon([(cx - 26, 790), (cx + 26, 790), (cx + 30, 834), (cx - 30, 834)]).buffer(4))
     starp = star_poly(cx, 150, 72, 33).buffer(5, join_style=1)
-    g = unary_union(parts + [trunk, starp.difference(star_poly(cx, 152, 34, 15))])
+    star = starp.difference(star_poly(cx, 152, 34, 15))
+    boughs = []
+    levels, y0, y1, L0, L1 = 6, 250, 690, 70, 300
+    for k in range(levels):
+        t = k / (levels - 1)
+        y, L = y0 + (y1 - y0) * t, L0 + (L1 - L0) * t
+        for sg in (-1, 1):
+            boughs.append(bez((cx, y), (cx + sg * 0.50 * L, y + 0.20 * L), (cx + sg * 0.93 * L, y + 0.40 * L), 40))
+    stems = [line(b, 15) for b in boughs]
+    structure = unary_union([trunk_line, pot, star])
+    room = Polygon([(0, 0), (1000, 0), (1000, 1000), (0, 1000)])
+    placed = []
+    for k, b in enumerate(boughs):
+        clear = unary_union([structure] + stems[:k] + stems[k + 1:] + placed)
+        _, nds = needled_branch(b, clear, room, w=15, nw=12, every=34, needle=38, spread=45, taper=0.35, start=30)
+        placed += nds
+    g = unary_union([structure] + stems + placed)
     g = g.union(hanger(cx, 86, neck=26))
     return smooth(g)
 
@@ -355,24 +387,51 @@ def d6_pinecone():
     right = [(0, 300), (95, 308), (180, 360), (225, 450), (232, 550), (205, 660), (150, 770), (75, 850), (0, 880)]
     pts = right + [(-x, y) for x, y in right[::-1][1:-1]]
     cone = Polygon(catmull([(cx + x, y) for x, y in pts], n=10)).buffer(0)
-    parts = [outline(cone, WF)]
+    interior = cone.buffer(-WF, join_style=1)          # open space inside the frame
+    clip = cone.buffer(-4)
     # overlapping rounded scales: rows of U-arcs, offset every other row
-    inner = cone.buffer(-4)
-    arcs = []
+    arcs = []                                          # (centreline, stroke)
     rs, dy = 48, 58
     for j, y in enumerate(range(330, 900, dy)):
         off = 0 if j % 2 == 0 else rs
         for i in range(-6, 7):
             x = cx + off + i * 2 * rs
-            pts_ = [(x + rs * math.cos(math.radians(a)), y + rs * math.sin(math.radians(a)))
-                    for a in range(0, 181, 6)]
-            arcs.append(line(pts_, 14))
-    parts.append(unary_union(arcs).intersection(inner))
-    # twig across the top with fir needles; cone hangs from it
+            c = LineString([(x + rs * math.cos(math.radians(a)), y + rs * math.sin(math.radians(a)))
+                            for a in range(0, 181, 6)])
+            if c.intersects(interior):
+                arcs.append((c, line(list(c.coords), 14)))
+
+    def cells_of(arc_list):
+        lat = unary_union([st for _, st in arc_list]).intersection(clip)
+        return lat, [c for c in getattr(interior.difference(lat), "geoms", []) if c.area > 1]
+
+    # A partial scale cell at the sides that is too small to cut would be filled
+    # solid and leave a blot. Instead drop the short edge arc that closes it off,
+    # whole, so the cell joins its neighbour and no arc stub is left behind.
+    min_cell = MIN_HOLE + 40
+    while True:
+        lattice, cells = cells_of(arcs)
+        small = [c for c in cells if c.area < min_cell]
+        best = None
+        for c in small:
+            for k, (cl, st) in enumerate(arcs):
+                if st.distance(c) > 1:
+                    continue
+                _, trial = cells_of(arcs[:k] + arcs[k + 1:])
+                home = [t for t in trial if t.contains(c.representative_point())]
+                if home and home[0].area >= min_cell:
+                    ln = cl.intersection(interior).length
+                    if best is None or ln < best[0]:
+                        best = (ln, k)
+        if best is None:
+            break
+        arcs.pop(best[1])
+    parts = [outline(cone, WF), lattice]
+    # twig across the top with fir needles; the cone hangs from it on a slim stem
     for s in (-1, 1):
         parts.append(fir_branch(bez((cx, 250), (cx + s * 120, 235), (cx + s * 230, 270), 30),
                                 needle=54, every=40, spread=45, taper=0.45))
-    parts.append(line([(cx, 240), (cx, 310)], 34))
+    parts.append(line([(cx, 240), (cx, 306)], 20))     # round end stays inside the frame band
     g = unary_union(parts)
     g = g.union(hanger(cx, 232, neck=26))
     return smooth(g)
@@ -386,6 +445,39 @@ DESIGNS = {
     "05-scrollwork-drop": d5_scroll_drop,
     "06-filigree-pinecone": d6_pinecone,
 }
+
+
+README = """FILIGREE CHRISTMAS ORNAMENTS - 6 SVG CUT FILES
+by Duskwood Designs Co (etsy.com/shop/DuskwoodDesignsCo)
+Thank you for your purchase!
+
+DESIGNS
+  01 Snowflake Lace Bauble    04 Fir Branch Tree
+  02 Holly Filigree Bell      05 Scrollwork Drop
+  03 Fern Lace Star           06 Filigree Pinecone
+
+FILES
+  SVG/  Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
+  DXF/  Silhouette Studio Basic Edition, laser/CNC software (inches)
+  PNG/  1800 x 1800 px, transparent background (6 in at 300 DPI)
+
+Each design is a single-layer shape with one clean cut path, including the
+hanging loop at the top. Default size is 6 inches; resize freely (keep the
+proportions locked). These are lacy, openwork designs: at 6 inches the main
+lines are about 0.08 to 0.12 inch wide. We recommend 4 inches or larger for
+vinyl, 5 inches or larger for cardstock and laser-cut wood, and the full
+6 inches for acrylic, which is more brittle. The finest details are in the
+Fir Branch Tree, Fern Lace Star and Scrollwork Drop; do a test cut first on
+a new material.
+
+LICENSE
+  Personal use: unlimited.
+  Small-business commercial use: you may sell finished physical products
+  (ornaments, gift tags, cards, decals, shirts, etc.) made with these
+  designs, up to 500 units per design.
+  You may NOT resell, share or redistribute the digital files themselves,
+  in original or modified form, or include them in other digital products.
+"""
 
 
 # ---------------------------------------------------------------- export
@@ -439,4 +531,6 @@ if __name__ == "__main__":
             f.write(svg)
         write_dxf(g, os.path.join(DXF_DIR, f"{name}.dxf"), box_)
         meta[name] = stats(g)
+    with open(os.path.join(HERE, "bundle", "README-LICENSE.txt"), "w") as f:
+        f.write(README)
     print(json.dumps(meta, indent=1))

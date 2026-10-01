@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-01T18:44:42Z",
+ "updated_at": "2026-10-01T18:56:15Z",
  "next_run_at": "2026-10-01T19:13:16Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -25,16 +25,16 @@
   {
    "id": "designer",
    "name": "Designer",
-   "state": "working",
-   "task": "Fixing bundle 006 after QA round 1: Etsy category, pinecone blots and stem, fir-tree needles, sizing text.",
-   "since": "2026-10-01T18:44:42Z"
+   "state": "idle",
+   "task": "Fixed bundle 006 after QA round 1 (category, pinecone, new fir tree, sizing text). Waiting for QA.",
+   "since": "2026-10-01T18:56:15Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "idle",
-   "task": "Sent bundle 006 back (round 1 of 2): add the Etsy category; fix two solid blots on the pinecone.",
-   "since": "2026-10-01T18:44:42Z"
+   "state": "working",
+   "task": "Round 2 review of bundle 006. Not approved yet, so don't list it.",
+   "since": "2026-10-01T18:56:15Z"
   },
   {
    "id": "lister",
@@ -73,6 +73,11 @@
   "Butterflies & dragonflies"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T18:56:15Z",
+   "who": "designer",
+   "msg": "Fixed bundle 006: pinecone blots gone, Etsy category added, tree redrawn with real fir branches. Back to QA."
+  },
   {
    "t": "2026-10-01T18:44:42Z",
    "who": "qa",
