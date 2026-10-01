@@ -84,7 +84,7 @@ Rewrite it at the end of every run (and after each specialist finishes, if the r
   "feed": [{"t": "ISO-8601 UTC", "who": "designer", "msg": "one plain sentence"}]
 }
 ```
-`feed` is newest first, capped at 30 entries. Use `blocked` only when a worker can't proceed without the owner (e.g. Lister and Analyst while the Etsy variables are missing), and say what's needed in `task`.
+`feed` is newest first, capped at 30 entries. Keep the numbers current every shift: `listings_live` = active listings, `uploads_pending` = approved bundles without `etsy_listing_id`, `bundles_built` = folders in `bundles/` (excluding `_rejected`), `revenue_usd` = total from `stats/listings.csv` (run `etsy.py stats` if older than 24 h), and set `venture_gate.first_listing_live_at` the first time a listing goes live. The owner's dashboard reads this file every 2 minutes; if it is invalid JSON the dashboard freezes, so validate it with `python3 -m json.tool` before committing. Use `blocked` only when a worker can't proceed without the owner (e.g. Lister and Analyst while the Etsy variables are missing), and say what's needed in `task`.
 
 ## Getting the owner's input
 When a decision or a blocker needs the owner, the Manager sends one push notification (PushNotification tool):
