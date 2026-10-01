@@ -1,14 +1,14 @@
 // Standoff hanger for the flip-counter board.
 // Two brackets (left + right) screw to the wall and hold the board
 // 6" out from it by pins through the board's two existing corner holes.
-// All dimensions in mm. Values marked ASSUMED still need measuring.
+// All dimensions in mm.
 
 /* [Board] */
 board_w       = 288.9;   // 11 3/8"
 board_h       = 168.3;   // 6 5/8"
 hole_spacing  = 264.7;   // ~10 7/16" center-to-center
-hole_d        = 6.35;    // ASSUMED 1/4" - measure this
-board_t       = 3.2;     // ASSUMED 1/8" plywood - measure this
+hole_d        = 6.35;    // 1/4"
+board_t       = 4.76;    // 3/16"
 
 /* [Bracket] */
 standoff      = 152.4;   // wall to back face of board (6")
