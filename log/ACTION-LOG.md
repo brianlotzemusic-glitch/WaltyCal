@@ -20,3 +20,4 @@
 | 2026-10-01 18:10 | Researcher best-seller scan; proven themes to top of queue; evidence in research/bestsellers-2026-10-01.md | Owner asked for designs selling 1,000+ recently (none confirmed; best estimate ~209/week) |
 | 2026-10-01 18:10 | Manager moved Filigree ornaments to #1 (fits 6-design spec), Soccer to end (off design direction) | Gingerbread letters need an A-Z set, pending owner decision |
 | 2026-10-01 18:16 | Etsy API key verified; set category 12394 (Cutting Machine Files) on all listings | Etsy connection setup |
+| 2026-10-01 18:32 | Designer built bundle 006 Filigree Christmas ornaments (started early at the owner's request); committed as AWAITING QA, not approved for listing | Save finished work; QA review in progress |
