@@ -7,7 +7,7 @@ Q4 deadline: holiday themes need to be listed by about Nov 15 to sell this seaso
 - [x] 004 Bat Christmas
 - [x] 005 Winter moths & holly
 - [x] 003 Skull holiday
-- [ ] Filigree Christmas ornament shapes (bauble, bell, star, tree and drop ornaments with lace/botanical cutouts and hanging loop; list by mid-Nov) (proven seller: EtsyHunt est. ~37/week and ~35/week for two Christmas laser-cut ornament mega bundles; "ornament svg" ~1k/mo, "snowflake ornament" ~5.4k/mo, RankHero)
+- [x] 006 Filigree Christmas ornaments (proven-seller subject; QA approved round 2)
 - [ ] Gingerbread letter ornaments (gingerbread-cookie-shaped alphabet/initial ornaments with icing-scallop cutouts; buyers add names in their own software; list now) (proven seller: EtsyHunt est. ~209 sales/week, 1,202 total, top Christmas-ornament listing on Etsy 1 Oct 2026, ~$3.30/sale; two more gingerbread-alphabet listings at ~59 and ~24/week)
 - [ ] Christmas village silhouettes (merged with "Snowy woodland village": cottages, chapels, gingerbread-style houses and pines as single-layer skyline/light-box panels and standing houses; adapt multi-piece 3D village to one-shape panels; list by mid-Nov) (proven seller: EtsyHunt est. ~55/week winter-village laser file + ~36/week standing gingerbread village, both top-10 SVG files; "christmas village svg" only ~1.6k listings)
 - [ ] Witchy crystals (gothic slot; crystal clusters, gemstone points, crystal-and-sprig and moon-and-crystal shapes, no text and no "healing" claims; year-round) (proven seller: EtsyHunt est. ~60 sales/week, #1 SVG-files listing on Etsy 1 Oct 2026 is a witchy crystal design, though its appeal is partly the slogan)

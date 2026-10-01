@@ -22,3 +22,4 @@
 | 2026-10-01 18:16 | Etsy API key verified; set category 12394 (Cutting Machine Files) on all listings | Etsy connection setup |
 | 2026-10-01 18:32 | Designer built bundle 006 Filigree Christmas ornaments (started early at the owner's request); committed as AWAITING QA, not approved for listing | Save finished work; QA review in progress |
 | 2026-10-01 18:44 | QA round 1 on bundle 006: SEND BACK (missing taxonomy_id 12394; pinecone side blots). Designer fixing, plus stem, fir needles and sizing text | Spec change e3f2eeb; visible defect on a cut piece |
+| 2026-10-01 19:03 | QA round 2 on bundle 006: APPROVED (all checks pass; new fir tree OK at stated minimum sizes) | Ready to list once uploads can run |
