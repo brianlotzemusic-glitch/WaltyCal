@@ -86,6 +86,13 @@ Rewrite it at the end of every run (and after each specialist finishes, if the r
 ```
 `feed` is newest first, capped at 30 entries. Use `blocked` only when a worker can't proceed without the owner (e.g. Lister and Analyst while the Etsy variables are missing), and say what's needed in `task`.
 
+## Getting the owner's input
+When a decision or a blocker needs the owner, the Manager sends one push notification (PushNotification tool):
+- One line, under 200 characters, starting with "Duskwood:". Say what's needed, the deadline, and the default if there's no answer, e.g. "Duskwood: gingerbread letters A–Z or drop? Answer by 05:56 UTC or the Designer builds village silhouettes."
+- Only for decisions and blockers. Never for routine shift results.
+- Send it once per question, and once more if it's still open 12 h later. Log each one in `log/ACTION-LOG.md`.
+- Every question has a deadline and a default, so work never stalls waiting for an answer.
+
 ## Each run ends with
 Tick finished themes in `queue.md`, append to `log/ACTION-LOG.md`, update `office/status.json`, commit, `git push -u origin shop-factory` (retry up to 4 times on network errors; never force-push).
 
