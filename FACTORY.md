@@ -114,6 +114,7 @@ When a decision or a blocker needs the owner, the Manager sends one push notific
 - Only for decisions and blockers. Never for routine shift results.
 - Send it once per question, and once more if it's still open 12 h later. Log each one in `log/ACTION-LOG.md`.
 - Every question has a deadline and a default, so work never stalls waiting for an answer.
+- Quiet hours: push notifications only between 8:00am and 8:00pm US Eastern (America/New_York). Night shifts (8pm–8am) never notify: they log the question as "HELD for 8am: <question; deadline; default>" and the first shift after 8am sends any held questions together in one notification. If a deadline falls in quiet hours, move it to 10:00am Eastern.
 
 ## Each run ends with
 Tick finished themes in `queue.md`, append to `log/ACTION-LOG.md`, update `office/status.json`, commit, `git push -u origin shop-factory` (retry up to 4 times on network errors; never force-push).
