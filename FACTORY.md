@@ -1,6 +1,6 @@
 # Shop factory — operating manual
 
-This branch (`shop-factory`) is the Etsy shop's workspace. It has no history in common with `main`; never merge them.
+This branch (`shop-factory`) is the Etsy shop's workspace. The shop is **Duskwood Designs Co** (etsy.com/shop/DuskwoodDesignsCo); use that name in README-LICENSE files, listing images and copy. Shop profile text and branding live in `shop-profile/`. It has no history in common with `main`; never merge them.
 
 ## Layout
 - `bundles/NNN-slug/` — one Etsy listing each: `gen.py`, buyer ZIP, `listing-images/`, `LISTING.md`, `listing.json`, and `etsy_listing_id` once uploaded
