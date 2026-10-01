@@ -1,0 +1,103 @@
+{
+ "updated_at": "2026-10-01T12:38:00Z",
+ "next_run_at": "2026-10-01T13:37:00Z",
+ "goal_usd": 70000,
+ "revenue_usd": 0,
+ "listings_live": 0,
+ "bundles_built": 5,
+ "uploads_pending": 5,
+ "etsy_connected": false,
+ "workers": [
+  {
+   "id": "manager",
+   "name": "Manager",
+   "state": "idle",
+   "task": "Team set up. First hourly shift starts at 13:37 UTC.",
+   "since": "2026-10-01T12:38:00Z"
+  },
+  {
+   "id": "researcher",
+   "name": "Researcher",
+   "state": "idle",
+   "task": "Queue has 10 themes ready. Next trend refresh on the first shift.",
+   "since": "2026-10-01T11:40:00Z"
+  },
+  {
+   "id": "designer",
+   "name": "Designer",
+   "state": "idle",
+   "task": "Next up: Gothic Christmas gift tags.",
+   "since": "2026-10-01T12:20:00Z"
+  },
+  {
+   "id": "qa",
+   "name": "QA",
+   "state": "idle",
+   "task": "Approved bundles 002\u2013005 today.",
+   "since": "2026-10-01T12:20:00Z"
+  },
+  {
+   "id": "lister",
+   "name": "Lister",
+   "state": "blocked",
+   "task": "5 bundles ready to list. Waiting for Etsy API approval and credentials.",
+   "since": "2026-10-01T12:38:00Z"
+  },
+  {
+   "id": "analyst",
+   "name": "Analyst",
+   "state": "blocked",
+   "task": "No shop data yet. Starts once Etsy is connected.",
+   "since": "2026-10-01T12:38:00Z"
+  }
+ ],
+ "queue": [
+  "Gothic Christmas gift tags",
+  "Haunted gingerbread house",
+  "Raven & mistletoe",
+  "Celestial Christmas",
+  "Spooky winter village"
+ ],
+ "feed": [
+  {
+   "t": "2026-10-01T12:37:00Z",
+   "who": "manager",
+   "msg": "Switched to hourly shifts with a team of specialists."
+  },
+  {
+   "t": "2026-10-01T12:20:00Z",
+   "who": "qa",
+   "msg": "Approved bundle 005, Winter moths & holly."
+  },
+  {
+   "t": "2026-10-01T12:15:00Z",
+   "who": "qa",
+   "msg": "Approved bundle 004, Bat Christmas."
+  },
+  {
+   "t": "2026-10-01T12:10:00Z",
+   "who": "qa",
+   "msg": "Approved bundle 003, Skull holiday."
+  },
+  {
+   "t": "2026-10-01T12:00:00Z",
+   "who": "qa",
+   "msg": "Approved bundle 002, Gothic Christmas ornaments."
+  },
+  {
+   "t": "2026-10-01T11:52:00Z",
+   "who": "manager",
+   "msg": "Started 4 designers in parallel for the holiday sprint."
+  },
+  {
+   "t": "2026-10-01T11:45:00Z",
+   "who": "designer",
+   "msg": "Built bundle 001, Spiderweb snowflakes."
+  },
+  {
+   "t": "2026-10-01T11:40:00Z",
+   "who": "researcher",
+   "msg": "Picked dark-holiday cut files as the first product line."
+  }
+ ]
+}
