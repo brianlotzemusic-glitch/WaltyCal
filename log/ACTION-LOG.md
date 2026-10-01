@@ -36,3 +36,5 @@
 | 2026-10-01 22:40 | Lister published bundle 001 (spiderweb snowflakes) as Etsy listing 4586738084; venture-gate 30-day clock started | First live listing; daily cap now reached with the 003 draft |
 | 2026-10-01 22:43 | Daily listing cap raised to 4 until the backlog clears (FACTORY.md) | Owner's decision |
 | 2026-10-01 22:43 | Lister published bundle 002 (Etsy 4586736511) and 004 (Etsy 4586739694) | Backlog; 4/day cap |
+| 2026-10-01 22:45 | etsy.py upload and update now set should_auto_renew; ran update on 001-004, verified auto-renew True | Owner chose auto-renew ($0.20 per listing every 4 months) |
+| 2026-10-01 22:45 | Found listing 4586729007 (bundle 003) ACTIVE: it went live ~22:37 UTC, which matches the other session's be608fe; not published by this Manager session | Status corrected to 4 live; first-live time set to 22:37 |

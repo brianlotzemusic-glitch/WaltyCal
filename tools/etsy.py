@@ -5,7 +5,7 @@ Commands:
   python3 tools/etsy.py whoami                  check the login works; prints shop id and name
   python3 tools/etsy.py taxonomy <word>         find taxonomy ids by name
   python3 tools/etsy.py upload <bundle_dir>     create a listing from listing.json
-  python3 tools/etsy.py update <bundle_dir>     push edited listing.json text to an uploaded listing
+  python3 tools/etsy.py update <bundle_dir>     push edited listing.json text to an uploaded listing (and turn auto-renew on)
   python3 tools/etsy.py stats                   write stats/listings.csv (views, favorites, sales)
 
 Environment (set in the cloud environment settings, never committed):
@@ -95,7 +95,7 @@ def upload(bundle_dir):
         "who_made": spec.get("who_made", "i_did"), "when_made": spec.get("when_made", "2020_2026"),
         "is_supply": str(spec.get("is_supply", False)).lower(), "type": "download",
         "taxonomy_id": spec.get("taxonomy_id") or env("ETSY_TAXONOMY_ID"),
-        "tags": ",".join(spec["tags"]),
+        "tags": ",".join(spec["tags"]), "should_auto_renew": "true",
     })
     lid = listing["listing_id"]
     for rank, img in enumerate(spec["images"], 1):
@@ -110,12 +110,12 @@ def upload(bundle_dir):
 
 
 def update(bundle_dir):
-    """Push listing.json's title, description, tags and price to an uploaded listing."""
+    """Push listing.json's title, description, tags and price to an uploaded listing, and keep auto-renew on."""
     spec = json.load(open(os.path.join(bundle_dir, "listing.json")))
     lid = open(os.path.join(bundle_dir, "etsy_listing_id")).read().strip()
     call("PATCH", f"/shops/{shop_id()}/listings/{lid}", form={
         "title": spec["title"], "description": spec["description"],
-        "tags": ",".join(spec["tags"]), "price": spec["price"]})
+        "tags": ",".join(spec["tags"]), "price": spec["price"], "should_auto_renew": "true"})
     print(f"listing {lid} updated: {spec['title']}")
 
 

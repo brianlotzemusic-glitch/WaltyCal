@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-10-01T22:43:41Z",
+ "updated_at": "2026-10-01T22:45:40Z",
  "next_run_at": "2026-10-01T23:13:53Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 3,
+ "listings_live": 4,
  "bundles_built": 6,
  "uploads_pending": 2,
  "etsy_connected": true,
@@ -40,8 +40,8 @@
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Published 001, 002 and 004 (003 is a draft for the owner). Temporary 4-a-day cap reached. 005 and 006 publish after 00:00 UTC.",
-   "since": "2026-10-01T22:43:41Z"
+   "task": "4 listings live (001-004), all on auto-renew. 005 and 006 publish after 00:00 UTC.",
+   "since": "2026-10-01T22:45:40Z"
   },
   {
    "id": "analyst",
@@ -73,6 +73,11 @@
   "Nativity silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T22:45:40Z",
+   "who": "lister",
+   "msg": "Auto-renew is on for all listings ($0.20 every 4 months), so none expire in February."
+  },
   {
    "t": "2026-10-01T22:43:41Z",
    "who": "lister",
@@ -212,7 +217,7 @@
  "venture_gate": {
   "revenue_target_usd": 300,
   "days_live_target": 30,
-  "first_listing_live_at": "2026-10-01T22:40:03Z",
+  "first_listing_live_at": "2026-10-01T22:37:00Z",
   "met": false,
   "next_pick": "Laser-cut file shop (Etsy sister shop)"
  }
