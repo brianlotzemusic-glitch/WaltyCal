@@ -17,3 +17,5 @@
 | 2026-10-01 16:22 | New Duskwood logo (moonlit-forest badge + wordmark); replaced shop icon and cover | Owner asked for name-based branding |
 | 2026-10-01 17:47 | Added design direction to FACTORY.md (broad Duskwood range; gothic capped at 1 in 3); broadened shop profile copy | Owner said the shop shouldn't be gothic everything |
 | 2026-10-01 17:47 | Researcher rebuilt queue.md (18 themes, 3 gothic; dropped gift tags, spooky village, dark NYE); evidence in research/themes-2026-10-01.md | Owner asked for a wider net |
+| 2026-10-01 18:10 | Researcher best-seller scan; proven themes to top of queue; evidence in research/bestsellers-2026-10-01.md | Owner asked for designs selling 1,000+ recently (none confirmed; best estimate ~209/week) |
+| 2026-10-01 18:10 | Manager moved Filigree ornaments to #1 (fits 6-design spec), Soccer to end (off design direction) | Gingerbread letters need an A-Z set, pending owner decision |
