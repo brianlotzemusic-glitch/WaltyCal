@@ -13,7 +13,7 @@ This branch (`shop-factory`) is the Etsy shop's workspace. It has no history in 
 ## Each production run (scheduled twice daily)
 1. `pip install shapely ezdxf pillow` (Playwright + Chromium are preinstalled; run node scripts with `NODE_PATH=$(npm root -g)`).
 2. If `ETSY_REFRESH_TOKEN` is set: run `python3 tools/etsy.py stats`, then apply the rules below before building anything.
-3. Take the top unchecked theme from `queue.md`. Build ONE bundle in `bundles/NNN-slug/` following an existing bundle as the template:
+3. Take the top unchecked theme from `queue.md` that is not marked "in progress". Build ONE bundle in `bundles/NNN-slug/` following an existing bundle as the template:
    - 6 original designs, each ONE connected closed shape, no hole under 600 units² (1000-unit design space), SVG 6 in, PNG 1800 px transparent, DXF in inches
    - Buyer ZIP with SVG/, PNG/, DXF/, README-LICENSE.txt
    - 4 listing images at 3000×2250
