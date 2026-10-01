@@ -14,7 +14,7 @@ Environment (set in the cloud environment settings, never committed):
   ETSY_USER_ID                         printed by etsy_auth.py (shop id is looked up from it)
   ETSY_SHOP_ID                         optional; numeric shop id if you already know it
   ETSY_TAXONOMY_ID                     default taxonomy id for cut-file listings
-  ETSY_PUBLISH=1                       publish immediately instead of leaving a draft
+  ETSY_PUBLISH=0                       keep new listings as drafts (default: publish immediately)
 """
 import csv, json, mimetypes, os, sys, time
 import urllib.request, urllib.parse, urllib.error, uuid
@@ -102,11 +102,11 @@ def upload(bundle_dir):
         call("POST", f"/shops/{shop}/listings/{lid}/images", form={"rank": rank}, files={"image": os.path.join(bundle_dir, img)})
     call("POST", f"/shops/{shop}/listings/{lid}/files", form={"name": os.path.basename(spec["digital_file"]), "rank": 1},
          files={"file": os.path.join(bundle_dir, spec["digital_file"])})
-    if os.environ.get("ETSY_PUBLISH") == "1":
+    if os.environ.get("ETSY_PUBLISH") != "0":
         call("PATCH", f"/shops/{shop}/listings/{lid}", form={"state": "active"})
     with open(os.path.join(bundle_dir, "etsy_listing_id"), "w") as f:
         f.write(str(lid))
-    print(f"listing {lid} {'published' if os.environ.get('ETSY_PUBLISH') == '1' else 'saved as draft'}: {spec['title']}")
+    print(f"listing {lid} {'published' if os.environ.get('ETSY_PUBLISH') != '0' else 'saved as draft'}: {spec['title']}")
 
 
 def update(bundle_dir):
@@ -170,6 +170,10 @@ if __name__ == "__main__":
         taxonomy(sys.argv[2])
     elif cmd == "upload":
         upload(sys.argv[2])
+    elif cmd == "publish":
+        lid = open(os.path.join(sys.argv[2], "etsy_listing_id")).read().strip()
+        call("PATCH", f"/shops/{shop_id()}/listings/{lid}", form={"state": "active"})
+        print(f"listing {lid} published")
     elif cmd == "update":
         update(sys.argv[2])
     elif cmd == "stats":

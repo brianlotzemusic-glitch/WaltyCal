@@ -30,3 +30,4 @@
 | 2026-10-01 22:27 | Uploaded bundle 003 (skull holiday) to Etsy as DRAFT, listing 4586729007; verified draft, 4 images, 1 file, 13 tags, $4.00, taxonomy 12394 | First live upload; no etsy.py changes needed |
 | 2026-10-01 22:34 | Shortened AI disclosure to one line in all listings and shop profile; removed AI FAQ; added etsy.py update | Owner asked to minimise the disclosure (kept the required line) |
 | 2026-10-01 22:35 | Pushed shortened AI disclosure to Etsy draft listing 4586729007 (bundle 003); verified description ends with the one-line disclosure, no "AI DISCLOSURE", state still draft | Owner-approved one-off update |
+| 2026-10-01 22:37 | New listings now publish automatically (ETSY_PUBLISH=0 to revert) | Owner chose automatic publishing |
