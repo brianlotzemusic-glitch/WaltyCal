@@ -6,3 +6,4 @@
 | 2026-10-01 | Filled cut-out holes smaller than ~6 mm² | Too small to cut or weed cleanly |
 | 2026-10-01 | Exported SVG/DXF/PNG, 4 listing images, listing copy | Listing 001 ready for owner review |
 | 2026-10-01 | Bundle 002 Gothic Christmas ornaments built and reviewed | Q4 sprint |
+| 2026-10-01 | Bundle 003 Skull holiday built and reviewed | Q4 sprint |
