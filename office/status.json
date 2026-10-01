@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-01T20:13:12Z",
- "next_run_at": "2026-10-01T21:13:12Z",
+ "updated_at": "2026-10-01T21:12:53Z",
+ "next_run_at": "2026-10-01T22:12:53Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 0,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "Shift ran from the dedicated Manager session; nothing due. Asked the owner to price the A\u2013Z alphabet.",
-   "since": "2026-10-01T20:13:12Z"
+   "task": "Shift ran from the dedicated Manager session; nothing due.",
+   "since": "2026-10-01T21:12:53Z"
   },
   {
    "id": "researcher",
@@ -26,7 +26,7 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Next up after 05:56 UTC: Gingerbread letter ornaments, a full A\u2013Z bundle of 26 designs (owner's decision).",
+   "task": "Next up after 05:56 UTC: Gingerbread letter ornaments, a full A\u2013Z bundle of 26 designs at $6.00 (owner's decision).",
    "since": "2026-10-01T19:03:56Z"
   },
   {
