@@ -10,3 +10,4 @@
 | 2026-10-01 | Bundle 004 Bat Christmas built and reviewed | Q4 sprint |
 | 2026-10-01 | Bundle 005 Winter moths & holly built and reviewed | Q4 sprint |
 | 2026-10-01 12:38 | Restructured into hourly Manager + specialist team; added office/status.json | Owner asked for a specialist team that runs continuously |
+| 2026-10-01 12:50 | Added Scout and Launcher roles; Launcher gated on $300 revenue or 30 days live | Owner asked for next-business research and launches |
