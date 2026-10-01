@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-01T21:12:53Z",
- "next_run_at": "2026-10-01T22:12:53Z",
+ "updated_at": "2026-10-01T22:13:53Z",
+ "next_run_at": "2026-10-01T23:13:53Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 0,
@@ -13,7 +13,7 @@
    "name": "Manager",
    "state": "idle",
    "task": "Shift ran from the dedicated Manager session; nothing due.",
-   "since": "2026-10-01T21:12:53Z"
+   "since": "2026-10-01T22:13:53Z"
   },
   {
    "id": "researcher",
