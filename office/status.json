@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-01T13:20:00Z",
- "next_run_at": "2026-10-01T13:37:00Z",
+ "updated_at": "2026-10-01T14:38:25Z",
+ "next_run_at": "2026-10-01T15:38:25Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 0,
@@ -12,21 +12,21 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "Team set up. First hourly shift starts at 13:37 UTC.",
-   "since": "2026-10-01T12:38:00Z"
+   "task": "Shift ran from the dedicated Manager session; nothing due.",
+   "since": "2026-10-01T14:38:25Z"
   },
   {
    "id": "researcher",
    "name": "Researcher",
    "state": "idle",
-   "task": "Queue has 10 themes ready. Next trend refresh on the first shift.",
+   "task": "Queue has 10 themes ready. Next trend refresh due after 11:40 UTC tomorrow.",
    "since": "2026-10-01T11:40:00Z"
   },
   {
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Next up: Gothic Christmas gift tags.",
+   "task": "Next up: Gothic Christmas gift tags. Due after 22:58 UTC (11 h since last bundle).",
    "since": "2026-10-01T12:20:00Z"
   },
   {
@@ -73,6 +73,11 @@
   "Spooky winter village"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T14:38:25Z",
+   "who": "manager",
+   "msg": "Hourly shift: nothing due. Designer next after 22:58 UTC."
+  },
   {
    "t": "2026-10-01T13:20:00Z",
    "who": "scout",
