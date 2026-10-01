@@ -4,7 +4,7 @@ Q4 deadline: holiday themes need to be listed by about Nov 15 to sell this seaso
 
 - [x] 001 Spiderweb snowflakes (creepy Christmas)
 - [x] 002 Gothic Christmas ornaments
-- [ ] Bat Christmas (in progress, Q4 sprint)
+- [x] 004 Bat Christmas
 - [ ] Winter moths & holly (in progress, Q4 sprint)
 - [x] 003 Skull holiday
 - [ ] Gothic Christmas gift tags (printable PDF + SVG)
