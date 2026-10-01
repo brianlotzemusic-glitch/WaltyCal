@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-01T18:32:11Z",
+ "updated_at": "2026-10-01T18:44:42Z",
  "next_run_at": "2026-10-01T19:13:16Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "working",
-   "task": "Waiting for QA on bundle 006.",
-   "since": "2026-10-01T18:32:11Z"
+   "task": "Bundle 006 in QA round 2 after the Designer's fixes.",
+   "since": "2026-10-01T18:44:42Z"
   },
   {
    "id": "researcher",
@@ -25,16 +25,16 @@
   {
    "id": "designer",
    "name": "Designer",
-   "state": "idle",
-   "task": "Built bundle 006 (Filigree Christmas ornaments); waiting for QA's verdict.",
-   "since": "2026-10-01T18:32:11Z"
+   "state": "working",
+   "task": "Fixing bundle 006 after QA round 1: Etsy category, pinecone blots and stem, fir-tree needles, sizing text.",
+   "since": "2026-10-01T18:44:42Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "working",
-   "task": "Reviewing bundle 006, Filigree Christmas ornaments. Not approved yet, so don't list it.",
-   "since": "2026-10-01T18:32:11Z"
+   "state": "idle",
+   "task": "Sent bundle 006 back (round 1 of 2): add the Etsy category; fix two solid blots on the pinecone.",
+   "since": "2026-10-01T18:44:42Z"
   },
   {
    "id": "lister",
@@ -73,6 +73,11 @@
   "Butterflies & dragonflies"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T18:44:42Z",
+   "who": "qa",
+   "msg": "Sent bundle 006 back: missing Etsy category and two solid blots on the pinecone. The other five designs passed."
+  },
   {
    "t": "2026-10-01T18:32:11Z",
    "who": "designer",
