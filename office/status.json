@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-01T17:14:18Z",
+ "updated_at": "2026-10-01T17:47:29Z",
  "next_run_at": "2026-10-01T18:14:18Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -12,21 +12,21 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "Shift ran from the dedicated Manager session; nothing due.",
-   "since": "2026-10-01T17:14:18Z"
+   "task": "Widened the design direction beyond gothic at the owner's request.",
+   "since": "2026-10-01T17:47:29Z"
   },
   {
    "id": "researcher",
    "name": "Researcher",
    "state": "idle",
-   "task": "Queue has 10 themes ready. Next trend refresh due after 11:40 UTC tomorrow.",
-   "since": "2026-10-01T11:40:00Z"
+   "task": "Rebuilt the queue at the owner's request: 18 themes, 3 gothic. Next refresh due after 17:45 UTC tomorrow.",
+   "since": "2026-10-01T17:47:29Z"
   },
   {
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Next up after 22:58 UTC: Gothic Christmas gift tags, plus adding the Duskwood Designs Co name to the README-LICENSE files in bundles 001-005.",
+   "task": "Next up after 22:58 UTC: Botanical frost snowflakes, plus adding the Duskwood Designs Co name to the README-LICENSE files in bundles 001-005.",
    "since": "2026-10-01T12:20:00Z"
   },
   {
@@ -66,13 +66,23 @@
   }
  ],
  "queue": [
-  "Gothic Christmas gift tags",
-  "Haunted gingerbread house",
-  "Raven & mistletoe",
+  "Botanical frost snowflakes",
   "Celestial Christmas",
-  "Spooky winter village"
+  "Raven & mistletoe",
+  "Woodland reindeer & stag ornaments",
+  "Nutcracker ballet silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T17:47:29Z",
+   "who": "researcher",
+   "msg": "New queue: botanical frost snowflakes, celestial Christmas, raven & mistletoe, reindeer, nutcracker. Gothic now 3 of 18."
+  },
+  {
+   "t": "2026-10-01T17:47:29Z",
+   "who": "manager",
+   "msg": "Owner asked for a wider range than gothic. Set the new design direction and updated the shop profile."
+  },
   {
    "t": "2026-10-01T17:14:18Z",
    "who": "manager",

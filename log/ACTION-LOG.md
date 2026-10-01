@@ -15,3 +15,5 @@
 | 2026-10-01 13:20 | Scout research #2 (wider scope): combined top 10 in ventures/shortlist.md | Owner asked for more automatable income streams |
 | 2026-10-01 16:18 | Shop named Duskwood Designs Co; profile text, icon and cover photo in shop-profile/ | Owner setting up the Etsy shop |
 | 2026-10-01 16:22 | New Duskwood logo (moonlit-forest badge + wordmark); replaced shop icon and cover | Owner asked for name-based branding |
+| 2026-10-01 17:47 | Added design direction to FACTORY.md (broad Duskwood range; gothic capped at 1 in 3); broadened shop profile copy | Owner said the shop shouldn't be gothic everything |
+| 2026-10-01 17:47 | Researcher rebuilt queue.md (18 themes, 3 gothic; dropped gift tags, spooky village, dark NYE); evidence in research/themes-2026-10-01.md | Owner asked for a wider net |
