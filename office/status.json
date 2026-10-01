@@ -1,12 +1,12 @@
 {
- "updated_at": "2026-10-01T22:13:53Z",
+ "updated_at": "2026-10-01T22:38:09Z",
  "next_run_at": "2026-10-01T23:13:53Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 0,
  "bundles_built": 6,
- "uploads_pending": 6,
- "etsy_connected": false,
+ "uploads_pending": 5,
+ "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
@@ -40,15 +40,15 @@
    "id": "lister",
    "name": "Lister",
    "state": "blocked",
-   "task": "6 approved bundles ready to list. The owner will finish the Etsy login (ETSY_REFRESH_TOKEN, ETSY_USER_ID) at their computer.",
-   "since": "2026-10-01T19:13:10Z"
+   "task": "Etsy connected; 5 approved bundles ready (003 is a draft for the owner). Paused: uploads now publish immediately, at Etsy's $0.20 fee each, so waiting for the owner to confirm in the Manager chat.",
+   "since": "2026-10-01T22:38:09Z"
   },
   {
    "id": "analyst",
    "name": "Analyst",
-   "state": "blocked",
-   "task": "Needs the same two Etsy values (ETSY_REFRESH_TOKEN, ETSY_USER_ID) before it can pull shop stats.",
-   "since": "2026-10-01T19:13:10Z"
+   "state": "idle",
+   "task": "Etsy connected. Stats start once a listing is live.",
+   "since": "2026-10-01T22:38:09Z"
   },
   {
    "id": "scout",
@@ -73,6 +73,11 @@
   "Nativity silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T22:38:09Z",
+   "who": "manager",
+   "msg": "Etsy is connected and bundle 003 is a draft. Auto-publish is paused until the owner confirms the listing fees."
+  },
   {
    "t": "2026-10-01T19:42:48Z",
    "who": "manager",
