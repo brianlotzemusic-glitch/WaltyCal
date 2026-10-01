@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-01T14:38:25Z",
- "next_run_at": "2026-10-01T15:38:25Z",
+ "updated_at": "2026-10-01T15:13:37Z",
+ "next_run_at": "2026-10-01T16:13:37Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 0,
@@ -13,7 +13,7 @@
    "name": "Manager",
    "state": "idle",
    "task": "Shift ran from the dedicated Manager session; nothing due.",
-   "since": "2026-10-01T14:38:25Z"
+   "since": "2026-10-01T15:13:37Z"
   },
   {
    "id": "researcher",
@@ -74,7 +74,7 @@
  ],
  "feed": [
   {
-   "t": "2026-10-01T14:38:25Z",
+   "t": "2026-10-01T15:13:37Z",
    "who": "manager",
    "msg": "Hourly shift: nothing due. Designer next after 22:58 UTC."
   },
