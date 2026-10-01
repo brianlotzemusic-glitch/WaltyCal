@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-01T22:38:09Z",
+ "updated_at": "2026-10-01T22:40:03Z",
  "next_run_at": "2026-10-01T23:13:53Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 0,
+ "listings_live": 1,
  "bundles_built": 6,
- "uploads_pending": 5,
+ "uploads_pending": 4,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "Shift ran from the dedicated Manager session; nothing due.",
-   "since": "2026-10-01T22:13:53Z"
+   "task": "Owner confirmed auto-publish. First listing is live.",
+   "since": "2026-10-01T22:40:03Z"
   },
   {
    "id": "researcher",
@@ -39,9 +39,9 @@
   {
    "id": "lister",
    "name": "Lister",
-   "state": "blocked",
-   "task": "Etsy connected; 5 approved bundles ready (003 is a draft for the owner). Paused: uploads now publish immediately, at Etsy's $0.20 fee each, so waiting for the owner to confirm in the Manager chat.",
-   "since": "2026-10-01T22:38:09Z"
+   "state": "idle",
+   "task": "Published bundle 001 (listing 4586738084). Daily cap reached (003 draft + 001). Next 2 uploads after 00:00 UTC: 002 and 004.",
+   "since": "2026-10-01T22:40:03Z"
   },
   {
    "id": "analyst",
@@ -73,6 +73,11 @@
   "Nativity silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T22:40:03Z",
+   "who": "lister",
+   "msg": "First listing live: Spiderweb Snowflake SVG Bundle (Etsy 4586738084)."
+  },
   {
    "t": "2026-10-01T22:38:09Z",
    "who": "manager",
@@ -202,7 +207,7 @@
  "venture_gate": {
   "revenue_target_usd": 300,
   "days_live_target": 30,
-  "first_listing_live_at": null,
+  "first_listing_live_at": "2026-10-01T22:40:03Z",
   "met": false,
   "next_pick": "Laser-cut file shop (Etsy sister shop)"
  }
