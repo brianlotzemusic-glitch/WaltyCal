@@ -32,6 +32,8 @@ The owner wants a wide range of themes, not gothic everything. Duskwood's look i
 - Gothic, spooky and dark-holiday themes: no more than 1 in 3 of the unchecked queue, and never two in a row.
 - Mix seasonal themes (in time for their sales windows) with year-round ones.
 - Existing themes stay only if they still rank well against the new ones.
+- Proven sellers first: on each run the Researcher looks for cut-file listings selling heavily now (about the last 60 days; 1,000+ sales is the owner's bar). Evidence comes from sales estimators, Bestseller and "bought in the last 24 hours" signals, and marketplace bestseller lists. Every figure is labelled as an estimate with its source. Themes with proven demand go to the top of the queue.
+- Take the subject and format from a proven seller, never the design. The Designer makes original designs only. Never trace, redraw or closely imitate another seller's listing, composition, style or text.
 
 ## Bundle spec (Designer + QA)
 - `pip install shapely ezdxf pillow` first. Playwright + Chromium are preinstalled; run node scripts with `NODE_PATH=$(npm root -g)`.
