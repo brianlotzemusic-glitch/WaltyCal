@@ -41,3 +41,4 @@
 | 2026-10-01 22:51 | Researcher scope widened to all digital product types; added Product formats rules | Owner asked to consider digital files beyond cut files |
 | 2026-10-01 23:03 | Researcher format scan: pilots for cross-stitch (#3), coloring pages (#7) and Christmas bingo (#12); evidence in research/formats-2026-10-01.md; asked owner to confirm pilot prices | Owner request via main session |
 | 2026-10-01 22:57 | Added tools/imagegen.py (OpenAI image generation + tracing to SVG) and AI-image rules | Owner asked to connect an AI image generator (ChatGPT/OpenAI) |
+| 2026-10-01 23:07 | Owner confirmed pilot prices (cross-stitch $3.50, coloring $3.99, bingo $3.50) and OpenAI image costs; the Designer uses imagegen.py once OPENAI_API_KEY is set (default cap 400 images a month) | Owner's decision |
