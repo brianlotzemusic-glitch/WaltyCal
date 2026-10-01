@@ -2,6 +2,7 @@
 
 Commands:
   python3 tools/etsy.py ping                    check the API key works
+  python3 tools/etsy.py whoami                  check the login works; prints shop id and name
   python3 tools/etsy.py taxonomy <word>         find taxonomy ids by name
   python3 tools/etsy.py upload <bundle_dir>     create a listing from listing.json
   python3 tools/etsy.py stats                   write stats/listings.csv (views, favorites, sales)
@@ -9,7 +10,8 @@ Commands:
 Environment (set in the cloud environment settings, never committed):
   ETSY_KEYSTRING, ETSY_SHARED_SECRET   from the Etsy developer app
   ETSY_REFRESH_TOKEN                   from the one-time OAuth step (tools/etsy_auth.py)
-  ETSY_SHOP_ID                         numeric shop id
+  ETSY_USER_ID                         printed by etsy_auth.py (shop id is looked up from it)
+  ETSY_SHOP_ID                         optional; numeric shop id if you already know it
   ETSY_TAXONOMY_ID                     default taxonomy id for cut-file listings
   ETSY_PUBLISH=1                       publish immediately instead of leaving a draft
 """
@@ -75,11 +77,18 @@ def call(method, path, form=None, files=None, auth=True, retries=3):
     sys.exit(f"{method} {path} failed after {retries} retries")
 
 
+def shop_id():
+    sid = os.environ.get("ETSY_SHOP_ID")
+    if sid:
+        return sid
+    return str(call("GET", f"/users/{env('ETSY_USER_ID')}/shops")["shop_id"])
+
+
 def upload(bundle_dir):
     spec = json.load(open(os.path.join(bundle_dir, "listing.json")))
     if os.path.exists(os.path.join(bundle_dir, "etsy_listing_id")):
         sys.exit(f"already uploaded: {bundle_dir}")
-    shop = env("ETSY_SHOP_ID")
+    shop = shop_id()
     listing = call("POST", f"/shops/{shop}/listings", form={
         "quantity": 999, "title": spec["title"], "description": spec["description"], "price": spec["price"],
         "who_made": spec.get("who_made", "i_did"), "when_made": spec.get("when_made", "2020_2026"),
@@ -100,7 +109,7 @@ def upload(bundle_dir):
 
 
 def stats():
-    shop = env("ETSY_SHOP_ID")
+    shop = shop_id()
     sold = {}
     offset = 0
     while True:
@@ -142,6 +151,10 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "ping":
         print(call("GET", "/openapi-ping", auth=False))
+    elif cmd == "whoami":
+        sid = shop_id()
+        s = call("GET", f"/shops/{sid}")
+        print(sid, s.get("shop_name"), s.get("url"))
     elif cmd == "taxonomy":
         taxonomy(sys.argv[2])
     elif cmd == "upload":
