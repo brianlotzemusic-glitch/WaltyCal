@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-01T22:45:40Z",
+ "updated_at": "2026-10-01T22:52:34Z",
  "next_run_at": "2026-10-01T23:13:53Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -18,9 +18,9 @@
   {
    "id": "researcher",
    "name": "Researcher",
-   "state": "idle",
-   "task": "Found current best-sellers (EtsyHunt estimates); none confirmed at 1,000+ sales in 60 days. Proven themes now top the queue.",
-   "since": "2026-10-01T18:10:34Z"
+   "state": "working",
+   "task": "Researching which digital formats beyond cut files sell now (wall art, clipart, coloring pages, stickers, papers and more).",
+   "since": "2026-10-01T22:52:34Z"
   },
   {
    "id": "designer",
@@ -73,6 +73,11 @@
   "Nativity silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-01T22:52:34Z",
+   "who": "researcher",
+   "msg": "Started researching other digital formats, at the owner's request."
+  },
   {
    "t": "2026-10-01T22:45:40Z",
    "who": "lister",
