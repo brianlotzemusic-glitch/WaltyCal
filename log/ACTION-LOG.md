@@ -12,3 +12,4 @@
 | 2026-10-01 12:38 | Restructured into hourly Manager + specialist team; added office/status.json | Owner asked for a specialist team that runs continuously |
 | 2026-10-01 12:50 | Added Scout and Launcher roles; Launcher gated on $300 revenue or 30 days live | Owner asked for next-business research and launches |
 | 2026-10-01 13:00 | Scout research #1: shortlist in ventures/shortlist.md (top: laser-cut file shop) | Weekly next-business research |
+| 2026-10-01 13:20 | Scout research #2 (wider scope): combined top 10 in ventures/shortlist.md | Owner asked for more automatable income streams |
