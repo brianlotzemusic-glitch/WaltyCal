@@ -12,12 +12,12 @@ Character limits are Etsy's approximate limits; everything here fits.
 ---------------------------------------------------------------------
 ## 2. Shop title  (the one-line headline under your shop name, max 55 characters)
 
-Gothic & whimsical SVG cut files for Cricut and laser
+Moody woodland & celestial SVG cut files for Cricut
 
 ---------------------------------------------------------------------
 ## 3. Shop announcement
 
-Welcome to Duskwood Designs Co! New dark-holiday cut files are added every week through December: spiderweb snowflakes, gothic ornaments, bat Christmas, skull holiday and winter moths.
+Welcome to Duskwood Designs Co! New cut files are added every week: woodland animals, birds, botanicals, mushrooms, moons and stars, cozy seasonal designs, and a few spooky ones for good measure.
 
 Every bundle includes SVG, DXF and PNG files, so it works in Cricut Design Space, Silhouette Studio (Basic and Designer Edition) and most laser software. Files download instantly after purchase.
 
@@ -27,16 +27,16 @@ Need a size or format that isn't included? Send me a message and I'll help.
 ## 4. About section  (Shop Manager → Settings → About your shop)
 
 Story headline:
-Cut files for people who like their holidays a little darker
+Cut files with a moonlit, woodland feel
 
 Story:
-Duskwood Designs Co makes cut files for crafters whose taste runs to moons, moths, bats and spiderwebs, especially at the holidays, when most designs are all candy-cane cheer.
+Duskwood Designs Co makes cut files for crafters who love the quieter side of nature: foxes and owls, ferns and wildflowers, mushrooms, moths, moons and stars, and cozy seasons, with the occasional bat or spiderweb for anyone who likes things a little spooky.
 
 Every design is built as a clean, single-layer cut path: no stray points, no slivers too small to cut, and no hours spent welding pieces together. Each bundle comes with SVG, DXF and PNG files sized at 6 inches, ready for Cricut, Silhouette or a laser cutter.
 
 How the designs are made: designs are created with the help of AI tools, then checked and finalized before anything is listed. Each file is tested for cut-ready geometry (one connected shape, no tiny holes) and reviewed at full size and thumbnail size so it actually looks like what it's meant to be.
 
-New themes arrive every week. If there's something you'd love to see, a bat-wing wreath, a raven ornament, a design for a laser rather than a Cricut, send a message. Requests genuinely shape what gets made next.
+New themes arrive every week. If there's something you'd love to see, a woodland wreath, a moon-phase garland, a design for a laser rather than a Cricut, send a message. Requests genuinely shape what gets made next.
 
 ---------------------------------------------------------------------
 ## 5. Shop owner bio  (About section → Shop members → your profile → Bio)
@@ -44,7 +44,7 @@ New themes arrive every week. If there's something you'd love to see, a bat-wing
 Role: Owner, designer
 
 Bio:
-I run Duskwood Designs Co and finalize every design that goes into it. I'm a fan of anything moody, moonlit or a little bit spooky, and I wanted cut files that suit crafters who feel the same.
+I run Duskwood Designs Co and finalize every design that goes into it. I'm a fan of anything moody, moonlit or woodsy, and I wanted cut files that suit crafters who feel the same.
 
 ---------------------------------------------------------------------
 ## 6. Message to buyers  (Settings → Info & Appearance → "Message to buyers")

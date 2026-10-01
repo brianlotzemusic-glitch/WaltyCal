@@ -27,6 +27,12 @@ One scheduled **Manager** run fires every hour. The Manager decides which specia
 
 Work out "last done" times from `office/status.json` and `git log`. If nothing is due, the Manager only refreshes the status file (workers shown as idle with what they're waiting for) and ends the run.
 
+## Design direction (Researcher + Designer)
+The owner wants a wide range of themes, not gothic everything. Duskwood's look is moody, natural and a little whimsical: woodland animals, birds, botanicals and florals, mushrooms, celestial (moons, stars), cozy seasonal (autumn, winter, spring), cottagecore, and some dark or gothic designs. Choose themes from buyer demand across all of these.
+- Gothic, spooky and dark-holiday themes: no more than 1 in 3 of the unchecked queue, and never two in a row.
+- Mix seasonal themes (in time for their sales windows) with year-round ones.
+- Existing themes stay only if they still rank well against the new ones.
+
 ## Bundle spec (Designer + QA)
 - `pip install shapely ezdxf pillow` first. Playwright + Chromium are preinstalled; run node scripts with `NODE_PATH=$(npm root -g)`.
 - Follow an existing bundle in `bundles/` as the template (002–005 are the strongest).
