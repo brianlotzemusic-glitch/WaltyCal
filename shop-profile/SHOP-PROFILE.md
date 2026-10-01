@@ -5,7 +5,8 @@ Character limits are Etsy's approximate limits; everything here fits.
 
 ---------------------------------------------------------------------
 ## 1. Shop icon and cover photo
-- Shop icon: `shop-icon-500.png` (500 × 500)
+- Shop icon: `shop-icon-500.png` (500 × 500), the Duskwood moonlit-forest mark
+- Full logo files (stacked, horizontal, one-color, SVG + PNG): `brand/`
 - Cover photo (big banner): `shop-cover-3360x840.png` (3360 × 840)
 
 ---------------------------------------------------------------------

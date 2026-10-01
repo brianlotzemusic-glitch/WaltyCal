@@ -14,3 +14,4 @@
 | 2026-10-01 13:00 | Scout research #1: shortlist in ventures/shortlist.md (top: laser-cut file shop) | Weekly next-business research |
 | 2026-10-01 13:20 | Scout research #2 (wider scope): combined top 10 in ventures/shortlist.md | Owner asked for more automatable income streams |
 | 2026-10-01 16:18 | Shop named Duskwood Designs Co; profile text, icon and cover photo in shop-profile/ | Owner setting up the Etsy shop |
+| 2026-10-01 16:22 | New Duskwood logo (moonlit-forest badge + wordmark); replaced shop icon and cover | Owner asked for name-based branding |
