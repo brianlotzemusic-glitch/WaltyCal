@@ -1,10 +1,10 @@
 {
- "updated_at": "2026-10-02T10:15:13Z",
+ "updated_at": "2026-10-02T10:26:12Z",
  "next_run_at": "2026-10-02T11:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 6,
- "bundles_built": 6,
+ "bundles_built": 7,
  "uploads_pending": 0,
  "etsy_connected": true,
  "workers": [
@@ -25,16 +25,16 @@
   {
    "id": "designer",
    "name": "Designer",
-   "state": "working",
-   "task": "Building bundle 007: Gingerbread letter ornaments, A\u2013Z (26 designs, $6).",
-   "since": "2026-10-02T10:15:13Z"
+   "state": "idle",
+   "task": "Built bundle 007 (A\u2013Z gingerbread letters); waiting for QA.",
+   "since": "2026-10-02T10:26:12Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "idle",
-   "task": "Approved bundle 006, Filigree Christmas ornaments, in round 2.",
-   "since": "2026-10-01T19:03:56Z"
+   "state": "working",
+   "task": "Reviewing bundle 007. Not approved yet, so don't list it.",
+   "since": "2026-10-02T10:26:12Z"
   },
   {
    "id": "lister",
@@ -73,6 +73,11 @@
   "Butterflies & dragonflies"
  ],
  "feed": [
+  {
+   "t": "2026-10-02T10:26:12Z",
+   "who": "designer",
+   "msg": "Built bundle 007: 26 gingerbread letter ornaments A\u2013Z. Sent to QA."
+  },
   {
    "t": "2026-10-02T10:15:13Z",
    "who": "designer",
@@ -217,11 +222,6 @@
    "t": "2026-10-01T12:15:00Z",
    "who": "qa",
    "msg": "Approved bundle 004, Bat Christmas."
-  },
-  {
-   "t": "2026-10-01T12:10:00Z",
-   "who": "qa",
-   "msg": "Approved bundle 003, Skull holiday."
   }
  ],
  "venture_gate": {

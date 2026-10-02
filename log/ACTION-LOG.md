@@ -54,3 +54,4 @@
 | 2026-10-02 10:15 | Live Etsy titles on all 6 listings differ from listing.json (edited outside the repo; 004 says 'dxr' not 'dxf'). Don't run etsy.py update on these until the owner says which titles to keep | Avoid overwriting the owner's edits |
 | 2026-10-02 10:15 | HELD for 8am: Duskwood: live Etsy titles differ from our files (004 says 'dxr'). Keep Etsy's titles and copy them into our files, or restore ours? Default 10am ET: keep Etsy's, fix 'dxr' to 'dxf'. | Quiet hours |
 | 2026-10-02 10:15 | Designer started bundle 007 Gingerbread letter ornaments A-Z (26 designs, $6) | Designer due (11 h since 006) |
+| 2026-10-02 10:26 | Designer built bundle 007 (A–Z gingerbread letters); committed as AWAITING QA | Save finished work |
