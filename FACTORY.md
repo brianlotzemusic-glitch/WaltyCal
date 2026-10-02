@@ -66,6 +66,18 @@ Rules for a new format:
 - Disclosure line for non-cut-file formats: "Designed with the help of digital and AI tools, and checked by hand."
 - Once at least one other format is validated, keep at least 1 in 3 unchecked queue items in formats other than cut files, chosen by demand.
 
+## Print on demand (mugs, tees and more, via Printify)
+Physical products listed on the same Etsy shop. Printify prints and ships each order; Printify charges the owner's card the base cost + shipping when an order arrives, and Etsy pays the owner the retail price. Tool: `tools/printify.py` (needs `PRINTIFY_API_TOKEN`; the Etsy shop must be connected inside Printify).
+- **Products**: start with the 11 oz mug (blueprint 68) and a unisex tee (blueprint 12, Bella+Canvas 3001). Add others (15 oz mug, tote, sticker, sweatshirt, poster) only after the first ones sell. Pick print providers in the US with good ratings; record the choice in `pod/PROVIDERS.md`.
+- **Artwork**: one design per product, PNG at the provider's placeholder size from `printify.py variants` (300 DPI), transparent background for tees. Sources: the factory's own vector designs recoloured for print (available now), or AI images from `tools/imagegen.py` once `OPENAI_API_KEY` is set. Same originality rules as everything else. No text slogans until the Researcher has checked the phrase against USPTO trademarks; no brand, film, band, sports-team or character references, ever.
+- **Tee colours**: dark designs only on light shirts and light designs on dark shirts; enable at most 4 colours and sizes S–3XL.
+- **Folder**: `pod/NNN-slug/` with `product.json` (see `printify.py` docstring), the art files, `PROMPTS.md` if AI was used, and the mockup URLs Printify returns. QA checks the mockups (placement, crop, contrast, resolution) before publishing.
+- **Pricing**: after `create`, read the product's variant `cost` from Printify and set retail so profit after Etsy fees (≈10% + $0.20) is at least $6 on a mug and $8 on a tee, rounded to .99; check that the price is within the range of comparable Etsy listings.
+- **Listing copy**: same 13-tag and title rules; the description says it is printed and shipped by our production partner, lists material, size and care, and gives production + shipping times. Disclosure line: "Designed with the help of digital and AI tools, and checked by hand." (or the plain "Designed by Duskwood Designs Co" if no AI was used for that design).
+- **Etsy rules**: listings must be "Designed by" the seller with Printify as the production partner. The owner creates a production partner named "Printify" in Etsy once; Printify then assigns it automatically.
+- **Volume**: POD listings count toward the daily listing cap. Pilot = 2 mugs + 2 tees using the strongest existing designs; scale only after the first sale or 2 weeks of views data.
+- **Orders and buyers**: fulfilment is automatic. Buyer messages (shipping questions, damage) go to the owner through Etsy; the Manager keeps `pod/SAVED-REPLIES.md` up to date for those. Misprints/damage are reported to Printify support for a free reprint; note any such case in the log.
+
 ## New businesses (Scout + Launcher)
 Owner's limits for every new business:
 - Startup cost ≤ $100 in total (fees, subscriptions, samples, initial ads).

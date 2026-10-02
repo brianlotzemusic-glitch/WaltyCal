@@ -58,3 +58,4 @@
 | 2026-10-02 10:30 | QA round 1 on bundle 007: SEND BACK (inconsistent icing on diagonals and curves); Designer fixing, plus flatter hanger arches, G curve, README wood sizing | Visible on the hero image |
 | 2026-10-02 10:37 | QA round 2 on bundle 007: APPROVED; publishes after 00:00 UTC (daily cap of 2 used by 005 and 006) | Ready to list |
 | 2026-10-02 10:50 | Owner: keep Etsy's titles. Copied live titles and descriptions into listing.json and LISTING.md for 001-006; fixed 004 title 'dxr' to 'dxf' on Etsy | Owner's decision on the held title question |
+| 2026-10-02 19:36 | Added print-on-demand line (Printify): tools/printify.py, FACTORY rules, pilot in queue | Owner asked to move into POD mugs/tees with minimal work |
