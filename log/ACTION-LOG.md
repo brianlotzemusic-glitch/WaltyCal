@@ -56,3 +56,4 @@
 | 2026-10-02 10:15 | Designer started bundle 007 Gingerbread letter ornaments A-Z (26 designs, $6) | Designer due (11 h since 006) |
 | 2026-10-02 10:26 | Designer built bundle 007 (A–Z gingerbread letters); committed as AWAITING QA | Save finished work |
 | 2026-10-02 10:30 | QA round 1 on bundle 007: SEND BACK (inconsistent icing on diagonals and curves); Designer fixing, plus flatter hanger arches, G curve, README wood sizing | Visible on the hero image |
+| 2026-10-02 10:37 | QA round 2 on bundle 007: APPROVED; publishes after 00:00 UTC (daily cap of 2 used by 005 and 006) | Ready to list |

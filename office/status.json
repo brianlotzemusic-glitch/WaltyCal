@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-02T10:35:55Z",
+ "updated_at": "2026-10-02T10:37:28Z",
  "next_run_at": "2026-10-02T11:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 6,
  "bundles_built": 7,
- "uploads_pending": 0,
+ "uploads_pending": 1,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
-   "state": "working",
-   "task": "Shifts are running again. Designer is on bundle 007; QA reviews it next.",
-   "since": "2026-10-02T10:15:13Z"
+   "state": "idle",
+   "task": "Bundle 007 approved; waiting for the next shift.",
+   "since": "2026-10-02T10:37:28Z"
   },
   {
    "id": "researcher",
@@ -26,22 +26,22 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Fixed bundle 007 after QA round 1 (smooth icing, flatter arches, G curve). Waiting for QA.",
-   "since": "2026-10-02T10:35:55Z"
+   "task": "Next up after about 21:30 UTC: Christmas village silhouettes.",
+   "since": "2026-10-02T10:37:28Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "working",
-   "task": "Final round-2 review of bundle 007. Not approved yet, so don't list it.",
-   "since": "2026-10-02T10:35:55Z"
+   "state": "idle",
+   "task": "Approved bundle 007 (A\u2013Z gingerbread letters) in round 2.",
+   "since": "2026-10-02T10:37:28Z"
   },
   {
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "All 6 bundles are live. Backlog cleared, so the cap is back to 2 a day.",
-   "since": "2026-10-02T00:42:42Z"
+   "task": "Bundle 007 approved. Today's cap of 2 is used (005, 006), so it publishes after 00:00 UTC.",
+   "since": "2026-10-02T10:37:28Z"
   },
   {
    "id": "analyst",
@@ -66,13 +66,18 @@
   }
  ],
  "queue": [
-  "Gingerbread letter ornaments",
   "Christmas village silhouettes",
   "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts",
   "Witchy crystals",
-  "Butterflies & dragonflies"
+  "Butterflies & dragonflies",
+  "Nativity silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-02T10:37:28Z",
+   "who": "qa",
+   "msg": "Approved bundle 007: 26 gingerbread letter ornaments with smooth icing on every letter."
+  },
   {
    "t": "2026-10-02T10:35:55Z",
    "who": "designer",
@@ -217,11 +222,6 @@
    "t": "2026-10-01T12:50:00Z",
    "who": "manager",
    "msg": "Hired a Scout for next-business research and a Launcher to prepare new businesses."
-  },
-  {
-   "t": "2026-10-01T12:37:00Z",
-   "who": "manager",
-   "msg": "Switched to hourly shifts with a team of specialists."
   }
  ],
  "venture_gate": {
