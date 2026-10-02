@@ -66,3 +66,4 @@
 | 2026-10-02 22:33 | Image generator switched to Recraft (vector + raster, removebg, upscale); budget tracked in dollars | Owner set up Recraft instead of OpenAI |
 | 2026-10-02 22:38 | QA round 2 on bundle 008: APPROVED; publishes with 007 after 00:00 UTC | Ready to list |
 | 2026-10-02 22:44 | Dashboard rebuilt as a pixel office; Manager publishes status to it during shifts | Owner: old dashboard never updated |
+| 2026-10-02 22:45 | Connected the pixel-office dashboard: test-published status (manager working, then idle) to the dashboard artifact, versions 7 and 8 | FACTORY.md 'Owner's dashboard' section |
