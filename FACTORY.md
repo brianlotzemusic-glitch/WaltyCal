@@ -66,6 +66,16 @@ Rules for a new format:
 - Disclosure line for non-cut-file formats: "Designed with the help of digital and AI tools, and checked by hand."
 - Once at least one other format is validated, keep at least 1 in 3 unchecked queue items in formats other than cut files, chosen by demand.
 
+## Art quality (all products)
+The owner judged the code-drawn art too basic. When `OPENAI_API_KEY` is set, AI images are the default art source for every new product; code-drawn geometry is only for patterns that are naturally geometric (cross-stitch grids, bingo layouts, borders).
+- **Style bible**: keep `shop-profile/STYLE.md` with the Duskwood look written as a reusable prompt block (palette, line weight, level of detail, mood, what to avoid). Every image prompt starts from it, so the shop looks like one brand.
+- **Best of 4**: for each design, generate 4 candidates, lay them out on one contact sheet, and keep only the strongest. Regenerate rather than ship a weak one.
+- **Cut files**: prompt for "bold black silhouette on pure white, no shading, no gradients, thick connected shapes", then `imagegen.py trace`, then the normal cut-file checks. Reject any trace that loses detail or breaks into islands.
+- **Print / POD / clipart**: generate at the largest size, upscale cleanly if needed, and check at 100% zoom for artefacts, garbled text, extra fingers or legs, smudged edges and stray marks.
+- **Listing photos**: the first photo must show the product in use: an AI lifestyle mockup (the ornament hanging on a tree, the decal on a mug, the print framed on a wall, the shirt worn flat-lay). The remaining photos keep the "what's included", formats and colour-ideas images.
+- **Refresh old listings**: once AI art is available, the Designer remakes the weakest existing bundles (lowest views per day) with AI art and lifestyle mockups, one per day, and the Lister updates them with `etsy.py update` plus new images.
+- QA's bar: "Would this stop a scroller on Etsy's search page next to the top 10 results for its keyword?" If not, it goes back.
+
 ## Print on demand (mugs, tees and more, via Printify)
 Physical products listed on the same Etsy shop. Printify prints and ships each order; Printify charges the owner's card the base cost + shipping when an order arrives, and Etsy pays the owner the retail price. Tool: `tools/printify.py` (needs `PRINTIFY_API_TOKEN`; the Etsy shop must be connected inside Printify).
 - **Products**: start with the 11 oz mug (blueprint 68) and a unisex tee (blueprint 12, Bella+Canvas 3001). Add others (15 oz mug, tote, sticker, sweatshirt, poster) only after the first ones sell. Pick print providers in the US with good ratings; record the choice in `pod/PROVIDERS.md`.
