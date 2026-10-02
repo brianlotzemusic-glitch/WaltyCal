@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-01T23:03:34Z",
+ "updated_at": "2026-10-02T00:42:42Z",
  "next_run_at": "2026-10-01T23:13:53Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 4,
+ "listings_live": 6,
  "bundles_built": 6,
- "uploads_pending": 2,
+ "uploads_pending": 0,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
-   "state": "idle",
-   "task": "Owner confirmed auto-publish. First listing is live.",
-   "since": "2026-10-01T22:40:03Z"
+   "state": "blocked",
+   "task": "Hourly shifts are paused. Fresh-session routines can't push (repo not attached), and re-enabling the old routine was denied. Owner: attach the WaltyCal repo to the day and night routines, then re-enable them.",
+   "since": "2026-10-02T00:42:42Z"
   },
   {
    "id": "researcher",
@@ -40,8 +40,8 @@
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "4 listings live (001-004), all on auto-renew. 005 and 006 publish after 00:00 UTC.",
-   "since": "2026-10-01T22:45:40Z"
+   "task": "All 6 bundles are live. Backlog cleared, so the cap is back to 2 a day.",
+   "since": "2026-10-02T00:42:42Z"
   },
   {
    "id": "analyst",
@@ -73,6 +73,16 @@
   "Butterflies & dragonflies"
  ],
  "feed": [
+  {
+   "t": "2026-10-02T00:42:42Z",
+   "who": "manager",
+   "msg": "Hourly shifts are paused: the new routines can't push to GitHub until the repo is attached to them."
+  },
+  {
+   "t": "2026-10-02T00:42:42Z",
+   "who": "lister",
+   "msg": "Published Winter moths & holly (4586785079) and Filigree ornaments (4586788846). All 6 bundles are live."
+  },
   {
    "t": "2026-10-01T23:03:34Z",
    "who": "researcher",
@@ -212,16 +222,6 @@
    "t": "2026-10-01T11:52:00Z",
    "who": "manager",
    "msg": "Started 4 designers in parallel for the holiday sprint."
-  },
-  {
-   "t": "2026-10-01T11:45:00Z",
-   "who": "designer",
-   "msg": "Built bundle 001, Spiderweb snowflakes."
-  },
-  {
-   "t": "2026-10-01T11:40:00Z",
-   "who": "researcher",
-   "msg": "Picked dark-holiday cut files as the first product line."
   }
  ],
  "venture_gate": {
