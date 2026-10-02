@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-02T22:32:26Z",
+ "updated_at": "2026-10-02T22:37:26Z",
  "next_run_at": "2026-10-02T23:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -25,16 +25,16 @@
   {
    "id": "designer",
    "name": "Designer",
-   "state": "working",
-   "task": "Fixing bundle 008 after QA round 1.",
-   "since": "2026-10-02T22:32:26Z"
+   "state": "idle",
+   "task": "Fixed bundle 008 after QA round 1. Waiting for QA.",
+   "since": "2026-10-02T22:37:26Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "idle",
-   "task": "Sent bundle 008 back (round 1 of 2): small drawing defects on 4 designs (moon hook, tree collisions, cottage door, lollipop notch).",
-   "since": "2026-10-02T22:32:26Z"
+   "state": "working",
+   "task": "Final round-2 review of bundle 008. Not approved yet, so don't list it.",
+   "since": "2026-10-02T22:37:26Z"
   },
   {
    "id": "lister",

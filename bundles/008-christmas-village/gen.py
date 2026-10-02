@@ -93,14 +93,13 @@ def crescent(cx, cy, R, dx, dy, k=0.86):
 
 def snowflake(cx, cy, R, w=14, rot=90, branches=True):
     """Six-armed snowflake (used as a cut-out): round centre, arms w wide,
-    a short crossbar on each arm (kept clear of its neighbours)."""
-    parts = [circ(cx, cy, R * 0.34)]
+    each ending in a round dot."""
+    parts = [circ(cx, cy, R * 0.3)]
     for k in range(6):
         a = rot + 60 * k
-        parts.append(line([(cx, cy), polar(cx, cy, R, a)], w))
+        parts.append(line([(cx, cy), polar(cx, cy, R * 0.82, a)], w))
         if branches:
-            bx, by = polar(cx, cy, R * 0.66, a)
-            parts.append(line([polar(bx, by, R * 0.2, a + 90), polar(bx, by, R * 0.2, a - 90)], w))
+            parts.append(circ(*polar(cx, cy, R * 0.82, a), w * 0.68))
     return U(parts)
 
 
@@ -232,9 +231,9 @@ def cottage_small(x0, x1, gy, wall_top, peak, chim=None, wins=1, door=True, eave
     w = x1 - x0
     wy0 = wall_top + 26
     if door:
-        dx = x0 + w * 0.7
+        dx = cx if wins == 0 else x0 + w * 0.7
         holes.append(arch(dx - 19, dx + 19, gy - 70, gy - 12))
-        xs = [(x0 + w * 0.3, wy0 + (76 if wins == 2 else 0))]
+        xs = [] if wins == 0 else [(x0 + w * 0.3, wy0 + (76 if wins == 2 else 0))]
     else:
         xs = [(cx, wy0 + (76 if wins == 2 else 0))]
     if wins == 2:   # upper storey: a pair of windows
@@ -253,12 +252,12 @@ def d1_village_street():
     top = [(x, G - 6 * math.sin(x / 70) - 4 * math.sin(x / 23 + 1)) for x in range(0, 1001, 5)]
     solid.append(poly(top + [(1000, 478), (0, 478)]).buffer(-12).buffer(12, 16))
     # pines
-    solid.append(pine(44, G, 210, 80, 3))
-    solid.append(pine(312, G, 310, 94, 4))
-    solid.append(pine(682, G, 250, 96, 4))
+    solid.append(pine(42, G, 210, 76, 3))
+    solid.append(pine(316, G, 310, 94, 4))
+    solid.append(pine(676, G, 250, 88, 4))
     solid.append(pine(958, G, 190, 74, 3))
     # cottage left with chimney
-    s, h = cottage_small(112, 244, G, 300, 222, chim=(142, 234))
+    s, h = cottage_small(104, 236, G, 300, 222, chim=(134, 234))
     solid.append(s); holes.append(h)
     # two-storey cottage right
     s, h = cottage_small(742, 892, G, 250, 162, chim=(857, 174), wins=2)
@@ -289,7 +288,7 @@ def d2_moonlit_lightbox():
     edge = [(x, 168 + 9 * math.sin(x / 70 + 1)) for x in range(F - 10, W - F + 11, 4)]
     sky = poly([(F - 10, 0)] + edge + [(W - F + 10, 0)])
     solid = [outer.difference(opening), sky]
-    holes = [crescent(812, 100, 56, -26, -12, 0.86)]
+    holes = [crescent(814, 92, 48, -22, -10, 0.86)]
     for x, y in [(160, 96), (500, 94)]:
         holes.append(snowflake(x, y, 50))
     for x, y, r in [(76, 66, 15), (264, 64, 16), (290, 128, 15), (362, 82, 17), (420, 136, 15),
@@ -300,19 +299,19 @@ def d2_moonlit_lightbox():
     top = [(x, G - 10 * math.sin(x / 90 + 0.5) - 5 * math.sin(x / 31)) for x in range(F - 10, W - F + 11, 5)]
     solid.append(poly(top + [(W - F + 10, H - F + 10), (F - 10, H - F + 10)]))
     # cottages
-    s, h = cottage_small(128, 282, G, 400, 312, chim=(162, 324), eave=12)
+    s, h = cottage_small(150, 286, G, 400, 314, chim=(180, 326), eave=12)
     solid.append(s); holes.append(h)
-    s, h = cottage_small(434, 600, G, 354, 256, chim=(563, 276), wins=2)
+    s, h = cottage_small(440, 600, G, 354, 256, chim=(563, 276), wins=2)
     solid.append(s); holes.append(h)
-    s, h = cottage_small(730, 860, G, 420, 340, wins=1, eave=10)
+    s, h = cottage_small(738, 840, G, 420, 348, wins=0, eave=8)
     solid.append(s); holes.append(h)
-    solid.append(smoke(162, 320, [(152, 298), (170, 276), (156, 254)], 10, 19))
+    solid.append(smoke(180, 322, [(170, 300), (188, 278), (174, 256)], 10, 19))
     solid.append(smoke(563, 272, [(576, 250), (558, 230), (572, 210)], 10, 18))
     # pines; the tall ones reach up into the sky band
-    solid.append(pine(360, G, 400, 104, 5))
-    solid.append(pine(670, G, 290, 84, 4))
-    solid.append(pine(914, G, 392, 90, 5))
-    solid.append(pine(78, G, 250, 70, 3))
+    solid.append(pine(367, G, 400, 96, 5))
+    solid.append(pine(670, G, 290, 72, 4))
+    solid.append(pine(906, G, 392, 80, 5))
+    solid.append(pine(86, G, 250, 62, 3))
     return compose(solid, holes)
 
 
@@ -323,24 +322,35 @@ def d3_smoking_cottage():
     # main house
     x0, x1, wt = 280, 610, 590
     l, p, r = (246, 606), (445, 372), (644, 606)
-    solid += [rect(x0, wt, x1, BY + 4), snow_roof(l, p, r, 16, eave_drips(l, p, r, 16, 2))]
+    solid += [rect(x0, wt, x1, BY + 4), snow_roof(l, p, r, 16)]
     # lean-to on the right
     solid += [rect(600, 690, 750, BY + 4)]
-    solid.append(U([poly([(596, 600), (776, 712), (596, 712)]), line([(612, 610), (776, 712)], 30),
-                     circ(770, 722, 10)]))
+    solid.append(U([poly([(596, 600), (776, 712), (596, 712)]), line([(612, 610), (776, 712)], 30)]))
     # chimney on the left slope + smoke
     solid += [rect(318, 380, 368, 520), rect(308, 368, 378, 392, 4)]
     solid.append(smoke(343, 362, [(328, 320), (354, 284), (336, 246), (362, 210), (396, 192)], 13, 28))
-    # windows, gable window, door with wreath
+    # windows, gable window, two-panel door
     for wx in (352,):
         wv = rect(wx - 40, 650, wx + 40, 730, 4)
         holes.append(panes(wv, wx, 690))
-    gw = circ(445, 500, 42)
-    holes.append(panes(gw, 445, 500))
-    door = arch(462, 562, 730, BY - 22)
-    wreath = U([circ(512, 790, 32).difference(circ(512, 790, 17)),
-                rect(504, 726, 520, 760), poly([(512, 760), (494, 748), (494, 772)]), poly([(512, 760), (530, 748), (530, 772)])])
-    holes.append(door.difference(wreath))
+    gw = circ(445, 512, 43)
+    holes.append(panes(gw, 445, 512))
+    holes.append(arch(462, 562, 730, BY - 22).difference(rect(504, 700, 520, 900)))
+    # snow-line cuts along both roof slopes (the snow cap above them)
+    keep_out = U([rect(292, 352, 394, 536), circ(*p, 46), circ(445, 512, 43 + 20), rect(570, 570, 700, 640)])
+    for a in (l, r):
+        ux, uy = p[0] - a[0], p[1] - a[1]
+        L = math.hypot(ux, uy)
+        ux, uy = ux / L, uy / L
+        nx, ny = (-uy, ux) if a == l else (uy, -ux)
+        if ny < 0:
+            nx, ny = -nx, -ny
+        s0 = (a[0] + ux * 64 + nx * 27, a[1] + uy * 64 + ny * 27)
+        s1 = (a[0] + ux * (L - 10) + nx * 27, a[1] + uy * (L - 10) + ny * 27)
+        ln = LineString([s0, s1]).difference(keep_out)
+        for seg in (ln.geoms if hasattr(ln, "geoms") else [ln]):
+            if seg.length > 50:
+                holes.append(seg.buffer(8, cap_style=1))
     lw = rect(645, 760, 705, 820, 4)
     holes.append(panes(lw, 675, 790, 16, True, False))
     return compose(solid, holes)
@@ -392,11 +402,8 @@ def d5_gingerbread_house():
             sc.append(circ(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t + 14, 18))
     solid += [roof, U(sc)]
     # gumdrop on the peak, chimney with candy stripes
-    solid.append(U([circ(500, 316, 30), rect(472, 316, 528, 336)]))
+    solid.append(U([circ(500, 318, 19), rect(483, 318, 517, 336)]))
     solid += [rect(582, 380, 658, 520), rect(572, 368, 668, 394, 6)]
-    for k in range(2):
-        y = 420 + k * 38
-        holes.append(line([(604, y + 10), (636, y - 6)], 15))
     # piped icing lines along both roof slopes + icing dots
     for a, b in ((l, p), (r, p)):
         ux, uy = b[0] - a[0], b[1] - a[1]
@@ -421,7 +428,7 @@ def d5_gingerbread_house():
     # lollipop on the left, iced pine on the right
     lx, ly = 178, 730
     solid.append(U([rect(lx - 9, ly + 40, lx + 9, BY + 4), circ(lx, ly, 62)]))
-    sp = [(lx + (42 - 36 * t) * math.cos(2 * math.pi * 1.2 * t - 1), ly + (42 - 36 * t) * math.sin(2 * math.pi * 1.2 * t - 1))
+    sp = [(lx + (36 - 30 * t) * math.cos(2 * math.pi * 1.0 * t - 1), ly + (36 - 30 * t) * math.sin(2 * math.pi * 1.0 * t - 1))
           for t in (k / 160 for k in range(161))]
     holes.append(line(sp, 15))
     tree = pine(815, BY, 330, 140, 4, drip=True)
@@ -432,7 +439,7 @@ def d5_gingerbread_house():
 def d6_pine_cabin():
     BY = 890
     solid, holes = [], []
-    solid.append(base_strip(96, 940, BY, 940, [(518, 220, 12)]))
+    solid.append(base_strip(92, 902, BY, 940, [(518, 220, 12)]))
     x0, x1, wt = 370, 650, 690
     solid.append(rect(x0, wt, x1, BY + 4))
     # log ends sticking out at the corners
@@ -452,7 +459,6 @@ def d6_pine_cabin():
     # pines all around
     solid.append(pine(198, BY, 560, 210, 5))
     solid.append(pine(790, BY, 430, 180, 4))
-    solid.append(pine(888, BY, 240, 92, 3))
     return compose(solid, holes)
 
 

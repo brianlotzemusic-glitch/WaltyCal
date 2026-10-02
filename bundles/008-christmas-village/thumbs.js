@@ -30,8 +30,10 @@ const pages = {
   <div class=r style="top:150px">${[0, 1].map(i => `<div class=c>${D(i, i ? 380 : 330, '#2c1b36')}${names[i]}<br><span style="color:#7a6a80;font-size:21px">wide panel</span></div>`).join('')}</div>
   <div class=r style="top:650px;gap:40px">${[2, 3, 4, 5].map(i => `<div class=c>${D(i, 330, '#2c1b36')}${names[i]}<br><span style="color:#7a6a80;font-size:21px">stands on its base</span></div>`).join('')}</div>`,
  '3-formats': `<style>${base} body{background:#21162d;color:${CREAM};display:flex;flex-direction:column;justify-content:center;align-items:center}
-  h1{font-size:64px;font-weight:normal;margin:0 0 44px} li{font-size:36px;margin:17px 0;list-style:none} b{color:${GOLD}}</style>
-  <h1>Instant digital download</h1><ul>
+  .strip{display:flex;align-items:flex-end;gap:30px;margin:0 0 40px}
+  h1{font-size:64px;font-weight:normal;margin:0 0 26px} li{font-size:36px;margin:15px 0;list-style:none} b{color:${GOLD}}</style>
+  <div class=strip>${D(0, 200, GOLD)}${D(2, 200, CREAM)}${D(3, 200, GOLD)}${D(4, 200, CREAM)}${D(5, 200, GOLD)}</div>
+  <h1>Instant digital download</h1><ul style="margin:0">
   <li><b>6 designs</b> — 2 wide panels + 4 standing buildings</li>
   <li><b>SVG</b> — Cricut Design Space, Silhouette Designer Edition</li>
   <li><b>DXF</b> — Silhouette Basic Edition, laser software (inches)</li>
