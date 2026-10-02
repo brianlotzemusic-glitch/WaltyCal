@@ -26,7 +26,7 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Next up after about 10:30 UTC: [pod] Print-on-demand pilot: 2 mugs.",
+   "task": "Next after about 10:30 UTC: cross-stitch pilot (Woodland Christmas mini ornaments). The print-on-demand pilot is skipped until PRINTIFY_API_TOKEN is set.",
    "since": "2026-10-02T22:38:51Z"
   },
   {
