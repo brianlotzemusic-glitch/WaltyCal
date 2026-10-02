@@ -63,3 +63,4 @@
 | 2026-10-02 22:13 | Designer started bundle 008 Christmas village silhouettes (code-drawn; no OpenAI key here) | Designer due (11 h since 007) |
 | 2026-10-02 22:29 | Designer built bundle 008 Christmas village; committed as AWAITING QA | Save finished work |
 | 2026-10-02 22:32 | QA round 1 on bundle 008: SEND BACK (visual defects on 02, 03, 05, 06); Designer fixing | Visible in listing images |
+| 2026-10-02 22:33 | Image generator switched to Recraft (vector + raster, removebg, upscale); budget tracked in dollars | Owner set up Recraft instead of OpenAI |
