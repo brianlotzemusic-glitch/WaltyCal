@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-02T10:30:47Z",
+ "updated_at": "2026-10-02T10:35:55Z",
  "next_run_at": "2026-10-02T11:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -25,16 +25,16 @@
   {
    "id": "designer",
    "name": "Designer",
-   "state": "working",
-   "task": "Fixing bundle 007: smooth icing on every stroke, flatter hanger arches, G curve.",
-   "since": "2026-10-02T10:30:47Z"
+   "state": "idle",
+   "task": "Fixed bundle 007 after QA round 1 (smooth icing, flatter arches, G curve). Waiting for QA.",
+   "since": "2026-10-02T10:35:55Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "idle",
-   "task": "Sent bundle 007 back (round 1 of 2): the icing looks stair-stepped on diagonals and crimped on curves.",
-   "since": "2026-10-02T10:30:47Z"
+   "state": "working",
+   "task": "Final round-2 review of bundle 007. Not approved yet, so don't list it.",
+   "since": "2026-10-02T10:35:55Z"
   },
   {
    "id": "lister",
@@ -73,6 +73,11 @@
   "Butterflies & dragonflies"
  ],
  "feed": [
+  {
+   "t": "2026-10-02T10:35:55Z",
+   "who": "designer",
+   "msg": "Fixed bundle 007: smooth icing on every letter, lower hanger arches. Back to QA."
+  },
   {
    "t": "2026-10-02T10:30:47Z",
    "who": "qa",
@@ -217,11 +222,6 @@
    "t": "2026-10-01T12:37:00Z",
    "who": "manager",
    "msg": "Switched to hourly shifts with a team of specialists."
-  },
-  {
-   "t": "2026-10-01T12:20:00Z",
-   "who": "qa",
-   "msg": "Approved bundle 005, Winter moths & holly."
   }
  ],
  "venture_gate": {

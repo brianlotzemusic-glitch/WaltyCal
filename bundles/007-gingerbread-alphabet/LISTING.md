@@ -21,7 +21,7 @@ WHAT'S INCLUDED
 • PNG — 1800 × 1800 px, transparent background (6 in at 300 DPI)
 
 SIZING TIP
-Each letter is about 5.8 in tall at the default size, including the hanging loop. To spell a name, set every letter to the SAME HEIGHT (not the same width) and they will line up; wide letters such as M and W are simply wider. We recommend 3 in tall or larger for cardstock and vinyl, and 3.5 in or larger for laser-cut wood or acrylic. Do a test cut on a new material first.
+Each letter is about 5.8 in tall at the default size, including the hanging loop. To spell a name, set every letter to the SAME HEIGHT (not the same width) and they will line up; wide letters such as M and W are simply wider. We recommend 3 in tall or larger for cardstock and vinyl, and 3.5 in or larger for laser-cut wood or acrylic (4 in or larger in wood or acrylic for H, K, M, N, U, V, X and Y, which have a hanger arch). Do a test cut on a new material first.
 
 LICENSE
 Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
@@ -40,6 +40,6 @@ gingerbread svg, letter ornament, name ornament svg, alphabet svg, christmas svg
 ## Notes / checks before publishing
 - Original letterforms built from our own stroke geometry (lines and elliptical arcs buffered with round caps), not traced from or based on any font or seller design. Subject only (gingerbread letter ornaments) taken from the research brief. No brand, character or trademarked names; no text other than the letter itself.
 - 26 designs instead of the usual 6, by the owner's decision.
-- Open-top letters (H, K, M, N, U, V, X, Y) use a slim two-armed hanger and L an angled one, so every letter hangs from its centre of mass and stays straight.
+- Open-top letters (H, K, M, N, U, V, X, Y) use a low, flat two-armed hanger arch and L an angled arm, so every letter hangs from its centre of mass and stays straight.
 - Missing: a lifestyle mockup (e.g. a name spelled in wood or kraft-cardstock letters on a tree or gift). A free Canva mockup works.
 - Do a test cut of one letter at about 3 in in cardstock and 3 mm wood before publishing.

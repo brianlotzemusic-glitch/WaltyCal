@@ -8,7 +8,8 @@ cut out of the dough. Icing runs break at sharp corners, at junctions with
 other strokes and at stroke ends, so it never encloses an island of material.
 A hanging loop (ring + bead) sits above the letter's centre of mass so the
 ornament hangs straight; letters with an open top (H, K, M, N, U, V, X, Y) get
-a slim two-armed hanger and L gets an angled one.
+a low, flat two-armed arch (25 units thick) resting on the two stroke tops,
+and L gets an angled arm.
 All letters share one scale, cap height and baseline, so names line up.
 Coordinates are SVG-style (y grows downward) on a ~1000 unit canvas.
 Output: SVG (6 in box, letter height ~5.8 in), DXF (inches), stats json.
@@ -32,8 +33,8 @@ R = 70          # dough half-width (stroke 140 units)
 CLOSE = 16      # puffy inside corners
 CAP = 420       # skeleton cap height (local y 0 = top, 420 = baseline)
 ICE_W = 8       # icing half-width (16 units wide)
-ICE_A = 9       # icing wave amplitude
-ICE_L = 58      # icing wavelength
+ICE_A = 5.5     # icing wave amplitude (max slope ~17 deg to the stroke)
+ICE_L = 110     # icing wavelength
 EDGE_GAP = 30   # min distance from icing centre to the dough edge
 DOT_R = 17      # icing dot radius (908 u2)
 ICE_GAP = 40    # min distance between icing runs (centre to centre)
@@ -44,7 +45,7 @@ BOX = None      # fixed square box shared by all letters (set in main)
 
 # ---------------------------------------------------------------- helpers
 def arc(cx, cy, rx, ry, a0, a1, n=None):
-    n = n or max(8, int(abs(a1 - a0) / 3))
+    n = n or max(8, int(abs(a1 - a0)))
     return [(cx + rx * math.cos(math.radians(a0 + (a1 - a0) * k / n)),
              cy + ry * math.sin(math.radians(a0 + (a1 - a0) * k / n))) for k in range(n + 1)]
 
@@ -83,14 +84,14 @@ def split_corners(pts, max_turn=38):
 
 def wave(pts):
     """Wavy piped-icing centreline along a run (phase anchored at the run centre)."""
-    P = resample(pts, 2.0)
+    P = resample(pts, 1.0)
     s = [0.0]
     for i in range(1, len(P)):
         s.append(s[-1] + math.dist(P[i], P[i - 1]))
     mid = s[-1] / 2
     out = []
     for i, (x, y) in enumerate(P):
-        a, b = P[max(i - 3, 0)], P[min(i + 3, len(P) - 1)]
+        a, b = P[max(i - 10, 0)], P[min(i + 10, len(P) - 1)]   # local tangent, smoothed
         tx, ty = b[0] - a[0], b[1] - a[1]
         L = math.hypot(tx, ty) or 1
         nx, ny = -ty / L, tx / L
@@ -145,29 +146,41 @@ def dough_of(strokes):
     return g.buffer(CLOSE, 32).buffer(-CLOSE, 32)
 
 
+HW = 12.5       # hanger stem / arch half-width (25 units)
+
+
 def hanger(dough, prongs=None):
     """Ring + bead above the centre of mass. prongs: None = straight stem down
-    to the letter; list of skeleton top points = slim arms down to them."""
+    to the letter; two skeleton top points = a low, flat arch resting on the
+    two stroke tops; one point = an angled arm (L)."""
     hx = dough.centroid.x
     ring_c = (hx, RING_Y)
-    ring = Point(ring_c).buffer(40, 48).difference(Point(ring_c).buffer(21, 48))
+    ring = Point(ring_c).buffer(42, 48).difference(Point(ring_c).buffer(21, 48))
     bead_y = RING_Y + 52
-    bead = Point(hx, bead_y).buffer(17, 48)
-    parts = [ring, bead, LineString([(hx, RING_Y + 36), (hx, bead_y)]).buffer(10, 24)]
+    bead = Point(hx, bead_y).buffer(18, 48)
+    parts = [ring, bead, LineString([(hx, RING_Y + 36), (hx, bead_y)]).buffer(HW, 24)]
     if prongs is None:
         probe = LineString([(hx, -400), (hx, 2 * CAP)]).intersection(dough)
         top = probe.bounds[1]
-        parts.append(LineString([(hx, bead_y), (hx, top + 24)]).buffer(10, 24))
+        parts.append(LineString([(hx, bead_y), (hx, top + 24)]).buffer(HW, 24))
+    elif len(prongs) == 1:
+        (px, py), = prongs
+        y_end = py - R + 26
+        pts = cubic((hx, bead_y), (hx + (px - hx) * 0.55, bead_y),
+                    (px, bead_y + 0.25 * (y_end - bead_y)), (px, y_end))
+        parts.append(LineString(pts).buffer(HW, 24))
     else:
+        # flat arch: rises only ~40 units above the stroke tops
+        ya = -R - 38
+        parts.append(LineString([(hx, bead_y), (hx, ya)]).buffer(HW, 24))
         for px, py in prongs:
-            y_end = py - R + 26
-            pts = cubic((hx, bead_y), (hx + (px - hx) * 0.55, bead_y),
-                        (px, bead_y + 0.25 * (y_end - bead_y)), (px, y_end))
-            parts.append(LineString(pts).buffer(10, 24))
+            y_end = py - R + 30
+            pts = cubic((px, y_end), (px, ya + 4), (hx + (px - hx) * 0.45, ya), (hx, ya))
+            parts.append(LineString(pts).buffer(HW, 24))
     return unary_union(parts)
 
 
-def finish(g, simplify=0.15):
+def finish(g, simplify=0.04):
     ref = g
     g = g.buffer(0.01).buffer(-0.01).simplify(simplify)
     polys = list(g.geoms) if g.geom_type == "MultiPolygon" else [g]
@@ -219,8 +232,8 @@ def L_F():
 
 
 def L_G():
-    a = arc(205, M_, 200, M_, -55, -360)
-    return [a, [(405, M_), (405, 240), (255, 240)]], None
+    a = arc(205, M_, 200, M_, -55, -348)
+    return [a, [(392, 245), (255, 245)]], None
 
 
 def L_H():
@@ -358,7 +371,8 @@ SIZING TIPS
   Popular sizes: 3 to 4 in tall for tree ornaments and gift tags, 5 to 6 in
   for door or wall letters. The icing lines are about 0.13 in wide at 5.8 in;
   we recommend 3 in or taller for cardstock and vinyl, and 3.5 in or taller
-  for laser-cut wood or acrylic. Do a test cut first on a new material.
+  for laser-cut wood or acrylic. Use 4 in or larger in wood/acrylic for
+  H K M N U V X Y (the hanger arch). Do a test cut first on a new material.
 
 LICENSE
   Personal use: unlimited.
