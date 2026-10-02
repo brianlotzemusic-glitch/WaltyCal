@@ -116,6 +116,12 @@ When a decision or a blocker needs the owner, the Manager sends one push notific
 - Every question has a deadline and a default, so work never stalls waiting for an answer.
 - Quiet hours: push notifications only between 8:00am and 8:00pm US Eastern (America/New_York). Night shifts (8pm–8am) never notify: they log the question as "HELD for 8am: <question; deadline; default>" and the first shift after 8am sends any held questions together in one notification. If a deadline falls in quiet hours, move it to 10:00am Eastern.
 
+## Changing the schedule
+Shifts run from routines (the day and night hourly shifts, plus the watchdog). Before switching to a new or changed shift routine:
+- Fire it once by hand and confirm the run pushed a commit to `shop-factory`. Keep the old routine enabled until then.
+- Never leave zero shift routines enabled. If a new routine fails, turn the old one back on before anything else.
+- Shift routines need the WaltyCal repo attached on the `shop-factory` branch. Fresh sessions also need the owner's permission rules for the factory's own commands (Etsy upload, update, publish and stats; image generation; pushing `shop-factory`), or they stop at those steps. Only the owner adds or changes permission rules.
+
 ## Each run ends with
 Tick finished themes in `queue.md`, append to `log/ACTION-LOG.md`, update `office/status.json`, commit, `git push -u origin shop-factory` (retry up to 4 times on network errors; never force-push).
 
