@@ -1,0 +1,398 @@
+<title>Duskwood Factory Floor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a night-shift pixel office. HUD on top, the office canvas as the hero, logbook and queue beside it. Single dark look by design. */
+:root {
+  --night: #120f19; --panel: #1b1725; --edge: #352d48; --ink: #ede6f6; --muted: #a59cbb;
+  --moon: #ecd9a2; --ok: #86d6ab; --rest: #93a0dc; --stop: #f2917f;
+  --display: "Pixelify Sans", "Courier New", monospace;
+  --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --data: "JetBrains Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+html, body { background: var(--night); color: var(--ink); }
+body { font-family: var(--body); font-size: 15px; line-height: 1.45; }
+.wrap { max-width: 1280px; margin: 0 auto; padding-inline: 16px; padding-block: 16px 32px; display: grid; gap: 14px; }
+header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 20px; align-items: end; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 3.6vw, 36px); margin: 0; line-height: 1.05; text-wrap: balance; }
+h1 span { color: var(--moon); }
+.pill { font-family: var(--data); font-size: 12px; padding: 6px 10px; border: 1px solid var(--edge); border-radius: 999px; display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; }
+.pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.pill[data-s="ok"] i { background: var(--ok); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 25%, transparent); }
+.pill[data-s="late"] i { background: var(--moon); }
+.pill[data-s="down"] i { background: var(--stop); }
+.goal { grid-column: 1 / -1; display: grid; gap: 6px; }
+.goalrow { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-family: var(--data); font-size: 13px; color: var(--muted); }
+.goalrow b { color: var(--moon); }
+.meter { height: 12px; border: 1px solid var(--edge); background: var(--panel); position: relative; overflow: hidden; }
+.meter span { position: absolute; inset: 0 auto 0 0; background: var(--moon); min-width: 2px; }
+.stats { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; }
+.stat { font-family: var(--data); font-size: 13px; padding: 5px 10px; background: var(--panel); border: 1px solid var(--edge); font-variant-numeric: tabular-nums; }
+.stat b { margin-right: 6px; }
+.stat span { color: var(--muted); }
+main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 14px; align-items: start; }
+@media (max-width: 980px) { main { grid-template-columns: minmax(0, 1fr); } }
+.stage { position: relative; border: 2px solid var(--edge); background: #0d0b12; min-width: 0; }
+canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; cursor: pointer; }
+.toast { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); max-width: 90%; background: rgba(18,15,25,.92); border: 1px solid var(--moon); color: var(--ink); font-size: 14px; padding: 6px 12px; pointer-events: none; transition: opacity .4s; }
+.card { position: absolute; right: 10px; bottom: 10px; width: min(300px, 80%); background: rgba(27,23,37,.96); border: 1px solid var(--edge); padding: 10px 12px; font-size: 14px; }
+.card h3 { font-family: var(--display); font-weight: 500; font-size: 18px; margin: 0 0 4px; }
+.card .st { font-family: var(--data); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.card button { margin-top: 8px; font-family: var(--data); font-size: 12px; background: transparent; color: var(--muted); border: 1px solid var(--edge); padding: 3px 8px; cursor: pointer; }
+.card button:focus-visible, canvas:focus-visible { outline: 2px solid var(--moon); outline-offset: 2px; }
+aside { display: grid; gap: 14px; min-width: 0; }
+section.panel { background: var(--panel); border: 1px solid var(--edge); padding: 12px 14px; min-width: 0; }
+h2 { font-family: var(--display); font-weight: 500; font-size: 17px; margin: 0 0 8px; color: var(--moon); }
+ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.feed li { display: grid; grid-template-columns: 50px minmax(0, 1fr); gap: 8px; font-size: 14px; }
+.feed time { font-family: var(--data); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.feed .who { display: block; font-family: var(--data); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+.feed li.new { animation: flash 2.5s ease-out; }
+@keyframes flash { from { background: color-mix(in srgb, var(--moon) 25%, transparent); } to { background: transparent; } }
+.queue { counter-reset: q; }
+.queue li { counter-increment: q; display: grid; grid-template-columns: 22px minmax(0,1fr); gap: 6px; font-size: 14px; }
+.queue li::before { content: counter(q); font-family: var(--data); font-size: 12px; color: var(--muted); }
+.legend { font-size: 13px; color: var(--muted); margin: 0; }
+footer { font-family: var(--data); font-size: 12px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .feed li.new { animation: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Duskwood <span>Factory Floor</span></h1>
+    </div>
+    <div class="pill" id="health" data-s="late"><i></i><span id="healthText">Loading…</span></div>
+    <div class="goal">
+      <div class="goalrow"><span>Car payoff goal</span><span><b id="rev">$0</b> of <span id="goal">$70,000</span></span></div>
+      <div class="meter"><span id="meterFill" style="width:0"></span></div>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <main>
+    <div class="stage">
+      <canvas id="c" width="960" height="600" tabindex="0" aria-label="Pixel office showing each factory worker at their desk"></canvas>
+      <div class="toast" id="toast" style="opacity:0"></div>
+      <div class="card" id="card" hidden>
+        <h3 id="cardName"></h3>
+        <div class="st" id="cardState"></div>
+        <p id="cardRole" style="margin:6px 0;color:var(--muted)"></p>
+        <p id="cardTask" style="margin:0"></p>
+        <button type="button" id="cardClose">Close</button>
+      </div>
+    </div>
+    <aside>
+      <section class="panel"><h2>Logbook</h2><ol class="feed" id="feed"></ol></section>
+      <section class="panel"><h2>Up next</h2><ol class="queue" id="queue"></ol></section>
+      <section class="panel"><h2>How to read it</h2>
+        <p class="legend">Workers walk to their desk and type while they're working, wander to the coffee machine or window when idle, and stand by their desk with a red ! when they need you. Finished bundles get carried desk to desk, and listings go out the Etsy door. Click anyone to see what they're doing.</p>
+      </section>
+    </aside>
+  </main>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+// Snapshot used only until status.json loads.
+const SNAPSHOT = {"updated_at": "2026-10-02T22:38:51Z", "next_run_at": "2026-10-02T23:12:00Z", "goal_usd": 70000, "revenue_usd": 0, "listings_live": 6, "bundles_built": 8, "uploads_pending": 2, "etsy_connected": true, "workers": [{"id": "manager", "name": "Manager", "state": "idle", "task": "Bundle 008 approved; waiting for the next shift.", "since": "2026-10-02T22:38:51Z"}, {"id": "researcher", "name": "Researcher", "state": "idle", "task": "Format research done: cross-stitch, coloring pages and Christmas bingo added as pilots. Next refresh after 22:55 UTC tomorrow.", "since": "2026-10-01T23:03:34Z"}, {"id": "designer", "name": "Designer", "state": "idle", "task": "Next after about 10:30 UTC: cross-stitch pilot (Woodland Christmas mini ornaments). The print-on-demand pilot is skipped until PRINTIFY_API_TOKEN is set.", "since": "2026-10-02T22:38:51Z"}, {"id": "qa", "name": "QA", "state": "idle", "task": "Approved bundle 008 (Christmas village) in round 2.", "since": "2026-10-02T22:38:51Z"}, {"id": "lister", "name": "Lister", "state": "idle", "task": "Bundles 007 and 008 approved; both publish after 00:00 UTC (daily cap 2).", "since": "2026-10-02T22:38:51Z"}, {"id": "analyst", "name": "Analyst", "state": "idle", "task": "Stats pulled: 6 live listings, 1 view, 0 sales, $0. Next pull after 10:15 UTC tomorrow.", "since": "2026-10-02T10:15:13Z"}, {"id": "scout", "name": "Scout", "state": "idle", "task": "Ranked about 50 options across two runs. #1 is still the laser-cut file shop. Next check in 7 days.", "since": "2026-10-01T13:20:00Z"}, {"id": "launcher", "name": "Launcher", "state": "idle", "task": "Locked until the Etsy shop earns $300 or has been live 30 days.", "since": "2026-10-01T12:50:00Z"}], "queue": ["[pod] Print-on-demand pilot: 2 mugs", "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts", "Witchy crystals", "Butterflies & dragonflies", "Nativity silhouettes"], "feed": [{"t": "2026-10-02T22:38:51Z", "who": "qa", "msg": "Approved bundle 008: Christmas village silhouettes."}, {"t": "2026-10-02T22:32:26Z", "who": "qa", "msg": "Sent bundle 008 back: tidy-ups on the moon, trees, cottage door and lollipop. Technical checks all pass."}, {"t": "2026-10-02T22:29:34Z", "who": "designer", "msg": "Built bundle 008: Christmas village (2 skyline panels, 4 standing houses). Sent to QA."}, {"t": "2026-10-02T22:13:44Z", "who": "designer", "msg": "Started bundle 008: Christmas village silhouettes."}, {"t": "2026-10-02T10:37:28Z", "who": "qa", "msg": "Approved bundle 007: 26 gingerbread letter ornaments with smooth icing on every letter."}, {"t": "2026-10-02T10:35:55Z", "who": "designer", "msg": "Fixed bundle 007: smooth icing on every letter, lower hanger arches. Back to QA."}, {"t": "2026-10-02T10:30:47Z", "who": "qa", "msg": "Sent bundle 007 back: the icing turns into stairs on diagonal letters. All letters read well; geometry checks pass."}, {"t": "2026-10-02T10:26:12Z", "who": "designer", "msg": "Built bundle 007: 26 gingerbread letter ornaments A–Z. Sent to QA."}, {"t": "2026-10-02T10:15:13Z", "who": "designer", "msg": "Started bundle 007: Gingerbread letter ornaments A–Z."}, {"t": "2026-10-02T10:15:13Z", "who": "analyst", "msg": "First stats: 6 listings live, 1 view, no sales yet. The live Etsy titles differ from our files."}, {"t": "2026-10-02T00:42:42Z", "who": "manager", "msg": "Hourly shifts are paused: the new routines can't push to GitHub until the repo is attached to them."}, {"t": "2026-10-02T00:42:42Z", "who": "lister", "msg": "Published Winter moths & holly (4586785079) and Filigree ornaments (4586788846). All 6 bundles are live."}, {"t": "2026-10-01T23:03:34Z", "who": "researcher", "msg": "New format pilots queued: woodland cross-stitch ornaments (#3), winter coloring pages (#7), woodland Christmas bingo (#12)."}, {"t": "2026-10-01T22:52:34Z", "who": "researcher", "msg": "Started researching other digital formats, at the owner's request."}, {"t": "2026-10-01T22:45:40Z", "who": "lister", "msg": "Auto-renew is on for all listings ($0.20 every 4 months), so none expire in February."}, {"t": "2026-10-01T22:43:41Z", "who": "lister", "msg": "Published Gothic Christmas ornaments (4586736511) and Bat Christmas (4586739694). 3 listings live."}, {"t": "2026-10-01T22:40:03Z", "who": "lister", "msg": "First listing live: Spiderweb Snowflake SVG Bundle (Etsy 4586738084)."}, {"t": "2026-10-01T22:38:09Z", "who": "manager", "msg": "Etsy is connected and bundle 003 is a draft. Auto-publish is paused until the owner confirms the listing fees."}, {"t": "2026-10-01T19:42:48Z", "who": "manager", "msg": "Owner decided: gingerbread letters as a full A–Z bundle; soccer stays at the end of the queue."}, {"t": "2026-10-01T19:13:10Z", "who": "manager", "msg": "Etsy app key is now set. Uploads still need the one-time Etsy login (refresh token and user ID)."}, {"t": "2026-10-01T19:03:56Z", "who": "qa", "msg": "Approved bundle 006, Filigree Christmas ornaments: pinecone fixed, new fir tree passes, Etsy category added."}, {"t": "2026-10-01T18:56:15Z", "who": "designer", "msg": "Fixed bundle 006: pinecone blots gone, Etsy category added, tree redrawn with real fir branches. Back to QA."}, {"t": "2026-10-01T18:44:42Z", "who": "qa", "msg": "Sent bundle 006 back: missing Etsy category and two solid blots on the pinecone. The other five designs passed."}, {"t": "2026-10-01T18:32:11Z", "who": "designer", "msg": "Built bundle 006, Filigree Christmas ornaments: bauble, bell, star, tree, drop and pinecone. Sent to QA."}, {"t": "2026-10-01T18:10:34Z", "who": "designer", "msg": "Started bundle 006: Filigree Christmas ornament shapes."}, {"t": "2026-10-01T18:10:34Z", "who": "researcher", "msg": "Best-seller scan done: gingerbread letters, Christmas villages and filigree ornaments lead. No listing confirmed at 1,000+ sales."}, {"t": "2026-10-01T17:47:29Z", "who": "researcher", "msg": "New queue: botanical frost snowflakes, celestial Christmas, raven & mistletoe, reindeer, nutcracker. Gothic now 3 of 18."}, {"t": "2026-10-01T17:47:29Z", "who": "manager", "msg": "Owner asked for a wider range than gothic. Set the new design direction and updated the shop profile."}, {"t": "2026-10-01T17:14:18Z", "who": "manager", "msg": "Shop is now Duskwood Designs Co. Designer will add the name to bundles 001-005 on its next run."}, {"t": "2026-10-01T16:13:23Z", "who": "manager", "msg": "Hourly shift: nothing due. Designer next after 22:58 UTC."}], "venture_gate": {"revenue_target_usd": 300, "days_live_target": 30, "first_listing_live_at": "2026-10-01T22:37:00Z", "met": false, "next_pick": "Laser-cut file shop (Etsy sister shop)"}};
+
+const ROLES = {
+  manager:    { role: "Runs each hourly shift and assigns the work", shirt: "#ecd9a2", hair: "#3b2f4a", hat: "tie" },
+  researcher: { role: "Tracks Etsy trends and orders the theme queue", shirt: "#93a0dc", hair: "#6b4a2f", hat: "glasses" },
+  designer:   { role: "Creates the art for every product", shirt: "#c58fd8", hair: "#1e1a26", hat: "beret" },
+  qa:         { role: "Checks every design before it can be listed", shirt: "#86d6ab", hair: "#8a5b3a", hat: "visor" },
+  lister:     { role: "Uploads finished products to Etsy", shirt: "#f2b27f", hair: "#2e2438", hat: "cap" },
+  analyst:    { role: "Reads sales data and tunes listings", shirt: "#7fc4d6", hair: "#4a3a2a", hat: "glasses" },
+  scout:      { role: "Researches which business to open next", shirt: "#d6c27f", hair: "#5a3a2a", hat: "cap2" },
+  launcher:   { role: "Prepares new businesses once Etsy proves out", shirt: "#e08aa0", hair: "#1e1a26", hat: "visor2" }
+};
+const ORDER = ["manager", "researcher", "designer", "qa", "lister", "analyst", "scout", "launcher"];
+
+// ---------- room layout (logical pixels) ----------
+const W = 960, H = 600;
+const DESKS = {};
+ORDER.forEach((id, i) => {
+  const col = i % 4, row = Math.floor(i / 4);
+  DESKS[id] = { x: 150 + col * 200, y: 215 + row * 200 };
+});
+const SPOTS = {
+  coffee: { x: 60, y: 560, label: "coffee" }, cooler: { x: 905, y: 560, label: "water" },
+  window1: { x: 300, y: 112 }, window2: { x: 620, y: 112 }, board: { x: 110, y: 112 },
+  door: { x: 880, y: 112 }, plant: { x: 480, y: 560 }
+};
+
+// ---------- workers ----------
+const workers = {};
+ORDER.forEach((id) => {
+  const d = DESKS[id];
+  workers[id] = { id, name: id[0].toUpperCase() + id.slice(1), state: "idle", task: "", since: "",
+    x: d.x + (Math.random() * 60 - 30), y: d.y + 70, tx: null, ty: null, path: [], dir: 1, step: 0,
+    linger: 0, carrying: false, bubbleUntil: 0, bubble: "", errand: null, nextWander: performance.now() + Math.random() * 6000 };
+});
+const seat = (id) => ({ x: DESKS[id].x + 14, y: DESKS[id].y - 12 });
+
+function goTo(w, x, y, then) { w.path = [{ x, y }]; w.after = then || null; }
+function goVia(w, pts, then) { w.path = pts.slice(); w.after = then || null; }
+
+// ---------- data ----------
+let current = SNAPSHOT, lastFeedT = null, firstLoad = true;
+const $ = (id) => document.getElementById(id);
+const money = (n) => "$" + Math.round(n || 0).toLocaleString("en-US");
+const ago = (iso) => { const m = Math.round((Date.now() - Date.parse(iso)) / 60000); if (!(m >= 0)) return ""; if (m < 1) return "just now"; if (m < 60) return m + " min ago"; const h = Math.round(m / 60); return h < 48 ? h + " h ago" : Math.round(h / 24) + " d ago"; };
+const clock = (iso) => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); };
+
+function applyStatus(s, fromNetwork) {
+  current = s;
+  // HUD
+  $("rev").textContent = money(s.revenue_usd); $("goal").textContent = money(s.goal_usd || 70000);
+  $("meterFill").style.width = Math.min(100, ((s.revenue_usd || 0) / (s.goal_usd || 70000)) * 100) + "%";
+  const stats = [[s.listings_live ?? 0, "live on Etsy"], [s.bundles_built ?? 0, "products built"], [s.uploads_pending ?? 0, "waiting to list"]];
+  $("stats").replaceChildren(...stats.map(([v, l]) => { const d = document.createElement("div"); d.className = "stat"; const b = document.createElement("b"); b.textContent = v; const sp = document.createElement("span"); sp.textContent = l; d.append(b, sp); return d; }));
+  // workers
+  for (const w of s.workers || []) {
+    const me = workers[w.id]; if (!me) continue;
+    const changed = me.state !== w.state || me.task !== w.task;
+    me.state = w.state; me.task = w.task || ""; me.since = w.since; me.name = w.name || me.name;
+    if (changed && !firstLoad) { me.bubble = me.task; me.bubbleUntil = performance.now() + 9000; }
+    if (w.state !== "idle") { me.errand = null; goTo(me, seat(w.id).x, seat(w.id).y); }
+  }
+  // feed + events
+  const feed = (s.feed || []).slice(0, 14);
+  const fresh = lastFeedT ? feed.filter((f) => Date.parse(f.t) > Date.parse(lastFeedT)) : feed.slice(0, 3);
+  $("feed").replaceChildren(...feed.map((f) => {
+    const li = document.createElement("li"); if (lastFeedT && Date.parse(f.t) > Date.parse(lastFeedT)) li.className = "new";
+    const t = document.createElement("time"); t.dateTime = f.t; t.textContent = clock(f.t);
+    const body = document.createElement("div"); const who = document.createElement("span"); who.className = "who"; who.textContent = f.who;
+    const msg = document.createElement("span"); msg.textContent = f.msg; body.append(who, msg); li.append(t, body); return li;
+  }));
+  $("queue").replaceChildren(...(s.queue || []).slice(0, 6).map((q) => { const li = document.createElement("li"); li.textContent = q; return li; }));
+  if (feed.length) lastFeedT = feed[0].t;
+  fresh.slice().reverse().forEach((f, i) => setTimeout(() => playEvent(f), i * 5000 + 800));
+  firstLoad = false;
+  health();
+}
+
+function health() {
+  const s = current, age = (Date.now() - Date.parse(s.updated_at)) / 60000;
+  const st = age <= 75 ? "ok" : age <= 150 ? "late" : "down";
+  $("health").dataset.s = st;
+  $("healthText").textContent = (st === "ok" ? "Running" : st === "late" ? "Late" : "Stopped?") + " · updated " + ago(s.updated_at);
+  const parts = ["Status written " + ago(s.updated_at)];
+  if (s.next_run_at) { const m = Math.round((Date.parse(s.next_run_at) - Date.now()) / 60000); parts.push(m > 0 ? "next shift in " + m + " min" : "shift due now"); }
+  parts.push("page checks for news every 30 s");
+  $("foot").textContent = parts.join(" · ");
+}
+
+async function poll() {
+  try {
+    const r = await fetch("status.json?ts=" + Date.now(), { cache: "no-store" });
+    if (r.ok) { const s = await r.json(); if (s && s.workers && s.updated_at !== current.updated_at) applyStatus(s, true); }
+  } catch (e) { /* keep last good data */ }
+  health();
+}
+
+// ---------- events become little scenes ----------
+function toast(text) { const t = $("toast"); t.textContent = text; t.style.opacity = 1; clearTimeout(toast.h); toast.h = setTimeout(() => (t.style.opacity = 0), 6000); }
+function playEvent(f) {
+  const w = workers[f.who]; if (!w) return;
+  toast(w.name + ": " + f.msg);
+  w.bubble = f.msg; w.bubbleUntil = performance.now() + 8000;
+  const m = f.msg.toLowerCase();
+  const back = () => goTo(w, seat(w.id).x, seat(w.id).y);
+  if (f.who === "designer" && /built|sent to qa|finished|made/.test(m)) {
+    w.carrying = true; goVia(w, [{ x: DESKS.qa.x, y: DESKS.qa.y + 90 }], () => { w.carrying = false; setTimeout(back, 1500); });
+  } else if (f.who === "qa" && /approved|passed/.test(m)) {
+    w.carrying = true; goVia(w, [{ x: DESKS.lister.x, y: DESKS.lister.y + 90 }], () => { w.carrying = false; setTimeout(back, 1500); });
+  } else if (f.who === "lister" && /publish|live|upload|listed/.test(m)) {
+    w.carrying = true; goVia(w, [{ x: w.x, y: 150 }, { x: SPOTS.door.x, y: SPOTS.door.y + 30 }], () => { w.carrying = false; setTimeout(back, 1200); });
+  } else if (f.who === "qa" && /sent .* back|reject/.test(m)) {
+    goVia(w, [{ x: DESKS.designer.x, y: DESKS.designer.y + 90 }], () => setTimeout(back, 2500));
+  } else if (f.who !== "manager") {
+    goVia(w, [{ x: DESKS.manager.x + 40, y: DESKS.manager.y + 90 }], () => setTimeout(back, 2000));
+  } else {
+    // manager walks the floor
+    const ids = ORDER.slice(1); const pts = ids.slice(0, 3).map((id) => ({ x: DESKS[id].x, y: DESKS[id].y + 95 }));
+    goVia(w, pts, back);
+  }
+}
+
+// ---------- idle behaviour ----------
+function wander(w, now) {
+  if (w.state !== "idle" || w.path.length || now < w.nextWander) return;
+  const spots = ["coffee", "cooler", "window1", "window2", "plant", "board"];
+  const pick = Math.random() < 0.35 ? null : SPOTS[spots[Math.floor(Math.random() * spots.length)]];
+  if (pick) { w.errand = pick.label || null; goTo(w, pick.x + (Math.random() * 30 - 15), pick.y + (pick.y < 200 ? 40 : -10)); }
+  else goTo(w, seat(w.id).x, seat(w.id).y);
+  w.nextWander = now + 7000 + Math.random() * 12000;
+}
+
+// ---------- drawing ----------
+const cv = $("c"), ctx = cv.getContext("2d");
+ctx.imageSmoothingEnabled = false;
+function rect(x, y, w, h, c) { ctx.fillStyle = c; ctx.fillRect(Math.round(x), Math.round(y), w, h); }
+
+function drawRoom(t) {
+  // floor tiles
+  for (let y = 150; y < H; y += 30) for (let x = 0; x < W; x += 30) rect(x, y, 30, 30, ((x + y) / 30) % 2 ? "#1d1828" : "#211b2d");
+  // wall
+  rect(0, 0, W, 150, "#2a2238"); rect(0, 140, W, 10, "#3a3050");
+  // windows with moon and stars
+  for (const wx of [230, 550]) {
+    rect(wx, 30, 140, 90, "#0f0d1a"); rect(wx - 4, 26, 148, 4, "#4a3d63"); rect(wx - 4, 120, 148, 6, "#4a3d63");
+    rect(wx + 68, 30, 4, 90, "#4a3d63");
+    for (let i = 0; i < 9; i++) { const sx = wx + 8 + ((i * 37 + Math.floor(t / 900)) % 124), sy = 36 + ((i * 23) % 70); rect(sx, sy, 2, 2, (i + Math.floor(t / 600)) % 4 ? "#cfc6e6" : "#6b6188"); }
+  }
+  ctx.fillStyle = "#ecd9a2"; ctx.beginPath(); ctx.arc(640, 60, 16, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = "#0f0d1a"; ctx.beginPath(); ctx.arc(648, 55, 14, 0, Math.PI * 2); ctx.fill();
+  // whiteboard with top of queue
+  rect(30, 34, 160, 92, "#e9e4f0"); rect(26, 30, 168, 4, "#8e86a3");
+  ctx.fillStyle = "#3b2f4a"; ctx.font = "bold 11px 'JetBrains Mono', monospace"; ctx.fillText("UP NEXT", 40, 52);
+  ctx.font = "10px 'JetBrains Mono', monospace";
+  (current.queue || []).slice(0, 4).forEach((q, i) => ctx.fillText((i + 1) + ". " + q.slice(0, 22), 40, 70 + i * 15));
+  // Etsy door
+  rect(840, 40, 84, 110, "#6b3f2a"); rect(846, 46, 72, 104, "#8a5236"); rect(905, 95, 6, 6, "#ecd9a2");
+  ctx.fillStyle = "#f1e6cf"; ctx.font = "bold 12px 'Pixelify Sans', monospace"; ctx.fillText("ETSY", 864, 34);
+  // goal jar near door
+  const pct = Math.min(1, (current.revenue_usd || 0) / (current.goal_usd || 70000));
+  rect(770, 70, 40, 60, "#3a3050"); rect(774, 74, 32, 52, "#120f19"); rect(774, 126 - 52 * pct, 32, 52 * pct, "#ecd9a2");
+  ctx.fillStyle = "#a59cbb"; ctx.font = "9px 'JetBrains Mono', monospace"; ctx.fillText("$70k", 776, 66);
+  // coffee machine, water cooler, plant
+  rect(30, 520, 60, 70, "#3d3447"); rect(38, 528, 44, 20, "#120f19"); rect(44 + (Math.floor(t / 400) % 2) * 4, 532, 8, 4, "#86d6ab"); rect(52, 556, 16, 18, "#f1e6cf");
+  rect(880, 515, 46, 75, "#cfd9e8"); rect(888, 500, 30, 20, "#7fc4d6"); rect(895, 560, 10, 6, "#3a3050");
+  rect(462, 560, 36, 30, "#6b3f2a"); for (let i = 0; i < 5; i++) rect(458 + i * 9, 528 - (i % 2) * 10, 8, 34, "#2f6a4a");
+  ctx.fillStyle = "#a59cbb"; ctx.font = "9px 'JetBrains Mono', monospace"; ctx.fillText("COFFEE", 36, 512); ctx.fillText("WATER", 884, 494);
+}
+
+function drawDesk(id, t) {
+  const d = DESKS[id], w = workers[id];
+  rect(d.x - 70, d.y - 20, 140, 46, "#6b4a35"); rect(d.x - 70, d.y + 26, 140, 6, "#4d3426");
+  rect(d.x - 62, d.y + 32, 8, 20, "#4d3426"); rect(d.x + 54, d.y + 32, 8, 20, "#4d3426");
+  // monitor
+  const on = w.state === "working" && near(w, seat(id));
+  rect(d.x - 64, d.y - 46, 44, 30, "#2b2639"); rect(d.x - 60, d.y - 42, 36, 22, on ? "#1d3b33" : "#15121d");
+  if (on) for (let i = 0; i < 3; i++) rect(d.x - 56, d.y - 38 + i * 6, 6 + ((Math.floor(t / 180) + i * 7) % 22), 2, "#86d6ab");
+  rect(d.x - 45, d.y - 16, 8, 6, "#2b2639");
+  rect(d.x + 30, d.y - 12, 18, 4, "#f1e6cf"); rect(d.x + 32, d.y - 16, 14, 4, "#d9cfb8");
+  // nameplate
+  rect(d.x - 40, d.y + 6, 80, 14, "#1b1725");
+  ctx.fillStyle = "#ecd9a2"; ctx.font = "bold 11px 'Pixelify Sans', monospace"; ctx.textAlign = "center"; ctx.fillText(w.name.toUpperCase(), d.x, d.y + 17); ctx.textAlign = "left";
+  // status lamp
+  const col = w.state === "working" ? "#86d6ab" : w.state === "blocked" ? "#f2917f" : "#93a0dc";
+  rect(d.x + 48, d.y - 14, 10, 10, col);
+}
+
+const near = (w, p) => Math.abs(w.x - p.x) < 4 && Math.abs(w.y - p.y) < 4;
+
+function drawPerson(w, t) {
+  const r = ROLES[w.id], s = 3, x0 = Math.round(w.x - 6 * s), y0 = Math.round(w.y - 16 * s);
+  const moving = w.path.length > 0, seated = !moving && near(w, seat(w.id));
+  const bob = moving ? (Math.floor(t / 120) % 2) : 0;
+  const px = (x, y, c) => rect(x0 + (w.dir < 0 ? (11 - x) : x) * s, y0 + (y + bob * 0) * s, s, s, c);
+  // shadow
+  ctx.fillStyle = "rgba(0,0,0,.35)"; ctx.beginPath(); ctx.ellipse(w.x, w.y + 2, 16, 5, 0, 0, Math.PI * 2); ctx.fill();
+  const skin = "#e9c39f";
+  // hair/head
+  for (let x = 3; x <= 8; x++) px(x, 0, r.hair);
+  for (let x = 2; x <= 9; x++) px(x, 1, r.hair);
+  for (let y = 2; y <= 5; y++) for (let x = 2; x <= 9; x++) px(x, y, y === 2 && (x < 3 || x > 8) ? r.hair : skin);
+  px(4, 3, "#15131d"); px(7, 3, "#15131d");
+  if (r.hat === "glasses") { px(3, 3, "#15131d"); px(5, 3, "#15131d"); px(6, 3, "#15131d"); px(8, 3, "#15131d"); }
+  if (r.hat === "beret") { for (let x = 2; x <= 9; x++) px(x, 0, "#8b2f3c"); px(10, 1, "#8b2f3c"); }
+  if (r.hat === "visor" || r.hat === "visor2") for (let x = 1; x <= 9; x++) px(x, 1, r.hat === "visor" ? "#2f7a55" : "#7a2f55");
+  if (r.hat === "cap" || r.hat === "cap2") { for (let x = 2; x <= 8; x++) px(x, 0, r.hat === "cap" ? "#c0602f" : "#3f6a8a"); for (let x = 7; x <= 11; x++) px(x, 1, r.hat === "cap" ? "#c0602f" : "#3f6a8a"); }
+  for (let x = 4; x <= 7; x++) px(x, 6, skin);
+  // body
+  for (let y = 7; y <= 11; y++) for (let x = 2; x <= 9; x++) px(x, y, r.shirt);
+  if (r.hat === "tie") for (let y = 7; y <= 10; y++) px(6, y, "#8b2f3c");
+  // arms (typing when seated & working)
+  const typing = seated && w.state === "working";
+  const armY = typing ? (Math.floor(t / 150) % 2 ? 9 : 10) : 9;
+  px(1, armY, skin); px(10, typing ? (armY === 9 ? 10 : 9) : 9, skin);
+  // legs
+  if (seated) { for (let x = 3; x <= 8; x++) px(x, 12, "#3a3050"); }
+  else { const a = moving ? Math.floor(t / 120) % 2 : 0; px(3 + a, 12, "#3a3050"); px(4 + a, 13, "#3a3050"); px(7 - a, 12, "#3a3050"); px(8 - a, 13, "#3a3050"); px(4 + a, 14, "#15131d"); px(8 - a, 14, "#15131d"); }
+  // carried box
+  if (w.carrying) { rect(w.x - 10, w.y - 30, 20, 14, "#b78a55"); rect(w.x - 10, w.y - 24, 20, 2, "#8a6a3f"); }
+  // coffee cup at the machine
+  if (!moving && w.errand === "coffee") rect(w.x + 14, w.y - 24, 6, 7, "#f1e6cf");
+  // status marks
+  ctx.font = "bold 16px 'Pixelify Sans', monospace"; ctx.textAlign = "center";
+  if (w.state === "blocked") { ctx.fillStyle = "#f2917f"; ctx.fillText("!", w.x, y0 - 6 - (Math.floor(t / 300) % 2) * 3); }
+  else if (w.state === "idle" && seated && Math.floor(t / 1500) % 3 === 0) { ctx.fillStyle = "#93a0dc"; ctx.fillText("z", w.x + 14, y0 - 2); }
+  else if (typing && Math.floor(t / 400) % 2) { ctx.fillStyle = "#86d6ab"; ctx.fillText("✦", w.x + 16, y0 - 2); }
+  ctx.textAlign = "left";
+  // bubble
+  const showBubble = performance.now() < w.bubbleUntil || (hover === w.id) || w.state === "blocked";
+  if (showBubble && (w.bubble || w.task)) bubble(w.x, y0 - 12, (performance.now() < w.bubbleUntil ? w.bubble : w.task) || "");
+}
+
+function bubble(x, y, text) {
+  ctx.font = "12px 'Atkinson Hyperlegible', sans-serif";
+  const words = text.split(" "), lines = []; let line = "";
+  for (const wd of words) { const tryL = line ? line + " " + wd : wd; if (ctx.measureText(tryL).width > 190 && line) { lines.push(line); line = wd; if (lines.length === 3) break; } else line = tryL; }
+  if (lines.length < 3 && line) lines.push(line); else if (lines.length === 3) lines[2] += "…";
+  const bw = Math.min(210, Math.max(...lines.map((l) => ctx.measureText(l).width)) + 16), bh = lines.length * 15 + 10;
+  let bx = Math.max(6, Math.min(W - bw - 6, x - bw / 2)), by = Math.max(4, y - bh);
+  rect(bx, by, bw, bh, "#f1e6cf"); rect(bx + bw / 2 - 4, by + bh, 8, 5, "#f1e6cf");
+  ctx.fillStyle = "#1b1725"; lines.forEach((l, i) => ctx.fillText(l, bx + 8, by + 17 + i * 15));
+}
+
+function stepWorker(w, dt) {
+  if (!w.path.length) return;
+  const p = w.path[0], dx = p.x - w.x, dy = p.y - w.y, dist = Math.hypot(dx, dy), sp = 0.09 * dt;
+  if (Math.abs(dx) > 1) w.dir = dx < 0 ? -1 : 1;
+  if (dist <= sp) { w.x = p.x; w.y = p.y; w.path.shift(); if (!w.path.length && w.after) { const f = w.after; w.after = null; f(); } }
+  else { w.x += (dx / dist) * sp; w.y += (dy / dist) * sp; }
+}
+
+let last = performance.now(), hover = null;
+function frame(now) {
+  const dt = Math.min(60, now - last); last = now;
+  ctx.clearRect(0, 0, W, H);
+  drawRoom(now);
+  for (const id of ORDER) {
+    const w = workers[id];
+    if ((w.state === "working" || w.state === "blocked") && !w.path.length && !near(w, seat(id)) && !w.carrying) goTo(w, seat(id).x, seat(id).y);
+    wander(w, now); stepWorker(w, dt);
+  }
+  // draw desks and people sorted by y for depth
+  const items = ORDER.map((id) => ({ y: DESKS[id].y - 40, f: () => { const s2 = seat(id); rect(s2.x - 18, s2.y - 56, 36, 30, "#3a3050"); rect(s2.x - 14, s2.y - 52, 28, 22, "#4a3d63"); } }))
+    .concat(ORDER.map((id) => ({ y: DESKS[id].y + 30, f: () => drawDesk(id, now) }))).concat(ORDER.map((id) => ({ y: workers[id].y, f: () => drawPerson(workers[id], now) })));
+  items.sort((a, b) => a.y - b.y).forEach((it) => it.f());
+  requestAnimationFrame(frame);
+}
+
+// ---------- interaction ----------
+function hitTest(ev) {
+  const r = cv.getBoundingClientRect(), x = (ev.clientX - r.left) * (W / r.width), y = (ev.clientY - r.top) * (H / r.height);
+  let best = null, bd = 40;
+  for (const id of ORDER) { const w = workers[id], d = Math.hypot(w.x - x, w.y - 24 - y); if (d < bd) { bd = d; best = id; } }
+  if (!best) for (const id of ORDER) { const d = DESKS[id]; if (Math.abs(d.x - x) < 70 && Math.abs(d.y - y) < 40) best = id; }
+  return best;
+}
+cv.addEventListener("mousemove", (e) => { hover = hitTest(e); });
+cv.addEventListener("mouseleave", () => { hover = null; });
+cv.addEventListener("click", (e) => { const id = hitTest(e); if (id) openCard(id); });
+cv.addEventListener("keydown", (e) => { if (e.key === "Enter") openCard(ORDER[(ORDER.indexOf($("card").dataset.id) + 1) % ORDER.length] || "manager"); });
+function openCard(id) {
+  const w = workers[id], r = ROLES[id];
+  $("card").dataset.id = id; $("card").hidden = false;
+  $("cardName").textContent = w.name;
+  $("cardState").textContent = w.state + (w.since ? " · since " + ago(w.since) : "");
+  $("cardState").style.color = w.state === "working" ? "var(--ok)" : w.state === "blocked" ? "var(--stop)" : "var(--rest)";
+  $("cardRole").textContent = r.role; $("cardTask").textContent = w.task;
+}
+$("cardClose").addEventListener("click", () => { $("card").hidden = true; });
+
+// ---------- boot ----------
+applyStatus(SNAPSHOT, false);
+poll();
+setInterval(poll, 30000);
+setInterval(health, 15000);
+// The manager walks the floor every few minutes between shifts.
+setInterval(() => { const m = workers.manager; if (m.state === "idle" && !m.path.length) { const pts = ORDER.slice(1).sort(() => Math.random() - 0.5).slice(0, 3).map((id) => ({ x: DESKS[id].x, y: DESKS[id].y + 95 })); goVia(m, pts, () => goTo(m, seat("manager").x, seat("manager").y)); } }, 120000);
+requestAnimationFrame(frame);
+</script>

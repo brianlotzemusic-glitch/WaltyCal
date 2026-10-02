@@ -109,6 +109,13 @@ Owner's limits for every new business:
 
 The Launcher never creates accounts, signs agreements, spends money, or contacts anyone. It marks itself `blocked` with "Waiting for you: follow ventures/NN-slug/LAUNCH.md" until the owner's steps are done. Only one new business is in progress at a time.
 
+## Owner's dashboard (pixel office)
+The owner watches https://claude.ai/artifact/YLmsuTYzib9cGUaL4b9QWe. The page is `office/floor/index.html` and it reads `status.json` published alongside it (it polls every 30 s). It does NOT read GitHub, so the Manager must publish to it.
+- Publish with the Artifact tool: `url` = the link above, `file_path` = `office/floor/index.html`, `files` = `{"status.json": "office/status.json"}`. If the publish is refused because this session hasn't read the artifact, read it once (`action: "read"`, same url) and publish again.
+- Publish at the **start of every shift** (Manager "working", task = what it's checking), **when each specialist starts** (that worker "working" with a one-line task, e.g. "Drawing 4 fox designs for the mug pilot"), **when each specialist finishes** (feed entry + state), and at the **end of the shift**. Several publishes per shift is expected; the page animates every change (walking to desks, carrying finished work to QA and the Etsy door).
+- Feed messages drive the animations, so use plain verbs: "Built…/Sent to QA", "Approved…", "Sent … back", "Published…/Listed…".
+- Don't edit `office/floor/index.html` unless the owner asks for a dashboard change.
+
 ## office/status.json
 Rewrite it at the end of every run (and after each specialist finishes, if the run is long). Keep this shape:
 ```json

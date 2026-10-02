@@ -65,3 +65,4 @@
 | 2026-10-02 22:32 | QA round 1 on bundle 008: SEND BACK (visual defects on 02, 03, 05, 06); Designer fixing | Visible in listing images |
 | 2026-10-02 22:33 | Image generator switched to Recraft (vector + raster, removebg, upscale); budget tracked in dollars | Owner set up Recraft instead of OpenAI |
 | 2026-10-02 22:38 | QA round 2 on bundle 008: APPROVED; publishes with 007 after 00:00 UTC | Ready to list |
+| 2026-10-02 22:44 | Dashboard rebuilt as a pixel office; Manager publishes status to it during shifts | Owner: old dashboard never updated |
