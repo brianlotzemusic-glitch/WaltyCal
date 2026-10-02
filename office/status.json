@@ -26,7 +26,7 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Next up after about 21:30 UTC: Christmas village silhouettes.",
+   "task": "Next after about 22:00 UTC: Christmas village silhouettes, drawn in code until OPENAI_API_KEY is set (then AI art by default).",
    "since": "2026-10-02T10:37:28Z"
   },
   {
