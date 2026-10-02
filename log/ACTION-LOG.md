@@ -57,3 +57,4 @@
 | 2026-10-02 10:26 | Designer built bundle 007 (A–Z gingerbread letters); committed as AWAITING QA | Save finished work |
 | 2026-10-02 10:30 | QA round 1 on bundle 007: SEND BACK (inconsistent icing on diagonals and curves); Designer fixing, plus flatter hanger arches, G curve, README wood sizing | Visible on the hero image |
 | 2026-10-02 10:37 | QA round 2 on bundle 007: APPROVED; publishes after 00:00 UTC (daily cap of 2 used by 005 and 006) | Ready to list |
+| 2026-10-02 10:50 | Owner: keep Etsy's titles. Copied live titles and descriptions into listing.json and LISTING.md for 001-006; fixed 004 title 'dxr' to 'dxf' on Etsy | Owner's decision on the held title question |

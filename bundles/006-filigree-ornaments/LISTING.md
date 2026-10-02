@@ -1,7 +1,7 @@
 # Listing — Filigree Christmas Ornaments SVG bundle
 
 **Title (≤140 chars)**
-Filigree Christmas Ornament SVG Bundle, Laser Cut Ornament Files, Snowflake Bell Star Tree Pinecone Svg, Cricut Silhouette DXF PNG
+Filigree Christmas Ornament SVG Bundle, Lace Botanical Designs (Digital Download)
 
 **Price:** $4.00 (check eRank / competitor bundles before publishing; SVG bundles commonly run $2–6)
 
@@ -14,7 +14,7 @@ Light, lacy and botanical: six original filigree Christmas ornament designs with
 
 Each ornament is a single-layer, single-path cut file with the hanging loop built in, so no slicing, welding or cleanup is needed. Cut them from cardstock or glitter cardstock for tree ornaments, gift tags and cards, from vinyl for windows and mugs, or on a laser cutter in thin wood or acrylic.
 
-WHAT'S INCLUDED
+WHAT&#39;S INCLUDED
 • 6 designs: Snowflake Lace Bauble, Holly Filigree Bell, Fern Lace Star, Fir Branch Tree, Scrollwork Drop, Filigree Pinecone
 • SVG — Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
 • DXF — Silhouette Studio Basic Edition, laser software (inches)
@@ -24,7 +24,7 @@ SIZING TIP
 Default size is 6 in. These are openwork designs with fine lines (about 0.08–0.12 in wide at 6 in). We recommend 4 in or larger for vinyl, 5 in or larger for cardstock and wood, and the full 6 in for acrylic, which is more brittle. The finest details are in the Fir Branch Tree, Fern Lace Star and Scrollwork Drop, so do a test cut on a new material first.
 
 LICENSE
-Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
+Personal use, plus small-business use on up to 500 finished physical items per design. Please don&#39;t share or resell the digital files.
 
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. Files are available right after purchase in a single ZIP.

@@ -1,7 +1,7 @@
 # Listing — Bat Christmas SVG bundle
 
 **Title (≤140 chars)**
-Bat Christmas SVG Bundle, Gothic Christmas Cut Files, Bat Santa Hat Svg, Spooky Christmas Tree Cricut Silhouette DXF PNG
+Gothic Bat Christmas SVG Bundle, Spooky Holiday Cut Files (svg, dxf, png)
 
 **Price:** $4.00 (suggested; SVG bundles on Etsy commonly run $2–6 — check eRank / competitor bundles before publishing)
 
@@ -14,7 +14,7 @@ Bats deserve a holiday too: six original Bat Christmas designs for crafters who 
 
 Each design is a single-layer, single-path cut file, so no slicing, welding or cleanup is needed. Cut them from glitter vinyl for mugs and tumblers, from cardstock for ornaments, cards and garlands, or use them on shirts, window clings and gift tags.
 
-WHAT'S INCLUDED
+WHAT&#39;S INCLUDED
 • 6 designs: Bat Wing Tree, Santa Hat Bat, Candy Cane Bat, Bat Garland (repeatable strip), Holly Bat Wreath, Bat Wing Star (tree topper with slotted tab)
 • SVG — Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
 • DXF — Silhouette Studio Basic Edition, laser software
@@ -24,7 +24,7 @@ SIZING TIP
 Default size is 6 in on the longest side. For vinyl use 4 in or larger; for cardstock 5 in or larger. Cut several Bat Garland strips and line up the end stars for a longer garland.
 
 LICENSE
-Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
+Personal use, plus small-business use on up to 500 finished physical items per design. Please don&#39;t share or resell the digital files.
 
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. Files are available right after purchase in a single ZIP.

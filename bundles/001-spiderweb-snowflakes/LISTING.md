@@ -1,7 +1,7 @@
 # Listing 001 — Spiderweb Snowflakes SVG bundle
 
 **Title (≤140 chars)**
-Spiderweb Snowflake SVG Bundle, Creepy Christmas Cut Files, Gothic Christmas Svg, Spider Web Snowflake Cricut Silhouette DXF PNG
+Gothic Christmas Spiderweb Snowflake SVG Bundle, Creepy Cut Files (Digital Download)
 
 **Price:** $4.00 (TEMPORARY — check eRank / competitor bundles before publishing; see notes)
 
@@ -14,7 +14,7 @@ Where winter meets spooky season: six original spiderweb snowflakes for crafters
 
 Each design is a single-layer, single-path cut file, so no slicing, welding or cleanup is needed. Cut them from glitter vinyl for mugs and tumblers, from cardstock for ornaments and garlands, or use them on shirts, window clings and gift tags.
 
-WHAT'S INCLUDED
+WHAT&#39;S INCLUDED
 • 6 designs: Classic Web, Frost Weaver, Dew Drop, Wide Web, Hanging Spider, Ice Lace
 • SVG — Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
 • DXF — Silhouette Studio Basic Edition, laser software
@@ -24,7 +24,7 @@ SIZING TIP
 For the finer designs (Dew Drop, Ice Lace) use 4 in or larger for vinyl and 6 in or larger for cardstock.
 
 LICENSE
-Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
+Personal use, plus small-business use on up to 500 finished physical items per design. Please don&#39;t share or resell the digital files.
 
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. Files are available right after purchase in a single ZIP.

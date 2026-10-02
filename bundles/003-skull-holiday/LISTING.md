@@ -1,7 +1,7 @@
 # Skull Holiday SVG bundle
 
 **Title (≤140 chars)**
-Skull Christmas SVG Bundle, Spooky Christmas Cut Files, Santa Hat Skull Svg, Gothic Holiday Cricut Silhouette DXF PNG, Skull Ornament
+Spooky Christmas Skull SVG Bundle (Gothic Holiday Cut Files - svg, dxf, png)
 
 **Price:** $4.00 (suggested; SVG bundles on Etsy commonly run $2–6 — check eRank / competitor bundles before publishing)
 
@@ -14,7 +14,7 @@ Spooky meets sweet: six original, friendly skull designs dressed up for the holi
 
 Each design is a single-layer, single-path cut file, so no slicing, welding or cleanup is needed. Cut them from vinyl for mugs and tumblers, from cardstock for ornaments, tags and garlands, or use them on shirts, totes and window clings.
 
-WHAT'S INCLUDED
+WHAT&#39;S INCLUDED
 • 6 designs: Santa Hat Skull, Holly Sprig Skull, Candy Cane Crossbones, Skull Ornament, Snowflake Beanie Skull, Star Topper Skull
 • SVG — Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
 • DXF — Silhouette Studio Basic Edition, laser software
@@ -24,7 +24,7 @@ SIZING TIP
 For the finer details (Candy Cane Crossbones, Star Topper Skull) use 4 in or larger for vinyl and 5 in or larger for cardstock.
 
 LICENSE
-Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
+Personal use, plus small-business use on up to 500 finished physical items per design. Please don&#39;t share or resell the digital files.
 
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. Files are available right after purchase in a single ZIP.
