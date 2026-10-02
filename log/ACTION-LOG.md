@@ -61,3 +61,4 @@
 | 2026-10-02 19:36 | Added print-on-demand line (Printify): tools/printify.py, FACTORY rules, pilot in queue | Owner asked to move into POD mugs/tees with minimal work |
 | 2026-10-02 19:45 | Art quality rules: AI art by default, style bible, best-of-4, lifestyle mockups, refresh weakest listings | Owner unhappy with code-drawn image quality |
 | 2026-10-02 22:13 | Designer started bundle 008 Christmas village silhouettes (code-drawn; no OpenAI key here) | Designer due (11 h since 007) |
+| 2026-10-02 22:29 | Designer built bundle 008 Christmas village; committed as AWAITING QA | Save finished work |
