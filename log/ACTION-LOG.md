@@ -49,3 +49,4 @@
 | 2026-10-02 00:42 | HELD for 8am: attach the WaltyCal repo to 'Shop factory: hourly shift (day/night)' in the claude.ai Routines page and re-enable both (or re-enable 'Shop factory: hourly shift' tied to the Manager session); default: no shifts until then | Quiet hours |
 | 2026-10-02 09:52 | Added 'Changing the schedule' rule to FACTORY.md (test a new routine before switching; never zero shift routines); watchdog now hourly, with one quiet-hours alert when shifts stop; permissions file for fresh sessions left for the owner to add | Prevent a repeat of the overnight outage |
 | 2026-10-02 09:55 | Re-enabled hourly shifts in the Manager session; added .claude/settings.json pre-approving the factory's own commands for fresh sessions | Owner's explicit instructions |
+| 2026-10-02 09:56 | Hourly shift prompt updated: Etsy listing and auto-renew fees (and AI images within cap) are approved; any other spending still needs the owner | Owner's instruction |
