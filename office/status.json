@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-02T22:37:26Z",
+ "updated_at": "2026-10-02T22:38:51Z",
  "next_run_at": "2026-10-02T23:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 6,
  "bundles_built": 8,
- "uploads_pending": 1,
+ "uploads_pending": 2,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
-   "state": "working",
-   "task": "Designer is on bundle 008; QA reviews it next. Bundle 007 publishes after 00:00 UTC.",
-   "since": "2026-10-02T22:13:44Z"
+   "state": "idle",
+   "task": "Bundle 008 approved; waiting for the next shift.",
+   "since": "2026-10-02T22:38:51Z"
   },
   {
    "id": "researcher",
@@ -26,22 +26,22 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Fixed bundle 008 after QA round 1. Waiting for QA.",
-   "since": "2026-10-02T22:37:26Z"
+   "task": "Next up after about 10:30 UTC: [pod] Print-on-demand pilot: 2 mugs.",
+   "since": "2026-10-02T22:38:51Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "working",
-   "task": "Final round-2 review of bundle 008. Not approved yet, so don't list it.",
-   "since": "2026-10-02T22:37:26Z"
+   "state": "idle",
+   "task": "Approved bundle 008 (Christmas village) in round 2.",
+   "since": "2026-10-02T22:38:51Z"
   },
   {
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Bundle 007 approved. Today's cap of 2 is used (005, 006), so it publishes after 00:00 UTC.",
-   "since": "2026-10-02T10:37:28Z"
+   "task": "Bundles 007 and 008 approved; both publish after 00:00 UTC (daily cap 2).",
+   "since": "2026-10-02T22:38:51Z"
   },
   {
    "id": "analyst",
@@ -66,13 +66,18 @@
   }
  ],
  "queue": [
-  "Christmas village silhouettes",
+  "[pod] Print-on-demand pilot: 2 mugs",
   "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts",
   "Witchy crystals",
   "Butterflies & dragonflies",
   "Nativity silhouettes"
  ],
  "feed": [
+  {
+   "t": "2026-10-02T22:38:51Z",
+   "who": "qa",
+   "msg": "Approved bundle 008: Christmas village silhouettes."
+  },
   {
    "t": "2026-10-02T22:32:26Z",
    "who": "qa",
@@ -217,11 +222,6 @@
    "t": "2026-10-01T16:13:23Z",
    "who": "manager",
    "msg": "Hourly shift: nothing due. Designer next after 22:58 UTC."
-  },
-  {
-   "t": "2026-10-01T13:20:00Z",
-   "who": "scout",
-   "msg": "Wider search done: Atomm creator program and a free maker-tools site joined the top 5. AI blogs and faceless YouTube ruled out."
   }
  ],
  "venture_gate": {
