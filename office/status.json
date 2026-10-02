@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-02T00:42:42Z",
- "next_run_at": "2026-10-01T23:13:53Z",
+ "updated_at": "2026-10-02T10:15:13Z",
+ "next_run_at": "2026-10-02T11:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 6,
@@ -11,9 +11,9 @@
   {
    "id": "manager",
    "name": "Manager",
-   "state": "blocked",
-   "task": "Hourly shifts are paused. Fresh-session routines can't push (repo not attached), and re-enabling the old routine was denied. Owner: attach the WaltyCal repo to the day and night routines, then re-enable them.",
-   "since": "2026-10-02T00:42:42Z"
+   "state": "working",
+   "task": "Shifts are running again. Designer is on bundle 007; QA reviews it next.",
+   "since": "2026-10-02T10:15:13Z"
   },
   {
    "id": "researcher",
@@ -25,9 +25,9 @@
   {
    "id": "designer",
    "name": "Designer",
-   "state": "idle",
-   "task": "Next up after 05:56 UTC: Gingerbread letter ornaments, a full A\u2013Z bundle of 26 designs at $6.00 (owner's decision).",
-   "since": "2026-10-01T19:03:56Z"
+   "state": "working",
+   "task": "Building bundle 007: Gingerbread letter ornaments, A\u2013Z (26 designs, $6).",
+   "since": "2026-10-02T10:15:13Z"
   },
   {
    "id": "qa",
@@ -47,8 +47,8 @@
    "id": "analyst",
    "name": "Analyst",
    "state": "idle",
-   "task": "Etsy connected. Stats start once a listing is live.",
-   "since": "2026-10-01T22:38:09Z"
+   "task": "Stats pulled: 6 live listings, 1 view, 0 sales, $0. Next pull after 10:15 UTC tomorrow.",
+   "since": "2026-10-02T10:15:13Z"
   },
   {
    "id": "scout",
@@ -73,6 +73,16 @@
   "Butterflies & dragonflies"
  ],
  "feed": [
+  {
+   "t": "2026-10-02T10:15:13Z",
+   "who": "designer",
+   "msg": "Started bundle 007: Gingerbread letter ornaments A\u2013Z."
+  },
+  {
+   "t": "2026-10-02T10:15:13Z",
+   "who": "analyst",
+   "msg": "First stats: 6 listings live, 1 view, no sales yet. The live Etsy titles differ from our files."
+  },
   {
    "t": "2026-10-02T00:42:42Z",
    "who": "manager",
@@ -212,16 +222,6 @@
    "t": "2026-10-01T12:10:00Z",
    "who": "qa",
    "msg": "Approved bundle 003, Skull holiday."
-  },
-  {
-   "t": "2026-10-01T12:00:00Z",
-   "who": "qa",
-   "msg": "Approved bundle 002, Gothic Christmas ornaments."
-  },
-  {
-   "t": "2026-10-01T11:52:00Z",
-   "who": "manager",
-   "msg": "Started 4 designers in parallel for the holiday sprint."
   }
  ],
  "venture_gate": {

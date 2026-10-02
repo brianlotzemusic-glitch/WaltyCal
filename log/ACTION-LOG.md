@@ -50,3 +50,7 @@
 | 2026-10-02 09:52 | Added 'Changing the schedule' rule to FACTORY.md (test a new routine before switching; never zero shift routines); watchdog now hourly, with one quiet-hours alert when shifts stop; permissions file for fresh sessions left for the owner to add | Prevent a repeat of the overnight outage |
 | 2026-10-02 09:55 | Re-enabled hourly shifts in the Manager session; added .claude/settings.json pre-approving the factory's own commands for fresh sessions | Owner's explicit instructions |
 | 2026-10-02 09:56 | Hourly shift prompt updated: Etsy listing and auto-renew fees (and AI images within cap) are approved; any other spending still needs the owner | Owner's instruction |
+| 2026-10-02 10:15 | Analyst: etsy.py stats -> stats/listings.csv (6 live, 1 view, 0 sales, $0) | First stats pull |
+| 2026-10-02 10:15 | Live Etsy titles on all 6 listings differ from listing.json (edited outside the repo; 004 says 'dxr' not 'dxf'). Don't run etsy.py update on these until the owner says which titles to keep | Avoid overwriting the owner's edits |
+| 2026-10-02 10:15 | HELD for 8am: Duskwood: live Etsy titles differ from our files (004 says 'dxr'). Keep Etsy's titles and copy them into our files, or restore ours? Default 10am ET: keep Etsy's, fix 'dxr' to 'dxf'. | Quiet hours |
+| 2026-10-02 10:15 | Designer started bundle 007 Gingerbread letter ornaments A-Z (26 designs, $6) | Designer due (11 h since 006) |
