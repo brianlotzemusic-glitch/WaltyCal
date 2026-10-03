@@ -1,234 +1,234 @@
 {
- "updated_at": "2026-10-03T12:14:08Z",
- "next_run_at": "2026-10-03T13:12:00Z",
- "goal_usd": 70000,
- "revenue_usd": 0,
- "listings_live": 8,
- "bundles_built": 8,
- "uploads_pending": 4,
- "etsy_connected": true,
- "workers": [
-  {
-   "id": "manager",
-   "name": "Manager",
-   "state": "idle",
-   "task": "Sent the owner the held questions (Printify photo step, Recraft credits). Designer next after about 22:00 UTC.",
-   "since": "2026-10-03T12:14:08Z"
-  },
-  {
-   "id": "researcher",
-   "name": "Researcher",
-   "state": "idle",
-   "task": "Daily refresh done: little changed. Nativity and Highland cow moved up (Christmas buying starts earlier). Next refresh after 23:15 UTC tomorrow.",
-   "since": "2026-10-02T23:16:43Z"
-  },
-  {
-   "id": "designer",
-   "name": "Designer",
-   "state": "idle",
-   "task": "Next up after about 22:00 UTC: [format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts.",
-   "since": "2026-10-03T11:02:39Z"
-  },
-  {
-   "id": "qa",
-   "name": "QA",
-   "state": "idle",
-   "task": "Approved all 4 print-on-demand pilot products (2 mugs, 2 tees) in round 2.",
-   "since": "2026-10-03T11:02:39Z"
-  },
-  {
-   "id": "lister",
-   "name": "Lister",
-   "state": "blocked",
-   "task": "4 print-on-demand products approved. Waiting for the owner to set the lifestyle photo as main image in Printify (steps in formats/pod.md), then they publish, 2 a day.",
-   "since": "2026-10-03T11:02:39Z"
-  },
-  {
-   "id": "analyst",
-   "name": "Analyst",
-   "state": "idle",
-   "task": "Stats: 8 live listings, 1 view, 0 sales, $0. Too early to judge. Next pull after 11:15 UTC tomorrow.",
-   "since": "2026-10-03T11:14:10Z"
-  },
-  {
-   "id": "scout",
-   "name": "Scout",
-   "state": "idle",
-   "task": "Ranked about 50 options across two runs. #1 is still the laser-cut file shop. Next check in 7 days.",
-   "since": "2026-10-01T13:20:00Z"
-  },
-  {
-   "id": "launcher",
-   "name": "Launcher",
-   "state": "idle",
-   "task": "Locked until the Etsy shop earns $300 or has been live 30 days.",
-   "since": "2026-10-01T12:50:00Z"
+  "updated_at": "2026-10-03T13:15:00Z",
+  "next_run_at": "2026-10-03T13:12:00Z",
+  "goal_usd": 70000,
+  "revenue_usd": 0,
+  "listings_live": 8,
+  "bundles_built": 8,
+  "uploads_pending": 4,
+  "etsy_connected": true,
+  "workers": [
+    {
+      "id": "manager",
+      "name": "Manager",
+      "state": "idle",
+      "task": "Sent the owner the held questions (Printify photo step, Recraft credits). Designer next after about 22:00 UTC.",
+      "since": "2026-10-03T12:14:08Z"
+    },
+    {
+      "id": "researcher",
+      "name": "Researcher",
+      "state": "idle",
+      "task": "Daily refresh done: little changed. Nativity and Highland cow moved up (Christmas buying starts earlier). Next refresh after 23:15 UTC tomorrow.",
+      "since": "2026-10-02T23:16:43Z"
+    },
+    {
+      "id": "designer",
+      "name": "Designer",
+      "state": "idle",
+      "task": "Next up after about 22:00 UTC: [format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts.",
+      "since": "2026-10-03T11:02:39Z"
+    },
+    {
+      "id": "qa",
+      "name": "QA",
+      "state": "idle",
+      "task": "Approved all 4 print-on-demand pilot products (2 mugs, 2 tees) in round 2.",
+      "since": "2026-10-03T11:02:39Z"
+    },
+    {
+      "id": "lister",
+      "name": "Lister",
+      "state": "blocked",
+      "task": "4 print-on-demand products approved. Waiting for the owner to set the lifestyle photo as main image in Printify (steps in formats/pod.md), then they publish, 2 a day.",
+      "since": "2026-10-03T11:02:39Z"
+    },
+    {
+      "id": "analyst",
+      "name": "Analyst",
+      "state": "idle",
+      "task": "Stats: 8 live listings, 1 view, 0 sales, $0. Too early to judge. Next pull after 11:15 UTC tomorrow.",
+      "since": "2026-10-03T11:14:10Z"
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "state": "idle",
+      "task": "Ranked about 50 options across two runs. #1 is still the laser-cut file shop. Next check in 7 days.",
+      "since": "2026-10-01T13:20:00Z"
+    },
+    {
+      "id": "launcher",
+      "name": "Launcher",
+      "state": "idle",
+      "task": "Locked until the Etsy shop earns $300 or has been live 30 days.",
+      "since": "2026-10-01T12:50:00Z"
+    }
+  ],
+  "queue": [
+    "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts",
+    "Nativity silhouettes",
+    "Butterflies & dragonflies",
+    "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages",
+    "Highland cow Christmas"
+  ],
+  "feed": [
+    {
+      "at": "2026-10-03T13:15:00Z",
+      "who": "Manager",
+      "text": "Hourly check: nothing due. Waiting on owner (Printify main photos, Recraft credits). Designer next ~22:00 UTC."
+    },
+    {
+      "t": "2026-10-03T12:14:08Z",
+      "who": "manager",
+      "msg": "Asked the owner to set the mug/tee photos in Printify and to decide on Recraft credits."
+    },
+    {
+      "t": "2026-10-03T11:14:10Z",
+      "who": "analyst",
+      "msg": "Daily stats: 8 listings live, 1 view, no sales yet."
+    },
+    {
+      "t": "2026-10-03T11:02:39Z",
+      "who": "qa",
+      "msg": "Approved the print-on-demand pilot: luna moth mug, ornament mug, holly skull tee, bat-wing tree tee."
+    },
+    {
+      "t": "2026-10-03T10:41:06Z",
+      "who": "qa",
+      "msg": "Sent the bat-wing tree tee back (stray marks in the art). Mugs and skull tee approved pending setup fixes."
+    },
+    {
+      "t": "2026-10-03T10:36:03Z",
+      "who": "designer",
+      "msg": "Built the print-on-demand pilot: moth mug, ornament mug, holly skull tee, bat-wing tree tee. Sent to QA."
+    },
+    {
+      "t": "2026-10-03T10:13:34Z",
+      "who": "designer",
+      "msg": "Started the print-on-demand pilot: 2 mugs and 2 tees."
+    },
+    {
+      "t": "2026-10-03T00:14:25Z",
+      "who": "lister",
+      "msg": "Published Gingerbread letters A\u2013Z (4587461298) and Christmas village (4587461356). 8 listings live."
+    },
+    {
+      "t": "2026-10-02T23:16:43Z",
+      "who": "researcher",
+      "msg": "Finished the trend refresh: Nativity and Highland cow moved up the queue; Witchy crystals moved down."
+    },
+    {
+      "t": "2026-10-02T23:13:26Z",
+      "who": "researcher",
+      "msg": "Started the daily trend refresh."
+    },
+    {
+      "t": "2026-10-02T22:45:29Z",
+      "who": "manager",
+      "msg": "Hooked up the new office dashboard."
+    },
+    {
+      "t": "2026-10-02T22:38:51Z",
+      "who": "qa",
+      "msg": "Approved bundle 008: Christmas village silhouettes."
+    },
+    {
+      "t": "2026-10-02T22:32:26Z",
+      "who": "qa",
+      "msg": "Sent bundle 008 back: tidy-ups on the moon, trees, cottage door and lollipop. Technical checks all pass."
+    },
+    {
+      "t": "2026-10-02T22:29:34Z",
+      "who": "designer",
+      "msg": "Built bundle 008: Christmas village (2 skyline panels, 4 standing houses). Sent to QA."
+    },
+    {
+      "t": "2026-10-02T22:13:44Z",
+      "who": "designer",
+      "msg": "Started bundle 008: Christmas village silhouettes."
+    },
+    {
+      "t": "2026-10-02T10:37:28Z",
+      "who": "qa",
+      "msg": "Approved bundle 007: 26 gingerbread letter ornaments with smooth icing on every letter."
+    },
+    {
+      "t": "2026-10-02T10:35:55Z",
+      "who": "designer",
+      "msg": "Fixed bundle 007: smooth icing on every letter, lower hanger arches. Back to QA."
+    },
+    {
+      "t": "2026-10-02T10:30:47Z",
+      "who": "qa",
+      "msg": "Sent bundle 007 back: the icing turns into stairs on diagonal letters. All letters read well; geometry checks pass."
+    },
+    {
+      "t": "2026-10-02T10:26:12Z",
+      "who": "designer",
+      "msg": "Built bundle 007: 26 gingerbread letter ornaments A\u2013Z. Sent to QA."
+    },
+    {
+      "t": "2026-10-02T10:15:13Z",
+      "who": "designer",
+      "msg": "Started bundle 007: Gingerbread letter ornaments A\u2013Z."
+    },
+    {
+      "t": "2026-10-02T10:15:13Z",
+      "who": "analyst",
+      "msg": "First stats: 6 listings live, 1 view, no sales yet. The live Etsy titles differ from our files."
+    },
+    {
+      "t": "2026-10-02T00:42:42Z",
+      "who": "manager",
+      "msg": "Hourly shifts are paused: the new routines can't push to GitHub until the repo is attached to them."
+    },
+    {
+      "t": "2026-10-02T00:42:42Z",
+      "who": "lister",
+      "msg": "Published Winter moths & holly (4586785079) and Filigree ornaments (4586788846). All 6 bundles are live."
+    },
+    {
+      "t": "2026-10-01T23:03:34Z",
+      "who": "researcher",
+      "msg": "New format pilots queued: woodland cross-stitch ornaments (#3), winter coloring pages (#7), woodland Christmas bingo (#12)."
+    },
+    {
+      "t": "2026-10-01T22:52:34Z",
+      "who": "researcher",
+      "msg": "Started researching other digital formats, at the owner's request."
+    },
+    {
+      "t": "2026-10-01T22:45:40Z",
+      "who": "lister",
+      "msg": "Auto-renew is on for all listings ($0.20 every 4 months), so none expire in February."
+    },
+    {
+      "t": "2026-10-01T22:43:41Z",
+      "who": "lister",
+      "msg": "Published Gothic Christmas ornaments (4586736511) and Bat Christmas (4586739694). 3 listings live."
+    },
+    {
+      "t": "2026-10-01T22:40:03Z",
+      "who": "lister",
+      "msg": "First listing live: Spiderweb Snowflake SVG Bundle (Etsy 4586738084)."
+    },
+    {
+      "t": "2026-10-01T22:38:09Z",
+      "who": "manager",
+      "msg": "Etsy is connected and bundle 003 is a draft. Auto-publish is paused until the owner confirms the listing fees."
+    },
+    {
+      "t": "2026-10-01T19:42:48Z",
+      "who": "manager",
+      "msg": "Owner decided: gingerbread letters as a full A\u2013Z bundle; soccer stays at the end of the queue."
+    }
+  ],
+  "venture_gate": {
+    "revenue_target_usd": 300,
+    "days_live_target": 30,
+    "first_listing_live_at": "2026-10-01T22:37:00Z",
+    "met": false,
+    "next_pick": "Laser-cut file shop (Etsy sister shop)"
   }
- ],
- "queue": [
-  "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts",
-  "Nativity silhouettes",
-  "Butterflies & dragonflies",
-  "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages",
-  "Highland cow Christmas"
- ],
- "feed": [
-  {
-   "t": "2026-10-03T12:14:08Z",
-   "who": "manager",
-   "msg": "Asked the owner to set the mug/tee photos in Printify and to decide on Recraft credits."
-  },
-  {
-   "t": "2026-10-03T11:14:10Z",
-   "who": "analyst",
-   "msg": "Daily stats: 8 listings live, 1 view, no sales yet."
-  },
-  {
-   "t": "2026-10-03T11:02:39Z",
-   "who": "qa",
-   "msg": "Approved the print-on-demand pilot: luna moth mug, ornament mug, holly skull tee, bat-wing tree tee."
-  },
-  {
-   "t": "2026-10-03T10:41:06Z",
-   "who": "qa",
-   "msg": "Sent the bat-wing tree tee back (stray marks in the art). Mugs and skull tee approved pending setup fixes."
-  },
-  {
-   "t": "2026-10-03T10:36:03Z",
-   "who": "designer",
-   "msg": "Built the print-on-demand pilot: moth mug, ornament mug, holly skull tee, bat-wing tree tee. Sent to QA."
-  },
-  {
-   "t": "2026-10-03T10:13:34Z",
-   "who": "designer",
-   "msg": "Started the print-on-demand pilot: 2 mugs and 2 tees."
-  },
-  {
-   "t": "2026-10-03T00:14:25Z",
-   "who": "lister",
-   "msg": "Published Gingerbread letters A\u2013Z (4587461298) and Christmas village (4587461356). 8 listings live."
-  },
-  {
-   "t": "2026-10-02T23:16:43Z",
-   "who": "researcher",
-   "msg": "Finished the trend refresh: Nativity and Highland cow moved up the queue; Witchy crystals moved down."
-  },
-  {
-   "t": "2026-10-02T23:13:26Z",
-   "who": "researcher",
-   "msg": "Started the daily trend refresh."
-  },
-  {
-   "t": "2026-10-02T22:45:29Z",
-   "who": "manager",
-   "msg": "Hooked up the new office dashboard."
-  },
-  {
-   "t": "2026-10-02T22:38:51Z",
-   "who": "qa",
-   "msg": "Approved bundle 008: Christmas village silhouettes."
-  },
-  {
-   "t": "2026-10-02T22:32:26Z",
-   "who": "qa",
-   "msg": "Sent bundle 008 back: tidy-ups on the moon, trees, cottage door and lollipop. Technical checks all pass."
-  },
-  {
-   "t": "2026-10-02T22:29:34Z",
-   "who": "designer",
-   "msg": "Built bundle 008: Christmas village (2 skyline panels, 4 standing houses). Sent to QA."
-  },
-  {
-   "t": "2026-10-02T22:13:44Z",
-   "who": "designer",
-   "msg": "Started bundle 008: Christmas village silhouettes."
-  },
-  {
-   "t": "2026-10-02T10:37:28Z",
-   "who": "qa",
-   "msg": "Approved bundle 007: 26 gingerbread letter ornaments with smooth icing on every letter."
-  },
-  {
-   "t": "2026-10-02T10:35:55Z",
-   "who": "designer",
-   "msg": "Fixed bundle 007: smooth icing on every letter, lower hanger arches. Back to QA."
-  },
-  {
-   "t": "2026-10-02T10:30:47Z",
-   "who": "qa",
-   "msg": "Sent bundle 007 back: the icing turns into stairs on diagonal letters. All letters read well; geometry checks pass."
-  },
-  {
-   "t": "2026-10-02T10:26:12Z",
-   "who": "designer",
-   "msg": "Built bundle 007: 26 gingerbread letter ornaments A\u2013Z. Sent to QA."
-  },
-  {
-   "t": "2026-10-02T10:15:13Z",
-   "who": "designer",
-   "msg": "Started bundle 007: Gingerbread letter ornaments A\u2013Z."
-  },
-  {
-   "t": "2026-10-02T10:15:13Z",
-   "who": "analyst",
-   "msg": "First stats: 6 listings live, 1 view, no sales yet. The live Etsy titles differ from our files."
-  },
-  {
-   "t": "2026-10-02T00:42:42Z",
-   "who": "manager",
-   "msg": "Hourly shifts are paused: the new routines can't push to GitHub until the repo is attached to them."
-  },
-  {
-   "t": "2026-10-02T00:42:42Z",
-   "who": "lister",
-   "msg": "Published Winter moths & holly (4586785079) and Filigree ornaments (4586788846). All 6 bundles are live."
-  },
-  {
-   "t": "2026-10-01T23:03:34Z",
-   "who": "researcher",
-   "msg": "New format pilots queued: woodland cross-stitch ornaments (#3), winter coloring pages (#7), woodland Christmas bingo (#12)."
-  },
-  {
-   "t": "2026-10-01T22:52:34Z",
-   "who": "researcher",
-   "msg": "Started researching other digital formats, at the owner's request."
-  },
-  {
-   "t": "2026-10-01T22:45:40Z",
-   "who": "lister",
-   "msg": "Auto-renew is on for all listings ($0.20 every 4 months), so none expire in February."
-  },
-  {
-   "t": "2026-10-01T22:43:41Z",
-   "who": "lister",
-   "msg": "Published Gothic Christmas ornaments (4586736511) and Bat Christmas (4586739694). 3 listings live."
-  },
-  {
-   "t": "2026-10-01T22:40:03Z",
-   "who": "lister",
-   "msg": "First listing live: Spiderweb Snowflake SVG Bundle (Etsy 4586738084)."
-  },
-  {
-   "t": "2026-10-01T22:38:09Z",
-   "who": "manager",
-   "msg": "Etsy is connected and bundle 003 is a draft. Auto-publish is paused until the owner confirms the listing fees."
-  },
-  {
-   "t": "2026-10-01T19:42:48Z",
-   "who": "manager",
-   "msg": "Owner decided: gingerbread letters as a full A\u2013Z bundle; soccer stays at the end of the queue."
-  },
-  {
-   "t": "2026-10-01T19:13:10Z",
-   "who": "manager",
-   "msg": "Etsy app key is now set. Uploads still need the one-time Etsy login (refresh token and user ID)."
-  }
- ],
- "venture_gate": {
-  "revenue_target_usd": 300,
-  "days_live_target": 30,
-  "first_listing_live_at": "2026-10-01T22:37:00Z",
-  "met": false,
-  "next_pick": "Laser-cut file shop (Etsy sister shop)"
- }
 }

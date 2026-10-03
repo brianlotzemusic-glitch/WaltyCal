@@ -79,3 +79,4 @@
 | 2026-10-03 11:02 | HELD for 8am: Duskwood: 4 mug/tee products approved. Set the lifestyle photo as main image in Printify (formats/pod.md) so they can publish. Default: they wait. | Quiet hours |
 | 2026-10-03 11:14 | Analyst stats: 8 live, 1 view, 0 sales; copied live Etsy titles/descriptions for 007 and 008 into their files (edited on Etsy after publishing; disclosure intact) | Daily stats; owner chose to keep Etsy's titles |
 | 2026-10-03 12:14 | Push to owner (held overnight): Printify lead-photo step for 4 POD products; Recraft credits top-up | First shift after 8am ET |
+- 2026-10-03 13:15 UTC — Manager: hourly check, nothing due. Waiting on owner replies (POD main photos, Recraft top-up). Designer next ~22:00 UTC.
