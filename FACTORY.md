@@ -78,6 +78,7 @@ The owner judged the code-drawn art too basic. When an image key (`RECRAFT_API_K
   4. Reuse: one approved motif should feed several products (cut-file bundle, mug, tee, sticker) before a new one is made.
   Target **≤ $0.05 per design** (about 100 a month inside the cap). `--pro` is refused unless `IMAGE_ALLOW_PRO=1`, which only the owner sets.
 - **Monthly AI cap: $5** (owner's choice, 3 Oct 2026; the tool's default, `IMAGE_MONTHLY_BUDGET_USD` overrides). Check `imagegen.py spend` before starting. When the month's cap is reached, or Recraft reports `not_enough_credits`, the Designer draws in code for the rest of the month; it does not ask for a top-up again. Topping up Recraft is the owner's call.
+- **October 2026 one-time top-up** (owner, 3 Oct). `log/image-budget.json` has `"2026-10": "credits"`, so this month the prepaid Recraft balance is the limit instead of $5. `imagegen.py` checks the balance before every call and stops when it runs out. This is the only top-up for October: when it runs out, draw in code until 1 Nov and don't ask again. Make the credits last: use the cheap recipe only, spend them first on trend items, POD art and lead photos, and never on refreshing old listings this month. From November the $5 cap applies again unless the owner says otherwise.
 - **Cut files**: prompt for "bold black silhouette on pure white, no shading, no gradients, thick connected shapes", then `imagegen.py trace`, then the normal cut-file checks. Reject any trace that loses detail or breaks into islands.
 - **Resolution**: standard Recraft images are about 1 MP (e.g. 896×1152), too small for print. For anything printed (POD, wall art, clipart, stickers) use the cheap art recipe above: a flash or standard image, then `upscale` or `vectorize` to reach the placeholder or 300 DPI size; vectors scale freely.
 - **Print / POD / clipart**: generate at the largest size, upscale cleanly if needed, and check at 100% zoom for artefacts, garbled text, extra fingers or legs, smudged edges and stray marks.
@@ -162,6 +163,19 @@ Shifts run from routines (the day and night hourly shifts, plus the watchdog). B
 
 ## Each run ends with
 Tick finished themes in `queue.md`, append to `log/ACTION-LOG.md`, update `office/status.json`, commit, `git push -u origin shop-factory` (retry up to 4 times on network errors; never force-push).
+
+## Keeping costs low (owner's standing order, 3 Oct 2026: "make sure the Manager keeps costs low")
+The shop has no revenue yet, so every dollar counts. The Manager enforces these limits on every shift and never raises them without the owner's OK:
+- **Etsy listing fees**: at most 4 new listings a day ($0.80). Fixing titles, tags, photos and descriptions is free, so prefer improving an existing listing over adding a weak new one. Don't relist, renew early or create duplicate listings.
+- **AI art**: the cheap recipe only (flash drafts, at most one standard final, no `--pro`), at most $0.05 per design, and reuse one motif across several products. Check `imagegen.py spend` before each Designer run. The limit is the Recraft balance in October and $5 a month after that.
+- **No new paid anything** without asking the owner first: no Etsy Ads (not before 40 listings, and only with the owner's yes), no Etsy Plus, no Printify Premium, no paid tools, subscriptions, samples or test orders.
+- **Print on demand**: never place orders; Printify only charges when a customer buys. Keep the profit floor at ≥ $6 per mug and ≥ $8 per tee after Etsy fees, so a sale can never lose money.
+- **Cloud usage (the factory's own running cost)**:
+  - On a shift where nothing is due, only refresh `office/status.json` and stop. Don't do research or reading "while waiting".
+  - Keep subagent briefs short, and give each one only the files it needs.
+  - Run each specialist at most as often as its "Due when" says.
+  - Don't re-read large files (dashboard HTML, past research) unless the task needs them.
+- **Weekly cost line**: the Monday report and the 10 Oct report list the week's listing fees, Recraft spend and the Recraft balance.
 
 ## Trend desk (Trend Hunter + Trend Judge)
 The owner's request (3 Oct 2026): a dedicated team chasing current viral trends to make things people buy right now.

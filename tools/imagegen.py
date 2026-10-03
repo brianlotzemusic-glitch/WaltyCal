@@ -10,7 +10,7 @@ Commands:
   python3 tools/imagegen.py removebg <in.png> <out.png>    transparent background (Recraft)
   python3 tools/imagegen.py upscale <in.png> <out.png>     crisp 4x upscale for print (Recraft, $0.004)
   python3 tools/imagegen.py trace <in.png> <out.svg>       local, free: black-on-white art -> one SVG path
-  python3 tools/imagegen.py spend                           estimated spend this month vs the cap
+  python3 tools/imagegen.py spend                           estimated spend this month vs the cap, plus the Recraft balance
 
 Environment (cloud environment settings, never committed):
   RECRAFT_API_KEY or OPENAI_API_KEY
@@ -48,7 +48,29 @@ def month_spend():
     return total
 
 
+BUDGET_FILE = os.path.join(ROOT, "log", "image-budget.json")  # {"YYYY-MM": "credits"} = owner topped up that month
+
+
+def recraft_credits():
+    """Prepaid Recraft credits left (1,000 credits = $1), or None if unknown."""
+    if not os.environ.get("RECRAFT_API_KEY"):
+        return None
+    try:
+        raw = http(RECRAFT + "/users/me", headers={"Authorization": f"Bearer {os.environ['RECRAFT_API_KEY']}"}, method="GET", retries=1)
+        return int(json.loads(raw).get("credits"))
+    except (SystemExit, ValueError, TypeError):
+        return None
+
+
 def check_budget(cost):
+    month = datetime.date.today().strftime("%Y-%m")
+    rule = json.load(open(BUDGET_FILE)).get(month) if os.path.exists(BUDGET_FILE) else None
+    if os.environ.get("RECRAFT_API_KEY"):
+        credits = recraft_credits()
+        if credits is not None and credits < cost * 1000:
+            sys.exit(f"Recraft is out of credits ({credits} left, need about {cost * 1000:.0f}); draw in code until the owner tops up or next month")
+    if rule == "credits":
+        return  # owner's one-time top-up: the prepaid Recraft balance is the limit this month
     cap = float(os.environ.get("IMAGE_MONTHLY_BUDGET_USD", "5"))
     if month_spend() + cost > cap:
         sys.exit(f"monthly image budget reached (${month_spend():.2f} of ${cap:.2f}); skip AI images until next month")
@@ -209,6 +231,12 @@ if __name__ == "__main__":
     elif cmd == "trace" and len(a) == 3:
         trace(a[1], a[2])
     elif cmd == "spend":
-        print(f"${month_spend():.2f} of ${float(os.environ.get('IMAGE_MONTHLY_BUDGET_USD', '5')):.2f} this month")
+        month = datetime.date.today().strftime("%Y-%m")
+        topped = os.path.exists(BUDGET_FILE) and json.load(open(BUDGET_FILE)).get(month) == "credits"
+        print(f"${month_spend():.2f} spent this month" + (" (owner top-up month: the Recraft balance is the limit)" if topped
+              else f" of ${float(os.environ.get('IMAGE_MONTHLY_BUDGET_USD', '5')):.2f}"))
+        c = recraft_credits()
+        if c is not None:
+            print(f"Recraft balance: {c} credits (about ${c / 1000:.2f})")
     else:
         sys.exit(__doc__)
