@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T21:42:07Z",
+  "updated_at": "2026-10-03T22:13:10Z",
   "next_run_at": "2026-10-03T23:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Shift done. Lister publishes from 00:12 UTC.",
-      "since": "2026-10-03T21:42:07Z"
+      "task": "Hourly check: nothing due. Researcher after 23:16 UTC; Lister publishes from 00:12 UTC.",
+      "since": "2026-10-03T22:13:10Z"
     },
     {
       "id": "researcher",
