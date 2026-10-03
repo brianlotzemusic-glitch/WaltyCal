@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T21:17:41Z",
+  "updated_at": "2026-10-03T21:33:16Z",
   "next_run_at": "2026-10-03T21:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -25,16 +25,16 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Building bundle 010: Woodland Christmas bingo (printable pilot).",
-      "since": "2026-10-03T21:13:23Z"
+      "state": "idle",
+      "task": "Built bundle 010 Woodland Christmas bingo (30 cards, 30 icons, Letter + A4 PDFs; $0 AI). Awaiting QA.",
+      "since": "2026-10-03T21:33:16Z"
     },
     {
       "id": "qa",
       "name": "QA",
-      "state": "idle",
-      "task": "Approved bundle 009 in round 2 (fern gaps fixed, all 6 pass width and gap tests).",
-      "since": "2026-10-03T16:29:00Z"
+      "state": "working",
+      "task": "Reviewing bundle 010 bingo against formats/bingo.md (round 1).",
+      "since": "2026-10-03T21:33:16Z"
     },
     {
       "id": "lister",
@@ -87,6 +87,11 @@
     "Butterflies & dragonflies (year-round; butterfly svg ~4.4k/mo, dragonfly ~590/mo on only ~"
   ],
   "feed": [
+    {
+      "t": "2026-10-03T21:33:16Z",
+      "who": "designer",
+      "msg": "Built bundle 010: Woodland Christmas bingo, 30 unique cards, 30 icons, Letter + A4. Sent to QA."
+    },
     {
       "t": "2026-10-03T21:17:41Z",
       "who": "judge",
@@ -231,11 +236,6 @@
       "t": "2026-10-02T22:32:26Z",
       "who": "qa",
       "msg": "Sent bundle 008 back: tidy-ups on the moon, trees, cottage door and lollipop. Technical checks all pass."
-    },
-    {
-      "t": "2026-10-02T22:29:34Z",
-      "who": "designer",
-      "msg": "Built bundle 008: Christmas village (2 skyline panels, 4 standing houses). Sent to QA."
     }
   ],
   "venture_gate": {
