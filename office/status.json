@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-03T16:58:00Z",
+  "updated_at": "2026-10-03T17:20:00Z",
   "next_run_at": "2026-10-03T17:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 9,
+  "listings_live": 10,
   "bundles_built": 9,
   "uploads_pending": 4,
   "etsy_connected": true,
@@ -40,8 +40,8 @@
       "id": "lister",
       "name": "Lister",
       "state": "waiting",
-      "task": "Published 009 (Etsy 4587827848). 3 of 4 slots used today. Oct 4: 4 POD products + lead photos, then retitle the 8 old listings (free).",
-      "since": "2026-10-03T16:58:00Z"
+      "task": "Published the luna moth mug (Etsy 4587829689, $16.99) with the lifestyle photo first. 4 of 4 slots used today. Oct 4: the other mug + 2 tees, then retitle the old listings (free).",
+      "since": "2026-10-03T17:20:00Z"
     },
     {
       "id": "analyst",
@@ -87,6 +87,11 @@
     "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages ("
   ],
   "feed": [
+    {
+      "t": "2026-10-03T17:20:00Z",
+      "who": "lister",
+      "msg": "Published the luna moth mug (Etsy 4587829689) with the lifestyle photo first. 10 listings live."
+    },
     {
       "t": "2026-10-03T16:58:00Z",
       "who": "lister",
@@ -231,11 +236,6 @@
       "t": "2026-10-02T10:35:55Z",
       "who": "designer",
       "msg": "Fixed bundle 007: smooth icing on every letter, lower hanger arches. Back to QA."
-    },
-    {
-      "t": "2026-10-02T10:30:47Z",
-      "who": "qa",
-      "msg": "Sent bundle 007 back: the icing turns into stairs on diagonal letters. All letters read well; geometry checks pass."
     }
   ],
   "venture_gate": {

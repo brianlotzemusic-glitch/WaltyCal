@@ -49,7 +49,7 @@ Printify sends Etsy only the mockups it marks "selected for publishing" (after `
 3. `python3 tools/etsy.py lead-photos <pod_dir> <files...>` uploads the mockups saved in `pod_dir/mockups/` as photos #1, #2, ... ahead of Printify's front view:
    - **Mugs:** `mockups/context-1-11oz.jpg mockups/left-11oz.jpg`
    - **Tees:** `mockups/folded-<colour>.jpg`, then the other colour fronts not already on Etsy.
-4. Check: GET `/listings/<id>/images` (or view the listing) and confirm the lifestyle shot is first, then log it in `mockups.json` as `"etsy_lead_photo"`.
+4. Check: GET `/listings/<id>/images` and download the **first image in the list** to look at it; it must be the lifestyle shot. Then log it in `mockups.json` as `"etsy_lead_photo"`. The `rank` numbers Etsy returns are unreliable (two images can both say 1); the list order is the display order. Don't re-rank on the strength of `rank` alone (tested 3 Oct on 001: step 3 had already worked).
 
 Later re-publishes from Printify send `images: false` (the tool does this once `etsy_published` exists), so the Etsy photo order is kept. If a product's images ever get reset, run step 3 again.
 

@@ -40,5 +40,14 @@
    "variant": 33719,
    "camera": "context-3"
   }
- ]
+ ],
+ "etsy_lead_photo": {
+  "listing_id": "4587829689",
+  "order": [
+   "context-1 (8618111856)",
+   "left (8665938645)",
+   "front, from Printify (8665936391)"
+  ],
+  "checked": "2026-10-03T17:20:00Z"
+ }
 }
