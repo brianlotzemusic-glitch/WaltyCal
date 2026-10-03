@@ -214,6 +214,7 @@ The owner will shut the factory down unless the shop shows signs of life by 10 O
 - **Day 1 (4 Oct), Lister, free**: retitle and retag all 8 live cut-file listings with `etsy.py update`. Lead each title with the highest-volume plain search phrase (e.g. "Christmas SVG Bundle", "Snowflake SVG", "Christmas Ornament SVG", "Bat SVG"). Put "gothic", "spooky" and "creepy" later in the title and in the tags, not first. Use all 13 tags, mixing broad terms (christmas svg, cricut files, ornament svg) with specific ones. Keep the disclosure line. Log the before and after titles.
 - **New listings in this order**: the 4 POD products (2 on the 4th, 2 on the 5th), then Botanical frost snowflakes (cut files), Woodland Christmas bingo (printable) and the Woodland Christmas mini cross-stitch charts. Pick only proven-demand items; nothing speculative this week.
 - **Analyst**: every day at the first shift after 8am ET, push the owner one line: total views, favourites and sales, and the change since yesterday.
+- **No Etsy Ads yet** (owner, 3 Oct 2026: "no ads till we build a decent library of items"). Never turn on or suggest paid ads before then. When the shop reaches **40 live listings**, the Manager asks the owner once whether to start Etsy Ads at $1/day.
 - **10 Oct check**: write `reports/2026-10-10-turnaround.md` with the week's views, favourites, sales and spend. Targets: ≥100 views and ≥5 favourites. Recommend honestly whether to continue. If there are under 20 views, recommend shutting down or pausing.
 
 ## Rules
