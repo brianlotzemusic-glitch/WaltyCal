@@ -14,7 +14,7 @@ Commands:
 
 Environment (cloud environment settings, never committed):
   RECRAFT_API_KEY or OPENAI_API_KEY
-  IMAGE_MONTHLY_BUDGET_USD   optional, default 30; generation stops when this month's estimate reaches it
+  IMAGE_MONTHLY_BUDGET_USD   optional, default 5 (owner's cap, 3 Oct 2026); generation stops when this month's estimate reaches it
 
 Every call is logged to log/image-spend.csv (time, provider, model, est_usd, prompt).
 Prompts must describe original designs: no artist names, brands, characters, trademarked phrases or other sellers' work.
@@ -47,7 +47,7 @@ def month_spend():
 
 
 def check_budget(cost):
-    cap = float(os.environ.get("IMAGE_MONTHLY_BUDGET_USD", "30"))
+    cap = float(os.environ.get("IMAGE_MONTHLY_BUDGET_USD", "5"))
     if month_spend() + cost > cap:
         sys.exit(f"monthly image budget reached (${month_spend():.2f} of ${cap:.2f}); skip AI images until next month")
 
@@ -105,6 +105,8 @@ def gen(prompt, out, size=None, pro=False, flash=False, n=1, transparent=False, 
     if os.environ.get("RECRAFT_API_KEY"):
         model = ("recraftv4_1_pro_vector" if pro else "recraftv4_1_vector") if vector else \
                 ("recraftv4_1_flash" if flash else "recraftv4_1_pro" if pro else "recraftv4_1")
+        if pro and n > 1:
+            sys.exit("--pro is for the one final image: explore with --flash --n 4 first, then make 1 --pro (owner's rule, 3 Oct 2026)")
         cost = PRICE[model] * n
         check_budget(cost)
         body = {"prompt": prompt, "model": model, "n": n, "response_format": "url"}
@@ -205,6 +207,6 @@ if __name__ == "__main__":
     elif cmd == "trace" and len(a) == 3:
         trace(a[1], a[2])
     elif cmd == "spend":
-        print(f"${month_spend():.2f} of ${float(os.environ.get('IMAGE_MONTHLY_BUDGET_USD', '30')):.2f} this month")
+        print(f"${month_spend():.2f} of ${float(os.environ.get('IMAGE_MONTHLY_BUDGET_USD', '5')):.2f} this month")
     else:
         sys.exit(__doc__)
