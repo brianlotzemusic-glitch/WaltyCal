@@ -161,6 +161,15 @@ Shifts run from routines (the day and night hourly shifts, plus the watchdog). B
 ## Each run ends with
 Tick finished themes in `queue.md`, append to `log/ACTION-LOG.md`, update `office/status.json`, commit, `git push -u origin shop-factory` (retry up to 4 times on network errors; never force-push).
 
+## Turnaround week (4–10 Oct 2026, owner's deadline)
+The owner will shut the factory down unless the shop shows signs of life by 10 Oct. The owner's cost concerns are Recraft and Etsy listing fees, so:
+- **Spending limit for the week: $3 of Etsy listing fees** (2 new listings/day × $0.20). Don't raise the cap. Edits to existing listings are free, so use them freely.
+- **Recraft**: October's $5 cap is used up, so the Designer draws in code until 1 Nov. Don't ask the owner for a top-up.
+- **Day 1 (4 Oct), Lister, free**: retitle and retag all 8 live cut-file listings with `etsy.py update`. Lead each title with the highest-volume plain search phrase (e.g. "Christmas SVG Bundle", "Snowflake SVG", "Christmas Ornament SVG", "Bat SVG"). Put "gothic", "spooky" and "creepy" later in the title and in the tags, not first. Use all 13 tags, mixing broad terms (christmas svg, cricut files, ornament svg) with specific ones. Keep the disclosure line. Log the before and after titles.
+- **New listings in this order**: the 4 POD products (2 on the 4th, 2 on the 5th), then Botanical frost snowflakes (cut files), Woodland Christmas bingo (printable) and the Woodland Christmas mini cross-stitch charts. Pick only proven-demand items; nothing speculative this week.
+- **Analyst**: every day at the first shift after 8am ET, push the owner one line: total views, favourites and sales, and the change since yesterday.
+- **10 Oct check**: write `reports/2026-10-10-turnaround.md` with the week's views, favourites, sales and spend. Targets: ≥100 views and ≥5 favourites. Recommend honestly whether to continue. If there are under 20 views, recommend shutting down or pausing.
+
 ## Rules
 - Original work only. No copyrighted characters, logos, brand names, trademarked phrases, or other sellers' designs. Avoid "Creepmas".
 - No weapons, hate content, medical claims, or adult content.
