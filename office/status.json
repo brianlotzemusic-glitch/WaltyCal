@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-03T10:36:03Z",
+ "updated_at": "2026-10-03T10:41:06Z",
  "next_run_at": "2026-10-03T11:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -25,16 +25,16 @@
   {
    "id": "designer",
    "name": "Designer",
-   "state": "idle",
-   "task": "Built the print-on-demand pilot (2 mugs, 2 tees) as unpublished Printify drafts; waiting for QA.",
-   "since": "2026-10-03T10:36:03Z"
+   "state": "working",
+   "task": "Fixing the POD pilot: bat-tree tee art, tee price $28.99, Printify draft sync, lifestyle lead photos.",
+   "since": "2026-10-03T10:41:06Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "working",
-   "task": "Reviewing the print-on-demand pilot: art, mockups, pricing and listing copy.",
-   "since": "2026-10-03T10:36:03Z"
+   "state": "idle",
+   "task": "POD pilot round 1: mugs and skull tee OK with setup fixes; sent the bat-tree tee back for art artefacts.",
+   "since": "2026-10-03T10:41:06Z"
   },
   {
    "id": "lister",
@@ -73,6 +73,11 @@
   "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages"
  ],
  "feed": [
+  {
+   "t": "2026-10-03T10:41:06Z",
+   "who": "qa",
+   "msg": "Sent the bat-wing tree tee back (stray marks in the art). Mugs and skull tee approved pending setup fixes."
+  },
   {
    "t": "2026-10-03T10:36:03Z",
    "who": "designer",
@@ -217,11 +222,6 @@
    "t": "2026-10-01T18:44:42Z",
    "who": "qa",
    "msg": "Sent bundle 006 back: missing Etsy category and two solid blots on the pinecone. The other five designs passed."
-  },
-  {
-   "t": "2026-10-01T18:32:11Z",
-   "who": "designer",
-   "msg": "Built bundle 006, Filigree Christmas ornaments: bauble, bell, star, tree, drop and pinecone. Sent to QA."
   }
  ],
  "venture_gate": {
