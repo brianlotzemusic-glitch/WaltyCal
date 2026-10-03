@@ -1,124 +1,163 @@
-# Duskwood Designs Co — Etsy shop profile, paste-ready
+# Duskwood Designs Co: Etsy shop profile, paste-ready (v2, 3 Oct 2026)
+
+v2 covers all three product lines: cut files, printables (cross-stitch charts, coloring pages, party games)
+and mugs and t-shirts printed to order through Printify. Etsy's API can't edit these fields, so paste them in by hand.
 
 Where each piece goes: Etsy → Shop Manager → (pencil icon next to your shop name) "Edit shop", unless noted.
-Character limits are Etsy's approximate limits; everything here fits.
+Everything fits Etsy's character limits.
 
 ---------------------------------------------------------------------
-## 1. Shop icon and cover photo
-- Shop icon: `shop-icon-500.png` (500 × 500), the Duskwood moonlit-forest mark
-- Full logo files (stacked, horizontal, one-color, SVG + PNG): `brand/`
-- Cover photo (big banner): `shop-cover-3360x840.png` (3360 × 840)
+## 1. Shop icon and cover photo (unchanged)
+- Shop icon: `shop-icon-500.png` (500 × 500)
+- Cover photo: `shop-cover-3360x840.png` (3360 × 840)
+- Logo files: `brand/`
 
 ---------------------------------------------------------------------
-## 2. Shop title  (the one-line headline under your shop name, max 55 characters)
+## 2. Shop title  (max 55 characters; this is 46)
 
-Moody woodland & celestial SVG cut files for Cricut
+Moody woodland cut files, printables and gifts
 
 ---------------------------------------------------------------------
 ## 3. Shop announcement
 
-Welcome to Duskwood Designs Co! New cut files are added every week: woodland animals, birds, botanicals, mushrooms, moons and stars, cozy seasonal designs, and a few spooky ones for good measure.
+Welcome to Duskwood Designs Co! Moody, moonlit woodland designs, three ways:
 
-Every bundle includes SVG, DXF and PNG files, so it works in Cricut Design Space, Silhouette Studio (Basic and Designer Edition) and most laser software. Files download instantly after purchase.
+• Cut files: SVG, DXF and PNG for Cricut, Silhouette and laser cutters. Instant download.
+• Printables: cross-stitch charts, coloring pages and party games. Instant download, print at home.
+• Mugs and t-shirts: printed to order and shipped to your door.
 
-Need a size or format that isn't included? Send me a message and I'll help.
+New designs are added every week. Need a size or format that isn't listed? Send me a message.
 
 ---------------------------------------------------------------------
 ## 4. About section  (Shop Manager → Settings → About your shop)
 
 Story headline:
-Cut files with a moonlit, woodland feel
+Moonlit, woodland designs to make, print and gift
 
 Story:
-Duskwood Designs Co makes cut files for crafters who love the quieter side of nature: foxes and owls, ferns and wildflowers, mushrooms, moths, moons and stars, and cozy seasons, with the occasional bat or spiderweb for anyone who likes things a little spooky.
+Duskwood Designs Co makes designs for people who love the quieter side of nature: foxes and owls, ferns and wildflowers, mushrooms, moths, moons and stars, and cozy seasons, with the occasional bat or spiderweb for anyone who likes things a little spooky.
 
-Every design is built as a clean, single-layer cut path: no stray points, no slivers too small to cut, and no hours spent welding pieces together. Each bundle comes with SVG, DXF and PNG files sized at 6 inches, ready for Cricut, Silhouette or a laser cutter.
+You'll find them in three forms. Cut files are built as clean, single-layer paths for Cricut, Silhouette and laser cutters. Printables, such as cross-stitch charts, coloring pages and party games, are ready-to-print PDFs. And a selection of designs is printed onto mugs and t-shirts.
 
-Designed with the help of digital and AI tools, and checked by hand for clean cuts: every file is tested to be one connected shape with no tiny holes.
+Mugs and t-shirts are printed to order and shipped by my production partner, Printify, so nothing sits in a warehouse and every item is made fresh for you.
 
-New themes arrive every week. If there's something you'd love to see, a woodland wreath, a moon-phase garland, a design for a laser rather than a Cricut, send a message. Requests genuinely shape what gets made next.
+Designed with the help of digital and AI tools, and checked by hand.
+
+New themes arrive every week. If there's something you'd love to see, send a message. Requests shape what gets made next.
 
 ---------------------------------------------------------------------
-## 5. Shop owner bio  (About section → Shop members → your profile → Bio)
+## 5. Shop owner bio  (About → Shop members → your profile → Bio)
 
 Role: Owner, designer
 
 Bio:
-I run Duskwood Designs Co and finalize every design that goes into it. I'm a fan of anything moody, moonlit or woodsy, and I wanted cut files that suit crafters who feel the same.
+I run Duskwood Designs Co and sign off on every design in it. I'm a fan of anything moody, moonlit or woodsy, and I wanted cut files, printables and gifts that suit people who feel the same.
 
 ---------------------------------------------------------------------
-## 6. Message to buyers  (Settings → Info & Appearance → "Message to buyers")
+## 6. Production partner  (Settings → Production partners: already added as "Printify")
+On every mug and t-shirt listing, under "Who made it?", choose "Another company or person" and select Printify.
+Printify listings get this automatically when the factory publishes them; check the first two.
+
+---------------------------------------------------------------------
+## 7. Message to buyers  (Settings → Info & Appearance → "Message to buyers")
 
 Thank you so much for your order from Duskwood Designs Co!
 
-Your files are ready to download right away from your Etsy Purchases page (You → Purchases and reviews → Download Files), and Etsy also emails you a download link.
+Digital files (cut files and printables): they're ready right away under You → Purchases and reviews → Download Files, and Etsy emails you a link too. Unzip downloads on a computer if you can.
+• Cricut Design Space: Upload → Upload Image → a file from the SVG folder.
+• Silhouette Studio Basic: use the DXF folder. Designer Edition can use the SVGs.
+• Laser software: SVG or DXF.
+• Printables: open the PDF and print at 100% ("actual size"), on US Letter or A4.
 
-Quick start:
-1. Download the ZIP and unzip it (on a phone or tablet, use a computer if you can; Cricut and Silhouette apps handle ZIP files poorly on mobile).
-2. Cricut Design Space: Upload → Upload Image → choose a file from the SVG folder.
-3. Silhouette Studio Basic Edition: open a file from the DXF folder. Designer Edition can use the SVGs.
-4. Laser software (LightBurn, xTool Creative Space, Glowforge): use the SVG or DXF files.
+Mugs and t-shirts: your item is printed just for you, which takes 2–5 business days, and then it ships. You'll get a tracking number by email as soon as it's on its way.
 
-Anything not working? Just reply to this message and I'll sort it out.
-
----------------------------------------------------------------------
-## 7. Message for digital items  (shown with the download, if Etsy offers the separate field)
-
-Thank you! Your ZIP includes SVG, DXF and PNG versions of every design, plus a README with sizing tips and the license. If a file won't open, send me a message and I'll get you a working copy the same day.
+Anything not right? Just reply to this message and I'll sort it out.
 
 ---------------------------------------------------------------------
-## 8. Shop policies  (Settings → Policies)
+## 8. Message for digital items  (shown with the download, if Etsy offers the separate field)
+
+Thank you! Cut-file ZIPs include SVG, DXF and PNG versions of every design plus a README with sizing tips and the license. Printables come as PDFs in US Letter and A4. If a file won't open, send me a message and I'll get you a working copy the same day.
+
+---------------------------------------------------------------------
+## 9. Shop policies  (Settings → Policies)
 
 Returns and exchanges:
-Choose "I don't accept returns, exchanges, or cancellations" for digital items. Etsy doesn't allow returns on instant downloads.
+• Digital items: choose "I don't accept returns, exchanges, or cancellations." Etsy doesn't allow returns on instant downloads.
+• Physical items (mugs, t-shirts): choose "I don't accept returns or exchanges", but turn ON "I accept cancellations" within 1 hour of purchase. That matches Printify's 1-hour auto-submit window you set.
 
 Additional policy text (if Etsy offers a free-text box):
-Because these are instant digital downloads, I can't offer returns. If a file is damaged, won't open, or isn't what the listing described, message me and I'll fix it or refund you. I want every file to work for you.
+Digital downloads can't be returned, but if a file is damaged, won't open or isn't what the listing described, message me and I'll fix it or refund you.
+Mugs and t-shirts are printed to order, so I can't accept returns for change of mind or wrong size; please check the size chart before ordering. If your item arrives damaged, misprinted or defective, send me a photo within 14 days of delivery and I'll send a replacement or refund at no cost to you.
 
-License:
+Processing and shipping (Settings → Shipping settings; Printify's shipping profile fills most of this):
+Processing time: 2–5 business days. Ships from the US.
+
+License (cut files and printables):
 Personal use: unlimited.
-Small-business use: you may sell finished physical items you make with these designs (shirts, decals, ornaments, cards, and so on), up to 500 items per design.
-Not allowed: sharing, reselling or giving away the digital files themselves, in their original or edited form, or including them in other digital products.
+Cut files, small-business use: you may sell finished physical items you make with them (shirts, decals, ornaments, cards and so on), up to 500 items per design.
+Printables: for personal use; you may print as many copies as you need for your own home, class or party.
+Not allowed: sharing, reselling or giving away the digital files themselves, edited or not, or including them in other digital products.
 
 Privacy policy:
-Use Etsy's standard privacy policy option. I only use your information to deliver your order and answer your messages, and I never sell or share it.
+Use Etsy's standard privacy policy option. I only use your information to fulfil your order (including passing your shipping address to my print partner for mugs and t-shirts) and to answer your messages. I never sell it.
 
 ---------------------------------------------------------------------
-## 9. FAQs  (Settings → Policies → FAQs; add each as a question and answer)
+## 10. FAQs  (Settings → Policies → FAQs; add each as a question and answer)
 
 Q: Is anything shipped to me?
-A: No. These are digital files only. Nothing physical will be mailed.
+A: Only for mugs and t-shirts. Cut files and printables are digital downloads; nothing is mailed.
 
-Q: Which file do I use?
-A: Cricut Design Space and Silhouette Designer Edition: SVG. Silhouette Studio Basic Edition: DXF. Laser software (LightBurn, xTool, Glowforge): SVG or DXF. PNG files are for printing, sublimation or anywhere you need a transparent image.
+Q: Which cut file do I use?
+A: Cricut Design Space and Silhouette Designer Edition: SVG. Silhouette Studio Basic: DXF. Laser software (LightBurn, xTool, Glowforge): SVG or DXF. PNG files are for printing, sublimation or anywhere you need a transparent image.
 
 Q: How do I open the ZIP file?
-A: On a computer, double-click it (Windows: right-click → Extract All). Phones and tablets often can't unzip files properly, so a computer works best. If you're stuck, message me and I can send individual files.
+A: On a computer, double-click it (Windows: right-click → Extract All). Phones and tablets often can't unzip properly, so a computer works best. If you're stuck, message me and I can send individual files.
 
-Q: What size are the designs?
-A: Each design is set to 6 inches and can be resized freely. For the finest designs, I recommend 4 inches or larger for vinyl and 6 inches or larger for cardstock. Each listing includes sizing tips.
+Q: What size are the cut-file designs?
+A: Each design is set to 6 inches and can be resized freely. For fine designs, I recommend 4 inches or larger for vinyl and 6 inches or larger for cardstock.
 
-Q: Are the designs single-layer?
-A: Yes. Each design is one connected shape with one clean cut path, so there's nothing to weld or slice.
+Q: How do I print the printables?
+A: Open the PDF and print at 100% or "actual size" (not "fit to page"). Both US Letter and A4 versions are included. Cardstock works well for party games; regular paper is fine for coloring pages and charts.
 
-Q: Can I sell things I make with these designs?
+Q: Who makes the mugs and t-shirts?
+A: I create the designs and my production partner, Printify, prints and ships each order. That's how every item is made to order instead of sitting in a warehouse.
+
+Q: How long until my mug or t-shirt arrives?
+A: Printing takes 2–5 business days, then shipping time depends on your location (usually 3–7 business days in the US). You'll get tracking by email when it ships.
+
+Q: How do I care for my mug?
+A: The 11 oz ceramic mugs are dishwasher and microwave safe. Hand washing keeps the print brightest the longest.
+
+Q: How do the t-shirts fit, and how do I wash them?
+A: They're a unisex, soft cotton tee with a regular fit; check the size chart in the listing photos. Wash inside out on cold and tumble dry low or hang dry. Don't iron directly on the print.
+
+Q: My mug or t-shirt arrived damaged or misprinted. What now?
+A: I'm sorry! Send me a photo within 14 days of delivery and I'll send a free replacement or a refund.
+
+Q: Can I sell things I make with the cut files?
 A: Yes, up to 500 finished physical items per design. You can't share or resell the digital files themselves.
-
-Q: My file won't upload to Cricut Design Space. What do I do?
-A: Make sure you've unzipped the download first and are uploading a file from the SVG folder, not the ZIP itself. If it still won't work, message me with a screenshot and I'll help.
 
 Q: Can you make a custom design or a different size?
 A: Send a message with what you have in mind. I can't promise every request, but suggestions shape what I make next.
 
 ---------------------------------------------------------------------
-## 10. Saved replies  (Messages → the "…" menu → Saved replies)
+## 11. Saved replies  (Messages → "…" → Saved replies)
 
 Title: Download help
-Hi! You can find your files under You → Purchases and reviews → Download Files on the Etsy website. Please unzip the download on a computer first, then upload a file from the SVG folder (Cricut) or DXF folder (Silhouette Basic). If anything still won't open, let me know which program you're using and I'll send you a file that works.
+Hi! You can find your files under You → Purchases and reviews → Download Files on the Etsy website. Please unzip on a computer first, then upload a file from the SVG folder (Cricut) or DXF folder (Silhouette Basic). For printables, open the PDF and print at 100%. If anything still won't open, tell me which program you're using and I'll send a file that works.
+
+Title: Where is my order? (mugs/tees)
+Thank you for your order! Each item is printed for you after you order, which takes 2–5 business days, and then it ships. You'll get a tracking number by email as soon as it's on its way.
+
+Title: Damaged or misprinted (mugs/tees)
+I'm so sorry! Could you send a photo of the problem? I'll have a replacement printed and shipped to you at no cost.
+
+Title: Change size, colour or address (mugs/tees)
+I'll do my best. Orders go to print within an hour, so please message me right away and I'll check whether it's still possible.
 
 Title: Thank you for your review
-Thank you so much for the kind review! It really helps a small shop like mine. New themes go up every week, so I hope you'll find more you love.
+Thank you so much for the kind review! It really helps a small shop like mine. New designs go up every week, so I hope you'll find more you love.
 
 ---------------------------------------------------------------------
 ## Fields only you can fill
-Your legal name, address, phone, date of birth, tax info (SSN/EIN), and bank details. Etsy verifies these.
+Your legal name, address, phone, date of birth, tax info (SSN/EIN) and bank details. Etsy verifies these.
