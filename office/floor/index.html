@@ -107,16 +107,18 @@ const ROLES = {
   lister:     { role: "Uploads finished products to Etsy", shirt: "#f2b27f", hair: "#2e2438", hat: "cap" },
   analyst:    { role: "Reads sales data and tunes listings", shirt: "#7fc4d6", hair: "#4a3a2a", hat: "glasses" },
   scout:      { role: "Researches which business to open next", shirt: "#d6c27f", hair: "#5a3a2a", hat: "cap2" },
-  launcher:   { role: "Prepares new businesses once Etsy proves out", shirt: "#e08aa0", hair: "#1e1a26", hat: "visor2" }
+  launcher:   { role: "Prepares new businesses once Etsy proves out", shirt: "#e08aa0", hair: "#1e1a26", hat: "visor2" },
+  hunter:     { role: "Scans what's going viral right now for product ideas", shirt: "#e8746a", hair: "#2e2438", hat: "cap" },
+  judge:      { role: "Screens trends for IP risk, demand and lifespan", shirt: "#b8b8c8", hair: "#6b4a2f", hat: "glasses" }
 };
-const ORDER = ["manager", "researcher", "designer", "qa", "lister", "analyst", "scout", "launcher"];
+const ORDER = ["manager", "researcher", "designer", "qa", "lister", "hunter", "analyst", "scout", "launcher", "judge"];
 
 // ---------- room layout (logical pixels) ----------
 const W = 960, H = 600;
 const DESKS = {};
 ORDER.forEach((id, i) => {
-  const col = i % 4, row = Math.floor(i / 4);
-  DESKS[id] = { x: 150 + col * 200, y: 215 + row * 200 };
+  const col = i % 5, row = Math.floor(i / 5);
+  DESKS[id] = { x: 120 + col * 180, y: 215 + row * 200 };
 });
 const SPOTS = {
   coffee: { x: 60, y: 560, label: "coffee" }, cooler: { x: 905, y: 560, label: "water" },

@@ -24,6 +24,8 @@ One scheduled **Manager** run fires every hour. The Manager decides which specia
 | Analyst | `python3 tools/etsy.py stats`, then applies the optimization rules | Etsy variables set and stats older than 24 h |
 | Scout | Researches which business to open next (see "New businesses"); writes `ventures/research/YYYY-MM-DD.md` and re-ranks `ventures/shortlist.md` | Last research older than 7 days |
 | Launcher | Builds a launch kit for the Scout's #1 pick (see "New businesses") | Venture gate met, and no kit in progress or the last kit's owner steps are done |
+| Trend Hunter | Scans what is going viral right now and writes candidates to `trends/` (see "Trend desk") | Last scan older than 6 h |
+| Trend Judge | Screens the Hunter's candidates for IP risk, buyer demand and lifespan; puts approved ones at the top of `queue.md` as `[trend]` | Right after the Trend Hunter |
 
 Work out "last done" times from `office/status.json` and `git log`. If nothing is due, the Manager only refreshes the status file (workers shown as idle with what they're waiting for) and ends the run.
 
@@ -160,6 +162,35 @@ Shifts run from routines (the day and night hourly shifts, plus the watchdog). B
 
 ## Each run ends with
 Tick finished themes in `queue.md`, append to `log/ACTION-LOG.md`, update `office/status.json`, commit, `git push -u origin shop-factory` (retry up to 4 times on network errors; never force-push).
+
+## Trend desk (Trend Hunter + Trend Judge)
+The owner's request (3 Oct 2026): a dedicated team chasing current viral trends to make things people buy right now.
+
+**Trend Hunter** (every 6 h). Find what is taking off this week, not what sold last year:
+- Sources:
+  - Google Trends daily RSS: `curl -s "https://trends.google.com/trending/rss?geo=US"`, which is reachable from the cloud.
+  - Web searches for what's trending on TikTok, Pinterest, Reddit and X right now (the cloud can't open those sites directly).
+  - Etsy's "trending now" and the editors' picks shown in search results.
+  - Viral phrases, sounds and memes from the last 7 days.
+  - Upcoming dates in the next 6 weeks: holidays, awareness days, big releases and seasonal moments.
+- For each candidate, write to `trends/YYYY-MM-DD-HH.md`:
+  - what it is
+  - evidence it is rising, with links and dates
+  - who would buy it
+  - the product idea: phrase or graphic tee/mug, cut file, printable or sticker sheet
+  - the number of Etsy listings already matching it
+  - how long it is likely to last
+- Aim for 5–10 candidates per scan, and add at most 3 to the Judge's list each time.
+
+**Trend Judge** (right after the Hunter). Reject anything that fails any of these:
+- **IP**: no brand, show, film, game, song lyric, sports team, celebrity name or likeness, or a meme built on someone's copyrighted image. Search "<phrase> trademark" before approving a catchphrase, and reject it if it is registered or pending. Etsy removes these listings and they can close the shop.
+- **Taste**: nothing about tragedies, real crimes, politics or mocking real people.
+- **Lifespan**: it must still be selling at least 2 weeks from now. Print-on-demand needs 2–5 days to make plus shipping, so a 3-day meme is already dead by delivery.
+- **Demand**: there must be real buyer intent, not just views, such as people asking "where can I get this shirt" or a rising Etsy search. Skip it if Etsy already has more than about 5,000 matching listings, unless we have a clear angle.
+- **Makeable this week**: within the current AI art budget (code-drawn typography and simple graphics are fine, and cost nothing).
+- Approved trends go to the top of `queue.md` as `- [ ] [trend] <idea> (expires YYYY-MM-DD; evidence: ...)`. Remove expired `[trend]` items unbuilt, and log the rejections with reasons in the same `trends/` file.
+
+**Fast lane**: a `[trend]` item takes the first of the day's 2 listing slots, and the Designer builds it before anything else. The best formats are a print-on-demand tee or mug (phrase or simple graphic) plus a matching SVG cut file of the same design, which counts as 2 listings. The Analyst tags trend listings in `stats/` so the 10 Oct report shows whether trends beat evergreen themes.
 
 ## Turnaround week (4–10 Oct 2026, owner's deadline)
 The owner will shut the factory down unless the shop shows signs of life by 10 Oct. The owner's cost concerns are Recraft and Etsy listing fees, so:
