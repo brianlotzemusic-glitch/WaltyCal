@@ -42,25 +42,18 @@ Shared: `pod/PROVIDERS.md` (providers, costs, pricing), `pod/SAVED-REPLIES.md`, 
 After `create`, read variant `cost` (GET `/shops/{shop}/products/{id}.json`). Retail R (.99) such that
 R − (0.10·R + $0.20) − 0.10·shipping − cost ≥ $6 (mug) / $8 (tee). Shipping is Printify's first-item US rate, which the buyer pays and Etsy also charges fees on (mug $6.69, tee $4.49; 10% is conservative). Check against the **most expensive enabled variant** (tee 3XL), because `printify.py` sets one price for all variants. Then check R against comparable Etsy listings, labelling the figures as estimates. Pilot: mug $16.99 (profit $7.98), tee $28.99 (profit $8.67 at 3XL, $13.67 at S–XL). See `pod/PROVIDERS.md`.
 
-## Listing images: choosing the lead photo is REQUIRED before publish
-Etsy receives only the mockups Printify marks "selected for publishing", in Printify's order, with the "default" one first. After `create`, Printify selects only the plain **front** view: 1 image for a mug, 1 front per enabled colour for a tee. FACTORY.md wants the first photo to show the product in use, so this must be changed before `publish`.
+## Listing images: the lead photo (set by the Lister, no owner step)
+Printify sends Etsy only the mockups it marks "selected for publishing" (after `create`: just the plain front view). Its API ignores `is_default` / `is_selected_for_publishing` (tested 3 Oct 2026), so the lead photo is set on the Etsy side instead, by the Lister, in the same shift as the publish or the next one:
+1. `python3 tools/printify.py publish <pod_dir>` (counts toward the daily listing cap).
+2. A few minutes later: `python3 tools/printify.py etsy-id <pod_dir>` writes `etsy_listing_id`. If it is not on Etsy yet, retry next shift.
+3. `python3 tools/etsy.py lead-photos <pod_dir> <files...>` uploads the mockups saved in `pod_dir/mockups/` as photos #1, #2, ... ahead of Printify's front view:
+   - **Mugs:** `mockups/context-1-11oz.jpg mockups/left-11oz.jpg`
+   - **Tees:** `mockups/folded-<colour>.jpg`, then the other colour fronts not already on Etsy.
+4. Check: GET `/listings/<id>/images` (or view the listing) and confirm the lifestyle shot is first, then log it in `mockups.json` as `"etsy_lead_photo"`.
 
-**The API cannot do it.** Printify accepts an `images` array (with `is_default` / `is_selected_for_publishing`) on PUT but silently ignores it (tested 3 Oct 2026 on 001, twice). Until Printify changes that, the owner (or anyone with the Printify login) does it by hand.
-
-**Manual steps (Printify web app, about 1 minute per product):**
-1. printify.com → **My products** (store "My Etsy Store") → open the product by title.
-2. Go to the mockups/images step (Printify labels it "Mockups" or "Select mockups"; in the editor it is the last step before "Save" or "Publish").
-3. Tick the mockups to publish:
-   - **Mugs:** `context-1` (lifestyle: mug with coffee, candle, pine cones), `left` and `front`; for 001, `left` shows a whole moth.
-   - **Tees:** the four colour fronts, plus `folded` and `hanging-1`.
-4. Set the main/default image (Printify: "Set as main" or drag it to the first position):
-   - **Mugs:** `context-1`.
-   - **Tees:** `folded` on the first colour (or a front if Printify offers no lifestyle shot for that provider).
-5. **Save.** Then re-run the Designer's check: GET the product and confirm `images` now lists those mockups with the right one `is_default: true`, and record the result in `mockups.json`.
-
-Fallback: after `publish`, the photo order can be changed in Etsy's listing editor (Photos → drag the lifestyle shot first). Printify may restore its own order on a later re-publish, though, so fix it in Printify first.
+Later re-publishes from Printify send `images: false` (the tool does this once `etsy_published` exists), so the Etsy photo order is kept. If a product's images ever get reset, run step 3 again.
 
 ## Tool notes
 - `printify.py update <pod_dir> [--no-art]` (added in QA round 1) syncs title, description, tags, one price for the enabled variants (all others disabled) and, without `--no-art`, re-uploads the print files. With print files, Printify requires `print_areas.variant_ids` to cover **every** variant of the product, enabled or not; the tool does this. It never publishes.
-- Still missing: per-variant prices, and mockup selection (the API ignores it; see above).
+- Still missing: per-variant prices. Mockup selection in Printify is not possible through the API, so the lead photo is set through Etsy (see above).
 - Delete-and-recreate (DELETE `/shops/{shop}/products/{id}.json`, then `create`) is only for unpublished drafts, i.e. those whose `external` field is empty.

@@ -80,3 +80,4 @@
 | 2026-10-03 11:14 | Analyst stats: 8 live, 1 view, 0 sales; copied live Etsy titles/descriptions for 007 and 008 into their files (edited on Etsy after publishing; disclosure intact) | Daily stats; owner chose to keep Etsy's titles |
 | 2026-10-03 12:14 | Push to owner (held overnight): Printify lead-photo step for 4 POD products; Recraft credits top-up | First shift after 8am ET |
 - 2026-10-03 13:15 UTC — Manager: hourly check, nothing due. Waiting on owner replies (POD main photos, Recraft top-up). Designer next ~22:00 UTC.
+- 2026-10-03 13:40 UTC: Manager. The owner doesn't want to set images by hand. The Printify API can't set the main mockup, so the Lister now sets it on the Etsy side: added `printify.py etsy-id` and `etsy.py lead-photos`, re-publishes keep Etsy photos (images:false), and formats/pod.md + FACTORY.md are updated. The owner step for the POD pilot is removed. The POD pilot publishes 2/day from Oct 4.

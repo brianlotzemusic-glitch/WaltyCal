@@ -7,6 +7,8 @@ Commands:
   python3 tools/etsy.py upload <bundle_dir>     create a listing from listing.json
   python3 tools/etsy.py update <bundle_dir>     push edited listing.json text to an uploaded listing (and turn auto-renew on)
   python3 tools/etsy.py stats                   write stats/listings.csv (views, favorites, sales)
+  python3 tools/etsy.py lead-photos <dir> <img>...  add photos to a live listing as #1, #2, ... (existing photos move down);
+                                                used for Printify products, whose API cannot choose the main photo
 
 Environment (set in the cloud environment settings, never committed):
   ETSY_KEYSTRING, ETSY_SHARED_SECRET   from the Etsy developer app
@@ -119,6 +121,16 @@ def update(bundle_dir):
     print(f"listing {lid} updated: {spec['title']}")
 
 
+def lead_photos(item_dir, images):
+    """Upload images to an existing listing at ranks 1..n, ahead of the photos already there."""
+    lid = open(os.path.join(item_dir, "etsy_listing_id")).read().strip()
+    shop = shop_id()
+    for rank, img in enumerate(images, 1):
+        path = img if os.path.exists(img) else os.path.join(item_dir, img)
+        call("POST", f"/shops/{shop}/listings/{lid}/images", form={"rank": rank}, files={"image": path})
+        print(f"listing {lid}: photo #{rank} = {os.path.basename(path)}")
+
+
 def stats():
     shop = shop_id()
     sold = {}
@@ -170,6 +182,8 @@ if __name__ == "__main__":
         taxonomy(sys.argv[2])
     elif cmd == "upload":
         upload(sys.argv[2])
+    elif cmd == "lead-photos":
+        lead_photos(sys.argv[2], sys.argv[3:])
     elif cmd == "publish":
         lid = open(os.path.join(sys.argv[2], "etsy_listing_id")).read().strip()
         call("PATCH", f"/shops/{shop_id()}/listings/{lid}", form={"state": "active"})

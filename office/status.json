@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T13:15:00Z",
+  "updated_at": "2026-10-03T13:40:00Z",
   "next_run_at": "2026-10-03T13:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -39,9 +39,9 @@
     {
       "id": "lister",
       "name": "Lister",
-      "state": "blocked",
-      "task": "4 print-on-demand products approved. Waiting for the owner to set the lifestyle photo as main image in Printify (steps in formats/pod.md), then they publish, 2 a day.",
-      "since": "2026-10-03T11:02:39Z"
+      "state": "waiting",
+      "task": "4 print-on-demand products approved. No owner step now: Lister publishes them 2 a day (from tomorrow; today's cap is used) and sets the lifestyle photo first through Etsy.",
+      "since": "2026-10-03T13:40:00Z"
     },
     {
       "id": "analyst",
@@ -73,6 +73,11 @@
     "Highland cow Christmas"
   ],
   "feed": [
+    {
+      "at": "2026-10-03T13:40:00Z",
+      "who": "Manager",
+      "text": "Owner: agents should set the lead photo. Added etsy.py lead-photos + printify.py etsy-id; Lister now sets it through Etsy after publish. Printify owner step removed."
+    },
     {
       "at": "2026-10-03T13:15:00Z",
       "who": "Manager",
@@ -217,11 +222,6 @@
       "t": "2026-10-01T22:38:09Z",
       "who": "manager",
       "msg": "Etsy is connected and bundle 003 is a draft. Auto-publish is paused until the owner confirms the listing fees."
-    },
-    {
-      "t": "2026-10-01T19:42:48Z",
-      "who": "manager",
-      "msg": "Owner decided: gingerbread letters as a full A\u2013Z bundle; soccer stays at the end of the queue."
     }
   ],
   "venture_gate": {

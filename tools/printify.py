@@ -11,7 +11,9 @@ Commands:
   python3 tools/printify.py create <pod_dir>               create the product from pod_dir/product.json
   python3 tools/printify.py update <pod_dir> [--no-art]    sync an existing product to product.json (title, description,
                                                            tags, price, enabled variants, print files); does not publish
-  python3 tools/printify.py publish <pod_dir>              publish it to Etsy (writes pod_dir/etsy_published)
+  python3 tools/printify.py publish <pod_dir>              publish it to Etsy (writes pod_dir/etsy_published); a re-publish
+                                                           leaves Etsy's photos alone so the lead photo set via Etsy stays
+  python3 tools/printify.py etsy-id <pod_dir>              once Etsy has the listing, write its id to pod_dir/etsy_listing_id
 
 Environment: PRINTIFY_API_TOKEN (Printify → My account → Connections → API tokens).
 Optional PRINTIFY_SHOP_ID; otherwise the first shop whose sales_channel is etsy is used.
@@ -122,11 +124,21 @@ def update(pod_dir, art=True):
 
 def publish(pod_dir):
     pid = open(os.path.join(pod_dir, "printify_product_id")).read().strip()
+    first = not os.path.exists(os.path.join(pod_dir, "etsy_published"))
     call("POST", f"/shops/{shop_id()}/products/{pid}/publish.json",
-         {"title": True, "description": True, "images": True, "variants": True, "tags": True,
+         {"title": True, "description": True, "images": first, "variants": True, "tags": True,
           "keyFeatures": True, "shipping_template": True})
     open(os.path.join(pod_dir, "etsy_published"), "w").write(time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
     print(f"publish requested for {pid}; Printify pushes it to Etsy within a few minutes")
+
+
+def etsy_id(pod_dir):
+    pid = open(os.path.join(pod_dir, "printify_product_id")).read().strip()
+    ext = call("GET", f"/shops/{shop_id()}/products/{pid}.json").get("external") or {}
+    if not ext.get("id"):
+        sys.exit(f"{pid}: not on Etsy yet; try again in a few minutes")
+    open(os.path.join(pod_dir, "etsy_listing_id"), "w").write(str(ext["id"]))
+    print(f"{pid} -> Etsy listing {ext['id']} {ext.get('handle', '')}")
 
 
 if __name__ == "__main__":
@@ -152,6 +164,8 @@ if __name__ == "__main__":
         create(a[1])
     elif a[0] == "update":
         update(a[1], art="--no-art" not in a)
+    elif a[0] == "etsy-id":
+        etsy_id(a[1])
     elif a[0] == "publish":
         publish(a[1])
     else:
