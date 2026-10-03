@@ -2,6 +2,7 @@
 
 Q4 deadline: holiday themes need to be listed by about Nov 15 to sell this season.
 
+- [ ] [trend] "Small autumn moments" printable checklist + print-then-cut sticker sheet: our own list of lived-in autumn moments (heating on for the first time, first soup, rainy commute, leaf walk, candle season, first frost) in moody woodland line art (fox, mushrooms, lantern, oak leaves); PDF US Letter + A4, code-drawn type/art, list this week (expires 2026-11-15; evidence: Pepper 1 Oct, Time Is Now 2 Oct, SocialPilot #cozyseason wk of 29 Sep 2026; fall bucket list printables sell on Etsy but crowded, angle is small real moments + Duskwood art)
 - [x] 001 Spiderweb snowflakes (creepy Christmas)
 - [x] 002 Gothic Christmas ornaments
 - [x] 004 Bat Christmas

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T21:13:23Z",
+  "updated_at": "2026-10-03T21:17:41Z",
   "next_run_at": "2026-10-03T21:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -67,26 +67,31 @@
     {
       "id": "hunter",
       "name": "Trend Hunter",
-      "state": "working",
-      "task": "Second viral-trend scan (TikTok first).",
-      "since": "2026-10-03T21:13:23Z"
+      "state": "idle",
+      "task": "Scan 2: 6 candidates, 3 TikTok picks (trends/2026-10-03-21.md). Next scan after ~03:15 UTC.",
+      "since": "2026-10-03T21:17:41Z"
     },
     {
       "id": "judge",
       "name": "Trend Judge",
       "state": "idle",
-      "task": "Rejected all 3 picks: a song lyric, a saturated subject (~57k listings) with a Disney sound, and an office joke with no buyer intent. Nothing added to the queue.",
-      "since": "2026-10-03T14:30:00Z"
+      "task": "Scan 2: approved 1 (\"small autumn moments\" printable + stickers, expires 15 Nov), rejected 2 (faded; Gold Star trademark/sensitivity).",
+      "since": "2026-10-03T21:17:41Z"
     }
   ],
   "queue": [
+    "[trend] \"Small autumn moments\" printable checklist + print-then-cut sticker sheet: our own",
     "[format] Party printables pilot: Woodland Christmas bingo, 30 unique cards + calling cards",
     "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts (f",
     "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
-    "Butterflies & dragonflies (year-round; butterfly svg ~4.4k/mo, dragonfly ~590/mo on only ~",
-    "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages ("
+    "Butterflies & dragonflies (year-round; butterfly svg ~4.4k/mo, dragonfly ~590/mo on only ~"
   ],
   "feed": [
+    {
+      "t": "2026-10-03T21:17:41Z",
+      "who": "judge",
+      "msg": "Approved 1 trend: 'small autumn moments' printable + sticker sheet. Rejected 2. Fast lane: it goes to the top of the queue."
+    },
     {
       "t": "2026-10-03T21:13:23Z",
       "who": "designer",
@@ -231,11 +236,6 @@
       "t": "2026-10-02T22:29:34Z",
       "who": "designer",
       "msg": "Built bundle 008: Christmas village (2 skyline panels, 4 standing houses). Sent to QA."
-    },
-    {
-      "t": "2026-10-02T22:13:44Z",
-      "who": "designer",
-      "msg": "Started bundle 008: Christmas village silhouettes."
     }
   ],
   "venture_gate": {
