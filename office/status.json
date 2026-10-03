@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-03T17:20:00Z",
-  "next_run_at": "2026-10-03T17:12:00Z",
+  "updated_at": "2026-10-03T17:13:20Z",
+  "next_run_at": "2026-10-03T18:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 10,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Shift done. Next: Trend Hunter after 20:20 UTC, Designer after ~21:30 UTC.",
-      "since": "2026-10-03T16:58:00Z"
+      "task": "Hourly check: nothing due. Trend Hunter after 20:20 UTC, Designer (Woodland Christmas bingo) after ~21:30 UTC.",
+      "since": "2026-10-03T17:13:20Z"
     },
     {
       "id": "researcher",
@@ -27,21 +27,21 @@
       "name": "Designer",
       "state": "idle",
       "task": "Bundle 009 approved and live. Next build after ~21:30 UTC: Woodland Christmas bingo (printable pilot).",
-      "since": "2026-10-03T16:58:00Z"
+      "since": "2026-10-03T16:29:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
       "task": "Approved bundle 009 in round 2 (fern gaps fixed, all 6 pass width and gap tests).",
-      "since": "2026-10-03T16:58:00Z"
+      "since": "2026-10-03T16:29:00Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "waiting",
       "task": "Published the luna moth mug (Etsy 4587829689, $16.99) with the lifestyle photo first. 4 of 4 slots used today. Oct 4: the other mug + 2 tees, then retitle the old listings (free).",
-      "since": "2026-10-03T17:20:00Z"
+      "since": "2026-10-03T16:44:00Z"
     },
     {
       "id": "analyst",
@@ -88,34 +88,34 @@
   ],
   "feed": [
     {
-      "t": "2026-10-03T17:20:00Z",
+      "t": "2026-10-03T16:44:00Z",
       "who": "lister",
       "msg": "Published the luna moth mug (Etsy 4587829689) with the lifestyle photo first. 10 listings live."
     },
     {
-      "t": "2026-10-03T16:58:00Z",
+      "t": "2026-10-03T16:29:00Z",
       "who": "lister",
       "msg": "Published Botanical frost snowflakes (Etsy 4587827848). 9 listings live."
     },
     {
-      "t": "2026-10-03T16:52:00Z",
+      "t": "2026-10-03T16:27:00Z",
       "who": "qa",
       "msg": "Approved bundle 009 in round 2: fern curls now cut cleanly."
-    },
-    {
-      "t": "2026-10-03T16:33:00Z",
-      "who": "qa",
-      "msg": "Sent bundle 009 back: the fern-frond curls nearly touch their stem, so the cutter would tear them. Other 5 designs pass."
-    },
-    {
-      "t": "2026-10-03T16:28:00Z",
-      "who": "designer",
-      "msg": "Built bundle 009: 6 botanical frost snowflakes (pine, fern, berry, holly, acorn, twig). Sent to QA."
     },
     {
       "t": "2026-10-03T16:14:00Z",
       "who": "designer",
       "msg": "Started bundle 009: Botanical frost snowflakes."
+    },
+    {
+      "t": "2026-10-03T16:05:00Z",
+      "who": "qa",
+      "msg": "Sent bundle 009 back: the fern-frond curls nearly touch their stem, so the cutter would tear them. Other 5 designs pass."
+    },
+    {
+      "t": "2026-10-03T15:55:00Z",
+      "who": "designer",
+      "msg": "Built bundle 009: 6 botanical frost snowflakes (pine, fern, berry, holly, acorn, twig). Sent to QA."
     },
     {
       "t": "2026-10-03T14:30:00Z",
