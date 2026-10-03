@@ -166,10 +166,25 @@ Tick finished themes in `queue.md`, append to `log/ACTION-LOG.md`, update `offic
 ## Trend desk (Trend Hunter + Trend Judge)
 The owner's request (3 Oct 2026): a dedicated team chasing current viral trends to make things people buy right now.
 
-**Trend Hunter** (every 6 h). Find what is taking off this week, not what sold last year:
-- Sources:
-  - Google Trends daily RSS: `curl -s "https://trends.google.com/trending/rss?geo=US"`, which is reachable from the cloud.
-  - Web searches for what's trending on TikTok, Pinterest, Reddit and X right now (the cloud can't open those sites directly).
+**Trend Hunter** (every 6 h). Find what is taking off this week, not what sold last year.
+**TikTok comes first** (owner, 3 Oct 2026: "whatever is becoming viral on TikTok needs to be made"). Every scan starts with TikTok, and at least 2 of each scan's 3 picks for the Judge must come from TikTok.
+- The cloud can't read TikTok directly: the Creative Center's data needs a login, and its pages fail behind the proxy. So find TikTok trends through web search, every scan:
+  - "viral on TikTok this week"
+  - "TikTok trends this week"
+  - "TikTok trending hashtags" and "trending sounds" roundups, which marketing blogs and newsletters publish weekly from the Creative Center
+  - "#TikTokMadeMeBuyIt"
+  - "TikTok shirt", "TikTok mug" and "TikTok phrase"
+  - news stories about a phrase, sound or aesthetic going viral
+
+  Note the date of every source and ignore anything older than 10 days. A trend counts only if there's evidence it is rising now: a recent date, a growing video count, or several sources in the same week.
+- Look especially for the things that turn into products:
+  - catchphrases and slang people repeat
+  - aesthetics ("___core", "___ girl autumn")
+  - in-jokes for a hobby or job
+  - seasonal TikTok moments
+- Other sources, after TikTok:
+  - Google Trends daily RSS: `curl -s "https://trends.google.com/trending/rss?geo=US"`, which is reachable from the cloud. Use it to confirm a TikTok trend is spreading to search.
+  - Pinterest, Reddit and X, through web search.
   - Etsy's "trending now" and the editors' picks shown in search results.
   - Viral phrases, sounds and memes from the last 7 days.
   - Upcoming dates in the next 6 weeks: holidays, awareness days, big releases and seasonal moments.
