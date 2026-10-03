@@ -1,7 +1,7 @@
 # Listing — Botanical Frost Snowflakes SVG bundle
 
 **Title (≤140 chars)**
-Snowflake SVG Bundle, Botanical Christmas Snowflakes with Pine, Fern, Holly, Berry & Acorn, Winter Cut Files for Cricut (SVG DXF PNG)
+Snowflake SVG Bundle, Botanical Christmas Snowflakes with Pine, Fern, Holly, Berry & Acorn, Winter Cut Files for Cricut (svg, dxf, png)
 
 **Price:** $4.00 (standard 6-design bundle price until stats exist)
 
@@ -14,7 +14,7 @@ Winter, gathered from the woods: six original snowflakes whose arms are made of 
 
 Each design is a single-layer, single-path cut file, so no slicing, welding or cleanup is needed. Every leaf, berry and acorn is attached, so nothing falls out. Cut them from vinyl for windows, mugs and tumblers, from cardstock for ornaments, gift tags, cards and garlands, from wood or acrylic on a laser, or from heat-transfer vinyl for shirts, totes and pillows.
 
-WHAT&#39;S INCLUDED
+WHAT'S INCLUDED
 • 6 designs: Pine Bough, Fern Frond, Berry Sprig, Holly Crystal, Acorn & Oak, Frosted Twig
 • SVG — Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
 • DXF — Silhouette Studio Basic Edition, laser software (inches)
@@ -24,7 +24,7 @@ SIZING TIP
 Default size is 6 × 6 in; resize freely with the proportions locked. We recommend 3 in or larger for vinyl, 4 in or larger for cardstock and heat-transfer vinyl, and 3.5 in or larger for 3 mm laser-cut wood or acrylic. Do a test cut on a new material first.
 
 LICENSE
-Personal use, plus small-business use on up to 500 finished physical items per design. Please don&#39;t share or resell the digital files.
+Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
 
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. Files are available right after purchase in a single ZIP from Duskwood Designs Co.

@@ -1,19 +1,19 @@
 {
-  "updated_at": "2026-10-03T16:33:00Z",
-  "next_run_at": "2026-10-03T16:12:00Z",
+  "updated_at": "2026-10-03T16:58:00Z",
+  "next_run_at": "2026-10-03T17:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 8,
-  "bundles_built": 8,
+  "listings_live": 9,
+  "bundles_built": 9,
   "uploads_pending": 4,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "Hourly shift: Designer then QA.",
-      "since": "2026-10-03T16:14:00Z"
+      "state": "idle",
+      "task": "Shift done. Next: Trend Hunter after 20:20 UTC, Designer after ~21:30 UTC.",
+      "since": "2026-10-03T16:58:00Z"
     },
     {
       "id": "researcher",
@@ -25,23 +25,23 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Fixing bundle 009: the fern curls need wider gaps (QA round 1).",
-      "since": "2026-10-03T16:33:00Z"
+      "state": "idle",
+      "task": "Bundle 009 approved and live. Next build after ~21:30 UTC: Woodland Christmas bingo (printable pilot).",
+      "since": "2026-10-03T16:58:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Sent bundle 009 back: fern curls nearly touch the stem (1\u20132 unit slit). Everything else passed.",
-      "since": "2026-10-03T16:33:00Z"
+      "task": "Approved bundle 009 in round 2 (fern gaps fixed, all 6 pass width and gap tests).",
+      "since": "2026-10-03T16:58:00Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "waiting",
-      "task": "4 print-on-demand products approved. No owner step now: Lister publishes them 2 a day (from tomorrow; today's cap is used) and sets the lifestyle photo first through Etsy.",
-      "since": "2026-10-03T13:22:00Z"
+      "task": "Published 009 (Etsy 4587827848). 3 of 4 slots used today. Oct 4: 4 POD products + lead photos, then retitle the 8 old listings (free).",
+      "since": "2026-10-03T16:58:00Z"
     },
     {
       "id": "analyst",
@@ -80,13 +80,23 @@
     }
   ],
   "queue": [
-    "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts",
-    "Nativity silhouettes",
-    "Butterflies & dragonflies",
-    "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages",
-    "Highland cow Christmas"
+    "[format] Party printables pilot: Woodland Christmas bingo, 30 unique cards + calling cards",
+    "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts (f",
+    "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
+    "Butterflies & dragonflies (year-round; butterfly svg ~4.4k/mo, dragonfly ~590/mo on only ~",
+    "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages ("
   ],
   "feed": [
+    {
+      "t": "2026-10-03T16:58:00Z",
+      "who": "lister",
+      "msg": "Published Botanical frost snowflakes (Etsy 4587827848). 9 listings live."
+    },
+    {
+      "t": "2026-10-03T16:52:00Z",
+      "who": "qa",
+      "msg": "Approved bundle 009 in round 2: fern curls now cut cleanly."
+    },
     {
       "t": "2026-10-03T16:33:00Z",
       "who": "qa",
@@ -226,16 +236,6 @@
       "t": "2026-10-02T10:30:47Z",
       "who": "qa",
       "msg": "Sent bundle 007 back: the icing turns into stairs on diagonal letters. All letters read well; geometry checks pass."
-    },
-    {
-      "t": "2026-10-02T10:26:12Z",
-      "who": "designer",
-      "msg": "Built bundle 007: 26 gingerbread letter ornaments A\u2013Z. Sent to QA."
-    },
-    {
-      "t": "2026-10-02T10:15:13Z",
-      "who": "designer",
-      "msg": "Started bundle 007: Gingerbread letter ornaments A\u2013Z."
     }
   ],
   "venture_gate": {
