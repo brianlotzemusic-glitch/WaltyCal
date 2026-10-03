@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T16:14:00Z",
+  "updated_at": "2026-10-03T16:28:00Z",
   "next_run_at": "2026-10-03T16:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -25,16 +25,16 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Building bundle 009: Botanical frost snowflakes (6 cut files).",
-      "since": "2026-10-03T16:14:00Z"
+      "state": "idle",
+      "task": "Built bundle 009 Botanical frost snowflakes (6 code-drawn designs, $0 AI). Awaiting QA.",
+      "since": "2026-10-03T16:28:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
-      "state": "idle",
-      "task": "Approved all 4 print-on-demand pilot products (2 mugs, 2 tees) in round 2.",
-      "since": "2026-10-03T11:02:39Z"
+      "state": "working",
+      "task": "Reviewing bundle 009 (round 1).",
+      "since": "2026-10-03T16:28:00Z"
     },
     {
       "id": "lister",
@@ -87,6 +87,11 @@
     "Highland cow Christmas"
   ],
   "feed": [
+    {
+      "t": "2026-10-03T16:28:00Z",
+      "who": "designer",
+      "msg": "Built bundle 009: 6 botanical frost snowflakes (pine, fern, berry, holly, acorn, twig). Sent to QA."
+    },
     {
       "t": "2026-10-03T16:14:00Z",
       "who": "designer",
@@ -231,11 +236,6 @@
       "t": "2026-10-02T10:15:13Z",
       "who": "analyst",
       "msg": "First stats: 6 listings live, 1 view, no sales yet. The live Etsy titles differ from our files."
-    },
-    {
-      "t": "2026-10-02T00:42:42Z",
-      "who": "manager",
-      "msg": "Hourly shifts are paused: the new routines can't push to GitHub until the repo is attached to them."
     }
   ],
   "venture_gate": {
