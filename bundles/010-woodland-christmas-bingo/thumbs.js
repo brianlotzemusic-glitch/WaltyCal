@@ -75,7 +75,7 @@ const pages = {
    <h1>What's <em>included</em></h1><div class=sub>20 printable pages · US Letter + A4 pdf · instant download</div>
    <div class=row>
     ${[[1, 'How to play', 'rules + 5 ways to win'], [2, '30 bingo cards', 'all different, 2 per page'], [17, '30 calling cards', 'cut apart and draw'],
-       [19, 'Caller checklist', 'tick as you call'], [20, '72 markers', 'enough for 3 at blackout']]
+       [19, 'Caller checklist', 'tick as you call'], [20, '72 markers', 'for 3 at blackout']]
       .map(([n, t, s]) => `<div class=it><div class=paper style="background-image:url(${pg(n)})"></div><b>${t}</b><span>${s}</span></div>`).join('')}
    </div>
    <div class=feat>${[[16, '2 to 30 players', 'family night, parties, classrooms'], [25, 'Ages 3 and up', 'pictures, no reading needed'],

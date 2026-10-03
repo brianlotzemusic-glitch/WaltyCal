@@ -1,19 +1,19 @@
 {
-  "updated_at": "2026-10-03T21:36:47Z",
-  "next_run_at": "2026-10-03T21:12:00Z",
+  "updated_at": "2026-10-03T21:42:07Z",
+  "next_run_at": "2026-10-03T23:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 10,
-  "bundles_built": 9,
+  "bundles_built": 10,
   "uploads_pending": 4,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "Hourly shift: Trend Hunter + Designer running.",
-      "since": "2026-10-03T21:13:23Z"
+      "state": "idle",
+      "task": "Shift done. Lister publishes from 00:12 UTC.",
+      "since": "2026-10-03T21:42:07Z"
     },
     {
       "id": "researcher",
@@ -25,23 +25,23 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Fixing bundle 010 bingo (QA round 1).",
-      "since": "2026-10-03T21:36:47Z"
+      "state": "idle",
+      "task": "Bundle 010 bingo approved. Next build after ~03:00 UTC: the [trend] small autumn moments printable (fast lane).",
+      "since": "2026-10-03T21:42:07Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Sent bundle 010 back: marker discs, false \"ties are rare\" claim, marker count, image 4 consistency.",
-      "since": "2026-10-03T21:36:47Z"
+      "task": "Approved bundle 010 bingo in round 2.",
+      "since": "2026-10-03T21:42:07Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "waiting",
-      "task": "Published the luna moth mug (Etsy 4587829689, $16.99) with the lifestyle photo first. 4 of 4 slots used today. Oct 4: the other mug + 2 tees, then retitle the old listings (free).",
-      "since": "2026-10-03T16:44:00Z"
+      "task": "Oct 4 (4 slots): ornament mug, 2 tees, bingo 010. Then free retitles of the old listings.",
+      "since": "2026-10-03T21:42:07Z"
     },
     {
       "id": "analyst",
@@ -81,12 +81,17 @@
   ],
   "queue": [
     "[trend] \"Small autumn moments\" printable checklist + print-then-cut sticker sheet: our own",
-    "[format] Party printables pilot: Woodland Christmas bingo, 30 unique cards + calling cards",
     "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts (f",
     "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
-    "Butterflies & dragonflies (year-round; butterfly svg ~4.4k/mo, dragonfly ~590/mo on only ~"
+    "Butterflies & dragonflies (year-round; butterfly svg ~4.4k/mo, dragonfly ~590/mo on only ~",
+    "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages ("
   ],
   "feed": [
+    {
+      "t": "2026-10-03T21:42:07Z",
+      "who": "qa",
+      "msg": "Approved bundle 010: Woodland Christmas bingo. Lists Oct 4."
+    },
     {
       "t": "2026-10-03T21:36:47Z",
       "who": "qa",
@@ -231,11 +236,6 @@
       "t": "2026-10-02T22:45:29Z",
       "who": "manager",
       "msg": "Hooked up the new office dashboard."
-    },
-    {
-      "t": "2026-10-02T22:38:51Z",
-      "who": "qa",
-      "msg": "Approved bundle 008: Christmas village silhouettes."
     }
   ],
   "venture_gate": {
