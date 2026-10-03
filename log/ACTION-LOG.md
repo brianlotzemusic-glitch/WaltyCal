@@ -75,3 +75,5 @@
 | 2026-10-03 10:36 | Designer built POD pilot: 4 unpublished Printify drafts (mugs $16.99, tees $27.99 planned; Printify tee drafts still $24.99); Recraft spend $4.22 this run; Recraft account reported not_enough_credits; committed as AWAITING QA | Pilot build |
 | 2026-10-03 10:36 | HELD for 8am: Duskwood: Recraft says it's out of credits (our tally: $4.45 of $30 this month). Top up Recraft for more AI art? Default 10am ET: Designer keeps drawing in code. | Quiet hours |
 | 2026-10-03 10:41 | QA round 1 on POD pilot: 004 SEND BACK (art artefacts); 001-003 approved with blockers (tee price, description sync, lead photo). Tee price raised to $28.99 to clear $8 profit after Etsy fees on shipping | QA findings |
+| 2026-10-03 11:02 | QA round 2 on POD pilot: all 4 APPROVED WITH OWNER STEPS (set lifestyle photo as main image in Printify) | Ready once the owner does the photo step |
+| 2026-10-03 11:02 | HELD for 8am: Duskwood: 4 mug/tee products approved. Set the lifestyle photo as main image in Printify (formats/pod.md) so they can publish. Default: they wait. | Quiet hours |

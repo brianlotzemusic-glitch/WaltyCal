@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-03T11:00:28Z",
+ "updated_at": "2026-10-03T11:02:39Z",
  "next_run_at": "2026-10-03T11:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 8,
  "bundles_built": 8,
- "uploads_pending": 0,
+ "uploads_pending": 4,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
-   "state": "working",
-   "task": "Hourly shift: Designer is due; Printify and Recraft keys are now available.",
-   "since": "2026-10-03T10:13:34Z"
+   "state": "idle",
+   "task": "POD pilot approved; waiting on the owner's Printify photo step.",
+   "since": "2026-10-03T11:02:39Z"
   },
   {
    "id": "researcher",
@@ -26,22 +26,22 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Fixed the POD pilot after QA round 1 (bat-tree art cleaned, tees $28.99, drafts synced). Waiting for QA.",
-   "since": "2026-10-03T11:00:28Z"
+   "task": "Next up after about 22:00 UTC: [format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts.",
+   "since": "2026-10-03T11:02:39Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "working",
-   "task": "Final round-2 review of the POD pilot.",
-   "since": "2026-10-03T11:00:28Z"
+   "state": "idle",
+   "task": "Approved all 4 print-on-demand pilot products (2 mugs, 2 tees) in round 2.",
+   "since": "2026-10-03T11:02:39Z"
   },
   {
    "id": "lister",
    "name": "Lister",
-   "state": "idle",
-   "task": "Published 007 (Etsy 4587461298) and 008 (Etsy 4587461356). 8 listings live; today's cap of 2 is used.",
-   "since": "2026-10-03T00:14:25Z"
+   "state": "blocked",
+   "task": "4 print-on-demand products approved. Waiting for the owner to set the lifestyle photo as main image in Printify (steps in formats/pod.md), then they publish, 2 a day.",
+   "since": "2026-10-03T11:02:39Z"
   },
   {
    "id": "analyst",
@@ -66,13 +66,18 @@
   }
  ],
  "queue": [
-  "[pod] Print-on-demand pilot: 2 mugs",
   "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts",
   "Nativity silhouettes",
   "Butterflies & dragonflies",
-  "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages"
+  "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages",
+  "Highland cow Christmas"
  ],
  "feed": [
+  {
+   "t": "2026-10-03T11:02:39Z",
+   "who": "qa",
+   "msg": "Approved the print-on-demand pilot: luna moth mug, ornament mug, holly skull tee, bat-wing tree tee."
+  },
   {
    "t": "2026-10-03T10:41:06Z",
    "who": "qa",
@@ -217,11 +222,6 @@
    "t": "2026-10-01T18:56:15Z",
    "who": "designer",
    "msg": "Fixed bundle 006: pinecone blots gone, Etsy category added, tree redrawn with real fir branches. Back to QA."
-  },
-  {
-   "t": "2026-10-01T18:44:42Z",
-   "who": "qa",
-   "msg": "Sent bundle 006 back: missing Etsy category and two solid blots on the pinecone. The other five designs passed."
   }
  ],
  "venture_gate": {
