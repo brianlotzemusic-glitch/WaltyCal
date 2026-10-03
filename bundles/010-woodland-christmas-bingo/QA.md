@@ -32,3 +32,27 @@
 
 ## Would I pay $3.50?
 After fixes 1–4, yes. The cards and art are better than most "christmas bingo" results. As shipped, a buyer who prints page 20 would get markers that don't look like the photos and don't work well in play.
+
+---
+
+# QA round 2 (final)
+
+**Verdict: APPROVED, with one caption fix that must be made before upload (item 1 below). No other changes are needed.**
+
+## Re-checked independently
+- **PDFs:** each has 20 pages. Letter is 612×792 and A4 is 594.96×841.92. pdffonts shows every font embedded. Each file is 1.7 MB.
+- **ZIP:** holds exactly the 2 PDFs and README-LICENSE.txt. The README inside the ZIP is the same as the bundle copy.
+- **Cards:** `cards.json` is unchanged; Card 01 still starts 27, 10, 1, 29, 18. The card pages render the same as in round 1. `gen.py --check` prints ALL CHECKS PASS, including the new check that the copy states the tie rule and the marker count.
+- **Markers (page 20, Letter and A4):** 72 opaque gold discs with a plum ring and no game pictures, each about 21 mm. 72 = 3 × 24, so "enough for 3 players at blackout" is correct. They read clearly against white cells. Ink use goes up a little, which is acceptable.
+- **Page 1 (both sizes):** the tie rule "Two BINGOs on the same call: both win, or play one quick 'any line' round." sits under Ways to win. The page map says 72 markers. Nothing is clipped on Letter, and "ties are rare" is gone.
+- **Copy:** the description, the README and page 1 all state the tie rule and the 72-marker maths. The description's counts are right: 30 cards, 30 calling cards, 72 markers, 20 pages, Letter + A4. The LISTING.md description is the same text as the description in listing.json. The disclosure line is still the exact last line. "Rare" no longer appears in any buyer-facing copy.
+- **Image 1:** the markers shown now match the printed markers. The "Snowflake" and "Squirrel" calling cards match covered cells on Card 01's middle row. The thumbnail still clears the scroller bar.
+- **Image 4:** the "Pine Tree" calling card matches Card 07 row 5, column 5, which is covered. I checked the whole covered diagonal against `cards.json`.
+- **Snowman:** the outline is visibly heavier, and it reads at card size.
+- **Spec:** the tie section and marker rules are updated, with the simulation figures recorded.
+
+## Must fix before upload (does not need another QA round)
+1. **Image 2 (`2-whats-included.png`):** the caption under the markers is cut off and reads "enough for 3 at". Change it to "enough for 3 players" or "3 players at blackout", re-render the image, and re-run `gen.py --check`.
+
+## Optional, later
+- Add a check to `thumbs.js` or to the spec that each caption fits its column width, so text can't be silently cut off.
