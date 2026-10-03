@@ -70,3 +70,4 @@
 | 2026-10-02 23:13 | Researcher started daily trend refresh | Researcher due (24 h since last research) |
 | 2026-10-02 23:16 | Researcher daily refresh: small reorder (Nativity, Highland cow up; Witchy crystals down); evidence in research/refresh-2026-10-02.md | Daily research |
 | 2026-10-03 00:01 | Printify connected (shop 29175603), auto order submission, Etsy production partner added; POD pilot unblocked | Owner completed Printify setup |
+| 2026-10-03 00:14 | Lister published 007 (Etsy 4587461298, $6) and 008 (Etsy 4587461356, $4); daily cap of 2 used | Approved bundles; new UTC day |

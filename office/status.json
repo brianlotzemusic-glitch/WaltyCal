@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-02T23:16:43Z",
- "next_run_at": "2026-10-03T00:12:00Z",
+ "updated_at": "2026-10-03T00:14:25Z",
+ "next_run_at": "2026-10-03T01:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 6,
+ "listings_live": 8,
  "bundles_built": 8,
- "uploads_pending": 2,
+ "uploads_pending": 0,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "Shift done. Bundles 007 and 008 publish after 00:00 UTC.",
-   "since": "2026-10-02T23:16:43Z"
+   "task": "Shift done. Designer next after about 10:30 UTC.",
+   "since": "2026-10-03T00:14:25Z"
   },
   {
    "id": "researcher",
@@ -40,8 +40,8 @@
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Bundles 007 and 008 approved; both publish after 00:00 UTC (daily cap 2).",
-   "since": "2026-10-02T22:38:51Z"
+   "task": "Published 007 (Etsy 4587461298) and 008 (Etsy 4587461356). 8 listings live; today's cap of 2 is used.",
+   "since": "2026-10-03T00:14:25Z"
   },
   {
    "id": "analyst",
@@ -73,6 +73,11 @@
   "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages"
  ],
  "feed": [
+  {
+   "t": "2026-10-03T00:14:25Z",
+   "who": "lister",
+   "msg": "Published Gingerbread letters A\u2013Z (4587461298) and Christmas village (4587461356). 8 listings live."
+  },
   {
    "t": "2026-10-02T23:16:43Z",
    "who": "researcher",
@@ -217,11 +222,6 @@
    "t": "2026-10-01T18:10:34Z",
    "who": "researcher",
    "msg": "Best-seller scan done: gingerbread letters, Christmas villages and filigree ornaments lead. No listing confirmed at 1,000+ sales."
-  },
-  {
-   "t": "2026-10-01T17:47:29Z",
-   "who": "researcher",
-   "msg": "New queue: botanical frost snowflakes, celestial Christmas, raven & mistletoe, reindeer, nutcracker. Gothic now 3 of 18."
   }
  ],
  "venture_gate": {
