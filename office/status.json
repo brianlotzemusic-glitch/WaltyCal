@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T15:13:00Z",
+  "updated_at": "2026-10-03T16:14:00Z",
   "next_run_at": "2026-10-03T16:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -11,9 +11,9 @@
     {
       "id": "manager",
       "name": "Manager",
-      "state": "idle",
-      "task": "Hourly check: nothing due. Designer starts botanical frost snowflakes next shift (~16:12 UTC).",
-      "since": "2026-10-03T15:13:00Z"
+      "state": "working",
+      "task": "Hourly shift: Designer then QA.",
+      "since": "2026-10-03T16:14:00Z"
     },
     {
       "id": "researcher",
@@ -25,9 +25,9 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "Next: cross-stitch pilot ~22:00 UTC. AI art: cheap recipe (flash drafts, \u2264$0.05/design), pro blocked, $5/month cap ($0.51 left in Oct).",
-      "since": "2026-10-03T11:02:39Z"
+      "state": "working",
+      "task": "Building bundle 009: Botanical frost snowflakes (6 cut files).",
+      "since": "2026-10-03T16:14:00Z"
     },
     {
       "id": "qa",
@@ -87,6 +87,11 @@
     "Highland cow Christmas"
   ],
   "feed": [
+    {
+      "t": "2026-10-03T16:14:00Z",
+      "who": "designer",
+      "msg": "Started bundle 009: Botanical frost snowflakes."
+    },
     {
       "t": "2026-10-03T14:30:00Z",
       "who": "judge",
@@ -231,11 +236,6 @@
       "t": "2026-10-02T00:42:42Z",
       "who": "manager",
       "msg": "Hourly shifts are paused: the new routines can't push to GitHub until the repo is attached to them."
-    },
-    {
-      "t": "2026-10-02T00:42:42Z",
-      "who": "lister",
-      "msg": "Published Winter moths & holly (4586785079) and Filigree ornaments (4586788846). All 6 bundles are live."
     }
   ],
   "venture_gate": {
