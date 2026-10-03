@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T20:12:44Z",
+  "updated_at": "2026-10-03T21:13:23Z",
   "next_run_at": "2026-10-03T21:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -11,9 +11,9 @@
     {
       "id": "manager",
       "name": "Manager",
-      "state": "idle",
-      "task": "Hourly check: nothing due yet. Next shift (21:12 UTC): Trend Hunter + Judge, and Designer (Woodland Christmas bingo).",
-      "since": "2026-10-03T20:12:44Z"
+      "state": "working",
+      "task": "Hourly shift: Trend Hunter + Designer running.",
+      "since": "2026-10-03T21:13:23Z"
     },
     {
       "id": "researcher",
@@ -25,9 +25,9 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "Bundle 009 approved and live. Next build after ~21:30 UTC: Woodland Christmas bingo (printable pilot).",
-      "since": "2026-10-03T16:29:00Z"
+      "state": "working",
+      "task": "Building bundle 010: Woodland Christmas bingo (printable pilot).",
+      "since": "2026-10-03T21:13:23Z"
     },
     {
       "id": "qa",
@@ -67,9 +67,9 @@
     {
       "id": "hunter",
       "name": "Trend Hunter",
-      "state": "idle",
-      "task": "First scan: 8 candidates, 3 TikTok picks (trends/2026-10-03-14.md). Next scan after 20:20 UTC.",
-      "since": "2026-10-03T14:30:00Z"
+      "state": "working",
+      "task": "Second viral-trend scan (TikTok first).",
+      "since": "2026-10-03T21:13:23Z"
     },
     {
       "id": "judge",
@@ -87,6 +87,16 @@
     "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages ("
   ],
   "feed": [
+    {
+      "t": "2026-10-03T21:13:23Z",
+      "who": "designer",
+      "msg": "Started bundle 010: Woodland Christmas bingo (first printable)."
+    },
+    {
+      "t": "2026-10-03T21:13:23Z",
+      "who": "hunter",
+      "msg": "Started the second trend scan."
+    },
     {
       "t": "2026-10-03T16:44:00Z",
       "who": "lister",
@@ -226,16 +236,6 @@
       "t": "2026-10-02T22:13:44Z",
       "who": "designer",
       "msg": "Started bundle 008: Christmas village silhouettes."
-    },
-    {
-      "t": "2026-10-02T10:37:28Z",
-      "who": "qa",
-      "msg": "Approved bundle 007: 26 gingerbread letter ornaments with smooth icing on every letter."
-    },
-    {
-      "t": "2026-10-02T10:35:55Z",
-      "who": "designer",
-      "msg": "Fixed bundle 007: smooth icing on every letter, lower hanger arches. Back to QA."
     }
   ],
   "venture_gate": {
