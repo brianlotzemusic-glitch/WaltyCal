@@ -90,3 +90,4 @@
 - 2026-10-03 16:44 UTC: Owner asked why no POD products were up. They were held for Oct 4 (scheduling, not a blocker). Owner chose 1 now, 3 tomorrow. The Lister published pod/001 luna moth mug via Printify (Etsy 4587829689, $16.99, $0.20 fee; 4 of 4 slots today) and set the lifestyle photo first with `etsy.py lead-photos`, verified by viewing the images. Etsy's rank field is unreliable: noted in formats/pod.md.
 - 2026-10-03 17:13 UTC: Manager. Hourly check, nothing due. Corrected the earlier status and log times to match the commit times.
 - 2026-10-03 18:13 UTC: Manager. Hourly check, nothing due.
+- 2026-10-03 19:13 UTC: Manager. Hourly check, nothing due.
