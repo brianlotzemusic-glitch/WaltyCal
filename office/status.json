@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-03T00:14:25Z",
- "next_run_at": "2026-10-03T01:12:00Z",
+ "updated_at": "2026-10-03T01:13:03Z",
+ "next_run_at": "2026-10-03T02:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 8,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "Shift done. Designer next after about 10:30 UTC.",
-   "since": "2026-10-03T00:14:25Z"
+   "task": "Hourly shift: nothing due. Designer next after about 10:30 UTC.",
+   "since": "2026-10-03T01:13:03Z"
   },
   {
    "id": "researcher",
