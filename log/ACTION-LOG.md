@@ -69,3 +69,4 @@
 | 2026-10-02 22:45 | Connected the pixel-office dashboard: test-published status (manager working, then idle) to the dashboard artifact, versions 7 and 8 | FACTORY.md 'Owner's dashboard' section |
 | 2026-10-02 23:13 | Researcher started daily trend refresh | Researcher due (24 h since last research) |
 | 2026-10-02 23:16 | Researcher daily refresh: small reorder (Nativity, Highland cow up; Witchy crystals down); evidence in research/refresh-2026-10-02.md | Daily research |
+| 2026-10-03 00:01 | Printify connected (shop 29175603), auto order submission, Etsy production partner added; POD pilot unblocked | Owner completed Printify setup |
