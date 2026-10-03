@@ -215,7 +215,7 @@ def d2_fern_frond():
     arm = mirror(U(half))
     # fiddlehead between the arms: a short stem rising into a tight curl
     fh = U([taper(P(70), P(104), 20, 16),
-            spiral(P(132, 0), 30, 12, 0.85, 90, 16, cw=-1)])
+            spiral(P(134, 0), 32, 14, 0.7, 90, 16, cw=-1)])
     g = U([six(arm), six(fh, 30), hexagon((CX, CY), 78, 30)])
     return g.difference(star((CX, CY), 50, 25, 6))
 
@@ -337,7 +337,8 @@ SIZING TIPS
   Cardstock (ornaments, gift tags, cards, garlands): 4 in or larger.
   Laser-cut wood or acrylic ornaments: 3.5 in or larger in 3 mm material.
   Heat-transfer vinyl (shirts, totes, pillows): 4 in or larger.
-  The narrowest material is about 0.08 in at 6 in. Do a test cut first on a
+  The narrowest material and the narrowest gap are both about 0.08 in at
+  6 in (half that at 3 in). Do a test cut first on a
   new material, and use a fresh blade for the leaf tips.
 
 LICENSE

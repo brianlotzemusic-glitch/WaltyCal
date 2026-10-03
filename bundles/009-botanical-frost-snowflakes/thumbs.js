@@ -7,7 +7,7 @@ const names = ['Pine Bough', 'Fern Frond', 'Berry Sprig', 'Holly Crystal', 'Acor
 const tint = (s, c) => s.replace('fill="#000"', `fill="${c}"`);
 const F = (i, h, c) => `<div style="height:${h}px;width:${h}px">${tint(svgs[i], c)}</div>`;
 const base = `body{margin:0;width:1500px;height:1125px;font-family:Georgia,'DejaVu Serif',serif;overflow:hidden}`;
-const FROST = '#eef3f1', CREAM = '#f1e6cf', SAGE = '#b9d0c4', GOLD = '#e8c97a', PINE = '#2f4a3a', BERRY = '#8b2f3c';
+const FROST = '#eef3f1', CREAM = '#f1e6cf', SAGE = '#d8ebe1', GOLD = '#e8c97a', PINE = '#2f4a3a', BERRY = '#8b2f3c';
 const pages = {
  '1-thumbnail': `<style>${base} body{background:radial-gradient(ellipse at 50% 48%,#30524a,#17302b 62%,#0e1f1c);color:${FROST}}
   h1{position:absolute;top:34px;width:100%;text-align:center;font-size:78px;margin:0;letter-spacing:1px;white-space:nowrap;font-weight:normal}
