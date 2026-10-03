@@ -503,7 +503,8 @@ def snowman():
     scarf = U(R(395, 330, 605, 380, 20), Pg([(540, 360), (600, 360), (630, 500), (570, 505)], r=8))
     nose = Pg([(505, 255), (505, 290), (625, 285)], r=4)
     dots = U(sym(C(465, 240, 16)), C(500, 440, 16), C(500, 510, 16), C(500, 640, 18), C(500, 720, 18))
-    return [F(arms, PLUM), lit(bot, WHITE), lit(mid, WHITE), lit(head, WHITE), F(dots, PLUM), lit(nose),
+    thick = lambda g: F(g, WHITE, PLUM, 40)
+    return [F(arms, PLUM), thick(bot), thick(mid), thick(head), F(dots, PLUM), lit(nose),
             F(scarf, BERRY), F(hat, PLUM), F(band, BERRY)]
 
 

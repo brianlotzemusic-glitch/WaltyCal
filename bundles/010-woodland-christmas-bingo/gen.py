@@ -77,6 +77,9 @@ def check():
     res("13 unique tags, each <=20 chars", len(tags) == 13 and len(set(tags)) == 13 and max(map(len, tags)) <= 20,
         f"(longest {max(map(len, tags))})")
     res("description ends with disclosure line", lj["description"].endswith(DISCLOSURE))
+    readme = open(os.path.join(HERE, "README-LICENSE.txt")).read()
+    res("no 'ties are rare' claim; tie rule + marker count stated", "rare" not in lj["description"] + readme
+        and "both win" in lj["description"] and "both win" in readme and "72" in lj["description"] and "3 players" in lj["description"])
     res("no HTML entities", "&#" not in json.dumps(lj) and "&amp;" not in json.dumps(lj))
     res("taxonomy_id 1350, price 3.5, digital_file", lj["taxonomy_id"] == 1350 and lj["price"] == 3.5 and lj["digital_file"] == ZIP)
     print("ALL CHECKS PASS" if ok else "SOME CHECKS FAILED")

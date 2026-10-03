@@ -32,7 +32,7 @@ const base = `@font-face{font-family:Fr;font-weight:900;src:url(${font('Fraunces
 @font-face{font-family:Nu;font-weight:700;src:url(${font('Nunito-700.ttf')})}
 body{margin:0;width:1500px;height:1125px;overflow:hidden;position:relative;font-family:Nu;color:${PLUM}}
 .card{position:absolute;background:#fff;border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,.45),0 3px 8px rgba(0,0,0,.3);transform-origin:50% 50%;overflow:hidden}
-.tok{position:absolute;border-radius:50%;background:radial-gradient(circle at 40% 35%,#f7e3a6,${GOLD} 60%,#c9a650);box-shadow:0 3px 6px rgba(0,0,0,.35)}
+.tok{position:absolute;border-radius:50%;background:${GOLD};border:solid ${PLUM};border-width:max(2px,2.7%);box-shadow:inset 0 0 0 7.5px ${GOLD},inset 0 0 0 9px ${CREAM},0 3px 6px rgba(0,0,0,.35)}
 .wood{background:
   repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 3px,transparent 3px 11px),
   repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,transparent 1px 47px,rgba(0,0,0,.06) 47px 49px,transparent 49px 121px),
@@ -54,10 +54,10 @@ const pages = {
    .badge b{font-family:Fr;font-weight:900;font-size:110px;line-height:.9}.badge span{font-size:28px;font-weight:800;letter-spacing:2px;text-align:center;line-height:1.1}</style>
    <div class=wood style="position:absolute;inset:0"></div><div class=vig></div>
    <div style="position:absolute;left:1150px;top:250px;width:150px;height:150px;transform:rotate(25deg);filter:drop-shadow(0 8px 10px rgba(0,0,0,.5))">${I(13)}</div>
-   ${cc(4, 30, 760, 270, -14)}${cc(0, 60, 330, 250, 9)}
+   ${cc(24, 30, 760, 270, -14)}${cc(11, 0, 330, 215, 6)}
    ${card(3, 1, 840, 5, 600, 370)}
    ${card(2, 0, 900, -4, 230, 300, [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2]])}
-   ${scatter([[1290, 290, 64, 0], [1360, 360, 60, 0], [1300, 400, 58, 0], [1395, 280, 62, 0], [190, 1000, 60, 0], [270, 1040, 58, 0]])}
+   ${scatter([[560, 1000, 64, 0], [640, 1040, 62, 0], [720, 995, 60, 0], [190, 1000, 60, 0], [270, 1040, 58, 0]])}
    <div class=title><h1>Christmas <em>Bingo</em></h1><p>WOODLAND PICTURE GAME · PRINTABLE</p></div>
    <div class=badge><b>30</b><span>UNIQUE<br>CARDS</span></div>`,
 
@@ -75,7 +75,7 @@ const pages = {
    <h1>What's <em>included</em></h1><div class=sub>20 printable pages · US Letter + A4 pdf · instant download</div>
    <div class=row>
     ${[[1, 'How to play', 'rules + 5 ways to win'], [2, '30 bingo cards', 'all different, 2 per page'], [17, '30 calling cards', 'cut apart and draw'],
-       [19, 'Caller checklist', 'tick as you call'], [20, '80 markers', 'or use candy or buttons']]
+       [19, 'Caller checklist', 'tick as you call'], [20, '72 markers', 'enough for 3 at blackout']]
       .map(([n, t, s]) => `<div class=it><div class=paper style="background-image:url(${pg(n)})"></div><b>${t}</b><span>${s}</span></div>`).join('')}
    </div>
    <div class=feat>${[[16, '2 to 30 players', 'family night, parties, classrooms'], [25, 'Ages 3 and up', 'pictures, no reading needed'],
@@ -115,7 +115,7 @@ const pages = {
    <h1>30 woodland<br><em>pictures</em></h1>
    <div class=g>${icons.map(i => `<div><div>${I(i.id)}</div>${i.name}</div>`).join('')}</div>
    <div class=wood></div><div class=vig style="left:760px"></div>
-   ${cc(1, 1220, 50, 230, 7)}
+   ${cc(4, 1220, 50, 230, 7)}
    ${card(5, 0, 650, -3, 800, 310, [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4]])}
    <div class=steps><h2>How to play</h2><div><b>1</b>Draw a calling card</div><div><b>2</b>Cover the picture</div><div><b>3</b>Fill a line, shout BINGO!</div></div>`,
 };

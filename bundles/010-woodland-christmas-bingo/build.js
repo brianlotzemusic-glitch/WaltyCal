@@ -1,7 +1,7 @@
 // Builds the printable PDFs (US Letter + A4) from icons.json + cards.json.
 // Run from this folder: NODE_PATH=$(npm root -g) node build.js
 // Pages: 1 instructions, 15 card pages (2 cards each), 2 calling-card pages,
-// 1 caller checklist, 1 markers sheet = 20 pages.
+// 1 caller checklist, 1 markers sheet (72 solid gold discs) = 20 pages.
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const { icons, free } = JSON.parse(fs.readFileSync('icons.json', 'utf8'));
 const { cards } = JSON.parse(fs.readFileSync('cards.json', 'utf8'));
@@ -65,13 +65,12 @@ body{margin:0;font-family:Nu;color:${PLUM};-webkit-print-color-adjust:exact;prin
 .ck b{font-family:Nu;font-weight:800;font-size:4mm;margin-top:1mm}
 .ck i{position:absolute;top:2mm;right:2mm;width:5mm;height:5mm;border:0.4mm solid ${PINE};border-radius:50%}
 /* markers */
-.mk{position:absolute;top:31mm;left:0;right:0;display:grid;justify-content:center;gap:3mm}
-.mk>div{width:20mm;height:20mm;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.mk .ic{width:13mm;height:13mm}
+.mk{position:absolute;top:33mm;left:0;right:0;display:grid;justify-content:center;gap:2.2mm}
+.mk>div{width:22mm;height:22mm;border-radius:50%;background:${GOLD};border:0.6mm solid ${PLUM};box-shadow:inset 0 0 0 1.6mm ${GOLD},inset 0 0 0 1.9mm ${CREAM}}
 /* instructions */
-.ins{position:absolute;top:${H < 290 ? 46 : 50}mm;left:16mm;right:16mm;bottom:14mm;display:grid;grid-template-columns:1fr 1fr;gap:5mm 7mm;align-content:start}
+.ins{position:absolute;top:${H < 290 ? 44 : 48}mm;left:16mm;right:16mm;bottom:14mm;display:grid;grid-template-columns:1fr 1fr;gap:4mm 7mm;align-content:start}
 .ins h2{font-family:Fr;font-weight:900;font-size:6.2mm;color:${BERRY};margin:0 0 2mm}
-.ins p,.ins li{font-size:${H < 290 ? 3.65 : 3.9}mm;line-height:1.45;margin:0 0 1.4mm}
+.ins p,.ins li{font-size:${H < 290 ? 3.5 : 3.75}mm;line-height:1.45;margin:0 0 1.4mm}
 .ins ol,.ins ul{margin:0;padding-left:5mm}
 .ways{display:grid;grid-template-columns:repeat(5,1fr);gap:3mm;grid-column:1/3}
 .way{text-align:center;font-size:3.6mm;font-weight:800}
@@ -107,7 +106,7 @@ function pages(W, H, sizeName) {
   <div class=ins>
    <div><h2>What's inside</h2><ul>
     <li>Page 1: how to play (this page)</li><li>Pages 2 to 16: 30 different bingo cards, 2 per page</li>
-    <li>Pages 17 and 18: 30 calling cards to cut apart</li><li>Page 19: caller's checklist</li><li>Page 20: 80 markers to cut out</li></ul>
+    <li>Pages 17 and 18: 30 calling cards to cut apart</li><li>Page 19: caller's checklist</li><li>Page 20: 72 markers (enough for 3 players at blackout)</li></ul>
     <h2 style="margin-top:4mm">Getting ready</h2><ol>
     <li>Print the cards and cut each page in half along the dashed line.</li>
     <li>Cut apart the calling cards and put them in a bowl, hat or stocking.</li>
@@ -119,13 +118,13 @@ function pages(W, H, sizeName) {
     <li>If that picture is on your card, cover it with a marker.</li>
     <li>When you complete the pattern for the round, shout "BINGO!"</li>
     <li>The caller checks your card against the checklist. If every picture was called, you win the round.</li></ol>
-    <p style="margin-top:2mm">Each card has 24 of the 30 pictures, and no two cards are the same. No two cards share a winning row, column or diagonal, so ties are rare.</p></div>
+    <p style="margin-top:2mm">Each card has 24 of the 30 pictures, no two cards are the same, and no two cards share a winning row, column or diagonal.</p></div>
    <div class=box style="grid-column:1/3"><h2>Ways to win</h2><div class=ways>
     <div class=way>${mini((x, y) => y === 2)}Any line</div>
     <div class=way>${mini((x, y) => (x === 0 || x === 4) && (y === 0 || y === 4))}Four corners</div>
     <div class=way>${mini((x, y) => x === y || x + y === 4)}Snowy X</div>
     <div class=way>${mini((x, y) => x === 0 || x === 4 || y === 0 || y === 4)}Picture frame</div>
-    <div class=way>${mini(() => true)}Blackout</div></div></div>
+    <div class=way>${mini(() => true)}Blackout</div></div><p style="margin:2.5mm 0 0;text-align:center"><b>Tie?</b> Two BINGOs on the same call: both win, or play one quick "any line" round.</p></div>
    <div class=box><h2>Printing tips</h2><p>Print at 100% or "actual size" (not "fit to page") on ${sizeName} paper. Card stock (65 to 110 lb, 176 to 300 gsm) makes sturdy cards you can reuse year after year. The light backgrounds are kind to your ink. Slip cards into sheet protectors and use dry-erase markers to play again and again.</p></div>
    <div class=box><h2>Party ideas</h2><p>Play a quick round with "any line", then finish with a blackout round for the big prize. Let little ones take turns as the caller; they can read the pictures before they can read words. Small prizes that work well: candy canes, stickers, hot cocoa packets or first pick of the cookie plate.</p></div>
   </div>
@@ -142,12 +141,10 @@ function pages(W, H, sizeName) {
   out.push(`<div class=page><div class=head><h1>Caller's <em>Checklist</em></h1><p>Tick each picture as you call it, then check winning cards against this list</p></div>
   <div class=ck>${icons.map(i => `<div><i></i>${I(i.id)}<b>${cap(i.name)}</b></div>`).join('')}</div>
   <div class=foot>Tip: slip this page into a sheet protector and tick with a dry-erase marker to reuse it every round · ${SHOP}</div></div>`);
-  const cols = Math.floor((W - 16) / 23), rows = Math.floor((H - 31 - 16) / 23);
-  const styles = [[GOLD, PLUM, 8], [BERRY, BERRY, 13], [PINE, PINE, 11], [PLUM, PLUM, 22]];
-  const tok = k => { const [ring, , id] = styles[k % 4];
-    return `<div style="border:0.9mm solid ${ring};${k % 4 === 0 ? `box-shadow:inset 0 0 0 0.35mm ${PLUM}` : ''}">${I(id)}</div>`; };
-  out.push(`<div class=page><div class=head><h1>Bingo <em>Markers</em></h1><p>Cut out the circles to cover the pictures you hear · ${cols * rows} markers</p></div>
-  <div class=mk style="grid-template-columns:repeat(${cols},20mm)">${Array.from({ length: cols * rows }, (_, k) => tok(k + Math.floor(k / cols))).join('')}</div>
+  const cols = 8, rows = 9;
+  const tok = () => '<div></div>';
+  out.push(`<div class=page><div class=head><h1>Bingo <em>Markers</em></h1><p>${cols * rows} markers, enough for 3 players at blackout · print this page again for every 3 more players</p></div>
+  <div class=mk style="grid-template-columns:repeat(${cols},22mm)">${Array.from({ length: cols * rows }, (_, k) => tok(k)).join('')}</div>
   <div class=foot>Woodland Christmas Bingo · ${SHOP}</div></div>`);
   return out;
 }

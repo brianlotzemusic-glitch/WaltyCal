@@ -12,13 +12,18 @@ WHAT'S INSIDE (page numbers are the same in both files)
   Pages 2-16   30 different bingo cards, 2 per page (cut each page in half)
   Pages 17-18  30 calling cards to cut apart
   Page 19      Caller's checklist
-  Page 20      80 bingo markers to cut out
+  Page 20      72 gold bingo markers to cut out (24 per player for a
+               blackout: print this page once for every 3 players)
 
 ABOUT THE CARDS
   Each card has 24 of the 30 woodland pictures plus a FREE space. No two
   cards have the same set of pictures, and no two cards share a winning
   row, column or diagonal. Every picture is on exactly 24 of the 30 cards,
   so every player has the same chance.
+
+  TIES: two players can still call BINGO on the same picture (most often
+  in blackout games). Then both win, or play one quick "any line" round
+  to break the tie.
 
   The 30 pictures: fox, owl, stag, robin, pine tree, mushroom, lantern,
   mitten, star, sled, cabin, snowflake, acorn, holly, pinecone, hedgehog,
