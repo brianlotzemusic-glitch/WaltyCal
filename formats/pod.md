@@ -23,9 +23,9 @@ Shared: `pod/PROVIDERS.md` (providers, costs, pricing), `pod/SAVED-REPLIES.md`, 
 
 ## Art pipeline
 1. Prompt = STYLE.md Prints/POD block + subject, palette hexes named, "solid flat <colour> background", "generous empty margin", no text.
-2. `imagegen.py gen ... --pro --n 4 --size 2048x2048`, contact sheet, check the best at 100%, regenerate the batch if none is clean (the skull needed 2 batches).
-3. Tees: `imagegen.py upscale` once. Recraft crisp upscale **caps at 4096 px**, and a second pass returns 4096 again, so don't pay for it. 4096 px of source is about 10 in of design at true 300 DPI.
-4. Mugs: the 2048 px Pro source is already enough (the motif is downsampled), so no upscale is needed.
+2. `imagegen.py gen ... --flash --n 4` ($0.028), contact sheet, check the best at 100%. If none is clean, one standard `gen` ($0.035); no further re-rolls (FACTORY.md cheap art recipe). The pilot used `--pro --n 4` ($0.84 per batch); that is no longer allowed.
+3. Tees: `imagegen.py upscale` once (1024 px → 4096 px, $0.004). Recraft crisp upscale **caps at 4096 px**, and a second pass returns 4096 again, so don't pay for it. 4096 px of source is about 10 in of design at true 300 DPI.
+4. Mugs: a 1024 px flash/standard image is enough (the mug motif is about 920 px tall), so no upscale is needed.
 5. `pod/make_art.py` does the layout. Tee backgrounds are keyed out locally (soft ramp, unpremultiplied), so solid black/white areas inside the art become the shirt colour. Light-on-black art goes on dark shirts; dark-on-white art goes on light shirts. Mug motifs are pasted with a feathered mask on the sampled flat background colour, so no paste edge can show.
 
 ## Checks (Designer, then QA)

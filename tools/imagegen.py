@@ -14,7 +14,9 @@ Commands:
 
 Environment (cloud environment settings, never committed):
   RECRAFT_API_KEY or OPENAI_API_KEY
-  IMAGE_MONTHLY_BUDGET_USD   optional, default 5 (owner's cap, 3 Oct 2026); generation stops when this month's estimate reaches it
+  IMAGE_MONTHLY_BUDGET_USD   optional, default 5 (owner's cap, 3 Oct 2026);
+  IMAGE_ALLOW_PRO=1          optional; --pro ($0.21-0.30 each) is refused without it
+  generation stops when this month's estimate reaches it
 
 Every call is logged to log/image-spend.csv (time, provider, model, est_usd, prompt).
 Prompts must describe original designs: no artist names, brands, characters, trademarked phrases or other sellers' work.
@@ -105,8 +107,8 @@ def gen(prompt, out, size=None, pro=False, flash=False, n=1, transparent=False, 
     if os.environ.get("RECRAFT_API_KEY"):
         model = ("recraftv4_1_pro_vector" if pro else "recraftv4_1_vector") if vector else \
                 ("recraftv4_1_flash" if flash else "recraftv4_1_pro" if pro else "recraftv4_1")
-        if pro and n > 1:
-            sys.exit("--pro is for the one final image: explore with --flash --n 4 first, then make 1 --pro (owner's rule, 3 Oct 2026)")
+        if pro and os.environ.get("IMAGE_ALLOW_PRO") != "1":
+            sys.exit("--pro is off (owner's rule, 3 Oct 2026): use --flash drafts, a standard final, then `upscale` ($0.004) or `vectorize` ($0.01) for print size")
         cost = PRICE[model] * n
         check_budget(cost)
         body = {"prompt": prompt, "model": model, "n": n, "response_format": "url"}

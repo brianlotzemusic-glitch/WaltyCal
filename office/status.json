@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T14:05:00Z",
+  "updated_at": "2026-10-03T14:35:00Z",
   "next_run_at": "2026-10-03T13:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -26,7 +26,7 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "Next: cross-stitch pilot ~22:00 UTC (code-drawn grid). AI art rule now: cheap drafts + 1 final, $5/month cap ($0.55 left in Oct).",
+      "task": "Next: cross-stitch pilot ~22:00 UTC. AI art: cheap recipe (flash drafts, \u2264$0.05/design), pro blocked, $5/month cap ($0.51 left in Oct).",
       "since": "2026-10-03T11:02:39Z"
     },
     {
@@ -73,6 +73,11 @@
     "Highland cow Christmas"
   ],
   "feed": [
+    {
+      "at": "2026-10-03T14:35:00Z",
+      "who": "Manager",
+      "text": "Cheap art test: flash/standard \u2248 pro quality at 1/6\u20131/30 the cost. Pro blocked; target \u2264$0.05 per design."
+    },
     {
       "at": "2026-10-03T14:05:00Z",
       "who": "Manager",
@@ -217,11 +222,6 @@
       "t": "2026-10-01T22:43:41Z",
       "who": "lister",
       "msg": "Published Gothic Christmas ornaments (4586736511) and Bat Christmas (4586739694). 3 listings live."
-    },
-    {
-      "t": "2026-10-01T22:40:03Z",
-      "who": "lister",
-      "msg": "First listing live: Spiderweb Snowflake SVG Bundle (Etsy 4586738084)."
     }
   ],
   "venture_gate": {
