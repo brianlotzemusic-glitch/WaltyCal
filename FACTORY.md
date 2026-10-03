@@ -18,9 +18,9 @@ One scheduled **Manager** run fires every hour. The Manager decides which specia
 |---|---|---|
 | Manager | Reads state, assigns work, updates `office/status.json`, writes the weekly report (Mondays) | Every run |
 | Researcher | Web-searches Etsy trends and seasonal timing across **all digital product types** (see "Product formats"); reorders `queue.md`; adds themes when fewer than 8 remain; proposes new formats | Last research older than 24 h |
-| Designer | Builds ONE bundle from the top unchecked theme (spec below) | Last bundle older than 11 h (so at most 2 per day) |
+| Designer | Builds ONE bundle from the top unchecked theme (spec below) | Last bundle older than 5 h (so up to 4 per day) |
 | QA | Independent review of the Designer's bundle: looks at the contact sheet, runs the checks, sends it back to the Designer with specific fixes or approves it. Max 2 rounds; a bundle that still fails is moved to `bundles/_rejected/` and not listed | Right after the Designer |
-| Lister | Uploads approved bundles that have no `etsy_listing_id` (`python3 tools/etsy.py upload bundles/NNN-slug`) | Etsy variables set and fewer than 2 uploads today |
+| Lister | Uploads approved bundles that have no `etsy_listing_id` (`python3 tools/etsy.py upload bundles/NNN-slug`) | Etsy variables set and fewer than 4 uploads today |
 | Analyst | `python3 tools/etsy.py stats`, then applies the optimization rules | Etsy variables set and stats older than 24 h |
 | Scout | Researches which business to open next (see "New businesses"); writes `ventures/research/YYYY-MM-DD.md` and re-ranks `ventures/shortlist.md` | Last research older than 7 days |
 | Launcher | Builds a launch kit for the Scout's #1 pick (see "New businesses") | Venture gate met, and no kit in progress or the last kit's owner steps are done |
@@ -205,14 +205,14 @@ The owner's request (3 Oct 2026): a dedicated team chasing current viral trends 
 - **Makeable this week**: within the current AI art budget (code-drawn typography and simple graphics are fine, and cost nothing).
 - Approved trends go to the top of `queue.md` as `- [ ] [trend] <idea> (expires YYYY-MM-DD; evidence: ...)`. Remove expired `[trend]` items unbuilt, and log the rejections with reasons in the same `trends/` file.
 
-**Fast lane**: a `[trend]` item takes the first of the day's 2 listing slots, and the Designer builds it before anything else. The best formats are a print-on-demand tee or mug (phrase or simple graphic) plus a matching SVG cut file of the same design, which counts as 2 listings. The Analyst tags trend listings in `stats/` so the 10 Oct report shows whether trends beat evergreen themes.
+**Fast lane**: a `[trend]` item takes the first of the day's 4 listing slots (up to 2 slots if there are 2 approved trends), and the Designer builds it before anything else. The best formats are a print-on-demand tee or mug (phrase or simple graphic) plus a matching SVG cut file of the same design, which counts as 2 listings. The Analyst tags trend listings in `stats/` so the 10 Oct report shows whether trends beat evergreen themes.
 
 ## Turnaround week (4–10 Oct 2026, owner's deadline)
 The owner will shut the factory down unless the shop shows signs of life by 10 Oct. The owner's cost concerns are Recraft and Etsy listing fees, so:
-- **Spending limit for the week: $3 of Etsy listing fees** (2 new listings/day × $0.20). Don't raise the cap. Edits to existing listings are free, so use them freely.
+- **Spending limit for the week: $5.60 of Etsy listing fees** (4 new listings/day × $0.20, owner raised it from 2 on 3 Oct). Don't go above 4 a day. Edits to existing listings are free, so use them freely.
 - **Recraft**: October's $5 cap is used up, so the Designer draws in code until 1 Nov. Don't ask the owner for a top-up.
 - **Day 1 (4 Oct), Lister, free**: retitle and retag all 8 live cut-file listings with `etsy.py update`. Lead each title with the highest-volume plain search phrase (e.g. "Christmas SVG Bundle", "Snowflake SVG", "Christmas Ornament SVG", "Bat SVG"). Put "gothic", "spooky" and "creepy" later in the title and in the tags, not first. Use all 13 tags, mixing broad terms (christmas svg, cricut files, ornament svg) with specific ones. Keep the disclosure line. Log the before and after titles.
-- **New listings in this order**: the 4 POD products (2 on the 4th, 2 on the 5th), then Botanical frost snowflakes (cut files), Woodland Christmas bingo (printable) and the Woodland Christmas mini cross-stitch charts. Pick only proven-demand items; nothing speculative this week.
+- **New listings in this order**: the 4 POD products (all on the 4th), then Botanical frost snowflakes (cut files), Woodland Christmas bingo (printable) and the Woodland Christmas mini cross-stitch charts. Pick only proven-demand items; nothing speculative this week.
 - **Analyst**: every day at the first shift after 8am ET, push the owner one line: total views, favourites and sales, and the change since yesterday.
 - **No Etsy Ads yet** (owner, 3 Oct 2026: "no ads till we build a decent library of items"). Never turn on or suggest paid ads before then. When the shop reaches **40 live listings**, the Manager asks the owner once whether to start Etsy Ads at $1/day.
 - **10 Oct check**: write `reports/2026-10-10-turnaround.md` with the week's views, favourites, sales and spend. Targets: ≥100 views and ≥5 favourites. Recommend honestly whether to continue. If there are under 20 views, recommend shutting down or pausing.
@@ -221,7 +221,7 @@ The owner will shut the factory down unless the shop shows signs of life by 10 O
 - Original work only. No copyrighted characters, logos, brand names, trademarked phrases, or other sellers' designs. Avoid "Creepmas".
 - No weapons, hate content, medical claims, or adult content.
 - Pricing: $4.00 per 6-design bundle until stats exist; after that, match the median of the shop's converting listings.
-- At most 2 new listings per day (avoid looking like a bulk-AI shop).
+- At most 4 new listings per day (owner, 3 Oct 2026; was 2). Quality bar unchanged: QA still approves every one, and listings spread across the day rather than going out in one burst.
 - New listings are published immediately (owner's choice, 1 Oct). `ETSY_PUBLISH=0` in the environment switches back to drafts. Bundle 003 (listing 4586729007) was uploaded as a draft for the owner to review and publish by hand; don't publish it. If publishing fails (e.g. shop billing not set up), mark the Lister blocked with Etsy's message.
 - Optimization, once listings have data:
   - Below 0.5% conversion after 200 views → rewrite title, tags and thumbnail once; if still below after another 200 views, deactivate.
