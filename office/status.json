@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-03T14:20:00Z",
-  "next_run_at": "2026-10-03T13:12:00Z",
+  "updated_at": "2026-10-03T14:30:00Z",
+  "next_run_at": "2026-10-03T15:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 8,
@@ -11,9 +11,9 @@
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "Hourly shift: Trend Hunter + Judge due.",
-      "since": "2026-10-03T14:16:00Z"
+      "state": "idle",
+      "task": "Shift done. Designer due ~15:36 UTC (frost snowflakes); POD products publish 4 Oct.",
+      "since": "2026-10-03T14:30:00Z"
     },
     {
       "id": "researcher",
@@ -67,16 +67,16 @@
     {
       "id": "hunter",
       "name": "Trend Hunter",
-      "state": "working",
-      "task": "First viral-trend scan (TikTok first).",
-      "since": "2026-10-03T14:16:00Z"
+      "state": "idle",
+      "task": "First scan: 8 candidates, 3 TikTok picks (trends/2026-10-03-14.md). Next scan after 20:20 UTC.",
+      "since": "2026-10-03T14:30:00Z"
     },
     {
       "id": "judge",
       "name": "Trend Judge",
       "state": "idle",
-      "task": "New hire. Screens the first trend scan right after the Hunter.",
-      "since": "2026-10-03T13:34:06Z"
+      "task": "Rejected all 3 picks: a song lyric, a saturated subject (~57k listings) with a Disney sound, and an office joke with no buyer intent. Nothing added to the queue.",
+      "since": "2026-10-03T14:30:00Z"
     }
   ],
   "queue": [
@@ -87,6 +87,16 @@
     "Highland cow Christmas"
   ],
   "feed": [
+    {
+      "t": "2026-10-03T14:30:00Z",
+      "who": "judge",
+      "msg": "Rejected all 3 trend picks (song lyric, saturated pumpkin market, no buyer intent). Nothing queued."
+    },
+    {
+      "t": "2026-10-03T14:27:00Z",
+      "who": "hunter",
+      "msg": "First scan: 8 viral candidates, 3 TikTok picks sent to the Judge."
+    },
     {
       "t": "2026-10-03T14:16:00Z",
       "who": "manager",
@@ -226,16 +236,6 @@
       "t": "2026-10-02T00:42:42Z",
       "who": "lister",
       "msg": "Published Winter moths & holly (4586785079) and Filigree ornaments (4586788846). All 6 bundles are live."
-    },
-    {
-      "t": "2026-10-01T23:03:34Z",
-      "who": "researcher",
-      "msg": "New format pilots queued: woodland cross-stitch ornaments (#3), winter coloring pages (#7), woodland Christmas bingo (#12)."
-    },
-    {
-      "t": "2026-10-01T22:52:34Z",
-      "who": "researcher",
-      "msg": "Started researching other digital formats, at the owner's request."
     }
   ],
   "venture_gate": {
