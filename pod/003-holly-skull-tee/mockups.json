@@ -1,37 +1,38 @@
 {
  "printify_product_id": "6ac0d8926598729f01053d9b",
- "note": "selected_for_publishing = what Printify sends to Etsy (GET product); all_cameras = every angle from the create response for the default variant",
+ "note": "selected_for_publishing = what Printify sends to Etsy (GET product); all_cameras = every angle for the default variant (swap the variant id in the URL for other colours)",
  "selected_for_publishing": [
   {
    "src": "https://images.printify.com/mockup/6ac0d8926598729f01053d9b/18102/92547/holly-skull-christmas-shirt-cute-gothic-holiday-t-shirt-skull-with-holly-and-crescent-moon-spooky-christmas-tee-goth-winter-gift.jpg?camera_label=front",
    "variant": 18102,
-   "colour": "Black",
    "camera": "front",
    "is_default": true
   },
   {
    "src": "https://images.printify.com/mockup/6ac0d8926598729f01053d9b/18070/92547/holly-skull-christmas-shirt-cute-gothic-holiday-t-shirt-skull-with-holly-and-crescent-moon-spooky-christmas-tee-goth-winter-gift.jpg?camera_label=front",
    "variant": 18070,
-   "colour": "Asphalt",
    "camera": "front",
    "is_default": false
   },
   {
    "src": "https://images.printify.com/mockup/6ac0d8926598729f01053d9b/18150/92547/holly-skull-christmas-shirt-cute-gothic-holiday-t-shirt-skull-with-holly-and-crescent-moon-spooky-christmas-tee-goth-winter-gift.jpg?camera_label=front",
    "variant": 18150,
-   "colour": "Dark Grey Heather",
    "camera": "front",
    "is_default": false
   },
   {
    "src": "https://images.printify.com/mockup/6ac0d8926598729f01053d9b/18398/92547/holly-skull-christmas-shirt-cute-gothic-holiday-t-shirt-skull-with-holly-and-crescent-moon-spooky-christmas-tee-goth-winter-gift.jpg?camera_label=front",
    "variant": 18398,
-   "colour": "Navy",
    "camera": "front",
    "is_default": false
   }
  ],
  "all_cameras": [
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8926598729f01053d9b/18102/92547/holly-skull-christmas-shirt-cute-gothic-holiday-t-shirt-skull-with-holly-and-crescent-moon-spooky-christmas-tee-goth-winter-gift.jpg?camera_label=front",
+   "variant": 18102,
+   "camera": "front"
+  },
   {
    "src": "https://images.printify.com/mockup/6ac0d8926598729f01053d9b/18102/102044/holly-skull-christmas-shirt-cute-gothic-holiday-t-shirt-skull-with-holly-and-crescent-moon-spooky-christmas-tee-goth-winter-gift.jpg?camera_label=front-2",
    "variant": 18102,

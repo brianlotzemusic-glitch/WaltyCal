@@ -7,7 +7,13 @@ Luna Moth Mug, Celestial Moth Coffee Mug with Crescent Moons, Cottagecore Moth L
 luna moth mug, moth mug, celestial mug, cottagecore mug, moth coffee mug, moon mug, witchy mug, moth lover gift, dark academia mug, crescent moon mug, nature lover gift, whimsigoth mug, moody coffee mug
 
 ## Price
-$16.99 (see pricing note in pod/PROVIDERS.md)
+$16.99
+
+Profit per size (cost = Printify variant cost read after create; the buyer pays shipping at Printify's rate, and Etsy's fees on that shipping are counted, conservatively at 10%):
+
+| Size | Cost | Etsy fees on item (10% + $0.20) | Etsy fees on shipping (10% of $6.69) | Profit |
+|---|---|---|---|---|
+| 11 oz | $6.44 | $1.90 | $0.67 | **$7.98** |
 
 ## Description
 A cream and gold luna moth with crescent moons on its wings, floating on a deep plum night sky with pine sprigs and tiny stars. A moth on each side of the mug, so it shows whichever hand you hold it in, with a gold crescent moon and stars in between. A cozy, moody mug for moth lovers, night owls and anyone who likes their coffee with a little moonlight.

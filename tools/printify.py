@@ -9,6 +9,8 @@ Commands:
   python3 tools/printify.py providers <blueprint_id>       print providers for a product
   python3 tools/printify.py variants <blueprint_id> <provider_id>   sizes/colours + placeholder sizes
   python3 tools/printify.py create <pod_dir>               create the product from pod_dir/product.json
+  python3 tools/printify.py update <pod_dir> [--no-art]    sync an existing product to product.json (title, description,
+                                                           tags, price, enabled variants, print files); does not publish
   python3 tools/printify.py publish <pod_dir>              publish it to Etsy (writes pod_dir/etsy_published)
 
 Environment: PRINTIFY_API_TOKEN (Printify → My account → Connections → API tokens).
@@ -84,6 +86,40 @@ def create(pod_dir):
         print("mockup:", img.get("src"))
 
 
+def update(pod_dir, art=True):
+    """Bring an existing Printify product in line with pod_dir/product.json: title, description, tags,
+    one price for the enabled variants (all others disabled) and, unless --no-art, re-uploaded print
+    files. It does not publish; a product already on Etsy needs `publish` again for Etsy to see it.
+    Mockup selection (default / selected images) is NOT settable through the API: Printify accepts an
+    `images` array on PUT but ignores it (tested 3 Oct 2026), so that stays a manual step."""
+    spec = json.load(open(os.path.join(pod_dir, "product.json")))
+    pid = open(os.path.join(pod_dir, "printify_product_id")).read().strip()
+    shop = shop_id()
+    prod = call("GET", f"/shops/{shop}/products/{pid}.json")
+    if prod.get("external"):
+        print(f"note: {pid} is already linked to Etsy ({prod['external'].get('handle', '')}); run publish after QA to push changes")
+    enabled = set(spec["variant_ids"])
+    known = {v["id"] for v in prod["variants"]}
+    missing = enabled - known
+    if missing:
+        sys.exit(f"variant ids not in this product: {sorted(missing)}")
+    body = {
+        "title": spec["title"], "description": spec["description"], "tags": spec["tags"],
+        "variants": [{"id": v["id"], "price": spec["price_cents"], "is_enabled": v["id"] in enabled} for v in prod["variants"]],
+    }
+    if art:
+        placeholders = []
+        for position, img in spec["placements"].items():
+            img_id = upload(os.path.join(pod_dir, img))
+            placeholders.append({"position": position, "images": [{"id": img_id, "x": 0.5, "y": 0.5, "scale": spec.get("scale", 1), "angle": 0}]})
+        # Printify requires every variant of the product (enabled or not) to be covered by print_areas
+        body["print_areas"] = [{"variant_ids": [v["id"] for v in prod["variants"]], "placeholders": placeholders}]
+    p = call("PUT", f"/shops/{shop}/products/{pid}.json", body)
+    print(f"updated Printify product {p['id']}: {spec['title']}" + (" (art re-uploaded)" if art else ""))
+    for img in p.get("images", [])[:8]:
+        print("mockup:", img.get("src"))
+
+
 def publish(pod_dir):
     pid = open(os.path.join(pod_dir, "printify_product_id")).read().strip()
     call("POST", f"/shops/{shop_id()}/products/{pid}/publish.json",
@@ -114,6 +150,8 @@ if __name__ == "__main__":
             print(x["id"], x["title"], "|", ph)
     elif a[0] == "create":
         create(a[1])
+    elif a[0] == "update":
+        update(a[1], art="--no-art" not in a)
     elif a[0] == "publish":
         publish(a[1])
     else:

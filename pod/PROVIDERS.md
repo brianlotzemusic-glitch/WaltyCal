@@ -11,14 +11,16 @@ Other US tee providers checked (blueprint 12): SwiftPOD (39, San Jose CA, 3692x4
 
 Handling time reported by the API: up to 10 days for all three (a maximum, not typical). The listings say "usually 2–5 business days" for production, matching `SAVED-REPLIES.md`.
 
-## Pricing (Etsy fees ≈ 10% + $0.20 of the item price; rule: profit ≥ $6 mug, ≥ $8 tee; .99 endings)
-| Product | Retail | Cost | Fees | Profit |
-|---|---|---|---|---|
-| Mug (both) | $16.99 | $6.44 | $1.90 | **$8.65** (rule minimum would be $13.99; $16.99 sits inside the comparable range) |
-| Tee S–XL | $27.99 | $11.77 | $3.00 | **$13.22** |
-| Tee 2XL | $27.99 | $14.38 | $3.00 | **$10.61** |
-| Tee 3XL | $27.99 | $16.77 | $3.00 | **$8.22** (the size that sets the price) |
+## Pricing (live in Printify since QA round 1)
+Rule: profit ≥ $6 per mug and ≥ $8 per tee, prices ending in .99. Profit = retail − (10% of retail + $0.20) − (10% of the buyer's shipping charge, because Etsy's transaction and processing fees also apply to shipping; QA's estimate was 6.5%, and 10% is the conservative figure) − Printify cost.
 
-- Buyers pay shipping at Printify's rates (Printify sends its shipping profile when it publishes). Etsy's fees also apply to the shipping charge, so real profit is a few cents lower than shown.
-- `printify.py` sets one price for every variant. A per-size price would be more competitive: S–XL $24.99 ($10.52), 2XL $26.99 ($9.71), 3XL $28.99 ($9.12). That needs a tool change (variant price map) or a manual edit in Printify.
-- Comparable Etsy prices (estimates, checked 3 Oct 2026): 11 oz moth/cottagecore mugs about $15–21 (RankHero "cottagecore mug" median $20.77; an Etsy 11 oz luna moth mug at $15.45). Skull and gothic tees about $20–32 (RankHero "skull shirt" median $25.65, "skull t shirt" $24.99). Both prices are inside these ranges; the tees sit slightly above the median.
+| Product | Retail | Cost | Fees on item | Fees on shipping | Profit |
+|---|---|---|---|---|---|
+| Mug (001, 002) | $16.99 | $6.44 | $1.90 | $0.67 (of $6.69) | **$7.98** |
+| Tee S–XL (003, 004) | $28.99 | $11.77 | $3.10 | $0.45 (of $4.49) | **$13.67** |
+| Tee 2XL | $28.99 | $14.38 | $3.10 | $0.45 | **$11.06** |
+| Tee 3XL | $28.99 | $16.77 | $3.10 | $0.45 | **$8.67** (sets the price; $27.99 would give $7.67) |
+
+- Mug: the rule minimum is $14.99 when fees on shipping are counted. $16.99 sits inside the comparable range.
+- `printify.py` sets one price for every variant. Per-size prices would be more competitive: S–XL $24.99 ($10.07), 2XL $26.99 ($9.26), 3XL $28.99 ($8.67). That needs a variant price map in product.json and `update`.
+- Comparable Etsy prices (estimates, checked 3 Oct 2026): 11 oz moth/cottagecore mugs about $15–21 (RankHero "cottagecore mug" median $20.77; an Etsy 11 oz luna moth mug at $15.45). Skull and gothic tees about $20–32 (RankHero "skull shirt" median $25.65, "skull t shirt" $24.99). $28.99 is inside the range but above the median.

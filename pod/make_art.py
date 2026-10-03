@@ -83,8 +83,176 @@ def moon_accent(canvas, gold=(250, 194, 104), cx=1350, cy=540, S=4):
     return canvas
 
 
-def tee(src, out, on, width_px=3000, top=300, lo=20, hi=70):
+# ---- 004: replace AI-garbled gold stars with clean drawn ones -------------------------------
+def gold_mask(a):
+    r,g,b=a[...,0],a[...,1],a[...,2]
+    return (r>150)&(g>90)&(r-b>50)&(r>=g)
+def label(mask):
+    """4-connected components via union-find over runs (numpy-free BFS is slow on 4k images)."""
+    H,W=mask.shape
+    lab=np.zeros((H,W),np.int32); parent=[0]; n=0
+    def find(x):
+        while parent[x]!=x:
+            parent[x]=parent[parent[x]]; x=parent[x]
+        return x
+    prev=[]
+    for y in range(H):
+        row=mask[y]
+        if not row.any(): prev=[]; continue
+        d=np.diff(np.concatenate([[0],row.astype(np.int8),[0]]))
+        starts=np.where(d==1)[0]; ends=np.where(d==-1)[0]
+        cur=[]
+        for s,e in zip(starts,ends):
+            n+=1; parent.append(n); cur.append((s,e,n))
+            for ps,pe,pl in prev:
+                if ps<e and s<pe:
+                    ra,rb=find(n),find(pl)
+                    if ra!=rb: parent[max(ra,rb)]=min(ra,rb)
+        for s,e,l in cur: lab[y,s:e]=l
+        prev=cur
+    roots=np.array([find(i) for i in range(n+1)],np.int32)
+    return roots[lab]
+def components(a):
+    m=gold_mask(a); lab=label(m)
+    ids=np.unique(lab[lab>0]); out=[]
+    ys,xs=np.nonzero(lab)
+    L=lab[ys,xs]; order=np.argsort(L); L=L[order]; ys=ys[order]; xs=xs[order]
+    cuts=np.where(np.diff(L))[0]+1
+    for yy,xx in zip(np.split(ys,cuts),np.split(xs,cuts)):
+        x0,x1,y0,y1=xx.min(),xx.max()+1,yy.min(),yy.max()+1
+        w,h=x1-x0,y1-y0; area=len(xx)
+        out.append(dict(x0=x0,y0=y0,x1=x1,y1=y1,w=w,h=h,area=area,fill=area/(w*h),cx=xx.mean(),cy=yy.mean(),ys=yy,xs=xx))
+    return out
+
+
+def inpaint(crop, unknown):
+    """Onion-peel fill: unknown pixels take the mean of their known 8-neighbours, ring by ring."""
+    crop = crop.copy(); known = ~unknown
+    while (~known).any():
+        acc = np.zeros_like(crop); cnt = np.zeros(known.shape)
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                if dy == dx == 0: continue
+                k = np.roll(np.roll(known, dy, 0), dx, 1); v = np.roll(np.roll(crop, dy, 0), dx, 1)
+                acc += v * k[..., None]; cnt += k
+        new = (~known) & (cnt > 0)
+        if not new.any(): break
+        crop[new] = acc[new] / cnt[new][:, None]; known = known | new
+    return crop
+
+
+def inpaint_limited(crop, unknown, iters):
+    """inpaint() limited to a few rings (for wide images where only a thin band needs filling)."""
+    crop = crop.copy(); known = ~unknown
+    for _ in range(iters):
+        acc = np.zeros_like(crop); cnt = np.zeros(known.shape)
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                if dy == dx == 0: continue
+                k = np.roll(np.roll(known, dy, 0), dx, 1); v = np.roll(np.roll(crop, dy, 0), dx, 1)
+                acc += v * k[..., None]; cnt += k
+        new = (~known) & (cnt > 0)
+        if not new.any(): break
+        crop[new] = acc[new] / cnt[new][:, None]; known = known | new
+    return crop
+
+
+def clean_stars(a, gold=None, keep_fill=0.72, speck=20):
+    """Baubles (round, fill >= 0.72) are kept. Every other gold mark (stars, squiggles, smudges) is
+    erased and redrawn as a clean upright 5-point star of the same size; specks are just erased."""
+    from PIL import ImageDraw
+    import math
+    a = a.copy(); comps = components(a)
+    if gold is None:
+        stars = [c for c in comps if 0.40 <= c["fill"] <= 0.48 and c["area"] > 500]
+        gold = np.median(np.concatenate([a[c["ys"], c["xs"]] for c in stars]), 0)
+    redraw = []
+    for c in comps:
+        if c["fill"] >= keep_fill and c["area"] >= 300 and 0.8 < c["w"] / c["h"] < 1.25:
+            continue
+        pad = 12
+        x0, y0 = max(c["x0"] - pad, 0), max(c["y0"] - pad, 0)
+        x1, y1 = min(c["x1"] + pad, a.shape[1]), min(c["y1"] + pad, a.shape[0])
+        m = np.zeros((y1 - y0, x1 - x0), bool); m[c["ys"] - y0, c["xs"] - x0] = True
+        # grow the mask 3 px to take the brownish anti-aliased halo with it
+        mi = Image.fromarray(m.astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(7))
+        a[y0:y1, x0:x1] = inpaint(a[y0:y1, x0:x1], np.asarray(mi) > 0)
+        if c["area"] >= speck:
+            redraw.append(((c["x0"] + c["x1"]) / 2, (c["y0"] + c["y1"]) / 2, max(c["w"], c["h"]) / 2))
+    S = 4
+    for cx, cy, R in redraw:
+        R = max(R, 6)
+        x0, y0 = int(cx - R - 4), int(cy - R - 4); size = int(2 * R + 9)
+        layer = Image.new("L", (size * S, size * S), 0); d = ImageDraw.Draw(layer)
+        pts = []
+        for k in range(10):
+            ang = -math.pi / 2 + k * math.pi / 5
+            rad = R if k % 2 == 0 else R * 0.45
+            pts.append(((cx - x0 + rad * math.cos(ang)) * S, (cy - y0 + rad * math.sin(ang) + R * 0.08) * S))
+        d.polygon(pts, fill=255)
+        al = np.asarray(layer.resize((size, size), Image.LANCZOS)).astype(np.float64)[..., None] / 255
+        reg = a[y0:y0 + size, x0:x0 + size]
+        al = al[:reg.shape[0], :reg.shape[1]]
+        a[y0:y0 + size, x0:x0 + size] = reg * (1 - al) + gold * al
+    print("  clean_stars: kept", len(comps) - len(redraw) - sum(1 for c in comps if c["area"] < speck and not (c["fill"] >= keep_fill and c["area"] >= 300)),
+          "baubles, redrew", len(redraw), "stars, gold", gold.round())
+    return a
+
+
+# Spot fixes for 004 that QA found at 100%, in tee-space px (x0, y0, x1, y1). Each rect is inpainted
+# entirely from its border in RGBA (so gap pixels return to transparent), then clean stars are redrawn.
+FIX_004_RECTS = [
+    (2177, 793, 2192, 813), (2187, 786, 2202, 806), (2197, 780, 2212, 800), (2206, 775, 2224, 789),  # pale streak, tier 2 left
+    (2304, 793, 2317, 809),   # grey smudge, tier 2 right
+    (2068, 1160, 2103, 1189),  # three overlapping stars + brown smear, tier 3 centre
+    (2066, 1476, 2076, 1489),  # pink halo left above a redrawn star, tier 4
+]
+FIX_004_CLEAR = [(2306, 724, 2326, 740)]  # red speck sitting in the gap on the tier-2 wing edge: made transparent
+FIX_004_STARS = [(2079, 1171, 9), (2097, 1180, 6)]  # (cx, cy, R): the cluster redrawn as two separate stars
+
+
+def draw_star(img, cx, cy, R, colour=(230, 183, 118, 255), S=4):
+    from PIL import ImageDraw
+    import math
+    n = int(2 * R + 8)
+    layer = Image.new("L", (n * S, n * S), 0); d = ImageDraw.Draw(layer)
+    pts = [((n / 2 + (R if k % 2 == 0 else R * 0.45) * math.cos(-math.pi / 2 + k * math.pi / 5)) * S,
+            (n / 2 + (R if k % 2 == 0 else R * 0.45) * math.sin(-math.pi / 2 + k * math.pi / 5) + R * 0.08) * S) for k in range(10)]
+    d.polygon(pts, fill=255)
+    img.paste(Image.new("RGBA", (n, n), colour), (round(cx - n / 2), round(cy - n / 2)), layer.resize((n, n), Image.LANCZOS))
+
+
+def fix_004(rgba):
+    a = rgba.astype(np.float64)
+    a[..., :3] *= a[..., 3:] / 255  # premultiply so transparent pixels don't bleed colour into the fill
+    for x0, y0, x1, y1 in FIX_004_RECTS:
+        p = 3
+        crop = a[y0 - p:y1 + p, x0 - p:x1 + p]
+        unknown = np.zeros(crop.shape[:2], bool); unknown[p:-p, p:-p] = True
+        a[y0 - p:y1 + p, x0 - p:x1 + p] = inpaint(crop, unknown)
+    al = a[..., 3:]
+    a[..., :3] = np.where(al > 0, a[..., :3] * 255 / np.maximum(al, 1e-6), 0)
+    for x0, y0, x1, y1 in FIX_004_CLEAR:
+        a[y0:y1, x0:x1] = 0
+    a[740:743, 2309:2321] = a[740:743, 2322:2334]  # red base of the speck inside the edge line: copy the edge beside it
+    # decontaminate the anti-aliased fringe: semi-transparent pixels take the colour of the nearest opaque
+    # pixels, so the soft edge stays but the light halo from the white background/upscale is gone
+    ys, xs = np.where(a[..., 3] > 0)
+    y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
+    sub = a[y0:y1, x0:x1]
+    rgb = inpaint_limited(sub[..., :3], sub[..., 3] < 250, iters=6)
+    semi = (sub[..., 3] > 0) & (sub[..., 3] < 250)
+    sub[..., :3][semi] = rgb[semi]
+    img = Image.fromarray(np.clip(a, 0, 255).round().astype(np.uint8), "RGBA")
+    for cx, cy, R in FIX_004_STARS:
+        draw_star(img, cx, cy, R)
+    return img
+
+
+def tee(src, out, on, width_px=3000, top=300, lo=20, hi=70, prep=None, post=None):
     a = load(src)
+    if prep:
+        a = prep(a)
     if on == "black":  # light art on black: alpha from brightest channel, unpremultiply against black
         alpha = np.clip((a.max(2) - lo) / (hi - lo), 0, 1)
         rgb = np.where(alpha[..., None] > 0, a / np.maximum(alpha[..., None], 1e-6), 0)
@@ -101,6 +269,8 @@ def tee(src, out, on, width_px=3000, top=300, lo=20, hi=70):
     W, H = 4500, 5100
     canvas = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     canvas.alpha_composite(art, ((W - art.width) // 2, top))
+    if post:
+        canvas = post(np.asarray(canvas))
     canvas.save(os.path.join(POD, out), dpi=(300, 300))
     print(out, canvas.size, "design", art.size, "= %.1f x %.1f in" % (art.width / 300, art.height / 300), "upsample %.2f" % s)
 
@@ -110,4 +280,7 @@ if __name__ == "__main__":
     mug("002-gothic-ornament-mug/candidates/ornament-3.png", "002-gothic-ornament-mug/mug-wrap-2700x1120.png",
         fix=[(1010, 1575, 1036, 1598)], height=960, centres=(675, 1350, 2025))
     tee("003-holly-skull-tee/candidates/skullB-2-up.png", "003-holly-skull-tee/tee-front-4500x5100.png", on="black")
-    tee("004-bat-wing-tree-tee/candidates/battree-3-up.png", "004-bat-wing-tree-tee/tee-front-4500x5100.png", on="white")
+    # lo=45: anything paler than min-channel 210 is background (an off-white AI patch at a wing tip was
+    # only 36% keyed at lo=20 and would print as a light patch on Ash); gold (min channel ~122) stays opaque
+    tee("004-bat-wing-tree-tee/candidates/battree-3-up.png", "004-bat-wing-tree-tee/tee-front-4500x5100.png", on="white",
+        lo=45, hi=95, prep=clean_stars, post=fix_004)

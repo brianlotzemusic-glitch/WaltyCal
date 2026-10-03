@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-03T10:41:06Z",
+ "updated_at": "2026-10-03T11:00:28Z",
  "next_run_at": "2026-10-03T11:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -25,16 +25,16 @@
   {
    "id": "designer",
    "name": "Designer",
-   "state": "working",
-   "task": "Fixing the POD pilot: bat-tree tee art, tee price $28.99, Printify draft sync, lifestyle lead photos.",
-   "since": "2026-10-03T10:41:06Z"
+   "state": "idle",
+   "task": "Fixed the POD pilot after QA round 1 (bat-tree art cleaned, tees $28.99, drafts synced). Waiting for QA.",
+   "since": "2026-10-03T11:00:28Z"
   },
   {
    "id": "qa",
    "name": "QA",
-   "state": "idle",
-   "task": "POD pilot round 1: mugs and skull tee OK with setup fixes; sent the bat-tree tee back for art artefacts.",
-   "since": "2026-10-03T10:41:06Z"
+   "state": "working",
+   "task": "Final round-2 review of the POD pilot.",
+   "since": "2026-10-03T11:00:28Z"
   },
   {
    "id": "lister",

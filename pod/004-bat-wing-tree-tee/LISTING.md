@@ -7,7 +7,15 @@ Bat Christmas Tree Shirt, Gothic Christmas T-Shirt, Bat Wing Tree with Gold Baub
 bat christmas shirt, gothic christmas, bat tree shirt, spooky christmas, goth christmas gift, bat lover gift, christmas bat tee, dark holiday shirt, creepy cute tee, witchy christmas, gothic tree shirt, goth holiday tee, alt christmas gift
 
 ## Price
-$27.99 (see pricing note in pod/PROVIDERS.md)
+$28.99
+
+Profit per size (cost = Printify variant cost read after create; the buyer pays shipping at Printify's rate, and Etsy's fees on that shipping are counted, conservatively at 10%):
+
+| Size | Cost | Etsy fees on item (10% + $0.20) | Etsy fees on shipping (10% of $4.49) | Profit |
+|---|---|---|---|---|
+| S-XL | $11.77 | $3.10 | $0.45 | **$13.67** |
+| 2XL | $14.38 | $3.10 | $0.45 | **$11.06** |
+| 3XL | $16.77 | $3.10 | $0.45 | **$8.67** |
 
 ## Description
 A Christmas tree made of stacked plum bat wings, hung with gold baubles and tiny stars, with a berry-red bat as the tree topper. A bold, elegant dark-holiday design printed on light tees: White, Natural, Soft Cream or Ash.
@@ -17,7 +25,7 @@ Each shirt is printed for you after you order (direct-to-garment print) and ship
 
 Details
 - Shirt: Bella+Canvas 3001 unisex jersey tee, retail fit, crew neck, side-seamed, tear-away label
-- Material: 100% Airlume combed and ring-spun cotton, 4.2 oz/yd² (heather colours are a 52% cotton / 48% polyester blend; Ash is 99% cotton)
+- Material: 100% Airlume combed and ring-spun cotton, 4.2 oz/yd² (Ash is 99% cotton / 1% polyester)
 - Sizes: S to 3XL, unisex sizing (runs like a standard men's fit); size up for a looser fit
 - Print: design about 10 in wide on the front
 - Care: machine wash cold inside out with similar colours, tumble dry low or hang dry, do not iron directly on the print, do not dry clean
