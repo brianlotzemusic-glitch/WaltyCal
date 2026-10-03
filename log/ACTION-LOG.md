@@ -72,3 +72,4 @@
 | 2026-10-03 00:01 | Printify connected (shop 29175603), auto order submission, Etsy production partner added; POD pilot unblocked | Owner completed Printify setup |
 | 2026-10-03 00:14 | Lister published 007 (Etsy 4587461298, $6) and 008 (Etsy 4587461356, $4); daily cap of 2 used | Approved bundles; new UTC day |
 | 2026-10-03 10:14 | Designer started the print-on-demand pilot (2 mugs + 2 tees; Recraft art; create in Printify, not published) | Designer due; Printify and Recraft keys now available in this session |
+| 2026-10-03 10:36 | Designer built POD pilot: 4 unpublished Printify drafts (mugs $16.99, tees $27.99 planned; Printify tee drafts still $24.99); Recraft spend $4.22 this run; Recraft account reported not_enough_credits; committed as AWAITING QA | Pilot build |

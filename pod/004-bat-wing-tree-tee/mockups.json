@@ -1,0 +1,76 @@
+{
+ "printify_product_id": "6ac0d8960d28a29c7b0baef4",
+ "note": "selected_for_publishing = what Printify sends to Etsy (GET product); all_cameras = every angle from the create response for the default variant",
+ "selected_for_publishing": [
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18542/92547/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=front",
+   "variant": 18542,
+   "colour": "White",
+   "camera": "front",
+   "is_default": true
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/38608/92547/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=front",
+   "variant": 38608,
+   "colour": "Ash",
+   "camera": "front",
+   "is_default": false
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18390/92547/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=front",
+   "variant": 18390,
+   "colour": "Natural",
+   "camera": "front",
+   "is_default": false
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18462/92547/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=front",
+   "variant": 18462,
+   "colour": "Soft Cream",
+   "camera": "front",
+   "is_default": false
+  }
+ ],
+ "all_cameras": [
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18542/102044/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=front-2",
+   "variant": 18542,
+   "camera": "front-2"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18542/102045/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=back-2",
+   "variant": 18542,
+   "camera": "back-2"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18542/102046/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=folded",
+   "variant": 18542,
+   "camera": "folded"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18542/102048/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=hanging-1",
+   "variant": 18542,
+   "camera": "hanging-1"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18542/102047/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=hanging-2",
+   "variant": 18542,
+   "camera": "hanging-2"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18542/102049/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=hanging-3",
+   "variant": 18542,
+   "camera": "hanging-3"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18542/92735/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=front-collar-closeup",
+   "variant": 18542,
+   "camera": "front-collar-closeup"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d8960d28a29c7b0baef4/18542/92736/bat-christmas-tree-shirt-gothic-christmas-t-shirt-bat-wing-tree-with-gold-baubles-spooky-christmas-gift-unisex-goth-holiday-tee.jpg?camera_label=back-collar-closeup",
+   "variant": 18542,
+   "camera": "back-collar-closeup"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "printify_product_id": "6ac0d9d08a2d4a81400776ab",
+ "note": "selected_for_publishing = what Printify sends to Etsy (GET product); all_cameras = every angle from the create response",
+ "selected_for_publishing": [
+  {
+   "src": "https://images.printify.com/mockup/6ac0d9d08a2d4a81400776ab/33719/6400/luna-moth-mug-celestial-moth-coffee-mug-with-crescent-moons-cottagecore-moth-lover-gift-dark-academia-11-oz-ceramic-mug.jpg?camera_label=front",
+   "variant": 33719,
+   "colour": "11oz",
+   "camera": "front",
+   "is_default": true
+  }
+ ],
+ "all_cameras": [
+  {
+   "src": "https://images.printify.com/mockup/6ac0d9d08a2d4a81400776ab/33719/6400/luna-moth-mug-celestial-moth-coffee-mug-with-crescent-moons-cottagecore-moth-lover-gift-dark-academia-11-oz-ceramic-mug.jpg?camera_label=front",
+   "variant": 33719,
+   "camera": "front"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d9d08a2d4a81400776ab/33719/6402/luna-moth-mug-celestial-moth-coffee-mug-with-crescent-moons-cottagecore-moth-lover-gift-dark-academia-11-oz-ceramic-mug.jpg?camera_label=left",
+   "variant": 33719,
+   "camera": "left"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d9d08a2d4a81400776ab/33719/10395/luna-moth-mug-celestial-moth-coffee-mug-with-crescent-moons-cottagecore-moth-lover-gift-dark-academia-11-oz-ceramic-mug.jpg?camera_label=right",
+   "variant": 33719,
+   "camera": "right"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d9d08a2d4a81400776ab/33719/10393/luna-moth-mug-celestial-moth-coffee-mug-with-crescent-moons-cottagecore-moth-lover-gift-dark-academia-11-oz-ceramic-mug.jpg?camera_label=context-1",
+   "variant": 33719,
+   "camera": "context-1"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d9d08a2d4a81400776ab/33719/10394/luna-moth-mug-celestial-moth-coffee-mug-with-crescent-moons-cottagecore-moth-lover-gift-dark-academia-11-oz-ceramic-mug.jpg?camera_label=context-2",
+   "variant": 33719,
+   "camera": "context-2"
+  },
+  {
+   "src": "https://images.printify.com/mockup/6ac0d9d08a2d4a81400776ab/33719/6568/luna-moth-mug-celestial-moth-coffee-mug-with-crescent-moons-cottagecore-moth-lover-gift-dark-academia-11-oz-ceramic-mug.jpg?camera_label=context-3",
+   "variant": 33719,
+   "camera": "context-3"
+  }
+ ]
+}
