@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-03T11:02:39Z",
- "next_run_at": "2026-10-03T11:12:00Z",
+ "updated_at": "2026-10-03T11:14:10Z",
+ "next_run_at": "2026-10-03T12:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 8,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "POD pilot approved; waiting on the owner's Printify photo step.",
-   "since": "2026-10-03T11:02:39Z"
+   "task": "Hourly shift done. Waiting on the owner's Printify photo step; Designer next after about 22:00 UTC.",
+   "since": "2026-10-03T11:14:10Z"
   },
   {
    "id": "researcher",
@@ -47,8 +47,8 @@
    "id": "analyst",
    "name": "Analyst",
    "state": "idle",
-   "task": "Stats pulled: 6 live listings, 1 view, 0 sales, $0. Next pull after 10:15 UTC tomorrow.",
-   "since": "2026-10-02T10:15:13Z"
+   "task": "Stats: 8 live listings, 1 view, 0 sales, $0. Too early to judge. Next pull after 11:15 UTC tomorrow.",
+   "since": "2026-10-03T11:14:10Z"
   },
   {
    "id": "scout",
@@ -73,6 +73,11 @@
   "Highland cow Christmas"
  ],
  "feed": [
+  {
+   "t": "2026-10-03T11:14:10Z",
+   "who": "analyst",
+   "msg": "Daily stats: 8 listings live, 1 view, no sales yet."
+  },
   {
    "t": "2026-10-03T11:02:39Z",
    "who": "qa",
@@ -217,11 +222,6 @@
    "t": "2026-10-01T19:03:56Z",
    "who": "qa",
    "msg": "Approved bundle 006, Filigree Christmas ornaments: pinecone fixed, new fir tree passes, Etsy category added."
-  },
-  {
-   "t": "2026-10-01T18:56:15Z",
-   "who": "designer",
-   "msg": "Fixed bundle 006: pinecone blots gone, Etsy category added, tree redrawn with real fir branches. Back to QA."
   }
  ],
  "venture_gate": {
