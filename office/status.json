@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-03T09:13:20Z",
- "next_run_at": "2026-10-03T10:12:00Z",
+ "updated_at": "2026-10-03T10:13:34Z",
+ "next_run_at": "2026-10-03T11:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 8,
@@ -11,9 +11,9 @@
   {
    "id": "manager",
    "name": "Manager",
-   "state": "idle",
-   "task": "Hourly shift: nothing due. Designer due at the 10:12 UTC shift.",
-   "since": "2026-10-03T09:13:20Z"
+   "state": "working",
+   "task": "Hourly shift: Designer is due; Printify and Recraft keys are now available.",
+   "since": "2026-10-03T10:13:34Z"
   },
   {
    "id": "researcher",
@@ -25,9 +25,9 @@
   {
    "id": "designer",
    "name": "Designer",
-   "state": "idle",
-   "task": "Next after about 10:30 UTC: cross-stitch pilot (Woodland Christmas mini ornaments). The print-on-demand pilot is skipped until PRINTIFY_API_TOKEN is set.",
-   "since": "2026-10-02T22:38:51Z"
+   "state": "working",
+   "task": "Making the print-on-demand pilot: 2 mugs + 2 tees, created in Printify (not published).",
+   "since": "2026-10-03T10:13:34Z"
   },
   {
    "id": "qa",
@@ -73,6 +73,11 @@
   "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages"
  ],
  "feed": [
+  {
+   "t": "2026-10-03T10:13:34Z",
+   "who": "designer",
+   "msg": "Started the print-on-demand pilot: 2 mugs and 2 tees."
+  },
   {
    "t": "2026-10-03T00:14:25Z",
    "who": "lister",
@@ -217,11 +222,6 @@
    "t": "2026-10-01T18:10:34Z",
    "who": "designer",
    "msg": "Started bundle 006: Filigree Christmas ornament shapes."
-  },
-  {
-   "t": "2026-10-01T18:10:34Z",
-   "who": "researcher",
-   "msg": "Best-seller scan done: gingerbread letters, Christmas villages and filigree ornaments lead. No listing confirmed at 1,000+ sales."
   }
  ],
  "venture_gate": {
