@@ -108,3 +108,4 @@
 - 2026-10-04 10:12 UTC: Manager. Hourly check, nothing due.
 - 2026-10-04 11:13 UTC: Manager. Hourly check; Analyst stats + owner push moved to the 12:12 shift (first after 8am ET).
 - 2026-10-04 12:13 UTC: Analyst stats: 14 live, 1 view, 0 favs, 0 sales (no change in 24 h). Pushed the owner the daily line, plus a question: cut trend scans to once a day after two empty scans? Default: keep 6 h.
+- 2026-10-04 12:56 UTC: The owner added their TpT music store (brian-lotze: 4 high-school Logic Pro items). Decisions: a new classroom music line for K-12, matching the owner's store style, separate products, and the owner uploads by hand from paste-ready packages. Added the FACTORY.md 'Teachers Pay Teachers' section and a tpt/ folder, and queued the first TpT research pass.

@@ -231,6 +231,26 @@ The owner will shut the factory down unless the shop shows signs of life by 10 O
 - **No Etsy Ads yet** (owner, 3 Oct 2026: "no ads till we build a decent library of items"). Never turn on or suggest paid ads before then. When the shop reaches **40 live listings**, the Manager asks the owner once whether to start Etsy Ads at $1/day.
 - **10 Oct check**: write `reports/2026-10-10-turnaround.md` with the week's views, favourites, sales and spend. Targets: ≥100 views and ≥5 favourites. Recommend honestly whether to continue. If there are under 20 views, recommend shutting down or pausing.
 
+## Teachers Pay Teachers (owner's music store, added 4 Oct 2026)
+The owner also sells on TpT: https://www.teacherspayteachers.com/store/brian-lotze. As of 4 Oct it holds 4 high-school digital music production items built around Logic Pro ($0–$10, 3 followers). The owner's decisions (4 Oct):
+- **A new classroom music line**, K-2, 3-5, 6-8 and high school. These are separate products; overlapping the owner's curriculum is fine.
+- **Match the owner's store**: sold under the owner's name and style, not Duskwood. Before the first build, the Designer looks at the store's thumbnails and covers, then writes the look into `tpt/STYLE.md` (fonts, colours, layout, cover format).
+- **The owner uploads by hand.** TpT has no public seller API, and the factory never logs into the owner's account or automates the TpT website. For each item the factory builds `tpt/NNN-slug/` containing:
+  - the resource PDF and a 4-page preview PDF
+  - a square cover/thumbnail and 3 preview images
+  - `UPLOAD.md`, laid out in the order of TpT's upload form, with title (≤80 chars), description, grades, subjects, resource type, standards if any, price, and a "free or paid" note, ready to paste
+- **Batching**: when 2–3 TpT items are approved, the Manager sends one push ("2 TpT items ready, ~15 min to upload: tpt/…"), at most twice a week and only between 8am and 8pm ET. The owner replies "uploaded", and the Manager records it in `tpt/NNN-slug/uploaded`.
+- **Researcher**: once a week, look at proven TpT music sellers (best-seller and "most popular" lists, review counts, seasonal demand: Halloween, Thanksgiving, winter/holiday concerts, Music In Our Schools Month in March, end of year, sub plans). Add items to `queue.md` tagged `[tpt]` with grade, type, a typical price and evidence. Take the subject and format only; never copy another seller's resource.
+- **Designer**: build `[tpt]` items like any other product, drawn in code at no image cost (notation, rhythm cards, bingo, worksheets, posters, colour-by-note). They take turns with Etsy builds, about 1 in 3 Designer runs. Use music21, LilyPond or hand-drawn SVG for notation.
+- **QA**, in addition to the usual checks:
+  - **Musical accuracy**: note values add up to each bar's time signature, stems and beams are correct, notes sit on the right staff positions, the clef is right, and the rhythm syllables match the notes.
+  - **Age-appropriateness**, and answer keys that are correct.
+- **Rules**:
+  - No copyrighted songs, lyrics or arrangements; public-domain folk songs and composers are fine.
+  - "Logic Pro" and other product names only to describe compatibility.
+  - The disclosure line goes in the description: "Designed with the help of digital and AI tools, and checked by hand."
+- **Money**: no TpT fees are paid by the factory. Basic seller keeps 55% minus $0.30 per resource; Premium costs $59.95/yr, and only the owner decides on it.
+
 ## Rules
 - Original work only. No copyrighted characters, logos, brand names, trademarked phrases, or other sellers' designs. Avoid "Creepmas".
 - No weapons, hate content, medical claims, or adult content.
