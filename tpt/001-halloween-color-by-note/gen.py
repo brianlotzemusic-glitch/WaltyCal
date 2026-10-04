@@ -44,7 +44,8 @@ COVER_PNG = os.path.join(HERE, "cover.png")
 PREVIEW_PNGS = [os.path.join(HERE, f"preview-{i}.png") for i in (1, 2, 3)]
 UPLOAD = os.path.join(HERE, "UPLOAD.md")
 
-STORE = "Brian Lotze"
+STORE = "Brian Lotze"      # copyright holder
+BRAND = "Hudson Beat"      # store line on covers and previews (owner, 4 Oct)
 YEAR = 2026
 ACCENT = "#E8731A"  # this product's single accent (Halloween orange)
 
@@ -302,7 +303,7 @@ def foot(left, right):
     return f'<div class="foot"><span>{left}</span><span>{right}</span></div>'
 
 
-COPY = f"© {YEAR} {STORE} · For single-classroom use"
+COPY = f"© {YEAR} {STORE} · {BRAND} · For single-classroom use"
 
 
 def worksheet_page(sh, watermark=False):
@@ -338,7 +339,7 @@ def cover_art(sheet):
 
 def cover_page(sheets):
     pump = next(s for s in sheets if s.level == "A" and s.slug == "pumpkin")
-    return (f'<section class="page cover"><div class="store">{STORE}</div>'
+    return (f'<section class="page cover"><div class="store">{BRAND}</div>'
             f'<div style="width:6.2in">{picture_svg(pump, fills=cover_art(pump), stroke=2.2)}</div>'
             f'<div class="ctitle"><div class="a">HALLOWEEN</div><div class="b">COLOR BY NOTE</div>'
             f'<div class="c">Rhythm values · Treble clef · Bass clef — 3 levels with answer keys</div></div>'
@@ -401,7 +402,7 @@ def reference_page():
 def terms_page(page_no):
     return (f'<section class="page doc"><div class="rule"><h1>Terms of Use</h1>'
             f'<div class="l" style="font-size:13pt">Thank you for your purchase!</div></div>'
-            f'<p>© {YEAR} {STORE}. All rights reserved. This purchase gives <b>one teacher</b> a license to use this resource with their own students.</p>'
+            f'<p>© {YEAR} {STORE}. {BRAND} by {STORE}. All rights reserved. This purchase gives <b>one teacher</b> a license to use this resource with their own students.</p>'
             f'<h2>You may</h2><ul><li>Print and copy pages for your own classroom and students, year after year.</li>'
             f'<li>Share pages with your own students through a password-protected class site or learning platform.</li>'
             f'<li>Use the pages with your own students when you have a substitute teacher.</li></ul>'
@@ -409,10 +410,10 @@ def terms_page(page_no):
             f'Additional licenses are available on Teachers Pay Teachers.</li>'
             f'<li>Post any part of it on a public website, shared drive or social media.</li>'
             f'<li>Sell, give away or claim any part of it as your own, or edit it into a new product.</li></ul>'
-            f'<h2>Questions?</h2><p>Please use the Q&amp;A tab on the {STORE} store on Teachers Pay Teachers. '
+            f'<h2>Questions?</h2><p>Please use the Q&amp;A tab on the {BRAND} by {STORE} store on Teachers Pay Teachers. '
             f'If something looks wrong, let me know there and I will fix it.</p>'
             f'<h2>Credits</h2><ul>'
-            f'<li>Pictures, layouts and answer keys: original work, {STORE}.</li>'
+            f'<li>Pictures, layouts and answer keys: original work, {BRAND} by {STORE}.</li>'
             f'<li>Music notation font: Bravura © Steinberg Media Technologies GmbH, SIL Open Font License 1.1.</li>'
             f'<li>Text fonts: Oswald (The Oswald Project Authors) and Source Sans 3 (Adobe), SIL Open Font License 1.1.</li></ul>'
             f'<p class="small">Designed with the help of digital and AI tools, and checked by hand.</p>'
@@ -485,7 +486,7 @@ def sq_doc(body):
 def cover_square(sheets):
     pump = next(s for s in sheets if s.level == "A" and s.slug == "pumpkin")
     return sq_doc(
-        f'<div class="sq"><div class="store">{STORE}</div>'
+        f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div style="width:610px;margin-top:22px">{picture_svg(pump, fills=cover_art(pump), stroke=2.4)}</div>'
         f'<div class="hd" style="font-size:66px;margin-top:20px">Halloween</div>'
         f'<div class="hd" style="font-size:112px">Color by Note</div>'
@@ -498,7 +499,7 @@ def preview_square_1(img):
         f'<div style="width:296px"><div class="shot"><img src="{img[k]}"><div class="swm" style="font-size:54px">PREVIEW</div></div>'
         f'<div class="lbl">Level {k}<span>{LEVELS[k]["name"]} · gr. {LEVELS[k]["grades"]}</span></div></div>' for k in "ABC")
     return sq_doc(
-        f'<div class="sq"><div class="store">{STORE}</div>'
+        f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:78px;margin-top:20px">3 levels, same pictures</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Differentiate in one lesson: everyone colors the same picture at their own level</div>'
         f'<div style="display:flex;gap:26px;margin-top:60px">{shots}</div>'
@@ -510,7 +511,7 @@ def preview_square_2(ws, key):
         f'<div style="width:420px"><div class="shot"><img src="{src}"><div class="swm" style="font-size:80px">PREVIEW</div></div>'
         f'<div class="lbl">{lab}</div></div>' for src, lab in ((ws, "Worksheet"), (key, "Answer key")))
     return sq_doc(
-        f'<div class="sq"><div class="store">{STORE}</div>'
+        f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:70px;margin-top:20px">An answer key for every page</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Keys are built from the same data as the worksheets, then checked by hand</div>'
         f'<div style="display:flex;gap:40px;margin-top:30px">{pair}</div>'
@@ -523,7 +524,7 @@ def preview_square_3(sheets):
         f'<div class="lbl" style="font-size:15px;margin-top:4px">{s.number}. {escape(s.title)}</div></div>'
         for s in sheets if s.level == "B")
     return sq_doc(
-        f'<div class="sq"><div class="store">{STORE}</div>'
+        f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:60px;margin-top:12px">9 original pictures</div>'
         f'<div style="position:relative;display:flex;flex-wrap:wrap;gap:8px 22px;width:800px;margin-top:12px;justify-content:center">{cells}'
         f'<div class="swm" style="font-size:150px">PREVIEW</div></div>'

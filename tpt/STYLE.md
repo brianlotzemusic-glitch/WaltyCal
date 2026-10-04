@@ -1,8 +1,8 @@
-# TpT style: Brian Lotze store
+# TpT style: Hudson Beat (Brian Lotze's store)
 
 This is the house look for every item in the owner's TpT music line. It comes from the four covers on https://www.teacherspayteachers.com/store/brian-lotze (see research/tpt-music-2026-10-04.md, section 5). Those covers are monochrome: black line art on white, a tall condensed bold all-caps title stacked and centred under the logo, a light condensed subtitle, lots of white space, no borders and no photos.
 
-We copy the look, not the artwork. The speaker/helmet logo belongs to the owner, and we don't have the file. Never redraw it. Until the owner sends the file, the brand mark is the store name set in type.
+We copy the look, not the artwork. The speaker/helmet logo belongs to the owner, and we don't have the file. Never redraw it. The owner named the music brand **Hudson Beat** (4 Oct 2026). The brand mark is "HUDSON BEAT" set in type. The copyright holder stays Brian Lotze.
 
 The reference build is `tpt/001-halloween-color-by-note/gen.py`. Reuse its CSS and page functions.
 
@@ -33,7 +33,7 @@ Render at 1000 × 1000 CSS px with deviceScaleFactor 2. The layout is the owner'
 
 ```
  ┌───────────────────────────────────────┐
- │            B R I A N   L O T Z E      │  store line: Oswald 500, 22px, +0.32em tracking, caps
+ │            H U D S O N   B E A T      │  store line: Oswald 500, 22px, +0.32em tracking, caps
  │                                       │
  │        ┌──────────────────────┐       │  hero art, ~55–60% of the height,
  │        │   line art (black +  │       │  black line art, at most the accent + black fill
@@ -47,7 +47,7 @@ Render at 1000 × 1000 CSS px with deviceScaleFactor 2. The layout is the owner'
 ```
 
 - No border round the square and no photos or mock-up props. White background.
-- **Store line** "BRIAN LOTZE" at the top of every cover and preview image. If the owner sends the logo file, it replaces the store line and art sits under it, as on the existing covers.
+- **Store line** "HUDSON BEAT" at the top of every cover and preview image. If the owner sends the logo file, it goes next to "HUDSON BEAT" in the same top position; never redraw it.
 - The bottom band holds the grade range and the one or two strongest counts. Keep it to one line.
 - The title must be readable at TpT's ~350 px thumbnail size: the big line is at least 10% of the image height.
 
@@ -58,7 +58,7 @@ The **PDF cover** (page 1, US Letter) uses the same stack: store line, art, titl
 - Margins are about 0.42 in at the top, 0.5 in at the sides and 0.38 in at the bottom. Nothing important goes within 0.35 in of the edge.
 - **Header**: the product title in Oswald 700 caps (~25 pt) on the left with the item/page name under it in Oswald 300. On the right a black rounded tag ("LEVEL A") with a light label under it. Answer keys use the accent tag. A 2.2 pt black rule sits under the header.
 - **Name / Date lines** on every student page.
-- **Footer**: a 0.8 pt rule, then "© YEAR Brian Lotze · For single-classroom use" on the left and the page number on the right (plus cross-references such as "Answer key on page 13").
+- **Footer**: a 0.8 pt rule, then "© YEAR Brian Lotze · Hudson Beat · For single-classroom use" on the left and the page number on the right (plus cross-references such as "Answer key on page 13").
 - Line art: 1.6 pt black outlines and rounded joins. Regions are big enough for crayons, at least about 40 pt across.
 - Kid-friendly and not scary. No characters, brands or copyrighted songs.
 
@@ -78,7 +78,7 @@ Every resource includes:
 2. **Teacher notes**: how to use, a level/grade guide with page ranges, a standards-friendly description (National Core Arts Standards code where it really fits; keep claims modest), what's inside, and "No songs, lyrics or copyrighted characters are used."
 3. A **student reference** page where the activity needs one.
 4. The **last page, terms of use and credits**:
-   - "© YEAR Brian Lotze. All rights reserved." One teacher's licence for their own students.
+   - "© YEAR Brian Lotze. Hudson Beat by Brian Lotze. All rights reserved." One teacher's licence for their own students. Questions and credits name "Hudson Beat by Brian Lotze".
    - **You may**: copy for your own classes, post to a password-protected class site, and use with your students when you have a sub.
    - **You may not**: share with other teachers, schools or districts (additional licences are on TpT), post publicly, resell, or edit into a new product.
    - **Questions**: through the store's Q&A tab on TpT. We never print an email address unless the owner gives one.
@@ -91,4 +91,4 @@ Every resource includes:
 
 ## Open question for the owner
 
-- Should the speaker/helmet logo replace the "BRIAN LOTZE" store line on K-8 covers? If so, send the logo file and we will place it as on the existing covers.
+- Should the speaker/helmet logo appear next to "HUDSON BEAT" on covers? If so, send the logo file and we will place it beside the store line.

@@ -69,6 +69,6 @@ Optional freebie later (research §4): one Level A page, for example the jack-o'
 
 ## 9. Before you click publish
 
-- [ ] The cover shows "BRIAN LOTZE" in type. Swap in the store logo only if you want to (see tpt/STYLE.md).
+- [ ] The cover and preview images show "HUDSON BEAT" in type as the store line; footers read "© 2026 Brian Lotze · Hudson Beat". If you want the logo next to "HUDSON BEAT", send the file (see tpt/STYLE.md).
 - [ ] List by **10 Oct 2026** so it has the Halloween search window.
 - After uploading, reply "uploaded" and the Manager records it in `uploaded`.
