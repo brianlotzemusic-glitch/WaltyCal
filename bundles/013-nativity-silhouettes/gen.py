@@ -338,8 +338,9 @@ def camel(x, gy, s=1.0, stride=0):
         hp = (x + hip * s, gy - 196 * s)
         kn = (x + (hip + knee_dx) * s, gy - 104 * s)
         ft = (x + (hip + foot_dx) * s, gy - 8 * s)
-        g += [taper(hp, kn, 34 * s, max(18, 24 * s)), taper(kn, ft, max(18, 24 * s), max(16, 18 * s)),
-              ell(ft[0] + 6 * s, ft[1] + 2 * s, max(17, 20 * s), max(10, 10 * s))]
+        g += [taper(hp, kn, 36 * s, max(18, 24 * s)), taper(kn, ft, max(18, 24 * s), max(16, 18 * s)),
+              circ(kn[0], kn[1], max(13, 19 * s)),                                   # knobbly knee
+              ell(ft[0] + 7 * s, ft[1] + 1 * s, max(19, 24 * s), max(11, 11 * s))]   # padded foot
     g.append(curve(T([(-120, -228), (-136, -200), (-134, -160)], x, gy, s), 13 * s))  # tail
     return U(g)
 
@@ -438,20 +439,35 @@ def d2_manger_star():
     return compose(solid, holes)
 
 
+def saddle_slot(x, gy, s):
+    """Cut-out line under the rider's robe, so rider and camel read apart."""
+    return curve(T([(-58, -230), (-30, -218), (10, -214), (40, -228)], x, gy, s), 15)
+
+
 def d3_magi_procession():
-    """Three magi on camels following the star to Bethlehem (framed panel)."""
-    W, H, F = 1000, 600, 24
+    """Three magi on camels following the star to Bethlehem: a framed panel
+    with a starry sky band and the Star of Bethlehem shining ahead."""
+    W, H, F = 1000, 560, 24
     solid, holes = [], []
     solid.append(rect(0, 0, W, H, 40).difference(rect(F, F, W - F, H - F, 18)))
-    BY = 500
-    solid.append(ground(F - 4, W - F + 4, BY, 80, ((7, 80), (3, 23)), r=2))
-    for x, s, stride, hat, gift in ((136, 0.6, 6, "turban", "jar"), (384, 0.6, 2, "crown", "box"),
-                                    (632, 0.6, 4, "tall", "bowl")):
+    # night-sky band with cut-out stars and a wavy lower edge
+    edge = [(x, 104 + 10 * math.sin(x / 75 + 0.8) + 4 * math.sin(x / 23)) for x in range(F - 10, W - F + 11, 4)]
+    solid.append(poly([(F - 10, F - 10)] + edge + [(W - F + 10, F - 10)]))
+    for x, y, R in ((92, 62, 30), (206, 68, 26), (318, 58, 30), (432, 68, 26), (546, 60, 30), (660, 68, 26)):
+        holes.append(star(x, y, R, R * 0.46, 5))
+    # the Star of Bethlehem: cut out of a glowing disc, with rays falling ahead
+    cx, cy = 872, 132
+    solid.append(circ(cx, cy, 98))
+    holes.append(beth_star(cx, cy, 80, 84, 72, 42, waist=0.34))
+    BY = 480
+    solid.append(ground(F - 4, W - F + 4, BY, 80, ((6, 80), (3, 23)), r=2))
+    for x, stride, hat, gift in ((150, 6, "turban", "jar"), (408, 2, "crown", "box"), (666, 4, "tall", "bowl")):
+        s = 0.64
         solid.append(camel(x, BY + 4, s, stride))
         solid.append(magus(x, BY + 4, s, hat, gift))
-    t, th = town(800, BY + 4, 0.66)
+        holes.append(saddle_slot(x, BY + 4, s))
+    t, th = town(856, BY + 4, 0.42)
     solid.append(t); holes.append(th)
-    solid.append(beth_star(866, 76, 96, 110, 84, 48, waist=0.32))
     return compose(solid, holes)
 
 
@@ -485,51 +501,71 @@ def d5_bethlehem_star():
     return compose(solid, holes)
 
 
-def wing(S, bone, d0, d1, L0, L1, w=60, n=10, solid_to=0.62):
+def feather(base, a, L, w):
+    """Tapered, pointed flight feather from base, pointing at angle a."""
+    return poly(chaikin([polar(*base, w * 0.45, a - 90), polar(*polar(*base, L * 0.5, a), w * 0.5, a - 90),
+                         polar(*polar(*base, L * 0.82, a), w * 0.32, a - 90), polar(*base, L, a + 2),
+                         polar(*polar(*base, L * 0.82, a), w * 0.32, a + 90),
+                         polar(*polar(*base, L * 0.5, a), w * 0.5, a + 90), polar(*base, w * 0.45, a + 90)], 1))
+
+
+def wing(S, bone, d0, d1, L0, L1, w=58, n=10, solid_to=0.7):
     """Wing: a bone line from the shoulder S through `bone` points, with n
-    long rounded feathers along it whose direction turns from d0 to d1
-    degrees and whose length grows from L0 to L1. The inner part of the
-    wing is solid; only the feather tips separate into a scalloped edge."""
+    pointed flight feathers along it whose direction turns from d0 to d1
+    degrees and whose length grows from L0 to L1 (primaries longest at the
+    tip), over a row of shorter covert feathers. The inner wing is solid;
+    only the pointed feather tips separate."""
     ls = LineString(chaikin([S] + bone, 3, closed=False))
     parts = [ls.buffer(30, quad_segs=12)]
-    inner = []
+    inner, bases = [], []
     for k in range(n):
-        t = 0.06 + 0.94 * k / (n - 1)
+        t = 0.04 + 0.96 * k / (n - 1)
         q = ls.interpolate(ls.length * t)
         a = d0 + (d1 - d0) * t
-        L = L0 + (L1 - L0) * t ** 1.2
+        L = L0 + (L1 - L0) * t ** 1.4
         base = (q.x, q.y)
-        tip = polar(*base, L, a)
-        mid = polar(*base, L * 0.55, a)
-        parts.append(blob([polar(*base, w * 0.4, a - 90), polar(*mid, w / 2, a - 90), polar(*tip, w * 0.3, a - 90),
-                           polar(*tip, 6, a), polar(*tip, w * 0.3, a + 90), polar(*mid, w / 2, a + 90),
-                           polar(*base, w * 0.4, a + 90)], 3))
+        parts.append(feather(base, a, L, w))
+        bases.append(base)
         inner.append(polar(*base, L * solid_to, a))
-    bases = [(p.x, p.y) for p in (ls.interpolate(ls.length * (0.06 + 0.94 * k / (n - 1))) for k in range(n))]
     parts.append(poly(bases + inner[::-1]))
-    return U(parts)
+    g = U(parts)
+    # feather lines: slim cut-outs between neighbouring flight feathers
+    slits = []
+    for k in range(2, n - 1):
+        t = 0.04 + 0.96 * (k + 0.5) / (n - 1)
+        q = ls.interpolate(ls.length * t)
+        a = d0 + (d1 - d0) * t
+        L = L0 + (L1 - L0) * t ** 1.4
+        slits.append(taper(polar(q.x, q.y, L * 0.3, a), polar(q.x, q.y, L * 0.66, a), 15, 17))
+    return g.difference(U(slits))
 
 
 def d6_herald_angel():
     """Herald angel in a flowing robe, wing raised, sounding a trumpet."""
     solid, holes = [], []
-    solid.append(blob(ANGEL_ROBE, 3, 880))
-    solid.append(ell(498, 294, 30, 35, 12))                               # head
-    solid.append(blob([(466, 264), (496, 254), (480, 292), (468, 340), (446, 396), (428, 372), (446, 300)], 3))  # hair
-    # wing raised behind the shoulders, feathers sweeping back
-    solid.append(wing((446, 392), [(410, 300), (360, 200), (300, 112), (236, 64)],
-                      108, 192, 160, 250, 62, 9))
-    # arm raised to the trumpet with a wide hanging sleeve
-    solid.append(taper((506, 404), (640, 268), 44, 26))
-    solid.append(poly([(492, 396), (634, 262), (646, 290), (586, 380), (552, 470), (508, 472)]))
+    robe = [(462, 404), (506, 392), (536, 396), (560, 414), (568, 470), (560, 540),
+            (590, 660), (626, 800), (662, 912), (392, 912), (410, 800), (432, 660),
+            (444, 540), (446, 450)]
+    solid.append(blob(robe, 3, 860))
+    solid.append(ell(530, 292, 31, 36, -8))                                 # head, face to the trumpet
+    solid.append(taper((528, 318), (522, 396), 26, 32))                     # neck
+    solid.append(blob([(500, 262), (528, 254), (512, 278), (502, 320), (494, 372), (468, 398),
+                       (474, 330), (484, 282)], 3))                         # hair falling down the back
+    # wing raised behind the shoulders: pointed feathers sweeping back
+    solid.append(wing((468, 420), [(432, 330), (372, 232), (292, 142), (210, 92)],
+                      112, 196, 150, 270, 58, 10))
+    # raised arm: a draped sleeve hanging under the forearm
+    solid.append(taper((552, 432), (668, 278), 40, 26))
+    solid.append(poly([(556, 446), (662, 292), (674, 312), (644, 382), (612, 448), (578, 470)]))
+    solid.append(circ(668, 276, 16))                                        # hand
     # trumpet: mouthpiece at the lips, long tube, flared bell
-    solid.append(taper((530, 300), (790, 200), 14, 22))
-    solid.append(poly([(776, 196), (784, 220), (868, 222), (842, 146)]))
-    # halo ring
-    solid.append(circ(484, 282, 80).difference(circ(484, 282, 64)))
+    solid.append(taper((558, 300), (830, 212), 14, 22))
+    solid.append(poly([(816, 210), (826, 234), (900, 226), (872, 150)]))
+    # halo ring, clear of the head
+    solid.append(circ(522, 284, 78).difference(circ(522, 284, 62)))
     # robe folds: slim cut-outs that follow the flare of the skirt
-    for p0, p1 in (((468, 610), (420, 850)), ((508, 640), (528, 860)), ((536, 612), (572, 822))):
-        holes.append(taper(p0, p1, 14, 24))
+    for p0, p1 in (((490, 620), (452, 860)), ((526, 640), (540, 864)), ((556, 620), (594, 834))):
+        holes.append(taper(p0, p1, 14, 22))
     return compose(solid, holes)
 
 
@@ -569,9 +605,10 @@ freely, but keep the proportions locked.
 SIZING TIPS
   Vinyl (windows, glass blocks, mugs, signs): 4 in or larger.
   Cardstock (cards, ornaments, mantel scenes): 5 in or larger.
-  Laser-cut wood or acrylic: 5 in or larger in 3 mm material. The scenes
-  with a flat ground strip (01, 02, 04, 05, 06) stand up on their own when
-  set in a slotted base.
+  Laser-cut wood or acrylic: 5 in or larger in 3 mm material. 01, 02 and
+  04 have a flat ground strip and 06 stands on its flat robe hem, so they
+  stand up when set in a slotted base. 05 (the star) ends in a point and is
+  best hung as an ornament or mounted.
   Heat-transfer vinyl (shirts, totes, pillows): 5 in or larger.
   The wide Three Magi panel (03) works best at 8 in wide or larger.
   The narrowest material and the narrowest gap are both about 0.08 in at
