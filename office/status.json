@@ -1,248 +1,248 @@
 {
- "updated_at": "2026-10-04T17:13:07Z",
- "next_run_at": "2026-10-04T19:12:00Z",
- "goal_usd": 70000,
- "revenue_usd": 0,
- "listings_live": 14,
- "bundles_built": 12,
- "uploads_pending": 4,
- "etsy_connected": true,
- "workers": [
-  {
-   "id": "manager",
-   "name": "Manager",
-   "state": "idle",
-   "task": "Hourly check: nothing due. tpt/001 waiting for the owner to upload. Designer after 20:33 UTC; Hunter after ~21:15; Researcher ~00:20.",
-   "since": "2026-10-04T17:13:07Z"
-  },
-  {
-   "id": "researcher",
-   "name": "Researcher",
-   "state": "idle",
-   "task": "TpT music research done: 5 [tpt] items queued (Halloween color-by-note first). Daily Etsy refresh after ~00:20 UTC.",
-   "since": "2026-10-04T13:13:31Z"
-  },
-  {
-   "id": "designer",
-   "name": "Designer",
-   "state": "idle",
-   "task": "tpt/001 approved. Next build after ~20:00 UTC (Etsy: Nativity silhouettes).",
-   "since": "2026-10-04T15:37:50Z"
-  },
-  {
-   "id": "qa",
-   "name": "QA",
-   "state": "idle",
-   "task": "Approved tpt/001 Halloween Color by Note (all 508 symbols match their keys).",
-   "since": "2026-10-04T15:37:50Z"
-  },
-  {
-   "id": "lister",
-   "name": "Lister",
-   "state": "waiting",
-   "task": "Oct 5: bundle 011 (trend, first slot) + 012 cross-stitch + up to 2 more. Note: 012 thumbnail is 6.9 MB.",
-   "since": "2026-10-04T09:43:21Z"
-  },
-  {
-   "id": "analyst",
-   "name": "Analyst",
-   "state": "idle",
-   "task": "Stats: 14 live, 1 view total, 0 favs, 0 sales, $0 (no change since yesterday; Etsy view counts can lag). Owner pushed. Next pull after 12:00 UTC tomorrow.",
-   "since": "2026-10-04T12:13:45Z"
-  },
-  {
-   "id": "scout",
-   "name": "Scout",
-   "state": "idle",
-   "task": "Ranked about 50 options across two runs. #1 is still the laser-cut file shop. Next check in 7 days.",
-   "since": "2026-10-01T13:20:00Z"
-  },
-  {
-   "id": "launcher",
-   "name": "Launcher",
-   "state": "idle",
-   "task": "Locked until the Etsy shop earns $300 or has been live 30 days.",
-   "since": "2026-10-01T12:50:00Z"
-  },
-  {
-   "id": "hunter",
-   "name": "Trend Hunter",
-   "state": "idle",
-   "task": "Scan 5: no picks (third empty scan; no new TikTok roundups since 1 Oct). Owner asked whether to drop to once a day. Next after ~21:15 UTC.",
-   "since": "2026-10-04T15:14:54Z"
-  },
-  {
-   "id": "judge",
-   "name": "Trend Judge",
-   "state": "idle",
-   "task": "Nothing to screen from scan 3.",
-   "since": "2026-10-04T03:15:23Z"
+  "updated_at": "2026-10-04T19:13:33Z",
+  "next_run_at": "2026-10-05T01:12:00Z",
+  "goal_usd": 70000,
+  "revenue_usd": 0,
+  "listings_live": 14,
+  "bundles_built": 12,
+  "uploads_pending": 4,
+  "etsy_connected": true,
+  "workers": [
+    {
+      "id": "manager",
+      "name": "Manager",
+      "state": "working",
+      "task": "3:12pm shift: Designer + Trend Hunter.",
+      "since": "2026-10-04T19:13:33Z"
+    },
+    {
+      "id": "researcher",
+      "name": "Researcher",
+      "state": "idle",
+      "task": "TpT music research done: 5 [tpt] items queued (Halloween color-by-note first). Daily Etsy refresh after ~00:20 UTC.",
+      "since": "2026-10-04T13:13:31Z"
+    },
+    {
+      "id": "designer",
+      "name": "Designer",
+      "state": "working",
+      "task": "Building bundle 013: Nativity silhouettes (cut files).",
+      "since": "2026-10-04T19:13:33Z"
+    },
+    {
+      "id": "qa",
+      "name": "QA",
+      "state": "idle",
+      "task": "Approved tpt/001 Halloween Color by Note (all 508 symbols match their keys).",
+      "since": "2026-10-04T15:37:50Z"
+    },
+    {
+      "id": "lister",
+      "name": "Lister",
+      "state": "waiting",
+      "task": "Oct 5: bundle 011 (trend, first slot) + 012 cross-stitch + up to 2 more. Note: 012 thumbnail is 6.9 MB.",
+      "since": "2026-10-04T09:43:21Z"
+    },
+    {
+      "id": "analyst",
+      "name": "Analyst",
+      "state": "idle",
+      "task": "Stats: 14 live, 1 view total, 0 favs, 0 sales, $0 (no change since yesterday; Etsy view counts can lag). Owner pushed. Next pull after 12:00 UTC tomorrow.",
+      "since": "2026-10-04T12:13:45Z"
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "state": "idle",
+      "task": "Ranked about 50 options across two runs. #1 is still the laser-cut file shop. Next check in 7 days.",
+      "since": "2026-10-01T13:20:00Z"
+    },
+    {
+      "id": "launcher",
+      "name": "Launcher",
+      "state": "idle",
+      "task": "Locked until the Etsy shop earns $300 or has been live 30 days.",
+      "since": "2026-10-01T12:50:00Z"
+    },
+    {
+      "id": "hunter",
+      "name": "Trend Hunter",
+      "state": "working",
+      "task": "3pm trend scan (short).",
+      "since": "2026-10-04T19:13:33Z"
+    },
+    {
+      "id": "judge",
+      "name": "Trend Judge",
+      "state": "idle",
+      "task": "Nothing to screen from scan 3.",
+      "since": "2026-10-04T03:15:23Z"
+    }
+  ],
+  "queue": [
+    "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
+    "[tpt] Fall Rhythm Flashcards & Tracing: ta, ti-ti, rest, half note, with leaf/acorn art (g",
+    "[tpt] Winter Rhythm Bingo: 30 unique cards, rhythm-pattern calling cards, non-denomination",
+    "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,",
+    "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea"
+  ],
+  "feed": [
+    {
+      "t": "2026-10-04T19:13:33Z",
+      "who": "designer",
+      "msg": "Started bundle 013: Nativity silhouettes."
+    },
+    {
+      "t": "2026-10-04T19:13:33Z",
+      "who": "hunter",
+      "msg": "Started the 3pm trend scan."
+    },
+    {
+      "t": "2026-10-04T17:52:10Z",
+      "who": "manager",
+      "msg": "New schedule to save usage: shifts at 6am, 9am, 12pm, 3pm and 9pm Eastern instead of every hour."
+    },
+    {
+      "t": "2026-10-04T15:37:50Z",
+      "who": "qa",
+      "msg": "Approved the first TpT item: Halloween Color by Note. Ready for the owner to upload."
+    },
+    {
+      "t": "2026-10-04T15:33:31Z",
+      "who": "designer",
+      "msg": "Built the first TpT item: Halloween Color by Note, 3 levels, 27 worksheets with answer keys. Sent to QA."
+    },
+    {
+      "t": "2026-10-04T15:14:54Z",
+      "who": "hunter",
+      "msg": "Scan 5: no picks; still no fresh TikTok roundups."
+    },
+    {
+      "t": "2026-10-04T15:14:02Z",
+      "who": "designer",
+      "msg": "Started the first TpT music item: Halloween Color by Note."
+    },
+    {
+      "t": "2026-10-04T15:14:02Z",
+      "who": "hunter",
+      "msg": "Started trend scan 5."
+    },
+    {
+      "t": "2026-10-04T12:13:45Z",
+      "who": "analyst",
+      "msg": "Daily stats: 14 listings, 1 view, no favourites or sales yet. Sent to owner."
+    },
+    {
+      "t": "2026-10-04T09:43:21Z",
+      "who": "qa",
+      "msg": "Approved bundle 012: Woodland Christmas cross-stitch charts. Lists Oct 5."
+    },
+    {
+      "t": "2026-10-04T09:35:43Z",
+      "who": "qa",
+      "msg": "Sent cross-stitch back: robin and acorn don't read in one colour, a few size/count errors in the copy, needs a lifestyle first photo."
+    },
+    {
+      "t": "2026-10-04T09:31:50Z",
+      "who": "designer",
+      "msg": "Built bundle 012: 12 Woodland Christmas cross-stitch charts. Sent to QA."
+    },
+    {
+      "t": "2026-10-04T09:15:09Z",
+      "who": "hunter",
+      "msg": "Scan 4: no picks again. TikTok roundups haven't refreshed since 1 Oct."
+    },
+    {
+      "t": "2026-10-04T09:13:08Z",
+      "who": "designer",
+      "msg": "Started bundle 012: Woodland Christmas cross-stitch charts (first cross-stitch)."
+    },
+    {
+      "t": "2026-10-04T09:13:08Z",
+      "who": "hunter",
+      "msg": "Started trend scan 4."
+    },
+    {
+      "t": "2026-10-04T03:32:59Z",
+      "who": "qa",
+      "msg": "Approved bundle 011: Small autumn moments checklist + stickers. Lists first thing Oct 5."
+    },
+    {
+      "t": "2026-10-04T03:30:41Z",
+      "who": "qa",
+      "msg": "Sent autumn moments back: sticker sizing advice for Cricut, one image box, clearer 'what you need' wording."
+    },
+    {
+      "t": "2026-10-04T03:28:04Z",
+      "who": "designer",
+      "msg": "Built bundle 011: Small autumn moments checklist + sticker sheet. Sent to QA."
+    },
+    {
+      "t": "2026-10-04T03:15:23Z",
+      "who": "hunter",
+      "msg": "Scan 3: no picks this time (top TikTok trends were song lyrics). Judge idle."
+    },
+    {
+      "t": "2026-10-04T03:13:00Z",
+      "who": "designer",
+      "msg": "Started bundle 011: Small autumn moments printable (trend fast lane)."
+    },
+    {
+      "t": "2026-10-04T03:13:00Z",
+      "who": "hunter",
+      "msg": "Started the third trend scan."
+    },
+    {
+      "t": "2026-10-04T01:15:06Z",
+      "who": "lister",
+      "msg": "Retitled all 8 older listings: titles now lead with what buyers search ('Snowflake SVG', 'Christmas Ornament SVG', 'Bat SVG'...)."
+    },
+    {
+      "t": "2026-10-04T01:12:57Z",
+      "who": "lister",
+      "msg": "Started free SEO retitles of the 8 older cut-file listings."
+    },
+    {
+      "t": "2026-10-04T00:15:51Z",
+      "who": "lister",
+      "msg": "Published 4: ornament mug, holly skull tee, bat tree tee (lifestyle photos first) and Christmas bingo. 14 listings live."
+    },
+    {
+      "t": "2026-10-04T00:15:51Z",
+      "who": "researcher",
+      "msg": "Daily refresh: more printables and clipart in the queue; coloring pages moved up."
+    },
+    {
+      "t": "2026-10-03T21:42:07Z",
+      "who": "qa",
+      "msg": "Approved bundle 010: Woodland Christmas bingo. Lists Oct 4."
+    },
+    {
+      "t": "2026-10-03T21:36:47Z",
+      "who": "qa",
+      "msg": "Sent bingo back: markers hard to see, a false 'ties are rare' claim, marker count, one listing image inconsistent."
+    },
+    {
+      "t": "2026-10-03T21:33:16Z",
+      "who": "designer",
+      "msg": "Built bundle 010: Woodland Christmas bingo, 30 unique cards, 30 icons, Letter + A4. Sent to QA."
+    },
+    {
+      "t": "2026-10-03T21:17:41Z",
+      "who": "judge",
+      "msg": "Approved 1 trend: 'small autumn moments' printable + sticker sheet. Rejected 2. Fast lane: it goes to the top of the queue."
+    },
+    {
+      "t": "2026-10-03T21:13:23Z",
+      "who": "designer",
+      "msg": "Started bundle 010: Woodland Christmas bingo (first printable)."
+    }
+  ],
+  "venture_gate": {
+    "revenue_target_usd": 300,
+    "days_live_target": 30,
+    "first_listing_live_at": "2026-10-01T22:37:00Z",
+    "met": false,
+    "next_pick": "Laser-cut file shop (Etsy sister shop)"
   }
- ],
- "queue": [
-  "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
-  "[tpt] Fall Rhythm Flashcards & Tracing: ta, ti-ti, rest, half note, with leaf/acorn art (g",
-  "[tpt] Winter Rhythm Bingo: 30 unique cards, rhythm-pattern calling cards, non-denomination",
-  "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,",
-  "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea"
- ],
- "feed": [
-  {
-   "t": "2026-10-04T17:52:10Z",
-   "who": "manager",
-   "msg": "New schedule to save usage: shifts at 6am, 9am, 12pm, 3pm and 9pm Eastern instead of every hour."
-  },
-  {
-   "t": "2026-10-04T15:37:50Z",
-   "who": "qa",
-   "msg": "Approved the first TpT item: Halloween Color by Note. Ready for the owner to upload."
-  },
-  {
-   "t": "2026-10-04T15:33:31Z",
-   "who": "designer",
-   "msg": "Built the first TpT item: Halloween Color by Note, 3 levels, 27 worksheets with answer keys. Sent to QA."
-  },
-  {
-   "t": "2026-10-04T15:14:54Z",
-   "who": "hunter",
-   "msg": "Scan 5: no picks; still no fresh TikTok roundups."
-  },
-  {
-   "t": "2026-10-04T15:14:02Z",
-   "who": "designer",
-   "msg": "Started the first TpT music item: Halloween Color by Note."
-  },
-  {
-   "t": "2026-10-04T15:14:02Z",
-   "who": "hunter",
-   "msg": "Started trend scan 5."
-  },
-  {
-   "t": "2026-10-04T12:13:45Z",
-   "who": "analyst",
-   "msg": "Daily stats: 14 listings, 1 view, no favourites or sales yet. Sent to owner."
-  },
-  {
-   "t": "2026-10-04T09:43:21Z",
-   "who": "qa",
-   "msg": "Approved bundle 012: Woodland Christmas cross-stitch charts. Lists Oct 5."
-  },
-  {
-   "t": "2026-10-04T09:35:43Z",
-   "who": "qa",
-   "msg": "Sent cross-stitch back: robin and acorn don't read in one colour, a few size/count errors in the copy, needs a lifestyle first photo."
-  },
-  {
-   "t": "2026-10-04T09:31:50Z",
-   "who": "designer",
-   "msg": "Built bundle 012: 12 Woodland Christmas cross-stitch charts. Sent to QA."
-  },
-  {
-   "t": "2026-10-04T09:15:09Z",
-   "who": "hunter",
-   "msg": "Scan 4: no picks again. TikTok roundups haven't refreshed since 1 Oct."
-  },
-  {
-   "t": "2026-10-04T09:13:08Z",
-   "who": "designer",
-   "msg": "Started bundle 012: Woodland Christmas cross-stitch charts (first cross-stitch)."
-  },
-  {
-   "t": "2026-10-04T09:13:08Z",
-   "who": "hunter",
-   "msg": "Started trend scan 4."
-  },
-  {
-   "t": "2026-10-04T03:32:59Z",
-   "who": "qa",
-   "msg": "Approved bundle 011: Small autumn moments checklist + stickers. Lists first thing Oct 5."
-  },
-  {
-   "t": "2026-10-04T03:30:41Z",
-   "who": "qa",
-   "msg": "Sent autumn moments back: sticker sizing advice for Cricut, one image box, clearer 'what you need' wording."
-  },
-  {
-   "t": "2026-10-04T03:28:04Z",
-   "who": "designer",
-   "msg": "Built bundle 011: Small autumn moments checklist + sticker sheet. Sent to QA."
-  },
-  {
-   "t": "2026-10-04T03:15:23Z",
-   "who": "hunter",
-   "msg": "Scan 3: no picks this time (top TikTok trends were song lyrics). Judge idle."
-  },
-  {
-   "t": "2026-10-04T03:13:00Z",
-   "who": "designer",
-   "msg": "Started bundle 011: Small autumn moments printable (trend fast lane)."
-  },
-  {
-   "t": "2026-10-04T03:13:00Z",
-   "who": "hunter",
-   "msg": "Started the third trend scan."
-  },
-  {
-   "t": "2026-10-04T01:15:06Z",
-   "who": "lister",
-   "msg": "Retitled all 8 older listings: titles now lead with what buyers search ('Snowflake SVG', 'Christmas Ornament SVG', 'Bat SVG'...)."
-  },
-  {
-   "t": "2026-10-04T01:12:57Z",
-   "who": "lister",
-   "msg": "Started free SEO retitles of the 8 older cut-file listings."
-  },
-  {
-   "t": "2026-10-04T00:15:51Z",
-   "who": "lister",
-   "msg": "Published 4: ornament mug, holly skull tee, bat tree tee (lifestyle photos first) and Christmas bingo. 14 listings live."
-  },
-  {
-   "t": "2026-10-04T00:15:51Z",
-   "who": "researcher",
-   "msg": "Daily refresh: more printables and clipart in the queue; coloring pages moved up."
-  },
-  {
-   "t": "2026-10-03T21:42:07Z",
-   "who": "qa",
-   "msg": "Approved bundle 010: Woodland Christmas bingo. Lists Oct 4."
-  },
-  {
-   "t": "2026-10-03T21:36:47Z",
-   "who": "qa",
-   "msg": "Sent bingo back: markers hard to see, a false 'ties are rare' claim, marker count, one listing image inconsistent."
-  },
-  {
-   "t": "2026-10-03T21:33:16Z",
-   "who": "designer",
-   "msg": "Built bundle 010: Woodland Christmas bingo, 30 unique cards, 30 icons, Letter + A4. Sent to QA."
-  },
-  {
-   "t": "2026-10-03T21:17:41Z",
-   "who": "judge",
-   "msg": "Approved 1 trend: 'small autumn moments' printable + sticker sheet. Rejected 2. Fast lane: it goes to the top of the queue."
-  },
-  {
-   "t": "2026-10-03T21:13:23Z",
-   "who": "designer",
-   "msg": "Started bundle 010: Woodland Christmas bingo (first printable)."
-  },
-  {
-   "t": "2026-10-03T21:13:23Z",
-   "who": "hunter",
-   "msg": "Started the second trend scan."
-  },
-  {
-   "t": "2026-10-03T16:44:00Z",
-   "who": "lister",
-   "msg": "Published the luna moth mug (Etsy 4587829689) with the lifestyle photo first. 10 listings live."
-  }
- ],
- "venture_gate": {
-  "revenue_target_usd": 300,
-  "days_live_target": 30,
-  "first_listing_live_at": "2026-10-01T22:37:00Z",
-  "met": false,
-  "next_pick": "Laser-cut file shop (Etsy sister shop)"
- }
 }
