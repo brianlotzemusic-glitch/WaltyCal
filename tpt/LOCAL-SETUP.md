@@ -72,9 +72,8 @@ After this one-time setup, approved TpT items go live by themselves every evenin
 ```
 In ~/Documents/GitHub/waltycal (branch shop-factory), set up the nightly TpT publish job:
 1. git pull origin shop-factory.
-2. Check the saved TpT login still works: source ~/.tpt-env && node tools/tpt.js publish-pending
-   (it only publishes items the factory released; if none are released it just writes tpt/UPLOADER-STATUS.json).
-   If it says the login expired, run `node tools/tpt.js login` and tell me to click Log in.
+2. Check the saved TpT login: source ~/.tpt-env && node tools/tpt.js login
+   (it says "Already logged in" if the saved session works; otherwise tell me to click Log in in the window).
 3. Run: bash tools/tpt-install-nightly.sh
 4. Test it once now: launchctl kickstart gui/$(id -u)/com.hudsonbeat.tpt-nightly
    then show me the last 20 lines of ~/Library/Logs/tpt-nightly.log and confirm the push to shop-factory worked.
