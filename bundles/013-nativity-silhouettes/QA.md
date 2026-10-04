@@ -43,3 +43,23 @@ The files are technically clean. The bundle goes back for two design problems: t
 ## Optional (not blocking)
 
 8. 02: the rayed arc over the manger reads a little like a sunrise or a cage. Consider fewer, longer rays, or a plain glow arc.
+
+---
+
+# QA round 2 (final)
+
+## Verdict: APPROVED
+
+I re-ran every check myself on the files unpacked from the rebuilt ZIP (all dated 19:37). I checked all 6 designs, not just 03 and 06.
+
+- **Shapes**: each design is one `<path>` and one valid polygon with all holes inside it. The smallest holes are 1071 / 1330 / 645 / 1401 / 2074 / 1016 u², all at least 600. 03's new sky stars are the tightest at 645 (still within spec). The SVGs are 6.000 in (03 is now 6.000 x 3.422 in).
+- **Width and gaps**: opening at r=6 never splits a design (the largest piece lost is 0.4 u²). Closing at r=2/4/6 fills no single sliver above 2.2 u². There are no slits or spurs, including at the new saddle cut-outs, the angel's neck notch and the arm slit.
+- **DXF**: all 6 reopen in ezdxf, $INSUNITS=1, closed LWPOLYLINEs only. **PNG**: 1800 px on the longest side, RGBA, transparent. **ZIP**: SVG/, PNG/, DXF/ and README-LICENSE.txt. The new 03 and 06 files are in it.
+- **listing.json**: unchanged and passing (12394, 4.0, 133-char title, 1 double-capital word, one "&", 13 unique tags of 19 chars or less, no entities, exact disclosure ending).
+- **Fix 1 (angel head)**: done. There is now a round head inside the halo, a neck notch, and a raised forearm cut clear of the head and body. The angel reads as an angel blowing a trumpet, including at 90 px.
+- **Fix 2 (wing and hem)**: done. Slotted, tapered feathers, and the hem is flat and clean. The lower feather lobes are still a little blunt, but that is acceptable.
+- **Fixes 3 and 4 (magi)**: done. A starry sky band, a star in a moon disc, bigger riders that fill the frame, saddle cut-outs that separate rider and camel, and jointed legs. It now matches the approved 008 light-box for richness. The "8 in wide or larger" advice stays in the copy (honest and conservative).
+- **Fix 5**: `3-formats.png` now shows all 6 designs. **Fix 6**: the README now says 01, 02 and 04 have a ground strip, 06 stands on its hem, and 05 is for hanging. This is accurate.
+- **No regressions**: 01, 02, 04 and 05 are unchanged and identical in size to round 1. The contact sheet and all 4 listing images (3000x2250) are rebuilt and consistent. The thumbnail now has six clearly readable, reverent designs with good contrast on navy, and it would hold its own next to the top "nativity svg" results.
+
+Cosmetic note (not blocking): 03's bottom frame corners have a tiny kink where the rounded corner meets the base (about 1 to 2 units). It has no effect on cutting.

@@ -1,19 +1,19 @@
 {
-  "updated_at": "2026-10-04T19:34:40Z",
+  "updated_at": "2026-10-04T19:38:54Z",
   "next_run_at": "2026-10-05T01:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
-  "bundles_built": 12,
+  "bundles_built": 13,
   "uploads_pending": 4,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "3:12pm shift: Designer + Trend Hunter.",
-      "since": "2026-10-04T19:13:33Z"
+      "state": "idle",
+      "task": "3pm shift done. Next: 9:12pm ET (Lister, Designer, Researcher).",
+      "since": "2026-10-04T19:38:54Z"
     },
     {
       "id": "researcher",
@@ -25,23 +25,23 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Fixing bundle 013 Nativity (QA round 1).",
-      "since": "2026-10-04T19:34:40Z"
+      "state": "idle",
+      "task": "Bundle 013 approved. 3 built today (ET); next build at the 9:12pm ET shift.",
+      "since": "2026-10-04T19:38:54Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Sent bundle 013 back: angel head/wing, magi panel composition, image 3, README fix.",
-      "since": "2026-10-04T19:34:40Z"
+      "task": "Approved bundle 013 Nativity silhouettes in round 2.",
+      "since": "2026-10-04T19:38:54Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "waiting",
-      "task": "Oct 5: bundle 011 (trend, first slot) + 012 cross-stitch + up to 2 more. Note: 012 thumbnail is 6.9 MB.",
-      "since": "2026-10-04T09:43:21Z"
+      "task": "Oct 5 (UTC): 011 autumn moments (trend, first), 012 cross-stitch, 013 Nativity. 1 slot spare.",
+      "since": "2026-10-04T19:38:54Z"
     },
     {
       "id": "analyst",
@@ -80,13 +80,18 @@
     }
   ],
   "queue": [
-    "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
     "[tpt] Fall Rhythm Flashcards & Tracing: ta, ti-ti, rest, half note, with leaf/acorn art (g",
     "[tpt] Winter Rhythm Bingo: 30 unique cards, rhythm-pattern calling cards, non-denomination",
     "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,",
-    "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea"
+    "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea",
+    "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages"
   ],
   "feed": [
+    {
+      "t": "2026-10-04T19:38:54Z",
+      "who": "qa",
+      "msg": "Approved bundle 013: Nativity silhouettes. Lists Oct 5."
+    },
     {
       "t": "2026-10-04T19:34:40Z",
       "who": "qa",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T21:42:07Z",
       "who": "qa",
       "msg": "Approved bundle 010: Woodland Christmas bingo. Lists Oct 4."
-    },
-    {
-      "t": "2026-10-03T21:36:47Z",
-      "who": "qa",
-      "msg": "Sent bingo back: markers hard to see, a false 'ties are rare' claim, marker count, one listing image inconsistent."
     }
   ],
   "venture_gate": {
