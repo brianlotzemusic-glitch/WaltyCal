@@ -30,7 +30,7 @@ body{margin:0;font-family:Nu;color:${PLUM};-webkit-print-color-adjust:exact;prin
 .page{width:${W}mm;height:${H}mm;position:relative;overflow:hidden;page-break-after:always;background:${CREAM}}
 .page.light{background:#fff}
 .ic{position:absolute;display:block}
-.frame{position:absolute;inset:8mm;border:0.55mm solid ${PLUM};border-radius:5mm}
+.frame{position:absolute;inset:9mm;border:0.55mm solid ${PLUM};border-radius:5mm}
 .frame::after{content:'';position:absolute;inset:1.4mm;border:0.22mm solid ${PINE};border-radius:3.8mm}
 .head{position:absolute;top:14.5mm;left:36mm;right:36mm;text-align:center}
 .kick{font-weight:800;font-size:3.1mm;letter-spacing:1.1mm;color:${PINE};text-transform:uppercase}
@@ -44,6 +44,7 @@ h1 em{font-style:normal;color:${BERRY}}
 .sec b{font-family:Fr;font-weight:700;font-size:5.3mm;color:${BERRY};line-height:1}
 .sec.second{margin-top:${H > 290 ? 5 : 3}mm}
 .it{display:flex;align-items:flex-start;gap:2.6mm;font-size:3.72mm;line-height:1.3}
+.it span{text-wrap:pretty}
 .box{flex:none;width:4.4mm;height:4.4mm;border:0.42mm solid ${PLUM};border-radius:1.1mm;background:#fff;margin-top:.15mm}
 .light .box{background:none}
 .foot{position:absolute;left:0;right:0;bottom:10.6mm;text-align:center;font-size:2.5mm;color:#6d5f73}

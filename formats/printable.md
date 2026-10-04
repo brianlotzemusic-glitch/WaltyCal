@@ -1,6 +1,6 @@
 # Format spec: printable checklists and sticker sheets (PDF + print-then-cut PNG)
 
-First built 4 Oct 2026 (pilot: `bundles/011-small-autumn-moments`). A digital download: the buyer prints at home. Read with FACTORY.md "Product formats" and "Art quality". Same pipeline as `formats/bingo.md` (code-drawn icons, HTML → PDF with Playwright/Chromium, listing images from the real pages); this spec covers checklists, bucket lists, trackers and sticker sheets.
+First built 4 Oct 2026 (pilot: `bundles/011-small-autumn-moments`; updated after QA round 1: Cricut height step, what-you-need line, aspect and orphan checks, 9 mm frame). A digital download: the buyer prints at home. Read with FACTORY.md "Product formats" and "Art quality". Same pipeline as `formats/bingo.md` (code-drawn icons, HTML → PDF with Playwright/Chromium, listing images from the real pages); this spec covers checklists, bucket lists, trackers and sticker sheets.
 
 ## Folder: `bundles/NNN-slug/`
 | File | What |
@@ -19,7 +19,7 @@ First built 4 Oct 2026 (pilot: `bundles/011-small-autumn-moments`). A digital do
 | `PROMPTS.md` | Only if AI images were used |
 
 ## Checklist pages
-- **Paper:** US Letter 612 × 792 pt and A4 595 × 842 pt, portrait, same page order in both. Keep text and checkboxes at least 15 mm from the edge and the art at least 9 mm (home printers clip about 6 mm).
+- **Paper:** US Letter 612 × 792 pt and A4 595 × 842 pt, portrait, same page order in both. Keep text and checkboxes at least 15 mm from the edge and the frame line and all art at least 9 mm (home printers clip about 6 mm).
 - **Pages (pilot, 4):** 1 the checklist, 2 a "write your own" page (about 15 ruled lines, checkbox + line + short "when" line), 3–4 the same two on white (**ink saver**).
 - **Look:** cream #f1e6cf page background on the main pages (the shop look on screen; home printers leave a white margin, say so in the README), a thin double frame, the title in Fraunces 900 with one word in berry, a small uppercase kicker, a one-line subtitle. Line-art icons (plum outline, spot fills in pine/berry/gold/cream) in the corners and along a ground line at the bottom. No full-bleed dark fills.
 - **List:** about 30 items in 2 columns and 4 short sections with a small icon each; checkbox 4.4 mm rounded square; body text Nunito about 10.5 pt (3.7 mm) in plum; items may wrap to 2 lines. Specific, real, cozy moments, written by us: no lyrics, quotes, brands or trademarked phrases.
@@ -30,7 +30,8 @@ First built 4 Oct 2026 (pilot: `bundles/011-small-autumn-moments`). A digital do
 - **Stickers:** about 20 at 1.3–1.6 in. Pilot design: cream disc with plum ring + icon + phrase pill (Fraunces 700, measured with PIL so it fits). Every sticker gets a **white offset border** (pilot 24 px = 0.08 in) from `union(disc, pill, icon).buffer(border)` with a 30 px closing so the blade has no tight notches; holes are filled. The outer edge of the border is the cut line.
 - **Proof (`stickers.py --check`):** 20 stickers; every outline inside the sheet; each outline one polygon with no holes; at least **45 px (0.15 in)** between outlines (Cricut adds bleed); at least 15 px from the sheet edge.
 - **PDF version:** the same sheet centred on Letter/A4 at actual size, with light grey cut guides (on the white border) and a dashed outline of the 6.75 × 9.25 area, for sticker paper + scissors.
-- **README/description:** Design Space steps: upload the PNG as a Print Then Cut image, set width 6.75 in, print with bleed, cut.
+- **README/description:** Design Space steps: upload the PNG as a Print Then Cut image, keep proportions locked and set the **height** to 9.25 in (never "width 6.75 in": Design Space may trim the clear margin, and the pilot's trimmed art, 1899×2621 px, would then come out 9.32 in tall), check neither side is over 6.75 × 9.25 in, print with bleed, cut. `gen.py --check` verifies that the PNG's trimmed (opaque) bbox fits 6.75 × 9.25 in when scaled to either 6.75 in wide or 9.25 in tall, and reports which.
+- **What you need (required, README and description, any print-then-cut product):** "This is a digital file, not finished stickers. To make them you need a printer and sticker paper, plus either scissors or a cutting machine with Print Then Cut (e.g. Cricut). The machine cuts the shapes for you; no machine is needed for the scissors version."
 
 ## Checks (Designer, then QA)
 `python3 gen.py --check` must print ALL CHECKS PASS:
@@ -42,8 +43,9 @@ First built 4 Oct 2026 (pilot: `bundles/011-small-autumn-moments`). A digital do
 
 Then look, don't only count:
 - `contact-sheet.png`: every icon reads at decoration size; no two alike
-- render every page of both sizes (`pdftoppm -r 80`): nothing clipped, columns balanced, footer art inside the frame, title on one line
+- render every page of both sizes (`pdftoppm -r 80`): nothing clipped, columns balanced, footer art inside the frame, title on one line, **no single-word orphan lines** on either size (shorten the item or rely on `text-wrap: pretty`, which `build.js` sets)
 - the PNG composited on a dark colour: every sticker has an even white border, nothing touches
+- any dimension box drawn on a listing image has the file's real aspect ratio (6.75:9.25 = 1.37) and contains the art
 - listing images show only what the files contain (real pages, real stickers; a sticker shown "peeled" is removed from the sheet in the same image)
 
 ## Listing images (3000×2250)

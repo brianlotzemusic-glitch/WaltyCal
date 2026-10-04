@@ -3,17 +3,17 @@
  "sections": [
   {"name": "Home & hearth", "icon": "candle", "items": [
    "Turn the heating on for the first time",
-   "Swap the light summer blanket for the heavy one",
+   "Swap the summer blanket for the heavy one",
    "Light the first candle of candle season",
    "Pull your favorite sweater out of storage",
    "Wear thick socks around the house all day",
    "Fall asleep to rain on the window",
    "Read a whole chapter under a blanket on a gray afternoon",
-   "Bring home a pocketful of acorns for a little dish"]},
+   "Bring home a pocketful of acorns"]},
   {"name": "Kitchen & table", "icon": "mug", "items": [
    "Make the first pot of soup of the season",
-   "Eat leftover soup the next day (it's even better)",
-   "Bake something just so the house smells good",
+   "Eat leftover soup the next day (even better)",
+   "Bake something so the house smells good",
    "Eat an apple so crisp you can hear it",
    "Hold a warm mug with both hands",
    "Let something simmer slowly all afternoon",
@@ -21,7 +21,7 @@
   {"name": "Out the door", "icon": "rain boots", "items": [
    "Take a slow leaf walk with nowhere to be",
    "Kick through a pile of crunchy leaves",
-   "Get through a rainy commute, then dry off with a hot drink",
+   "Get through a rainy commute, then warm up with a hot drink",
    "Scrape the first frost off the windshield",
    "See your breath in the morning air",
    "Find a mushroom you've never noticed before",
@@ -31,9 +31,9 @@
    "Notice it's dark before dinner",
    "Watch the moon rise over bare branches",
    "Walk past windows glowing with lamplight",
-   "Take an after-dinner walk with a flashlight or lantern",
+   "Take an after-dinner walk with a lantern",
    "Hear geese calling overhead",
    "Turn the clocks back and enjoy the extra hour",
-   "Do absolutely nothing on a rainy Sunday, on purpose"]}
+   "Do nothing on a rainy Sunday, on purpose"]}
  ]
 }

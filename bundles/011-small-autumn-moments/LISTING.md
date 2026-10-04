@@ -15,7 +15,7 @@ Not another fall bucket list of big plans. This one is about the small, real mom
 Everything is drawn in a moody woodland style: a sleeping fox, mushrooms, a glowing lantern, oak leaves and acorns, a crescent moon, in a dusk palette of plum, pine, berry and gold on soft cream.
 
 WHAT'S INCLUDED
-• Small Autumn Moments checklist: 30 cozy, everyday moments in 4 groups (home & hearth, kitchen and table, out the door, dusk and evenings), each with a checkbox
+• Small Autumn Moments checklist: 30 cozy, everyday moments in 4 groups (home and hearth, kitchen and table, out the door, dusk and evenings), each with a checkbox
 • My Autumn Moments: a write-your-own page with 15 lines and a "when" space
 • Ink saver versions of both pages on plain white
 • Sticker sheet with 20 matching stickers (first soup, candle season, heating on, leaf walk, first frost, rainy commute, warm mug, thick socks and more), each about 1.4 to 1.5 in with a white offset border
@@ -23,9 +23,12 @@ WHAT'S INCLUDED
 • Sticker sheet pdf in US Letter and A4, with light grey cut guides for scissors
 • Print Then Cut PNG: 6.75 × 9.25 in (Cricut's Print Then Cut area), 2025 × 2775 px, 300 DPI, transparent background
 
+WHAT YOU NEED FOR THE STICKERS
+This is a digital file, not finished stickers. To make them you need a printer and sticker paper, plus either scissors or a cutting machine with Print Then Cut (e.g. Cricut). The machine cuts the shapes for you; no machine is needed for the scissors version.
+
 HOW TO USE
 • Print the checklist at 100% (actual size) on plain paper or card stock, pin it to the fridge or tuck it into your planner
-• Print the sticker pdf on full-sheet sticker paper and cut with scissors, or upload the PNG to Cricut Design Space as a Print Then Cut image, set the width to 6.75 in and let the machine cut around each sticker
+• Print the sticker pdf on full-sheet sticker paper and cut with scissors, or upload the PNG to Cricut Design Space as a Print Then Cut image, keep proportions locked, set the height to 9.25 in (the width comes out at about 6.7 in) and let the machine cut around each sticker
 • Fonts are embedded, so the pages print the same everywhere
 
 GOOD TO KNOW
@@ -53,4 +56,5 @@ fall bucket list, autumn bucket list, fall checklist, autumn checklist, fall pri
 - The list of 30 moments is our own writing (`moments.json`); no lyrics, quotes, brands or trademarked phrases. Sticker phrases come from the list.
 - All 22 icons are original and drawn in code (`icons.py`). No AI images used ($0 spent), so no PROMPTS.md. Fonts: Fraunces and Nunito (SIL Open Font License, embedded in the PDFs).
 - Sticker sheet proof (`stickers.json` → proof): 20 stickers, all inside 6.75 × 9.25 in, each outline one closed piece with no holes, at least 0.15 in between cut lines.
+- QA round 1 fixes (4 Oct): image 3 dimension box drawn at the PNG's true 6.75:9.25 ratio; Cricut step now sets the HEIGHT to 9.25 in (Design Space may trim the clear margin; trimmed art is 1899×2621 px); "what you need" line added; "warm up with a hot drink"; one-word orphan lines removed (shorter wording + text-wrap: pretty); frame moved to 9 mm from the edge.
 - Listing images show the real pages (rasterised from the US Letter / A4 PDFs) and the real sticker artwork; the peeled stickers in image 1 are removed from the sheet shown.

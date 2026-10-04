@@ -48,6 +48,10 @@ def build():
     shutil.rmtree(os.path.join(HERE, "bundle"))
 
 
+def lj_desc():
+    return json.load(open(os.path.join(HERE, "listing.json")))["description"]
+
+
 def check():
     import tempfile
     from PIL import Image
@@ -83,6 +87,15 @@ def check():
     hist = a.histogram()
     res("PNG background transparent, stickers opaque", max(corners) == 0 and hist[0] > 0.3 * 2025 * 2775 and hist[255] > 0.3 * 2025 * 2775,
         f"(transparent {hist[0] / (2025 * 2775):.0%}, opaque {hist[255] / (2025 * 2775):.0%})")
+    x0, y0, x1, y1 = a.getbbox()
+    bw, bh = (x1 - x0) / 300, (y1 - y0) / 300
+    by_h = (bw * 9.25 / bh, 9.25)
+    res("PNG trimmed art fits 6.75x9.25 in when set to height 9.25 in", by_h[0] <= 6.75,
+        f"(trimmed {x1 - x0}x{y1 - y0} px; height 9.25 -> width {by_h[0]:.2f} in; width 6.75 -> height {bh * 6.75 / bw:.2f} in)")
+    readme = open(os.path.join(HERE, "README-LICENSE.txt")).read()
+    res("README + description: height-9.25 Cricut step, what-you-need line, no 'width 6.75' step",
+        "HEIGHT to\n     9.25 in" in readme and "set the height to 9.25 in" in lj_desc() and "sticker paper, plus either scissors" in readme
+        and "sticker paper, plus either scissors" in lj_desc() and "width to 6.75" not in readme + lj_desc())
     shutil.rmtree(tmp)
     lj = json.load(open(os.path.join(HERE, "listing.json")))
     for img in lj["images"]:

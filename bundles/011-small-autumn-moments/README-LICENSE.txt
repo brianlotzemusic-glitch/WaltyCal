@@ -34,6 +34,12 @@ PRINTING TIPS
   Home printers leave a small white margin at the edge of the cream
   pages. That is normal.
 
+WHAT YOU NEED FOR THE STICKERS
+  This is a digital file, not finished stickers. To make them you need a
+  printer and sticker paper, plus either scissors or a cutting machine
+  with Print Then Cut (e.g. Cricut). The machine cuts the shapes for you;
+  no machine is needed for the scissors version.
+
 STICKERS WITH SCISSORS
   Print the sticker pdf on full-sheet sticker paper at 100% and cut
   along the light grey lines (they sit on the white border).
@@ -42,8 +48,10 @@ CRICUT PRINT THEN CUT
   1. In Design Space, upload small-autumn-moments-stickers-print-then-cut.png
      and choose "Print Then Cut image" (the background is already
      transparent, so there is nothing to erase).
-  2. On the canvas, set the image width to 6.75 in (height 9.25 in).
-     That is the largest Print Then Cut area, so don't make it bigger.
+  2. On the canvas, keep the proportions locked and set the HEIGHT to
+     9.25 in (the width will be about 6.7 in). Check that neither side is
+     over 6.75 x 9.25 in, the largest Print Then Cut area. (Set the height,
+     not the width: Design Space may trim the clear margin on upload.)
   3. Click Make, print on sticker paper (turn bleed on), then let the
      machine cut. Each sticker is cut along its own outline.
   If your machine or paper allows a smaller area, resize the image down

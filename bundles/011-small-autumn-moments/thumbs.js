@@ -108,8 +108,8 @@ const pages = {
    <div class=paper style="left:330px;top:150px;width:330px;height:467px;background-image:url(${B64('A-1.png')});transform:rotate(4deg)"></div>
    <div class=tagp style="left:56px;top:76px;transform:rotate(-4deg)">US LETTER</div>
    <div class=tagp style="left:570px;top:122px;transform:rotate(4deg)">A4</div>
-   <div class=paper style="left:80px;top:665px;width:285px;height:368px;background:none;box-shadow:none;border:3px dashed ${GOLD};border-radius:6px"><img src="${PNGSHEET}" style="width:100%;display:block"></div>
-   <div class=dim style="left:132px;top:1045px">6.75 × 9.25 in</div>
+   <div class=paper style="box-sizing:content-box;left:84px;top:650px;width:280px;height:383.7px;background:none;box-shadow:none;border:3px dashed ${GOLD};border-radius:6px"><img src="${PNGSHEET}" style="width:100%;display:block"></div>
+   <div class=dim style="left:132px;top:1050px">6.75 × 9.25 in</div>
    <div class=dim style="left:395px;top:800px;width:340px;line-height:1.3;color:${CREAM};font-weight:700">← Cricut Print Then Cut sheet, transparent PNG at 300 DPI</div>
    <h1>Print at home,<br><em>tick as you go</em></h1>
    <ul><li><b>Checklist pdf</b> in US Letter (8.5 × 11 in) and A4: 4 pages each</li>
