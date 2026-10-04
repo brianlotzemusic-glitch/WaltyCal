@@ -116,3 +116,4 @@
 - 2026-10-04 16:13 UTC: Manager. Hourly check, nothing due.
 - 2026-10-04 17:13 UTC: Manager. Hourly check, nothing due.
 - 2026-10-04 17:27 UTC: The owner named the TpT music brand 'Hudson Beat'. Searches found no existing TpT/Etsy/music-ed use; Hudson Music (drum education publisher) is nearby, and the owner was told about a free USPTO check. Recorded in FACTORY.md; the Designer is re-rendering tpt/001 with the brand.
+- 2026-10-04 17:59 UTC: TpT uploader. The discover test in a fresh cloud session was blocked by a TLS error: Chromium doesn't trust the cloud proxy's certificate (tpt/DISCOVER-REPORT.md), and the TLS workaround was refused by the safety check. The owner chose to run uploads on their Mac. tools/tpt.js now opens a visible browser (the owner can solve a CAPTCHA/code) and writes the field list to tpt/FORM-FIELDS.json (no account data); added tpt/LOCAL-SETUP.md and updated FACTORY.md.
