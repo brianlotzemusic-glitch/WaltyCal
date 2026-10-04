@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T03:15:23Z",
+  "updated_at": "2026-10-04T03:28:04Z",
   "next_run_at": "2026-10-04T03:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -25,16 +25,16 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Building bundle 011: [trend] Small autumn moments printable checklist + sticker sheet.",
-      "since": "2026-10-04T03:13:00Z"
+      "state": "idle",
+      "task": "Built bundle 011 Small autumn moments (checklist + 20 print-then-cut stickers; $0 AI). Awaiting QA.",
+      "since": "2026-10-04T03:28:04Z"
     },
     {
       "id": "qa",
       "name": "QA",
-      "state": "idle",
-      "task": "Approved bundle 010 bingo in round 2.",
-      "since": "2026-10-03T21:42:07Z"
+      "state": "working",
+      "task": "Reviewing bundle 011 against formats/printable.md (round 1).",
+      "since": "2026-10-04T03:28:04Z"
     },
     {
       "id": "lister",
@@ -87,6 +87,11 @@
     "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + "
   ],
   "feed": [
+    {
+      "t": "2026-10-04T03:28:04Z",
+      "who": "designer",
+      "msg": "Built bundle 011: Small autumn moments checklist + sticker sheet. Sent to QA."
+    },
     {
       "t": "2026-10-04T03:15:23Z",
       "who": "hunter",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T11:14:10Z",
       "who": "analyst",
       "msg": "Daily stats: 8 listings live, 1 view, no sales yet."
-    },
-    {
-      "t": "2026-10-03T11:02:39Z",
-      "who": "qa",
-      "msg": "Approved the print-on-demand pilot: luna moth mug, ornament mug, holly skull tee, bat-wing tree tee."
     }
   ],
   "venture_gate": {
