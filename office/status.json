@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-04T01:15:06Z",
-  "next_run_at": "2026-10-04T02:12:00Z",
+  "updated_at": "2026-10-04T02:13:06Z",
+  "next_run_at": "2026-10-04T03:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Shift done. Designer after ~02:15 UTC ([trend] small autumn moments); Hunter after 03:15.",
-      "since": "2026-10-04T01:15:06Z"
+      "task": "Hourly check: nothing due yet. Next shift (03:12 UTC): Designer ([trend] small autumn moments) + Trend Hunter.",
+      "since": "2026-10-04T02:13:06Z"
     },
     {
       "id": "researcher",
