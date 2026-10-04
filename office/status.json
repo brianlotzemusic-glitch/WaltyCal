@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-04T01:12:57Z",
-  "next_run_at": "2026-10-04T01:12:00Z",
+  "updated_at": "2026-10-04T01:15:06Z",
+  "next_run_at": "2026-10-04T02:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Shift done. Designer after ~02:20 UTC ([trend] small autumn moments).",
-      "since": "2026-10-04T00:15:51Z"
+      "task": "Shift done. Designer after ~02:15 UTC ([trend] small autumn moments); Hunter after 03:15.",
+      "since": "2026-10-04T01:15:06Z"
     },
     {
       "id": "researcher",
@@ -39,9 +39,9 @@
     {
       "id": "lister",
       "name": "Lister",
-      "state": "working",
-      "task": "Turnaround Day 1: retitling and retagging the 8 cut-file listings (free edits).",
-      "since": "2026-10-04T01:12:57Z"
+      "state": "idle",
+      "task": "Day 1 retitles done: all 8 cut-file listings lead with search phrases, 13 tags each (log/retitles-2026-10-04.md). Next: 4 slots on Oct 5.",
+      "since": "2026-10-04T01:15:06Z"
     },
     {
       "id": "analyst",
@@ -87,6 +87,11 @@
     "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + "
   ],
   "feed": [
+    {
+      "t": "2026-10-04T01:15:06Z",
+      "who": "lister",
+      "msg": "Retitled all 8 older listings: titles now lead with what buyers search ('Snowflake SVG', 'Christmas Ornament SVG', 'Bat SVG'...)."
+    },
     {
       "t": "2026-10-04T01:12:57Z",
       "who": "lister",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T10:13:34Z",
       "who": "designer",
       "msg": "Started the print-on-demand pilot: 2 mugs and 2 tees."
-    },
-    {
-      "t": "2026-10-03T00:14:25Z",
-      "who": "lister",
-      "msg": "Published Gingerbread letters A\u2013Z (4587461298) and Christmas village (4587461356). 8 listings live."
     }
   ],
   "venture_gate": {

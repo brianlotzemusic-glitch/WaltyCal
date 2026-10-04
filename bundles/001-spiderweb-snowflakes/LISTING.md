@@ -1,7 +1,7 @@
 # Listing 001 — Spiderweb Snowflakes SVG bundle
 
 **Title (≤140 chars)**
-Gothic Christmas Spiderweb Snowflake SVG Bundle, Creepy Cut Files (Digital Download)
+Snowflake SVG, Spiderweb Christmas Snowflake Bundle with Hanging Spider & Dew Drop Web, Gothic Winter Cut Files for Cricut (svg, dxf, png)
 
 **Price:** $4.00 (TEMPORARY — check eRank / competitor bundles before publishing; see notes)
 
@@ -14,7 +14,7 @@ Where winter meets spooky season: six original spiderweb snowflakes for crafters
 
 Each design is a single-layer, single-path cut file, so no slicing, welding or cleanup is needed. Cut them from glitter vinyl for mugs and tumblers, from cardstock for ornaments and garlands, or use them on shirts, window clings and gift tags.
 
-WHAT&#39;S INCLUDED
+WHAT'S INCLUDED
 • 6 designs: Classic Web, Frost Weaver, Dew Drop, Wide Web, Hanging Spider, Ice Lace
 • SVG — Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
 • DXF — Silhouette Studio Basic Edition, laser software
@@ -24,7 +24,7 @@ SIZING TIP
 For the finer designs (Dew Drop, Ice Lace) use 4 in or larger for vinyl and 6 in or larger for cardstock.
 
 LICENSE
-Personal use, plus small-business use on up to 500 finished physical items per design. Please don&#39;t share or resell the digital files.
+Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
 
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. Files are available right after purchase in a single ZIP.
@@ -32,7 +32,7 @@ No physical item will be shipped. Files are available right after purchase in a 
 Designed with the help of digital and AI tools, and checked by hand for clean cuts.
 
 **13 tags (each ≤20 chars)**
-spiderweb svg, snowflake svg, creepy christmas, gothic christmas, spider web cut file, snowflake cut file, cricut christmas, halloween christmas, goth holiday decor, spooky snowflake, silhouette dxf, dark christmas svg, web snowflake png
+snowflake svg, christmas svg, cricut files, spiderweb svg, spider web snowflake, snowflake cut file, winter svg, spider svg, gothic christmas, spooky christmas, creepy christmas, halloween christmas, goth holiday decor
 
 **Images (upload in this order):** listing-images/1-thumbnail.png, 2-whats-included.png, 3-formats.png, 4-color-ideas.png
 **Digital file:** spiderweb-snowflakes-svg.zip

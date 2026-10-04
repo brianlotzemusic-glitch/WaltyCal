@@ -1,7 +1,7 @@
 # Skull Holiday SVG bundle
 
 **Title (≤140 chars)**
-Spooky Christmas Skull SVG Bundle (Gothic Holiday Cut Files - svg, dxf, png)
+Christmas SVG Bundle, Skulls in Santa Hats, Holly & Candy Cane Crossbones, Skull Ornament, Spooky Gothic Holiday Cut Files (svg, dxf, png)
 
 **Price:** $4.00 (suggested; SVG bundles on Etsy commonly run $2–6 — check eRank / competitor bundles before publishing)
 
@@ -14,7 +14,7 @@ Spooky meets sweet: six original, friendly skull designs dressed up for the holi
 
 Each design is a single-layer, single-path cut file, so no slicing, welding or cleanup is needed. Cut them from vinyl for mugs and tumblers, from cardstock for ornaments, tags and garlands, or use them on shirts, totes and window clings.
 
-WHAT&#39;S INCLUDED
+WHAT'S INCLUDED
 • 6 designs: Santa Hat Skull, Holly Sprig Skull, Candy Cane Crossbones, Skull Ornament, Snowflake Beanie Skull, Star Topper Skull
 • SVG — Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
 • DXF — Silhouette Studio Basic Edition, laser software
@@ -24,7 +24,7 @@ SIZING TIP
 For the finer details (Candy Cane Crossbones, Star Topper Skull) use 4 in or larger for vinyl and 5 in or larger for cardstock.
 
 LICENSE
-Personal use, plus small-business use on up to 500 finished physical items per design. Please don&#39;t share or resell the digital files.
+Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
 
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. Files are available right after purchase in a single ZIP.
@@ -32,7 +32,7 @@ No physical item will be shipped. Files are available right after purchase in a 
 Designed with the help of digital and AI tools, and checked by hand for clean cuts.
 
 **13 tags (each ≤20 chars)**
-skull svg, christmas skull svg, spooky christmas, gothic christmas, skull cut file, santa hat skull, candy cane svg, skull ornament svg, cricut christmas, goth holiday decor, silhouette dxf, dark christmas svg, halloween christmas
+christmas svg, skull svg, christmas skull svg, cricut files, santa hat skull, skull ornament svg, candy cane svg, skull cut file, skeleton christmas, spooky christmas, gothic christmas, creepy christmas, halloween christmas
 
 **Images (upload in this order):** listing-images/1-thumbnail.png, listing-images/2-whats-included.png, listing-images/3-formats.png, listing-images/4-color-ideas.png
 **Digital file:** skull-holiday-svg.zip

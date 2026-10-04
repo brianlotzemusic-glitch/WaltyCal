@@ -1,7 +1,7 @@
 # Listing — Christmas Village Silhouettes SVG bundle
 
 **Title (≤140 chars)**
-Christmas Village Silhouettes, Snowy Cottages, Gingerbread House (SVG DXF)
+Christmas Village SVG, Snowy Cottages, Chapel, Gingerbread House, Log Cabin Silhouettes, Light Box & Window Decal Cut Files (svg, dxf, png)
 
 **Price:** $4.00 (standard 6-design bundle price until stats exist)
 
@@ -16,7 +16,7 @@ Two designs are wide panels: a village street skyline with a chapel, cottages an
 
 Each design is a single-layer, single-path cut file, so no slicing, welding or cleanup is needed. The chimney smoke, the chapel star and the bell are attached, so nothing falls out.
 
-WHAT&#39;S INCLUDED
+WHAT'S INCLUDED
 • 6 designs: Village Street Skyline, Moonlit Cottages Light Box, Cottage with Smoking Chimney, Starlit Chapel, Gingerbread House, Cabin Among Pines
 • SVG — Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
 • DXF — Silhouette Studio Basic Edition, laser software (inches)
@@ -26,7 +26,7 @@ SIZING TIP
 Default size is 6 in on the longest side; resize freely with the proportions locked. The two panels have small windows and snow dots, so we recommend 10 in wide or larger for vinyl and cardstock and 12 in or larger for laser-cut wood. For the standing buildings we recommend 4 in tall or larger in cardstock and 5 in or larger in wood or acrylic. Do a test cut on a new material first.
 
 LICENSE
-Personal use, plus small-business use on up to 500 finished physical items per design. Please don&#39;t share or resell the digital files.
+Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
 
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. Files are available right after purchase in a single ZIP.
@@ -34,7 +34,7 @@ No physical item will be shipped. Files are available right after purchase in a 
 Designed with the help of digital and AI tools, and checked by hand for clean cuts.
 
 **13 tags (each ≤20 chars)**
-christmas village, winter village svg, village svg, christmas house svg, light box svg, laser cut village, gingerbread house, christmas silhouette, window decal svg, christmas svg, cabin svg, church svg, mantel decor svg
+christmas village, christmas svg, cricut files, village svg, winter village svg, christmas house svg, light box svg, gingerbread house, window decal svg, laser cut village, cabin svg, church svg, mantel decor svg
 
 **Images (upload in this order):** listing-images/1-thumbnail.png, listing-images/2-whats-included.png, listing-images/3-formats.png, listing-images/4-color-ideas.png
 **Digital file:** christmas-village-silhouettes-svg.zip
