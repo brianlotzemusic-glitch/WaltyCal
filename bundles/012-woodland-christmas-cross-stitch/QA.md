@@ -82,3 +82,43 @@ The technical side is solid. Two one-colour charts would not sell, though, and t
 - Moon: the star touches the moon's tip and the sleepy face is faint, which is acceptable.
 - Snowflake has 8 arms in violet and gold, which is a common stylised look.
 - After the fixes, re-run `gen.py`. Then re-check the contact sheet, image 4, pages 6/8/16/18/20/28 and the page 3 and page 4 text.
+
+---
+
+# QA round 2 (final), 4 Oct 2026
+
+**Verdict: APPROVED**
+
+## Re-checked independently
+- `python3 gen.py --check`: ALL CHECKS PASS, including the new one-colour readability check and the copy-from-data checks.
+- My own pass over `motifs.json`:
+  - All 12 grids match W×H and the stitch counts.
+  - No 8-neighbour strays in either version, and no one-colour stitch falls outside the colour shape.
+  - The acorn is now 28×32, and the README, chart page and contact sheet all agree.
+  - One-colour keeps: fox 73%, owl 83%, stag 94%, robin 82%, mushroom 74%, pine 94%, moon 99%, holly 93%, snowflake 100%, lantern 68%, cottage 75%, acorn 84%.
+- ZIP has exactly the 2 PDFs and README-LICENSE.txt. Each PDF is 28 pages at the right size (Letter 612×792, A4 595×842), with all fonts embedded.
+- Copy:
+  - "Wise Owl" is used everywhere; "snowy owl" is gone.
+  - Sizes read "1.8 to 2.4 in" (14-count) and "1.4 to 1.9 in" (18-count), and "25 to 32 wide, 26 to 34 high" is correct.
+  - The fat quarter now cuts 9 pieces, which is correct.
+  - Title, 13 tags, price 3.5, taxonomy 6343 and the disclosure line are unchanged and valid.
+- The 433 symbol is now a half-filled square, clearly distinct from the 815 cross (checked on page 6).
+- The spec now has the one-colour light-set rule, the readability check, computed ranges, the fabric rule and the composite photo 1.
+
+## Visual
+- **Robin one-colour:** now a solid dark robin with the cream belly as the gap. It has an eye, a continuous branch and holly beneath. It reads at contact-sheet size and in the chart. Fixed.
+- **Acorn (redesigned):** in colour it has a crosshatched cap, a nut and one oak leaf with veins. In one colour it reads clearly as an acorn, with a lattice cap and a leaf with vein gaps (contact sheet, image 4, and page 28 rendered). Fixed.
+- **Lantern one-colour at 68% (floor lowered from my 70% to 65%): acceptable.**
+  - The gaps are the glowing glass panes, which is the natural negative space for a lantern.
+  - The frame, ring, roof, candle and flame stay stitched, and the silhouette is unmistakable.
+  - The other two parts of the check (enclosed gap ≤25%, no new parts) still catch the hollow-outline failure that 70% was meant to catch. I accept 65% on the condition that every flagged or borderline motif is still looked at by eye, as the spec now says.
+- **Image 1 (new thumbnail):**
+  - The AI part is only the background (pine, berries, fairy lights, walnut table, red twine). The stag, fox, owl and pine in the hoops are our own `stitch.py` renders of the real grids, and they match the charts.
+  - There are no AI artefacts in view and no AI-drawn stitching. The prompt and spend ($0.028) are recorded in `PROMPTS.md`.
+  - Nothing is misleading. Much stronger next to the search results than round 1.
+- **Image 4:** shows the new acorn in both versions and reads well. Fox, cottage and holly are unchanged.
+- **No regressions** on the contact sheet. All 12 motifs are recognisable in both versions.
+
+## Notes for the Lister (not blocking)
+1. `1-thumbnail.png` is 6.9 MB, about three times the other bundles' thumbnails, because of the photo background. If the upload fails or is slow, re-save it as a high-quality JPG.
+2. The hoops in image 1 are different sizes (the pine hoop is small), while the designs are all about 2 in. This is fine as styling; the description states the real sizes.

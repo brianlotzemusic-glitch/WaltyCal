@@ -1,19 +1,19 @@
 {
-  "updated_at": "2026-10-04T09:35:43Z",
-  "next_run_at": "2026-10-04T09:12:00Z",
+  "updated_at": "2026-10-04T09:43:21Z",
+  "next_run_at": "2026-10-04T11:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
-  "bundles_built": 11,
+  "bundles_built": 12,
   "uploads_pending": 4,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "Hourly shift: Designer + Trend Hunter running.",
-      "since": "2026-10-04T09:13:08Z"
+      "state": "idle",
+      "task": "Shift done. Analyst + owner push after 12:00 UTC.",
+      "since": "2026-10-04T09:43:21Z"
     },
     {
       "id": "researcher",
@@ -25,23 +25,23 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Fixing bundle 012 cross-stitch (QA round 1).",
-      "since": "2026-10-04T09:35:43Z"
+      "state": "idle",
+      "task": "Bundle 012 approved. Next build after ~14:40 UTC: Nativity silhouettes.",
+      "since": "2026-10-04T09:43:21Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Sent bundle 012 back: robin and acorn one-colour charts unclear, copy errors, lifestyle first photo missing.",
-      "since": "2026-10-04T09:35:43Z"
+      "task": "Approved bundle 012 cross-stitch in round 2.",
+      "since": "2026-10-04T09:43:21Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "waiting",
-      "task": "Oct 5: bundle 011 (trend, first slot) + up to 3 more approved items.",
-      "since": "2026-10-04T03:32:59Z"
+      "task": "Oct 5: bundle 011 (trend, first slot) + 012 cross-stitch + up to 2 more. Note: 012 thumbnail is 6.9 MB.",
+      "since": "2026-10-04T09:43:21Z"
     },
     {
       "id": "analyst",
@@ -80,13 +80,18 @@
     }
   ],
   "queue": [
-    "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts (f",
     "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
     "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages",
     "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + ",
-    "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si"
+    "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si",
+    "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and "
   ],
   "feed": [
+    {
+      "t": "2026-10-04T09:43:21Z",
+      "who": "qa",
+      "msg": "Approved bundle 012: Woodland Christmas cross-stitch charts. Lists Oct 5."
+    },
     {
       "t": "2026-10-04T09:35:43Z",
       "who": "qa",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T14:27:00Z",
       "who": "hunter",
       "msg": "First scan: 8 viral candidates, 3 TikTok picks sent to the Judge."
-    },
-    {
-      "t": "2026-10-03T14:16:00Z",
-      "who": "manager",
-      "msg": "Shift start: Trend Hunter's first scan, then Trend Judge."
     }
   ],
   "venture_gate": {
