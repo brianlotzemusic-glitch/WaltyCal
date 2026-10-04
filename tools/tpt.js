@@ -25,6 +25,11 @@
 //                                     file; writes `uploaded` on success. --dry-run fills the form, lists any
 //                                     values TpT rejects with the options it offers, and does not submit.
 //
+//   node tools/tpt.js publish-pending
+//                                     publish items the cloud Manager has released (a `release` file), at most 3
+//                                     per run, unless tpt/PAUSED exists; writes tpt/UPLOADER-STATUS.json.
+//                                     Run nightly by tools/tpt-nightly.sh (see tpt/LOCAL-SETUP.md).
+//
 // When a publish step fails or an upload times out, a screenshot goes to tpt/_publish/ (gitignored)
 // along with the list of file inputs on the page.
 const fs = require("fs"), path = require("path");
@@ -220,15 +225,20 @@ function checkItem(item, it, F) {
   return p;
 }
 
+function isApproved(item) {
+  const qa = path.join(item, "QA.md");
+  return fs.existsSync(qa) && /^\*\*Verdict:\s*APPROVED\*\*/m.test(fs.readFileSync(qa, "utf8"));
+}
+
 async function publish(item, dryRun) {
-  if (!item) { console.error("usage: node tools/tpt.js publish tpt/NNN-slug [--dry-run]"); process.exit(1); }
+  if (!item) throw new Error("usage: node tools/tpt.js publish tpt/NNN-slug [--dry-run]");
   item = path.resolve(item);
   const F = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8"));
-  if (fs.existsSync(path.join(item, "uploaded"))) { console.error(`already uploaded: ${item}`); process.exit(1); }
-  if (!/^\*\*Verdict:\s*APPROVED\*\*/m.test(fs.readFileSync(path.join(item, "QA.md"), "utf8"))) { console.error("QA.md has no '**Verdict: APPROVED**' line"); process.exit(1); }
+  if (fs.existsSync(path.join(item, "uploaded"))) throw new Error(`already uploaded: ${item}`);
+  if (!isApproved(item)) throw new Error("QA.md has no '**Verdict: APPROVED**' line");
   const it = loadItem(item);
   const problems = checkItem(item, it, F);
-  if (problems.length && !dryRun) { console.error("not publishing:\n- " + problems.join("\n- ")); process.exit(1); }
+  if (problems.length && !dryRun) throw new Error("not publishing:\n- " + problems.join("\n- "));
 
   const slug = path.basename(item), shots = path.join(ROOT, "tpt", "_publish");
   const fail = (msg) => { if (!dryRun) throw new Error(`not submitted: ${msg}`); problems.push(msg); };
@@ -394,8 +404,53 @@ async function publish(item, dryRun) {
   }
 }
 
+
+// ---- publish-pending (the nightly job on the owner's Mac, overseen by the cloud Manager) ----
+// Publishes only items the Manager has RELEASED: tpt/NNN-slug/ with tpt.json, a QA APPROVED
+// verdict, a `release` file written by the Manager, and no `uploaded` file. Does nothing while
+// tpt/PAUSED exists (the owner's or the Manager's stop switch). Publishes at most MAX_PER_RUN
+// items per night. Writes tpt/UPLOADER-STATUS.json, which tools/tpt-nightly.sh commits so the
+// Manager can check every run and tell the owner when they're needed.
+const MAX_PER_RUN = 3;
+function pendingItems() {
+  const dir = path.join(ROOT, "tpt");
+  return fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d))
+    .filter((d) => fs.existsSync(path.join(d, "tpt.json")) && fs.existsSync(path.join(d, "release"))
+      && isApproved(d) && !fs.existsSync(path.join(d, "uploaded")))
+    .sort();
+}
+
+async function publishPending() {
+  const status = { ran_at: new Date().toISOString(), published: [], failed: [], needs_login: false, paused: false, pending_before: [] };
+  const write = () => fs.writeFileSync(path.join(ROOT, "tpt", "UPLOADER-STATUS.json"), JSON.stringify(status, null, 2) + "\n");
+  if (fs.existsSync(path.join(ROOT, "tpt", "PAUSED"))) {
+    status.paused = true; status.ok = true; write();
+    console.log("tpt/PAUSED exists: publishing nothing."); return;
+  }
+  const items = pendingItems().slice(0, MAX_PER_RUN);
+  status.pending_before = items.map((d) => path.basename(d));
+  console.log(items.length ? `Released and waiting: ${status.pending_before.join(", ")}` : "Nothing released to publish.");
+  for (const item of items) {
+    const slug = path.basename(item);
+    try {
+      await publish(item, false);
+      status.published.push({ item: slug, url: (fs.readFileSync(path.join(item, "uploaded"), "utf8").split("\n")[1] || "").trim() });
+    } catch (e) {
+      const msg = e.message.split("\n").slice(0, 3).join(" ").slice(0, 400);
+      status.failed.push({ item: slug, error: msg });
+      console.error(`${slug}: ${msg}`);
+      if (/not logged in|session expired|login failed/i.test(msg)) { status.needs_login = true; break; }
+    }
+  }
+  status.ok = !status.needs_login && status.failed.length === 0;
+  write();
+  console.log(`Published ${status.published.length}, failed ${status.failed.length}${status.needs_login ? " (TpT login expired: run node tools/tpt.js login)" : ""}.`);
+  if (!status.ok) process.exitCode = 1;
+}
+
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 (cmd === "login" ? loginCmd() : cmd === "discover" ? discover() : cmd === "publish" ? publish(arg, dryRun)
-  : Promise.reject(new Error("usage: login | discover | publish <tpt/NNN-slug> [--dry-run]")))
+  : cmd === "publish-pending" ? publishPending()
+  : Promise.reject(new Error("usage: login | discover | publish <tpt/NNN-slug> [--dry-run] | publish-pending")))
   .catch((e) => { console.error(e.message); process.exit(1); });

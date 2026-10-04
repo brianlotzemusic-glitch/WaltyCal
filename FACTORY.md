@@ -235,13 +235,27 @@ The owner will shut the factory down unless the shop shows signs of life by 10 O
 The owner also sells on TpT: https://www.teacherspayteachers.com/store/brian-lotze. As of 4 Oct it holds 4 high-school digital music production items built around Logic Pro ($0–$10, 3 followers). The owner's decisions (4 Oct):
 - **A new classroom music line**, K-2, 3-5, 6-8 and high school. These are separate products; overlapping the owner's curriculum is fine.
 - **Brand: "Hudson Beat"** (owner's choice, 4 Oct 2026). Covers and title pages say HUDSON BEAT, and the TpT seller stays Brian Lotze. **Match the owner's store** style, not Duskwood. Before the first build, the Designer looks at the store's thumbnails and covers, then writes the look into `tpt/STYLE.md` (fonts, colours, layout, cover format).
-- **Uploading** (owner, 4 Oct 2026: automate it). TpT has no seller API, so `tools/tpt.js` drives the TpT website with Playwright, logged in as the owner's VA account. It **runs on the owner's Mac** (setup in `tpt/LOCAL-SETUP.md`): cloud sessions can't open TpT in a browser because of the proxy certificate, and weakening TLS isn't allowed. The factory never runs it from the cloud. `publish` (owner approved, 4 Oct 2026) uploads an item live from its UPLOAD.md + `tpt.json` (see tpt/README.md); run `--dry-run` first on a new item. For each item the factory builds `tpt/NNN-slug/` containing:
+- **Uploading** (owner, 4 Oct 2026: automate it). TpT has no seller API, so `tools/tpt.js` drives the TpT website with Playwright, logged in as the owner's VA account. It **runs on the owner's Mac** (setup in `tpt/LOCAL-SETUP.md`): cloud sessions can't open TpT in a browser because of the proxy certificate, and weakening TLS isn't allowed. The factory never runs it from the cloud. `publish` (owner approved, 4 Oct 2026) uploads an item live from its UPLOAD.md + `tpt.json` (see tpt/README.md); run `--dry-run` first on a new item. **Nightly publishing, under the Manager** (owner, 4 Oct 2026: "help me set that up... all under your purview"). A launchd job on the owner's Mac (`tools/tpt-nightly.sh`, installed by `tools/tpt-install-nightly.sh`) runs `node tools/tpt.js publish-pending` every evening. It publishes **only items the Manager has released**: at most 3 a night, never while `tpt/PAUSED` exists. It commits `uploaded` markers and `tpt/UPLOADER-STATUS.json`. Each Manager shift:
+  - **Release.** For each `tpt/NNN-slug/` that has a QA `**Verdict: APPROVED**`, a `tpt.json` and no `uploaded`, run these checks:
+    - title ≤80 chars
+    - price and license_price set
+    - tax_code set
+    - 1–4 grades, 1–3 subjects, 1–6 tags
+    - every file in `files` exists
+
+    If they all pass, write `release` containing the date and "released by Manager". If any fails, send the item back to the Designer. Release at most 3 a day.
+  - **Check the last run** in `tpt/UPLOADER-STATUS.json`:
+    - `needs_login`: push the owner once (8am–8pm ET): "TpT login expired: on your Mac run `source ~/.tpt-env && node tools/tpt.js login` and click Log in."
+    - `failed` items: read the error. If it's an item problem, the Designer fixes the item. If the same item fails twice, or a failure suggests TpT's form changed, create `tpt/PAUSED` (commit it) and push the owner once with the reason.
+    - Released items waiting and `ran_at` older than 36 h: push once, "the nightly TpT job hasn't run: is the Mac on and logged in?"
+  - **Verify.** For each newly `uploaded` item, check its public TpT URL returns 200. Add it to the log, the dashboard feed and `tpt/README.md`'s list.
+  - **Unpause.** Delete `tpt/PAUSED` only after the cause is fixed, or when the owner says so. For each item the factory builds `tpt/NNN-slug/` containing:
   - the resource PDF and a 4-page preview PDF
   - a square cover/thumbnail and 3 preview images
   - `UPLOAD.md`, laid out in the order of TpT's upload form, with title (≤80 chars), description, grades, subjects, resource type, standards if any, price, and a "free or paid" note, ready to paste
 - **Batching**: when 2–3 TpT items are approved, the Manager sends one push ("2 TpT items ready, ~15 min to upload: tpt/…"), at most twice a week and only between 8am and 8pm ET. The owner replies "uploaded", and the Manager records it in `tpt/NNN-slug/uploaded`.
 - **Researcher**: once a week, look at proven TpT music sellers (best-seller and "most popular" lists, review counts, seasonal demand: Halloween, Thanksgiving, winter/holiday concerts, Music In Our Schools Month in March, end of year, sub plans). Add items to `queue.md` tagged `[tpt]` with grade, type, a typical price and evidence. Take the subject and format only; never copy another seller's resource.
-- **Designer**: build `[tpt]` items like any other product, drawn in code at no image cost (notation, rhythm cards, bingo, worksheets, posters, colour-by-note). They take turns with Etsy builds, about 1 in 3 Designer runs. Use music21, LilyPond or hand-drawn SVG for notation.
+- **Designer**: every TpT item also gets a `tpt.json` (format in `tpt/README.md`; see `tpt/001-halloween-color-by-note/tpt.json`; tax_code "Other Digital Goods", license_price = price unless the owner says otherwise, at most 4 grades). Build `[tpt]` items like any other product, drawn in code at no image cost (notation, rhythm cards, bingo, worksheets, posters, colour-by-note). They take turns with Etsy builds, about 1 in 3 Designer runs. Use music21, LilyPond or hand-drawn SVG for notation.
 - **QA**, in addition to the usual checks:
   - **Musical accuracy**: note values add up to each bar's time signature, stems and beams are correct, notes sit on the right staff positions, the clef is right, and the rhythm syllables match the notes.
   - **Age-appropriateness**, and answer keys that are correct.

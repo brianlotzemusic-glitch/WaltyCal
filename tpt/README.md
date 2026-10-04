@@ -1,6 +1,6 @@
 # TpT music line
 
-One folder per item (`tpt/NNN-slug/`). See FACTORY.md "Teachers Pay Teachers". The owner uploads by hand using each item's UPLOAD.md.
+One folder per item (`tpt/NNN-slug/`). See FACTORY.md "Teachers Pay Teachers". Approved items are released by the cloud Manager (a `release` file) and published by the nightly job on the owner's Mac (`tools/tpt-nightly.sh`); `tpt/PAUSED` stops it.
 
 ## Publishing with `tools/tpt.js publish` (owner's Mac only)
 

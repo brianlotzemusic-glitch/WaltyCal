@@ -61,3 +61,26 @@ When the factory tells you items are ready:
    ```
    The factory will give you the exact command. A single command for all waiting items comes later.
 3. In GitHub Desktop, commit and push the `uploaded` marker the script writes, so the factory knows.
+
+## Nightly publishing (set up once; the factory runs it after that)
+After this one-time setup, approved TpT items go live by themselves every evening.
+- **The factory decides what goes live.** The Mac job publishes only items the cloud Manager has *released* (a `release` file), at most 3 a night.
+- **Stop switch:** `tpt/PAUSED`. While that file exists, the job publishes nothing. The Manager creates it if something looks wrong, and you can too.
+- **When the factory needs you:** you get a push only when TpT's login has expired, the job hasn't run for 36 hours, or the Manager paused it.
+
+**Install.** Paste this into Claude Code on your Mac:
+```
+In ~/Documents/GitHub/waltycal (branch shop-factory), set up the nightly TpT publish job:
+1. git pull origin shop-factory.
+2. Check the saved TpT login still works: source ~/.tpt-env && node tools/tpt.js publish-pending
+   (it only publishes items the factory released; if none are released it just writes tpt/UPLOADER-STATUS.json).
+   If it says the login expired, run `node tools/tpt.js login` and tell me to click Log in.
+3. Run: bash tools/tpt-install-nightly.sh
+4. Test it once now: launchctl kickstart gui/$(id -u)/com.hudsonbeat.tpt-nightly
+   then show me the last 20 lines of ~/Library/Logs/tpt-nightly.log and confirm the push to shop-factory worked.
+5. Tell me "nightly installed".
+```
+
+**Keep the Mac able to run it:**
+- The job runs at 8:30pm while you're logged in and the Mac is awake. Leave it plugged in with the lid open, or set **System Settings → Energy** so it doesn't sleep in the evening.
+- To change the time: `bash tools/tpt-install-nightly.sh 21 15` (9:15pm). To uninstall: `bash tools/tpt-install-nightly.sh remove`.
