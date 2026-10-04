@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 tpt/_discover/
+node_modules/
+package.json
+package-lock.json

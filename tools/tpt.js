@@ -7,8 +7,8 @@
 // Credentials come from the environment (never committed): TPT_VA_EMAIL, TPT_VA_PASSWORD.
 //
 // Commands:
-//   node tools/tpt.js discover        log in (a visible browser window opens), open the "add a resource"
-//                                     form, and save:
+//   node tools/tpt.js discover        log in (a visible browser window opens), open My-Products/New-Item,
+//                                     choose "Digital Download" on the product-type picker, and save:
 //                                       tpt/_discover/*.png, *.html   screenshots + page HTML (gitignored, stay on the Mac)
 //                                       tpt/FORM-FIELDS.json          labels/names/types of the form fields only,
 //                                                                     no account details; commit this one
@@ -25,6 +25,7 @@ catch (e) { ({ chromium } = require(path.join(require("child_process").execSync(
 
 const ROOT = path.dirname(__dirname);
 const LOGIN_URL = "https://www.teacherspayteachers.com/Login";
+const NEW_ITEM_URL = "https://www.teacherspayteachers.com/My-Products/New-Item";
 const HEADLESS = process.env.TPT_HEADLESS === "1";
 
 function env(name) {
@@ -35,8 +36,8 @@ function env(name) {
 
 async function login(page) {
   await page.goto(LOGIN_URL, { waitUntil: "domcontentloaded" });
-  await page.fill('input[type="email"], input[name="email"], input[name="username"]', env("TPT_VA_EMAIL"));
-  await page.fill('input[type="password"]', env("TPT_VA_PASSWORD"));
+  await page.fill('#lc-email-username-input, input[type="email"], input[name="email"], input[name="username"]', env("TPT_VA_EMAIL"));
+  await page.fill('#lc-password-input, input[type="password"]', env("TPT_VA_PASSWORD"));
   await page.keyboard.press("Enter");
   console.log("Logging in. If TpT asks for a CAPTCHA or a code, complete it in the browser window...");
   try {
@@ -89,16 +90,24 @@ async function discover() {
       await snap(page, dir, "02-" + url.split("/").pop().toLowerCase());
       out.pages.push({ step: url.split("/").pop(), url: page.url() });
     }
-    const add = page.getByRole("link", { name: /add (a )?(new )?(product|resource)/i })
-      .or(page.getByRole("button", { name: /add (a )?(new )?(product|resource)/i })).first();
-    if (await add.count()) {
-      await add.click();
+    // New-Item opens on a "Select a Product Type" picker; the listing form only appears after
+    // choosing Digital Download. Choosing a type saves nothing. If it opens a file chooser, the
+    // listener below catches it and no file is attached.
+    let chooser = null;
+    page.on("filechooser", (fc) => { chooser = { multiple: fc.isMultiple() }; });
+    await page.goto(NEW_ITEM_URL, { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    await snap(page, dir, "03-product-type");
+    out.pages.push({ step: "product-type", url: page.url(), fields: await formFields(page) });
+    const dd = page.getByText(/^\s*Digital Download\s*$/i).first();
+    if (await dd.count()) {
+      await dd.click();
       await page.waitForLoadState("domcontentloaded");
-      await page.waitForTimeout(3000);
-      await snap(page, dir, "03-add-resource-form");
-      out.pages.push({ step: "add-resource-form", url: page.url(), fields: await formFields(page) });
+      await page.waitForTimeout(4000);
+      await snap(page, dir, "04-digital-download-form");
+      out.pages.push({ step: "digital-download-form", url: page.url(), file_chooser_opened: chooser, fields: await formFields(page) });
     } else {
-      out.pages.push({ step: "add-resource-form", error: "no 'Add a resource' link or button found on My-Products/Dashboard" });
+      out.pages.push({ step: "digital-download-form", error: "no 'Digital Download' option found on the product-type page" });
     }
   } finally {
     fs.writeFileSync(path.join(ROOT, "tpt", "FORM-FIELDS.json"), JSON.stringify(out, null, 2));
