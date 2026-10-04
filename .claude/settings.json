@@ -10,7 +10,9 @@
       "Bash(python3 tools/etsy.py taxonomy:*)",
       "Bash(python3 tools/imagegen.py:*)",
       "Bash(git push -u origin shop-factory)",
-      "Bash(git push origin shop-factory)"
+      "Bash(git push origin shop-factory)",
+      "Bash(node tools/tpt.js discover)",
+"Bash(node tools/tpt.js publish:*)"
     ]
   }
 }
