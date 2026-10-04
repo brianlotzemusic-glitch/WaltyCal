@@ -1,19 +1,19 @@
 {
-  "updated_at": "2026-10-04T03:30:41Z",
-  "next_run_at": "2026-10-04T03:12:00Z",
+  "updated_at": "2026-10-04T03:32:59Z",
+  "next_run_at": "2026-10-04T05:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
-  "bundles_built": 10,
+  "bundles_built": 11,
   "uploads_pending": 4,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "Hourly shift: Designer + Trend Hunter running.",
-      "since": "2026-10-04T03:13:00Z"
+      "state": "idle",
+      "task": "Shift done. Analyst + owner stats push after 12:00 UTC (8am ET).",
+      "since": "2026-10-04T03:32:59Z"
     },
     {
       "id": "researcher",
@@ -25,23 +25,23 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Fixing bundle 011 (QA round 1).",
-      "since": "2026-10-04T03:30:41Z"
+      "state": "idle",
+      "task": "Bundle 011 approved. Next build after ~08:20 UTC: cross-stitch pilot.",
+      "since": "2026-10-04T03:32:59Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Sent bundle 011 back: print-then-cut sizing guidance, image 3 box ratio, printer/sticker-paper wording, one phrase.",
-      "since": "2026-10-04T03:30:41Z"
+      "task": "Approved bundle 011 small autumn moments in round 2.",
+      "since": "2026-10-04T03:32:59Z"
     },
     {
       "id": "lister",
       "name": "Lister",
-      "state": "idle",
-      "task": "Day 1 retitles done: all 8 cut-file listings lead with search phrases, 13 tags each (log/retitles-2026-10-04.md). Next: 4 slots on Oct 5.",
-      "since": "2026-10-04T01:15:06Z"
+      "state": "waiting",
+      "task": "Oct 5: bundle 011 (trend, first slot) + up to 3 more approved items.",
+      "since": "2026-10-04T03:32:59Z"
     },
     {
       "id": "analyst",
@@ -80,13 +80,18 @@
     }
   ],
   "queue": [
-    "[trend] \"Small autumn moments\" printable checklist + print-then-cut sticker sheet: our own",
     "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts (f",
     "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
     "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages",
-    "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + "
+    "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + ",
+    "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si"
   ],
   "feed": [
+    {
+      "t": "2026-10-04T03:32:59Z",
+      "who": "qa",
+      "msg": "Approved bundle 011: Small autumn moments checklist + stickers. Lists first thing Oct 5."
+    },
     {
       "t": "2026-10-04T03:30:41Z",
       "who": "qa",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T13:15:00Z",
       "who": "manager",
       "msg": "Hourly check: nothing due. Waiting on owner (Printify main photos, Recraft credits). Designer next ~22:00 UTC."
-    },
-    {
-      "t": "2026-10-03T12:14:08Z",
-      "who": "manager",
-      "msg": "Asked the owner to set the mug/tee photos in Printify and to decide on Recraft credits."
     }
   ],
   "venture_gate": {

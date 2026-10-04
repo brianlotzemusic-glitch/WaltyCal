@@ -52,3 +52,28 @@
 - **S3.** Add to the "Then look" checks: "any dimension box drawn on a listing image has the file's real aspect ratio and contains the art", and "no single-word orphan lines on either paper size".
 - **S4.** Reconcile the 9 mm art margin with the frame (see fix 7).
 - The rest of the spec is sound: the sizes, the 300 DPI/RGBA PNG, the 0.15 in gap allowing for Cricut bleed, the one-piece outlines, the ZIP contents and taxonomy 354.
+
+---
+
+# Round 2 (final)
+
+**Verdict: APPROVED.** All 4 required fixes and the 3 polish items are done, and I found nothing that got worse.
+
+## What I re-checked myself
+- **`gen.py --check`** prints ALL CHECKS PASS, including the 2 new checks: the trimmed-art height check and the "what you need" / height-step copy check.
+- **PDFs** (re-extracted from the new ZIP):
+  - The checklists have 4 pages and the sticker PDFs 1 page. Letter is 612×792 and A4 is 594.96×841.92.
+  - All fonts are embedded (Fraunces and Nunito only).
+- **ZIP** holds exactly the 4 PDFs, the PNG and the README.
+- **PNG** is byte-identical to round 1: 2025×2775, 300 DPI, RGBA, with the same proven cut outlines.
+- **Fix 1 (image 3)**: the dashed box now has the 1.37 aspect and all 20 stickers sit inside it.
+- **Fix 2 (sizing step)**: the README step 2 and the description now say "keep proportions locked, set the HEIGHT to 9.25 in (width about 6.7 in)". The trimmed art at that height is 6.70 × 9.25 in. No "width 6.75" step remains.
+- **Fix 3 ("what you need")**: the line is now in both the README and the description, and the description also still says printing and cutting are not included.
+- **Fix 4**: "…then warm up with a hot drink" now appears in `moments.json`, all PDFs, and the listing images, which were regenerated (I checked the text in the thumbnail).
+- **Fix 5 (orphans)**: I rendered all 4 pages of Letter and A4. There are no single-word orphan lines, the columns are balanced, the title is on one line, and nothing is clipped. Still 30 moments; the shorter phrasing is still clear and relatable.
+- **Fix 6**: the description now uses "home and hearth, kitchen and table, out the door, dusk and evenings".
+- **Fix 7**: the frame is now 9.1–9.4 mm from the edge on both sizes, which meets the spec.
+- **Listing**: the title (126 characters) and tags are unchanged. There are 13 unique tags, no HTML entities, and the disclosure line is still the exact last line. Price is 3.5 and taxonomy is 354.
+- **Spec**: `formats/printable.md` now has S1–S4 (the height step and the trimmed-bbox check, the required "what you need" line, the aspect and orphan checks, and the 9 mm frame).
+
+The bundle is ready for the Lister.
