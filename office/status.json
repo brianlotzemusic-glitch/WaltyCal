@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-04T16:13:49Z",
-  "next_run_at": "2026-10-04T17:12:00Z",
+  "updated_at": "2026-10-04T17:13:07Z",
+  "next_run_at": "2026-10-04T18:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
@@ -13,7 +13,7 @@
       "name": "Manager",
       "state": "idle",
       "task": "Hourly check: nothing due. tpt/001 waiting for the owner to upload. Designer after 20:33 UTC; Hunter after ~21:15; Researcher ~00:20.",
-      "since": "2026-10-04T16:13:49Z"
+      "since": "2026-10-04T17:13:07Z"
     },
     {
       "id": "researcher",
