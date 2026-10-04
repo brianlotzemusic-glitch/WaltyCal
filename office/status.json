@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-04T05:12:56Z",
-  "next_run_at": "2026-10-04T06:12:00Z",
+  "updated_at": "2026-10-04T06:13:45Z",
+  "next_run_at": "2026-10-04T07:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
@@ -13,7 +13,7 @@
       "name": "Manager",
       "state": "idle",
       "task": "Hourly check: nothing due. Designer (cross-stitch pilot) after ~08:20 UTC; Hunter after ~09:15; Analyst + owner push after 12:00 UTC.",
-      "since": "2026-10-04T05:12:56Z"
+      "since": "2026-10-04T06:13:45Z"
     },
     {
       "id": "researcher",
