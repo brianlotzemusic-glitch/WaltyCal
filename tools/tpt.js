@@ -323,16 +323,25 @@ async function publish(item, dryRun) {
       if ((await box.getAttribute("aria-checked")) !== "true") await box.click();
     }
 
-    // react-select comboboxes: type, then pick the option whose text matches exactly.
+    // react-select comboboxes: type, then pick the option whose text matches exactly. A value that
+    // is already selected is skipped: TpT adds some itself (run 6: Format "PDF" after a PDF upload),
+    // and react-select doesn't offer selected values again.
     const pick = async (name, sel, values) => {
       for (const v of values || []) {
         step = `${name}: ${v}`;
         const input = page.locator(sel);
+        const control = input.locator('xpath=ancestor::*[contains(@class, "control")][1]');
+        const chosen = (await control.count()) ? (await control.innerText()).split("\n").map((t) => t.trim().toLowerCase()) : [];
+        if (chosen.includes(v.toLowerCase())) continue;
         await input.click();
         await input.fill(v);
-        await page.waitForTimeout(1500);
         const opts = page.getByRole("option");
-        const texts = (await opts.allInnerTexts()).map((t) => t.trim());
+        let texts = [];
+        for (let t = 0; t < 10; t++) { // up to 5 s for TpT's option list
+          await page.waitForTimeout(500);
+          texts = (await opts.allInnerTexts()).map((x) => x.trim());
+          if (texts.some((x) => x.toLowerCase() === v.toLowerCase())) break;
+        }
         const i = texts.findIndex((t) => t.toLowerCase() === v.toLowerCase());
         if (i < 0) { await input.fill(""); await page.keyboard.press("Escape"); fail(`${name}: "${v}" is not an option. Typing it offered: ${texts.join(" | ") || "(nothing)"}`); continue; }
         await opts.nth(i).click();
