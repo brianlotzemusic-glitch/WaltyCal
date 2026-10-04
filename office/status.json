@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-04T11:13:57Z",
-  "next_run_at": "2026-10-04T12:12:00Z",
+  "updated_at": "2026-10-04T12:13:45Z",
+  "next_run_at": "2026-10-04T13:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Hourly check. Next shift (12:12 UTC = 8:12am ET): Analyst stats + owner push. Designer (Nativity) after ~14:40; Hunter after ~15:15.",
-      "since": "2026-10-04T11:13:57Z"
+      "task": "Sent the daily stats push and asked about the trend-scan cadence. Designer (Nativity) after ~14:40; Hunter after ~15:15.",
+      "since": "2026-10-04T12:13:45Z"
     },
     {
       "id": "researcher",
@@ -47,8 +47,8 @@
       "id": "analyst",
       "name": "Analyst",
       "state": "idle",
-      "task": "Stats: 8 live listings, 1 view, 0 sales, $0. Too early to judge. Next pull after 11:15 UTC tomorrow.",
-      "since": "2026-10-03T11:14:10Z"
+      "task": "Stats: 14 live, 1 view total, 0 favs, 0 sales, $0 (no change since yesterday; Etsy view counts can lag). Owner pushed. Next pull after 12:00 UTC tomorrow.",
+      "since": "2026-10-04T12:13:45Z"
     },
     {
       "id": "scout",
@@ -87,6 +87,11 @@
     "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and "
   ],
   "feed": [
+    {
+      "t": "2026-10-04T12:13:45Z",
+      "who": "analyst",
+      "msg": "Daily stats: 14 listings, 1 view, no favourites or sales yet. Sent to owner."
+    },
     {
       "t": "2026-10-04T09:43:21Z",
       "who": "qa",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T14:30:00Z",
       "who": "judge",
       "msg": "Rejected all 3 trend picks (song lyric, saturated pumpkin market, no buyer intent). Nothing queued."
-    },
-    {
-      "t": "2026-10-03T14:27:00Z",
-      "who": "hunter",
-      "msg": "First scan: 8 viral candidates, 3 TikTok picks sent to the Judge."
     }
   ],
   "venture_gate": {

@@ -107,3 +107,4 @@
 - 2026-10-04 09:43 UTC: Manager shift. Trend Hunter scan 4 made no picks. The Designer built bundle 012, Woodland Christmas cross-stitch (12 charts, colour + one-colour DMC 3371, Letter + A4, formats/cross-stitch.md). QA round 1 sent it back over the robin and acorn one-colour charts, copy figures and the missing lifestyle photo; round 2 approved it (the lantern accepted at a 65% readability floor). AI spend $0.028 for a table background with our real stitched hoops composited in. It lists Oct 5.
 - 2026-10-04 10:12 UTC: Manager. Hourly check, nothing due.
 - 2026-10-04 11:13 UTC: Manager. Hourly check; Analyst stats + owner push moved to the 12:12 shift (first after 8am ET).
+- 2026-10-04 12:13 UTC: Analyst stats: 14 live, 1 view, 0 favs, 0 sales (no change in 24 h). Pushed the owner the daily line, plus a question: cut trend scans to once a day after two empty scans? Default: keep 6 h.
