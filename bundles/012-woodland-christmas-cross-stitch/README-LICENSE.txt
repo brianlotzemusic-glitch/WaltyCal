@@ -18,7 +18,7 @@ PAGES (same in both sizes)
 
 THE 12 ORNAMENTS (stitch count W x H, finished size on 14-count)
    1 Little Fox       25 x 34   1.8 x 2.4 in
-   2 Snowy Owl        28 x 32   2.0 x 2.3 in
+   2 Wise Owl         28 x 32   2.0 x 2.3 in
    3 Woodland Stag    30 x 32   2.1 x 2.3 in
    4 Robin on Holly   30 x 29   2.1 x 2.1 in
    5 Toadstool        28 x 27   2.0 x 1.9 in
@@ -28,8 +28,9 @@ THE 12 ORNAMENTS (stitch count W x H, finished size on 14-count)
    9 Snowflake        29 x 29   2.1 x 2.1 in
   10 Lantern          25 x 33   1.8 x 2.4 in
   11 Snowy Cottage    32 x 30   2.3 x 2.1 in
-  12 Acorn & Oak      32 x 25   2.3 x 1.8 in
-  On 18-count each is about 1.4 to 1.9 in.
+  12 Acorn & Oak      28 x 32   2.0 x 2.3 in
+  Overall: 25 to 32 stitches wide and 26 to 34 high, about 1.8 to 2.4 in on
+  14-count and 1.4 to 1.9 in on 18-count.
 
 EACH CHART PAGE HAS
   - a large grid with a symbol in every stitched square (plus the colour
@@ -43,7 +44,7 @@ STITCHING
   2 strands of floss on 14-count Aida, full cross stitches only. No
   backstitch and no fractional stitches. Start at the centre arrows.
   White, antique white or cream Aida all work; about 6 x 6 in of fabric
-  per ornament. Finishing steps (flat felt-backed ornament or 3 in mini
+  per ornament (a fat quarter, about 18 x 21 in, cuts 9 pieces). Finishing steps (flat felt-backed ornament or 3 in mini
   hoop) are on page 3.
 
 PRINTING TIPS

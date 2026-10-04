@@ -10,6 +10,7 @@ const FONT = f => `data:font/ttf;base64,${fs.readFileSync(path.join('fonts', f))
 const SHOP = 'Duskwood Designs Co';
 const PAL = D.palette, MONO = D.mono, SPS = D.stitches_per_skein;
 const SLUG = 'woodland-christmas-cross-stitch';
+const RG = D.ranges;
 
 // ---- symbols, in a 1x1 cell (stroke widths in cell units)
 function symbol(id, x, y, col) {
@@ -23,6 +24,7 @@ function symbol(id, x, y, col) {
     case 'tri': return `<path d="M${c(.5, .2)}L${c(.82, .78)}L${c(.18, .78)}Z" fill="${col}"/>`;
     case 'otri': return `<path d="M${c(.5, .22)}L${c(.8, .76)}L${c(.2, .76)}Z" ${st}/>`;
     case 'cross': return `<path d="M${c(.24, .24)}L${c(.76, .76)}M${c(.76, .24)}L${c(.24, .76)}" ${st} stroke-width=".13"/>`;
+    case 'hsquare': return `<rect x="${x + .22}" y="${y + .22}" width=".56" height=".56" ${st}/><path d="M${c(.22, .22)}L${c(.78, .78)}L${c(.22, .78)}Z" fill="${col}"/>`;
     case 'plus': return `<path d="M${c(.5, .2)}L${c(.5, .8)}M${c(.2, .5)}L${c(.8, .5)}" ${st} stroke-width=".13"/>`;
     case 'osquare': return `<rect x="${x + .25}" y="${y + .25}" width=".5" height=".5" ${st}/>`;
     case 'star': {
@@ -156,7 +158,7 @@ function cover(W, H) {
   <div class=head><div class=kick>Counted cross stitch pattern · pdf</div><h1>Woodland <em>Christmas</em></h1>
   <div class=sub>12 mini ornaments · colour and one-colour charts</div></div>
   <div class=orn style="left:27mm;width:${gw}mm;top:${top}mm">${D.motifs.map(m => `<div class=o>${preview(m, false)}</div>`).join('')}</div>
-  <div class=badges style="top:${H - 58}mm"><span>12 CHARTS × 2 VERSIONS</span><span>EACH ABOUT 2 IN ON 14-COUNT</span><span>US LETTER + A4</span></div>
+  <div class=badges style="top:${H - 58}mm"><span>12 CHARTS × 2 VERSIONS</span><span>${RG.in14.toUpperCase()} ON 14-COUNT</span><span>US LETTER + A4</span></div>
   <div class=foot>© ${SHOP} · personal use pattern · finished pieces may be sold in small quantities (see README)</div></div>`;
 }
 
@@ -202,7 +204,7 @@ function how(W, H) {
   <li>Trim the fabric to 0.75 in beyond the hoop, run a gathering stitch round it and pull it closed at the back</li>
   <li>Cover the back with a felt circle and hang it by the hoop screw with ribbon</li></ol>
   <h2>Sizes</h2>
-  <p>Each chart page gives the stitch count and the finished size on 14-count and 18-count. Most designs are about 2 to 2.5 in across on 14-count and 1.5 to 2 in on 18-count.</p>
+  <p>Each chart page gives the stitch count and the finished size on 14-count and 18-count. The designs are ${RG.stitches}: about ${RG.in14} on 14-count and ${RG.in18} on 18-count.</p>
   <div class=note><b>Tip:</b> cream (DMC 712) is a soft highlight colour. On white fabric it shows as a gentle ivory; on cream or antique white Aida it blends in, which suits the snow and the owl's face.</div>
   </div></div></div>
   <div class=foot>© ${SHOP} · page ${pageNo.how}</div></div>`;
@@ -224,7 +226,7 @@ function shopping(W, H) {
   <tr><td><span class=chk></span></td><td>${swatch(MONO.symbol, MONO_FILL, 5.5)}</td><td><b>DMC ${MONO.dmc}</b></td><td>${MONO.name}</td><td>all 12</td><td class=num>${monoTot}</td><td class=num><b>${Math.ceil(monoTot / SPS)}</b></td></tr></table>
   <p style="margin-top:2mm;font-size:3mm;color:${MUTED}">Any single colour works for the one-colour charts: try 815 Garnet Medium or 500 Blue Green Very Dark for a classic Christmas sampler look.</p>
   <h2 style="margin-top:5mm">Fabric and notions</h2>
-  <ul><li>14-count Aida: a 6 × 6 in (15 × 15 cm) piece per ornament, or a fat quarter for all 12</li>
+  <ul><li>14-count Aida: a 6 × 6 in (15 × 15 cm) piece per ornament. A fat quarter (about 18 × 21 in) cuts 9 pieces, so get two for all 12</li>
   <li>Size 24 tapestry needle, 4 in hoop, small scissors</li>
   <li>For finishing: felt, thin card, fabric glue, ribbon or twine (3 in mini hoops are optional)</li></ul>
   </div><div class=foot>© ${SHOP} · page ${pageNo.shop} · DMC numbers are given so you can buy matching floss; this pattern is not made or endorsed by DMC</div></div>`;

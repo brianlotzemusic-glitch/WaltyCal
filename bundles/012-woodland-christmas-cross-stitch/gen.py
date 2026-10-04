@@ -55,7 +55,13 @@ def check():
     D = json.load(open(os.path.join(HERE, "motifs.json")))
     pal = D["palette"]
     # --- the charts themselves
-    res("motifs.py --check: sizes 23-35, 3-6 colours, no stray stitches, mono inside colour shape", MO.check(D, verbose=False))
+    res("motifs.py --check: sizes 23-35, 3-6 colours, no stray stitches, mono inside colour shape, one-colour readable "
+        "(keeps >= 65% of stitches, no enclosed gap > 25% of the motif, no new parts > 6 stitches)", MO.check(D, verbose=False))
+    for m in D["motifs"]:
+        kept, gap, extra = MO.readability(m)
+        print(f"      {m['key']:<10} one-colour keeps {kept:.0%}, largest gap {gap:.0%}" + (f", new small parts {extra} (look: pupils/eyes only)" if extra else ""))
+    R = MO.ranges(D["motifs"])
+    res("size ranges in motifs.json match the grids", D.get("ranges") == R, f"({R['stitches']}; {R['in14']} on 14-count, {R['in18']} on 18-count)")
     res("12 motifs", len(D["motifs"]) == 12, str([m["key"] for m in D["motifs"]]))
     res("shared palette of 8-10 DMC colours, each with a number, name, colour and symbol",
         8 <= len(pal) <= 10 and all(p["dmc"] and p["name"] and re.match(r"#[0-9a-f]{6}$", p["hex"]) and p["symbol"] for p in pal.values()),
@@ -100,10 +106,18 @@ def check():
                         and re.search(rf"Stitch count:\s*{m['w']}\s*W\s*×\s*{m['h']}\s*H", t)):
                     okc = False; print(f"      page {page_no}: {m['title']} / {kind} / {m['w']}x{m['h']} not found")
         res(f"{f}: chart pages 5-28 carry the right motif, version and stitch count", okc)
+        flat = re.sub(r"\s+", " ", subprocess.check_output(["pdftotext", p, "-"], text=True))
+        res(f"{f}: size copy uses the computed ranges, fat quarter = 9 pieces, no stale names",
+            R["stitches"] in flat and R["in14"] in flat and R["in18"] in flat and "cuts 9 pieces" in flat
+            and "fat quarter for all 12" not in flat and "Snowy Owl" not in flat and "2 to 2.5 in" not in flat)
     shutil.rmtree(tmp)
     readme = open(os.path.join(HERE, "README-LICENSE.txt")).read()
     res("README: files, page map, licence (personal use, small-quantity finished items, no sharing)",
         all(s in readme for s in list(PDFS) + ["Pages 5-16", "Pages 17-28", "up to 50 finished pieces", "You may NOT share"]))
+    rflat = re.sub(r"\s+", " ", readme)
+    rows_ok = all(re.search(rf"{m['n']} {re.escape(m['title'])} +{m['w']} x {m['h']} +{m['w'] / 14:.1f} x {m['h'] / 14:.1f} in", readme) for m in D["motifs"])
+    res("README: motif table matches the grids; ranges and fat quarter correct", rows_ok and R["stitches"] in rflat and R["in14"] in rflat
+        and R["in18"] in rflat and "cuts 9 pieces" in rflat and "Snowy" + " Owl" not in readme)
     # --- listing
     lj = json.load(open(os.path.join(HERE, "listing.json")))
     for img in lj["images"]:
@@ -122,6 +136,12 @@ def check():
     res(f"taxonomy_id {TAXONOMY}, price 3.5, digital_file, type fields",
         lj["taxonomy_id"] == TAXONOMY and lj["price"] == 3.5 and lj["digital_file"] == ZIP and lj["who_made"] == "i_did"
         and lj["when_made"] == "2020_2026" and lj["is_supply"] is False)
+    desc = lj["description"]
+    res("description: computed size + stitch ranges, fat quarter = 9, no stale copy",
+        R["stitches"] in desc and R["in14"] in desc and R["in18"] in desc and "cuts 9 pieces" in desc
+        and "snowy owl" not in desc.lower() and "2 to 2.5 in" not in desc and "25 × 25" not in desc)
+    ai = os.path.exists(os.path.join(HERE, "art", "bg-scene.png"))
+    res("AI background recorded in PROMPTS.md (image 1 is a lifestyle composite)", not ai or os.path.exists(os.path.join(HERE, "PROMPTS.md")))
     md = open(os.path.join(HERE, "LISTING.md")).read()
     res("LISTING.md has the same title, tags and description", t in md and ", ".join(tags) in md and lj["description"] in md)
     print("ALL CHECKS PASS" if ok else "SOME CHECKS FAILED")

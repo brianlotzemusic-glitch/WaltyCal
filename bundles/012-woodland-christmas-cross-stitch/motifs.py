@@ -27,7 +27,7 @@ PALETTE = {
     "C": ("920", "Copper Medium", "#a9583a", "ocircle"),
     "Y": ("729", "Old Gold Medium", "#d0a53e", "star"),
     "W": ("712", "Cream", "#f4ead0", "osquare"),
-    "B": ("433", "Brown Medium", "#7a451f", "plus"),
+    "B": ("433", "Brown Medium", "#7a451f", "hsquare"),
     "T": ("436", "Tan", "#cb9051", "odiamond"),
 }
 MONO = ("3371", "Black Brown", "#1e1108", "cross")
@@ -209,7 +209,7 @@ def robin():
     c.poly([(10.5, 25.8), (5.5, 25.6), (1.6, 29.2), (6.6, 28.6)], "G")
     c.poly([(19.5, 25.8), (24.5, 25.6), (28.4, 29.2), (23.4, 28.6)], "G")
     c.ellipse(13.4, 27.8, 1.8, 1.8, "R"); c.ellipse(16.6, 27.8, 1.8, 1.8, "R")
-    return c.result(), {"light": "C"}
+    return c.result(), {"light": "W", "split": "CB"}
 
 
 def mushroom():
@@ -345,32 +345,45 @@ def cottage():
 
 
 def acorn():
-    c = Canvas(34, 30)
-    # oak leaves behind: lobed, left and right
-    for cx, cy, r in [(4.2, 14.0, 2.6), (6.6, 10.6, 2.9), (9.6, 8.6, 2.7), (8.0, 15.4, 2.6), (11.6, 12.4, 2.6)]:
-        c.ellipse(cx, cy, r, r, "G")
-    c.poly([(4.6, 15.6), (11.6, 6.4), (15.0, 13.0), (9.2, 17.0)], "G")
-    c.line(15, 14, 6, 11, "L")
-    c.mirror()
-    c.ellipse(17, 20.4, 7.4, 8.4, "C", cut=lambda x, y: y > 13.5)  # nut
-    c.ellipse(17, 26.6, 1.4, 1.6, "C")
-    c.ellipse(17, 13.6, 8.6, 5.0, "B", cut=lambda x, y: y < 16.4)  # cap
-    c.rect(16, 6, 17, 8, "B")                                       # stem
-    for x, y in [(12, 12), (16, 11), (20, 12), (14, 14), (18, 14), (10, 15), (22, 15), (16, 15)]:
-        c.cells([(x, y), (x + 1, y)], "T")                          # cap texture
-    c.cells([(13, 18), (13, 19), (13, 20), (14, 21)], "T")          # highlight
-    return c.result(), {"light": "TG"}
+    c = Canvas(31, 33)
+    # one oak leaf behind, rising to the upper right from the stem
+    for t, r in [(0.18, 2.3), (0.38, 3.0), (0.58, 3.1), (0.78, 2.6), (0.95, 1.7)]:
+        x, y = 15.0 + t * 13.5, 9.0 - t * 8.0
+        c.ellipse(x, y, r, r, "G")
+    c.poly([(15.0, 9.4), (21.0, 3.0), (27.0, 0.6), (24.0, 6.4)], "G")
+    c.line(15, 9, 28, 1, "L")                                                   # midrib
+    c.cells([(19, 5), (19, 4), (22, 4), (22, 3), (24, 2), (25, 2)], "L")        # side veins
+    # nut, cap, stem
+    c.ellipse(13.5, 20.4, 7.6, 9.6, "C", cut=lambda x, y: y > 15.0)
+    c.ellipse(13.5, 15.0, 9.8, 6.0, "B", cut=lambda x, y: y < 17.0)
+    c.rect(12, 5, 14, 9, "B")                                                   # stem
+    for y in range(9, 17):                                                      # crosshatch on the cap
+        for x in range(c.w):
+            if c.g[y][x] == "B" and y > 9 and ((x + y) % 4 == 0 or (x - y) % 4 == 0) and 4 < x < 23:
+                c.g[y][x] = "T"
+    for x in range(c.w):                                                        # dark rim under the cap
+        if c.g[17][x] == "C" and c.g[16][x] in "BT":
+            c.g[17][x] = "K"
+    c.cells([(9, 20), (9, 21), (9, 22), (10, 23)], "T")                         # highlight on the nut
+    # dark line where the leaf meets the stem and cap
+    snap = [r[:] for r in c.g]
+    for y in range(c.h):
+        for x in range(c.w):
+            if snap[y][x] in "GL" and any(0 <= y + dy < c.h and 0 <= x + dx < c.w and snap[y + dy][x + dx] in "BT"
+                                          for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                c.g[y][x] = "K"
+    return c.result(), {"light": "TL"}
 
 
 MOTIFS = [
-    ("fox", "Little Fox", fox), ("owl", "Snowy Owl", owl), ("stag", "Woodland Stag", stag),
+    ("fox", "Little Fox", fox), ("owl", "Wise Owl", owl), ("stag", "Woodland Stag", stag),
     ("robin", "Robin on Holly", robin), ("mushroom", "Toadstool", mushroom), ("pine", "Little Pine", pine),
     ("moon", "Moon & Star", moon), ("holly", "Holly Sprig", holly), ("snowflake", "Snowflake", snowflake),
     ("lantern", "Lantern", lantern), ("cottage", "Snowy Cottage", cottage), ("acorn", "Acorn & Oak", acorn),
 ]
 
 
-def mono_of(rows, light):
+def mono_of(rows, light, split=None):
     H, W = len(rows), len(rows[0])
     g = [list(r) for r in rows]
     def at(x, y):
@@ -396,11 +409,51 @@ def mono_of(rows, light):
                 r += "."
             elif ch == "K" and not touches_ext(x, y):
                 near_light = any(at(x + dx, y + dy) in light for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)) if at(x + dx, y + dy) != ".")
-                r += "X" if near_light else "."
+                near_outline = any(at(x + dx, y + dy) == "K" and touches_ext(x + dx, y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                r += "X" if near_light or near_outline else "."
+            elif split and ch == split[0] and any(at(x + dx, y + dy) == split[1] for dx, dy in ((1, 0), (0, -1))):
+                r += "."
             else:
                 r += "X"
         out.append(r)
     return out
+
+
+def parts(rows, big=0):
+    """8-connected parts of stitched cells; returns sizes."""
+    H, W = len(rows), len(rows[0]); seen = set(); sizes = []
+    for y in range(H):
+        for x in range(W):
+            if rows[y][x] != "." and (x, y) not in seen:
+                st = [(x, y)]; seen.add((x, y)); n = 0
+                while st:
+                    a, b = st.pop(); n += 1
+                    for dx in (-1, 0, 1):
+                        for dy in (-1, 0, 1):
+                            p = (a + dx, b + dy)
+                            if 0 <= p[0] < W and 0 <= p[1] < H and p not in seen and rows[p[1]][p[0]] != ".":
+                                seen.add(p); st.append(p)
+                sizes.append(n)
+    return sorted(sizes, reverse=True)
+
+
+def readability(m):
+    """One-colour readability: share of colour stitches kept, the largest enclosed gap as a share of the
+    shape, and parts the one-colour version gains (small ones, e.g. pupils, are allowed)."""
+    c, mo = m["colour"], m["mono"]
+    kept = m["mono_count"] / sum(m["counts"].values())
+    H, W = len(mo), len(mo[0])
+    ext = set(); st = [(x, y) for x in range(W) for y in (0, H - 1)] + [(x, y) for y in range(H) for x in (0, W - 1)]
+    while st:
+        x, y = st.pop()
+        if (x, y) in ext or not (0 <= x < W and 0 <= y < H) or c[y][x] != ".":
+            continue
+        ext.add((x, y)); st += [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
+    gaps = ["".join("g" if c[y][x] != "." and mo[y][x] == "." else "." for x in range(W)) for y in range(H)]
+    gap = max(parts(gaps) or [0]) / sum(m["counts"].values())
+    pc, pm = parts(c), parts(mo)
+    extra = pm[len(pc):] if len(pm) > len(pc) else []
+    return kept, gap, extra
 
 
 def stray(rows):
@@ -414,12 +467,21 @@ def stray(rows):
     return bad
 
 
+def ranges(ms):
+    """Size ranges for the copy, computed from the grids (inches rounded to 0.1)."""
+    ws, hs = [m["w"] for m in ms], [m["h"] for m in ms]
+    lo, hi = min(ws + hs), max(ws + hs)
+    return {"w": [min(ws), max(ws)], "h": [min(hs), max(hs)],
+            "stitches": f"{min(ws)} to {max(ws)} stitches wide and {min(hs)} to {max(hs)} high",
+            "in14": f"{lo / 14:.1f} to {hi / 14:.1f} in", "in18": f"{lo / 18:.1f} to {hi / 18:.1f} in"}
+
+
 def build():
     data = {"palette": {k: dict(zip(("dmc", "name", "hex", "symbol"), v)) for k, v in PALETTE.items()},
             "mono": dict(zip(("dmc", "name", "hex", "symbol"), MONO)), "stitches_per_skein": STITCHES_PER_SKEIN, "motifs": []}
     for i, (key, title, fn) in enumerate(MOTIFS):
         rows, opt = fn()
-        mono = mono_of(rows, opt["light"])
+        mono = mono_of(rows, opt["light"], opt.get("split"))
         counts = {}
         for r in rows:
             for ch in r:
@@ -429,6 +491,7 @@ def build():
         data["motifs"].append({"n": i + 1, "key": key, "title": title, "w": len(rows[0]), "h": len(rows),
                                "colour": rows, "mono": mono, "counts": {k: counts[k] for k in order},
                                "mono_count": sum(r.count("X") for r in mono)})
+    data["ranges"] = ranges(data["motifs"])
     json.dump(data, open(os.path.join(HERE, "motifs.json"), "w"), indent=1)
     return data
 
@@ -461,6 +524,11 @@ def check(data=None, verbose=True):
         if s_c: bad.append(f"stray colour stitches {s_c}")
         if s_m: bad.append(f"stray mono stitches {s_m}")
         if not mono_cover: bad.append("mono stitch outside colour shape")
+        kept, gap, extra = readability(m)
+        line += f"  one-colour keeps {kept:.0%}, largest gap {gap:.0%}" + (f", new small parts {extra}" if extra else "")
+        if kept < 0.65: bad.append("one-colour keeps < 65% of the stitches")
+        if gap > 0.25: bad.append("one-colour has an enclosed gap > 25% of the motif (hollow)")
+        if any(n > 6 for n in extra): bad.append("one-colour breaks into new parts > 6 stitches")
         if bad:
             ok = False
         msgs.append(line + ("  " + "; ".join(bad) if bad else ""))

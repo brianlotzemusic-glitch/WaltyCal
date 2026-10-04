@@ -42,16 +42,16 @@ const skein = (x, y, w, col, rot) => `<svg class=h style="left:${x}px;top:${y}px
 
 const pages = {
   '1-thumbnail': `<style>${base}
-   .band{position:absolute;left:0;right:0;top:0;height:220px;background:linear-gradient(${PLUM},#3a2447);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.45);z-index:5}
-   .band h1{margin:0;font-family:Fr;font-weight:900;font-size:100px;line-height:1;color:${CREAM}}.band h1 em{font-style:normal;color:${GOLD}}
-   .band p{margin:14px 0 0;font-size:31px;letter-spacing:5px;color:${GOLD};font-weight:800}
-   .badge{position:absolute;z-index:6;right:36px;bottom:34px;width:230px;height:230px;border-radius:50%;background:${BERRY};color:${CREAM};display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.45);border:6px solid ${GOLD};transform:rotate(-8deg)}
-   .badge b{font-family:Fr;font-weight:900;font-size:96px;line-height:.9}.badge span{font-size:25px;font-weight:800;letter-spacing:2px;text-align:center;line-height:1.15}</style>
-   <div class=wood></div><div class=vig></div>
-   ${sprig(-30, 230, 420, 8)}${sprig(1120, 240, 420, -6)}
-   ${hang('fox', 60, 300, 440, false, -4, 90)}${hang('stag', 530, 270, 440, false, 2, 70)}${hang('owl', 1000, 300, 440, false, 5, 90)}
-   ${hang('pine', 300, 720, 330, false, -6)}${hang('moon', 650, 735, 330, false, 4)}
-   ${skein(30, 860, 230, '#a9583a', -14)}${skein(1000, 790, 200, '#0b4d36', 10)}${skein(960, 990, 190, '#87071f', -4)}
+   .bg{position:absolute;inset:0;background:url(${B64('art/bg-scene.png')}) center/cover}
+   .h{filter:drop-shadow(0 18px 22px rgba(0,0,0,.55)) drop-shadow(0 4px 6px rgba(0,0,0,.4))}
+   .band{position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(rgba(44,27,54,.94),#2c1b36);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 -8px 24px rgba(0,0,0,.45);z-index:5}
+   .band h1{margin:0;font-family:Fr;font-weight:900;font-size:96px;line-height:1;color:${CREAM}}.band h1 em{font-style:normal;color:${GOLD}}
+   .band p{margin:12px 0 0;font-size:29px;letter-spacing:5px;color:${GOLD};font-weight:800}
+   .badge{position:absolute;z-index:6;right:40px;top:36px;width:220px;height:220px;border-radius:50%;background:${BERRY};color:${CREAM};display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.45);border:6px solid ${GOLD};transform:rotate(8deg)}
+   .badge b{font-family:Fr;font-weight:900;font-size:90px;line-height:.9}.badge span{font-size:24px;font-weight:800;letter-spacing:2px;text-align:center;line-height:1.15}</style>
+   <div class=bg></div>
+   ${hang('stag', 470, 60, 500, false, -2)}${hang('fox', 990, 250, 420, false, 5)}${hang('owl', 80, 420, 420, false, -6)}
+   ${hang('pine', 560, 560, 330, false, 4)}
    <div class=band><h1>Christmas <em>Cross Stitch</em></h1><p>12 WOODLAND MINI ORNAMENTS · PDF PATTERN</p></div>
    <div class=badge><b>12</b><span>CHARTS<br>× 2 VERSIONS</span></div>`,
 
@@ -76,7 +76,7 @@ const pages = {
        [pg(4), 'Shopping list', '10 DMC colours'], [pg(5), '12 colour charts', 'symbols + colour, key'], [pg(17), '12 one-colour', 'all in one floss']]
       .map(([u, t, s]) => `<div class=it><div class=paper style="background-image:url(${u})"></div><b>${t}</b><span>${s}</span></div>`).join('')}
    </div>
-   <div class=feat>${[['robin', 'Mini ornaments', 'about 2 to 2.5 in on 14-count'], ['lantern', 'Easy to read', 'big grid, symbols, centre arrows'], ['snowflake', 'Full stitches only', '2 strands, no backstitch']]
+   <div class=feat>${[['robin', 'Mini ornaments', `about ${D.ranges.in14} on 14-count`], ['lantern', 'Easy to read', 'big grid, symbols, centre arrows'], ['snowflake', 'Full stitches only', '2 strands, no backstitch']]
      .map(([k, t, s]) => `<div><img src="${hoop(k, false)}"><div><b>${t}</b><span>${s}</span></div></div>`).join('')}</div>
    <div class=strip>${D.motifs.map(m => `<img src="${hoop(m.key, false)}">`).join('')}</div>
    <div class=tail>fox · owl · stag · robin · toadstool · pine · moon & star · holly · snowflake · lantern · cottage · acorn</div>`,
