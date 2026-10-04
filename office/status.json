@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T15:14:02Z",
+  "updated_at": "2026-10-04T15:14:54Z",
   "next_run_at": "2026-10-04T15:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -67,9 +67,9 @@
     {
       "id": "hunter",
       "name": "Trend Hunter",
-      "state": "working",
-      "task": "Trend scan 5.",
-      "since": "2026-10-04T15:14:02Z"
+      "state": "idle",
+      "task": "Scan 5: no picks (third empty scan; no new TikTok roundups since 1 Oct). Owner asked whether to drop to once a day. Next after ~21:15 UTC.",
+      "since": "2026-10-04T15:14:54Z"
     },
     {
       "id": "judge",
@@ -87,6 +87,11 @@
     "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,"
   ],
   "feed": [
+    {
+      "t": "2026-10-04T15:14:54Z",
+      "who": "hunter",
+      "msg": "Scan 5: no picks; still no fresh TikTok roundups."
+    },
     {
       "t": "2026-10-04T15:14:02Z",
       "who": "designer",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T16:14:00Z",
       "who": "designer",
       "msg": "Started bundle 009: Botanical frost snowflakes."
-    },
-    {
-      "t": "2026-10-03T16:05:00Z",
-      "who": "qa",
-      "msg": "Sent bundle 009 back: the fern-frond curls nearly touch their stem, so the cutter would tear them. Other 5 designs pass."
     }
   ],
   "venture_gate": {
