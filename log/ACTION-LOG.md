@@ -115,3 +115,4 @@
 - 2026-10-04 15:37 UTC: tpt/001 Halloween Color by Note built (58 pp, 3 levels, 27 worksheets + keys; tpt/STYLE.md written). QA approved it in round 1: decoder check of 508 symbols, notation verified at 300 dpi. 'At a discount' was removed from the terms page. It was sent to the owner for upload ahead of batching because of the Halloween deadline. Trend scan 5: no picks.
 - 2026-10-04 16:13 UTC: Manager. Hourly check, nothing due.
 - 2026-10-04 17:13 UTC: Manager. Hourly check, nothing due.
+- 2026-10-04 17:27 UTC: The owner named the TpT music brand 'Hudson Beat'. Searches found no existing TpT/Etsy/music-ed use; Hudson Music (drum education publisher) is nearby, and the owner was told about a free USPTO check. Recorded in FACTORY.md; the Designer is re-rendering tpt/001 with the brand.

@@ -234,7 +234,7 @@ The owner will shut the factory down unless the shop shows signs of life by 10 O
 ## Teachers Pay Teachers (owner's music store, added 4 Oct 2026)
 The owner also sells on TpT: https://www.teacherspayteachers.com/store/brian-lotze. As of 4 Oct it holds 4 high-school digital music production items built around Logic Pro ($0–$10, 3 followers). The owner's decisions (4 Oct):
 - **A new classroom music line**, K-2, 3-5, 6-8 and high school. These are separate products; overlapping the owner's curriculum is fine.
-- **Match the owner's store**: sold under the owner's name and style, not Duskwood. Before the first build, the Designer looks at the store's thumbnails and covers, then writes the look into `tpt/STYLE.md` (fonts, colours, layout, cover format).
+- **Brand: "Hudson Beat"** (owner's choice, 4 Oct 2026). Covers and title pages say HUDSON BEAT, and the TpT seller stays Brian Lotze. **Match the owner's store** style, not Duskwood. Before the first build, the Designer looks at the store's thumbnails and covers, then writes the look into `tpt/STYLE.md` (fonts, colours, layout, cover format).
 - **The owner uploads by hand.** TpT has no public seller API, and the factory never logs into the owner's account or automates the TpT website. For each item the factory builds `tpt/NNN-slug/` containing:
   - the resource PDF and a 4-page preview PDF
   - a square cover/thumbnail and 3 preview images
