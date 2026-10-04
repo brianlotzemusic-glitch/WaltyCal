@@ -31,7 +31,7 @@ const pages = {
  '3-formats': `<style>${base} body{background:${NIGHT};color:${CREAM};display:flex;flex-direction:column;justify-content:center;align-items:center}
   .strip{display:flex;align-items:flex-end;gap:30px;margin:0 0 40px}
   h1{font-size:64px;font-weight:normal;margin:0 0 26px} li{font-size:36px;margin:14px 0;list-style:none} b{color:${GOLD}}</style>
-  <div class=strip>${[0, 1, 3, 4, 5].map((i, k) => D(i, 190, k % 2 ? GOLD : CREAM)).join('')}</div>
+  <div class=strip>${[0, 1, 2, 3, 4, 5].map((i, k) => D(i, 170, k % 2 ? GOLD : CREAM)).join('')}</div>
   <h1>Instant digital download</h1><ul style="margin:0">
   <li><b>6 designs</b> — Holy Family, manger, magi, shepherd, star &amp; angel</li>
   <li><b>SVG</b> — Cricut Design Space, Silhouette Designer Edition</li>
