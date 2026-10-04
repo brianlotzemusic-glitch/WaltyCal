@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T15:14:54Z",
+  "updated_at": "2026-10-04T15:33:31Z",
   "next_run_at": "2026-10-04T15:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -25,16 +25,16 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Building tpt/001 Halloween Color by Note (first TpT item) + tpt/STYLE.md.",
-      "since": "2026-10-04T15:14:02Z"
+      "state": "idle",
+      "task": "Built tpt/001 Halloween Color by Note (27 worksheets + keys, 3 levels) and tpt/STYLE.md. Awaiting QA.",
+      "since": "2026-10-04T15:33:31Z"
     },
     {
       "id": "qa",
       "name": "QA",
-      "state": "idle",
-      "task": "Approved bundle 012 cross-stitch in round 2.",
-      "since": "2026-10-04T09:43:21Z"
+      "state": "working",
+      "task": "Reviewing tpt/001 (music accuracy + keys), round 1.",
+      "since": "2026-10-04T15:33:31Z"
     },
     {
       "id": "lister",
@@ -87,6 +87,11 @@
     "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,"
   ],
   "feed": [
+    {
+      "t": "2026-10-04T15:33:31Z",
+      "who": "designer",
+      "msg": "Built the first TpT item: Halloween Color by Note, 3 levels, 27 worksheets with answer keys. Sent to QA."
+    },
     {
       "t": "2026-10-04T15:14:54Z",
       "who": "hunter",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T16:27:00Z",
       "who": "qa",
       "msg": "Approved bundle 009 in round 2: fern curls now cut cleanly."
-    },
-    {
-      "t": "2026-10-03T16:14:00Z",
-      "who": "designer",
-      "msg": "Started bundle 009: Botanical frost snowflakes."
     }
   ],
   "venture_gate": {
