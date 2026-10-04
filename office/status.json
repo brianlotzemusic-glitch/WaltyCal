@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T09:13:08Z",
+  "updated_at": "2026-10-04T09:15:09Z",
   "next_run_at": "2026-10-04T09:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -67,9 +67,9 @@
     {
       "id": "hunter",
       "name": "Trend Hunter",
-      "state": "working",
-      "task": "Fourth viral-trend scan.",
-      "since": "2026-10-04T09:13:08Z"
+      "state": "idle",
+      "task": "Scan 4: no picks (roundups unchanged since 1 Oct; new candidates were IP or peaked). Next scan after ~15:15 UTC.",
+      "since": "2026-10-04T09:15:09Z"
     },
     {
       "id": "judge",
@@ -87,6 +87,11 @@
     "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si"
   ],
   "feed": [
+    {
+      "t": "2026-10-04T09:15:09Z",
+      "who": "hunter",
+      "msg": "Scan 4: no picks again. TikTok roundups haven't refreshed since 1 Oct."
+    },
     {
       "t": "2026-10-04T09:13:08Z",
       "who": "designer",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T13:31:00Z",
       "who": "manager",
       "msg": "Cheap art test: flash/standard \u2248 pro quality at 1/6\u20131/30 the cost. Pro blocked; target \u2264$0.05 per design."
-    },
-    {
-      "t": "2026-10-03T13:25:00Z",
-      "who": "manager",
-      "msg": "Owner set AI art to cheap drafts + 1 final, $5/month hard cap. imagegen.py enforces it. $4.45 spent in Oct (POD pilot best-of-4 pro)."
     }
   ],
   "venture_gate": {
