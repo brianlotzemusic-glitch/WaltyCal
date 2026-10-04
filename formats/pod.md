@@ -46,7 +46,7 @@ R − (0.10·R + $0.20) − 0.10·shipping − cost ≥ $6 (mug) / $8 (tee). Shi
 Printify sends Etsy only the mockups it marks "selected for publishing" (after `create`: just the plain front view). Its API ignores `is_default` / `is_selected_for_publishing` (tested 3 Oct 2026), so the lead photo is set on the Etsy side instead, by the Lister, in the same shift as the publish or the next one:
 1. `python3 tools/printify.py publish <pod_dir>` (counts toward the daily listing cap).
 2. A few minutes later: `python3 tools/printify.py etsy-id <pod_dir>` writes `etsy_listing_id`. If it is not on Etsy yet, retry next shift.
-3. `python3 tools/etsy.py lead-photos <pod_dir> <files...>` uploads the mockups saved in `pod_dir/mockups/` as photos #1, #2, ... ahead of Printify's front view:
+3. `python3 tools/etsy.py lead-photos <pod_dir> <files...>` uploads the mockups saved in `pod_dir/mockups/`, then re-ranks every photo explicitly so they come first (Etsy's upload rank alone was ignored on 3 of 4 listings, 4 Oct). If the order is still wrong, `etsy.py rerank <pod_dir> <image_id>...` sets it:
    - **Mugs:** `mockups/context-1-11oz.jpg mockups/left-11oz.jpg`
    - **Tees:** `mockups/folded-<colour>.jpg`, then the other colour fronts not already on Etsy.
 4. Check: GET `/listings/<id>/images` and download the **first image in the list** to look at it; it must be the lifestyle shot. Then log it in `mockups.json` as `"etsy_lead_photo"`. The `rank` numbers Etsy returns are unreliable (two images can both say 1); the list order is the display order. Don't re-rank on the strength of `rank` alone (tested 3 Oct on 001: step 3 had already worked).

@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-03T23:13:03Z",
-  "next_run_at": "2026-10-04T00:12:00Z",
+  "updated_at": "2026-10-04T00:15:51Z",
+  "next_run_at": "2026-10-04T01:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 10,
+  "listings_live": 14,
   "bundles_built": 10,
   "uploads_pending": 4,
   "etsy_connected": true,
@@ -12,15 +12,15 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Hourly check: nothing due yet. Next shift (00:12 UTC): Lister publishes 4 (ornament mug, 2 tees, bingo) + Researcher daily refresh.",
-      "since": "2026-10-03T23:13:03Z"
+      "task": "Shift done. Designer after ~02:20 UTC ([trend] small autumn moments).",
+      "since": "2026-10-04T00:15:51Z"
     },
     {
       "id": "researcher",
       "name": "Researcher",
       "state": "idle",
-      "task": "Daily refresh done: little changed. Nativity and Highland cow moved up (Christmas buying starts earlier). Next refresh after 23:15 UTC tomorrow.",
-      "since": "2026-10-02T23:16:43Z"
+      "task": "Daily refresh: non-cut formats now 9 of 26 (1-in-3 rule). Top: [trend] autumn moments, cross-stitch, nativity, coloring pages, butterflies clipart. Next after ~00:20 UTC tomorrow.",
+      "since": "2026-10-04T00:15:51Z"
     },
     {
       "id": "designer",
@@ -39,9 +39,9 @@
     {
       "id": "lister",
       "name": "Lister",
-      "state": "waiting",
-      "task": "Oct 4 (4 slots): ornament mug, 2 tees, bingo 010. Then free retitles of the old listings.",
-      "since": "2026-10-03T21:42:07Z"
+      "state": "idle",
+      "task": "Oct 4: published ornament mug (4588077156), holly skull tee (4588072671), bat tree tee (4588072753), bingo (4588072633). 4 of 4 slots used. Next: free retitles of the 8 old cut-file listings.",
+      "since": "2026-10-04T00:15:51Z"
     },
     {
       "id": "analyst",
@@ -83,10 +83,20 @@
     "[trend] \"Small autumn moments\" printable checklist + print-then-cut sticker sheet: our own",
     "[format] Cross-stitch pattern pilot: Woodland Christmas mini ornaments, 12 small charts (f",
     "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
-    "Butterflies & dragonflies (year-round; butterfly svg ~4.4k/mo, dragonfly ~590/mo on only ~",
-    "[format] Coloring pages pilot: Cozy winter woodland bold & easy coloring pages, 20 pages ("
+    "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages",
+    "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + "
   ],
   "feed": [
+    {
+      "t": "2026-10-04T00:15:51Z",
+      "who": "lister",
+      "msg": "Published 4: ornament mug, holly skull tee, bat tree tee (lifestyle photos first) and Christmas bingo. 14 listings live."
+    },
+    {
+      "t": "2026-10-04T00:15:51Z",
+      "who": "researcher",
+      "msg": "Daily refresh: more printables and clipart in the queue; coloring pages moved up."
+    },
     {
       "t": "2026-10-03T21:42:07Z",
       "who": "qa",
@@ -226,16 +236,6 @@
       "t": "2026-10-02T23:16:43Z",
       "who": "researcher",
       "msg": "Finished the trend refresh: Nativity and Highland cow moved up the queue; Witchy crystals moved down."
-    },
-    {
-      "t": "2026-10-02T23:13:26Z",
-      "who": "researcher",
-      "msg": "Started the daily trend refresh."
-    },
-    {
-      "t": "2026-10-02T22:45:29Z",
-      "who": "manager",
-      "msg": "Hooked up the new office dashboard."
     }
   ],
   "venture_gate": {

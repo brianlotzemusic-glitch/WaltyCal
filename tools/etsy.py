@@ -9,6 +9,7 @@ Commands:
   python3 tools/etsy.py stats                   write stats/listings.csv (views, favorites, sales)
   python3 tools/etsy.py lead-photos <dir> <img>...  add photos to a live listing as #1, #2, ... (existing photos move down);
                                                 used for Printify products, whose API cannot choose the main photo
+  python3 tools/etsy.py rerank <dir> <image_id>...  put these image ids first, in this order (the rest follow)
 
 Environment (set in the cloud environment settings, never committed):
   ETSY_KEYSTRING, ETSY_SHARED_SECRET   from the Etsy developer app
@@ -122,13 +123,34 @@ def update(bundle_dir):
 
 
 def lead_photos(item_dir, images):
-    """Upload images to an existing listing at ranks 1..n, ahead of the photos already there."""
+    """Upload images to an existing listing and make them photos #1..n, ahead of the photos already there.
+    Etsy's upload `rank` alone is unreliable (tested 4 Oct 2026), so every image is re-ranked explicitly afterwards."""
     lid = open(os.path.join(item_dir, "etsy_listing_id")).read().strip()
     shop = shop_id()
-    for rank, img in enumerate(images, 1):
+    before = [im["listing_image_id"] for im in call("GET", f"/listings/{lid}/images")["results"]]
+    ours = []
+    for img in images:
         path = img if os.path.exists(img) else os.path.join(item_dir, img)
-        call("POST", f"/shops/{shop}/listings/{lid}/images", form={"rank": rank}, files={"image": path})
-        print(f"listing {lid}: photo #{rank} = {os.path.basename(path)}")
+        ours.append(call("POST", f"/shops/{shop}/listings/{lid}/images", form={"rank": 1}, files={"image": path})["listing_image_id"])
+    order = ours + [i for i in before if i not in ours]
+    for rank, iid in enumerate(order, 1):
+        call("POST", f"/shops/{shop}/listings/{lid}/images", form={"listing_image_id": iid, "rank": rank})
+    shown = [im["listing_image_id"] for im in call("GET", f"/listings/{lid}/images")["results"]]
+    for rank, (iid, img) in enumerate(zip(ours, images), 1):
+        print(f"listing {lid}: photo #{rank} = {os.path.basename(img)} ({iid})")
+    if shown[:len(ours)] != ours:
+        sys.exit(f"listing {lid}: order check failed, Etsy shows {shown}; fix with `etsy.py rerank`")
+
+
+def rerank(item_dir, ids):
+    """Set the listing's photo order explicitly: the given image ids first, then the rest in their current order."""
+    lid = open(os.path.join(item_dir, "etsy_listing_id")).read().strip()
+    shop = shop_id()
+    ids = [int(i) for i in ids]
+    before = [im["listing_image_id"] for im in call("GET", f"/listings/{lid}/images")["results"]]
+    for rank, iid in enumerate(ids + [i for i in before if i not in ids], 1):
+        call("POST", f"/shops/{shop}/listings/{lid}/images", form={"listing_image_id": iid, "rank": rank})
+    print(f"listing {lid}: order now", [im["listing_image_id"] for im in call("GET", f"/listings/{lid}/images")["results"]])
 
 
 def stats():
@@ -184,6 +206,8 @@ if __name__ == "__main__":
         upload(sys.argv[2])
     elif cmd == "lead-photos":
         lead_photos(sys.argv[2], sys.argv[3:])
+    elif cmd == "rerank":
+        rerank(sys.argv[2], sys.argv[3:])
     elif cmd == "publish":
         lid = open(os.path.join(sys.argv[2], "etsy_listing_id")).read().strip()
         call("PATCH", f"/shops/{shop_id()}/listings/{lid}", form={"state": "active"})
