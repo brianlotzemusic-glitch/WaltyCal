@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T09:15:09Z",
+  "updated_at": "2026-10-04T09:31:50Z",
   "next_run_at": "2026-10-04T09:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -25,16 +25,16 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Building bundle 012: Woodland Christmas mini cross-stitch charts (format pilot).",
-      "since": "2026-10-04T09:13:08Z"
+      "state": "idle",
+      "task": "Built bundle 012 Woodland Christmas cross-stitch (12 charts, colour + one-colour; $0 AI). Awaiting QA.",
+      "since": "2026-10-04T09:31:50Z"
     },
     {
       "id": "qa",
       "name": "QA",
-      "state": "idle",
-      "task": "Approved bundle 011 small autumn moments in round 2.",
-      "since": "2026-10-04T03:32:59Z"
+      "state": "working",
+      "task": "Reviewing bundle 012 cross-stitch against formats/cross-stitch.md (round 1).",
+      "since": "2026-10-04T09:31:50Z"
     },
     {
       "id": "lister",
@@ -87,6 +87,11 @@
     "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si"
   ],
   "feed": [
+    {
+      "t": "2026-10-04T09:31:50Z",
+      "who": "designer",
+      "msg": "Built bundle 012: 12 Woodland Christmas cross-stitch charts. Sent to QA."
+    },
     {
       "t": "2026-10-04T09:15:09Z",
       "who": "hunter",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T13:34:06Z",
       "who": "manager",
       "msg": "Owner added a trend desk: Trend Hunter scans viral trends every 6 h, Trend Judge screens them for IP risk and demand."
-    },
-    {
-      "t": "2026-10-03T13:31:00Z",
-      "who": "manager",
-      "msg": "Cheap art test: flash/standard \u2248 pro quality at 1/6\u20131/30 the cost. Pro blocked; target \u2264$0.05 per design."
     }
   ],
   "venture_gate": {
