@@ -7,7 +7,12 @@
 // Credentials come from the environment (never committed): TPT_VA_EMAIL, TPT_VA_PASSWORD.
 //
 // Commands:
-//   node tools/tpt.js discover        log in (a visible browser window opens), open My-Products/New-Item,
+//   node tools/tpt.js login           open TpT's login page in a browser window with the VA email and password
+//                                     filled in; YOU click Log in and finish any check TpT shows (TpT's
+//                                     verification fails when the script clicks). The session is saved in
+//                                     ~/.tpt-profile (or TPT_PROFILE_DIR) and reused by discover and publish,
+//                                     which stop with "run login" when it has expired.
+//   node tools/tpt.js discover        with the saved login, open My-Products/New-Item,
 //                                     choose "Digital Download" on the product-type picker, and save:
 //                                       tpt/_discover/*.png, *.html   screenshots + page HTML (gitignored, stay on the Mac)
 //                                       tpt/FORM-FIELDS.json          labels/names/types of the form fields only,
@@ -20,8 +25,8 @@
 //                                     file; writes `uploaded` on success. --dry-run fills the form, lists any
 //                                     values TpT rejects with the options it offers, and does not submit.
 //
-// If TpT shows a CAPTCHA or asks for a verification code, complete it in the browser window;
-// the script waits up to 3 minutes for the login to finish.
+// When a publish step fails or an upload times out, a screenshot goes to tpt/_publish/ (gitignored)
+// along with the list of file inputs on the page.
 const fs = require("fs"), path = require("path");
 let chromium;
 try { ({ chromium } = require("playwright")); }
@@ -31,6 +36,23 @@ const ROOT = path.dirname(__dirname);
 const LOGIN_URL = "https://www.teacherspayteachers.com/Login";
 const NEW_ITEM_URL = "https://www.teacherspayteachers.com/My-Products/New-Item";
 const HEADLESS = process.env.TPT_HEADLESS === "1";
+// One saved browser profile (cookies = the logged-in session) reused by every run, outside the repo.
+const PROFILE = process.env.TPT_PROFILE_DIR || path.join(require("os").homedir(), ".tpt-profile");
+const MY_PRODUCTS_URL = "https://www.teacherspayteachers.com/My-Products";
+
+async function openBrowser() {
+  const context = await chromium.launchPersistentContext(PROFILE, { headless: HEADLESS, viewport: { width: 1400, height: 1000 } });
+  const page = context.pages()[0] || await context.newPage();
+  page.setDefaultTimeout(30000);
+  return { context, page };
+}
+
+// discover and publish never type the password: they use the session saved by `login`.
+async function ensureLoggedIn(page) {
+  await page.goto(MY_PRODUCTS_URL, { waitUntil: "domcontentloaded" });
+  await page.waitForTimeout(2000);
+  if (/\/login/i.test(page.url())) throw new Error("not logged in, or the saved session expired: run `node tools/tpt.js login` and finish logging in in the browser window");
+}
 
 function env(name) {
   const v = process.env[name];
@@ -41,6 +63,7 @@ function env(name) {
 async function login(page) {
   await page.goto(LOGIN_URL, { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {});
+  if (!/\/login/i.test(page.url())) { console.log("Already logged in."); return; }
   // TpT's own ids only: a generic input[type=email] list can match a hidden input first.
   const email = page.locator("#lc-email-username-input"), pass = page.locator("#lc-password-input");
   try { await email.waitFor({ state: "visible", timeout: 30000 }); }
@@ -54,19 +77,29 @@ async function login(page) {
     if (i === 2) await loginFailed(page, "the email/password boxes stayed empty after filling them 3 times");
     await page.waitForTimeout(2000);
   }
-  const submit = page.locator("#login_button_submit");
-  if (await submit.count()) await submit.click(); else await pass.press("Enter");
-  console.log("Logging in. If TpT asks for a CAPTCHA or a code, complete it in the browser window...");
+  // TpT's verification fails when the script clicks Log in, so a person clicks it.
+  console.log("Email and password are filled in. Click Log in in the browser window and finish any check TpT shows (5 minutes)...");
   try {
-    await page.waitForURL((u) => !/\/login/i.test(u.toString()), { timeout: 180000 });
+    await page.waitForURL((u) => !/\/login/i.test(u.toString()), { timeout: 300000 });
   } catch (e) {
-    await loginFailed(page, "still on the login page after 3 minutes: check the VA email/password, or finish TpT's verification step");
+    await loginFailed(page, "still on the login page after 5 minutes: Log in wasn't clicked, or TpT's verification didn't finish");
   }
   await page.waitForLoadState("domcontentloaded");
   await page.waitForTimeout(2000);
 }
 
 // Saves tpt/_discover/00-login-failed.png/.html and prints any on-page error text, then stops.
+async function loginCmd() {
+  const { context, page } = await openBrowser();
+  try {
+    await login(page);
+    await ensureLoggedIn(page);
+    console.log(`Logged in. The session is saved in ${PROFILE}; discover and publish will reuse it.`);
+  } finally {
+    await context.close();
+  }
+}
+
 async function loginFailed(page, why) {
   await page.locator("#lc-password-input").fill("", { timeout: 2000 }).catch(() => {}); // keep the password out of the saved HTML
   await snap(page, path.join(ROOT, "tpt", "_discover"), "00-login-failed").catch(() => {});
@@ -103,11 +136,10 @@ async function formFields(page) {
 
 async function discover() {
   const dir = path.join(ROOT, "tpt", "_discover");
-  const browser = await chromium.launch({ headless: HEADLESS });
-  const page = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
+  const { context, page } = await openBrowser();
   const out = { discovered_at: new Date().toISOString(), pages: [] };
   try {
-    await login(page);
+    await ensureLoggedIn(page);
     await snap(page, dir, "01-after-login");
     out.pages.push({ step: "after-login", url: page.url() });
     for (const url of ["https://www.teacherspayteachers.com/My-Products", "https://www.teacherspayteachers.com/Dashboard"]) {
@@ -137,7 +169,7 @@ async function discover() {
     }
   } finally {
     fs.writeFileSync(path.join(ROOT, "tpt", "FORM-FIELDS.json"), JSON.stringify(out, null, 2));
-    await browser.close();
+    await context.close();
   }
   console.log("Done. Nothing was created on TpT.");
   console.log("Screenshots (keep private): tpt/_discover/   Field list (commit this): tpt/FORM-FIELDS.json");
@@ -200,32 +232,50 @@ async function publish(item, dryRun) {
 
   const slug = path.basename(item), shots = path.join(ROOT, "tpt", "_publish");
   const fail = (msg) => { if (!dryRun) throw new Error(`not submitted: ${msg}`); problems.push(msg); };
-  const browser = await chromium.launch({ headless: HEADLESS });
-  const page = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
+  let step = "open browser";
+  const fileInputs = () => page.evaluate(() => [...document.querySelectorAll('input[type="file"]')]
+    .map((e) => `#${e.id || "-"} name=${e.name || "-"}${e.offsetParent ? "" : " (hidden)"}`).join(", ") || "(none)");
+  const { context, page } = await openBrowser();
   try {
-    await login(page);
+    step = "check login";
+    await ensureLoggedIn(page);
+    step = "open the listing form";
     await page.goto(F.form_url, { waitUntil: "domcontentloaded" });
     await page.locator(F.title).waitFor({ state: "visible", timeout: 30000 });
 
+    step = "title";
     await page.locator(F.title).fill(it.title || "");
 
     // Uploads go to TpT as soon as a file is chosen; wait for TpT's hidden key field to fill.
+    // Each upload has its own time limit; a missing or changed upload box fails this step only.
     const upload = async (slot, file, minutes) => {
+      step = `upload ${slot} (${file})`;
       const spec = F.files[slot];
-      await page.locator(spec.input).setInputFiles(path.join(item, file));
+      try {
+        await page.locator(spec.input).waitFor({ state: "attached", timeout: 20000 });
+        await page.locator(spec.input).setInputFiles(path.join(item, file), { timeout: 30000 });
+      } catch (e) {
+        await snap(page, shots, `${slug}-${slot}-box`).catch(() => {});
+        return fail(`${slot}: no upload box matching ${spec.input} (screenshot tpt/_publish/${slug}-${slot}-box.png). File inputs on the page: ${await fileInputs()}`);
+      }
       try {
         await page.waitForFunction((sel) => { const el = document.querySelector(sel); return el && el.value; }, spec.key, { timeout: minutes * 60000 });
-      } catch (e) { fail(`upload of ${file} (${slot}) did not finish within ${minutes} min`); }
+      } catch (e) {
+        await snap(page, shots, `${slug}-${slot}-timeout`).catch(() => {});
+        fail(`upload of ${file} (${slot}) did not finish within ${minutes} min (screenshot tpt/_publish/${slug}-${slot}-timeout.png)`);
+      }
     };
     const files = it.files || {};
     if (files.product) await upload("product", files.product, 15);
     if (files.preview) await upload("preview", files.preview, 5);
     if (["thumb1", "thumb2", "thumb3", "thumb4"].some((k) => files[k])) {
+      step = "choose 'Upload thumbnails now'";
       await page.locator(F.upload_thumbnails_now).check();
       for (const k of ["thumb1", "thumb2", "thumb3", "thumb4"]) if (files[k]) await upload(k, files[k], 3);
     }
 
     // Lexical editor: type line by line; Enter makes a new paragraph.
+    step = "description";
     const ed = page.locator(F.description);
     await ed.click();
     const lines = (it.description || "").split("\n");
@@ -235,11 +285,13 @@ async function publish(item, dryRun) {
     }
     if (!(await ed.innerText()).includes((it.description || "").slice(0, 40))) fail("description did not appear in the editor");
 
+    step = "prices";
     await page.locator(F.price).fill(String(it.price ?? ""));
     await page.locator(F.license_price).fill(String(it.license_price ?? ""));
 
     // Listbox comboboxes (tax code, answer key, teaching duration).
     const listbox = async (name, toggle, want) => {
+      step = name;
       await page.locator(toggle).click();
       const opts = page.getByRole("option");
       await opts.first().waitFor({ timeout: 5000 }).catch(() => {});
@@ -250,6 +302,7 @@ async function publish(item, dryRun) {
     };
     await listbox("tax_code", F.tax_code.toggle, it.tax_code);
 
+    step = "grades";
     for (const g of it.grades || []) {
       const box = page.locator(F.grade_checkbox.replace("{slug}", g));
       if (!(await box.count())) { fail(`grade "${g}" has no checkbox`); continue; }
@@ -259,6 +312,7 @@ async function publish(item, dryRun) {
     // react-select comboboxes: type, then pick the option whose text matches exactly.
     const pick = async (name, sel, values) => {
       for (const v of values || []) {
+        step = `${name}: ${v}`;
         const input = page.locator(sel);
         await input.click();
         await input.fill(v);
@@ -276,10 +330,12 @@ async function publish(item, dryRun) {
     await pick("formats", F.formats, it.formats);
     await pick("custom_categories", F.custom_categories, it.custom_categories);
 
+    step = "pages";
     if (it.pages) await page.locator(F.pages).fill(String(it.pages));
     if (it.answer_key) await listbox("answer_key", F.answer_key.toggle, it.answer_key);
     if (it.teaching_duration) await listbox("teaching_duration", F.teaching_duration.toggle, it.teaching_duration);
 
+    step = "copyright and listing status";
     const orig = page.locator(F.copyright_original);
     if ((await orig.getAttribute("aria-checked")) !== "true") await orig.click();
     const active = page.locator(F.make_active);
@@ -292,6 +348,7 @@ async function publish(item, dryRun) {
       return;
     }
 
+    step = "submit";
     await page.locator(F.submit).click();
     try {
       await page.waitForURL((u) => !u.toString().includes("/My-Products/New/"), { timeout: 120000 });
@@ -304,12 +361,18 @@ async function publish(item, dryRun) {
     await snap(page, shots, `${slug}-submitted`);
     fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} published live by tools/tpt.js\n${page.url()}\n`);
     console.log(`Published: ${it.title}\nTpT went to ${page.url()}\nWrote ${path.relative(ROOT, item)}/uploaded`);
+  } catch (e) {
+    if (step === "submit" || step === "check login") throw e;
+    await snap(page, shots, `${slug}-failed`).catch(() => {});
+    throw new Error(`${dryRun ? "dry run" : "publish"} stopped at step "${step}" (nothing was submitted): ${e.message.split("\n")[0]}\n` +
+      `Screenshot: tpt/_publish/${slug}-failed.png\nFile inputs on the page: ${await fileInputs().catch(() => "(unreadable)")}`);
   } finally {
-    await browser.close();
+    await context.close();
   }
 }
 
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
-(cmd === "discover" ? discover() : cmd === "publish" ? publish(arg, dryRun) : Promise.reject(new Error("usage: discover | publish <tpt/NNN-slug> [--dry-run]")))
+(cmd === "login" ? loginCmd() : cmd === "discover" ? discover() : cmd === "publish" ? publish(arg, dryRun)
+  : Promise.reject(new Error("usage: login | discover | publish <tpt/NNN-slug> [--dry-run]")))
   .catch((e) => { console.error(e.message); process.exit(1); });

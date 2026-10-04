@@ -4,6 +4,10 @@ One folder per item (`tpt/NNN-slug/`). See FACTORY.md "Teachers Pay Teachers". T
 
 ## Publishing with `tools/tpt.js publish` (owner's Mac only)
 
+First run `node tools/tpt.js login` (after `source ~/.tpt-env`): it fills in the VA email and password,
+you click **Log in** yourself and finish any check TpT shows, and the session is saved in `~/.tpt-profile`
+for later runs. Run it again whenever a command says the session expired.
+
 `node tools/tpt.js publish tpt/NNN-slug` fills TpT's Digital Download form and submits it **live**
 (owner, 4 Oct 2026). Add `--dry-run` to fill the form and stop before Submit; it lists every value
 TpT doesn't accept, with the options TpT offers. Selectors live in `tpt/FORM.json`.
