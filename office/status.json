@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-04T13:13:31Z",
-  "next_run_at": "2026-10-04T14:12:00Z",
+  "updated_at": "2026-10-04T14:13:01Z",
+  "next_run_at": "2026-10-04T15:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Hourly check: nothing due. Next shift (14:12): nothing; 15:12: Designer ([tpt] Halloween Color by Note, list by 10 Oct) + Hunter.",
-      "since": "2026-10-04T13:13:31Z"
+      "task": "Hourly check: nothing due. Next shift (15:12 UTC): Designer ([tpt] Halloween Color by Note) + Trend Hunter.",
+      "since": "2026-10-04T14:13:01Z"
     },
     {
       "id": "researcher",
