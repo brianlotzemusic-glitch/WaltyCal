@@ -41,7 +41,7 @@ Designed with the help of digital and AI tools, and checked by hand.
 
 ## 3. Grades
 
-1, 2, 3, 4, 5
+2, 3, 4, 5 (TpT allows four; owner's choice 4 Oct 2026. The description still says grades 1–5.)
 
 ## 4. Subjects
 

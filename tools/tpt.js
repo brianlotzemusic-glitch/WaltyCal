@@ -246,24 +246,38 @@ async function publish(item, dryRun) {
     step = "title";
     await page.locator(F.title).fill(it.title || "");
 
-    // Uploads go to TpT as soon as a file is chosen; wait for TpT's hidden key field to fill.
-    // Each upload has its own time limit; a missing or changed upload box fails this step only.
+    // Uploads go to TpT as soon as a file is chosen; TpT then fills a hidden key field.
+    // Attempt 1 sets the file on the input directly (worked for preview and thumbnails). If TpT
+    // hasn't taken it after 45 s (run 5: the main-file box ignored it), attempt 2 clicks the box's
+    // own "Select file" label and answers the file picker, the way a person would.
+    // Each upload has its own time limit; a missing box or a timeout fails this step only.
+    await page.waitForLoadState("networkidle", { timeout: 20000 }).catch(() => {});
+    const keySet = (sel, ms) => page.waitForFunction((s) => { const el = document.querySelector(s); return el && el.value; }, sel, { timeout: ms })
+      .then(() => true, () => false);
     const upload = async (slot, file, minutes) => {
       step = `upload ${slot} (${file})`;
-      const spec = F.files[slot];
+      const spec = F.files[slot], fp = path.join(item, file), input = page.locator(spec.input);
       try {
-        await page.locator(spec.input).waitFor({ state: "attached", timeout: 20000 });
-        await page.locator(spec.input).setInputFiles(path.join(item, file), { timeout: 30000 });
+        await input.waitFor({ state: "attached", timeout: 20000 });
       } catch (e) {
         await snap(page, shots, `${slug}-${slot}-box`).catch(() => {});
         return fail(`${slot}: no upload box matching ${spec.input} (screenshot tpt/_publish/${slug}-${slot}-box.png). File inputs on the page: ${await fileInputs()}`);
       }
+      await input.setInputFiles(fp, { timeout: 30000 });
+      if (await keySet(spec.key, 45000)) return;
+      step = `upload ${slot} (${file}), attempt 2 via the file picker`;
+      console.log(`${slot}: TpT didn't take the file after 45 s; trying its "Select file" button instead`);
       try {
-        await page.waitForFunction((sel) => { const el = document.querySelector(sel); return el && el.value; }, spec.key, { timeout: minutes * 60000 });
+        const label = page.locator("label", { has: input }).first();
+        const [chooser] = await Promise.all([page.waitForEvent("filechooser", { timeout: 15000 }), label.click({ timeout: 15000 })]);
+        await chooser.setFiles(fp);
       } catch (e) {
-        await snap(page, shots, `${slug}-${slot}-timeout`).catch(() => {});
-        fail(`upload of ${file} (${slot}) did not finish within ${minutes} min (screenshot tpt/_publish/${slug}-${slot}-timeout.png)`);
+        await snap(page, shots, `${slug}-${slot}-picker`).catch(() => {});
+        return fail(`${slot}: TpT ignored the file, and its "Select file" button didn't open a file picker (screenshot tpt/_publish/${slug}-${slot}-picker.png). File inputs on the page: ${await fileInputs()}`);
       }
+      if (await keySet(spec.key, minutes * 60000)) { console.log(`${slot}: uploaded on attempt 2`); return; }
+      await snap(page, shots, `${slug}-${slot}-timeout`).catch(() => {});
+      fail(`upload of ${file} (${slot}) did not finish within ${minutes} min, even via the file picker (screenshot tpt/_publish/${slug}-${slot}-timeout.png)`);
     };
     const files = it.files || {};
     if (files.product) await upload("product", files.product, 15);

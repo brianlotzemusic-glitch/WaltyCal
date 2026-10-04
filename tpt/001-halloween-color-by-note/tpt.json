@@ -1,11 +1,22 @@
 {
   "price": "3.50",
-  "license_price": null,
-  "tax_code": null,
-  "grades": ["1st-grade", "2nd-grade", "3rd-grade", "4th-grade", "5th-grade"],
-  "subjects": ["Music"],
-  "tags": ["Halloween", "Fall", "English"],
-  "formats": ["PDF"],
+  "license_price": "3.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "2nd-grade",
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Halloween"
+  ],
+  "formats": [
+    "PDF"
+  ],
   "pages": 58,
   "answer_key": "Included",
   "files": {
