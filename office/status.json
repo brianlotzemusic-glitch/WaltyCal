@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T19:32:41Z",
+  "updated_at": "2026-10-04T19:34:40Z",
   "next_run_at": "2026-10-05T01:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -25,16 +25,16 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "Built bundle 013 Nativity silhouettes (6 code-drawn designs, $0). Awaiting QA.",
-      "since": "2026-10-04T19:32:41Z"
+      "state": "working",
+      "task": "Fixing bundle 013 Nativity (QA round 1).",
+      "since": "2026-10-04T19:34:40Z"
     },
     {
       "id": "qa",
       "name": "QA",
-      "state": "working",
-      "task": "Reviewing bundle 013 Nativity (round 1).",
-      "since": "2026-10-04T19:32:41Z"
+      "state": "idle",
+      "task": "Sent bundle 013 back: angel head/wing, magi panel composition, image 3, README fix.",
+      "since": "2026-10-04T19:34:40Z"
     },
     {
       "id": "lister",
@@ -87,6 +87,11 @@
     "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea"
   ],
   "feed": [
+    {
+      "t": "2026-10-04T19:34:40Z",
+      "who": "qa",
+      "msg": "Sent Nativity back: angel needs a readable head and wing, magi panel needs work."
+    },
     {
       "t": "2026-10-04T19:32:41Z",
       "who": "designer",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T21:36:47Z",
       "who": "qa",
       "msg": "Sent bingo back: markers hard to see, a false 'ties are rare' claim, marker count, one listing image inconsistent."
-    },
-    {
-      "t": "2026-10-03T21:33:16Z",
-      "who": "designer",
-      "msg": "Built bundle 010: Woodland Christmas bingo, 30 unique cards, 30 icons, Letter + A4. Sent to QA."
     }
   ],
   "venture_gate": {
