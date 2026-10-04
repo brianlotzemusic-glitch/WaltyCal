@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T09:43:21Z",
+  "updated_at": "2026-10-04T10:12:49Z",
   "next_run_at": "2026-10-04T11:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Shift done. Analyst + owner push after 12:00 UTC.",
-      "since": "2026-10-04T09:43:21Z"
+      "task": "Hourly check: nothing due. Analyst + owner push after 12:00 UTC; Designer (Nativity) after ~14:40; Hunter after ~15:15.",
+      "since": "2026-10-04T10:12:49Z"
     },
     {
       "id": "researcher",
