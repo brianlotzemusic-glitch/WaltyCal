@@ -1,0 +1,29 @@
+{
+  "_source": "tpt/DISCOVER-REPORT.md, discover run 4 (2026-10-04). Edit selectors here when TpT changes the page.",
+  "form_url": "https://www.teacherspayteachers.com/My-Products/New/Digital-Next",
+  "title": "#ItemName",
+  "files": {
+    "product": { "input": "input[type=\"file\"]#ItemDigitalProduct", "key": "input[name=\"data[ItemDigital][product]\"]", "max_mb": 4096 },
+    "preview": { "input": "input[type=\"file\"]#ItemDigitalPreview", "key": "input[name=\"data[ItemDigital][preview]\"]", "max_mb": 30 },
+    "thumb1": { "input": "input[type=\"file\"]#ItemDigitalThumb1", "key": "input[name=\"data[ItemDigital][thumb1]\"]", "max_mb": 4 },
+    "thumb2": { "input": "input[type=\"file\"]#ItemDigitalThumb2", "key": "input[name=\"data[ItemDigital][thumb2]\"]", "max_mb": 4 },
+    "thumb3": { "input": "input[type=\"file\"]#ItemDigitalThumb3", "key": "input[name=\"data[ItemDigital][thumb3]\"]", "max_mb": 4 },
+    "thumb4": { "input": "input[type=\"file\"]#ItemDigitalThumb4", "key": "input[name=\"data[ItemDigital][thumb4]\"]", "max_mb": 4 }
+  },
+  "upload_thumbnails_now": "#ItemGenerateThumbnail2",
+  "description": "[data-testid=\"description-editor-frame\"] [contenteditable=\"true\"]",
+  "price": "#item-price",
+  "license_price": "#item-license-price",
+  "tax_code": { "toggle": "#taxCode-toggle-button", "menu": "#taxCode-menu" },
+  "grade_checkbox": "[id=\"data.Grade.Grade-checkbox_{slug}\"]",
+  "subjects": "#subject-areas",
+  "tags": "#tags",
+  "formats": "#formats",
+  "custom_categories": "#custom-categories",
+  "pages": "#numberOfPagesOrSlides",
+  "answer_key": { "toggle": "#answerKey-toggle-button" },
+  "teaching_duration": { "toggle": "#teachingDuration-toggle-button" },
+  "copyright_original": "[id=\"data.ItemsProperty.copyright_declaration-0\"]",
+  "make_active": "#makeProductActive",
+  "submit": "button[type=\"submit\"][form=\"ItemAddForm\"]"
+}

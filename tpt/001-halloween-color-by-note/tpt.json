@@ -1,0 +1,19 @@
+{
+  "price": "3.50",
+  "license_price": null,
+  "tax_code": null,
+  "grades": ["1st-grade", "2nd-grade", "3rd-grade", "4th-grade", "5th-grade"],
+  "subjects": ["Music"],
+  "tags": ["Halloween", "Fall", "English"],
+  "formats": ["PDF"],
+  "pages": 58,
+  "answer_key": "Included",
+  "files": {
+    "product": "halloween-color-by-note.pdf",
+    "preview": "halloween-color-by-note-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
