@@ -112,3 +112,4 @@
 - 2026-10-04 12:59 UTC: TpT research pass done (research/tpt-music-2026-10-04.md). Queued 5 [tpt] items: Halloween colour-by-note (1–5, list by 10 Oct), fall rhythm flashcards (K–2), winter rhythm bingo (3–6), music production vocabulary posters (9–12), 6–8 no-tech production sub plan. The Designer writes tpt/STYLE.md (owner's look: black and white, speaker logo with headphones mascot, condensed bold capitals) on the first TpT build.
 - 2026-10-04 13:13 UTC: Manager. Hourly check, nothing due (Designer due 14:31).
 - 2026-10-04 14:13 UTC: Manager. Hourly check, nothing due (Designer due 14:31).
+- 2026-10-04 15:37 UTC: tpt/001 Halloween Color by Note built (58 pp, 3 levels, 27 worksheets + keys; tpt/STYLE.md written). QA approved it in round 1: decoder check of 508 symbols, notation verified at 300 dpi. 'At a discount' was removed from the terms page. It was sent to the owner for upload ahead of batching because of the Halloween deadline. Trend scan 5: no picks.
