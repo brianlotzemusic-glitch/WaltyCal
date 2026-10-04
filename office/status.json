@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-04T12:13:45Z",
-  "next_run_at": "2026-10-04T13:12:00Z",
+  "updated_at": "2026-10-04T13:13:31Z",
+  "next_run_at": "2026-10-04T14:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 14,
@@ -12,15 +12,15 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Sent the daily stats push and asked about the trend-scan cadence. Designer (Nativity) after ~14:40; Hunter after ~15:15.",
-      "since": "2026-10-04T12:13:45Z"
+      "task": "Hourly check: nothing due. Next shift (14:12): nothing; 15:12: Designer ([tpt] Halloween Color by Note, list by 10 Oct) + Hunter.",
+      "since": "2026-10-04T13:13:31Z"
     },
     {
       "id": "researcher",
       "name": "Researcher",
       "state": "idle",
-      "task": "Daily refresh: non-cut formats now 9 of 26 (1-in-3 rule). Top: [trend] autumn moments, cross-stitch, nativity, coloring pages, butterflies clipart. Next after ~00:20 UTC tomorrow.",
-      "since": "2026-10-04T00:15:51Z"
+      "task": "TpT music research done: 5 [tpt] items queued (Halloween color-by-note first). Daily Etsy refresh after ~00:20 UTC.",
+      "since": "2026-10-04T13:13:31Z"
     },
     {
       "id": "designer",
@@ -81,10 +81,10 @@
   ],
   "queue": [
     "Nativity silhouettes (moved up 2 Oct: Christmas season, proven subject; manger, holy famil",
-    "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages",
-    "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + ",
-    "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si",
-    "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and "
+    "[tpt] Halloween Color by Note: 3 levels, treble, bass and rhythm values, with answer keys ",
+    "[tpt] Fall Rhythm Flashcards & Tracing: ta, ti-ti, rest, half note, with leaf/acorn art (g",
+    "[tpt] Winter Rhythm Bingo: 30 unique cards, rhythm-pattern calling cards, non-denomination",
+    "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,"
   ],
   "feed": [
     {
