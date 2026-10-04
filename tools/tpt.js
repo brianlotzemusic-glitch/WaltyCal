@@ -36,17 +36,39 @@ function env(name) {
 
 async function login(page) {
   await page.goto(LOGIN_URL, { waitUntil: "domcontentloaded" });
-  await page.fill('#lc-email-username-input, input[type="email"], input[name="email"], input[name="username"]', env("TPT_VA_EMAIL"));
-  await page.fill('#lc-password-input, input[type="password"]', env("TPT_VA_PASSWORD"));
-  await page.keyboard.press("Enter");
+  await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {});
+  // TpT's own ids only: a generic input[type=email] list can match a hidden input first.
+  const email = page.locator("#lc-email-username-input"), pass = page.locator("#lc-password-input");
+  try { await email.waitFor({ state: "visible", timeout: 30000 }); }
+  catch (e) { await loginFailed(page, "the email box (#lc-email-username-input) never appeared"); }
+  // The page can re-render after load and clear what was typed, so check and refill.
+  for (let i = 0; i < 3; i++) {
+    await email.fill(env("TPT_VA_EMAIL"));
+    await pass.fill(env("TPT_VA_PASSWORD"));
+    await page.waitForTimeout(1000);
+    if ((await email.inputValue()) && (await pass.inputValue())) break;
+    if (i === 2) await loginFailed(page, "the email/password boxes stayed empty after filling them 3 times");
+    await page.waitForTimeout(2000);
+  }
+  const submit = page.locator("#login_button_submit");
+  if (await submit.count()) await submit.click(); else await pass.press("Enter");
   console.log("Logging in. If TpT asks for a CAPTCHA or a code, complete it in the browser window...");
   try {
     await page.waitForURL((u) => !/\/login/i.test(u.toString()), { timeout: 180000 });
   } catch (e) {
-    throw new Error("still on the login page after 3 minutes: check the VA email/password, or finish TpT's verification step");
+    await loginFailed(page, "still on the login page after 3 minutes: check the VA email/password, or finish TpT's verification step");
   }
   await page.waitForLoadState("domcontentloaded");
   await page.waitForTimeout(2000);
+}
+
+// Saves tpt/_discover/00-login-failed.png/.html and prints any on-page error text, then stops.
+async function loginFailed(page, why) {
+  await page.locator("#lc-password-input").fill("", { timeout: 2000 }).catch(() => {}); // keep the password out of the saved HTML
+  await snap(page, path.join(ROOT, "tpt", "_discover"), "00-login-failed").catch(() => {});
+  const msgs = await page.locator('[role="alert"], [aria-live="assertive"], [class*="error" i]').allInnerTexts().catch(() => []);
+  const text = msgs.map((m) => m.trim()).filter(Boolean).join(" | ").slice(0, 300);
+  throw new Error(`login failed: ${why}${text ? `\nTpT says: ${text}` : ""}\nScreenshot: tpt/_discover/00-login-failed.png`);
 }
 
 async function snap(page, dir, name) {
