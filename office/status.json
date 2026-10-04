@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T03:28:04Z",
+  "updated_at": "2026-10-04T03:30:41Z",
   "next_run_at": "2026-10-04T03:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -25,16 +25,16 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "Built bundle 011 Small autumn moments (checklist + 20 print-then-cut stickers; $0 AI). Awaiting QA.",
-      "since": "2026-10-04T03:28:04Z"
+      "state": "working",
+      "task": "Fixing bundle 011 (QA round 1).",
+      "since": "2026-10-04T03:30:41Z"
     },
     {
       "id": "qa",
       "name": "QA",
-      "state": "working",
-      "task": "Reviewing bundle 011 against formats/printable.md (round 1).",
-      "since": "2026-10-04T03:28:04Z"
+      "state": "idle",
+      "task": "Sent bundle 011 back: print-then-cut sizing guidance, image 3 box ratio, printer/sticker-paper wording, one phrase.",
+      "since": "2026-10-04T03:30:41Z"
     },
     {
       "id": "lister",
@@ -87,6 +87,11 @@
     "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + "
   ],
   "feed": [
+    {
+      "t": "2026-10-04T03:30:41Z",
+      "who": "qa",
+      "msg": "Sent autumn moments back: sticker sizing advice for Cricut, one image box, clearer 'what you need' wording."
+    },
     {
       "t": "2026-10-04T03:28:04Z",
       "who": "designer",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T12:14:08Z",
       "who": "manager",
       "msg": "Asked the owner to set the mug/tee photos in Printify and to decide on Recraft credits."
-    },
-    {
-      "t": "2026-10-03T11:14:10Z",
-      "who": "analyst",
-      "msg": "Daily stats: 8 listings live, 1 view, no sales yet."
     }
   ],
   "venture_gate": {
