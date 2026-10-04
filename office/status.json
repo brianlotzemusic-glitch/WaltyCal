@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T09:31:50Z",
+  "updated_at": "2026-10-04T09:35:43Z",
   "next_run_at": "2026-10-04T09:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -25,16 +25,16 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "Built bundle 012 Woodland Christmas cross-stitch (12 charts, colour + one-colour; $0 AI). Awaiting QA.",
-      "since": "2026-10-04T09:31:50Z"
+      "state": "working",
+      "task": "Fixing bundle 012 cross-stitch (QA round 1).",
+      "since": "2026-10-04T09:35:43Z"
     },
     {
       "id": "qa",
       "name": "QA",
-      "state": "working",
-      "task": "Reviewing bundle 012 cross-stitch against formats/cross-stitch.md (round 1).",
-      "since": "2026-10-04T09:31:50Z"
+      "state": "idle",
+      "task": "Sent bundle 012 back: robin and acorn one-colour charts unclear, copy errors, lifestyle first photo missing.",
+      "since": "2026-10-04T09:35:43Z"
     },
     {
       "id": "lister",
@@ -87,6 +87,11 @@
     "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si"
   ],
   "feed": [
+    {
+      "t": "2026-10-04T09:35:43Z",
+      "who": "qa",
+      "msg": "Sent cross-stitch back: robin and acorn don't read in one colour, a few size/count errors in the copy, needs a lifestyle first photo."
+    },
     {
       "t": "2026-10-04T09:31:50Z",
       "who": "designer",
@@ -231,11 +236,6 @@
       "t": "2026-10-03T14:16:00Z",
       "who": "manager",
       "msg": "Shift start: Trend Hunter's first scan, then Trend Judge."
-    },
-    {
-      "t": "2026-10-03T13:34:06Z",
-      "who": "manager",
-      "msg": "Owner added a trend desk: Trend Hunter scans viral trends every 6 h, Trend Judge screens them for IP risk and demand."
     }
   ],
   "venture_gate": {
