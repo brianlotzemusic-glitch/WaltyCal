@@ -1,0 +1,222 @@
+{
+ "01-fox-in-scarf": {
+  "stroke_before_mm": 1.76,
+  "grow_mm": 0.0,
+  "stroke_after_mm": 2.03,
+  "regions": 41,
+  "smallest_region_mm2": 22.0,
+  "regions_under_40mm2": 4,
+  "filled_tiny": 71,
+  "blobs_erased": 0,
+  "ink_pct": 16.9
+ },
+ "02-owl-on-snowy-pine": {
+  "stroke_before_mm": 1.25,
+  "grow_mm": 0.2,
+  "stroke_after_mm": 1.97,
+  "regions": 54,
+  "smallest_region_mm2": 12.5,
+  "regions_under_40mm2": 41,
+  "filled_tiny": 72,
+  "blobs_erased": 0,
+  "ink_pct": 14.4
+ },
+ "03-moonlit-deer": {
+  "stroke_before_mm": 0.96,
+  "grow_mm": 0.34,
+  "stroke_after_mm": 1.76,
+  "regions": 54,
+  "smallest_region_mm2": 13.6,
+  "regions_under_40mm2": 6,
+  "filled_tiny": 19,
+  "blobs_erased": 1,
+  "ink_pct": 16.6
+ },
+ "04-mushrooms-in-snow": {
+  "stroke_before_mm": 0.81,
+  "grow_mm": 0.41,
+  "stroke_after_mm": 2.01,
+  "regions": 73,
+  "smallest_region_mm2": 12.1,
+  "regions_under_40mm2": 40,
+  "filled_tiny": 86,
+  "blobs_erased": 8,
+  "ink_pct": 19.9
+ },
+ "05-lantern-lit-cabin": {
+  "stroke_before_mm": 1.08,
+  "grow_mm": 0.27,
+  "stroke_after_mm": 1.76,
+  "regions": 50,
+  "smallest_region_mm2": 12.0,
+  "regions_under_40mm2": 11,
+  "filled_tiny": 20,
+  "blobs_erased": 0,
+  "ink_pct": 16.9
+ },
+ "06-hedgehog-with-mug": {
+  "stroke_before_mm": 0.98,
+  "grow_mm": 0.34,
+  "stroke_after_mm": 1.82,
+  "regions": 24,
+  "smallest_region_mm2": 12.2,
+  "regions_under_40mm2": 2,
+  "filled_tiny": 48,
+  "blobs_erased": 0,
+  "ink_pct": 13.0
+ },
+ "07-robin-on-holly": {
+  "stroke_before_mm": 1.35,
+  "grow_mm": 0.14,
+  "stroke_after_mm": 1.63,
+  "regions": 29,
+  "smallest_region_mm2": 14.0,
+  "regions_under_40mm2": 4,
+  "filled_tiny": 25,
+  "blobs_erased": 0,
+  "ink_pct": 15.4
+ },
+ "08-bunny-and-sled": {
+  "stroke_before_mm": 1.49,
+  "grow_mm": 0.07,
+  "stroke_after_mm": 1.76,
+  "regions": 53,
+  "smallest_region_mm2": 12.2,
+  "regions_under_40mm2": 19,
+  "filled_tiny": 4,
+  "blobs_erased": 0,
+  "ink_pct": 13.9
+ },
+ "09-bear-with-gift": {
+  "stroke_before_mm": 1.15,
+  "grow_mm": 0.2,
+  "stroke_after_mm": 1.63,
+  "regions": 43,
+  "smallest_region_mm2": 14.3,
+  "regions_under_40mm2": 7,
+  "filled_tiny": 26,
+  "blobs_erased": 0,
+  "ink_pct": 13.4
+ },
+ "10-squirrel-and-pinecones": {
+  "stroke_before_mm": 1.62,
+  "grow_mm": 0.0,
+  "stroke_after_mm": 2.18,
+  "regions": 60,
+  "smallest_region_mm2": 12.2,
+  "regions_under_40mm2": 24,
+  "filled_tiny": 37,
+  "blobs_erased": 0,
+  "ink_pct": 17.8
+ },
+ "11-badger-with-tree": {
+  "stroke_before_mm": 1.09,
+  "grow_mm": 0.27,
+  "stroke_after_mm": 1.7,
+  "regions": 30,
+  "smallest_region_mm2": 14.5,
+  "regions_under_40mm2": 6,
+  "filled_tiny": 10,
+  "blobs_erased": 0,
+  "ink_pct": 12.0
+ },
+ "12-pinecone-wreath": {
+  "stroke_before_mm": 0.81,
+  "grow_mm": 0.41,
+  "stroke_after_mm": 2.05,
+  "regions": 70,
+  "smallest_region_mm2": 16.7,
+  "regions_under_40mm2": 2,
+  "filled_tiny": 15,
+  "blobs_erased": 0,
+  "ink_pct": 16.3
+ },
+ "13-snowman-and-birds": {
+  "stroke_before_mm": 1.46,
+  "grow_mm": 0.07,
+  "stroke_after_mm": 1.72,
+  "regions": 33,
+  "smallest_region_mm2": 13.9,
+  "regions_under_40mm2": 5,
+  "filled_tiny": 7,
+  "blobs_erased": 0,
+  "ink_pct": 13.7
+ },
+ "14-mouse-by-candlelight": {
+  "stroke_before_mm": 1.34,
+  "grow_mm": 0.14,
+  "stroke_after_mm": 1.76,
+  "regions": 24,
+  "smallest_region_mm2": 24.3,
+  "regions_under_40mm2": 2,
+  "filled_tiny": 48,
+  "blobs_erased": 0,
+  "ink_pct": 12.8
+ },
+ "15-birdhouse-in-snow": {
+  "stroke_before_mm": 0.69,
+  "grow_mm": 0.47,
+  "stroke_after_mm": 1.9,
+  "regions": 50,
+  "smallest_region_mm2": 12.3,
+  "regions_under_40mm2": 19,
+  "filled_tiny": 24,
+  "blobs_erased": 0,
+  "ink_pct": 18.6
+ },
+ "16-tree-in-the-clearing": {
+  "stroke_before_mm": 0.81,
+  "grow_mm": 0.41,
+  "stroke_after_mm": 1.65,
+  "regions": 61,
+  "smallest_region_mm2": 12.8,
+  "regions_under_40mm2": 14,
+  "filled_tiny": 26,
+  "blobs_erased": 0,
+  "ink_pct": 17.2
+ },
+ "17-fireplace-stockings": {
+  "stroke_before_mm": 1.39,
+  "grow_mm": 0.14,
+  "stroke_after_mm": 1.84,
+  "regions": 69,
+  "smallest_region_mm2": 12.1,
+  "regions_under_40mm2": 29,
+  "filled_tiny": 30,
+  "blobs_erased": 0,
+  "ink_pct": 14.4
+ },
+ "18-reindeer-with-wreath": {
+  "stroke_before_mm": 1.25,
+  "grow_mm": 0.2,
+  "stroke_after_mm": 1.76,
+  "regions": 48,
+  "smallest_region_mm2": 17.9,
+  "regions_under_40mm2": 17,
+  "filled_tiny": 18,
+  "blobs_erased": 0,
+  "ink_pct": 14.4
+ },
+ "19-hare-under-the-moon": {
+  "stroke_before_mm": 0.98,
+  "grow_mm": 0.34,
+  "stroke_after_mm": 1.92,
+  "regions": 38,
+  "smallest_region_mm2": 16.2,
+  "regions_under_40mm2": 5,
+  "filled_tiny": 63,
+  "blobs_erased": 0,
+  "ink_pct": 15.5
+ },
+ "20-gnome-with-lantern": {
+  "stroke_before_mm": 0.81,
+  "grow_mm": 0.41,
+  "stroke_after_mm": 1.84,
+  "regions": 62,
+  "smallest_region_mm2": 15.1,
+  "regions_under_40mm2": 18,
+  "filled_tiny": 18,
+  "blobs_erased": 0,
+  "ink_pct": 15.2
+ }
+}

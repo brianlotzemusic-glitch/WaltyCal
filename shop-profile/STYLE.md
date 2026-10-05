@@ -9,6 +9,7 @@ Use as the start of every image prompt, then add the subject.
 **Rendering by product**
 - Cut files: "bold black silhouette on pure white background, flat, no shading, no gradients, no text, thick connected shapes, clean smooth edges, centred, generous margin".
 - Prints, POD, clipart: "flat vector illustration style with fine linework and subtle grain, limited palette as above, crisp edges, centred composition, no text unless specified".
+- Coloring pages (bold & easy): "Coloring book page, bold and easy style for kids and adults: thick smooth uniform black outlines on pure white, line art only, no shading, no gray, no solid black areas, no hatching, no texture, no text, no border, large simple closed shapes with big spaces to color, no tiny details." Then the mood and subject. Generate at 896x1152 (flash does not accept 1024x1365). See formats/coloring.md.
 - Mockups: "realistic product photo, soft natural window light, cozy wooden table or wall, shallow depth of field, the design clearly visible and undistorted".
 
 **Avoid always**: real brands, logos, characters, celebrities, named artists' styles, copyrighted text, watermarks, signatures, extra limbs, warped hands, garbled lettering, busy backgrounds.
