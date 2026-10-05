@@ -224,7 +224,7 @@ The owner's request (3 Oct 2026): a dedicated team chasing current viral trends 
 ## Turnaround week (4–10 Oct 2026, owner's deadline)
 The owner will shut the factory down unless the shop shows signs of life by 10 Oct. The owner's cost concerns are Recraft and Etsy listing fees, so:
 - **Spending limit for the week: $5.60 of Etsy listing fees** (4 new listings/day × $0.20, owner raised it from 2 on 3 Oct). Don't go above 4 a day. Edits to existing listings are free, so use them freely.
-- **Recraft**: October's $5 cap is used up, so the Designer draws in code until 1 Nov. Don't ask the owner for a top-up.
+- **Recraft**: October runs on the one-time prepaid top-up (see "October 2026 one-time top-up" above). Cheap recipe only; when the balance runs out, draw in code until 1 Nov. Don't ask the owner for a top-up.
 - **Day 1 (4 Oct), Lister, free**: retitle and retag all 8 live cut-file listings with `etsy.py update`. Lead each title with the highest-volume plain search phrase (e.g. "Christmas SVG Bundle", "Snowflake SVG", "Christmas Ornament SVG", "Bat SVG"). Put "gothic", "spooky" and "creepy" later in the title and in the tags, not first. Use all 13 tags, mixing broad terms (christmas svg, cricut files, ornament svg) with specific ones. Keep the disclosure line. Log the before and after titles.
 - **New listings in this order**: the 4 POD products (all on the 4th), then Botanical frost snowflakes (cut files), Woodland Christmas bingo (printable) and the Woodland Christmas mini cross-stitch charts. Pick only proven-demand items; nothing speculative this week.
 - **Analyst**: every day at the first shift after 8am ET, push the owner one line: total views, favourites and sales, and the change since yesterday.
