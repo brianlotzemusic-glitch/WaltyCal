@@ -1,0 +1,29 @@
+{
+  "price": "4.00",
+  "license_price": "4.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "kindergarten",
+    "1st-grade",
+    "2nd-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 29,
+  "answer_key": "Included",
+  "files": {
+    "product": "fall-rhythm-flashcards.pdf",
+    "preview": "fall-rhythm-flashcards-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
