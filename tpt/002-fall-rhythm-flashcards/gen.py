@@ -234,7 +234,7 @@ def pattern_card(n, setk, pattern, x, y, w, h, stick=False):
     out.append(pill(x + 24, y + 24, f"Pattern {n}", 13))
     out.append(text(x + 24, y + 62, f'{SETS[setk]["label"]} · {SETS[setk]["adds"]}', 11, 300, anchor="start"))
     out.append(art(R.TOKENS[pattern[-1]]["art"] if n % 2 else "leaf", x + w - 70, y + 20, 48))
-    s, W = 21, 98
+    s, W = 21, 94
     if stick:
         x0 = x + (w - 4 * W) / 2
         yb = y + 200
@@ -244,7 +244,8 @@ def pattern_card(n, setk, pattern, x, y, w, h, stick=False):
         tot = 2.6 * s + 4 * W + 1.2 * s + 0.5 * s
         x0 = x + (w - tot) / 2
         yl = y + 172
-        body, centres, _ = R.engraved_pattern(pattern, x0, yl, s, W)
+        body, centres, end = R.engraved_pattern(pattern, x0, yl, s, W)
+        assert end <= x + w - 24, f"pattern card {n}: barline at {end:.0f} crowds the card edge ({x + w - 9})"
         lead = yl + 2 * s
     out.append(body)
     for i, cx in enumerate(centres):
@@ -545,7 +546,7 @@ def reference_page():
         rows.append(f'<tr><td>{std}</td><td>{stk}</td><td class="n"><span class="big">{info["name"]}</span></td>'
                     f'<td><b>{beats_text(t)}</b></td><td>{info["kodaly"]}</td><td>{info["word"]}</td></tr>')
     s, W = 13, 84
-    tot = 2.6 * s + 4 * W + 1.1 * s
+    tot = 2.6 * s + 4 * W + 1.7 * s
     body, centres, _ = R.engraved_pattern("eqh", 10, 58, s, W)
     leaves = "".join(art("leaf", cx - 11, 92, 22, 1.1) + text(cx, 128, str(i + 1), 11, 500) for i, cx in enumerate(centres))
     ex = svg(int(tot + 20), 134, body + leaves)
@@ -596,8 +597,9 @@ def mini_card(x, y, w, h, inner, rot=0, sw=3):
 def hero_svg(width_css):
     """Cover art: a big pattern card with beat leaves, fall art around it; accent and black only."""
     A = ACCENT
-    s, W = 17, 72
-    body, centres, _ = R.engraved_pattern("erh", 136, 150, s, W)
+    s, W = 17, 66
+    body, centres, end = R.engraved_pattern("erh", 130, 150, s, W)
+    assert end < 480, f"cover barline at {end:.0f} crowds the card edge (500)"
     leaves = "".join(art("leaf", cx - 15, 200, 30, 2.0, fill=A) for cx in centres)
     card = mini_card(100, 46, 400, 210, body + leaves, rot=-3, sw=3.4)
     back = mini_card(118, 30, 380, 210, "", rot=-9, sw=2.6)
@@ -713,7 +715,8 @@ def preview_square_2(ws, key):
 def preview_square_3():
     cells = []
     for n, (setk, p) in enumerate(PATTERNS, 1):
-        body, _, _ = R.engraved_pattern(p, 22, 66, 9, 46)
+        body, _, end = R.engraved_pattern(p, 24, 66, 9, 42)
+        assert end <= 236, f"preview-3 card {n}: barline at {end:.0f} crowds the edge (248)"
         cells.append(f'<div style="width:250px"><svg viewBox="0 0 250 110" width="250" style="display:block">'
                      f'<rect x="2" y="2" width="246" height="106" rx="10" fill="#fff" stroke="#000" stroke-width="2.2"/>'
                      f'{text(16, 24, str(n), 14, 700, anchor="start")}{body}</svg></div>')
