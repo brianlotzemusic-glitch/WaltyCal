@@ -134,3 +134,37 @@ I re-rendered the rebuilt PDF (29 pages), the preview PDF (4 pages) and all four
 - Pages 19–21 also say "Color in any gray noteheads". That is harmless where none appear (p20, p21), but it could be dropped there.
 
 **Verdict: REJECTED**
+
+---
+
+# Round 3 (5 Oct 2026)
+
+I re-rendered the rebuilt PDF (29 pages), the preview PDF (4 pages) and all four PNGs. I compared each page pixel by pixel with my round-2 renders. Only pages 1, 3 and 6–17 changed, and I checked each of those by eye. I changed no item files.
+
+## Round-2 fix: passes
+
+- **cover.png.** The final double bar now ends inside the front card. At 2000 px it has about 60 px of white space before the card's right border.
+- **PDF page 1.** Same result: the barline is clear of the card edge.
+- **Cover card notation.** It is unchanged: 4/4, ee r h = 4 beats.
+
+## Regression check: no regressions
+
+- **Pattern cards, pages 6–11 (standard notation).** Recounted all 12:
+  - Set A: q q ee q · ee ee q q · q ee ee q · ee q ee ee
+  - Set B: q q q r · ee ee q r · q r ee q · ee r q ee
+  - Set C: q q h · ee ee h · h q r · ee r h
+
+  Every card is exactly 4 beats. Stems, beams, the rests and the open half-note heads are correct. Each final barline sits inside its card with clear space, and the barlines are not crowded (including card 4).
+- **Pattern cards, pages 12–17 (stick notation).** Each matches its standard card one to one. The half notes sit under leaf 1 or 3, with the next leaf empty.
+- **Page 3 (reference).** Only the example staff was narrowed. The example is still ee q h = 4 beats, and the double bar sits inside the margin.
+- **preview-3.png.** The 12 grid cards match the 12 patterns and every barline is inside its card.
+- **Preview PDF, preview-1.png and preview-2.png.** Unchanged from round 2 and fine.
+- **Unchanged pages.** Pages 2, 4–5 and 18–29 are pixel-identical to round 2, so the round-2 tracing fix and the answer keys stand. Keys were recounted in round 2: WS1 1,2,1,1,2,1,1,1 · WS2 2,3,4,3,4,2 · WS3 Y,N,Y,N,Y,N.
+- **Files.** The PDF has 29 pages and the preview PDF has 4. Every file listed in `tpt.json` exists.
+
+## Optional (carried over, not blocking)
+
+- On p22, give the "HALF NOTE: 2 BEATS" label a few more points of space above the next heading.
+- preview-3 leaves empty space under the grid.
+
+**Verdict: APPROVED**

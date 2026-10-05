@@ -1,19 +1,19 @@
 {
-  "updated_at": "2026-10-05T01:17:57Z",
-  "next_run_at": "2026-10-05T01:12:00Z",
+  "updated_at": "2026-10-05T01:38:41Z",
+  "next_run_at": "2026-10-05T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 17,
-  "bundles_built": 13,
+  "bundles_built": 14,
   "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "9:12pm ET shift: 3 bundles listed; Designer and Researcher running.",
-      "since": "2026-10-05T01:15:58Z"
+      "state": "idle",
+      "task": "9pm shift done. Next: 6:12am ET. TpT 002 released; waiting for the Mac nightly job.",
+      "since": "2026-10-05T01:38:41Z"
     },
     {
       "id": "researcher",
@@ -25,16 +25,16 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Building TpT 002: Fall Rhythm Flashcards & Tracing (K-2).",
-      "since": "2026-10-05T01:15:58Z"
+      "state": "idle",
+      "task": "TpT 002 Fall Rhythm Flashcards approved (round 3). 3 built today (ET).",
+      "since": "2026-10-05T01:38:41Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved bundle 013 Nativity silhouettes in round 2.",
-      "since": "2026-10-04T19:38:54Z"
+      "task": "Approved TpT 002 in round 3; all 12 patterns 4 beats, keys recounted.",
+      "since": "2026-10-05T01:38:41Z"
     },
     {
       "id": "lister",
@@ -80,16 +80,21 @@
     }
   ],
   "queue": [
-    "[tpt] Fall Rhythm Flashcards & Tracing: ta, ti-ti, rest, half note, with leaf/acorn art (g",
     "[tpt] Winter Rhythm Bingo: 30 unique cards, rhythm-pattern calling cards, non-denomination",
     "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,",
     "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea",
     "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages",
     "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si",
     "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + ",
-    "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and "
+    "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and ",
+    "[format] Woodland Christmas scavenger hunt printable (new 4 Oct; same family as the approv"
   ],
   "feed": [
+    {
+      "t": "2026-10-05T01:38:41Z",
+      "who": "qa",
+      "msg": "Approved TpT 002: Fall Rhythm Flashcards & Tracing (K-2). Released for upload."
+    },
     {
       "t": "2026-10-05T01:17:57Z",
       "who": "researcher",
