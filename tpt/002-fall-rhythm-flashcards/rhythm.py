@@ -103,6 +103,7 @@ def engraved_pattern(pattern, x0, yl, s, W, staff=True, timesig=True, fill="#000
     end = x + beats(pattern) * W
     centres = [x + (i + 0.5) * W for i in range(beats(pattern))]
     if staff:
+        end += 0.6 * s   # breathing room before the final barline
         thick = 0.5 * s
         out.insert(0, _line(x0 - 0.4 * s, yl, end + 0.6 * s + thick, yl, STAFF_W * s * 1.3))
         out.append(_line(end, yl - 2 * s, end, yl + 2 * s, 0.16 * s))
@@ -174,7 +175,8 @@ def hand(tok, cx, yb, s, heads=True, mode="solid", pair_gap=2.4, accent="#000", 
             starts.append(p[2])
         elif p[0] == "head":
             _, hx, hy, filled, sxy = p
-            fill = colour if (filled and mode != "dotted") else "none"
+            # tracing: filled heads get a light grey fill to colour in; open (half-note) heads stay empty
+            fill = (colour if mode != "dotted" else "#d4d4d4") if filled else "none"
             out.append(f'<ellipse cx="{hx:.2f}" cy="{hy:.2f}" rx="{HEAD_RX * s:.2f}" ry="{HEAD_RY * s:.2f}" '
                        f'transform="rotate({HEAD_ROT} {hx:.2f} {hy:.2f})" {st(fill=fill)}/>')
             starts.append(sxy)

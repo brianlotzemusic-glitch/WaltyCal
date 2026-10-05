@@ -241,7 +241,7 @@ def pattern_card(n, setk, pattern, x, y, w, h, stick=False):
         body, centres, _ = R.stick_pattern(pattern, x0, yb, s, W)
         lead = yb
     else:
-        tot = 2.6 * s + 4 * W + 0.6 * s + 0.5 * s
+        tot = 2.6 * s + 4 * W + 1.2 * s + 0.5 * s
         x0 = x + (w - tot) / 2
         yl = y + 172
         body, centres, _ = R.engraved_pattern(pattern, x0, yl, s, W)
@@ -347,7 +347,7 @@ def tracing_page(t, num, page_no, watermark=False):
     body = svg(TR_W, H, "".join(out))
     sub = f"Tracing {num} · " + info["name"].capitalize()
     return (f'<section class="page">{wm(watermark)}{top(sub, "TRACING", f"{num} of 5")}'
-            f'{NAME}<div class="how"><b>Trace</b> the dotted lines. Start at the big dots. Then <b>draw your own</b> in the boxes.</div>'
+            f'{NAME}<div class="how"><b>Trace</b> the dotted lines. Start at the big dots. <b>Color in</b> any gray noteheads. Then <b>draw your own</b> in the boxes.</div>'
             f'<div class="body">{body}</div>{foot(f"Page {page_no}")}</section>')
 
 
@@ -365,18 +365,23 @@ def tracing_patterns_page(page_no, watermark=False):
         out.append(R.hand_pattern(p, 30, base, s, W, mode="dotted", accent=ACCENT))
         for k in range(4):
             out.append(art("leaf", 30 + (k + 0.5) * W - 11, base + 30, 22, 1.1))
-        y += 146
+        for t, cx, b in R.slots(p, 30, W):
+            if t == "h":   # bracket under the two leaves a half note fills
+                x1, x2, by = cx - 20, cx + W + 20, base + 58
+                out.append(f'<path d="M{x1},{by - 5} L{x1},{by} L{x2},{by} L{x2},{by - 5}" fill="none" stroke="#000" stroke-width="1.3"/>')
+                out.append(text((x1 + x2) / 2, by + 11, "half note: 2 beats", 9.5, 500, upper=True))
+        y += 160
     out.append(row_label(y + 14, "Now write your own 4-beat pattern: one symbol group for each leaf"))
     by = y + 26
-    out.append(f'<rect x="20" y="{by}" width="{TR_W - 40}" height="130" rx="10" fill="none" stroke="#000" stroke-width="1.2"/>')
-    out.append(guide(34, TR_W - 34, by + 82))
+    out.append(f'<rect x="20" y="{by}" width="{TR_W - 40}" height="96" rx="10" fill="none" stroke="#000" stroke-width="1.2"/>')
+    out.append(guide(34, TR_W - 34, by + 58))
     for k in range(4):
-        out.append(art("leaf", 30 + (k + 0.5) * W - 11, by + 98, 22, 1.1))
-    H = by + 134
+        out.append(art("leaf", 30 + (k + 0.5) * W - 11, by + 66, 22, 1.1))
+    H = by + 100
     body = svg(TR_W, H, "".join(out))
     return (f'<section class="page">{wm(watermark)}{top("Tracing 5 · 4-beat patterns", "TRACING", "5 of 5")}'
-            f'{NAME}<div class="how"><b>Trace</b> each pattern, starting at the big dots, then clap it while you count to 4. '
-            f'Every pattern fills 4 leaves (4 beats). A half note fills 2 leaves.</div>'
+            f'{NAME}<div class="how"><b>Trace</b> each pattern, starting at the big dots. <b>Color in</b> the gray noteheads; '
+            f'leave the half-note head open. Then clap it while you count to 4. Every pattern fills 4 leaves; a half note fills 2.</div>'
             f'<div class="body">{body}</div>{foot(f"Page {page_no}")}</section>')
 
 
@@ -406,7 +411,7 @@ def ws_body(ws, key):
             y = i * rh
             out.append(f'<rect x="2" y="{y + 4}" width="{TR_W - 4}" height="{rh - 12}" rx="12" fill="none" stroke="#000" stroke-width="1.4"/>')
             out.append(text(22, y + 30, str(i + 1), 14, 700))
-            body, _, end = R.engraved_pattern(p, 50, y + 72, s, W, staff=False, timesig=False)
+            body, _, end = R.engraved_pattern(p, 50, y + 64, s, W, staff=False, timesig=False)
             out.append(body)
             out.append(text(370, y + 60, "=", 30, 300))
             out.append(f'<rect x="398" y="{y + 22}" width="56" height="56" rx="8" fill="#fff" stroke="#000" stroke-width="1.6"/>')
@@ -420,7 +425,7 @@ def ws_body(ws, key):
             y = i * rh
             out.append(f'<rect x="2" y="{y + 4}" width="{TR_W - 4}" height="{rh - 12}" rx="12" fill="none" stroke="#000" stroke-width="1.4"/>')
             out.append(text(22, y + 30, str(i + 1), 14, 700))
-            body, _, _ = R.stick_pattern(p, 44, y + 76, s, W)
+            body, _, _ = R.stick_pattern(p, 44, y + 72, s, W)
             out.append(body)
             for j, word in enumerate(("YES", "NO")):
                 cx = 412 + j * 76
