@@ -89,3 +89,48 @@ The key items match their worksheets symbol for symbol, and the cross-references
 - On pattern card 4 (p7), the last beam sits close to the double bar. A little more right padding would help.
 
 **Verdict: REJECTED**
+
+---
+
+# Round 2 (5 Oct 2026)
+
+I re-rendered the rebuilt PDF (29 pages), the preview PDF (4 pages) and all four PNGs, and checked them by eye. Pages 22–28 were re-rendered at 200 dpi and their clearances measured from pixels. I changed no item files.
+
+## Round-1 fixes: both pass
+
+1. **p22 tracing patterns: fixed.**
+   - Quarter and eighth noteheads are now grey-filled ovals, and the instruction says "Color in the gray noteheads; leave the half-note head open."
+   - Pattern 3's half note is an open outline, with a "HALF NOTE: 2 BEATS" bracket under leaves 3–4.
+   - Recounted: pattern 1 is q q ee q, pattern 2 is ee ee r q, pattern 3 is q q h. All three are 4 beats.
+   - Pages 18–21 now show grey heads only where the head is filled (quarter and eighths). The half-note page (p21) correctly keeps open heads.
+2. **Worksheet clearance: fixed.**
+   - Measured gap from symbol ink to the card border: at least 7.2 pt on p25 and p28, and at least 10.8 pt on p24 and p27. Every gap is at least 8.6 pt at the top.
+   - The rests now sit on the noteheads' baseline. Nothing touches a border.
+
+## Regression check
+
+- **Pattern cards p6–17.** All 12 patterns, in both standard and stick notation, are unchanged. Each one still totals 4 beats, and there is now clear space before the final double bar (including card 4).
+- **Worksheets and keys p23–28.** I recounted every item again:
+  - WS1: 1, 2, 1, 1, 2, 1, 1, 1
+  - WS2: 2, 3, 4, 3, 4, 2
+  - WS3: YES (4), NO (3), YES (4), NO (5), YES (4), NO (3)
+
+  All correct, and the cross-references are intact.
+- **Preview PDF** (p4, p14, p19 with grey heads, p24), **preview-1..3.png**, footers and page count: all fine.
+- **DEFECT (new in this build): the cover's final double bar collides with the card edge.**
+  - In `cover.png` (around x 1500–1560, y 450–650 at 2000 px) and on the PDF cover (p1), the thick final barline now overlaps the front card's right border.
+  - This is probably a side effect of the "more room before the final barline" change.
+  - It is visible on the main TpT image even at 900 px, and it reads as a drawing error on the one notation example a buyer sees first.
+
+## Required fix
+
+1. **Cover card (cover.png and PDF p1).** Pull the final double bar back inside the card, with at least about 12 px clearance at 1000 CSS px.
+   - Do this either by shortening the staff or by widening the card.
+   - Then rebuild cover.png and the PDF. The preview PDF does not include p1.
+
+## Optional (not blocking)
+
+- On p22, the "HALF NOTE: 2 BEATS" label sits about 3 pt above the next heading, and the compose box sits about 3.6 pt above the footer rule. Both are legible, but a few points more air would help.
+- Pages 19–21 also say "Color in any gray noteheads". That is harmless where none appear (p20, p21), but it could be dropped there.
+
+**Verdict: REJECTED**
