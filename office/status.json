@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-05T01:38:41Z",
-  "next_run_at": "2026-10-05T10:12:00Z",
+  "updated_at": "2026-10-05T10:17:36Z",
+  "next_run_at": "2026-10-05T13:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 17,
@@ -11,9 +11,9 @@
     {
       "id": "manager",
       "name": "Manager",
-      "state": "idle",
-      "task": "9pm shift done. Next: 6:12am ET. TpT 002 released; waiting for the Mac nightly job.",
-      "since": "2026-10-05T01:38:41Z"
+      "state": "working",
+      "task": "6am ET shift: weekly report written; Designer building coloring pages.",
+      "since": "2026-10-05T10:17:36Z"
     },
     {
       "id": "researcher",
@@ -25,9 +25,9 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "TpT 002 Fall Rhythm Flashcards approved (round 3). 3 built today (ET).",
-      "since": "2026-10-05T01:38:41Z"
+      "state": "working",
+      "task": "Building 014: Christmas & winter woodland coloring pages (20 pages).",
+      "since": "2026-10-05T10:17:36Z"
     },
     {
       "id": "qa",
@@ -90,6 +90,11 @@
     "[format] Woodland Christmas scavenger hunt printable (new 4 Oct; same family as the approv"
   ],
   "feed": [
+    {
+      "t": "2026-10-05T10:17:36Z",
+      "who": "manager",
+      "msg": "Weekly report: 17 Etsy listings, 1 view, $0 revenue. Traffic is the problem."
+    },
     {
       "t": "2026-10-05T01:38:41Z",
       "who": "qa",
