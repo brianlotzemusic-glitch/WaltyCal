@@ -1,33 +1,33 @@
 {
-  "updated_at": "2026-10-04T19:38:54Z",
+  "updated_at": "2026-10-05T01:15:58Z",
   "next_run_at": "2026-10-05T01:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 14,
+  "listings_live": 17,
   "bundles_built": 13,
-  "uploads_pending": 4,
+  "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "idle",
-      "task": "3pm shift done. Next: 9:12pm ET (Lister, Designer, Researcher).",
-      "since": "2026-10-04T19:38:54Z"
+      "state": "working",
+      "task": "9:12pm ET shift: 3 bundles listed; Designer and Researcher running.",
+      "since": "2026-10-05T01:15:58Z"
     },
     {
       "id": "researcher",
       "name": "Researcher",
-      "state": "idle",
-      "task": "TpT music research done: 5 [tpt] items queued (Halloween color-by-note first). Daily Etsy refresh after ~00:20 UTC.",
-      "since": "2026-10-04T13:13:31Z"
+      "state": "working",
+      "task": "Daily Etsy refresh for Oct 5.",
+      "since": "2026-10-05T01:15:58Z"
     },
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "Bundle 013 approved. 3 built today (ET); next build at the 9:12pm ET shift.",
-      "since": "2026-10-04T19:38:54Z"
+      "state": "working",
+      "task": "Building TpT 002: Fall Rhythm Flashcards & Tracing (K-2).",
+      "since": "2026-10-05T01:15:58Z"
     },
     {
       "id": "qa",
@@ -39,9 +39,9 @@
     {
       "id": "lister",
       "name": "Lister",
-      "state": "waiting",
-      "task": "Oct 5 (UTC): 011 autumn moments (trend, first), 012 cross-stitch, 013 Nativity. 1 slot spare.",
-      "since": "2026-10-04T19:38:54Z"
+      "state": "idle",
+      "task": "Listed 011, 012, 013 on Etsy (3 of 4 slots for Oct 5).",
+      "since": "2026-10-05T01:15:58Z"
     },
     {
       "id": "analyst",
@@ -87,6 +87,11 @@
     "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages"
   ],
   "feed": [
+    {
+      "t": "2026-10-05T01:15:58Z",
+      "who": "lister",
+      "msg": "Listed 3 on Etsy: Small autumn moments, Woodland Christmas cross-stitch, Nativity silhouettes. 17 live."
+    },
     {
       "t": "2026-10-04T19:38:54Z",
       "who": "qa",
