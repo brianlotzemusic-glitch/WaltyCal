@@ -68,15 +68,15 @@
       "id": "hunter",
       "name": "Trend Hunter",
       "state": "idle",
-      "task": "3pm scan: no picks (4th empty scan; no new TikTok roundups since 1 Oct). Next: 6am ET shift.",
-      "since": "2026-10-04T19:14:20Z"
+      "task": "Scan 6: 7 candidates, none approved. Next scan 3pm ET.",
+      "since": "2026-10-05T10:17:42Z"
     },
     {
       "id": "judge",
       "name": "Trend Judge",
       "state": "idle",
-      "task": "Nothing to screen from scan 3.",
-      "since": "2026-10-04T03:15:23Z"
+      "task": "Rejected all 7 from scan 6 (stale evidence, saturated, IP).",
+      "since": "2026-10-05T10:17:42Z"
     }
   ],
   "queue": [
