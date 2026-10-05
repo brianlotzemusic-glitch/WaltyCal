@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05T01:15:58Z",
+  "updated_at": "2026-10-05T01:17:57Z",
   "next_run_at": "2026-10-05T01:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -18,9 +18,9 @@
     {
       "id": "researcher",
       "name": "Researcher",
-      "state": "working",
-      "task": "Daily Etsy refresh for Oct 5.",
-      "since": "2026-10-05T01:15:58Z"
+      "state": "idle",
+      "task": "Daily refresh done: Highland cow, haunted gingerbread, nutcracker up; celestial down.",
+      "since": "2026-10-05T01:17:57Z"
     },
     {
       "id": "designer",
@@ -84,9 +84,17 @@
     "[tpt] Winter Rhythm Bingo: 30 unique cards, rhythm-pattern calling cards, non-denomination",
     "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,",
     "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea",
-    "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages"
+    "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages",
+    "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si",
+    "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + ",
+    "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and "
   ],
   "feed": [
+    {
+      "t": "2026-10-05T01:17:57Z",
+      "who": "researcher",
+      "msg": "Daily refresh: Highland cow clipart up to #2; gingerbread and nutcracker up; celestial down (weak search)."
+    },
     {
       "t": "2026-10-05T01:15:58Z",
       "who": "lister",
