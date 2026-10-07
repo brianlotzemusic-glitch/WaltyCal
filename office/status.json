@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-05T10:17:36Z",
-  "next_run_at": "2026-10-05T13:12:00Z",
+  "updated_at": "2026-10-07T19:14:39Z",
+  "next_run_at": "2026-10-08T01:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 17,
@@ -12,22 +12,22 @@
       "id": "manager",
       "name": "Manager",
       "state": "working",
-      "task": "6am ET shift: weekly report written; Designer building coloring pages.",
-      "since": "2026-10-05T10:17:36Z"
+      "task": "3pm ET shift Oct 7. Shifts Oct 5 9am to Oct 7 12pm were missed (usage limit).",
+      "since": "2026-10-07T19:14:39Z"
     },
     {
       "id": "researcher",
       "name": "Researcher",
-      "state": "idle",
-      "task": "Daily refresh done: Highland cow, haunted gingerbread, nutcracker up; celestial down.",
-      "since": "2026-10-05T01:17:57Z"
+      "state": "working",
+      "task": "Daily Etsy refresh for Oct 7.",
+      "since": "2026-10-07T19:14:39Z"
     },
     {
       "id": "designer",
       "name": "Designer",
       "state": "working",
-      "task": "Building 014: Christmas & winter woodland coloring pages (20 pages).",
-      "since": "2026-10-05T10:17:36Z"
+      "task": "Finishing QA round-1 fixes on 014 coloring pages.",
+      "since": "2026-10-07T19:14:39Z"
     },
     {
       "id": "qa",
@@ -40,15 +40,15 @@
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Listed 011, 012, 013 on Etsy (3 of 4 slots for Oct 5).",
-      "since": "2026-10-05T01:15:58Z"
+      "task": "Nothing approved to list; 014 is in QA.",
+      "since": "2026-10-07T19:14:39Z"
     },
     {
       "id": "analyst",
       "name": "Analyst",
       "state": "idle",
-      "task": "Stats: 14 live, 1 view total, 0 favs, 0 sales, $0 (no change since yesterday; Etsy view counts can lag). Owner pushed. Next pull after 12:00 UTC tomorrow.",
-      "since": "2026-10-04T12:13:45Z"
+      "task": "Stats Oct 7: 17 listings, 5 views, 1 favourite, 0 sales. No optimization rule triggered yet.",
+      "since": "2026-10-07T19:14:39Z"
     },
     {
       "id": "scout",
@@ -67,9 +67,9 @@
     {
       "id": "hunter",
       "name": "Trend Hunter",
-      "state": "idle",
-      "task": "Scan 6: 7 candidates, none approved. Next scan 3pm ET.",
-      "since": "2026-10-05T10:17:42Z"
+      "state": "working",
+      "task": "Scan 7 (3pm ET).",
+      "since": "2026-10-07T19:14:39Z"
     },
     {
       "id": "judge",
@@ -90,6 +90,16 @@
     "[format] Woodland Christmas scavenger hunt printable (new 4 Oct; same family as the approv"
   ],
   "feed": [
+    {
+      "t": "2026-10-07T19:14:39Z",
+      "who": "analyst",
+      "msg": "Stats: 5 views, 1 favourite (Christmas Village), 0 sales."
+    },
+    {
+      "t": "2026-10-07T19:14:39Z",
+      "who": "manager",
+      "msg": "Factory paused Oct 5-7 (usage limit). Resumed: 014 fixes, research and trend scan running."
+    },
     {
       "t": "2026-10-05T10:17:36Z",
       "who": "manager",
