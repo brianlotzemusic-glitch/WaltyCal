@@ -8,7 +8,10 @@
   "regions_under_40mm2": 4,
   "filled_tiny": 71,
   "blobs_erased": 0,
-  "ink_pct": 16.9
+  "ink_pct": 16.9,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "02-owl-on-snowy-pine": {
   "stroke_before_mm": 1.25,
@@ -19,7 +22,10 @@
   "regions_under_40mm2": 41,
   "filled_tiny": 72,
   "blobs_erased": 0,
-  "ink_pct": 14.4
+  "ink_pct": 14.4,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "03-moonlit-deer": {
   "stroke_before_mm": 0.96,
@@ -30,18 +36,61 @@
   "regions_under_40mm2": 6,
   "filled_tiny": 19,
   "blobs_erased": 1,
-  "ink_pct": 16.6
+  "ink_pct": 16.6,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "04-mushrooms-in-snow": {
   "stroke_before_mm": 0.81,
   "grow_mm": 0.41,
-  "stroke_after_mm": 2.01,
+  "stroke_after_mm": 1.9,
   "regions": 73,
   "smallest_region_mm2": 12.1,
   "regions_under_40mm2": 40,
-  "filled_tiny": 86,
+  "filled_tiny": 74,
   "blobs_erased": 8,
-  "ink_pct": 19.9
+  "ink_pct": 20.4,
+  "clumps": [
+   {
+    "box": [
+     733,
+     772,
+     805,
+     877
+    ],
+    "mm2": 44.8,
+    "accepted": null
+   }
+  ],
+  "clumps_unreviewed": 1,
+  "flakes": [
+   {
+    "gap_mm": 3.53,
+    "pocket_mm2": 332.0,
+    "pockets": 1
+   },
+   {
+    "gap_mm": 2.88,
+    "pocket_mm2": 236.2,
+    "pockets": 1
+   },
+   {
+    "gap_mm": 3.53,
+    "pocket_mm2": 332.0,
+    "pockets": 1
+   },
+   {
+    "gap_mm": 2.88,
+    "pocket_mm2": 236.2,
+    "pockets": 1
+   },
+   {
+    "gap_mm": 2.88,
+    "pocket_mm2": 236.2,
+    "pockets": 1
+   }
+  ]
  },
  "05-lantern-lit-cabin": {
   "stroke_before_mm": 1.08,
@@ -52,7 +101,10 @@
   "regions_under_40mm2": 11,
   "filled_tiny": 20,
   "blobs_erased": 0,
-  "ink_pct": 16.9
+  "ink_pct": 16.9,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "06-hedgehog-with-mug": {
   "stroke_before_mm": 0.98,
@@ -63,7 +115,21 @@
   "regions_under_40mm2": 2,
   "filled_tiny": 48,
   "blobs_erased": 0,
-  "ink_pct": 13.0
+  "ink_pct": 13.0,
+  "clumps": [
+   {
+    "box": [
+     486,
+     530,
+     585,
+     575
+    ],
+    "mm2": 29.7,
+    "accepted": null
+   }
+  ],
+  "clumps_unreviewed": 1,
+  "flakes": []
  },
  "07-robin-on-holly": {
   "stroke_before_mm": 1.35,
@@ -74,7 +140,10 @@
   "regions_under_40mm2": 4,
   "filled_tiny": 25,
   "blobs_erased": 0,
-  "ink_pct": 15.4
+  "ink_pct": 15.4,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "08-bunny-and-sled": {
   "stroke_before_mm": 1.49,
@@ -85,7 +154,10 @@
   "regions_under_40mm2": 19,
   "filled_tiny": 4,
   "blobs_erased": 0,
-  "ink_pct": 13.9
+  "ink_pct": 13.9,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "09-bear-with-gift": {
   "stroke_before_mm": 1.15,
@@ -96,7 +168,10 @@
   "regions_under_40mm2": 7,
   "filled_tiny": 26,
   "blobs_erased": 0,
-  "ink_pct": 13.4
+  "ink_pct": 13.4,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "10-squirrel-and-pinecones": {
   "stroke_before_mm": 1.62,
@@ -107,7 +182,10 @@
   "regions_under_40mm2": 24,
   "filled_tiny": 37,
   "blobs_erased": 0,
-  "ink_pct": 17.8
+  "ink_pct": 17.8,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "11-badger-with-tree": {
   "stroke_before_mm": 1.09,
@@ -118,7 +196,10 @@
   "regions_under_40mm2": 6,
   "filled_tiny": 10,
   "blobs_erased": 0,
-  "ink_pct": 12.0
+  "ink_pct": 12.0,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "12-pinecone-wreath": {
   "stroke_before_mm": 0.81,
@@ -129,7 +210,10 @@
   "regions_under_40mm2": 2,
   "filled_tiny": 15,
   "blobs_erased": 0,
-  "ink_pct": 16.3
+  "ink_pct": 16.3,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "13-snowman-and-birds": {
   "stroke_before_mm": 1.46,
@@ -140,7 +224,10 @@
   "regions_under_40mm2": 5,
   "filled_tiny": 7,
   "blobs_erased": 0,
-  "ink_pct": 13.7
+  "ink_pct": 13.7,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "14-mouse-by-candlelight": {
   "stroke_before_mm": 1.34,
@@ -151,18 +238,35 @@
   "regions_under_40mm2": 2,
   "filled_tiny": 48,
   "blobs_erased": 0,
-  "ink_pct": 12.8
+  "ink_pct": 12.8,
+  "clumps": [
+   {
+    "box": [
+     243,
+     603,
+     412,
+     710
+    ],
+    "mm2": 37.2,
+    "accepted": null
+   }
+  ],
+  "clumps_unreviewed": 1,
+  "flakes": []
  },
  "15-birdhouse-in-snow": {
-  "stroke_before_mm": 0.69,
-  "grow_mm": 0.47,
-  "stroke_after_mm": 1.9,
-  "regions": 50,
-  "smallest_region_mm2": 12.3,
-  "regions_under_40mm2": 19,
-  "filled_tiny": 24,
+  "stroke_before_mm": 1.35,
+  "grow_mm": 0.14,
+  "stroke_after_mm": 1.76,
+  "regions": 26,
+  "smallest_region_mm2": 15.0,
+  "regions_under_40mm2": 3,
+  "filled_tiny": 16,
   "blobs_erased": 0,
-  "ink_pct": 18.6
+  "ink_pct": 12.3,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "16-tree-in-the-clearing": {
   "stroke_before_mm": 0.81,
@@ -173,7 +277,21 @@
   "regions_under_40mm2": 14,
   "filled_tiny": 26,
   "blobs_erased": 0,
-  "ink_pct": 17.2
+  "ink_pct": 17.2,
+  "clumps": [
+   {
+    "box": [
+     562,
+     746,
+     651,
+     804
+    ],
+    "mm2": 33.2,
+    "accepted": null
+   }
+  ],
+  "clumps_unreviewed": 1,
+  "flakes": []
  },
  "17-fireplace-stockings": {
   "stroke_before_mm": 1.39,
@@ -184,29 +302,38 @@
   "regions_under_40mm2": 29,
   "filled_tiny": 30,
   "blobs_erased": 0,
-  "ink_pct": 14.4
+  "ink_pct": 14.4,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "18-reindeer-with-wreath": {
   "stroke_before_mm": 1.25,
   "grow_mm": 0.2,
   "stroke_after_mm": 1.76,
-  "regions": 48,
+  "regions": 46,
   "smallest_region_mm2": 17.9,
   "regions_under_40mm2": 17,
-  "filled_tiny": 18,
-  "blobs_erased": 0,
-  "ink_pct": 14.4
+  "filled_tiny": 17,
+  "blobs_erased": 1,
+  "ink_pct": 14.3,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "19-hare-under-the-moon": {
-  "stroke_before_mm": 0.98,
-  "grow_mm": 0.34,
-  "stroke_after_mm": 1.92,
-  "regions": 38,
-  "smallest_region_mm2": 16.2,
-  "regions_under_40mm2": 5,
-  "filled_tiny": 63,
+  "stroke_before_mm": 1.15,
+  "grow_mm": 0.2,
+  "stroke_after_mm": 1.63,
+  "regions": 29,
+  "smallest_region_mm2": 42.5,
+  "regions_under_40mm2": 0,
+  "filled_tiny": 20,
   "blobs_erased": 0,
-  "ink_pct": 15.5
+  "ink_pct": 11.9,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  },
  "20-gnome-with-lantern": {
   "stroke_before_mm": 0.81,
@@ -217,6 +344,9 @@
   "regions_under_40mm2": 18,
   "filled_tiny": 18,
   "blobs_erased": 0,
-  "ink_pct": 15.2
+  "ink_pct": 15.2,
+  "clumps": [],
+  "clumps_unreviewed": 0,
+  "flakes": []
  }
 }

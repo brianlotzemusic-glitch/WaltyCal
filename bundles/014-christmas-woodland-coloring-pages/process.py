@@ -4,13 +4,18 @@
   python3 process.py 06        # one page
 
 Steps per page (free, local):
+  0. per-page RAW_WIPE / RAW_LINES on the upscaled draft: remove a stray stroke, redraw a line it hid
   1. grey -> 3x Lanczos upscale (2688x3456) -> threshold: smooth edges at print size
   2. drop black specks under SPECK_MM2 (stray dots, noise)
   3. thicken: dilate the lines so the median stroke reaches TARGET_MM (bold & easy)
   4. frame: a rounded border of the same weight closes every region that runs off the art
   5. fill any white region under FILL_MM2 with black (no fiddly slivers; eyes, holes and
      snowflake centres become solid accents)
-  5b. erase small isolated solid blobs (BLOB_*), which read as ink stains, and ERASE boxes
+  4b. ERASE boxes, then SHAPES drawn in code (chunky snowflakes, snow mounds); every snowflake is
+      checked for wide gaps between its arms (FLAKE_*), or the fill would black it out
+  5b. erase small isolated solid blobs (BLOB_*), which read as ink stains
+  5c. CLUMPS: neighbouring spaces the fill turned black that together make a dark patch over
+      CLUMP_MM2 (a splat, not an eye or a nose). Each must be fixed or accepted in CLUMP_OK
   6. potrace -> one smooth SVG path (black, even-odd), plus the region stats the checks use
 Scale: the art box is ART_W_MM wide on paper (US Letter, the smaller page), so 1 mm = PX_MM px.
 """
@@ -31,11 +36,32 @@ FILL_MM2 = 12.0                       # white regions smaller than this become b
 FRAME_MM = 1.8
 BLOB_MIN_MM, BLOB_MAX_MM, BLOB_FILL = 6.0, 18.0, 0.38
 BLOB_OPEN_MM2 = 2500.0                # ...and only when they float in open background
-# per-page: erase every ink shape lying wholly inside these boxes (draft coords), after review
-ERASE = {"04-mushrooms-in-snow": [(0, 0, 896, 520)],      # 5 tiny snowflakes that filled solid (looked like ink stains)
-         "19-hare-under-the-moon": [(0, 960, 896, 1152)]}  # 6 grass tufts that filled solid (nothing to colour in them)
-# ...replaced by big, chunky code-drawn snowflakes (centre x, y, arm length, rotation deg; draft coords)
-FLAKES = {"04-mushrooms-in-snow": [(170, 150, 62, 0), (450, 95, 50, 15), (720, 170, 66, 8), (300, 330, 44, 20), (640, 380, 46, 0)]}
+# Per-page fixes after review (draft coords, 896x1152). See formats/coloring.md.
+# RAW_WIPE: ("line", [(x, y), ...], radius) or ("box", x0, y0, x1, y1): painted white on the draft
+# RAW_LINES: ([(x, y), ...], width): drawn black on the draft (redraws a line a wipe cut)
+RAW_WIPE = {
+    "18-reindeer-with-wreath": [("line", [(225, 293), (236, 346)], 5),      # loose second stroke beside the left antler
+                                ("line", [(240, 400), (259, 385)], 5)],     # short tick that closed a black wedge with the tree
+    "19-hare-under-the-moon": [("box", 60, 862, 216, 962), ("box", 626, 866, 802, 968),     # 4 grass tufts that thickened
+                               ("box", 30, 1025, 255, 1150), ("box", 650, 1028, 850, 1150)],  # into solid splats
+}
+RAW_LINES = {
+    "19-hare-under-the-moon": [([(55, 941), (80, 936), (120, 928), (160, 914), (192, 896)], 5)],  # hill line behind tuft 1
+}
+# ERASE: every ink shape lying wholly inside these boxes, after thickening
+ERASE = {"04-mushrooms-in-snow": [(0, 0, 896, 520)],      # 5 tiny AI snowflakes that filled solid (ink stains)
+         "18-reindeer-with-wreath": [(255, 538, 292, 568)]}  # lone ink tick inside the tree
+# SHAPES drawn in code: ("flake", cx, cy, arm length, rotation deg) / ("mound", cx, base y, width, height)
+SHAPES = {"04-mushrooms-in-snow": [("flake", 150, 140, 80, 0), ("flake", 450, 105, 75, 15), ("flake", 745, 150, 80, 8),
+                                   ("flake", 290, 335, 75, 20), ("flake", 615, 345, 75, 0)],
+          "15-birdhouse-in-snow": [],
+          "19-hare-under-the-moon": [("mound", 150, 1110, 230, 70), ("mound", 745, 1118, 200, 58)]}
+FLAKE_HW, FLAKE_BPOS, FLAKE_BLEN, FLAKE_BANG = 0.13, 0.62, 0.22, 35   # arm half-width, branch position/length/angle
+FLAKE_GAP_MM = 3.0                    # min gap between the branches of neighbouring arms
+FLAKE_POCKET_MM2 = 12.0               # every space a flake encloses (its arms + hub) at least this
+# CLUMPS: filled spaces within CLUMP_JOIN_MM of each other merge into one patch
+CLUMP_JOIN_MM, CLUMP_MM2 = 1.2, 25.0
+CLUMP_OK = {}                         # slug: [((x0, y0, x1, y1), "reason")] for reviewed, accepted patches
 BLOB_MIN_AREA_MM2 = 45.0             # faces (noses, smiles, eyes) are smaller and stay
 
 
@@ -50,9 +76,66 @@ def stroke_median(mask):
     return float(np.median(2 * d[ridge])) if ridge.any() else 0.0
 
 
+def flake_geometry(cx, cy, r, rot):
+    """A chunky six-arm snowflake as an outline ring (outline minus inner), in px. Also the per-arm shapes."""
+    import math
+    from shapely.geometry import LineString
+    from shapely.ops import unary_union
+    cx, cy, r = cx * UP, cy * UP, r * UP
+    w = TARGET_MM * PX_MM / 2
+    arms = []
+    for k in range(6):
+        a = math.radians(rot + 60 * k)
+        parts = [LineString([(cx, cy), (cx + r * math.cos(a), cy + r * math.sin(a))])]
+        bx, by = cx + FLAKE_BPOS * r * math.cos(a), cy + FLAKE_BPOS * r * math.sin(a)
+        for sgn in (-1, 1):
+            b = a + sgn * math.radians(FLAKE_BANG)
+            parts.append(LineString([(bx, by), (bx + FLAKE_BLEN * r * math.cos(b), by + FLAKE_BLEN * r * math.sin(b))]))
+        arms.append(unary_union(parts))
+    shape = unary_union(arms).buffer(FLAKE_HW * r, quad_segs=8)
+    return shape.buffer(w), shape.buffer(-w), (arms, (cx, cy), r)
+
+
+def flake_check(outline, inner, arms_info):
+    """Gap between the branches of neighbouring arms (mm) and the smallest enclosed space (mm2)."""
+    from shapely.geometry import Point
+    arms, (cx, cy), r = arms_info
+    w = TARGET_MM * PX_MM / 2
+    hub = Point(cx, cy).buffer(0.9 * FLAKE_BPOS * r)
+    outer = [a.buffer(FLAKE_HW * r + w).difference(hub) for a in arms]
+    gap = min(outer[k].distance(outer[(k + 1) % 6]) for k in range(6)) / PX_MM
+    pockets = [inner] if inner.geom_type == "Polygon" else list(inner.geoms)
+    return {"gap_mm": round(gap, 2), "pocket_mm2": round(min(p.area for p in pockets) / PX_MM ** 2, 1),
+            "pockets": len(pockets)}
+
+
+def mound_geometry(cx, base, wd, ht):
+    """An outlined snow mound: half an ellipse closed by its base line."""
+    import math
+    from shapely.geometry import Polygon
+    pts = [((cx + wd / 2 * math.cos(t)) * UP, (base - ht * math.sin(t)) * UP) for t in np.linspace(0, math.pi, 60)]
+    shape = Polygon(pts).buffer(0)
+    w = TARGET_MM * PX_MM / 2
+    return shape.buffer(w), shape.buffer(-w)
+
+
 def process(slug):
     src = Image.open(os.path.join(HERE, "art", "raw", slug + ".png")).convert("L")
-    big = np.array(src.resize((W, H), Image.LANCZOS))
+    bigim = src.resize((W, H), Image.LANCZOS)
+    dr = ImageDraw.Draw(bigim)
+    for item in RAW_WIPE.get(slug, []):
+        if item[0] == "box":
+            dr.rectangle([v * UP for v in item[1:5]], fill=255)
+        else:
+            from shapely.geometry import LineString
+            poly = LineString([(x * UP, y * UP) for x, y in item[1]]).buffer(item[2] * UP)
+            dr.polygon(list(poly.exterior.coords), fill=255)
+    for pts, width in RAW_LINES.get(slug, []):
+        dr.line([(x * UP, y * UP) for x, y in pts], fill=0, width=width * UP, joint="curve")
+        for x, y in (pts[0], pts[-1]):
+            r = width * UP / 2
+            dr.ellipse([x * UP - r, y * UP - r, x * UP + r, y * UP + r], fill=0)
+    big = np.array(bigim)
     ink = big < 150
     # 2. specks
     lab, n = nd.label(ink)
@@ -83,27 +166,21 @@ def process(slug):
             if sl[1].start >= x0 * UP and sl[0].start >= y0 * UP and sl[1].stop <= x1 * UP and sl[0].stop <= y1 * UP:
                 ink[sl][lab[sl] == i] = False
                 erased_box += 1
-    if FLAKES.get(slug):
-        from shapely.geometry import LineString
-        from shapely.ops import unary_union
-        import math
+    flake_checks = []
+    if SHAPES.get(slug):
         im = Image.fromarray((ink * 255).astype(np.uint8))
         dr = ImageDraw.Draw(im)
-        for cx, cy, r, rot in FLAKES[slug]:
-            cx, cy, r = cx * UP, cy * UP, r * UP
-            parts = []
-            for k in range(6):
-                a = math.radians(rot + 60 * k)
-                ex, ey = cx + r * math.cos(a), cy + r * math.sin(a)
-                parts.append(LineString([(cx, cy), (ex, ey)]))
-                bx, by = cx + 0.62 * r * math.cos(a), cy + 0.62 * r * math.sin(a)
-                for s_ in (-1, 1):   # a short V branch on each arm
-                    b = a + s_ * math.radians(50)
-                    parts.append(LineString([(bx, by), (bx + 0.3 * r * math.cos(b), by + 0.3 * r * math.sin(b))]))
-            shape = unary_union(parts).buffer(0.13 * r, quad_segs=8)
-            w = TARGET_MM * PX_MM / 2
-            dr.polygon(list(shape.buffer(w).exterior.coords), fill=255)
-            dr.polygon(list(shape.buffer(-w).exterior.coords), fill=0)
+        w = TARGET_MM * PX_MM / 2
+        for sh in SHAPES[slug]:
+            if sh[0] == "flake":
+                outline, inner, arms = flake_geometry(*sh[1:])
+                flake_checks.append(flake_check(outline, inner, arms))
+                dr.polygon(list(outline.exterior.coords), fill=255)
+                dr.polygon(list(inner.exterior.coords), fill=0)
+            else:
+                outline, inner = mound_geometry(*sh[1:])
+                dr.polygon(list(outline.exterior.coords), fill=255)
+                dr.polygon(list(inner.exterior.coords), fill=0)
         ink = np.array(im) > 127
     # 5. fill tiny regions
     paper = ~ink & ~outside
@@ -111,7 +188,8 @@ def process(slug):
     sizes = nd.sum(paper, lab, range(1, n + 1)) / PX_MM ** 2
     tiny = np.zeros(n + 1, bool)
     tiny[1:] = sizes < FILL_MM2
-    ink[tiny[lab]] = True
+    filled = tiny[lab]
+    ink[filled] = True
     # 5b. small isolated shapes that the fill turned into solid blobs (tiny snowflakes, grass
     #     tufts) read as ink stains, so they are erased; faces (< BLOB_MIN_AREA_MM2 of ink) and anything touching
     #     another line stay
@@ -136,6 +214,18 @@ def process(slug):
         rgb = np.stack([~pre * 255] * 3, -1).astype(np.uint8)
         rgb[pre & ~ink] = (230, 0, 0)
         Image.fromarray(rgb).resize((W // 3, H // 3)).save(os.path.join(os.environ["DEBUG_DIR"], slug + ".png"))
+    # 5c. clumps: filled spaces close together that make one dark patch
+    filled &= ink
+    join = nd.binary_dilation(filled, structure=disk(int(CLUMP_JOIN_MM * PX_MM)))
+    clab, cn = nd.label(join)
+    clumps = []
+    for i, sl in enumerate(nd.find_objects(clab), 1):
+        area = (filled[sl] & (clab[sl] == i)).sum() / PX_MM ** 2
+        if area > CLUMP_MM2:
+            box = [round(sl[1].start / UP), round(sl[0].start / UP), round(sl[1].stop / UP), round(sl[0].stop / UP)]
+            cx, cy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
+            ok = [r for (x0, y0, x1, y1), r in CLUMP_OK.get(slug, []) if x0 <= cx <= x1 and y0 <= cy <= y1]
+            clumps.append({"box": box, "mm2": round(float(area), 1), "accepted": ok[0] if ok else None})
     paper = ~ink & ~outside
     lab, n = nd.label(paper)
     sizes = np.sort(nd.sum(paper, lab, range(1, n + 1)) / PX_MM ** 2)
@@ -143,7 +233,9 @@ def process(slug):
     stats = {"stroke_before_mm": round(before, 2), "grow_mm": round(grow / PX_MM, 2), "stroke_after_mm": round(after, 2),
              "regions": int(n), "smallest_region_mm2": round(float(sizes[0]), 1),
              "regions_under_40mm2": int((sizes < 40).sum()), "filled_tiny": int(tiny.sum()), "blobs_erased": erased + erased_box,
-             "ink_pct": round(float(ink.mean() * 100), 1)}
+             "ink_pct": round(float(ink.mean() * 100), 1),
+             "clumps": clumps, "clumps_unreviewed": sum(1 for c in clumps if not c["accepted"]),
+             "flakes": flake_checks}
     # 6. potrace
     import potrace
     bmp = potrace.Bitmap(~ink)            # potracer fills the False pixels
