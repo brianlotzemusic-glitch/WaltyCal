@@ -130,6 +130,16 @@ def check():
         f"(min {min(v['stroke_after_mm'] for v in stats.values())} mm)")
     res("line art: no space under 12 mm2 (process.py)", all(v["smallest_region_mm2"] >= 12 for v in stats.values()),
         f"(min {min(v['smallest_region_mm2'] for v in stats.values())} mm2)")
+    from process import CLUMP_MM2, FLAKE_GAP_MM, FLAKE_POCKET_MM2
+    clumps = [f"{k[:2]} {c['box']} {c['mm2']} mm2" for k, v in stats.items() for c in v.get("clumps", []) if not c["accepted"]]
+    res(f"line art: no dark clumps (spaces the fill turned black, together over {CLUMP_MM2:.0f} mm2) unless reviewed in CLUMP_OK",
+        all("clumps" in v for v in stats.values()) and not clumps, ", ".join(clumps) or
+        f"({sum(len(v['clumps']) for v in stats.values())} reviewed and accepted)")
+    flakes = [(k[:2], f) for k, v in stats.items() for f in v.get("flakes", [])]
+    res(f"code-drawn snowflakes: >= {FLAKE_GAP_MM} mm between the arms, every enclosed space >= {FLAKE_POCKET_MM2:.0f} mm2",
+        all(f["gap_mm"] >= FLAKE_GAP_MM and f["pocket_mm2"] >= FLAKE_POCKET_MM2 for _, f in flakes),
+        f"({len(flakes)} flakes, narrowest gap {min((f['gap_mm'] for _, f in flakes), default=0)} mm, "
+        f"smallest space {min((f['pocket_mm2'] for _, f in flakes), default=0)} mm2)")
     with zipfile.ZipFile(os.path.join(HERE, ZIP)) as z:
         names = sorted(z.namelist())
         res("ZIP contents", names == sorted(list(PDFS) + ["README-LICENSE.txt"]), str(names))

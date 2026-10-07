@@ -33,10 +33,12 @@ This is the first format whose art comes from AI drafts rather than code: colori
 3. **Thicken** until the median stroke is 1.6 mm, never adding more than 0.55 mm a side (a draft already bold is left alone).
 4. Draw the frame, and treat the paper outside its rounded corners as paper, not a space.
 5. **Fill every white space under 12 mm² with black.** Fiddly slivers are what makes AI line art unusable for colouring; filled, they become eyes, nostrils, berry centres and snowflake cores.
-6. Erase solid blobs 6–18 mm across that float in open background (over 45 mm² of ink, enclosing no paper, in a region over 2500 mm²): they read as ink stains. Faces and anything touching another line stay. Per-page `ERASE` boxes and code-drawn `FLAKES` (chunky six-arm snowflakes) handle what the rule can't.
-7. `potrace` → one smooth even-odd path per page.
+6. Erase solid blobs 6–18 mm across that float in open background (over 45 mm² of ink, enclosing no paper, in a region over 2500 mm²): they read as ink stains. Faces and anything touching another line stay. Per-page fixes handle what the rule can't: `RAW_WIPE` / `RAW_LINES` (paint a stray stroke out of the draft, redraw a line it cut), `ERASE` boxes, and code-drawn `SHAPES` (chunky six-arm snowflakes, outlined snow mounds).
+7. **Clumps:** the fill in step 5 can turn a fine motif (grass tufts, crowded leaves, snowflake details) into one solid black splat. Every patch of newly filled ink over **25 mm²** (filled spaces within 1.2 mm of each other count as one patch) is flagged. Fix each with a wipe, `ERASE` or a code-drawn replacement, or, after looking at it, accept it in `CLUMP_OK` with the reason (a cup of cocoa, a solid bow). An eye or a nose is far smaller and never flags.
+8. **Snowflakes** drawn in code need **at least 3 mm between the branches of neighbouring arms** and every space they enclose ≥ 12 mm² at the size used, or they read as dark rosettes (pilot page 04). With the pilot geometry that means an arm length of at least 75 draft px (~15 mm). AI-drawn snowflakes with small inner details fill solid: erase them and draw them in code.
+9. `potrace` → one smooth even-odd path per page.
 
-`art/stats.json` records, per page, the stroke before and after, the number of spaces, the smallest space and the ink share — the contact sheet prints them.
+`art/stats.json` records, per page, the stroke before and after, the number of spaces, the smallest space, the ink share, the clumps (and whether each was accepted) and each code-drawn snowflake's arm gap — the contact sheet prints the first few, and `process.py` prints a warning for an unreviewed clump or a tight snowflake.
 
 ## Art (cheap recipe only, FACTORY.md "Art quality")
 - Prompt: the coloring-page block in `shop-profile/STYLE.md` + ` Subject: ` + the subject. **Generate at 896 × 1152** (Recraft flash refuses 1024 × 1365).
@@ -48,6 +50,7 @@ This is the first format whose art comes from AI drafts rather than code: colori
 `python3 gen.py --check` must print ALL CHECKS PASS:
 - 20 distinct subjects and page names; `art/stats.json` covers all 20
 - line art: median stroke ≥ 1.5 mm on every page; no designed space under 12 mm²
+- no dark clumps: no patch of filled-in ink over 25 mm² that is not reviewed in `CLUMP_OK`; every code-drawn snowflake has ≥ 3 mm between its arms and no enclosed space under 12 mm²
 - every PDF: right page count and size, **no embedded fonts and no extractable text**, under 20 MB
 - every rendered page (200 dpi): ≥ 15 colourable spaces, each ≥ 10 mm²; art ≥ 12 mm from the paper edge; ink 8–32% of the page
 - pinch points (spaces under 10 mm² where two thick lines meet, under 1 mm wide) are bounded, not banned: at most 16 a page and under 0.25% of the page's colourable area. They exist in hand-style line art at any resolution
@@ -58,6 +61,7 @@ This is the first format whose art comes from AI drafts rather than code: colori
 Then look, don't only count:
 - **every page of both PDFs** (`pdftoppm -r 60`) and `contact-sheet.png`: every subject reads at a glance, nothing clipped, no two pages alike
 - every page at full size for AI faults: letters, signatures or watermarks, extra limbs, warped faces, grey smudges, a subject that is not what it claims
+- **dark clumps or splats made by filling**: grass, leaves, snowflakes or berries that came out as solid black patches; stray strokes and broken fragments where two drawn things overlap (an antler crossing a tree)
 - would a child colour it? Anything that needs a fine-tip pen is too detailed: swap the draft
 - the listing images at Etsy thumbnail size (300 px wide)
 

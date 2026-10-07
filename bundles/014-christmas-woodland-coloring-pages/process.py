@@ -37,31 +37,46 @@ FRAME_MM = 1.8
 BLOB_MIN_MM, BLOB_MAX_MM, BLOB_FILL = 6.0, 18.0, 0.38
 BLOB_OPEN_MM2 = 2500.0                # ...and only when they float in open background
 # Per-page fixes after review (draft coords, 896x1152). See formats/coloring.md.
-# RAW_WIPE: ("line", [(x, y), ...], radius) or ("box", x0, y0, x1, y1): painted white on the draft
+# RAW_WIPE: ("line", [(x, y), ...], radius), ("box", x0, y0, x1, y1) or ("poly", [(x, y), ...]): painted white on the draft
 # RAW_LINES: ([(x, y), ...], width): drawn black on the draft (redraws a line a wipe cut)
 RAW_WIPE = {
+    "04-mushrooms-in-snow": [("poly", [(745, 774), (797, 774), (799, 805), (791, 830), (778, 850), (768, 870), (758, 890),
+                                       (750, 912), (708, 912), (711, 900), (710, 880), (714, 860), (742, 858),
+                                       (749, 848), (754, 838), (755, 825), (754, 812), (752, 800), (749, 790)])],
+                            # crowded fern leaves between the right mushroom and its stem that filled into one black clump
     "18-reindeer-with-wreath": [("line", [(225, 293), (236, 346)], 5),      # loose second stroke beside the left antler
                                 ("line", [(240, 400), (259, 385)], 5)],     # short tick that closed a black wedge with the tree
-    "19-hare-under-the-moon": [("box", 60, 862, 216, 962), ("box", 626, 866, 802, 968),     # 4 grass tufts that thickened
+    "19-hare-under-the-moon": [("box", 60, 862, 216, 962), ("box", 608, 866, 802, 968),     # 4 grass tufts that thickened
                                ("box", 30, 1025, 255, 1150), ("box", 650, 1028, 850, 1150)],  # into solid splats
 }
 RAW_LINES = {
-    "19-hare-under-the-moon": [([(55, 941), (80, 936), (120, 928), (160, 914), (192, 896)], 5)],  # hill line behind tuft 1
+    "04-mushrooms-in-snow": [([(812, 772), (803, 810), (799, 830), (788, 842), (777, 860), (771, 878), (762, 890),
+                               (757, 900), (749, 920), (739, 950), (736, 962)], 8)],   # the fern's double stem as one line
+    "18-reindeer-with-wreath": [([(229, 383), (238, 397), (247, 411)], 6),  # tree edge and antler beam the tick wipe cut
+                                ([(244, 367), (258, 385), (272, 402)], 7)],
+    "19-hare-under-the-moon": [([(55, 941), (80, 936), (120, 928), (160, 914), (192, 897), (212, 882), (228, 869),
+                                 (238, 864)], 5),                                        # hill line behind tufts 1
+                               ([(728, 860), (750, 866), (770, 873), (790, 882), (808, 892)], 5)],  # ...and tuft 2
 }
 # ERASE: every ink shape lying wholly inside these boxes, after thickening
 ERASE = {"04-mushrooms-in-snow": [(0, 0, 896, 520)],      # 5 tiny AI snowflakes that filled solid (ink stains)
+         "15-birdhouse-in-snow": [(520, 0, 860, 320)],      # 2 AI snowflakes whose inner details filled solid
          "18-reindeer-with-wreath": [(255, 538, 292, 568)]}  # lone ink tick inside the tree
 # SHAPES drawn in code: ("flake", cx, cy, arm length, rotation deg) / ("mound", cx, base y, width, height)
 SHAPES = {"04-mushrooms-in-snow": [("flake", 150, 140, 80, 0), ("flake", 450, 105, 75, 15), ("flake", 745, 150, 80, 8),
                                    ("flake", 290, 335, 75, 20), ("flake", 615, 345, 75, 0)],
-          "15-birdhouse-in-snow": [],
+          "15-birdhouse-in-snow": [("flake", 640, 108, 75, 10), ("flake", 790, 262, 75, 25)],
           "19-hare-under-the-moon": [("mound", 150, 1110, 230, 70), ("mound", 745, 1118, 200, 58)]}
 FLAKE_HW, FLAKE_BPOS, FLAKE_BLEN, FLAKE_BANG = 0.13, 0.62, 0.22, 35   # arm half-width, branch position/length/angle
 FLAKE_GAP_MM = 3.0                    # min gap between the branches of neighbouring arms
 FLAKE_POCKET_MM2 = 12.0               # every space a flake encloses (its arms + hub) at least this
 # CLUMPS: filled spaces within CLUMP_JOIN_MM of each other merge into one patch
 CLUMP_JOIN_MM, CLUMP_MM2 = 1.2, 25.0
-CLUMP_OK = {}                         # slug: [((x0, y0, x1, y1), "reason")] for reviewed, accepted patches
+CLUMP_OK = {                          # slug: [((x0, y0, x1, y1), "reason")] for reviewed, accepted patches
+    "06-hedgehog-with-mug": [((480, 520, 595, 580), "the cocoa in the mug: one dark drink with a wavy top, reads as intended")],
+    "14-mouse-by-candlelight": [((235, 595, 420, 715), "the open book's page block: reads as a dark book, the cover stays open")],
+    "16-tree-in-the-clearing": [((555, 740, 660, 810), "the gift's bow: a solid black bow on an outlined box")],
+}
 BLOB_MIN_AREA_MM2 = 45.0             # faces (noses, smiles, eyes) are smaller and stay
 
 
@@ -126,6 +141,8 @@ def process(slug):
     for item in RAW_WIPE.get(slug, []):
         if item[0] == "box":
             dr.rectangle([v * UP for v in item[1:5]], fill=255)
+        elif item[0] == "poly":
+            dr.polygon([(x * UP, y * UP) for x, y in item[1]], fill=255)
         else:
             from shapely.geometry import LineString
             poly = LineString([(x * UP, y * UP) for x, y in item[1]]).buffer(item[2] * UP)
@@ -268,4 +285,11 @@ if __name__ == "__main__":
             continue
         allstats[slug] = process(slug)
         print(slug, allstats[slug], flush=True)
+        st = allstats[slug]
+        for c in st["clumps"]:
+            if not c["accepted"]:
+                print(f"  CLUMP {c['box']} {c['mm2']} mm2: fix it (RAW_WIPE / ERASE / SHAPES) or accept it in CLUMP_OK", flush=True)
+        for f in st["flakes"]:
+            if f["gap_mm"] < FLAKE_GAP_MM or f["pocket_mm2"] < FLAKE_POCKET_MM2:
+                print(f"  FLAKE too tight ({f}): make it bigger; it needs {FLAKE_GAP_MM} mm between the arms", flush=True)
     json.dump(allstats, open(sp, "w"), indent=1)

@@ -45,25 +45,14 @@
   "stroke_before_mm": 0.81,
   "grow_mm": 0.41,
   "stroke_after_mm": 1.9,
-  "regions": 73,
+  "regions": 71,
   "smallest_region_mm2": 12.1,
-  "regions_under_40mm2": 40,
-  "filled_tiny": 74,
+  "regions_under_40mm2": 39,
+  "filled_tiny": 60,
   "blobs_erased": 8,
-  "ink_pct": 20.4,
-  "clumps": [
-   {
-    "box": [
-     733,
-     772,
-     805,
-     877
-    ],
-    "mm2": 44.8,
-    "accepted": null
-   }
-  ],
-  "clumps_unreviewed": 1,
+  "ink_pct": 20.1,
+  "clumps": [],
+  "clumps_unreviewed": 0,
   "flakes": [
    {
     "gap_mm": 3.53,
@@ -71,8 +60,8 @@
     "pockets": 1
    },
    {
-    "gap_mm": 2.88,
-    "pocket_mm2": 236.2,
+    "gap_mm": 3.21,
+    "pocket_mm2": 282.1,
     "pockets": 1
    },
    {
@@ -81,13 +70,13 @@
     "pockets": 1
    },
    {
-    "gap_mm": 2.88,
-    "pocket_mm2": 236.2,
+    "gap_mm": 3.21,
+    "pocket_mm2": 282.1,
     "pockets": 1
    },
    {
-    "gap_mm": 2.88,
-    "pocket_mm2": 236.2,
+    "gap_mm": 3.21,
+    "pocket_mm2": 282.1,
     "pockets": 1
    }
   ]
@@ -125,10 +114,10 @@
      575
     ],
     "mm2": 29.7,
-    "accepted": null
+    "accepted": "the cocoa in the mug: one dark drink with a wavy top, reads as intended"
    }
   ],
-  "clumps_unreviewed": 1,
+  "clumps_unreviewed": 0,
   "flakes": []
  },
  "07-robin-on-holly": {
@@ -248,25 +237,36 @@
      710
     ],
     "mm2": 37.2,
-    "accepted": null
+    "accepted": "the open book's page block: reads as a dark book, the cover stays open"
    }
   ],
-  "clumps_unreviewed": 1,
+  "clumps_unreviewed": 0,
   "flakes": []
  },
  "15-birdhouse-in-snow": {
   "stroke_before_mm": 1.35,
   "grow_mm": 0.14,
-  "stroke_after_mm": 1.76,
-  "regions": 26,
+  "stroke_after_mm": 1.68,
+  "regions": 28,
   "smallest_region_mm2": 15.0,
   "regions_under_40mm2": 3,
-  "filled_tiny": 16,
-  "blobs_erased": 0,
-  "ink_pct": 12.3,
+  "filled_tiny": 8,
+  "blobs_erased": 17,
+  "ink_pct": 12.0,
   "clumps": [],
   "clumps_unreviewed": 0,
-  "flakes": []
+  "flakes": [
+   {
+    "gap_mm": 3.21,
+    "pocket_mm2": 282.1,
+    "pockets": 1
+   },
+   {
+    "gap_mm": 3.21,
+    "pocket_mm2": 282.1,
+    "pockets": 1
+   }
+  ]
  },
  "16-tree-in-the-clearing": {
   "stroke_before_mm": 0.81,
@@ -287,10 +287,10 @@
      804
     ],
     "mm2": 33.2,
-    "accepted": null
+    "accepted": "the gift's bow: a solid black bow on an outlined box"
    }
   ],
-  "clumps_unreviewed": 1,
+  "clumps_unreviewed": 0,
   "flakes": []
  },
  "17-fireplace-stockings": {
@@ -311,12 +311,12 @@
   "stroke_before_mm": 1.25,
   "grow_mm": 0.2,
   "stroke_after_mm": 1.76,
-  "regions": 46,
+  "regions": 48,
   "smallest_region_mm2": 17.9,
   "regions_under_40mm2": 17,
-  "filled_tiny": 17,
+  "filled_tiny": 18,
   "blobs_erased": 1,
-  "ink_pct": 14.3,
+  "ink_pct": 14.4,
   "clumps": [],
   "clumps_unreviewed": 0,
   "flakes": []
@@ -325,7 +325,7 @@
   "stroke_before_mm": 1.15,
   "grow_mm": 0.2,
   "stroke_after_mm": 1.63,
-  "regions": 29,
+  "regions": 30,
   "smallest_region_mm2": 42.5,
   "regions_under_40mm2": 0,
   "filled_tiny": 20,
