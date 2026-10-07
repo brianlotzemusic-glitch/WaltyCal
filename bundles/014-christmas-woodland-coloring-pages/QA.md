@@ -94,3 +94,37 @@ The pipeline, page sizes, no-text proof, the pinch-point bound, the hash check, 
 After fixes 1–4, yes. The fox, owl, hedgehog, bear, mouse and gnome pages are better than most "bold and easy christmas coloring" results, and the thumbnail would stop a scroller. As shipped, page 19's ink splats would look like a printing fault to a parent.
 
 **Verdict: REJECTED**
+
+---
+
+# QA round 2 (final)
+
+## Verdict: APPROVED
+
+I re-ran every check myself on the files unpacked from the rebuilt ZIP (dated 7 Oct, 19:24).
+
+- **Files.** The ZIP holds exactly the 2 PDFs and README-LICENSE.txt, and the README is the same as the bundle copy.
+  - Each PDF has 20 pages: Letter is 612×792 pt and A4 is 594.96×841.92 pt.
+  - There are no fonts and no extractable text.
+  - `gen.py --check` (for reference only) prints ALL CHECKS PASS, including the new clump check.
+- **No regressions.** I rendered all 20 pages of both PDFs and diffed them pixel by pixel against my round-1 renders. Only pages 04, 15, 18 and 19 changed, on both Letter and A4. The other 16 pages are identical, so my round-1 approval of them stands.
+- **Fix 1, 19 Hare: done.** The four ink-splat tufts are gone. The hill line is redrawn cleanly, and two outlined snow mounds sit at the bottom frame. The page is calm and clean, and the hare is unchanged.
+- **Fix 2, 04 Mushrooms: done.** All five snowflakes are now open, matching, chunky flakes with clear gaps between the arms. There are no dark rosettes. The fern clump by the right mushroom is thinned, and nothing else on the page changed.
+- **Fix 3, 15 Birdhouse: done, and much better.** The new flash re-roll has two matching round birds sitting on a snowy roof, with simple faces and no odd eyes. There is a plain square post, a holly sprig with open leaves and berries, and two code-drawn open snowflakes. There are no fine needles. It reads as "birdhouse in snow" at a glance and is now one of the cleaner pages.
+  - Spend: the re-roll is logged in log/image-spend.csv (5 Oct 11:33, $0.028). The total is $0.623, which matches PROMPTS.md.
+- **Fix 4, 18 Reindeer: done.** The black wedge and the lone tick are gone. At 200 dpi, the place where the left antler crosses the tree reads as a tree branch tip beside the antler, with no broken fragment.
+- **Accepted clumps.** I mapped each `CLUMP_OK` box to the page and accept all three. Each one reads as intended and is not a splat:
+  - 06: the cocoa in the mug (29.7 mm²)
+  - 14: the dark page block of the open book (37.2 mm²)
+  - 16: the solid bow on the right-hand gift (33.2 mm²)
+- **Listing images.**
+  - Image 1 is rebuilt, still 3000×2250, and shows the cleaned page 18 behind the fox. It still reads at 300 px.
+  - Image 2 shows the new pages 04, 15 and 19, numbered and named correctly.
+  - Images 3 and 4 show only unchanged pages (01, 02, 06, 13), so they are still accurate.
+  - The contact sheet is rebuilt and matches the PDFs.
+- **Copy.** The listing.json, LISTING.md and README are unchanged and still accurate. The new page 15 still has a birdhouse, birds, berries and snow, so its name and the description hold. All the listing rules from round 1 still pass.
+- **formats/coloring.md.** S1 and S2 are adopted (steps 7 and 8 and the "Then look" bullets). S3, the stale "draw in code until 1 Nov" line in FACTORY.md "Turnaround week", is for the Manager and does not block this bundle.
+
+Optional round-1 items 6 (03 wedges) and 7 (20 lantern strands) were not done. They are cosmetic and do not block approval.
+
+**Verdict: APPROVED**

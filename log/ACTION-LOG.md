@@ -127,3 +127,4 @@
 - 2026-10-07 19:15 UTC: Researcher refresh (research/refresh-2026-10-07.md): Nutcracker turned into [format] clipart and moved up to #3 (~22.2k Dec searches on ~3.7k listings, RankHero est.). Non-cut formats are now 8 of 23.
 - 2026-10-07 19:16 UTC: Trend scan 7 (trends/2026-10-07-19.md): no picks, the 7th empty scan in a row. The owner's answer on cutting scans to once a day is still open.
 - 2026-10-07 19:27 UTC: The owner cut the Trend Hunter to once a day (6am ET shift). FACTORY.md updated.
+- 2026-10-07 19:27 UTC: QA approved 014 in round 2; listed on Etsy as 4590675214 (18 live). The Recraft line QA flagged in FACTORY.md was already fixed on Oct 5.

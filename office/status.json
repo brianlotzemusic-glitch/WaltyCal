@@ -1,47 +1,47 @@
 {
-  "updated_at": "2026-10-07T19:14:39Z",
+  "updated_at": "2026-10-07T19:27:46Z",
   "next_run_at": "2026-10-08T01:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 17,
-  "bundles_built": 14,
+  "listings_live": 18,
+  "bundles_built": 15,
   "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "3pm ET shift Oct 7. Shifts Oct 5 9am to Oct 7 12pm were missed (usage limit).",
-      "since": "2026-10-07T19:14:39Z"
+      "state": "idle",
+      "task": "3pm ET shift done. Next: 9:12pm ET (Designer).",
+      "since": "2026-10-07T19:27:46Z"
     },
     {
       "id": "researcher",
       "name": "Researcher",
-      "state": "working",
-      "task": "Daily Etsy refresh for Oct 7.",
-      "since": "2026-10-07T19:14:39Z"
+      "state": "idle",
+      "task": "Oct 7 refresh: nutcracker became clipart and moved up to #3.",
+      "since": "2026-10-07T19:27:46Z"
     },
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Finishing QA round-1 fixes on 014 coloring pages.",
-      "since": "2026-10-07T19:14:39Z"
+      "state": "idle",
+      "task": "014 coloring pages approved and listed.",
+      "since": "2026-10-07T19:27:46Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved TpT 002 in round 3; all 12 patterns 4 beats, keys recounted.",
-      "since": "2026-10-05T01:38:41Z"
+      "task": "Approved 014 in round 2.",
+      "since": "2026-10-07T19:27:46Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Nothing approved to list; 014 is in QA.",
-      "since": "2026-10-07T19:14:39Z"
+      "task": "Listed 014 coloring pages (Etsy 4590675214). 1 of 4 slots used Oct 7.",
+      "since": "2026-10-07T19:27:46Z"
     },
     {
       "id": "analyst",
@@ -67,29 +67,34 @@
     {
       "id": "hunter",
       "name": "Trend Hunter",
-      "state": "working",
-      "task": "Scan 7 (3pm ET).",
-      "since": "2026-10-07T19:14:39Z"
+      "state": "idle",
+      "task": "Scan 7: none approved. Now once a day at 6am ET (owner).",
+      "since": "2026-10-07T19:27:46Z"
     },
     {
       "id": "judge",
       "name": "Trend Judge",
       "state": "idle",
-      "task": "Rejected all 7 from scan 6 (stale evidence, saturated, IP).",
-      "since": "2026-10-05T10:17:42Z"
+      "task": "Nothing to judge from scan 7.",
+      "since": "2026-10-07T19:27:46Z"
     }
   ],
   "queue": [
     "[tpt] Winter Rhythm Bingo: 30 unique cards, rhythm-pattern calling cards, non-denomination",
     "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,",
     "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea",
-    "[format] Coloring pages pilot: Christmas & cozy winter woodland bold & easy coloring pages",
     "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si",
+    "[format] Nutcracker ballet clipart (changed 7 Oct from cut files to PNG clipart + single-l",
     "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + ",
     "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and ",
     "[format] Woodland Christmas scavenger hunt printable (new 4 Oct; same family as the approv"
   ],
   "feed": [
+    {
+      "t": "2026-10-07T19:27:46Z",
+      "who": "lister",
+      "msg": "Listed 014: Christmas coloring pages (20 pages, $3.99). 18 live."
+    },
     {
       "t": "2026-10-07T19:14:39Z",
       "who": "analyst",
