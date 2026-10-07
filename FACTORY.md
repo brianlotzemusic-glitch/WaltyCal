@@ -24,7 +24,7 @@ The **Manager** runs 5 shifts a day: **6:12am, 9:12am, 12:12pm, 3:12pm and 9:12p
 | Analyst | `python3 tools/etsy.py stats`, then applies the optimization rules | Etsy variables set and stats older than 24 h |
 | Scout | Researches which business to open next (see "New businesses"); writes `ventures/research/YYYY-MM-DD.md` and re-ranks `ventures/shortlist.md` | Last research older than 7 days |
 | Launcher | Builds a launch kit for the Scout's #1 pick (see "New businesses") | Venture gate met, and no kit in progress or the last kit's owner steps are done |
-| Trend Hunter | Scans what is going viral right now and writes candidates to `trends/` (see "Trend desk") | Twice a day: the 6am and 3pm shifts |
+| Trend Hunter | Scans what is going viral right now and writes candidates to `trends/` (see "Trend desk") | Once a day: the 6am shift (owner, 7 Oct 2026, after 7 empty scans) |
 | Trend Judge | Screens the Hunter's candidates for IP risk, buyer demand and lifespan; puts approved ones at the top of `queue.md` as `[trend]` | Right after the Trend Hunter |
 
 Work out "last done" times from `office/status.json` and `git log`. If nothing is due, the Manager only refreshes the status file (workers shown as idle with what they're waiting for) and ends the run.
@@ -180,7 +180,7 @@ The shop has no revenue yet, so every dollar counts. The Manager enforces these 
 ## Trend desk (Trend Hunter + Trend Judge)
 The owner's request (3 Oct 2026): a dedicated team chasing current viral trends to make things people buy right now.
 
-**Trend Hunter** (6am and 3pm shifts). Find what is taking off this week, not what sold last year.
+**Trend Hunter** (6am shift only; owner, 7 Oct 2026). Find what is taking off this week, not what sold last year.
 **TikTok comes first** (owner, 3 Oct 2026: "whatever is becoming viral on TikTok needs to be made"). Every scan starts with TikTok, and at least 2 of each scan's 3 picks for the Judge must come from TikTok.
 - The cloud can't read TikTok directly: the Creative Center's data needs a login, and its pages fail behind the proxy. So find TikTok trends through web search, every scan:
   - "viral on TikTok this week"

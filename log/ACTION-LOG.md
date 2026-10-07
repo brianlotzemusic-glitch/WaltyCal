@@ -126,3 +126,4 @@
 - 2026-10-07 19:14 UTC: 3pm ET shift Oct 7. Shifts from Oct 5 13:13 UTC to Oct 7 16:13 UTC did not run (weekly usage limit; the 014 Designer fix run died mid-way, partial work committed). Analyst stats: 17 listings, 5 views, 1 favourite, 0 sales, no optimization triggers. TpT 002 released since Oct 5 and no tpt/UPLOADER-STATUS.json, so the nightly job isn't installed; pushed the owner once. Designer (014 fixes), Researcher and Trend Hunter running.
 - 2026-10-07 19:15 UTC: Researcher refresh (research/refresh-2026-10-07.md): Nutcracker turned into [format] clipart and moved up to #3 (~22.2k Dec searches on ~3.7k listings, RankHero est.). Non-cut formats are now 8 of 23.
 - 2026-10-07 19:16 UTC: Trend scan 7 (trends/2026-10-07-19.md): no picks, the 7th empty scan in a row. The owner's answer on cutting scans to once a day is still open.
+- 2026-10-07 19:27 UTC: The owner cut the Trend Hunter to once a day (6am ET shift). FACTORY.md updated.
