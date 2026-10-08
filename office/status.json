@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-08T02:50:54Z",
-  "next_run_at": "2026-10-08T10:12:00Z",
+  "updated_at": "2026-10-08T10:14:12Z",
+  "next_run_at": "2026-10-08T13:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 19,
@@ -11,9 +11,9 @@
     {
       "id": "manager",
       "name": "Manager",
-      "state": "idle",
-      "task": "9pm ET shift done. Next: 6:12am ET (Trend Hunter, Researcher, Designer, Analyst).",
-      "since": "2026-10-08T02:50:54Z"
+      "state": "working",
+      "task": "6am ET shift: trend scan and TpT 003 build running.",
+      "since": "2026-10-08T10:14:12Z"
     },
     {
       "id": "researcher",
@@ -25,9 +25,9 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "015 Highland cow clipart approved and listed.",
-      "since": "2026-10-08T02:50:54Z"
+      "state": "working",
+      "task": "Building TpT 003: Winter Rhythm Bingo (grades 3-6).",
+      "since": "2026-10-08T10:14:12Z"
     },
     {
       "id": "qa",
@@ -67,9 +67,9 @@
     {
       "id": "hunter",
       "name": "Trend Hunter",
-      "state": "idle",
-      "task": "Scan 7: none approved. Now once a day at 6am ET (owner).",
-      "since": "2026-10-07T19:27:46Z"
+      "state": "working",
+      "task": "Daily scan 8 (6am ET).",
+      "since": "2026-10-08T10:14:12Z"
     },
     {
       "id": "judge",
