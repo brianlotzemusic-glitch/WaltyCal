@@ -23,6 +23,8 @@ case "$REPO/" in
     git -C "$RUNNER" checkout -q shop-factory
     git -C "$RUNNER" pull -q --no-rebase origin shop-factory
     if [ ! -d "$RUNNER/node_modules/playwright" ]; then (cd "$RUNNER" && npm install --silent --no-audit --no-fund playwright); fi
+    # Each Playwright version needs its own Chromium build; fetch it if missing (quick when present).
+    (cd "$RUNNER" && npx --no-install playwright install chromium)
     echo "This repo is in a folder macOS hides from background jobs, so the job runs from $RUNNER."
     REPO="$RUNNER";;
 esac
