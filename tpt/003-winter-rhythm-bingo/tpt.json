@@ -1,0 +1,29 @@
+{
+  "price": "5.00",
+  "license_price": "5.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade",
+    "6th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Winter"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 40,
+  "files": {
+    "product": "winter-rhythm-bingo.pdf",
+    "preview": "winter-rhythm-bingo-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
