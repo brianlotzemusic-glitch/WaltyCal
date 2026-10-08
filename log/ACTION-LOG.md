@@ -133,3 +133,4 @@
 - 2026-10-08 10:14 UTC: 6am ET shift. Trend scan 8 and the Designer (TpT 003 Winter Rhythm Bingo) running. Still no TpT nightly run.
 - 2026-10-08 10:16 UTC: Trend scan 8 (trends/2026-10-08-10.md): no picks, the 8th empty scan in a row.
 - 2026-10-08 10:35 UTC: TpT 003 Winter Rhythm Bingo (40 pp, $5, $0 AI). QA round 1 rejected it (card notation too small for grade 3, footer overflow, doubled watermark); round 2 approved after landscape cards. Release gate passed (title 79, price = license, 4 grades, 1 subject, 1 tag); release written. Two TpT items now wait for the Mac nightly job.
+- 2026-10-08 12:35 UTC: The owner cut factory usage. Shifts go from 5 to 2 a day (6:12am and 6:12pm ET), each a fresh session (new routine trig_01TdEToAZy5EWNYyoCg6mav6; old trig_01PMcqZ8TkVqb7QVtyN9tGHH disabled). At most 2 builds a day, Trend Hunter weekly (Monday 6am), Sonnet for every role except the Designer, fresh agents for fix rounds, low-res visual checks. FACTORY.md updated.

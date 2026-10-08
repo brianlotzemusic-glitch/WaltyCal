@@ -12,19 +12,26 @@ This branch (`shop-factory`) is the Etsy shop's workspace. The shop is **Duskwoo
 - `reports/` — weekly reports
 
 ## The team
-The **Manager** runs 5 shifts a day: **6:12am, 9:12am, 12:12pm, 3:12pm and 9:12pm Eastern** (owner, 4 Oct 2026, to cut usage; routine "Shop factory: shifts"). The watchdog checks at 10:40am and 4:40pm Eastern. Each shift does everything that's due, then stops. The Manager decides which specialists are due, runs each one as a separate subagent (Agent tool) with a focused brief, and records the results. Specialists never run on their own schedule.
+The **Manager** runs 2 shifts a day: **6:12am and 6:12pm Eastern** (owner, 8 Oct 2026, to leave weekly usage for the owner's other work; was 5). Each shift is a fresh session started by the routine "Shop factory: shifts", so all state lives in git (FACTORY.md, queue.md, office/status.json, log/). The watchdog checks at 10:40am and 4:40pm Eastern. Each shift does everything that's due, then stops. The Manager decides which specialists are due, runs each one as a separate subagent (Agent tool) with a focused brief, and records the results. Specialists never run on their own schedule.
+
+**Usage budget (owner, 8 Oct 2026).** The factory must leave room in the owner's weekly Claude usage:
+- Briefs are lean: point the agent at the exact FACTORY.md sections and files it needs (grep, don't read everything), and cap research at about 10 searches.
+- Models: the Designer runs on Opus; the Researcher, Trend Hunter, Trend Judge, QA, Analyst and Scout run on Sonnet (Agent tool `model: "sonnet"`).
+- Fix rounds use a **fresh** Designer or QA agent with a short brief (the QA.md findings and the files to change); never resume a long-running agent, because it carries its whole context into every step.
+- Visual checks use low-resolution renders (about 60–100 dpi, contact sheets, sampled pages), with 100% crops only where a defect is suspected.
+- If a shift finds the usage limit hit, it records that in status.json and stops; it does not retry.
 
 | Worker | Job | Due when |
 |---|---|---|
 | Manager | Reads state, assigns work, updates `office/status.json`, writes the weekly report (Mondays) | Every run |
 | Researcher | Web-searches Etsy trends and seasonal timing across **all digital product types** (see "Product formats"); reorders `queue.md`; adds themes when fewer than 8 remain; proposes new formats | Last research older than 24 h |
-| Designer | Builds ONE bundle from the top unchecked theme (spec below) | Every shift, if fewer than 4 products were built today (Eastern) and the last one is QA-approved or rejected. That's up to 5 shifts, so 4 a day is reachable. |
+| Designer | Builds ONE bundle from the top unchecked theme (spec below) | Each shift, if fewer than 2 products were built today (Eastern) and the last one is QA-approved or rejected: one build per shift, at most 2 a day (owner, 8 Oct 2026; was 4). |
 | QA | Independent review of the Designer's bundle: looks at the contact sheet, runs the checks, sends it back to the Designer with specific fixes or approves it. Max 2 rounds; a bundle that still fails is moved to `bundles/_rejected/` and not listed | Right after the Designer |
 | Lister | Uploads approved bundles that have no `etsy_listing_id` (`python3 tools/etsy.py upload bundles/NNN-slug`) | Etsy variables set and fewer than 4 uploads today |
 | Analyst | `python3 tools/etsy.py stats`, then applies the optimization rules | Etsy variables set and stats older than 24 h |
 | Scout | Researches which business to open next (see "New businesses"); writes `ventures/research/YYYY-MM-DD.md` and re-ranks `ventures/shortlist.md` | Last research older than 7 days |
 | Launcher | Builds a launch kit for the Scout's #1 pick (see "New businesses") | Venture gate met, and no kit in progress or the last kit's owner steps are done |
-| Trend Hunter | Scans what is going viral right now and writes candidates to `trends/` (see "Trend desk") | Once a day: the 6am shift (owner, 7 Oct 2026, after 7 empty scans) |
+| Trend Hunter | Scans what is going viral right now and writes candidates to `trends/` (see "Trend desk") | Once a week: the Monday 6am shift (owner, 8 Oct 2026, after 8 empty scans; was daily) |
 | Trend Judge | Screens the Hunter's candidates for IP risk, buyer demand and lifespan; puts approved ones at the top of `queue.md` as `[trend]` | Right after the Trend Hunter |
 
 Work out "last done" times from `office/status.json` and `git log`. If nothing is due, the Manager only refreshes the status file (workers shown as idle with what they're waiting for) and ends the run.
@@ -130,7 +137,7 @@ Rewrite it at the end of every run (and after each specialist finishes, if the r
 ```json
 {
   "updated_at": "ISO-8601 UTC",
-  "next_run_at": "ISO-8601 UTC, the next scheduled shift (6:12am, 9:12am, 12:12pm, 3:12pm or 9:12pm Eastern); the dashboard uses it to tell a quiet gap from a stopped factory",
+  "next_run_at": "ISO-8601 UTC, the next scheduled shift (6:12am or 6:12pm Eastern); the dashboard uses it to tell a quiet gap from a stopped factory",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 0,
@@ -180,7 +187,7 @@ The shop has no revenue yet, so every dollar counts. The Manager enforces these 
 ## Trend desk (Trend Hunter + Trend Judge)
 The owner's request (3 Oct 2026): a dedicated team chasing current viral trends to make things people buy right now.
 
-**Trend Hunter** (6am shift only; owner, 7 Oct 2026). Find what is taking off this week, not what sold last year.
+**Trend Hunter** (Monday 6am shift only; owner, 8 Oct 2026). Find what is taking off this week, not what sold last year.
 **TikTok comes first** (owner, 3 Oct 2026: "whatever is becoming viral on TikTok needs to be made"). Every scan starts with TikTok, and at least 2 of each scan's 3 picks for the Judge must come from TikTok.
 - The cloud can't read TikTok directly: the Creative Center's data needs a login, and its pages fail behind the proxy. So find TikTok trends through web search, every scan:
   - "viral on TikTok this week"

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-08T10:35:02Z",
-  "next_run_at": "2026-10-08T13:12:00Z",
+  "updated_at": "2026-10-08T12:35:12Z",
+  "next_run_at": "2026-10-08T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 19,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6am shift done. TpT 002 + 003 released, waiting for the Mac nightly job. Next: 9:12am ET.",
-      "since": "2026-10-08T10:35:02Z"
+      "task": "Usage budget: 2 shifts a day (6:12am/6:12pm ET), each a fresh session; at most 2 builds a day. Next: 6:12pm ET.",
+      "since": "2026-10-08T12:35:12Z"
     },
     {
       "id": "researcher",
@@ -68,8 +68,8 @@
       "id": "hunter",
       "name": "Trend Hunter",
       "state": "idle",
-      "task": "Scan 8: none approved. Next scan 6am ET tomorrow.",
-      "since": "2026-10-08T10:35:02Z"
+      "task": "Weekly now: Monday 6am ET scan only (owner).",
+      "since": "2026-10-08T12:35:12Z"
     },
     {
       "id": "judge",
@@ -90,6 +90,11 @@
     "Birdwatching silhouettes (heron, swallow, hummingbird, wren, flying flocks; year-round; hu"
   ],
   "feed": [
+    {
+      "t": "2026-10-08T12:35:12Z",
+      "who": "manager",
+      "msg": "Owner cut usage: 2 shifts a day, 2 builds a day, weekly trend scan, Sonnet for non-design roles."
+    },
     {
       "t": "2026-10-08T10:35:02Z",
       "who": "qa",
