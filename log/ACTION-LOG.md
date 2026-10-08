@@ -132,3 +132,4 @@
 - 2026-10-08 02:50 UTC: 015 Highland cow Christmas clipart (12 PNG+SVG, $3.49, AI $0.536, new formats/clipart.md). QA round 1 rejected it (needle slivers, alpha 254, photo order); round 2 approved; pinholes on 03 fixed before upload. Listed as Etsy 4590883039 (19 live). Still open: the FACTORY shop-licence line for clipart (QA S5), which needs the owner.
 - 2026-10-08 10:14 UTC: 6am ET shift. Trend scan 8 and the Designer (TpT 003 Winter Rhythm Bingo) running. Still no TpT nightly run.
 - 2026-10-08 10:16 UTC: Trend scan 8 (trends/2026-10-08-10.md): no picks, the 8th empty scan in a row.
+- 2026-10-08 10:35 UTC: TpT 003 Winter Rhythm Bingo (40 pp, $5, $0 AI). QA round 1 rejected it (card notation too small for grade 3, footer overflow, doubled watermark); round 2 approved after landscape cards. Release gate passed (title 79, price = license, 4 grades, 1 subject, 1 tag); release written. Two TpT items now wait for the Mac nightly job.

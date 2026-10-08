@@ -99,3 +99,54 @@ The Designer's worry is justified.
 - The preview PDF includes the full caller's checklist, and preview-3 shows all 36 patterns, so a buyer can see every rhythm before purchase. That is acceptable for a bingo game, but you could swap the checklist for p3 (How to Play).
 
 **Verdict: REJECTED**
+
+---
+
+# Round 2 (8 Oct 2026)
+
+I re-rendered the rebuilt PDF (40 pages, contact sheet at 50 dpi). I looked at bingo cards 1, 14 and 30 (p6, p19, p35) in full at 120 dpi, with card 1's bottom row at 300 dpi. I also checked p36–39 at 90 dpi, the 4-page preview PDF, `cover.png` and `preview-1..3.png`. I re-ran my own uniqueness script against the new `gen.py`. I did not use `gen.py --check`, and I changed no item files.
+
+## Round-1 fixes: all pass
+
+1. **Bingo-card notation size: fixed.**
+   - p6–35 are now landscape Letter (792 × 612 pt, /Rotate 0). Cells are 144 × 82 pt and the staff space is 6.33 pt (2.23 mm). That is 34% larger than before, and now above standard printed-part size.
+   - The sixteenth secondary-beam gap is 1.9 pt (0.67 mm); at 300 dpi the e+ss and ss+e groups are clearly different. Noteheads are about 2.2 mm, and the dots and the open half-note heads are easy to see.
+   - The widest pattern measures 126 pt, so it has about 9 pt clear on each side of a 144 pt cell. The notation sits centred in each square.
+   - At actual print size this now suits grade 3.
+   - Markers (about 0.95 in) still fit the 2.0 × 1.14 in squares. The winter icon strip moved into the header and nothing crowds.
+2. **Calling-card and marker footers: fixed.**
+   - The footer text on p36–39 now sits at y = 752.5–764.6 pt, the same as the other portrait pages. On the landscape cards it is at 572.5–584.6 pt, 27.4 pt from the bottom.
+   - The footer rule is visible, and the dashed cut lines are about 0.8 in from the edge.
+   - No page in the PDF has ink within 0.36 in of any edge.
+3. **Preview watermarks: fixed.** preview-1.png (all three shots) and preview-2.png (cards 1 and 2) now each show one clean "PREVIEW". The cover's marker discs are opaque, and no notation shows through or pokes out.
+
+## Mixed portrait and landscape: fine for printing
+
+- The landscape pages are true 11 × 8.5 in media boxes, not rotated portrait pages.
+- Acrobat ("Auto portrait/landscape", on by default), macOS Preview and Chrome's PDF viewer all auto-rotate each page onto Letter paper at 100%. Mixed orientations are common in TpT printables.
+- A teacher usually prints the card range (p6–35) on its own, and that range is all landscape.
+- Teacher notes p2 and UPLOAD.md both say the cards are landscape. The description's "large, easy-to-read notation" is now accurate.
+
+## Regression check: no regressions
+
+- **Beats.**
+  - All 36 calling cards (p36–38) are unchanged. Every one still totals 4 beats, with correct beaming, quarter-rest glyphs, dot placement and counts.
+  - The caller's checklist p5, preview-3 and the reference p4 still match.
+- **Uniqueness (script).**
+  - 30 distinct cards, each with 24 patterns and a FREE centre.
+  - Each pattern appears on exactly 20 cards.
+  - No two cards share a winning line, and no two patterns have the same clapped attack points.
+  - The deal is identical to round 1 (seed unchanged).
+- **Cards against the deal data.** I read cards 1, 14 and 30 again square by square: all 72 squares match the data and the calling cards.
+- **Other checks.**
+  - Fonts are all embedded (14 in the PDF, 12 in the preview).
+  - The PDF has 40 pages and the preview PDF has 4 (p1 landscape card, then p37, p4 and p5).
+  - tpt.json is unchanged: "5.00"/"5.00", the tax code, 4 grades, and all 6 files exist.
+  - The title is 79 characters, and the disclosure line is still last in the description.
+
+## Optional (not blocking)
+
+- Add one line to the teacher notes: "If cards print small, turn on Auto-rotate / Auto portrait-landscape in the print dialog." It covers the rare driver that doesn't rotate pages.
+- Carried over from round 1: the preview shows the full caller's checklist and all 36 patterns. That is acceptable for bingo.
+
+**Verdict: APPROVED**
