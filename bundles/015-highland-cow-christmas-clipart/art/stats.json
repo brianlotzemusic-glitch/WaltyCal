@@ -40,21 +40,21 @@
  "03-pine-wreath": {
   "name": "Pine wreath",
   "px": [
-   3424,
+   3425,
    3600
   ],
   "inches": [
-   11.41,
+   11.42,
    12.0
   ],
-  "png_mb": 1.88,
-  "pieces": 1,
-  "specks_removed": 7,
+  "png_mb": 1.87,
+  "pieces": 2,
+  "specks_removed": 25,
   "holes_filled": 0,
-  "white_px_cleared": 35869,
-  "coverage_pct": 59.0,
-  "svg_ink_pct_of_shape": 36.6,
-  "svg_paths": 572
+  "white_px_cleared": 88257,
+  "coverage_pct": 58.6,
+  "svg_ink_pct_of_shape": 37.4,
+  "svg_paths": 577
  },
  "04-bobble-hat": {
   "name": "Bobble hat",
@@ -85,14 +85,14 @@
    12.0,
    10.26
   ],
-  "png_mb": 0.88,
-  "pieces": 4,
-  "specks_removed": 72,
+  "png_mb": 0.87,
+  "pieces": 5,
+  "specks_removed": 67,
   "holes_filled": 0,
-  "white_px_cleared": 24200,
-  "coverage_pct": 50.7,
-  "svg_ink_pct_of_shape": 15.9,
-  "svg_paths": 30
+  "white_px_cleared": 30907,
+  "coverage_pct": 50.6,
+  "svg_ink_pct_of_shape": 15.7,
+  "svg_paths": 28
  },
  "06-sleepy-calf": {
   "name": "Sleepy calf",
@@ -123,11 +123,11 @@
    12.0,
    8.28
   ],
-  "png_mb": 0.5,
+  "png_mb": 0.49,
   "pieces": 1,
   "specks_removed": 0,
   "holes_filled": 0,
-  "white_px_cleared": 1408,
+  "white_px_cleared": 2069,
   "coverage_pct": 54.2,
   "svg_ink_pct_of_shape": 23.7,
   "svg_paths": 29
@@ -182,12 +182,12 @@
   ],
   "png_mb": 0.79,
   "pieces": 1,
-  "specks_removed": 0,
+  "specks_removed": 3,
   "holes_filled": 0,
-  "white_px_cleared": 5813,
+  "white_px_cleared": 10679,
   "coverage_pct": 50.0,
   "svg_ink_pct_of_shape": 26.9,
-  "svg_paths": 80
+  "svg_paths": 78
  },
  "11-mistletoe": {
   "name": "Mistletoe",
@@ -199,14 +199,14 @@
    12.0,
    11.67
   ],
-  "png_mb": 0.65,
+  "png_mb": 0.66,
   "pieces": 2,
-  "specks_removed": 4,
+  "specks_removed": 0,
   "holes_filled": 6,
-  "white_px_cleared": 0,
-  "coverage_pct": 30.3,
-  "svg_ink_pct_of_shape": 31.2,
-  "svg_paths": 61
+  "white_px_cleared": 722,
+  "coverage_pct": 30.2,
+  "svg_ink_pct_of_shape": 31.3,
+  "svg_paths": 65
  },
  "12-gift-box": {
   "name": "Gift box",

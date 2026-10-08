@@ -49,3 +49,8 @@ Fixes found by looking, all in code (`process.py`):
 - **11 Mistletoe:** removebg took the six white mistletoe berries as background, so they showed the fabric through them. Enclosed holes under 12,000 px are put back (`FILL_HOLES`); the ribbon loops stay transparent.
 - **All designs:** removebg left white paper between fine pine needles and fringe, which showed as white specks on dark fabric (05, 03, 10 most). Near-white pixels joined to the background are made transparent and their edges softened (`clear_white`).
 - **05 Winter stroll:** the left pine sprig's tip dissolved into grey snow-shadow texture. The left sprig is erased (`ERASE_BOX`); the two sprigs by the front legs stay. Renamed from "Snowy stroll" because removebg also took away the white snow patch.
+
+QA round 1 (no AI spend):
+- **03, 10, 05, 07: light slivers between pine needles** (and between 03's fringe strands by the cheeks) showed as a frosty fringe on dark fabric. `CLEAR_BOX` clears light neutral patches in the foliage, enclosed or not, and fades the pale rim on needle tips. The halo count went from 03 22,166 / 05 4,852 / 10 2,143 / 07 563 to 6 / 737 / 257 / 164, with no patch over 30 px outside 11's berries.
+- **Alpha 254:** after quantizing, palette alpha ≥ 250 is set to 255. Solid art is now opaque.
+- **Photo order:** the tee, card and tote mockup is photo 1, with the title band.

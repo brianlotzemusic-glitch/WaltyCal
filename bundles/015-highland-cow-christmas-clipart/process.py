@@ -34,6 +34,19 @@ EDGE_OPAQUE = 200      # clear_white: edge pixels darker than this in any channe
 # ginger fur (red over 150 and 60 above green) or a plum line (green under 45, red 25 above it) becomes transparent.
 # Pieces left wholly inside a box afterwards (loose needle tips) are dropped too.
 ERASE_BOX = {"05-winter-stroll": [(0, 2160, 600, 2836), (0, 1900, 330, 2160)]}   # the left pine sprig: its tip dissolves into grey snow shadow
+# QA round 1: light grey and white paper slivers between pine needles (and fringe strands) that clear_white
+# misses because they are enclosed or tinted. Inside each box, light neutral pixels (every channel >= LIGHT_MIN,
+# tint <= LIGHT_TINT) in patches under CLEAR_MAX_PX become transparent, with soft edges. Big light areas
+# (horns, cream muzzles, pompoms) are far bigger than CLEAR_MAX_PX, so they stay.
+LIGHT_MIN = 190        # a margin under the check's 195 / 35: palette quantizing shifts colours a little
+LIGHT_TINT = 45
+CLEAR_MAX_PX = 4000
+CLEAR_BOX = {
+    "03-pine-wreath": [(0, 0, 3424, 3600)],          # the whole wreath, and the fringe strands beside the cheeks
+    "05-winter-stroll": [(1550, 2100, 3200, 2836)],  # the two pine sprigs by the front legs (pre-trim coordinates, like ERASE_BOX)
+    "10-wreath-collar": [(650, 1250, 2450, 2050)],   # the collar's pine sprigs, left and right
+    "07-tree-carrier": [(850, 0, 2450, 700)],        # a pale rim on the tree's needle tips
+}
 SVG_PX = 1800          # trace resolution for the SVG (potrace smooths it; the SVG scales freely)
 SVG_HOLE_PX = 60       # at SVG_PX: white slivers smaller than this inside the ink are filled
 SVG_SPECK_PX = 80      # at SVG_PX: ink crumbs smaller than this are dropped
@@ -53,7 +66,23 @@ def cutout(slug):
     s = LONG / max(im.size)
     im = im.resize((round(im.size[0] * s), round(im.size[1] * s)), Image.LANCZOS)
     arr = np.array(im)
-    cleared = 0 if slug in FILL_HOLES else clear_white(arr)
+    # put back art that removebg took as background first, so the clean-ups below leave it alone
+    filled = 0
+    protect = np.zeros(arr.shape[:2], bool)
+    if slug in FILL_HOLES:
+        solid = arr[..., 3] > 127
+        lab, n = nd.label(~solid)
+        edge = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]])))
+        sizes = nd.sum(np.ones(lab.shape), lab, range(1, n + 1))
+        holes = [i + 1 for i, sz in enumerate(sizes) if sz < FILL_HOLES[slug] and (i + 1) not in edge]
+        put = nd.binary_dilation(np.isin(lab, holes), iterations=3) & (arr[..., 3] < 250)
+        a = arr[..., 3:].astype(np.float32) / 255
+        on_white = arr[..., :3] * a + 255 * (1 - a)       # what the draft showed there
+        arr[..., :3][put] = on_white[put].astype(np.uint8)
+        arr[..., 3][put] = 255
+        filled = len(holes)
+        protect = put
+    cleared = clear_white(arr, protect) + clear_box(slug, arr, protect)
     for x0, y0, x1, y1 in ERASE_BOX.get(slug, []):
         box = arr[y0:y1, x0:x1]
         r, g = box[..., 0].astype(int), box[..., 1].astype(int)
@@ -73,19 +102,6 @@ def cutout(slug):
         kill = nd.binary_dilation(np.isin(lab, specks), iterations=3)
         arr[..., 3][kill] = 0
     pieces = int(n - len(specks))
-    filled = 0
-    if slug in FILL_HOLES:
-        solid = arr[..., 3] > 127
-        lab, n = nd.label(~solid)
-        edge = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]])))
-        sizes = nd.sum(np.ones(lab.shape), lab, range(1, n + 1))
-        holes = [i + 1 for i, sz in enumerate(sizes) if sz < FILL_HOLES[slug] and (i + 1) not in edge]
-        put = nd.binary_dilation(np.isin(lab, holes), iterations=3) & (arr[..., 3] < 250)
-        a = arr[..., 3:].astype(np.float32) / 255
-        on_white = arr[..., :3] * a + 255 * (1 - a)       # what the draft showed there
-        arr[..., :3][put] = on_white[put].astype(np.uint8)
-        arr[..., 3][put] = 255
-        filled = len(holes)
     # faint haze more than 4 px from any solid pixel (leftovers of erased or dropped pieces) goes too
     far = nd.distance_transform_edt(arr[..., 3] <= 127) > 4
     arr[..., 3][far] = 0
@@ -108,7 +124,7 @@ def cutout(slug):
     return out, pieces, len(specks), filled, cleared
 
 
-def clear_white(arr):
+def clear_white(arr, protect):
     """removebg leaves the white paper between fine shapes (pine needles, fringe) opaque, which shows as
     white specks on dark fabric. Near-white pixels joined to the background through other near-white
     pixels become transparent, and the light edge pixels around them get a matching soft alpha.
@@ -120,13 +136,41 @@ def clear_white(arr):
     bg = a < 0.5
     lab, n = nd.label(white | bg)
     keep = np.unique(lab[bg])
-    clear = white & ~bg & np.isin(lab, keep[keep > 0])
-    band = nd.binary_dilation(clear | bg, iterations=3) & ~bg & ~clear
+    clear = white & ~bg & np.isin(lab, keep[keep > 0]) & ~protect
+    band = nd.binary_dilation(clear | bg, iterations=3) & ~bg & ~clear & ~protect
     soft = np.clip((255 - mn) / (255 - EDGE_OPAQUE), 0, 1)           # darker than EDGE_OPAQUE in any channel = opaque
     newa = a.copy()
     newa[clear] = 0
     newa[band] = np.minimum(a[band], soft[band])
     m = newa > 0.15
+    arr[..., :3][m] = np.clip((comp[m] - 255 * (1 - newa[m, None])) / newa[m, None], 0, 255).astype(np.uint8)
+    arr[..., 3] = (newa * 255).astype(np.uint8)
+    return int(clear.sum())
+
+
+def clear_box(slug, arr, protect):
+    """Light neutral slivers inside the CLEAR_BOX boxes -> transparent, enclosed or not (QA round 1, fix 1)."""
+    if slug not in CLEAR_BOX:
+        return 0
+    a = arr[..., 3].astype(np.float32) / 255
+    comp = arr[..., :3].astype(np.float32) * a[..., None] + 255 * (1 - a[..., None])
+    mn, mx = comp.min(axis=2), comp.max(axis=2)
+    light = (a > 0.5) & (mn >= LIGHT_MIN) & (mx - mn <= LIGHT_TINT) & ~protect
+    lab, n = nd.label(light, np.ones((3, 3)))
+    sizes = nd.sum(light, lab, range(1, n + 1))
+    small = np.isin(lab, [i + 1 for i, sz in enumerate(sizes) if sz < CLEAR_MAX_PX])
+    inbox = np.zeros(light.shape, bool)
+    for x0, y0, x1, y1 in CLEAR_BOX[slug]:
+        inbox[y0:y1, x0:x1] = True
+    clear = small & inbox
+    # the pixels around each cleared sliver, and the pale 1-2 px rim round the needle tips (a frosty outline on dark)
+    rim = inbox & nd.binary_dilation(a < 0.1, iterations=2) & (mn >= 140) & (mx - mn <= 50)
+    band = (nd.binary_dilation(clear, iterations=2) | rim) & ~clear & (a > 0) & ~protect
+    soft = np.clip((235 - mn) / (235 - 140), 0, 1)                   # pale edge pixels fade, needles stay solid
+    newa = a.copy()
+    newa[clear] = 0
+    newa[band] = np.minimum(a[band], soft[band])
+    m = band & (newa > 0.15)
     arr[..., :3][m] = np.clip((comp[m] - 255 * (1 - newa[m, None])) / newa[m, None], 0, 255).astype(np.uint8)
     arr[..., 3] = (newa * 255).astype(np.uint8)
     return int(clear.sum())
@@ -189,6 +233,10 @@ def main(only=None):
         im, pieces, specks, filled, cleared = cutout(slug)
         png = os.path.join(HERE, "art", "png", slug + ".png")
         q = im.quantize(256, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE)
+        # the quantizer averages solid art to alpha 254: snap near-opaque palette entries to 255 (QA round 1, fix 2)
+        pal = q.getpalette("RGBA")
+        pal[3::4] = [255 if v >= 250 else v for v in pal[3::4]]
+        q.putpalette(pal, "RGBA")
         q.save(png, optimize=True, dpi=(DPI, DPI))
         ink, size = line_art(im)
         scale_in = (im.size[0] / DPI) / size[0]      # the SVG opens at the PNG's print size

@@ -23,7 +23,17 @@ body{margin:0;width:1500px;height:1125px;overflow:hidden;position:relative;font-
 .drop{filter:drop-shadow(0 10px 14px rgba(0,0,0,.45))}`;
 
 const pages = {
-  '1-thumbnail': `<style>${base} body{background:radial-gradient(ellipse at 50% 62%,#3d5e4b,${PINE} 55%,#1f3328)}
+  '1-mockup': `<style>${base}
+   .band{position:absolute;left:0;right:0;top:0;height:142px;background:${CREAM};display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:8}
+   .band h1{margin:0;font-family:Fr;font-weight:900;font-size:70px;line-height:1;color:${PLUM};white-space:nowrap}.band h1 em{font-style:normal;color:${BERRY}}
+   .band p{margin:10px 0 0;font-size:25px;letter-spacing:4px;color:${PINE};font-weight:800}
+   .badge{position:absolute;z-index:9;left:40px;bottom:40px;width:200px;height:200px;border-radius:50%;background:${BERRY};color:${CREAM};display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.45);border:6px solid ${GOLD};transform:rotate(-8deg)}
+   .badge b{font-family:Fr;font-weight:900;font-size:96px;line-height:.85}.badge span{font-size:24px;font-weight:800;letter-spacing:3px}</style>
+   <img src="${B64(path.join('mockup', 'flatlay.jpg'), 'image/jpeg')}" style="position:absolute;left:0;top:-14px;width:1500px">
+   <div class=band><h1>Highland Cow <em>Christmas Clipart</em></h1><p>12 DESIGNS · PNG + SVG · TRANSPARENT · 300 DPI</p></div>
+   <div class=badge><b>12</b><span>DESIGNS</span></div>`,
+
+  '2-collage': `<style>${base} body{background:radial-gradient(ellipse at 50% 62%,#3d5e4b,${PINE} 55%,#1f3328)}
    .band{position:absolute;left:0;right:0;top:0;height:205px;background:${CREAM};display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:8}
    .band h1{margin:0;font-family:Fr;font-weight:900;font-size:84px;line-height:1;color:${PLUM};white-space:nowrap}.band h1 em{font-style:normal;color:${BERRY}}
    .band p{margin:12px 0 0;font-size:31px;letter-spacing:5px;color:${PINE};font-weight:800}
@@ -38,7 +48,7 @@ const pages = {
    <div class=band><h1>Highland Cow <em>Christmas Clipart</em></h1><p>PNG + SVG · TRANSPARENT · 300 DPI</p></div>
    <div class=badge><b>12</b><span>DESIGNS</span></div>`,
 
-  '2-all-designs': `<style>${base} body{background:${CREAM}}
+  '3-all-designs': `<style>${base} body{background:${CREAM}}
    h1{position:absolute;top:20px;width:100%;text-align:center;margin:0;font-family:Fr;font-weight:900;font-size:64px}
    h1 em{font-style:normal;color:${BERRY}}
    .sub{position:absolute;top:100px;width:100%;text-align:center;font-size:25px;color:${PINE};font-weight:800;letter-spacing:1px}
@@ -48,13 +58,6 @@ const pages = {
    .c div{margin-top:4px;font-size:22px;font-weight:800;color:${PLUM};white-space:nowrap}.c div b{color:${BERRY}}</style>
    <h1>All <em>12 designs</em></h1><div class=sub>full-color PNG with transparent background · matching one-color SVG</div>
    <div class=g>${S.map((s, i) => `<div class=c><img src="${png(s[0])}"><div><b>${i + 1}</b> ${s[1]}</div></div>`).join('')}</div>`,
-
-  '3-mockup': `<style>${base}
-   .card{position:absolute;right:36px;top:36px;background:rgba(44,27,54,.9);color:${CREAM};border-radius:24px;padding:26px 34px;z-index:9;box-shadow:0 12px 26px rgba(0,0,0,.45)}
-   .card h2{margin:0 0 6px;font-family:Fr;font-weight:900;font-size:46px;line-height:1.05}.card h2 em{font-style:normal;color:${GOLD}}
-   .card p{margin:0;font-size:24px;font-weight:700}</style>
-   <img src="${B64(path.join('mockup', 'flatlay.jpg'), 'image/jpeg')}" style="position:absolute;left:0;top:-28px;width:1500px">
-   <div class=card><h2>Tees, totes, <em>cards</em></h2><p>mugs, tumblers, tags and stickers too</p></div>`,
 
   '4-png-and-svg': `<style>${base} body{background:${PLUM};color:${CREAM}}
    h1{position:absolute;top:26px;width:100%;text-align:center;margin:0;font-family:Fr;font-weight:900;font-size:58px}h1 em{font-style:normal;color:${GOLD}}
@@ -97,7 +100,7 @@ const pages = {
   for (const [n, h] of Object.entries(pages)) {
     await p.setContent(`<!doctype html><meta charset=utf-8>${h}`, { waitUntil: 'load' });
     await p.evaluate(() => document.fonts.ready);
-    await p.screenshot(n === '3-mockup' ? { path: `listing-images/${n}.jpg`, type: 'jpeg', quality: 92 } : { path: `listing-images/${n}.png` });
+    await p.screenshot(n === '1-mockup' ? { path: `listing-images/${n}.jpg`, type: 'jpeg', quality: 92 } : { path: `listing-images/${n}.png` });
   }
   await b.close();
 })();

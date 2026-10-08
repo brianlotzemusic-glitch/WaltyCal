@@ -26,6 +26,14 @@ MAX_ZIP_MB = 20   # Etsy's limit per digital file
 MAX_PNG_MB = 3
 MIN_PIECE_PX = 900          # no loose speck in a PNG (a piece of the art smaller than ~2.5 mm at 12 in)
 MAX_WHITE_EDGE_PCT = 3.0    # opaque pixels on the art's outer edge that are paper-white (a halo on dark fabric)
+# Halo test (QA round 1, S1): light neutral pixels (every channel >= 195, tint <= 35, alpha > 127) within 12 px of
+# transparency (alpha < 20) are paper left by the cut-out. At most HALO_MAX_PX per design and no patch over
+# HALO_PATCH_PX, except inside HALO_OK boxes (final PNG coordinates) that hold real light art.
+HALO_MAX_PX = 5000
+HALO_PATCH_PX = 30
+HALO_OK = {"11-mistletoe": [((1650, 400, 2000, 800), "the white mistletoe berries, beside the open ribbon loops")]}
+# Opacity (QA round 1, S2): no near-opaque alpha (250-254) anywhere; >= 99% of the solid interior (> 3 px inside
+# the edge) and >= 98% of all pixels with alpha > 127 are exactly 255. The rest is anti-aliased edge and 08's glow.
 MIN_HASH_BITS = 60          # of 576: no two designs alike
 
 
@@ -116,6 +124,28 @@ def png_checks(im):
     return max(im.size), 100 * (A == 0).mean(), smallest, white, corners
 
 
+def halo(slug, im):
+    """(light neutral px near transparency outside HALO_OK, biggest such patch)."""
+    from scipy import ndimage as nd
+    a = np.array(im.convert("RGBA")).astype(int)
+    A = a[..., 3]
+    mn, mx = a[..., :3].min(axis=2), a[..., :3].max(axis=2)
+    m = (A > 127) & (mn >= 195) & (mx - mn <= 35) & (nd.distance_transform_edt(A >= 20) <= 12)
+    for (x0, y0, x1, y1), _ in HALO_OK.get(slug, []):
+        m[y0:y1, x0:x1] = False
+    lab, n = nd.label(m, np.ones((3, 3)))
+    return int(m.sum()), int(nd.sum(m, lab, range(1, n + 1)).max()) if n else 0
+
+
+def opacity(im):
+    """(any alpha 250-254, % of interior solid px at 255, % of all solid px at 255)."""
+    from scipy import ndimage as nd
+    A = np.array(im.convert("RGBA"))[..., 3]
+    solid = A > 127
+    inner = nd.distance_transform_edt(solid) > 3
+    return bool(((A >= 250) & (A < 255)).any()), 100 * (A[inner] == 255).mean(), 100 * (A[solid] == 255).mean()
+
+
 def art_hash(im):
     from PIL import Image
     a = np.array(im.convert("RGBA"))
@@ -152,7 +182,7 @@ def check():
         res("ZIP holds exactly PNG/ x12, SVG/ x12 and README-LICENSE.txt", names == want, f"({len(names)} files)")
         zmb = os.path.getsize(os.path.join(HERE, ZIP)) / 1e6
         res(f"ZIP under Etsy's {MAX_ZIP_MB} MB file limit", zmb < MAX_ZIP_MB, f"({zmb:.1f} MB)")
-        bad, worst, hashes = [], [0, 100.0, 1e9, 0.0], {}
+        bad, worst, hashes, halos, opac = [], [0, 100.0, 1e9, 0.0], {}, [], []
         for s in slugs:
             raw = z.read(f"PNG/{PREFIX}{s}.png")
             im = Image.open(io.BytesIO(raw))
@@ -165,10 +195,22 @@ def check():
                 bad.append(f"{s}: mode {im.mode}, {im.size}, dpi {dpi}, {clear_pct:.0f}% clear, corners {corners}, "
                            f"smallest piece {smallest} px, white edge {white:.1f}%, {len(raw) / 1e6:.1f} MB")
             hashes[s] = art_hash(im)
+            hpx, hpatch = halo(s, im)
+            near, inner, allsolid = opacity(im)
+            halos.append((s, hpx, hpatch))
+            opac.append((s, near, inner, allsolid))
         res(f"every PNG: transparent, longest side {LONG} px, {DPI} dpi, clear corners, >= 15% transparent, "
             f"no piece under {MIN_PIECE_PX} px, <= {MAX_WHITE_EDGE_PCT}% paper-white on the outer edge, <= {MAX_PNG_MB} MB",
             not bad, f"(largest {worst[0]:.2f} MB, least clear {worst[1]:.0f}%, smallest piece {worst[2]} px, "
             f"whitest edge {worst[3]:.2f}%)" + ("\n      " + "\n      ".join(bad) if bad else ""))
+        hb = [f"{s}: {p} px, biggest patch {q} px" for s, p, q in halos if p > HALO_MAX_PX or q > HALO_PATCH_PX]
+        res(f"halo test: <= {HALO_MAX_PX} light neutral px within 12 px of transparency and no patch over {HALO_PATCH_PX} px "
+            f"(outside HALO_OK)", not hb, f"(most {max(p for _, p, _ in halos)} px, biggest patch {max(q for _, _, q in halos)} px)"
+            + ("\n      " + "\n      ".join(hb) if hb else ""))
+        ob = [f"{s}: alpha 250-254 {n}, interior {i:.2f}%, all solid {a:.2f}%" for s, n, i, a in opac if n or i < 99 or a < 98]
+        res("full opacity: no alpha 250-254, >= 99% of the solid interior and >= 98% of all solid px at alpha 255", not ob,
+            f"(lowest interior {min(i for _, _, i, _ in opac):.2f}%, lowest overall {min(a for _, _, _, a in opac):.2f}%)"
+            + ("\n      " + "\n      ".join(ob) if ob else ""))
         dmin = min(((hashes[a] != hashes[b]).sum(), a, b) for i, a in enumerate(slugs) for b in slugs[i + 1:])
         res(f"no two designs alike (24x24 shape + tone hash, >= {MIN_HASH_BITS} of 1152 bits differ)", dmin[0] >= MIN_HASH_BITS,
             f"(closest pair {dmin[1][:2]}/{dmin[2][:2]}: {dmin[0]})")

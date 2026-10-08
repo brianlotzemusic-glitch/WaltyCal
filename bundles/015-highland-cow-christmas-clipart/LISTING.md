@@ -40,9 +40,9 @@ Designed with the help of digital and AI tools, and checked by hand.
 highland cow clipart, highland cow png, highland cow svg, christmas clipart, christmas png, cow clipart, sublimation designs, xmas sublimation, holly clipart, scottish cow, farmhouse christmas, commercial use png, cute cow png
 
 **Photos (in order)**
-1. `listing-images/1-thumbnail.png` — five of the cows large on a dark pine background; cream band "Highland Cow Christmas Clipart", "12 designs" badge, "PNG + SVG · transparent · 300 dpi"
-2. `listing-images/2-all-designs.png` — all 12 real PNGs, numbered and named
-3. `listing-images/3-mockup.jpg` — the real PNGs printed on a tee, a card and a tote (AI blank flat-lay photo, designs composited in code)
+1. `listing-images/1-mockup.jpg` — the product in use (FACTORY.md "Listing photos"): the real PNGs printed on a tee, a card and a tote (AI blank flat-lay photo, designs composited in code), with a cream band "Highland Cow Christmas Clipart", "12 designs · PNG + SVG · transparent · 300 dpi" and a "12 designs" badge so it sells at thumbnail size
+2. `listing-images/2-collage.png` — five of the cows large on a dark pine background with the same band and badge
+3. `listing-images/3-all-designs.png` — all 12 real PNGs, numbered and named
 4. `listing-images/4-png-and-svg.png` — a PNG on a transparency checkerboard and on dark fabric color, and four SVG line-art versions
 5. `listing-images/5-whats-included.png` — files, sizes, uses and licence
 
