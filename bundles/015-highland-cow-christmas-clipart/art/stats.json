@@ -49,12 +49,12 @@
   ],
   "png_mb": 1.87,
   "pieces": 2,
-  "specks_removed": 25,
+  "specks_removed": 24,
   "holes_filled": 0,
-  "white_px_cleared": 88257,
+  "white_px_cleared": 87833,
   "coverage_pct": 58.6,
-  "svg_ink_pct_of_shape": 37.4,
-  "svg_paths": 577
+  "svg_ink_pct_of_shape": 37.2,
+  "svg_paths": 572
  },
  "04-bobble-hat": {
   "name": "Bobble hat",

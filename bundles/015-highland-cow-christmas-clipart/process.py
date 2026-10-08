@@ -47,6 +47,12 @@ CLEAR_BOX = {
     "10-wreath-collar": [(650, 1250, 2450, 2050)],   # the collar's pine sprigs, left and right
     "07-tree-carrier": [(850, 0, 2450, 700)],        # a pale rim on the tree's needle tips
 }
+# QA round 2 (S6): 03's whole-image box also punched ~30 pinholes into its cream horn tips and chin. In these
+# designs a cleared patch under PINHOLE_PX that sits wholly inside the art (no transparency on its rim), has no
+# green needle on its rim and is at least 30% rimmed by cream is a light spot in the horn or muzzle, not paper
+# between needles or fringe strands: it stays. fill_pinholes then closes any small hole left inside warm art.
+PINHOLE_KEEP = {"03-pine-wreath"}
+PINHOLE_PX = 400
 SVG_PX = 1800          # trace resolution for the SVG (potrace smooths it; the SVG scales freely)
 SVG_HOLE_PX = 60       # at SVG_PX: white slivers smaller than this inside the ink are filled
 SVG_SPECK_PX = 80      # at SVG_PX: ink crumbs smaller than this are dropped
@@ -121,6 +127,10 @@ def cutout(slug):
         arr[..., 3][nd.distance_transform_edt(arr[..., 3] <= 127) > 4] = 0
         pieces = int(n - len(crumbs))
         out = Image.fromarray(arr, "RGBA")
+    if slug in PINHOLE_KEEP:                          # last, on the final pixels (the re-trim resamples)
+        arr = np.array(out)
+        fill_pinholes(arr)
+        out = Image.fromarray(arr, "RGBA")
     return out, pieces, len(specks), filled, cleared
 
 
@@ -148,6 +158,29 @@ def clear_white(arr, protect):
     return int(clear.sum())
 
 
+def fill_pinholes(arr):
+    """S6: transparent holes under 60 px wholly inside warm art (no green on the rim) get the rim's own warm colour."""
+    A = arr[..., 3]
+    hole = A < 200                                     # soft-edged holes too (removebg leaves some inside the fur)
+    lab, n = nd.label(hole)
+    edge = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]])))
+    sizes = nd.sum(hole, lab, range(1, n + 1))
+    rgb = arr[..., :3].astype(int)
+    warm = (rgb[..., 0] > 180) & (rgb[..., 0] - rgb[..., 2] > 30) & (A >= 200)
+    green = (rgb[..., 1] > rgb[..., 0] + 8) & (A >= 200)          # needle green; pale yellow cream is G ~ R
+    for i, (sl, sz) in enumerate(zip(nd.find_objects(lab), sizes), 1):
+        if i in edge or sz >= 60 or (A[sl][lab[sl] == i] >= 128).all():
+            continue
+        y0, y1, x0, x1 = max(sl[0].start - 3, 0), sl[0].stop + 3, max(sl[1].start - 3, 0), sl[1].stop + 3
+        c = lab[y0:y1, x0:x1] == i
+        ring = nd.binary_dilation(c, iterations=2) & ~c
+        w = warm[y0:y1, x0:x1][ring]
+        if w.mean() >= 0.5 and not green[y0:y1, x0:x1][ring].any():
+            sub = arr[y0:y1, x0:x1]
+            sub[..., :3][c] = np.median(rgb[y0:y1, x0:x1][ring][w], axis=0).astype(np.uint8)
+            sub[..., 3][c] = 255
+
+
 def clear_box(slug, arr, protect):
     """Light neutral slivers inside the CLEAR_BOX boxes -> transparent, enclosed or not (QA round 1, fix 1)."""
     if slug not in CLEAR_BOX:
@@ -163,6 +196,20 @@ def clear_box(slug, arr, protect):
     for x0, y0, x1, y1 in CLEAR_BOX[slug]:
         inbox[y0:y1, x0:x1] = True
     clear = small & inbox
+    if slug in PINHOLE_KEEP:
+        clab, cn = nd.label(clear, np.ones((3, 3)))
+        csize = nd.sum(clear, clab, range(1, cn + 1))
+        green = (comp[..., 1] > comp[..., 0] + 8) & (a > 0.5)
+        for i, (sl, sz) in enumerate(zip(nd.find_objects(clab), csize), 1):
+            if sz >= PINHOLE_PX:
+                continue
+            y0, y1, x0, x1 = max(sl[0].start - 3, 0), sl[0].stop + 3, max(sl[1].start - 3, 0), sl[1].stop + 3
+            comp_i = clab[y0:y1, x0:x1] == i
+            ring = nd.binary_dilation(comp_i, iterations=2) & ~comp_i & ~light[y0:y1, x0:x1]
+            cream = (comp[y0:y1, x0:x1, 0] > 200) & (comp[y0:y1, x0:x1, 0] - comp[y0:y1, x0:x1, 2] > 25)
+            if ring.any() and not green[y0:y1, x0:x1][ring].any() and (a[y0:y1, x0:x1][ring] > 0.5).all() \
+                    and cream[ring].mean() >= 0.3:
+                clear[y0:y1, x0:x1][comp_i] = False
     # the pixels around each cleared sliver, and the pale 1-2 px rim round the needle tips (a frosty outline on dark)
     rim = inbox & nd.binary_dilation(a < 0.1, iterations=2) & (mn >= 140) & (mx - mn <= 50)
     band = (nd.binary_dilation(clear, iterations=2) | rim) & ~clear & (a > 0) & ~protect
