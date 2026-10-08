@@ -1,19 +1,19 @@
 {
-  "updated_at": "2026-10-08T01:13:51Z",
+  "updated_at": "2026-10-08T02:50:54Z",
   "next_run_at": "2026-10-08T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 18,
-  "bundles_built": 15,
+  "listings_live": 19,
+  "bundles_built": 16,
   "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "9pm ET shift: Designer building 015 Highland cow clipart.",
-      "since": "2026-10-08T01:13:51Z"
+      "state": "idle",
+      "task": "9pm ET shift done. Next: 6:12am ET (Trend Hunter, Researcher, Designer, Analyst).",
+      "since": "2026-10-08T02:50:54Z"
     },
     {
       "id": "researcher",
@@ -25,23 +25,23 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Building 015: Highland cow Christmas clipart (new clipart format).",
-      "since": "2026-10-08T01:13:51Z"
+      "state": "idle",
+      "task": "015 Highland cow clipart approved and listed.",
+      "since": "2026-10-08T02:50:54Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved 014 in round 2.",
-      "since": "2026-10-07T19:27:46Z"
+      "task": "Approved 015 in round 2.",
+      "since": "2026-10-08T02:50:54Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Listed 014 coloring pages (Etsy 4590675214). 1 of 4 slots used Oct 7.",
-      "since": "2026-10-07T19:27:46Z"
+      "task": "Listed 015 (Etsy 4590883039). 1 of 4 slots used Oct 8 UTC.",
+      "since": "2026-10-08T02:50:54Z"
     },
     {
       "id": "analyst",
@@ -83,13 +83,18 @@
     "[tpt] Winter Rhythm Bingo: 30 unique cards, rhythm-pattern calling cards, non-denomination",
     "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,",
     "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea",
-    "[format] Highland cow Christmas clipart (changed 4 Oct to PNG clipart/sublimation set + si",
     "[format] Nutcracker ballet clipart (changed 7 Oct from cut files to PNG clipart + single-l",
     "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + ",
     "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and ",
-    "[format] Woodland Christmas scavenger hunt printable (new 4 Oct; same family as the approv"
+    "[format] Woodland Christmas scavenger hunt printable (new 4 Oct; same family as the approv",
+    "Haunted gingerbread house cut files (gothic slot; gingerbread svg ~2.4-2.9k Nov-Dec; Gothm"
   ],
   "feed": [
+    {
+      "t": "2026-10-08T02:50:54Z",
+      "who": "lister",
+      "msg": "Listed 015: Highland cow Christmas clipart (12 PNG+SVG, $3.49). 19 live."
+    },
     {
       "t": "2026-10-07T19:27:46Z",
       "who": "lister",
