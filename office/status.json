@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-07T19:27:46Z",
-  "next_run_at": "2026-10-08T01:12:00Z",
+  "updated_at": "2026-10-08T01:13:51Z",
+  "next_run_at": "2026-10-08T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 18,
@@ -11,9 +11,9 @@
     {
       "id": "manager",
       "name": "Manager",
-      "state": "idle",
-      "task": "3pm ET shift done. Next: 9:12pm ET (Designer).",
-      "since": "2026-10-07T19:27:46Z"
+      "state": "working",
+      "task": "9pm ET shift: Designer building 015 Highland cow clipart.",
+      "since": "2026-10-08T01:13:51Z"
     },
     {
       "id": "researcher",
@@ -25,9 +25,9 @@
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "014 coloring pages approved and listed.",
-      "since": "2026-10-07T19:27:46Z"
+      "state": "working",
+      "task": "Building 015: Highland cow Christmas clipart (new clipart format).",
+      "since": "2026-10-08T01:13:51Z"
     },
     {
       "id": "qa",
