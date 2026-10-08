@@ -8,8 +8,24 @@ REPO="$(cd "$(dirname "$0")/.." && pwd)"
 LABEL="com.hudsonbeat.tpt-nightly"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 launchctl bootout "gui/$(id -u)/$LABEL" 2>/dev/null || true
-if [ "${1:-}" = "remove" ]; then rm -f "$PLIST"; echo "Removed the nightly TpT job."; exit 0; fi
+if [ "${1:-}" = "remove" ]; then rm -f "$PLIST"; echo "Removed the nightly TpT job. (Its clone in ~/tpt-nightly, if any, can be deleted.)"; exit 0; fi
 HOUR="${1:-20}"; MIN="${2:-30}"
+# macOS privacy protection stops launchd jobs reading ~/Documents, ~/Desktop, ~/Downloads and iCloud
+# Drive ("Operation not permitted", exit 126). If this repo lives there, the job runs from its own
+# clone in ~/tpt-nightly/waltycal instead; both clones stay in sync through GitHub.
+case "$REPO/" in
+  "$HOME/Documents/"*|"$HOME/Desktop/"*|"$HOME/Downloads/"*|"$HOME/Library/Mobile Documents/"*)
+    RUNNER="${TPT_RUNNER_DIR:-$HOME/tpt-nightly/waltycal}"
+    if [ ! -d "$RUNNER/.git" ]; then
+      mkdir -p "$(dirname "$RUNNER")"
+      git clone -q --branch shop-factory "$(git -C "$REPO" remote get-url origin)" "$RUNNER"
+    fi
+    git -C "$RUNNER" checkout -q shop-factory
+    git -C "$RUNNER" pull -q --no-rebase origin shop-factory
+    if [ ! -d "$RUNNER/node_modules/playwright" ]; then (cd "$RUNNER" && npm install --silent --no-audit --no-fund playwright); fi
+    echo "This repo is in a folder macOS hides from background jobs, so the job runs from $RUNNER."
+    REPO="$RUNNER";;
+esac
 mkdir -p "$HOME/Library/LaunchAgents" "$HOME/Library/Logs"
 chmod +x "$REPO/tools/tpt-nightly.sh"
 cat > "$PLIST" <<EOF
