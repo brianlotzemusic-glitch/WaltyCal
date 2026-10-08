@@ -113,3 +113,82 @@ The folder layout, cheap recipe ($0.042/design, spend verified), 3600 px / 300 d
 Yes, after fixes 1 and 2. The cows are better than most of the highland cow Christmas PNG results, and the SVG line-art versions are a real extra. As shipped, a buyer pressing 03 onto a black or green sweatshirt would see white flecks all round the wreath and ask for a refund.
 
 **Verdict: REJECTED**
+
+---
+
+# Round 2 (final)
+
+I re-ran every check myself on the files unpacked from the rebuilt ZIP (8 Oct, 02:19), into a new scratch dir, and diffed each PNG pixel by pixel against my round-1 copies.
+
+## Files and checks
+
+- **ZIP**: 10.1 MB. It holds exactly `PNG/` ×12, `SVG/` ×12 and README-LICENSE.txt, and every file is byte-identical to `art/`. The README is unchanged. `gen.py --check` (for reference only) prints ALL CHECKS PASS, including the new halo and opacity checks.
+- **PNG basics**: every PNG is still 3600 px on the longest side, 300 dpi and palette with alpha. 03 is now 3425 px wide instead of 3424.
+- **SVGs**: every SVG is still one path in one colour, opening at the PNG's print size (03 is 11.417 × 12.004 in). The five rebuilt SVGs (03, 05, 07, 10, 11) match their PNGs.
+
+## No regressions on the untouched designs
+
+On 01, 02, 04, 06, 08, 09 and 12, nothing changed except the alpha snap:
+- No pixel went from opaque to transparent or back.
+- No colour changed by more than 8 levels.
+- Their SVGs are byte-identical to round 1.
+
+So my round-1 approval of those seven designs stands.
+
+## Fix 1, slivers: done, with one small new defect on 03
+
+- **03 Pine wreath**: the wreath is now clean on near-black. There are no white or grey slivers between the needles or the cheek strands. My halo count is 6 (it was 30,800), and the needle tips are intact.
+  - **New defect**: `CLEAR_BOX` covers the whole image, so it also punched pinholes in light parts of the art itself:
+    - about 19 clusters on the left horn tip (roughly x 250–550, y 0–300)
+    - about 10 under the lower lip on the chin (about x 1660–1760, y 2455–2475)
+    - 2 on the right horn tip
+  - Each hole is 1–5 px (0.1–0.4 mm at 12 in). On a dark garment they show as dark freckles on the cream. They are visible at 100%, faintly in image 2 at full size, and as a few traced dots in the SVG.
+  - Round 1's spec text says that "big light areas (horns, muzzles) are far bigger than 4,000 px and stay". That isn't true here: the paler highlight patches inside a horn are small patches of their own.
+- **10 Wreath collar**: the collar sprigs are clean on dark. There is one 2 px hole in the outline (invisible).
+- **05 Winter stroll**: both sprigs are clean, and the hooves and the cream fur strokes are intact. The row of 1–5 px gaps along the back leg's outline was already there in round 1 and can't be seen.
+- **07 Tree carrier**: the pale rim is gone from the tree's needle tips, and nothing else changed.
+- **11 Mistletoe**: S4 is done. All six white berries are filled and opaque, with their dark tips. The ribbon loops are still open. The new `clear_white` pass removed only 881 edge pixels, none of them inside the art.
+
+## Fix 2, alpha: done, and the Designer's threshold is acceptable
+
+- Alpha values 250–254 are gone from every PNG. Exactly-255 pixels make up 98.4–99.7% of all pixels with alpha > 127, and 99.3–99.98% of the interior (more than 3 px from the edge).
+- The rest is legitimate:
+  - **Anti-aliased edges**: these must stay soft.
+  - **08's bulb glow**: intended.
+  - **Scattered quantizer palette entries at alpha 231–249**: at most 0.5% of the interior, in specks of at most about 800 px, so at least 90% opaque. They can't be seen on any fabric.
+- Checking "≥ 99% of the interior, ≥ 98% overall, and no 250–254" separates real defects from intended softness. A blanket 100% check would have forced hard, jagged edges.
+- **Optional**: snapping palette alpha ≥ 240 instead of ≥ 250 would remove most of the 231–249 specks.
+
+## Fix 3, photo order: done
+
+- **Photo 1** is now the tee, card and tote mockup with a cream title band ("Highland Cow Christmas Clipart", with "12 DESIGNS · PNG + SVG · TRANSPARENT · 300 DPI" under it) and a "12 designs" badge.
+  - At 300 px wide, the title, badge, tee cow and card cow all read clearly. At 170 px the title and badge still read.
+  - It is honest: it uses the real PNGs 04, 01 and 06, and the description says you get the digital files only.
+  - It now meets FACTORY.md "Listing photos".
+- **Photo 2** is the collage, which carries the same band.
+- **Photo 3** is all 12 designs, numbered and named.
+- **Photos 4 and 5** are rebuilt and still accurate.
+- listing.json `images` and LISTING.md "Photos" match. The title, tags, description, price and taxonomy are unchanged and still pass every round-1 rule.
+
+## formats/clipart.md
+
+S1–S4 are adopted:
+- S1: the halo test now counts light neutral pixels near the edge, and `CLEAR_BOX` is documented.
+- S2: the opacity check is in place.
+- S3: the photo order now leads with the mockup.
+- S4: `FILL_HOLES` runs first and the art it puts back is protected.
+- S5 is still for the Manager.
+
+One more amendment:
+- **S6. Pinhole check.** Add to the checks: no transparent hole under 60 px may sit wholly inside warm or cream art (horn, muzzle, fur) unless it is listed. Also limit `CLEAR_BOX` to the foliage, either with tighter boxes or by skipping pixels whose patch borders only cream or orange. A box over the whole image is what caused 03's pinholes.
+
+## Verdict reasoning
+
+Fixes 1–3 are done and nothing else regressed. What's left is about 30 dots of 0.1–0.4 mm on one of 12 designs: dark freckles on the horn tip and chin when 03 is printed on dark fabric. That is a real but cosmetic flaw, far smaller than the round-1 frost around the whole wreath. It doesn't justify moving 11 clean designs and a sound pilot to `_rejected`. I'd pay $3.49 for this set as it stands.
+
+**Recommended before upload (not blocking, about 10 minutes, no AI spend)**:
+- Narrow 03's `CLEAR_BOX` so it leaves out the two horns and the muzzle (or add the S6 hole fill), then rebuild 03 and its SVG, the ZIP and images 2 and 3.
+- The Manager can verify it without another QA round: 03 should have no transparent holes under 60 px inside cream art, and no pixel outside 03 should change.
+- `etsy.py update` can't replace a listing's digital file, so this is easiest before the Lister uploads. If it isn't done, the bundle ships as approved.
+
+**Verdict: APPROVED**
