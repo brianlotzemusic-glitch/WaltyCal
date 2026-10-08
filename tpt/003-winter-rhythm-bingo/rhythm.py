@@ -38,7 +38,7 @@ STEM_LEN = R2.STEM_LEN
 STEM_W = R2.STEM_W
 STAFF_W = R2.STAFF_W
 BEAM_T = R2.BEAM_T            # 0.5 space
-BEAM_GAP = 0.25               # Bravura beamSpacing
+BEAM_GAP = 0.3                # a little over Bravura beamSpacing (0.25) so photocopies keep the gap
 HEAD_W = R2.HEAD_W
 
 # Durations of each sound in beats (negative = rest). This table is independent

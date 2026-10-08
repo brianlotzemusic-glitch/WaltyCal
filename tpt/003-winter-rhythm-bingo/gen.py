@@ -144,6 +144,9 @@ html, body { margin: 0; padding: 0; background: #fff; color: #000; }
 body { font-family: 'Source Sans 3', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .page { width: 8.5in; height: 11in; position: relative; overflow: hidden; page-break-after: always; break-after: page;
         padding: 0.42in 0.5in 0.38in; display: flex; flex-direction: column; }
+@page land { size: 11in 8.5in; margin: 0; }
+.page.land { page: land; width: 11in; height: 8.5in; }
+.top .art { align-self: center; }
 .page:last-child { page-break-after: auto; break-after: auto; }
 .h { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; letter-spacing: .01em; line-height: 1; }
 .l { font-family: 'Oswald'; font-weight: 300; }
@@ -252,12 +255,14 @@ MAX_MW = max(R.measure_width(p) for p in POOL)
 
 
 # ---------------------------------------------------------------- bingo cards
-GRID_W, CELL_W, CELL_H, HEAD_H = 540, 108, 104, 40
-SQ_S = round((CELL_W - 14) / MAX_W, 2)         # one staff-space size for every square
+# Cards are landscape (11 x 8.5 in) so the notation can be printed large for grade 3 (QA round 1).
+GRID_W, CELL_W, CELL_H, HEAD_H = 720, 144, 82, 32
+SQ_S = round(min(6.4, (CELL_W - 18) / MAX_W), 2)   # one staff-space size for every square
+MIN_SQ_S = 6.0                                     # QA: at least ~6 pt staff space for grade 3
 
 
 def free_square(x, y, w, h):
-    k = w / CELL_W
+    k = h / 104
     return (art("snowflake", x + w / 2 - 30 * k, y + 8 * k, 60 * k, 2.2 * k, fill=ACCENT, line=ACCENT)
             + text(x + w / 2, y + h - 14 * k, "FREE", 20 * k, 700, extra='letter-spacing="0.12em"'))
 
@@ -276,7 +281,7 @@ def card_grid(card, w=CELL_W, h=CELL_H, head=HEAD_H, s=SQ_S, sw=1.8, letters=Tru
         if pid is None:
             out.append(free_square(x, y, w, h))
             continue
-        yl = y + h / 2 + 1.6 * s
+        yl = y + h / 2 + 1.1 * s
         body, _, _ = centred(POOL[pid], x + w / 2, yl, s)
         out.append(body)
     # grid lines on top
@@ -290,14 +295,16 @@ def card_grid(card, w=CELL_W, h=CELL_H, head=HEAD_H, s=SQ_S, sw=1.8, letters=Tru
 
 def card_page(n, page_no, watermark=False):
     grid, H = card_grid(CARDS[n - 1])
-    strip = "".join(art(a, 30 + i * 88, H + 16, 40, 1.5) for i, a in enumerate(ART))
-    body = svg(GRID_W, int(H + 60), grid + strip)
-    return (f'<section class="page">{wm(watermark)}{top("Listen, find the rhythm, cover the square", f"CARD {n}", f"Card {n} of {N_CARDS}")}'
+    body = svg(GRID_W, int(H + 2), grid)
+    icons = svg(250, 36, "".join(art(a, 4 + i * 42, 2, 32, 1.4) for i, a in enumerate(ART)), "display:block")
+    hdr = top("Listen, find the rhythm, cover the square", f"CARD {n}", f"Card {n} of {N_CARDS}")
+    hdr = hdr.replace('<div class="tag">', f'<div class="art">{icons}</div><div class="tag">', 1)
+    return (f'<section class="page land">{wm(watermark)}{hdr}'
             f'{NAME}<div class="body">{body}</div>{foot(f"Page {page_no}")}</section>')
 
 
 # ---------------------------------------------------------------- calling cards
-CARD_AREA = (540, 646)
+CARD_AREA = (540, 612)
 CALL_COLS, CALL_ROWS = 3, 4
 CALLS_PER_PAGE = CALL_COLS * CALL_ROWS
 CALL_W, CALL_H = CARD_AREA[0] / CALL_COLS, CARD_AREA[1] / CALL_ROWS
@@ -324,11 +331,11 @@ def calling_card(pid, x, y, w, h):
     out.append(pill(x + 17, y + 17, f"#{pid + 1}", 12))
     out.append(art(ART[pid % len(ART)], x + w - 47, y + 14, 30, 1.3))
     out.append(text(x + 17, y + 54, GROUP_SHORT[group_of(pid)], 9, 300, anchor="start"))
-    yl = y + 93
+    yl = y + 88
     body, _, end = centred(p, x + w / 2, yl, CALL_S, bar=True)
     out.append(body)
-    out.append(text(x + w / 2, y + h - 34, nb(R.counts(p)), 11.5, 600, "Source Sans 3"))
-    out.append(text(x + w / 2, y + h - 19, nb(R.syllables(p)), 8.5, 400, "Source Sans 3", fill="#444"))
+    out.append(text(x + w / 2, y + h - 30, nb(R.counts(p)), 11.5, 600, "Source Sans 3"))
+    out.append(text(x + w / 2, y + h - 16, nb(R.syllables(p)), 8.5, 400, "Source Sans 3", fill="#444"))
     return "".join(out)
 
 
@@ -339,8 +346,8 @@ def calls_page(k, page_no, watermark=False):
         body += calling_card(pid, (i % CALL_COLS) * CALL_W, (i // CALL_COLS) * CALL_H, CALL_W, CALL_H)
     npages = -(-N_PAT // CALLS_PER_PAGE)
     return (f'<section class="page">{wm(watermark)}{top(f"Calling cards #{ids[0] + 1}–#{ids[-1] + 1}", "CALLER", f"Page {k + 1} of {npages}")}'
-            f'<div class="how" style="margin-top:7pt">Print on cardstock and cut on the dashed lines. Counts are on each card; '
-            f'syllables (small print) are optional. <span class="small">Held or silent beats are in (parentheses).</span></div>'
+            f'<div class="how" style="margin-top:7pt">Print on cardstock and cut on the dashed lines. '
+            f'<span class="small">Held or silent beats are in (parentheses); syllables are optional.</span></div>'
             f'<div class="body">{svg(*CARD_AREA, body)}</div>{foot(f"Page {page_no}")}</section>')
 
 
@@ -371,11 +378,11 @@ def checklist_page(page_no, watermark=False):
 # ---------------------------------------------------------------- markers
 def markers_page(page_no, watermark=False):
     out = []
-    cols, rows, w, h = 6, 8, 90, 78
+    cols, rows, w, h = 6, 8, 90, 73
     for i in range(cols * rows):
         r, c = divmod(i, cols)
         cx, cy = c * w + w / 2, r * h + h / 2
-        out.append(f'<circle cx="{cx}" cy="{cy}" r="34" fill="none" stroke="#666" stroke-width="0.9" stroke-dasharray="5 3.5"/>')
+        out.append(f'<circle cx="{cx}" cy="{cy}" r="33" fill="none" stroke="#666" stroke-width="0.9" stroke-dasharray="5 3.5"/>')
         name = "snowflake" if (r + c) % 2 == 0 else ART[1 + (i // 2) % (len(ART) - 1)]
         out.append(art(name, cx - 22, cy - 22, 44, 1.4))
     body = svg(cols * w, rows * h, "".join(out))
@@ -424,7 +431,7 @@ def teacher_page():
             f'<p>A listening and reading game. You perform a 4-beat rhythm; students find it on their card and cover it. '
             f'Each square is one 4/4 measure written in standard notation on a one-line rhythm staff.</p>'
             f'<h2>Getting ready</h2><ul>'
-            f'<li>Print the {N_CARDS} bingo cards (pages {rg["cards"]}) single-sided. Card stock and lamination make them last for years.</li>'
+            f'<li>Print the {N_CARDS} bingo cards (pages {rg["cards"]}) single-sided; they are landscape pages with large notation. Card stock and lamination make them last for years.</li>'
             f'<li>Print the calling cards (pages {rg["calls"]}) on card stock and cut them apart, or keep the caller’s checklist (page {rg["checklist"]}) in your hand and call from it.</li>'
             f'<li>Markers: page {rg["markers"]}, counters, or dry-erase markers on laminated cards.</li>'
             f'<li>Review the rhythm reference (page {rg["reference"]}) first, especially sixteenth notes and dotted rhythms.</li></ul>'
@@ -546,7 +553,8 @@ def hero_svg(width_css):
     A = ACCENT
     w, h, head = 52, 50, 22
     grid, H = card_grid(CARDS[0], w, h, head, s=2.35, sw=1.4)
-    marks = "".join(f'<circle cx="{c * w + w / 2}" cy="{head + r * h + h / 2}" r="19" fill="{A}" fill-opacity="0.85" stroke="#000" stroke-width="1.4"/>'
+    marks = "".join(f'<rect x="{c * w + 1.5}" y="{head + r * h + 1.5}" width="{w - 3}" height="{h - 3}" fill="#fff"/>'
+                    f'<circle cx="{c * w + w / 2}" cy="{head + r * h + h / 2}" r="19" fill="{A}" stroke="#000" stroke-width="1.4"/>'
                     + art("snowflake", c * w + w / 2 - 13, head + r * h + h / 2 - 13, 26, 1.1, fill="#fff", line="#fff")
                     for r, c in ((0, 0), (1, 1), (3, 3), (4, 4)))
     card = (f'<g transform="translate(168 22) rotate(-4 130 140)"><rect x="-10" y="-10" width="{5 * w + 20}" height="{H + 20}" rx="12" '
@@ -636,26 +644,30 @@ def cover_square():
 def preview_square_1(img):
     items = [(img[0], "Bingo cards", "30, all different"), (img[1], "Calling cards", "counts on every card"),
              (img[2], "Rhythm reference", "9 rhythm values")]
+    # these shots come from the preview PDF, which already carries the PREVIEW watermark
     shots = "".join(
-        f'<div style="width:300px"><div class="shot"><img src="{src}"><div class="swm" style="font-size:54px">PREVIEW</div></div>'
-        f'<div class="lbl">{a}<span>{b}</span></div></div>' for src, a, b in items)
+        f'<div style="width:{wd}px"><div class="shot"><img src="{src}"></div>'
+        f'<div class="lbl">{a}<span>{b}</span></div></div>' for (src, a, b), wd in zip(items, (410, 245, 245)))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:76px;margin-top:20px">Ready to play</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Cards, calling cards, checklist, markers and teacher notes</div>'
-        f'<div style="display:flex;gap:24px;margin-top:80px">{shots}</div>'
+        f'<div style="display:flex;gap:22px;margin-top:90px;align-items:flex-start">{shots}</div>'
         f'<div class="band">Print <em>·</em> cut <em>·</em> clap a rhythm <em>·</em> play</div></div>')
 
 
 def preview_square_2(a, b):
+    # both shots come from the unwatermarked resource PDF, so each gets exactly one overlay watermark
     pair = "".join(
-        f'<div style="width:420px"><div class="shot"><img src="{src}"><div class="swm" style="font-size:80px">PREVIEW</div></div>'
-        f'<div class="lbl">{lab}</div></div>' for src, lab in ((a, "Card 1"), (b, "Card 2")))
+        f'<div style="position:absolute;left:{x}px;top:{y}px;width:600px"><div class="shot"><img src="{src}">'
+        f'<div class="swm" style="font-size:110px">PREVIEW</div></div>'
+        f'<div class="lbl" style="position:absolute;{side}:-2px;top:-44px;margin:0">{lab}</div></div>'
+        for src, lab, x, y, side in ((a, "Card 1", 40, 250, "left"), (b, "Card 2", 360, 420, "right")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:72px;margin-top:20px">30 unique cards</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">No two cards alike, and no two share a winning line</div>'
-        f'<div style="display:flex;gap:40px;margin-top:30px">{pair}</div>'
+        f'{pair}'
         f'<div class="band">Every pattern exactly 4 beats in 4/4</div></div>')
 
 
@@ -729,9 +741,10 @@ def build():
     render([{"html": full, "pdf": PDF}, {"html": prev, "pdf": PREVIEW_PDF}])
     for i in range(1, 5):
         pdf_png(PREVIEW_PDF, i, f"pv{i}")
+    pdf_png(PDF, page_index()[("card", 1)], "card1")
     pdf_png(PDF, page_index()[("card", 2)], "card2")
     sq = [write("cover.html", cover_square()), write("p1.html", preview_square_1(["pv1.png", "pv2.png", "pv3.png"])),
-          write("p2.html", preview_square_2("pv1.png", "card2.png")), write("p3.html", preview_square_3())]
+          write("p2.html", preview_square_2("card1.png", "card2.png")), write("p3.html", preview_square_3())]
     render([{"html": h, "png": o, "width": 1000, "height": 1000, "scale": 2} for h, o in zip(sq, [COVER_PNG] + PREVIEW_PNGS)])
     with open(TPT_JSON, "w") as f:
         json.dump(tpt_json(len(plan())), f, indent=2, ensure_ascii=False)
@@ -785,7 +798,11 @@ def verify_data():
         errs.append(f"patterns on cards without a calling card: {sorted(on_cards - drawn)}")
     if on_cards != drawn:
         errs.append(f"calling cards for patterns on no bingo card: {sorted(drawn - on_cards)}")
-    # layout fits
+    # layout fits and is big enough for grade 3 (QA round 1)
+    if SQ_S < MIN_SQ_S:
+        errs.append(f"bingo-square staff space {SQ_S}pt is below {MIN_SQ_S}pt")
+    if R.BEAM_GAP * SQ_S < 1.6:
+        errs.append("gap between sixteenth beams on the cards is under 1.6pt")
     if R.width(max(POOL, key=R.width)) * SQ_S > CELL_W - 12:
         errs.append("widest pattern overflows a bingo square")
     if R.measure_width(max(POOL, key=R.measure_width)) * CALL_S > CALL_W - 24:
@@ -802,6 +819,22 @@ def pdf_fonts(path):
     return [(ln.split()[0], ln.split()[-5]) for ln in out]
 
 
+def footer_errors(path, safe=0.35 * 72):
+    """Every page after the cover must show its footer inside the page, clear of the 0.35 in safe zone."""
+    out = subprocess.run(["pdftotext", "-bbox", path, "-"], capture_output=True, text=True, check=True).stdout
+    errs = []
+    for i, page in enumerate(re.findall(r'<page width="([\d.]+)" height="([\d.]+)">(.*?)</page>', out, re.S)):
+        ph = float(page[1])
+        ys = [float(m) for m in re.findall(r'yMax="([\d.]+)">Lotze', page[2])]
+        if i == 0 and not ys:
+            continue
+        if not ys:
+            errs.append(f"{os.path.basename(path)} p{i + 1}: footer not found on the page")
+        elif max(ys) > ph - safe:
+            errs.append(f"{os.path.basename(path)} p{i + 1}: footer ends {ph - max(ys):.1f}pt from the bottom edge (< {safe:.0f}pt)")
+    return errs
+
+
 def verify_files():
     errs = []
     from pypdf import PdfReader
@@ -811,14 +844,16 @@ def verify_files():
             errs.append(f"missing {os.path.basename(p)}")
     if errs:
         return errs
-    for path, want in ((PDF, len(plan())), (PREVIEW_PDF, len(PREVIEW_PICKS))):
+    for path, items in ((PDF, plan()), (PREVIEW_PDF, PREVIEW_PICKS)):
         rd = PdfReader(path)
-        if len(rd.pages) != want:
-            errs.append(f"{os.path.basename(path)}: {len(rd.pages)} pages, expected {want}")
-        for i, pg in enumerate(rd.pages):
+        if len(rd.pages) != len(items):
+            errs.append(f"{os.path.basename(path)}: {len(rd.pages)} pages, expected {len(items)}")
+        for i, (pg, item) in enumerate(zip(rd.pages, items)):
             w, h = float(pg.mediabox.width), float(pg.mediabox.height)
-            if abs(w - 612) > 1 or abs(h - 792) > 1:
-                errs.append(f"{os.path.basename(path)} p{i + 1}: {w:.0f}x{h:.0f}pt, not US Letter")
+            want = (792, 612) if item[0] == "card" else (612, 792)   # bingo cards are landscape Letter
+            if abs(w - want[0]) > 1 or abs(h - want[1]) > 1:
+                errs.append(f"{os.path.basename(path)} p{i + 1}: {w:.0f}x{h:.0f}pt, expected {want[0]}x{want[1]} (US Letter)")
+        errs += footer_errors(path)
         fonts = pdf_fonts(path)
         for name, emb in fonts:
             if emb != "yes":

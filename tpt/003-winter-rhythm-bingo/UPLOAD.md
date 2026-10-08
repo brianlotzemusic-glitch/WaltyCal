@@ -3,7 +3,7 @@
 These fields follow the order of TpT's "Add a resource" form. `tools/tpt.js publish` reads the title and description from the code blocks under 1 and 2, and everything else from `tpt.json`.
 
 **Files to attach**
-- Resource (digital download): `winter-rhythm-bingo.pdf`, 40 pages, US Letter.
+- Resource (digital download): `winter-rhythm-bingo.pdf`, 40 pages, US Letter (bingo cards landscape, everything else portrait).
 - Thumbnails, in this order: `cover.png`, `preview-1.png`, `preview-2.png`, `preview-3.png` (all 2000 × 2000).
 - Preview file: `winter-rhythm-bingo-PREVIEW.pdf`, 4 watermarked pages.
 
@@ -23,7 +23,7 @@ WHAT'S INCLUDED (40 pages, PDF, US Letter)
 • Teacher notes and How to Play: prep, ways to call, game variations, tips (2 pages)
 • Rhythm reference / anchor chart: all 9 rhythm values with beats, counts and optional syllables (1 page)
 • Caller's checklist: all 36 patterns with counts, to tick as you call and to check winners (1 page)
-• 30 unique bingo cards, one per page, each with 24 rhythm patterns and a FREE snowflake centre (30 pages)
+• 30 unique bingo cards, one per landscape page with large, easy-to-read notation, each with 24 rhythm patterns and a FREE snowflake centre (30 pages)
 • 36 calling cards, 12 per page, each with the pattern in 4/4, the counts (1 e & a) and optional syllables (3 pages)
 • Snowflake and winter bingo markers (1 page)
 • Terms of use and credits (1 page)
