@@ -1,0 +1,230 @@
+{
+ "01-holly-crown": {
+  "name": "Holly crown",
+  "px": [
+   3388,
+   3600
+  ],
+  "inches": [
+   11.29,
+   12.0
+  ],
+  "png_mb": 0.86,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 2958,
+  "coverage_pct": 52.0,
+  "svg_ink_pct_of_shape": 25.6,
+  "svg_paths": 52
+ },
+ "02-cozy-scarf": {
+  "name": "Cozy scarf",
+  "px": [
+   3068,
+   3600
+  ],
+  "inches": [
+   10.23,
+   12.0
+  ],
+  "png_mb": 0.8,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 882,
+  "coverage_pct": 53.0,
+  "svg_ink_pct_of_shape": 13.7,
+  "svg_paths": 83
+ },
+ "03-pine-wreath": {
+  "name": "Pine wreath",
+  "px": [
+   3424,
+   3600
+  ],
+  "inches": [
+   11.41,
+   12.0
+  ],
+  "png_mb": 1.88,
+  "pieces": 1,
+  "specks_removed": 7,
+  "holes_filled": 0,
+  "white_px_cleared": 35869,
+  "coverage_pct": 59.0,
+  "svg_ink_pct_of_shape": 36.6,
+  "svg_paths": 572
+ },
+ "04-bobble-hat": {
+  "name": "Bobble hat",
+  "px": [
+   3276,
+   3600
+  ],
+  "inches": [
+   10.92,
+   12.0
+  ],
+  "png_mb": 0.65,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 388,
+  "coverage_pct": 47.3,
+  "svg_ink_pct_of_shape": 15.7,
+  "svg_paths": 58
+ },
+ "05-winter-stroll": {
+  "name": "Winter stroll",
+  "px": [
+   3600,
+   3078
+  ],
+  "inches": [
+   12.0,
+   10.26
+  ],
+  "png_mb": 0.88,
+  "pieces": 4,
+  "specks_removed": 72,
+  "holes_filled": 0,
+  "white_px_cleared": 24200,
+  "coverage_pct": 50.7,
+  "svg_ink_pct_of_shape": 15.9,
+  "svg_paths": 30
+ },
+ "06-sleepy-calf": {
+  "name": "Sleepy calf",
+  "px": [
+   3600,
+   2411
+  ],
+  "inches": [
+   12.0,
+   8.04
+  ],
+  "png_mb": 0.46,
+  "pieces": 7,
+  "specks_removed": 1,
+  "holes_filled": 0,
+  "white_px_cleared": 794,
+  "coverage_pct": 51.1,
+  "svg_ink_pct_of_shape": 19.3,
+  "svg_paths": 34
+ },
+ "07-tree-carrier": {
+  "name": "Tree carrier",
+  "px": [
+   3600,
+   2485
+  ],
+  "inches": [
+   12.0,
+   8.28
+  ],
+  "png_mb": 0.5,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 1408,
+  "coverage_pct": 54.2,
+  "svg_ink_pct_of_shape": 23.7,
+  "svg_paths": 29
+ },
+ "08-fairy-lights": {
+  "name": "Fairy lights",
+  "px": [
+   3600,
+   2847
+  ],
+  "inches": [
+   12.0,
+   9.49
+  ],
+  "png_mb": 0.69,
+  "pieces": 5,
+  "specks_removed": 2,
+  "holes_filled": 0,
+  "white_px_cleared": 177,
+  "coverage_pct": 41.5,
+  "svg_ink_pct_of_shape": 34.1,
+  "svg_paths": 26
+ },
+ "09-bauble-horn": {
+  "name": "Bauble horn",
+  "px": [
+   3600,
+   3107
+  ],
+  "inches": [
+   12.0,
+   10.36
+  ],
+  "png_mb": 0.91,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 283,
+  "coverage_pct": 49.5,
+  "svg_ink_pct_of_shape": 20.0,
+  "svg_paths": 32
+ },
+ "10-wreath-collar": {
+  "name": "Wreath collar",
+  "px": [
+   3058,
+   3600
+  ],
+  "inches": [
+   10.19,
+   12.0
+  ],
+  "png_mb": 0.79,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 5813,
+  "coverage_pct": 50.0,
+  "svg_ink_pct_of_shape": 26.9,
+  "svg_paths": 80
+ },
+ "11-mistletoe": {
+  "name": "Mistletoe",
+  "px": [
+   3600,
+   3500
+  ],
+  "inches": [
+   12.0,
+   11.67
+  ],
+  "png_mb": 0.65,
+  "pieces": 2,
+  "specks_removed": 4,
+  "holes_filled": 6,
+  "white_px_cleared": 0,
+  "coverage_pct": 30.3,
+  "svg_ink_pct_of_shape": 31.2,
+  "svg_paths": 61
+ },
+ "12-gift-box": {
+  "name": "Gift box",
+  "px": [
+   2839,
+   3600
+  ],
+  "inches": [
+   9.46,
+   12.0
+  ],
+  "png_mb": 0.74,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 376,
+  "coverage_pct": 75.5,
+  "svg_ink_pct_of_shape": 22.4,
+  "svg_paths": 46
+ }
+}
