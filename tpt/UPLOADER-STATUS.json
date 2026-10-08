@@ -1,21 +1,21 @@
 {
-  "ran_at": "2026-10-08T19:39:30.553Z",
-  "published": [],
-  "failed": [
+  "ran_at": "2026-10-08T19:40:24.224Z",
+  "published": [
     {
       "item": "002-fall-rhythm-flashcards",
-      "error": "browserType.launchPersistentContext: Executable doesn't exist at /Users/brianlotze/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated.       ║"
+      "url": "https://www.teacherspayteachers.com/Product/Fall-Rhythm-Flashcards-Tracing-Worksheets-Ta-Ti-Ti-Rest-Half-Note-K-2-17886781"
     },
     {
       "item": "003-winter-rhythm-bingo",
-      "error": "browserType.launchPersistentContext: Executable doesn't exist at /Users/brianlotze/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated.       ║"
+      "url": "https://www.teacherspayteachers.com/Product/Winter-Rhythm-Bingo-30-Unique-Cards-Sixteenths-Dotted-Rhythms-Grades-3-6-17886793"
     }
   ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
     "002-fall-rhythm-flashcards",
     "003-winter-rhythm-bingo"
   ],
-  "ok": false
+  "ok": true
 }
