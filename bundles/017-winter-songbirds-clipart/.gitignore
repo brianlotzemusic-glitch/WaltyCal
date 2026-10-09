@@ -1,0 +1,4 @@
+# 4096 px Recraft upscales (~12 MB each); see PROMPTS.md to recreate them
+art/up/
+__pycache__/
+.check.svg

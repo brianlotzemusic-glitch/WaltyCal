@@ -1,0 +1,230 @@
+{
+ "01-cardinal-on-holly": {
+  "name": "Cardinal on holly",
+  "px": [
+   3600,
+   2985
+  ],
+  "inches": [
+   12.0,
+   9.95
+  ],
+  "png_mb": 0.75,
+  "pieces": 2,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 916,
+  "coverage_pct": 35.5,
+  "svg_ink_pct_of_shape": 24.0,
+  "svg_paths": 30
+ },
+ "02-chickadee-on-pine": {
+  "name": "Chickadee on pine",
+  "px": [
+   3023,
+   3600
+  ],
+  "inches": [
+   10.08,
+   12.0
+  ],
+  "png_mb": 0.6,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 2779,
+  "coverage_pct": 27.2,
+  "svg_ink_pct_of_shape": 45.9,
+  "svg_paths": 60
+ },
+ "03-robin-with-berries": {
+  "name": "Robin with berries",
+  "px": [
+   3600,
+   3030
+  ],
+  "inches": [
+   12.0,
+   10.1
+  ],
+  "png_mb": 0.63,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 776,
+  "coverage_pct": 41.9,
+  "svg_ink_pct_of_shape": 25.7,
+  "svg_paths": 19
+ },
+ "04-winter-wren": {
+  "name": "Winter wren",
+  "px": [
+   2806,
+   3600
+  ],
+  "inches": [
+   9.35,
+   12.0
+  ],
+  "png_mb": 0.77,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 7030,
+  "coverage_pct": 41.4,
+  "svg_ink_pct_of_shape": 35.6,
+  "svg_paths": 119
+ },
+ "05-little-owl": {
+  "name": "Little owl",
+  "px": [
+   3600,
+   3094
+  ],
+  "inches": [
+   12.0,
+   10.31
+  ],
+  "png_mb": 0.67,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 4233,
+  "coverage_pct": 34.6,
+  "svg_ink_pct_of_shape": 32.5,
+  "svg_paths": 28
+ },
+ "06-blue-jay": {
+  "name": "Blue jay",
+  "px": [
+   3350,
+   3600
+  ],
+  "inches": [
+   11.17,
+   12.0
+  ],
+  "png_mb": 0.57,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 1189,
+  "coverage_pct": 28.3,
+  "svg_ink_pct_of_shape": 40.4,
+  "svg_paths": 56
+ },
+ "07-bluebird-on-berries": {
+  "name": "Bluebird on berries",
+  "px": [
+   3503,
+   3600
+  ],
+  "inches": [
+   11.68,
+   12.0
+  ],
+  "png_mb": 0.6,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 678,
+  "coverage_pct": 34.6,
+  "svg_ink_pct_of_shape": 22.4,
+  "svg_paths": 47
+ },
+ "08-flying-cardinal": {
+  "name": "Flying cardinal",
+  "px": [
+   3600,
+   2911
+  ],
+  "inches": [
+   12.0,
+   9.7
+  ],
+  "png_mb": 0.84,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 2075,
+  "coverage_pct": 38.2,
+  "svg_ink_pct_of_shape": 9.6,
+  "svg_paths": 41
+ },
+ "09-birdhouse": {
+  "name": "Birdhouse",
+  "px": [
+   2974,
+   3600
+  ],
+  "inches": [
+   9.91,
+   12.0
+  ],
+  "png_mb": 0.54,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 142,
+  "coverage_pct": 42.0,
+  "svg_ink_pct_of_shape": 23.1,
+  "svg_paths": 34
+ },
+ "10-holly-sprig": {
+  "name": "Holly sprig",
+  "px": [
+   2973,
+   3600
+  ],
+  "inches": [
+   9.91,
+   12.0
+  ],
+  "png_mb": 0.62,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 231,
+  "coverage_pct": 33.7,
+  "svg_ink_pct_of_shape": 24.9,
+  "svg_paths": 103
+ },
+ "11-pine-cone-sprig": {
+  "name": "Pine cone sprig",
+  "px": [
+   2037,
+   3600
+  ],
+  "inches": [
+   6.79,
+   12.0
+  ],
+  "png_mb": 0.69,
+  "pieces": 7,
+  "specks_removed": 3,
+  "holes_filled": 0,
+  "white_px_cleared": 12331,
+  "coverage_pct": 36.6,
+  "svg_ink_pct_of_shape": 30.2,
+  "svg_paths": 201
+ },
+ "12-cardinal-in-hat": {
+  "name": "Cardinal in a hat",
+  "px": [
+   1908,
+   3600
+  ],
+  "inches": [
+   6.36,
+   12.0
+  ],
+  "png_mb": 0.44,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 92,
+  "coverage_pct": 53.9,
+  "svg_ink_pct_of_shape": 23.3,
+  "svg_paths": 105
+ }
+}
