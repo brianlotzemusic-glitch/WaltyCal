@@ -1,0 +1,30 @@
+{
+  "price": "3.50",
+  "license_price": "3.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "1st-grade",
+    "2nd-grade",
+    "3rd-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Thanksgiving",
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 21,
+  "answer_key": "Included",
+  "files": {
+    "product": "thanksgiving-rhythm-match.pdf",
+    "preview": "thanksgiving-rhythm-match-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
