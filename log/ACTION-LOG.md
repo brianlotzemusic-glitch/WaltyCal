@@ -142,3 +142,4 @@
 - 2026-10-09 10:52 UTC: 016 Nutcracker ballet clipart (12 PNG+SVG, $3.49, AI $0.518) approved by QA (Sonnet) in round 1, with an optional note on the 05 neck gap. Listed as Etsy 4591782061 (20 live).
 - 2026-10-09 20:46 UTC: Manager v2 session ready (readiness check; takes over shifts from the 6:12pm ET shift).
 - 2026-10-09 20:46 UTC: Owner approved a fresh Manager. Shifts move to Manager v2 (session_01UETtbiEyzCWi3eoMXW2Vud, Sonnet; routine trig_018oFhPKZvy1Uok7caWaUfQN, first shift 6:12pm ET today). The old Manager (537k tokens of context re-read on every step) and its routine are kept off as the fallback. The watchdog moves to 8:40am/7:40pm ET with a 3 h rule (the old rule sent a false alarm at 4:40pm today).
+- 2026-10-09 21:55 UTC: Owner raised output to 2 Etsy + 2 TpT products a day (was 2 in total): one of each per shift. The Researcher keeps at least 8 [tpt] items queued (6 now, so a TpT research pass is due at the next shift).
