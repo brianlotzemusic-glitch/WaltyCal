@@ -1,47 +1,47 @@
 {
-  "updated_at": "2026-10-09T10:14:15Z",
+  "updated_at": "2026-10-09T10:52:57Z",
   "next_run_at": "2026-10-09T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 19,
-  "bundles_built": 17,
+  "listings_live": 20,
+  "bundles_built": 18,
   "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
-      "state": "working",
-      "task": "6:12am ET shift Oct 9: Designer, Researcher and Scout running.",
-      "since": "2026-10-09T10:14:15Z"
+      "state": "idle",
+      "task": "6:12am shift done. Next: 6:12pm ET (Designer #2 of the day, Oct 10 turnaround report).",
+      "since": "2026-10-09T10:52:57Z"
     },
     {
       "id": "researcher",
       "name": "Researcher",
-      "state": "working",
-      "task": "Daily refresh Oct 9.",
-      "since": "2026-10-09T10:14:15Z"
+      "state": "idle",
+      "task": "Oct 9 refresh: winter songbirds became clipart and moved up to #2.",
+      "since": "2026-10-09T10:52:57Z"
     },
     {
       "id": "designer",
       "name": "Designer",
-      "state": "working",
-      "task": "Building 016: Nutcracker ballet clipart.",
-      "since": "2026-10-09T10:14:15Z"
+      "state": "idle",
+      "task": "016 Nutcracker clipart approved and listed. 1 of 2 built today (ET).",
+      "since": "2026-10-09T10:52:57Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved TpT 003 in round 2.",
-      "since": "2026-10-08T10:35:02Z"
+      "task": "Approved 016 in round 1 (Sonnet).",
+      "since": "2026-10-09T10:52:57Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Listed 015 (Etsy 4590883039). 1 of 4 slots used Oct 8 UTC.",
-      "since": "2026-10-08T02:50:54Z"
+      "task": "Listed 016 (Etsy 4591782061). 1 of 4 slots used Oct 9 UTC.",
+      "since": "2026-10-09T10:52:57Z"
     },
     {
       "id": "analyst",
@@ -53,9 +53,9 @@
     {
       "id": "scout",
       "name": "Scout",
-      "state": "working",
-      "task": "Weekly venture check.",
-      "since": "2026-10-09T10:14:15Z"
+      "state": "idle",
+      "task": "Oct 9 weekly check: no change, laser-cut file shop still #1. Next check Oct 16.",
+      "since": "2026-10-09T10:52:57Z"
     },
     {
       "id": "launcher",
@@ -82,7 +82,7 @@
   "queue": [
     "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,",
     "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea",
-    "[format] Nutcracker ballet clipart (changed 7 Oct from cut files to PNG clipart + single-l",
+    "[format] Winter songbirds clipart (changed 9 Oct from cut files to PNG clipart + single-la",
     "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + ",
     "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and ",
     "[format] Woodland Christmas scavenger hunt printable (new 4 Oct; same family as the approv",
@@ -90,6 +90,11 @@
     "Birdwatching silhouettes (heron, swallow, hummingbird, wren, flying flocks; year-round; hu"
   ],
   "feed": [
+    {
+      "t": "2026-10-09T10:52:57Z",
+      "who": "lister",
+      "msg": "Listed 016: Nutcracker ballet clipart (12 PNG+SVG, $3.49). 20 live."
+    },
     {
       "t": "2026-10-09T10:14:15Z",
       "who": "analyst",
