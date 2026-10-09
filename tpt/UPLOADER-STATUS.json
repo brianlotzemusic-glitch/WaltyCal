@@ -1,21 +1,9 @@
 {
-  "ran_at": "2026-10-08T19:40:24.224Z",
-  "published": [
-    {
-      "item": "002-fall-rhythm-flashcards",
-      "url": "https://www.teacherspayteachers.com/Product/Fall-Rhythm-Flashcards-Tracing-Worksheets-Ta-Ti-Ti-Rest-Half-Note-K-2-17886781"
-    },
-    {
-      "item": "003-winter-rhythm-bingo",
-      "url": "https://www.teacherspayteachers.com/Product/Winter-Rhythm-Bingo-30-Unique-Cards-Sixteenths-Dotted-Rhythms-Grades-3-6-17886793"
-    }
-  ],
+  "ran_at": "2026-10-09T00:30:06.115Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "002-fall-rhythm-flashcards",
-    "003-winter-rhythm-bingo"
-  ],
+  "pending_before": [],
   "ok": true
 }
