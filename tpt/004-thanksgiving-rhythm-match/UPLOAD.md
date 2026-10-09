@@ -12,7 +12,7 @@ These fields follow the order of TpT's "Add a resource" form. `tools/tpt.js publ
 ```
 Thanksgiving Rhythm Match + Echo Cards | Ta Ti-Ti Rest Half Note | Grades 1-3
 ```
-(78 characters; the limit is 80.)
+(77 characters; the limit is 80.)
 
 ## 2. Description
 
