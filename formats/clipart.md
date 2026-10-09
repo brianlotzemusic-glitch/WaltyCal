@@ -48,6 +48,7 @@ The art comes from AI drafts, like the coloring pages. Each design costs about *
 - every PNG: transparent, longest side 3600 px, 300 dpi, clear corners, ≥ 15% transparent, no piece under 900 px, ≤ 3% paper-white pixels on the art's outer edge, ≤ 3 MB
 - **halo test** (QA S1): light neutral pixels (every channel ≥ 195, tint ≤ 35, alpha > 127) within 12 px of transparency (alpha < 20): at most 5,000 per design and no patch over 30 px. Real light art goes in `HALO_OK` boxes in `gen.py` with the reason (the pilot's mistletoe berries). The old paper-white edge test alone passed a wreath with a frosty fringe
 - **full opacity** (QA S2): no alpha 250–254 anywhere; ≥ 99% of the solid interior (more than 3 px inside the edge) and ≥ 98% of all pixels with alpha > 127 are exactly 255. The rest is the anti-aliased edge and intended glows (the pilot's fairy lights), which should stay soft
+- **pinholes** (QA S6, in `gen.py` from bundle 016): no transparent hole (alpha < 128) under 60 px wholly inside the art, unless listed in `PINHOLE_OK` with the reason. `process.py` closes such holes with the rim's colour (`fill_small_holes`), also after quantizing, because the palette can split a soft crack into new pinholes
 - no two designs alike (24 × 24 shape + tone hash, ≥ 60 of 1152 bits differ)
 - every SVG: parses, exactly one path in one colour, no text or embedded image, opens at the PNG's print width and aspect, ink 3–45% of the canvas
 - README lists every design; 5 listing images at 3000 × 2250, each under 10 MB; `contact-sheet.png` present

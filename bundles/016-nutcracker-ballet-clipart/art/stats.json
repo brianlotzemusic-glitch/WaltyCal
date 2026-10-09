@@ -1,0 +1,230 @@
+{
+ "01-classic-nutcracker": {
+  "name": "Classic nutcracker",
+  "px": [
+   1582,
+   3600
+  ],
+  "inches": [
+   5.27,
+   12.0
+  ],
+  "png_mb": 0.49,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 95,
+  "coverage_pct": 58.9,
+  "svg_ink_pct_of_shape": 39.1,
+  "svg_paths": 72
+ },
+ "02-nutcracker-portrait": {
+  "name": "Nutcracker portrait",
+  "px": [
+   2963,
+   3600
+  ],
+  "inches": [
+   9.88,
+   12.0
+  ],
+  "png_mb": 0.72,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 488,
+  "coverage_pct": 68.9,
+  "svg_ink_pct_of_shape": 17.2,
+  "svg_paths": 40
+ },
+ "03-navy-nutcracker": {
+  "name": "Navy nutcracker",
+  "px": [
+   1812,
+   3600
+  ],
+  "inches": [
+   6.04,
+   12.0
+  ],
+  "png_mb": 0.48,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 67,
+  "coverage_pct": 49.2,
+  "svg_ink_pct_of_shape": 26.5,
+  "svg_paths": 80
+ },
+ "04-sugar-plum-dancer": {
+  "name": "Sugar plum dancer",
+  "px": [
+   2589,
+   3600
+  ],
+  "inches": [
+   8.63,
+   12.0
+  ],
+  "png_mb": 0.37,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 302,
+  "coverage_pct": 25.3,
+  "svg_ink_pct_of_shape": 34.4,
+  "svg_paths": 63
+ },
+ "05-red-tutu-dancer": {
+  "name": "Red tutu dancer",
+  "px": [
+   2398,
+   3600
+  ],
+  "inches": [
+   7.99,
+   12.0
+  ],
+  "png_mb": 0.27,
+  "pieces": 2,
+  "specks_removed": 1,
+  "holes_filled": 0,
+  "white_px_cleared": 4319,
+  "coverage_pct": 21.4,
+  "svg_ink_pct_of_shape": 37.9,
+  "svg_paths": 48
+ },
+ "06-mouse-king": {
+  "name": "Mouse king",
+  "px": [
+   3106,
+   3600
+  ],
+  "inches": [
+   10.35,
+   12.0
+  ],
+  "png_mb": 0.88,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 27,
+  "coverage_pct": 52.1,
+  "svg_ink_pct_of_shape": 14.5,
+  "svg_paths": 47
+ },
+ "07-gold-snowflake": {
+  "name": "Gold snowflake",
+  "px": [
+   3088,
+   3600
+  ],
+  "inches": [
+   10.29,
+   12.0
+  ],
+  "png_mb": 0.78,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 133,
+  "coverage_pct": 38.3,
+  "svg_ink_pct_of_shape": 9.6,
+  "svg_paths": 56
+ },
+ "08-toy-drum": {
+  "name": "Toy drum",
+  "px": [
+   3600,
+   3589
+  ],
+  "inches": [
+   12.0,
+   11.96
+  ],
+  "png_mb": 0.97,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 390,
+  "coverage_pct": 76.0,
+  "svg_ink_pct_of_shape": 18.2,
+  "svg_paths": 45
+ },
+ "09-drummer-soldier": {
+  "name": "Drummer soldier",
+  "px": [
+   2043,
+   3600
+  ],
+  "inches": [
+   6.81,
+   12.0
+  ],
+  "png_mb": 0.41,
+  "pieces": 1,
+  "specks_removed": 1,
+  "holes_filled": 0,
+  "white_px_cleared": 193,
+  "coverage_pct": 42.7,
+  "svg_ink_pct_of_shape": 39.4,
+  "svg_paths": 47
+ },
+ "10-pointe-shoes": {
+  "name": "Pointe shoes",
+  "px": [
+   2920,
+   3600
+  ],
+  "inches": [
+   9.73,
+   12.0
+  ],
+  "png_mb": 0.84,
+  "pieces": 2,
+  "specks_removed": 1,
+  "holes_filled": 0,
+  "white_px_cleared": 179,
+  "coverage_pct": 41.4,
+  "svg_ink_pct_of_shape": 12.7,
+  "svg_paths": 105
+ },
+ "11-sugar-plums": {
+  "name": "Sugar plums",
+  "px": [
+   3600,
+   3055
+  ],
+  "inches": [
+   12.0,
+   10.18
+  ],
+  "png_mb": 0.86,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 47,
+  "coverage_pct": 48.3,
+  "svg_ink_pct_of_shape": 19.8,
+  "svg_paths": 23
+ },
+ "12-music-box": {
+  "name": "Music box",
+  "px": [
+   2128,
+   3600
+  ],
+  "inches": [
+   7.09,
+   12.0
+  ],
+  "png_mb": 0.83,
+  "pieces": 1,
+  "specks_removed": 8,
+  "holes_filled": 0,
+  "white_px_cleared": 1192,
+  "coverage_pct": 73.7,
+  "svg_ink_pct_of_shape": 34.6,
+  "svg_paths": 50
+ }
+}
