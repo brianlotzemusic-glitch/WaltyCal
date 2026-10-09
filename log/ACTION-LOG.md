@@ -141,3 +141,4 @@
 - 2026-10-09 10:15 UTC: Researcher refresh (research/refresh-2026-10-09.md): Winter songbirds is now [format] clipart and moved up to #2. Non-cut formats are 7 of 21. No new sales lists since Oct 1.
 - 2026-10-09 10:52 UTC: 016 Nutcracker ballet clipart (12 PNG+SVG, $3.49, AI $0.518) approved by QA (Sonnet) in round 1, with an optional note on the 05 neck gap. Listed as Etsy 4591782061 (20 live).
 - 2026-10-09 20:46 UTC: Manager v2 session ready (readiness check; takes over shifts from the 6:12pm ET shift).
+- 2026-10-09 20:46 UTC: Owner approved a fresh Manager. Shifts move to Manager v2 (session_01UETtbiEyzCWi3eoMXW2Vud, Sonnet; routine trig_018oFhPKZvy1Uok7caWaUfQN, first shift 6:12pm ET today). The old Manager (537k tokens of context re-read on every step) and its routine are kept off as the fallback. The watchdog moves to 8:40am/7:40pm ET with a 3 h rule (the old rule sent a false alarm at 4:40pm today).
