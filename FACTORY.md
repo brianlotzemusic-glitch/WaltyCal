@@ -12,7 +12,7 @@ This branch (`shop-factory`) is the Etsy shop's workspace. The shop is **Duskwoo
 - `reports/` — weekly reports
 
 ## The team
-The **Manager** runs 2 shifts a day: **6:12am and 6:12pm Eastern** (owner, 8 Oct 2026, to leave weekly usage for the owner's other work; was 5). Each shift is a fresh session started by the routine "Shop factory: shifts", so all state lives in git (FACTORY.md, queue.md, office/status.json, log/). The watchdog checks at 10:40am and 4:40pm Eastern. Each shift does everything that's due, then stops. The Manager decides which specialists are due, runs each one as a separate subagent (Agent tool) with a focused brief, and records the results. Specialists never run on their own schedule.
+The **Manager** runs 2 shifts a day: **6:12am and 6:12pm Eastern** (owner, 8 Oct 2026, to leave weekly usage for the owner's other work; was 5). Shifts fire into the Manager session through the routine "Shop factory: shifts (6:12a, 6:12p ET)". A fresh-session routine was tried on 8 Oct but couldn't push (403: fresh sessions get no write access to waltycal), so it is disabled. Keep all state in git (FACTORY.md, queue.md, office/status.json, log/) so a new session can take over. The watchdog checks at 10:40am and 4:40pm Eastern. Each shift does everything that's due, then stops. The Manager decides which specialists are due, runs each one as a separate subagent (Agent tool) with a focused brief, and records the results. Specialists never run on their own schedule.
 
 **Usage budget (owner, 8 Oct 2026).** The factory must leave room in the owner's weekly Claude usage:
 - Briefs are lean: point the agent at the exact FACTORY.md sections and files it needs (grep, don't read everything), and cap research at about 10 searches.
