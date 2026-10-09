@@ -1,4 +1,4 @@
-# Venture shortlist: combined ranking (Scout, 2026-10-01)
+# Venture shortlist: combined ranking (Scout, 2026-10-09)
 
 This ranking combines two research runs:
 - `research/2026-10-01.md` (A): design and digital-file marketplaces.
