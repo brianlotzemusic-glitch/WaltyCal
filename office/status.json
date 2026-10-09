@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-08T12:35:12Z",
-  "next_run_at": "2026-10-08T22:12:00Z",
+  "updated_at": "2026-10-09T10:14:15Z",
+  "next_run_at": "2026-10-09T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 19,
@@ -11,23 +11,23 @@
     {
       "id": "manager",
       "name": "Manager",
-      "state": "idle",
-      "task": "Usage budget: 2 shifts a day (6:12am/6:12pm ET), each a fresh session; at most 2 builds a day. Next: 6:12pm ET.",
-      "since": "2026-10-08T12:35:12Z"
+      "state": "working",
+      "task": "6:12am ET shift Oct 9: Designer, Researcher and Scout running.",
+      "since": "2026-10-09T10:14:15Z"
     },
     {
       "id": "researcher",
       "name": "Researcher",
-      "state": "idle",
-      "task": "Oct 7 refresh: nutcracker became clipart and moved up to #3.",
-      "since": "2026-10-07T19:27:46Z"
+      "state": "working",
+      "task": "Daily refresh Oct 9.",
+      "since": "2026-10-09T10:14:15Z"
     },
     {
       "id": "designer",
       "name": "Designer",
-      "state": "idle",
-      "task": "TpT 003 Winter Rhythm Bingo approved. 1 built today (ET).",
-      "since": "2026-10-08T10:35:02Z"
+      "state": "working",
+      "task": "Building 016: Nutcracker ballet clipart.",
+      "since": "2026-10-09T10:14:15Z"
     },
     {
       "id": "qa",
@@ -47,15 +47,15 @@
       "id": "analyst",
       "name": "Analyst",
       "state": "idle",
-      "task": "Stats Oct 7: 17 listings, 5 views, 1 favourite, 0 sales. No optimization rule triggered yet.",
-      "since": "2026-10-07T19:14:39Z"
+      "task": "Stats Oct 9: 19 listings, 5 views, 2 favourites (both Christmas Village), 0 sales.",
+      "since": "2026-10-09T10:14:15Z"
     },
     {
       "id": "scout",
       "name": "Scout",
-      "state": "idle",
-      "task": "Ranked about 50 options across two runs. #1 is still the laser-cut file shop. Next check in 7 days.",
-      "since": "2026-10-01T13:20:00Z"
+      "state": "working",
+      "task": "Weekly venture check.",
+      "since": "2026-10-09T10:14:15Z"
     },
     {
       "id": "launcher",
@@ -90,6 +90,11 @@
     "Birdwatching silhouettes (heron, swallow, hummingbird, wren, flying flocks; year-round; hu"
   ],
   "feed": [
+    {
+      "t": "2026-10-09T10:14:15Z",
+      "who": "analyst",
+      "msg": "Stats: 5 views, 2 favourites (Christmas Village), 0 sales."
+    },
     {
       "t": "2026-10-08T12:35:12Z",
       "who": "manager",
