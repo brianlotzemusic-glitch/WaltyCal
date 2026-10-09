@@ -145,3 +145,4 @@
 - 2026-10-09 21:55 UTC: Owner raised output to 2 Etsy + 2 TpT products a day (was 2 in total): one of each per shift. The Researcher keeps at least 8 [tpt] items queued (6 now, so a TpT research pass is due at the next shift).
 - 2026-10-09 22:30 UTC: Researcher TpT pass: queue had 2 unchecked [tpt] items; added 10 (Thanksgiving rhythm match, winter concert kit, winter note names, K-5 sub plans first), now 12. Note: research/tpt-refresh-2026-10-09.md.
 - 2026-10-09 22:35 UTC: Designer built 017 Winter songbirds clipart (12 PNG+SVG, $3.49, AI $0.504, Recraft balance 3,296 credits); gen.py --check ALL CHECKS PASS; awaiting QA, not listed.
+- 2026-10-09 22:45 UTC: 017 Winter songbirds clipart (12 PNG+SVG, $3.49) approved by QA; listed as Etsy 4592180125 (21 live, 2 of 4 slots used today). Design 11 name left as is (no birds in it).
