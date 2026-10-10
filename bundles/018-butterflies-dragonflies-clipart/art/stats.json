@@ -47,13 +47,13 @@
    12.0,
    8.51
   ],
-  "png_mb": 0.43,
+  "png_mb": 0.42,
   "pieces": 3,
   "specks_removed": 0,
   "holes_filled": 0,
   "white_px_cleared": 1323,
-  "coverage_pct": 46.7,
-  "svg_ink_pct_of_shape": 52.6,
+  "coverage_pct": 47.7,
+  "svg_ink_pct_of_shape": 53.7,
   "svg_paths": 60
  },
  "04-red-admiral": {
@@ -104,14 +104,14 @@
    12.0,
    9.67
   ],
-  "png_mb": 1.03,
+  "png_mb": 0.92,
   "pieces": 4,
   "specks_removed": 0,
   "holes_filled": 0,
-  "white_px_cleared": 985,
+  "white_px_cleared": 822,
   "coverage_pct": 64.7,
-  "svg_ink_pct_of_shape": 23.6,
-  "svg_paths": 13
+  "svg_ink_pct_of_shape": 10.2,
+  "svg_paths": 15
  },
  "07-monarch-on-coneflower": {
   "name": "Monarch on a coneflower",

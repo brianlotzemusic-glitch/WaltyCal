@@ -68,3 +68,8 @@ Clean-up (no edge snapping, per QA 017):
 - 04 SVG: the wings are flat near-black, so `LINE_MIN_BY_SLUG` leaves them out of the ink (otherwise 51% ink, over the 45% check); its SVG is the outlines and veins.
 
 `python3 gen.py --check`: ALL CHECKS PASS (ZIP 7.1 MB; closest design pair 08/09 at 89 bits, the two top-view dragonflies, which differ by colour and wing shape).
+
+## QA round 1 fixes (Designer, round 2; $0, no new AI calls)
+- **03 Tiger swallowtail:** new `BODY_GAP` in `process.py`: inside a box round the body (final PNG coordinates), each row's transparent gap between the two dark hindwing-margin strips is filled with the strips' body colour (45, 31, 38) at alpha 255, from below the thorax down to the hindwing notch (the narrowest row, 33 px). The body is now one closed dark shape with the abdomen drawn inside it; the natural V between the tails below the notch stays transparent.
+- **06 Little blue butterfly:** new `NEUTRAL_PAINT`: the wobbly mid-grey border band, the darker grey line inside it and their grey-lilac mixes (every non-plum pixel darker than the wing, outside the body and antennae boxes) take the wing colour, so each wing runs cleanly to its thin plum outline; one stray plum dash inside the left hind wing is wiped. A `RECOLOR` rule then turns the grey-lilac into a clear sky blue (hue 212, saturation x2). Name kept: it now matches. A faint lighter hairline remains where the grey band used to meet the wing; please judge at 100% on dark.
+- Rebuilt PNG/SVG for 03 and 06, the ZIP, contact sheet and listing images 2-4. `gen.py --check`: ALL CHECKS PASS.

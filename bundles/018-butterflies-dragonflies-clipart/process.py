@@ -76,6 +76,8 @@ EDGE_SNAP = {}   # 018: not used (QA 017 note: no needle-edge snapping)
 # Pixels inside the box with a hue in range and at least that value (so the dark plum outlines are untouched) get
 # the new hue and scaled saturation/value. Shading and linework inside the shapes are kept.
 RECOLOR = {
+    # QA 018 round 1: dull grey-lilac wings -> a clear common-blue sky blue (outline, veins and body kept)
+    "06-common-blue": [(None, 195, 265, 0.30, 212, 2.0, 1.05)],
     # the draft's milkweed leaf was sky blue and teal with a lilac stalk, a maroon leaflet and a yellow oval: all leaf green
     "05-monarch-caterpillar": [(None, 180, 345, 0.40, 125, 0.75, 0.9),
                                ((1900, 1100, 2350, 1300), 25, 70, 0.40, 125, 0.8, 0.95)],
@@ -94,6 +96,15 @@ TINT_MIN_PX = 1        # every light neutral patch: wing cells, glints and slive
 # 018: 02's draft drew the morpho's body with white seams along its sides and between its segments; removebg took them
 # as background (transparent slits, light rims on dark fabric). Inside the box they are painted with the body plum.
 PAINT = {"02-blue-morpho": [((1650, 1750, 1950, 2300), None)]}
+# 018 QA round 1: 06's wings were a dull grey-lilac with a wobbly mid-grey band (and a darker grey line) inside the
+# plum outline. Every non-plum pixel darker than the wing (max channel <= 175) outside the body and antennae boxes are painted with the wing colour,
+# so the wing runs cleanly to its thin plum outline; RECOLOR then turns the lilac into a clear common-blue blue.
+NEUTRAL_PAINT = {"06-common-blue": ((145, 158, 202), [(1620, 0, 1980, 4000), (1200, 400, 2400, 1250)],   # keep: body, antennae
+                                    [(450, 2400, 580, 2480)])}   # wipe: a stray plum dash inside the left hind wing
+# 018 QA round 1: 03's body was split: two dark strips (the hindwings' inner margins) with transparent background
+# between them from below the thorax down to the hindwing notch. Inside the box (final PNG coordinates), transparent
+# and soft pixels between the leftmost and rightmost solid pixel of each row are filled with the strips' body colour.
+BODY_GAP = {"03-tiger-swallowtail": ((1690, 1028, 1910, 1873), (45, 31, 38))}
 SVG_PX = 1800          # trace resolution for the SVG (potrace smooths it; the SVG scales freely)
 SVG_HOLE_PX = 60       # at SVG_PX: white slivers smaller than this inside the ink are filled
 SVG_SPECK_PX = 80      # at SVG_PX: ink crumbs smaller than this are dropped
@@ -113,6 +124,7 @@ def cutout(slug):
     s = LONG / max(im.size)
     im = im.resize((round(im.size[0] * s), round(im.size[1] * s)), Image.LANCZOS)
     arr = np.array(im)
+    neutral_paint(slug, arr)
     recolor(slug, arr)
     solidify(arr)
     paint(slug, arr)
@@ -179,6 +191,7 @@ def cutout(slug):
         fill_pinholes(arr)
         out = Image.fromarray(arr, "RGBA")
     arr = np.array(out)                               # S6, all designs: no pinholes left inside the art
+    body_gap(slug, arr)
     fill_small_holes(arr)
     out = Image.fromarray(arr, "RGBA")
     return out, pieces, len(specks), filled, cleared
@@ -198,6 +211,40 @@ def recolor(slug, arr):
         hsv[..., 2][m] *= vk
         rgb = np.array(Image.fromarray(np.clip(hsv, 0, 255).astype(np.uint8), "HSV").convert("RGB"))
         sub[..., :3][m] = rgb[m]
+
+
+def neutral_paint(slug, arr):
+    """NEUTRAL_PAINT: grey border pixels outside the keep boxes, and everything in the wipe boxes, take the wing colour."""
+    if slug not in NEUTRAL_PAINT:
+        return
+    col, keep, wipe = NEUTRAL_PAINT[slug]
+    rgb = arr[..., :3].astype(int)
+    mn, mx = rgb.min(axis=2), rgb.max(axis=2)
+    r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
+    plum = (r - g > 25) & (r >= b - 10)
+    m = (arr[..., 3] > 0) & (mx <= 175) & ~plum             # greys, grey-lilac mixes and dark specks; not the plum lines
+    for x0, y0, x1, y1 in keep:
+        m[y0:y1, x0:x1] = False
+    for x0, y0, x1, y1 in wipe:
+        m[y0:y1, x0:x1] = arr[y0:y1, x0:x1, 3] > 0
+    arr[..., :3][m] = col
+
+
+def body_gap(slug, arr):
+    """BODY_GAP: per row inside the box, everything between the first and last solid pixel becomes body colour."""
+    if slug not in BODY_GAP:
+        return
+    (x0, y0, x1, y1), col = BODY_GAP[slug]
+    sub = arr[y0:y1, x0:x1]
+    for row in sub:
+        solid = np.nonzero(row[:, 3] >= 200)[0]
+        if len(solid) < 2:
+            continue
+        seg = row[solid[0]:solid[-1] + 1]
+        gap = seg[:, 3] < 255
+        if gap.any():
+            seg[gap, :3] = col
+            seg[gap, 3] = 255
 
 
 def interior_opaque(q):
