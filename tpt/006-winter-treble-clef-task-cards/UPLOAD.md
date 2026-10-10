@@ -39,7 +39,7 @@ WORKSHEETS
 • Worksheet C: a snowy word decoder with 10 words
 
 WAYS TO USE THEM
-Scoot or around the room, clip cards, centers, partners, early finishers, warm-ups under a document camera and sub days.
+Scoot games around the room, clip cards, centers, partners, early finishers, warm-ups under a document camera and sub days.
 
 ACCURATE BY DESIGN
 Every note is engraved with a professional music font, with correct stems and ledger lines. Each note's position on the staff was checked by computer against its answer, and every answer key comes from the same checked data.
