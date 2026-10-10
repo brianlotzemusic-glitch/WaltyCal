@@ -22,3 +22,25 @@
 After fix 1, yes. Cute, well-laid-out, easy to run.
 
 **Verdict: REJECTED**
+
+---
+
+# Round 2
+
+Re-review after the Designer's fix commit 0fcba35 (cards A, D, O reassigned, checks added to `gen.py`).
+
+## Checked myself (OK)
+- `python3 gen.py --check`: ALL CHECKS PASS, including the new "no card's icon pictures its own hiding spot" and "no printed icon (cards, blanks, treasure) pictures any hiding spot" checks (no files changed by the check).
+- Icon audit, all 15 + treasure + blanks (from clues.json and the contact sheet): A tree = hedgehog, B oven = cocoa mug, C fridge = snowman, D mitten drawer = acorn, E bed = moon, F bathtub = robin, G boots = sled, H couch = fox, I bookshelf = owl, J washing machine = scarf, K window sill = bird house, L doormat = cabin, M pantry = squirrel, N toy box = rabbit, O stockings = bear; treasure = gift; blanks P-S = holly, pinecone, star, lantern. All 15 distinct, none pictures its own or any other hiding spot (tree, mitten and stocking icons are no longer used on clue cards). Pictures are no longer literal answers; the spoiler defect from round 1 is fixed.
+- Rebuilt after the fix: clues.json 22:27; ZIP, both PDFs inside it, contact sheet and all four listing images 22:28; ZIP holds exactly Letter PDF, A4 PDF and README. Both PDFs 8 pages, correct sizes, fonts embedded, every clue's first line and spot present in the text.
+- Low-res contact sheet (card icons): new A hedgehog, D acorn, O bear render cleanly. Listing image 1 (hero card A now a hedgehog, other cards fox and owl), image 3 (A hedgehog, D acorn on the A4 sample) and image 4 (all 15 plus treasure, hedgehog/acorn/bear on A/D/O): no tree, mitten or stocking left, nothing clipped, text legible, thumbnail still strong.
+- Everything else from round 1 (clue logic, rhyme scansion, safety copy, listing fields, no IP) is unchanged by the fix.
+
+## Optional (not blocking, carried over)
+- Card N rhyme "in / in" is a weak identical rhyme.
+- Add the "icons must not depict the hiding spot" rule to `formats/bingo.md`.
+
+## Would I pay $3.50?
+Yes. Cute, well-laid-out, easy to run, and the no-spoiler promise now holds.
+
+**Verdict: APPROVED**
