@@ -31,3 +31,13 @@ Re-run `gen.py` and `--check`, rebuild the ZIP and listing images (03 and 06 app
 - Shop policy still lacks a clipart licence line (S5, for the Manager).
 
 **Verdict: REJECTED**
+
+## Round 2
+`gen.py --check` prints ALL CHECKS PASS. A fresh unzip of the ZIP (12 PNG + 12 SVG + README) is byte-identical to `art/png` and `art/svg`; the 03/06 PNGs, SVGs, ZIP, contact sheet and all five listing images are timestamped after the fix commit (12:38-12:41) and show the new 03 and 06 (checked at 600 px: images 1-4 on screen). Halo worst patch is still 29 px (limit 30), no pinholes, lowest interior opacity 99.87%.
+
+- **03 Tiger swallowtail**: fixed. At 100% on dark green the body is now one closed dark shape from thorax to the hindwing notch with no background showing through; wings meet it cleanly. A faint seam line down the middle of the body is visible but reads as shading.
+- **06 Little blue butterfly**: fixed. Wings are now a clear cornflower blue with a thin plum outline and veins, clean edges, matches its name. It is the plainest design (flat blue, sparse veins) but is saturated and reads at thumbnail size; a tiny smeared vein near the left wing at 100% is not noticeable at normal size.
+- Contact sheet and listing images (mockup, collage, all-designs, PNG+SVG) at low resolution: every design reads, nothing clipped, no white fringe on dark; image 3 and collage show the corrected 03 and 06.
+- Not blocking: 12's grey-white lily patch and the missing clipart licence line (S5, Manager) remain from round 1.
+
+**Verdict: APPROVED**
