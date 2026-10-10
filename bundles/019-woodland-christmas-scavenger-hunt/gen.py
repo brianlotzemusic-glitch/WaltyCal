@@ -55,6 +55,17 @@ def check():
     res("15 different hiding spots", len({c["spot"].lower() for c in clues}) == 15)
     named = [c["code"] for c in clues if c["spot"].lower() in " ".join(c["lines"]).lower()]
     res("no clue rhyme names its own answer", not named, str(named))
+    # no-spoiler icons: no card's picture may show its own hiding spot (or any other spot in the hunt)
+    inames = {i["id"]: i["name"].lower() for i in json.load(open(os.path.join(HERE, "icons.json")))["icons"]}
+    words = lambda s: {w[:-1] if w.endswith("s") and len(w) > 3 else w for w in re.findall(r"[a-z]+", s.lower())} - {"and", "or", "by", "the"}
+    icon_ids = [c["icon"] for c in clues]
+    res("15 distinct clue-card icons, none reused on the treasure card", len(set(icon_ids)) == 15 and cj["treasure"]["icon"] not in icon_ids)
+    own = [f'{c["code"]}:{inames[c["icon"]]}' for c in clues if words(inames[c["icon"]]) & words(c["spot"])]
+    res("no card's icon pictures its own hiding spot", not own, str(own))
+    blank_ids = [int(x) for x in re.findall(r"icon:\s*(\d+)", re.search(r"const BLANK = \[(.*?)\];", open(os.path.join(HERE, "build.js")).read()).group(1))]
+    spots = set().union(*(words(c["spot"]) for c in clues))
+    lit = [inames[i] for i in icon_ids + blank_ids + [cj["treasure"]["icon"]] if words(inames[i]) & spots]
+    res("no printed icon (cards, blanks, treasure) pictures any hiding spot", not lit, str(lit))
     # zip + pdfs
     with zipfile.ZipFile(os.path.join(HERE, ZIP)) as z:
         names = sorted(z.namelist())

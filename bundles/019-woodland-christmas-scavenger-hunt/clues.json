@@ -1,13 +1,13 @@
 {
  "note": "Our own rhymes. Each clue describes a hiding spot; the NEXT card is hidden there. 'code' is the small letter on the card so grown-ups can match cards to the answer key without the answer being printed on the card.",
  "clues": [
-  {"code": "A", "spot": "Christmas tree", "tip": "Under the lowest branches", "icon": 4,
+  {"code": "A", "spot": "Christmas tree", "tip": "Under the lowest branches", "icon": 15,
    "lines": ["I'm green all year round", "and I sparkle tonight,", "with baubles and tinsel", "and one starry light.", "Look under my branches,", "down low near the floor:", "a clue's waiting there,", "and it leads you to more!"]},
   {"code": "B", "spot": "Oven", "tip": "Tape it to the handle, never inside", "icon": 19,
    "lines": ["Gingerbread bakes", "in my warm little room,", "and cookies come out", "with a lovely perfume.", "Don't open my door,", "that's a grown-up's job:", "just peek at my handle,", "close by the knob!"]},
   {"code": "C", "spot": "Fridge", "tip": "On the door with a magnet", "icon": 28,
    "lines": ["I'm chilly inside", "and I hum day and night,", "I keep the milk cold", "and the butter just right.", "The leftovers sleep", "on my shelves, side by side:", "your clue's on my door", "or just tucked inside!"]},
-  {"code": "D", "spot": "Mitten and hat drawer", "tip": "Or the coat closet or hat basket", "icon": 7,
+  {"code": "D", "spot": "Mitten and hat drawer", "tip": "Or the coat closet or hat basket", "icon": 12,
    "lines": ["Where do mittens and scarves", "and the woolly hats go", "when they come inside", "from a day in the snow?", "Go peek in the place", "where the warm things all stay:", "a clue's keeping cozy", "and tucked out of the way."]},
   {"code": "E", "spot": "Bed", "tip": "Under the pillow", "icon": 22,
    "lines": ["At night you climb in", "and you snuggle down deep,", "and dream about Christmas", "while you are asleep.", "So fluff up the pillow", "and peek under the sheet:", "a clue's hiding there,", "all tidy and neat!"]},
@@ -29,7 +29,7 @@
    "lines": ["A squirrel keeps acorns", "tucked safe in a tree;", "we keep crackers and cereal", "in here, as you'll see!", "So open my door", "where the good snacks all stay:", "your clue's waiting there", "(but no snacking today)!"]},
   {"code": "N", "spot": "Toy box", "tip": "Or the toy basket", "icon": 16,
    "lines": ["I'm stuffed full of teddies,", "of blocks and of trains,", "of puzzles and games", "for the days when it rains.", "Go look where you keep them", "and dig right on in:", "the next clue is waiting", "to welcome you in!"]},
-  {"code": "O", "spot": "Christmas stockings", "tip": "Inside a stocking (or on its hook)", "icon": 26,
+  {"code": "O", "spot": "Christmas stockings", "tip": "Inside a stocking (or on its hook)", "icon": 25,
    "lines": ["On Christmas Eve night", "we hang up in a row,", "with names on our tops", "and our heels down below.", "Peek inside of us now", "(we're not full quite yet):", "a clue's hiding there,", "that's a sure thing, you bet!"]}
  ],
  "treasure": {"icon": 21,
