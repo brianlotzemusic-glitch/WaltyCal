@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-10T11:20:00Z",
+  "updated_at": "2026-10-10T13:00:00Z",
   "next_run_at": "2026-10-10T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 21,
-  "bundles_built": 20,
+  "listings_live": 22,
+  "bundles_built": 21,
   "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12am shift done. Etsy build held: turnaround report recommends pausing new Etsy listings and Recraft spend. Waiting on the owner.",
-      "since": "2026-10-10T11:20:00Z"
+      "task": "Owner said no pause: building continues at 2 Etsy + 2 TpT a day. Next: 6:12pm ET.",
+      "since": "2026-10-10T13:00:00Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "TpT 005 Winter Concert Planner built. Etsy build skipped pending the owner's decision on the turnaround report.",
-      "since": "2026-10-10T11:20:00Z"
+      "task": "018 Butterflies & dragonflies clipart built and fixed in round 2. TpT 005 built. 1 Etsy + 1 TpT today (ET).",
+      "since": "2026-10-10T13:00:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved TpT 005 in round 1 (Sonnet).",
-      "since": "2026-10-10T11:20:00Z"
+      "task": "Approved 018 in round 2 and TpT 005 in round 1 (Sonnet).",
+      "since": "2026-10-10T13:00:00Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Nothing to list. TpT 004 is live; 005 released for the Mac nightly.",
-      "since": "2026-10-10T11:20:00Z"
+      "task": "Listed 018 (Etsy 4592485487). 22 live. TpT 005 released for the Mac nightly.",
+      "since": "2026-10-10T13:00:00Z"
     },
     {
       "id": "analyst",
@@ -90,6 +90,21 @@
     "Birdwatching silhouettes (heron, swallow, hummingbird, wren, flying flocks; year-round; hu"
   ],
   "feed": [
+    {
+      "t": "2026-10-10T13:00:00Z",
+      "who": "lister",
+      "msg": "Listed 018: Butterflies & dragonflies clipart (12 PNG+SVG, $3.49). 22 live."
+    },
+    {
+      "t": "2026-10-10T13:00:00Z",
+      "who": "qa",
+      "msg": "Sent 018 back (split body on 03, dull 06); approved in round 2."
+    },
+    {
+      "t": "2026-10-10T13:00:00Z",
+      "who": "manager",
+      "msg": "Owner decided: no pause, keep building 2 Etsy + 2 TpT a day."
+    },
     {
       "t": "2026-10-10T11:20:00Z",
       "who": "manager",
@@ -149,21 +164,6 @@
       "t": "2026-10-07T19:27:46Z",
       "who": "lister",
       "msg": "Listed 014: Christmas coloring pages (20 pages, $3.99). 18 live."
-    },
-    {
-      "t": "2026-10-07T19:14:39Z",
-      "who": "analyst",
-      "msg": "Stats: 5 views, 1 favourite (Christmas Village), 0 sales."
-    },
-    {
-      "t": "2026-10-07T19:14:39Z",
-      "who": "manager",
-      "msg": "Factory paused Oct 5-7 (usage limit). Resumed: 014 fixes, research and trend scan running."
-    },
-    {
-      "t": "2026-10-05T10:17:36Z",
-      "who": "manager",
-      "msg": "Weekly report: 17 Etsy listings, 1 view, $0 revenue. Traffic is the problem."
     }
   ],
   "venture_gate": {
