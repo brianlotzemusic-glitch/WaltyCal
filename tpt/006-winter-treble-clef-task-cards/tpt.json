@@ -1,0 +1,30 @@
+{
+  "price": "4.00",
+  "license_price": "4.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "2nd-grade",
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Winter"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 23,
+  "answer_key": "Included",
+  "files": {
+    "product": "winter-treble-clef-task-cards.pdf",
+    "preview": "winter-treble-clef-task-cards-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
