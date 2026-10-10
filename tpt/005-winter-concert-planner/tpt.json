@@ -1,0 +1,26 @@
+{
+  "price": "4.50",
+  "license_price": "4.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "not-grade-specific"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Winter"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 20,
+  "files": {
+    "product": "winter-concert-planner.pdf",
+    "preview": "winter-concert-planner-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
