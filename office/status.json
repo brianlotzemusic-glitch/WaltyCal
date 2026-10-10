@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-09T23:55:00Z",
-  "next_run_at": "2026-10-10T10:12:00Z",
+  "updated_at": "2026-10-10T11:20:00Z",
+  "next_run_at": "2026-10-10T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 21,
-  "bundles_built": 19,
+  "bundles_built": 20,
   "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12pm shift done. Next: 6:12am ET Oct 10 (turnaround report, stats, Designer x2).",
-      "since": "2026-10-09T23:55:00Z"
+      "task": "6:12am shift done. Etsy build held: turnaround report recommends pausing new Etsy listings and Recraft spend. Waiting on the owner.",
+      "since": "2026-10-10T11:20:00Z"
     },
     {
       "id": "researcher",
@@ -26,29 +26,29 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "017 songbirds clipart and TpT 004 Thanksgiving Rhythm Match built. 2 of 2 Etsy-side and 1 TpT built today; one more TpT next shift.",
-      "since": "2026-10-09T23:55:00Z"
+      "task": "TpT 005 Winter Concert Planner built. Etsy build skipped pending the owner's decision on the turnaround report.",
+      "since": "2026-10-10T11:20:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved 017 and TpT 004 in round 1 (Sonnet).",
-      "since": "2026-10-09T23:55:00Z"
+      "task": "Approved TpT 005 in round 1 (Sonnet).",
+      "since": "2026-10-10T11:20:00Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Listed 017 (Etsy 4592180125). 21 live. TpT 004 released for the Mac nightly.",
-      "since": "2026-10-09T23:55:00Z"
+      "task": "Nothing to list. TpT 004 is live; 005 released for the Mac nightly.",
+      "since": "2026-10-10T11:20:00Z"
     },
     {
       "id": "analyst",
       "name": "Analyst",
       "state": "idle",
-      "task": "Stats Oct 9: 19 listings, 5 views, 2 favourites (both Christmas Village), 0 sales.",
-      "since": "2026-10-09T10:14:15Z"
+      "task": "Oct 10: 21 listings, 6 views, 2 favourites, 0 sales. Turnaround report written.",
+      "since": "2026-10-10T11:20:00Z"
     },
     {
       "id": "scout",
@@ -90,6 +90,21 @@
     "Birdwatching silhouettes (heron, swallow, hummingbird, wren, flying flocks; year-round; hu"
   ],
   "feed": [
+    {
+      "t": "2026-10-10T11:20:00Z",
+      "who": "manager",
+      "msg": "Turnaround report: 6 views, 2 favourites, 0 sales (targets 100 / 5). Recommend pausing new Etsy listings; waiting on the owner."
+    },
+    {
+      "t": "2026-10-10T11:20:00Z",
+      "who": "qa",
+      "msg": "Approved TpT 005 Winter Concert Planner + Program Kit ($4.50). Released for upload."
+    },
+    {
+      "t": "2026-10-10T11:20:00Z",
+      "who": "lister",
+      "msg": "TpT 004 Thanksgiving Rhythm Match is live on TpT."
+    },
     {
       "t": "2026-10-09T23:55:00Z",
       "who": "qa",
@@ -149,21 +164,6 @@
       "t": "2026-10-05T10:17:36Z",
       "who": "manager",
       "msg": "Weekly report: 17 Etsy listings, 1 view, $0 revenue. Traffic is the problem."
-    },
-    {
-      "t": "2026-10-05T01:38:41Z",
-      "who": "qa",
-      "msg": "Approved TpT 002: Fall Rhythm Flashcards & Tracing (K-2). Released for upload."
-    },
-    {
-      "t": "2026-10-05T01:17:57Z",
-      "who": "researcher",
-      "msg": "Daily refresh: Highland cow clipart up to #2; gingerbread and nutcracker up; celestial down (weak search)."
-    },
-    {
-      "t": "2026-10-05T01:15:58Z",
-      "who": "lister",
-      "msg": "Listed 3 on Etsy: Small autumn moments, Woodland Christmas cross-stitch, Nativity silhouettes. 17 live."
     }
   ],
   "venture_gate": {
