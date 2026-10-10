@@ -1,0 +1,230 @@
+{
+ "01-monarch-butterfly": {
+  "name": "Monarch butterfly",
+  "px": [
+   3600,
+   2188
+  ],
+  "inches": [
+   12.0,
+   7.29
+  ],
+  "png_mb": 0.67,
+  "pieces": 1,
+  "specks_removed": 1,
+  "holes_filled": 0,
+  "white_px_cleared": 2270,
+  "coverage_pct": 63.1,
+  "svg_ink_pct_of_shape": 44.2,
+  "svg_paths": 192
+ },
+ "02-blue-morpho": {
+  "name": "Blue morpho butterfly",
+  "px": [
+   3600,
+   2746
+  ],
+  "inches": [
+   12.0,
+   9.15
+  ],
+  "png_mb": 0.69,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 7641,
+  "coverage_pct": 49.8,
+  "svg_ink_pct_of_shape": 47.5,
+  "svg_paths": 43
+ },
+ "03-tiger-swallowtail": {
+  "name": "Tiger swallowtail",
+  "px": [
+   3600,
+   2554
+  ],
+  "inches": [
+   12.0,
+   8.51
+  ],
+  "png_mb": 0.43,
+  "pieces": 3,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 1323,
+  "coverage_pct": 46.7,
+  "svg_ink_pct_of_shape": 52.6,
+  "svg_paths": 60
+ },
+ "04-red-admiral": {
+  "name": "Red admiral butterfly",
+  "px": [
+   3600,
+   2920
+  ],
+  "inches": [
+   12.0,
+   9.73
+  ],
+  "png_mb": 0.59,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 429,
+  "coverage_pct": 60.3,
+  "svg_ink_pct_of_shape": 24.7,
+  "svg_paths": 94
+ },
+ "05-monarch-caterpillar": {
+  "name": "Monarch caterpillar",
+  "px": [
+   3600,
+   2058
+  ],
+  "inches": [
+   12.0,
+   6.86
+  ],
+  "png_mb": 0.44,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 280,
+  "coverage_pct": 30.8,
+  "svg_ink_pct_of_shape": 28.9,
+  "svg_paths": 88
+ },
+ "06-common-blue": {
+  "name": "Little blue butterfly",
+  "px": [
+   3600,
+   2900
+  ],
+  "inches": [
+   12.0,
+   9.67
+  ],
+  "png_mb": 1.03,
+  "pieces": 4,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 985,
+  "coverage_pct": 64.7,
+  "svg_ink_pct_of_shape": 23.6,
+  "svg_paths": 13
+ },
+ "07-monarch-on-coneflower": {
+  "name": "Monarch on a coneflower",
+  "px": [
+   2145,
+   3600
+  ],
+  "inches": [
+   7.15,
+   12.0
+  ],
+  "png_mb": 0.5,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 886,
+  "coverage_pct": 36.6,
+  "svg_ink_pct_of_shape": 37.7,
+  "svg_paths": 158
+ },
+ "08-blue-dragonfly": {
+  "name": "Blue dragonfly",
+  "px": [
+   3600,
+   2326
+  ],
+  "inches": [
+   12.0,
+   7.75
+  ],
+  "png_mb": 0.36,
+  "pieces": 1,
+  "specks_removed": 4,
+  "holes_filled": 0,
+  "white_px_cleared": 3686,
+  "coverage_pct": 35.5,
+  "svg_ink_pct_of_shape": 18.5,
+  "svg_paths": 53
+ },
+ "09-red-dragonfly": {
+  "name": "Red dragonfly",
+  "px": [
+   3600,
+   2403
+  ],
+  "inches": [
+   12.0,
+   8.01
+  ],
+  "png_mb": 0.46,
+  "pieces": 1,
+  "specks_removed": 1,
+  "holes_filled": 0,
+  "white_px_cleared": 1164,
+  "coverage_pct": 35.1,
+  "svg_ink_pct_of_shape": 10.8,
+  "svg_paths": 55
+ },
+ "10-green-darner": {
+  "name": "Green darner dragonfly",
+  "px": [
+   3600,
+   2986
+  ],
+  "inches": [
+   12.0,
+   9.95
+  ],
+  "png_mb": 0.45,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 372,
+  "coverage_pct": 31.8,
+  "svg_ink_pct_of_shape": 22.9,
+  "svg_paths": 34
+ },
+ "11-damselfly-on-reed": {
+  "name": "Damselfly on a reed",
+  "px": [
+   3018,
+   3600
+  ],
+  "inches": [
+   10.06,
+   12.0
+  ],
+  "png_mb": 0.38,
+  "pieces": 1,
+  "specks_removed": 1,
+  "holes_filled": 0,
+  "white_px_cleared": 2641,
+  "coverage_pct": 16.4,
+  "svg_ink_pct_of_shape": 35.9,
+  "svg_paths": 40
+ },
+ "12-dragonfly-on-water-lily": {
+  "name": "Dragonfly on a water lily",
+  "px": [
+   3600,
+   3463
+  ],
+  "inches": [
+   12.0,
+   11.54
+  ],
+  "png_mb": 0.82,
+  "pieces": 1,
+  "specks_removed": 5,
+  "holes_filled": 0,
+  "white_px_cleared": 2979,
+  "coverage_pct": 46.9,
+  "svg_ink_pct_of_shape": 18.5,
+  "svg_paths": 128
+ }
+}
