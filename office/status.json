@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-10T13:00:00Z",
-  "next_run_at": "2026-10-10T22:12:00Z",
+  "updated_at": "2026-10-10T23:30:00Z",
+  "next_run_at": "2026-10-11T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 22,
-  "bundles_built": 21,
+  "listings_live": 23,
+  "bundles_built": 23,
   "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
@@ -12,36 +12,36 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Owner said no pause: building continues at 2 Etsy + 2 TpT a day. Next: 6:12pm ET.",
-      "since": "2026-10-10T13:00:00Z"
+      "task": "6:12pm shift done. Next: 6:12am ET Oct 11.",
+      "since": "2026-10-10T23:30:00Z"
     },
     {
       "id": "researcher",
       "name": "Researcher",
       "state": "idle",
-      "task": "TpT pass Oct 9: 10 new [tpt] items queued (12 unchecked).",
-      "since": "2026-10-09T23:55:00Z"
+      "task": "Oct 10 refresh: non-cut printables moved up; AI-free items first (Recraft ~$2.73 left).",
+      "since": "2026-10-10T23:30:00Z"
     },
     {
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "018 Butterflies & dragonflies clipart built and fixed in round 2. TpT 005 built. 1 Etsy + 1 TpT today (ET).",
-      "since": "2026-10-10T13:00:00Z"
+      "task": "019 scavenger hunt (fixed in round 2) and TpT 006 treble clef cards built. 2 of 2 Etsy and 2 of 2 TpT built today (ET).",
+      "since": "2026-10-10T23:30:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved 018 in round 2 and TpT 005 in round 1 (Sonnet).",
-      "since": "2026-10-10T13:00:00Z"
+      "task": "Approved 019 in round 2 and TpT 006 in round 1 (Sonnet).",
+      "since": "2026-10-10T23:30:00Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Listed 018 (Etsy 4592485487). 22 live. TpT 005 released for the Mac nightly.",
-      "since": "2026-10-10T13:00:00Z"
+      "task": "Listed 019 (Etsy 4592819270). 23 live. TpT 005 and 006 released for the Mac nightly.",
+      "since": "2026-10-10T23:30:00Z"
     },
     {
       "id": "analyst",
@@ -90,6 +90,21 @@
     "Birdwatching silhouettes (heron, swallow, hummingbird, wren, flying flocks; year-round; hu"
   ],
   "feed": [
+    {
+      "t": "2026-10-10T23:30:00Z",
+      "who": "qa",
+      "msg": "Approved TpT 006 Winter Treble Clef Task Cards (72 cards, $4). Released for upload."
+    },
+    {
+      "t": "2026-10-10T23:30:00Z",
+      "who": "lister",
+      "msg": "Listed 019: Woodland Christmas scavenger hunt printable ($3.50). 23 live."
+    },
+    {
+      "t": "2026-10-10T23:30:00Z",
+      "who": "researcher",
+      "msg": "Daily refresh: AI-free printables and cut files moved to the top of the queue."
+    },
     {
       "t": "2026-10-10T13:00:00Z",
       "who": "lister",
@@ -149,21 +164,6 @@
       "t": "2026-10-08T12:35:12Z",
       "who": "manager",
       "msg": "Owner cut usage: 2 shifts a day, 2 builds a day, weekly trend scan, Sonnet for non-design roles."
-    },
-    {
-      "t": "2026-10-08T10:35:02Z",
-      "who": "qa",
-      "msg": "Approved TpT 003: Winter Rhythm Bingo (grades 3-6, $5). Released for upload."
-    },
-    {
-      "t": "2026-10-08T02:50:54Z",
-      "who": "lister",
-      "msg": "Listed 015: Highland cow Christmas clipart (12 PNG+SVG, $3.49). 19 live."
-    },
-    {
-      "t": "2026-10-07T19:27:46Z",
-      "who": "lister",
-      "msg": "Listed 014: Christmas coloring pages (20 pages, $3.99). 18 live."
     }
   ],
   "venture_gate": {
