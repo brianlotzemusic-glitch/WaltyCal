@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-11T11:20:00Z",
-  "next_run_at": "2026-10-11T22:12:00Z",
+  "updated_at": "2026-10-12T00:00:00Z",
+  "next_run_at": "2026-10-12T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 24,
-  "bundles_built": 25,
+  "listings_live": 25,
+  "bundles_built": 27,
   "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12am shift done. Next: 6:12pm ET (Analyst stats, 2 builds).",
-      "since": "2026-10-11T11:20:00Z"
+      "task": "6:12pm shift done. TpT focus is now the owner's DMP curriculum. Next: 6:12am ET Oct 12.",
+      "since": "2026-10-12T00:00:00Z"
     },
     {
       "id": "researcher",
@@ -26,29 +26,29 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "020 haunted gingerbread houses and TpT 007 music sub plans built. 1 Etsy + 1 TpT today (ET).",
-      "since": "2026-10-11T11:20:00Z"
+      "task": "021 reindeer & stag ornaments (fixed in round 2) and TpT 008 DMP1 Unit 1 Beat From Nothing with intro deck built. 1 Etsy + 1 TpT today (ET).",
+      "since": "2026-10-12T00:00:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved 020 and TpT 007 in round 1 (Sonnet).",
-      "since": "2026-10-11T11:20:00Z"
+      "task": "Approved 021 in round 2 and TpT 008 in round 1 (Sonnet).",
+      "since": "2026-10-12T00:00:00Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Listed 020 (Etsy 4593022789). 24 live. TpT 005 and 006 published and live; 007 released for the Mac nightly.",
-      "since": "2026-10-11T11:20:00Z"
+      "task": "Listed 021 (Etsy 4593399441). 25 live. TpT 007 is live; 008 released for the Mac nightly.",
+      "since": "2026-10-12T00:00:00Z"
     },
     {
       "id": "analyst",
       "name": "Analyst",
       "state": "idle",
-      "task": "Oct 10: 21 listings, 6 views, 2 favourites, 0 sales. Turnaround report written.",
-      "since": "2026-10-10T11:20:00Z"
+      "task": "Oct 11: 24 listings, 6 views, 2 favourites, 0 sales (no change since Oct 10; the 3 newest have 0 views).",
+      "since": "2026-10-12T00:00:00Z"
     },
     {
       "id": "scout",
@@ -80,16 +80,28 @@
     }
   ],
   "queue": [
-    "[tpt] Music Production Vocabulary Posters + Word Wall: DAW-neutral terms (EQ, compression,",
-    "[tpt] No-Tech Music Sub Plan: How a Song Gets Made, music production and audio careers rea",
-    "[format] Winter songbirds clipart (changed 9 Oct from cut files to PNG clipart + single-la",
-    "[format] Butterflies & dragonflies clipart (changed 4 Oct from cut files to PNG clipart + ",
-    "Witchy crystals (gothic slot; demoted 2 Oct: \"crystal svg\" ~170/mo on ~32.9k listings and ",
-    "[format] Woodland Christmas scavenger hunt printable (new 4 Oct; same family as the approv",
-    "Haunted gingerbread house cut files (gothic slot; gingerbread svg ~2.4-2.9k Nov-Dec; Gothm",
-    "Birdwatching silhouettes (heron, swallow, hummingbird, wren, flying flocks; year-round; hu"
+    "[dmp] DMP1 Unit 6: Spooky Tunes (scoring to picture, reverb) + intro deck",
+    "[dmp] DMP1 Unit 5: Song Form + intro deck",
+    "[dmp] DMP1 Units 3/4, Unit 2, then DMP2 kits and bundles",
+    "(on hold: DMP1 Units 7-10, owner is finishing them)",
+    "Woodland: next Etsy items from queue.md"
   ],
   "feed": [
+    {
+      "t": "2026-10-12T00:00:00Z",
+      "who": "qa",
+      "msg": "Approved TpT 008 DMP1 Unit 1 Beat From Nothing ($9, with teacher intro deck). Released for upload."
+    },
+    {
+      "t": "2026-10-12T00:00:00Z",
+      "who": "lister",
+      "msg": "Listed 021: Woodland reindeer & stag ornaments cut files ($4). 25 live. TpT 007 is live."
+    },
+    {
+      "t": "2026-10-12T00:00:00Z",
+      "who": "manager",
+      "msg": "Owner set the TpT focus: sell the DMP1/DMP2 curriculum unit by unit plus bundles, each with an intro deck."
+    },
     {
       "t": "2026-10-11T11:20:00Z",
       "who": "qa",
@@ -149,21 +161,6 @@
       "t": "2026-10-09T23:55:00Z",
       "who": "qa",
       "msg": "Approved TpT 004 Thanksgiving Rhythm Match (21 pp, $3.50). Released for upload."
-    },
-    {
-      "t": "2026-10-09T23:55:00Z",
-      "who": "lister",
-      "msg": "Listed 017: Winter songbirds clipart (12 PNG+SVG, $3.49). 21 live."
-    },
-    {
-      "t": "2026-10-09T23:55:00Z",
-      "who": "researcher",
-      "msg": "TpT research pass: 10 new items queued."
-    },
-    {
-      "t": "2026-10-09T10:52:57Z",
-      "who": "lister",
-      "msg": "Listed 016: Nutcracker ballet clipart (12 PNG+SVG, $3.49). 20 live."
     }
   ],
   "venture_gate": {
