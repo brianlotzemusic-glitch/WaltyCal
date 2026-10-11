@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-10T23:30:00Z",
-  "next_run_at": "2026-10-11T10:12:00Z",
+  "updated_at": "2026-10-11T11:20:00Z",
+  "next_run_at": "2026-10-11T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 23,
-  "bundles_built": 23,
+  "listings_live": 24,
+  "bundles_built": 25,
   "uploads_pending": 1,
   "etsy_connected": true,
   "workers": [
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12pm shift done. Next: 6:12am ET Oct 11.",
-      "since": "2026-10-10T23:30:00Z"
+      "task": "6:12am shift done. Next: 6:12pm ET (Analyst stats, 2 builds).",
+      "since": "2026-10-11T11:20:00Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "019 scavenger hunt (fixed in round 2) and TpT 006 treble clef cards built. 2 of 2 Etsy and 2 of 2 TpT built today (ET).",
-      "since": "2026-10-10T23:30:00Z"
+      "task": "020 haunted gingerbread houses and TpT 007 music sub plans built. 1 Etsy + 1 TpT today (ET).",
+      "since": "2026-10-11T11:20:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved 019 in round 2 and TpT 006 in round 1 (Sonnet).",
-      "since": "2026-10-10T23:30:00Z"
+      "task": "Approved 020 and TpT 007 in round 1 (Sonnet).",
+      "since": "2026-10-11T11:20:00Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Listed 019 (Etsy 4592819270). 23 live. TpT 005 and 006 released for the Mac nightly.",
-      "since": "2026-10-10T23:30:00Z"
+      "task": "Listed 020 (Etsy 4593022789). 24 live. TpT 005 and 006 published and live; 007 released for the Mac nightly.",
+      "since": "2026-10-11T11:20:00Z"
     },
     {
       "id": "analyst",
@@ -90,6 +90,16 @@
     "Birdwatching silhouettes (heron, swallow, hummingbird, wren, flying flocks; year-round; hu"
   ],
   "feed": [
+    {
+      "t": "2026-10-11T11:20:00Z",
+      "who": "qa",
+      "msg": "Approved TpT 007 Music Sub Plans K-5 ($7). Released for upload."
+    },
+    {
+      "t": "2026-10-11T11:20:00Z",
+      "who": "lister",
+      "msg": "Listed 020: Haunted gingerbread houses cut files ($4). 24 live. TpT 005 and 006 are live."
+    },
     {
       "t": "2026-10-10T23:30:00Z",
       "who": "qa",
@@ -154,16 +164,6 @@
       "t": "2026-10-09T10:52:57Z",
       "who": "lister",
       "msg": "Listed 016: Nutcracker ballet clipart (12 PNG+SVG, $3.49). 20 live."
-    },
-    {
-      "t": "2026-10-09T10:14:15Z",
-      "who": "analyst",
-      "msg": "Stats: 5 views, 2 favourites (Christmas Village), 0 sales."
-    },
-    {
-      "t": "2026-10-08T12:35:12Z",
-      "who": "manager",
-      "msg": "Owner cut usage: 2 shifts a day, 2 builds a day, weekly trend scan, Sonnet for non-design roles."
     }
   ],
   "venture_gate": {
