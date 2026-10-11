@@ -1,0 +1,35 @@
+{
+  "price": "9.00",
+  "license_price": "9.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 36,
+  "answer_key": "Included",
+  "zip_contents": [
+    "beat-from-nothing.pdf",
+    "beat-from-nothing-intro-deck.pptx",
+    "beat-from-nothing-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "beat-from-nothing.zip",
+    "preview": "beat-from-nothing-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
