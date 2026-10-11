@@ -1,10 +1,10 @@
 """Woodland Reindeer & Stag Ornaments - 6 single-path SVG/DXF cut files.
 
 Hanging Christmas ornaments drawn in code (no AI images): a front-facing
-stag head with holly, a leaping reindeer over snowy pines under a crescent
-moon, a stag in a pine wood, a reindeer in a scarf, a classic bauble with a
-stag cut out of it, and two reindeer under a star. Each has a hanging loop
-built in. Everything is unioned into ONE connected polygon; stars, moon and
+stag head with a holly sprig, a leaping reindeer over snowy pines under a
+crescent moon, a stag in a pine wood, a reindeer bust in a knitted scarf, a
+classic bauble with a stag cut out of it, and two reindeer facing each other
+across a pine. Each has a hanging loop built in. Everything is unioned into ONE connected polygon; stars, moon and
 trees are attached, never floating. compose() closes solid parts by a few
 units so near-touching pieces are bridged, then cuts the openings; finish()
 closes then opens by 6.5 units (no material or gap narrower than ~13 units)
@@ -108,15 +108,6 @@ def pine(cx, gy, h, w, tiers=4, trunk=None, drip=True):
     return U(parts)
 
 
-def base_strip(x0, x1, y0, y1, drifts=()):
-    """Flat-bottomed base strip with soft snow drifts on top."""
-    g = rect(x0, y0, x1, y1, r=10)
-    for (cx, w, h) in drifts:
-        e = affinity.scale(circ(cx, y0 + 4, 1), w / 2, h)
-        g = U([g, e.intersection(rect(cx - w, y0 - h - 2, cx + w, y0 + 10))])
-    return g
-
-
 def areal(g):
     if g.geom_type in ("Polygon", "MultiPolygon"):
         return g
@@ -168,29 +159,32 @@ def catmull(pts, closed=True, n=16):
     return out
 
 
-def holly_leaf(x0, y0, ang, L, Wd, spikes=3):
-    """Spiky holly leaf from base (x0,y0) pointing at ang (deg)."""
-    tips = []
-    ts = [0.25 + 0.64 * k / spikes for k in range(spikes)]
-    for s in (1, -1):
-        tips.append([(t * L, s * Wd * 0.55 * (math.sin(math.pi * (0.04 + 0.9 * t)) ** 0.8)) for t in ts])
-    base = [(0.04 * L, -Wd * 0.12), (0, 0), (0.04 * L, Wd * 0.12)]
-    lf = Polygon(base[1:] + tips[0] + [(L * 1.04, 0)] + tips[1][::-1] + base[:1]).buffer(0)
-    bites = []
-    for side in tips:
-        seq = side + [(L * 1.04, 0)]
-        for a, b in zip(seq[:-1], seq[1:]):
+HOLLY = [(0.0, 0.0), (0.24, 0.40), (0.50, 0.50), (0.76, 0.38), (1.0, 0.0)]
+
+
+def holly(x0, y0, ang, L, W, depth=1.0):
+    """Holly leaf from its stalk end (x0, y0) pointing at ang (deg): three
+    spikes a side joined by scooped edges, L long and about W/2 wide. Big
+    enough (L >= 150) that the spikes survive finish()'s 6.5-unit rounding."""
+    def edge(sg):
+        out = []
+        pts = [(x * L, sg * y * W) for x, y in HOLLY]
+        for i, (a, b) in enumerate(zip(pts[:-1], pts[1:])):
             mx, my = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
-            dx, dy = b[0] - a[0], b[1] - a[1]
-            d = math.hypot(dx, dy)
-            nx, ny = -dy / d, dx / d
-            if nx * (mx - L / 2) + ny * my < 0:
+            d = math.hypot(b[0] - a[0], b[1] - a[1])
+            dp = depth * (0.45 if i == 0 else 1.0)    # gentler scoop next to the stalk
+            nx, ny = -(b[1] - a[1]) / d, (b[0] - a[0]) / d
+            if ny * sg > 0:                           # scoop toward the midrib
                 nx, ny = -nx, -ny
-            off = 0.32 * d
-            bites.append(Point(mx + nx * off, my + ny * off).buffer(math.hypot(d / 2, off), 48))
-    lf = lf.difference(unary_union(bites))
-    lf = affinity.rotate(lf, ang, origin=(0, 0))
-    return affinity.translate(lf, x0, y0)
+            cx, cy = mx + nx * dp * d * 0.5, my + ny * dp * d * 0.5
+            for k in range(12):
+                t = k / 12
+                out.append(((1 - t) ** 2 * a[0] + 2 * t * (1 - t) * cx + t * t * b[0],
+                            (1 - t) ** 2 * a[1] + 2 * t * (1 - t) * cy + t * t * b[1]))
+        out.append(pts[-1])
+        return out
+    lf = Polygon(edge(-1) + edge(1)[::-1][1:-1]).buffer(0)
+    return affinity.translate(affinity.rotate(lf, ang, origin=(0, 0)), x0, y0)
 
 
 def ellipse(cx, cy, rx, ry):
@@ -286,16 +280,28 @@ LEGS = {
 }
 
 
-def deer(pose="stand", kind="stag", s=1.0, x=0, y=0, flip=1, tail=True, ear=True, antlers=True, rot=0):
+# standing legs spread apart (near/far pairs well separated) so they stay
+# four distinct legs when drawn small and thick (06)
+SPREAD = [
+    ([(112, -240), (126, -122), (136, -20)], [46, 24, 18]),
+    ([(66, -236), (46, -120), (28, -20)], [40, 23, 17]),
+    ([(-160, -250), (-136, -170), (-194, -98), (-190, -20)], [62, 32, 22, 17]),
+    ([(-128, -236), (-74, -172), (-106, -100), (-90, -20)], [50, 28, 21, 17]),
+]
+
+
+def deer(pose="stand", kind="stag", s=1.0, x=0, y=0, flip=1, tail=True, ear=True, antlers=True, rot=0,
+         legw=1.0, far_rot=30, legs=None):
     """Whole deer: body, 4 legs with hooves, ears, tail, two antlers (the far
-    antler slightly behind and smaller). Facing right unless flip=-1."""
+    antler slightly behind and smaller; far_rot=None leaves it off). Facing
+    right unless flip=-1. legw thickens the legs below the body."""
     parts = [deer_body(pose)]
     mw = MINW / s
-    for joints, ws in LEGS[pose]:
-        ws = [max(mw, w) for w in ws]
+    for joints, ws in (legs or LEGS[pose]):
+        ws = [max(mw, w) * (legw if k else 1) for k, w in enumerate(ws)]
         parts.append(limb(joints, ws))
         a = math.degrees(math.atan2(joints[-1][1] - joints[-2][1], joints[-1][0] - joints[-2][0]))
-        parts.append(hoof(joints[-1], a, max(24, mw * 1.3)))
+        parts.append(hoof(joints[-1], a, max(24, mw * 1.3) * legw))
     hx, hy = (150, -452) if pose == "stand" else (190, -440)
     if ear:
         e = affinity.rotate(ellipse(0, 0, 36, 13), -38, origin=(0, 0))
@@ -304,9 +310,9 @@ def deer(pose="stand", kind="stag", s=1.0, x=0, y=0, flip=1, tail=True, ear=True
         parts.append(affinity.translate(affinity.rotate(ellipse(0, 0, 18, 10), -55 if pose == "stand" else -25, origin=(0, 0)),
                                         -220, -302 if pose == "stand" else -322))
     if antlers:
-        far = antler((hx + 16, hy - 4), 0.78, kind, 1, 30, MINW / (s * 0.78))
-        near = antler((hx - 6, hy - 2), 0.92, kind, 1, -8, MINW / (s * 0.92))
-        parts += [far, near]
+        if far_rot is not None:
+            parts.append(antler((hx + 16, hy - 4), 0.78, kind, 1, far_rot, MINW / (s * 0.78)))
+        parts.append(antler((hx - 6, hy - 2), 0.92, kind, 1, -8, MINW / (s * 0.92)))
     g = U(parts)
     if rot:
         g = affinity.rotate(g, rot, origin=(0, -250))
@@ -332,52 +338,26 @@ def mirror(g, cx=500):
     return U([g, affinity.scale(g, -1, 1, origin=(cx, 0))])
 
 
-def holly_sprig(x, y, s=1.0, rot=0):
-    """Two holly leaves and three berries, centred on (x, y)."""
-    g = U([holly_leaf(0, 0, 200, 92, 46), holly_leaf(0, 0, -20, 92, 46),
-           circ(-16, -18, 17), circ(16, -18, 17), circ(0, -40, 17)])
-    g = affinity.rotate(affinity.scale(g, s, s, origin=(0, 0)), rot, origin=(0, 0))
-    return affinity.translate(g, x, y)
-
-
 def snow_ground(cx, gy, R, cy, amp=16, phase=0.0):
     """Snowy hill clipped to the inside of a circular frame (cx, cy, R)."""
     top = [(x, gy - amp * math.sin((x - cx) / 140 + phase) - 10 * math.cos((x - cx) / 300)) for x in range(int(cx - R), int(cx + R) + 1, 5)]
     return circ(cx, cy, R - 4).intersection(poly(top + [(cx + R, cy + R + 10), (cx - R, cy + R + 10)]))
 
 
-def stag_front(cx, top, s=1.0):
-    """Front-facing stag head and neck. Returns (solid, holes)."""
-    def P(x, y):
-        return (cx + x * s, top + y * s)
-    right = [(0, 0), (56, -2), (92, 20), (104, 60), (98, 110), (80, 160), (58, 215), (48, 262), (36, 292), (14, 306)]
-    pts = [P(x, y) for x, y in right] + [P(0, 308)] + [P(-x, y) for x, y in right[::-1][:-1]]
-    head = poly(catmull(pts, n=10))
-    nr = [(0, 200), (60, 200), (66, 300), (96, 410), (170, 560), (250, 700)]
-    neck = poly(catmull([P(x, y) for x, y in nr] + [P(-x, y) for x, y in nr[::-1]], n=10))
-    ears, holes = [], []
-    for sg in (1, -1):
-        e = affinity.rotate(ellipse(0, 0, 74 * s, 30 * s), -sg * 22, origin=(0, 0))
-        ears.append(affinity.translate(e, *P(sg * 156, 62)))
-        ei = affinity.rotate(ellipse(0, 0, 46 * s, 12 * s), -sg * 22, origin=(0, 0))
-        holes.append(affinity.translate(ei, *P(sg * 168, 58)))
-        eye = affinity.rotate(ellipse(0, 0, 25 * s, 13 * s), sg * 14, origin=(0, 0))
-        holes.append(affinity.translate(eye, *P(sg * 54, 118)))
-    holes.append(poly([P(-30, 252), P(30, 252), P(0, 284)]).buffer(6 * s))
-    ants = []
-    for sg in (1, -1):
-        beam = [(0, 0), (40, -40), (100, -70), (160, -130), (190, -210), (186, -290)]
-        bp = catmull([P(sg * (30 + x), 6 + y) for x, y in beam], closed=False, n=8)
-        n = len(bp)
-        ants.append(limb(bp, [36 * s - 18 * s * k / (n - 1) for k in range(n)]))
-        ls = LineString(bp)
-        for t, a, L in ((0.18, -95, 92), (0.42, -100, 112), (0.62, -112, 100), (0.82, -128, 78)):
-            q = ls.interpolate(ls.length * t)
-            ang = a if sg > 0 else -180 - a
-            mid = polar(q.x, q.y, L * s * 0.55, ang + sg * 6)
-            tip = polar(*mid, L * s * 0.5, ang - sg * 12)
-            ants.append(limb([(q.x, q.y), mid, tip], [24 * s, 20 * s, 17 * s]))
-    return U([head, neck] + ears + ants), U(holes)
+def front_antler(bx, by, s=1.0):
+    """Right antler of a front-facing stag from (bx, by): the beam sweeps out
+    and up, then curls in; tines rise from its top side, clear of each other."""
+    beam = [(0, 0), (40, -26), (96, -56), (150, -100), (188, -164), (200, -240), (190, -306)]
+    bp = catmull([(bx + x * s, by + y * s) for x, y in beam], closed=False, n=8)
+    n = len(bp)
+    parts = [limb(bp, [s * (38 - 18 * k / (n - 1)) for k in range(n)])]
+    ls = LineString(bp)
+    for t, a, L in ((0.10, -112, 70), (0.30, -98, 132), (0.55, -104, 124), (0.84, -66, 58)):  # (t, deg, length)
+        q = ls.interpolate(ls.length * t)
+        mid = polar(q.x, q.y, L * s * 0.55, a - 10)
+        tip = polar(*mid, L * s * 0.5, a + 8)
+        parts.append(limb([(q.x, q.y), mid, tip], [24 * s, 20 * s, 17 * s]))
+    return U(parts)
 
 
 def hung_star(x, y_top, y, r, w=14):
@@ -395,16 +375,29 @@ def framed(w=34):
 
 
 def d1_stag_head():
+    """Front-facing stag: round eyes, a cut line round the muzzle, a holly
+    sprig (two big spiky leaves either side of three berries) cut into the
+    chest, and a star hanging between the antlers."""
     solid, holes = framed()
-    s, h = stag_front(500, 400, 1.06)
-    s = s.intersection(circ(*C, R))
-    solid.append(s)
-    holes.append(h)
-    # holly sprig on the chest, outlined where it overlaps the neck
-    hs = U([holly_leaf(470, 850, 192, 170, 70, 4), holly_leaf(530, 850, -12, 170, 70, 4)])
-    solid.append(hs)
-    holes.append(outline_cut(hs, s.buffer(-16), 14))
-    holes += [circ(474, 826, 21), circ(526, 826, 21), circ(500, 788, 21)]   # berries
+    cx, k, top, sa = 500, 1.08, 442, 0.88
+    H = lambda x, y: (cx + x * k, top + (y - 452) * k)
+    rh = [(0, 452), (44, 450), (84, 466), (104, 498), (106, 534), (92, 584), (68, 632), (50, 680), (44, 716), (30, 744), (0, 752)]
+    head = poly(catmull([H(x, y) for x, y in rh] + [H(-x, y) for x, y in rh[::-1][1:-1]], n=10))
+    nk = [(0, 640), (84, 640), (104, 720), (150, 780), (240, 850), (340, 940)]
+    neck = poly([(cx + x, y) for x, y in nk] + [(cx - x, y) for x, y in nk[::-1]]).buffer(20).buffer(-20)
+    ear = affinity.translate(affinity.rotate(ellipse(0, 0, 80 * k, 31 * k), -24, origin=(0, 0)), *H(168, 482))
+    ein = affinity.translate(affinity.rotate(ellipse(0, 0, 50 * k, 13 * k), -24, origin=(0, 0)), *H(180, 477))
+    sides = mirror(U([ear, front_antler(*H(36, 462), sa)]), cx)
+    solid.append(U([head, neck, sides]).intersection(circ(*C, R)))
+    solid.append(hung_star(cx, C[1] - R, 236, 58))
+    holes.append(mirror(ein, cx))
+    holes.append(mirror(circ(*H(52, 560), 18), cx))                      # friendly round eyes
+    yc = H(0, 664)[1]                                                    # muzzle line, lower face only
+    holes.append(head.buffer(14).difference(head).intersection(neck.buffer(-20)).difference(box(0, 0, 1000, yc)))
+    hy = 872
+    holes.append(holly(cx - 56, hy, 190, 152, 84))
+    holes.append(holly(cx + 56, hy, -10, 152, 84))
+    holes += [circ(cx - 24, hy - 12, 17), circ(cx + 24, hy - 12, 17), circ(cx, hy + 30, 17)]
     return compose(solid, holes)
 
 
@@ -439,26 +432,42 @@ def outline_cut(shape, region, gap=15):
 
 
 def d4_scarf_reindeer():
-    s, ox, oy = 1.2, 450, 872
-    P = lambda x, y: (ox + x * s, oy + y * s)
-    dr = deer("stand", "reindeer", s, ox, oy)
-    solid, holes = [dr], []
-    solid.append(base_strip(P(-270, 0)[0], P(250, 0)[0], P(0, -8)[1], P(0, 34)[1], drifts=((P(-150, 0)[0], 120, 16), (P(120, 0)[0], 150, 20))))
-    # knitted scarf: a band round the neck and a long tail blowing back over the back
-    band = poly([P(90, -404), P(150, -398), P(176, -392), P(174, -348), P(118, -352), P(84, -364)]).buffer(8 * s)
-    path = catmull([(98, -386), (50, -396), (10, -428), (-36, -420), (-80, -446), (-126, -444)], closed=False, n=8)
-    tail = U([taper(P(*a), P(*b), (40 + 14 * k / len(path)) * s, (40 + 14 * (k + 1) / len(path)) * s) for k, (a, b) in enumerate(zip(path[:-1], path[1:]))])
-    end = path[-1]
-    fringe = U([line([P(end[0] + 6 - 14 * k, end[1] - 6 + 10 * k), P(end[0] - 26 - 14 * k, end[1] - 26 + 10 * k)], 13)
-                for k in range(3)])
-    sc = U([band, tail, fringe])
-    solid.append(sc)
-    holes.append(outline_cut(band, dr.buffer(-18), 14))   # stops short of the neck edges: stays attached
-    # knitted stripes across the tail
-    for t in (0.3, 0.55):
-        q = LineString([P(*p) for p in path]).interpolate(t, normalized=True)
-        holes.append(ellipse(q.x, q.y, 9, 15 * s))
-    holes.append(circ(*P(0, -270), 22))   # hanging hole through the back
+    """Reindeer bust in profile (facing right) in a round frame, wearing a
+    ribbed scarf whose fringed end blows out to the right; a star hangs in
+    front of its nose."""
+    solid, holes = framed()
+    sa = 0.9
+    pts = [(250, 990), (300, 800), (338, 660), (372, 540), (404, 450), (440, 398), (492, 372), (548, 376),
+           (604, 404), (668, 450), (724, 484), (752, 508), (756, 534), (740, 556), (706, 566), (650, 562),
+           (604, 556), (574, 572), (566, 640), (590, 760), (650, 880), (720, 990)]
+    bust = poly(catmull(pts, n=10))
+    ear = affinity.translate(affinity.rotate(ellipse(0, 0, 70, 26), 28, origin=(0, 0)), 404, 430)
+    ein = affinity.translate(affinity.rotate(ellipse(0, 0, 42, 10), 28, origin=(0, 0)), 398, 428)
+    far = antler((488, 384), 0.80 * sa, "reindeer", 1, 24, MINW / (0.8 * sa))
+    near = antler((456, 392), sa, "reindeer", 1, -14, MINW / sa)
+    body = U([bust, ear, far, near]).intersection(circ(*C, R))
+    solid.append(body)
+    holes.append(ein)
+    holes.append(affinity.translate(affinity.rotate(ellipse(0, 0, 19, 14), 20, origin=(0, 0)), 586, 444))   # eye
+    holes.append(affinity.translate(affinity.rotate(ellipse(0, 0, 14, 9), 30, origin=(0, 0)), 730, 512))    # nostril
+    # scarf: a band a little wider than the neck, knotted at the throat
+    band = poly(catmull([(318, 650), (450, 700), (600, 676), (606, 744), (450, 772), (300, 724)], n=8))
+    knot = ellipse(598, 712, 38, 42)
+    tp = catmull([(604, 712), (664, 736), (722, 712), (782, 722)], closed=False, n=8)   # wavy end, widening
+    tail = limb(tp, [54 + 14 * k / (len(tp) - 1) for k in range(len(tp))])
+    end, pre = tp[-1], tp[-3]
+    ang = math.degrees(math.atan2(end[1] - pre[1], end[0] - pre[0]))
+    fringe = U([line([polar(*end, o, ang + 90), polar(*polar(*end, o, ang + 90), 40, ang)], 14) for o in (-27, -9, 9, 27)])
+    solid.append(U([band, knot, tail, fringe]))
+    holes.append(outline_cut(U([band, knot]), body.buffer(-20), 14))   # stops short of the neck edges: stays attached
+    for x in (380, 450, 520):                                           # ribs across the band
+        holes.append(rect(x - 9, 0, x + 9, 1000).intersection(band.buffer(-16)))
+    tl = LineString(tp)
+    for t in (0.34, 0.66):                                              # stripes across the end
+        q, q2 = tl.interpolate(t, normalized=True), tl.interpolate(t + 0.02, normalized=True)
+        a = math.degrees(math.atan2(q2.y - q.y, q2.x - q.x))
+        holes.append(affinity.rotate(ellipse(q.x, q.y, 8, 17), a, origin=(q.x, q.y)))
+    solid.append(hung_star(700, 120, 250, 54))
     return compose(solid, holes)
 
 
@@ -482,13 +491,18 @@ def scallop_frame(cx, cy, R, w=30, n=28, rr=26):
 
 
 def d6_reindeer_pair():
-    cy, Rs = 540, 420
+    """Two reindeer facing each other across a snowy pine, under a hanging
+    star, all inside the scalloped frame; snowflakes cut into the snow."""
+    cy, Rs, gy, s = 540, 420, 745, 0.62
     h, hh = hanger(500, cy - Rs - 26)
     solid, holes = [scallop_frame(500, cy, Rs), h], [hh]
-    solid.append(snow_ground(500, 850, Rs - 10, cy, 10))
-    for x, f in ((262, 1), (738, -1)):
-        solid.append(deer("stand", "reindeer", 0.76, x, 862, flip=f))
-    solid.append(hung_star(500, cy - Rs + 10, 240, 66))
+    solid.append(snow_ground(500, gy - 8, Rs - 10, cy, 10))
+    for x, f in ((324, 1), (676, -1)):
+        solid.append(deer("stand", "reindeer", s, x, gy + 6, flip=f, legw=1.15, far_rot=12, legs=SPREAD))
+    solid.append(pine(500, gy + 4, 240, 120, 4))
+    solid.append(hung_star(500, cy - Rs + 10, 250, 62))
+    for fx, fy, fr in ((340, gy + 92, 36), (500, gy + 120, 40), (660, gy + 92, 36)):
+        holes.append(snowflake(fx, fy, fr, 15))
     return compose(solid, holes)
 
 
@@ -507,12 +521,12 @@ by Duskwood Designs Co (etsy.com/shop/DuskwoodDesignsCo)
 Thank you for your purchase!
 
 DESIGNS
-  01 Stag Head Ornament (front-facing stag with holly)
+  01 Stag Head Ornament (front-facing stag with a holly sprig)
   02 Leaping Reindeer Ornament (moon, star and snowy pines)
   03 Woodland Stag Ornament (stag in a pine wood under a crescent moon)
-  04 Reindeer with Scarf Ornament (shaped ornament on a snowy base)
+  04 Reindeer with Scarf Ornament (reindeer head in a knitted scarf)
   05 Stag Bauble Ornament (classic bauble with a stag cut out of it)
-  06 Reindeer Pair Ornament (two reindeer under a star, scalloped frame)
+  06 Reindeer Pair Ornament (two reindeer and a pine, scalloped frame)
 
 FILES
   SVG/  Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
@@ -520,7 +534,7 @@ FILES
   PNG/  transparent background, 1800 px on the longest side (6 in at 300 DPI)
 
 Each design is a single-layer shape with one clean cut path and a hanging
-loop or hole built in. Stars, moons and trees are attached, so nothing
+loop built in. Stars, moons and trees are attached, so nothing
 falls out. Default size is about 6 inches on the longest side; resize
 freely, but keep the proportions locked.
 
@@ -529,8 +543,6 @@ SIZING TIPS
   Laser-cut wood or acrylic (3 mm or thinner): 4.5 in or larger.
   The thinnest parts (antler tines and legs) are about 0.08 in wide at
   6 in, so do not go below 4 in, and do a test cut on a new material first.
-  04 stands on its snowy base when cut from 3 mm wood or acrylic, or hang
-  it by the hole in its back.
 
 LICENSE
   Personal use: unlimited.

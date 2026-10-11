@@ -15,14 +15,18 @@ const CREAM = '#f3ead8', GOLD = '#e7b866', PINE = '#1d3328';
 const sprig = (x, y, r, flip) => `<div style="position:absolute;left:${x}px;top:${y}px;width:${r}px;height:${r * 0.4}px;border-radius:50%;background:radial-gradient(ellipse,#2f5a3f,#1b3a29 70%,transparent 72%);transform:rotate(${flip}deg)"></div>`;
 const pages = {
  '1-thumbnail': `<style>${base} body{background:radial-gradient(ellipse at 50% 45%,#2e4a3a,#16271e 70%,#0e1a14);color:${CREAM}}
-  h1{position:absolute;bottom:112px;width:100%;text-align:center;font-size:68px;margin:0;font-weight:normal;white-space:nowrap}
-  .s{position:absolute;bottom:62px;width:100%;text-align:center;font-size:32px;color:${GOLD};letter-spacing:5px}
+  h1{position:absolute;top:902px;width:100%;text-align:center;font-size:66px;margin:0;font-weight:normal;white-space:nowrap}
+  .s{position:absolute;top:996px;width:100%;text-align:center;font-size:31px;color:${GOLD};letter-spacing:5px}
+  .badge{position:absolute;width:190px;height:190px;border-radius:50%;background:${GOLD};color:${PINE};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.5);transform:rotate(-8deg)}
+  .badge b{font-size:78px;line-height:.9;font-weight:normal} .badge span{font-size:25px;letter-spacing:2px}
   .bough{position:absolute;top:-40px;left:-40px;right:-40px;height:120px;background:repeating-linear-gradient(100deg,#1c3a2a 0 14px,#25503a 14px 22px,#16301f 22px 34px);border-radius:0 0 50% 50%/0 0 60% 60%;box-shadow:0 10px 30px rgba(0,0,0,.6)}
   </style>
-  ${HANG(0, 470, 40, 170)}${HANG(1, 540, 480, 90, '#e2b77a')}${HANG(5, 470, 990, 190)}
+  ${HANG(1, 545, -6, 66, '#e2b77a')}${HANG(2, 545, 961, 66, '#e2b77a')}${HANG(4, 560, 470, 262)}
   <div class=bough></div>
   ${[[140, 60], [430, 70], [700, 55], [1000, 72], [1280, 60]].map(([x, y]) => `<div style="position:absolute;left:${x}px;top:${y}px;width:22px;height:22px;border-radius:50%;background:#b23a3a;box-shadow:26px 6px 0 #b23a3a,12px 22px 0 #9c2f2f"></div>`).join('')}
-  <h1>Woodland Reindeer &amp; Stag Ornaments</h1><div class=s>6 SVG CUT FILES · CRICUT · SILHOUETTE · LASER</div>`,
+  <div class=badge style="left:150px;top:660px"><b>6</b><span>ORNAMENT<br>DESIGNS</span></div>
+  <div class=badge style="left:1160px;top:660px;transform:rotate(8deg)"><span style="font-size:30px;line-height:1.35">SVG<br>DXF<br>PNG</span></div>
+  <h1>Woodland Reindeer &amp; Stag Ornaments</h1><div class=s>SVG CUT FILES · CRICUT · SILHOUETTE · LASER</div>`,
  '2-whats-included': `<style>${base} body{background:#f4efe6;color:${PINE}}
   h1{position:absolute;top:26px;width:100%;text-align:center;font-size:60px;margin:0;font-weight:normal}
   .g{position:absolute;top:130px;left:40px;right:40px;display:grid;grid-template-columns:repeat(3,1fr);row-gap:20px}
@@ -35,7 +39,7 @@ const pages = {
   h1{font-size:64px;font-weight:normal;margin:0 0 26px} li{font-size:36px;margin:15px 0;list-style:none} b{color:${GOLD}}</style>
   <div class=strip>${[0, 1, 2, 3, 4, 5].map(i => D(i, 200, i % 2 ? CREAM : GOLD)).join('')}</div>
   <h1>Instant digital download</h1><ul style="margin:0">
-  <li><b>6 designs</b>, each with a hanging loop or hole built in</li>
+  <li><b>6 designs</b>, each with a hanging loop built in</li>
   <li><b>SVG</b> — Cricut Design Space, Silhouette Designer Edition</li>
   <li><b>DXF</b> — Silhouette Basic Edition, laser software (inches)</li>
   <li><b>PNG</b> — transparent background, 1800 px on the longest side</li>
