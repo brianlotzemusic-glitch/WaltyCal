@@ -1,0 +1,30 @@
+{
+  "price": "7.00",
+  "license_price": "7.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "kindergarten",
+    "2nd-grade",
+    "3rd-grade",
+    "5th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Winter"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 25,
+  "answer_key": "Included",
+  "files": {
+    "product": "music-sub-plans-k5.pdf",
+    "preview": "music-sub-plans-k5-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
