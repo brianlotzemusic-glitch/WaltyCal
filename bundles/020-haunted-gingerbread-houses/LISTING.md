@@ -1,7 +1,7 @@
 # Listing — Haunted Gingerbread Houses SVG bundle
 
 **Title (≤140 chars, 140)**
-Haunted Gingerbread House SVG Bundle, Spooky Christmas & Halloween Village, Gothmas Gingerbread Cut Files for Cricut & Laser (svg, dxf, png)
+Haunted Gingerbread House SVG Bundle, Spooky Christmas & Halloween Village, Gothmas Gingerbread Cut Files for Cricut, Laser (svg, dxf, png)
 
 **Price:** $4.00 (standard 6-design bundle price until stats exist)
 
@@ -25,7 +25,7 @@ WHAT'S INCLUDED
 • PNG — transparent background, 1800 px on the longest side (6 in at 300 DPI)
 
 SIZING TIP
-Default size is 6 in on the longest side; resize freely with the proportions locked. For the standing houses and the ornament we recommend 4 in or larger in cardstock and 5 in or larger in wood or acrylic. The village panel has small windows, so use it at 10 in wide or larger for vinyl and cardstock and 12 in or larger for laser-cut wood. Do a test cut on a new material first.
+Default size is about 6 in on the longest side; resize freely with the proportions locked. For the standing houses and the ornament we recommend 4 in or larger in cardstock and 5 in or larger in wood or acrylic. The village panel has small windows, so use it at 10 in wide or larger for vinyl and cardstock and 12 in or larger for laser-cut wood. Do a test cut on a new material first.
 
 LICENSE
 Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
