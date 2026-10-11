@@ -1,16 +1,21 @@
 {
-  "ran_at": "2026-10-10T02:18:34.778Z",
+  "ran_at": "2026-10-11T00:23:48.142Z",
   "published": [
     {
-      "item": "004-thanksgiving-rhythm-match",
-      "url": "https://www.teacherspayteachers.com/Product/Thanksgiving-Rhythm-Match-Echo-Cards-Ta-Ti-Ti-Rest-Half-Note-Grades-1-3-17900859"
+      "item": "005-winter-concert-planner",
+      "url": "https://www.teacherspayteachers.com/Product/Winter-Concert-Planner-Program-Kit-Programs-Seating-Charts-Parent-Letter-17910885"
+    },
+    {
+      "item": "006-winter-treble-clef-task-cards",
+      "url": "https://www.teacherspayteachers.com/Product/Winter-Treble-Clef-Note-Names-Task-Cards-Lines-Spaces-Ledger-Lines-Gr-2-5-17910898"
     }
   ],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "004-thanksgiving-rhythm-match"
+    "005-winter-concert-planner",
+    "006-winter-treble-clef-task-cards"
   ],
   "ok": true
 }
