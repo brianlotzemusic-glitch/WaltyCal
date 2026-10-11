@@ -1,21 +1,9 @@
 {
-  "ran_at": "2026-10-11T00:23:48.142Z",
-  "published": [
-    {
-      "item": "005-winter-concert-planner",
-      "url": "https://www.teacherspayteachers.com/Product/Winter-Concert-Planner-Program-Kit-Programs-Seating-Charts-Parent-Letter-17910885"
-    },
-    {
-      "item": "006-winter-treble-clef-task-cards",
-      "url": "https://www.teacherspayteachers.com/Product/Winter-Treble-Clef-Note-Names-Task-Cards-Lines-Spaces-Ledger-Lines-Gr-2-5-17910898"
-    }
-  ],
+  "ran_at": "2026-10-11T00:30:06.334Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "005-winter-concert-planner",
-    "006-winter-treble-clef-task-cards"
-  ],
+  "pending_before": [],
   "ok": true
 }
