@@ -39,3 +39,32 @@
 5. Re-run `gen.py --check` and resubmit.
 
 **Verdict: REJECTED**
+
+# Round 2
+
+## Summary
+`python3 gen.py --check` prints ALL CHECKS PASS. QA viewed a 1080x720 contact sheet, a 20% thumbnail strip, 900 px dark-background crops of 01, 04 and 06, and all four listing images. The three redraws and the new lead image fix every Round 1 complaint. The set now reads as one family of six round hanging ornaments.
+
+## Technical checks
+| Check | Result |
+|---|---|
+| Parts / validity | PASS. All six: 1 part, valid |
+| Smallest hole (limit 600 units2) | PASS. 01: 902, 02: 1078, 03: 1215, 04: 679, 05: 1248, 06: 1249 |
+| DXF / PNG | PASS. 6-13 polylines, 5.98 in; PNG 1800x1800 |
+| ZIP | PASS. 22 entries, every file byte-identical to bundle/ |
+| Rebuild order | PASS. Cut files rebuilt 22:41:53-57; ZIP 22:41:57; all four listing images 22:42:00-02, after the last art change; LISTING.md and listing.json updated for round 2 |
+| Cuttability | PASS. Antler tines and legs on 01, 04 and 06 are thin (about 0.08 in) but connected; 06 legs are visibly thicker than before and sit inside the frame. Stars hang from the ring and snowflakes are cut into the base, so nothing floats. Keep the 4 in / 4.5 in size advice |
+
+## Design review
+- **01 Stag head**: fixed. Round eyes and a muzzle line give a friendly face, and the holly now reads as two spiky leaves plus berries. Small nit: the muzzle outline looks a little like a bib at 100 percent, and the antler tips touch the ring. Neither blocks approval.
+- **04 Reindeer with scarf**: fixed. Now a round-frame ornament with a hanging loop, a proper profile head, and a ribbed scarf with a fringed end that reads as a scarf at 20 percent. The hole no longer looks like a spot. Good.
+- **06 Reindeer pair**: fixed. The deer sit fully inside the scalloped frame, legs are thicker, the pine fills the centre gap, and there are no stubs. Antler interiors are slightly fussy but fine.
+- **02, 03, 05**: unchanged and still strong.
+- **Set**: six round ornaments with loops, varied subjects. Would stop a scroller next to the top results.
+
+## Listing review
+- Lead image 1 now fills the frame with 02, 05 and 03 on a green background with hanging berries, "6 ornament designs" and format badges, and the title below. PASS.
+- Images 2-4 show the redrawn 01, 04 and 06 and read well. PASS.
+- LISTING.md describes the round-2 changes, and all designs now hang from a loop. Title, tags, price and no-IP checks from Round 1 still stand.
+
+**Verdict: APPROVED**
