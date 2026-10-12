@@ -35,3 +35,31 @@
 Everything else can stay as is.
 
 **Verdict: REJECTED**
+
+---
+
+# Round 2
+
+## Summary
+`python3 gen.py --check` prints ALL CHECKS PASS. QA viewed a 400 px-cell contact sheet, a 120 px (20%) strip, 04 at 1000 px, and listing images 2 and 4. Designs 01, 02, 03, 05 and 06 are unchanged and still good. 04 is cleaner than round 1 but the face still does not read as a bearded gnome with a nose.
+
+## Technical checks
+| Check | Result |
+|---|---|
+| Parts / validity | PASS. All six: 1 part, valid. 04: 14 holes, smallest 890 units2 (limit 600) |
+| Cuttability of 04 | PASS. Single connected part. The U cut on the face is about 0.15-0.18 in at 6 in (over the 0.12 in minimum). Pine is gone and the ring is clean; no nubs at lower right |
+| ZIP | PASS. 22 entries; every SVG in the ZIP is byte-identical to bundle/SVG, 04 included (rebuilt 10:56) |
+| Listing images | PASS. 1-4 rebuilt at 10:56 and show the new 04 (toadstool, no pine), matching the files |
+
+## Design review of 04 (FAIL, again)
+- The requested fix was a solid nose standing out below the hat brim and a solid bold beard. In a one-colour cut file a "solid" nose or beard is invisible unless a cut separates it from the face. Here the whole face and body is one black mass with a single thick U-shaped cut. There is no nose silhouette and no beard shape.
+- At 100% the U reads as a horseshoe or moustache ring (the same shape as round 1, just thicker). At 20% it reads as a smiley face under a pointed hat. It is cute but is not recognisably a gnome, and a scroller would not call it a bearded gnome.
+- The hat and the new toadstool are fine. The shoulders at the base still end in small notched stubs where the figure meets the ground, which look unfinished.
+- Fixing this means a third redraw, which the cheap-art rule ("no more re-rolls; draw it in code or drop the idea") does not allow. Drop 04 or swap it for a simpler motif only as a new product.
+
+## Decision
+The other five designs are sellable, but the bundle is built around six and 04 is the weak one, so it is not approved as it stands.
+
+Move this bundle to bundles/_rejected/.
+
+**Verdict: REJECTED**
