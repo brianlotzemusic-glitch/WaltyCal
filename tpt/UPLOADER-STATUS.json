@@ -1,16 +1,16 @@
 {
-  "ran_at": "2026-10-11T13:06:26.346Z",
-  "published": [
+  "ran_at": "2026-10-12T00:30:05.875Z",
+  "published": [],
+  "failed": [
     {
-      "item": "007-music-sub-plans-k5",
-      "url": "https://www.teacherspayteachers.com/Product/Music-Sub-Plans-K-5-5-No-Prep-Emergency-Days-No-Tech-Worksheets-Games-17914739"
+      "item": "008-dmp1-beat-from-nothing",
+      "error": "still on the form 2 minutes after Submit; check My Products on TpT before retrying, it may have been created. TpT says: Your connection was interrupted "
     }
   ],
-  "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "007-music-sub-plans-k5"
+    "008-dmp1-beat-from-nothing"
   ],
-  "ok": true
+  "ok": false
 }
