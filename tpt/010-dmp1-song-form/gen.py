@@ -683,20 +683,108 @@ def song_table(i, filled=False):
             f'<th>What’s playing · what changed</th></tr>{"".join(rows)}</table></div>')
 
 
-def form_map_svg(i, scale_total, width="100%"):
-    """Answer key: one song's form as a proportional bar (common scale across songs). Chorus blocks in the accent."""
-    title, artist, use, secs, _ = SONGS[i]
-    W, H = 1000, 40
-    x, out = 0.0, []
+# answer-key map codes: every bar gets one; legend printed on the key page
+MAP_CODES = [("bridge/chorus", "BR/CH"), ("bridge a", "BR A"), ("bridge b", "BR B"), ("bridge", "BR"), ("pre-chorus", "PRE"),
+             ("post chorus", "POST"), ("pop drop", "DROP"), ("intro", "IN"), ("verse", "V"), ("chorus", "CH"), ("outro", "OUT")]
+MAP_LEGEND = [("IN", "intro"), ("V", "verse"), ("PRE", "pre-chorus"), ("CH", "chorus"), ("POST", "post chorus"), ("DROP", "pop drop"),
+              ("BR", "bridge"), ("BR A", "bridge A"), ("BR B", "bridge B"), ("BR/CH", "bridge/chorus?"), ("OUT", "outro")]
+MAP_W, MAP_BAR, MAP_IN, MAP_OUT, MAP_ROW, MAP_PAD, MAP_GAP = 1000, 34, 15, 14, 17, 5, 6
+_OSWALD_ADV = {}
+
+
+def text_w(s, size):
+    """Advance width of s in Oswald 700 at size (viewBox units), from the font's own metrics."""
+    if not _OSWALD_ADV:
+        from fontTools.ttLib import TTFont
+        f = TTFont(os.path.join(FONTS, "oswald-latin-700-normal.woff2"))
+        cmap, hm = f.getBestCmap(), f["hmtx"].metrics
+        _OSWALD_ADV["upm"] = f["head"].unitsPerEm
+        _OSWALD_ADV.update({chr(c): hm[g][0] for c, g in cmap.items() if c < 0x250})
+    return sum(_OSWALD_ADV[ch] for ch in s) * size / _OSWALD_ADV["upm"]
+
+
+def map_code(nm):
+    low = nm.lower()
+    return next(c for k, c in MAP_CODES if low.startswith(k))
+
+
+def map_layout(i, scale_total):
+    """Every bar gets a code: inside the bar when it fits with padding, otherwise in a call-out row above with a tick to the bar.
+    Returns (bars, labels, rows); label = dict(code, bar, inside, x0, x1, row)."""
+    secs = SONGS[i][3]
+    bars, x = [], 0.0
     for nm, ms, _ in secs:
-        w = ms / scale_total * W
+        w = ms / scale_total * MAP_W
+        bars.append((nm, x, w))
+        x += w
+    labels, rows = [], []
+    for k, (nm, bx, bw) in enumerate(bars):
+        code = map_code(nm)
+        inside = text_w(code, MAP_IN) + 2 * MAP_PAD <= bw - 2
+        tw = text_w(code, MAP_IN if inside else MAP_OUT)
+        c = bx + bw / 2
+        if not inside:
+            c = min(max(c, tw / 2), MAP_W - tw / 2)
+        lab = dict(code=code, bar=k, inside=inside, x0=c - tw / 2, x1=c + tw / 2, row=None)
+        if not inside:
+            r = 0
+            while r < len(rows) and any(lab["x0"] < o["x1"] + MAP_GAP and o["x0"] < lab["x1"] + MAP_GAP for o in rows[r]):
+                r += 1
+            if r == len(rows):
+                rows.append([])
+            rows[r].append(lab)
+            lab["row"] = r
+        labels.append(lab)
+    return bars, labels, len(rows)
+
+
+def form_map_svg(i, scale_total, width="100%"):
+    """Answer key: one song's form as a proportional bar (common scale across songs). Chorus blocks in the accent.
+    Every bar is labelled with a short code (legend on the page): inside when it fits, else in a call-out row above."""
+    bars, labels, nrows = map_layout(i, scale_total)
+    top = nrows * MAP_ROW + (4 if nrows else 0)
+    H = top + MAP_BAR
+    out = []
+    for (nm, bx, bw), lab in zip(bars, labels):
         low = nm.lower()
         col = ACCENT if low.startswith("chorus") else ("#000" if any(low.startswith(k) for k in ("verse", "intro", "outro", "bridge")) else "#777")
-        out.append(f'<rect x="{x + 1:.1f}" y="2" width="{w - 2:.1f}" height="{H - 4}" rx="4" fill="{col}"/>')
-        if w >= 58:
-            out.append(t_(x + w / 2, H / 2 + 5, nm.split(" (")[0].upper()[:12], 13, 700, fill="#fff"))
-        x += w
-    return svgwrap(W, H, "".join(out), width)
+        out.append(f'<rect x="{bx + 1:.1f}" y="{top + 2}" width="{max(bw - 2, 1.5):.1f}" height="{MAP_BAR - 4}" rx="{min(4, bw / 4):.1f}" fill="{col}"/>')
+        if lab["inside"]:
+            out.append(t_(bx + bw / 2, top + MAP_BAR / 2 + 5.5, lab["code"], MAP_IN, 700, fill="#fff"))
+        else:
+            ty = (nrows - lab["row"]) * MAP_ROW - 4      # row 0 sits just above the bar
+            cx = bx + bw / 2
+            out.append(f'<line x1="{cx:.1f}" y1="{ty + 2:.1f}" x2="{cx:.1f}" y2="{top + 2}" stroke="#000" stroke-width="1"/>')
+            out.append(t_((lab["x0"] + lab["x1"]) / 2, ty, lab["code"], MAP_OUT, 700, fill="#000"))
+    return svgwrap(MAP_W, H, "".join(out), width)
+
+
+def verify_maps():
+    """No map label is clipped or overprinted: in-bar codes fit their bar with padding, call-outs stay on the map and never touch."""
+    errs = []
+    total = max(sum(m for _, m, _ in s[3]) for s in SONGS)
+    for i, s in enumerate(SONGS):
+        bars, labels, nrows = map_layout(i, total)
+        if len(labels) != len(s[3]):
+            errs.append(f"answer key {s[0]}: {len(s[3])} sections but {len(labels)} labels")
+        for lab in labels:
+            nm, bx, bw = bars[lab["bar"]]
+            if lab["inside"] and not (bx + MAP_PAD <= lab["x0"] and lab["x1"] <= bx + bw - MAP_PAD):
+                errs.append(f"answer key {s[0]}: '{lab['code']}' clipped in its {nm} bar")
+            if lab["x0"] < 0 or lab["x1"] > MAP_W:
+                errs.append(f"answer key {s[0]}: '{lab['code']}' runs off the map")
+        outs = [l for l in labels if not l["inside"]]
+        for a in outs:
+            for b in outs:
+                if a is not b and a["row"] == b["row"] and a["x0"] < b["x1"] + MAP_GAP and b["x0"] < a["x1"] + MAP_GAP:
+                    errs.append(f"answer key {s[0]}: call-outs '{a['code']}' and '{b['code']}' overlap")
+        if nrows > 2:
+            errs.append(f"answer key {s[0]}: {nrows} call-out rows (max 2)")
+        legend = {c for c, _ in MAP_LEGEND}
+        for lab in labels:
+            if lab["code"] not in legend:
+                errs.append(f"answer key {s[0]}: code '{lab['code']}' not in the legend")
+    return errs
 
 
 def hero_svg(width="100%"):
@@ -1140,7 +1228,10 @@ def key_page(n):
     inner = (f'<p style="font-size:10pt;margin:0 0 5pt">Section names and measure counts from my classroom analysis (bars to scale; '
              f'<span class="acc"><b>violet</b></span> = chorus, black = intro, verse, bridge and outro, grey = other sections). Accept small differences '
              f'when a student clearly counted, for example a pickup measure or a section split in two. The label “Bridge/Chorus?” is my own: that section '
-             f'works either way, so accept both.</p>{maps}'
+             f'works either way, so accept both. The teacher notes suggest Anti-Hero for introducing the pre-chorus, but my analysis does not list one '
+             f'separately; accept a pre-chorus if a student splits one out of the end of a verse.</p>'
+             f'<p style="font-size:9.4pt;margin:0 0 6pt"><b>Bar codes:</b> ' + " · ".join(f"<b>{c}</b> {d}" for c, d in MAP_LEGEND) + '. A code above the map with a short line belongs to the narrow bar the line points to.</p>'
+             f'{maps}'
              f'<div class="cols" style="gap:14pt;margin-top:2pt"><div class="box" style="padding:5pt 9pt"><span class="k">Vocabulary · quick check</span>'
              f'<p style="margin:0;font-size:10pt">{vq}</p></div>'
              f'<div class="box" style="padding:5pt 9pt"><span class="k">Share-out patterns</span><p style="margin:0;font-size:10pt">'
@@ -1966,7 +2057,7 @@ def verify_files():
 
 
 def check():
-    errs = verify_data() + verify_files()
+    errs = verify_data() + verify_maps() + verify_files()
     if errs:
         print("CHECK FAILED")
         print("\n".join(" - " + e for e in errs))
