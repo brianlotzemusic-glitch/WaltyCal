@@ -1,16 +1,9 @@
 {
-  "ran_at": "2026-10-12T00:30:05.875Z",
+  "ran_at": "2026-10-12T14:50:16.966Z",
   "published": [],
-  "failed": [
-    {
-      "item": "008-dmp1-beat-from-nothing",
-      "error": "still on the form 2 minutes after Submit; check My Products on TpT before retrying, it may have been created. TpT says: Your connection was interrupted "
-    }
-  ],
+  "failed": [],
   "needs_login": false,
-  "paused": false,
-  "pending_before": [
-    "008-dmp1-beat-from-nothing"
-  ],
-  "ok": false
+  "paused": true,
+  "pending_before": [],
+  "ok": true
 }
