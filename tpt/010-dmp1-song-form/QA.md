@@ -64,3 +64,21 @@ Page 25 (answer key, form maps), the bars for the songs' sections: labels are wi
 4. Teacher pages 4-12 could use the blank lower third (larger type or the observation notes box).
 
 **Verdict: REJECTED**
+
+
+---
+
+# Round 2 (12 Oct 2026)
+
+Scope: commit 131b4e2 changed only page 25 of song-form.pdf (text of pages 1-24, 26-27 is identical to round 1 and their 30 dpi renders are byte-identical), build/key.png, preview-3.png, the ZIP, gen.py and the action log. tpt.json, UPLOAD.md, the deck and the preview PDF are untouched.
+
+- `gen.py --check`: CHECK OK (27 pages, map label check, rubric 5 x (2-5) = /25, no banned strings, zip current). Working tree stayed clean after the run.
+- Page 25 rendered at 100 dpi and all 27 pages at 30 dpi. Every bar on all six maps now carries a short code (IN, V, CH, OUT, PRE, POST, DROP, BR, BR A, BR B, BR/CH), 8/12/11/11/12/15 bars matching the section counts. Narrow bars (1-4 measures: Crazy intro, Anti-Hero intro/post chorus/outro, post choruses, Levitating and Uptown Funk pre-chorus/post chorus) use a code above the map with a leader line, with a printed note explaining it. No label is clipped, overlapping or cut off.
+- Legend ("Bar codes: IN intro, V verse, PRE pre-chorus, CH chorus, POST post chorus, DROP pop drop, BR bridge, BR A / BR B bridge A / B, BR/CH bridge/chorus?, OUT outro") covers every code used and nothing else. The text line under each map still gives the full section names and bar counts, which match the owner's Complete sheet (title/artist/sections/measures only) for all six songs.
+- ZIP: the PDF, .pptx and deck PDF inside are byte-identical to the item folder files (481,813-byte PDF). Preview PDF (4 pages, pacing, planning table, class sheet, rubric) does not include page 25 and is unaffected. preview-3.png ("Everything inside") shows the new key page and is consistent with it.
+- Regression: zero Blind Brook/BBHS/brook hits in the resource, preview and deck PDFs; rubric page still /25; tpt.json unchanged from round 1 and valid JSON.
+- Anti-Hero: page 25's intro paragraph now reconciles with the teacher notes (notes suggest Anti-Hero for the pre-chorus; analysis lists none; accept a pre-chorus if a student splits one out of a verse). Page 10 wording is unchanged and is now consistent with the key. Optional note 1 (Day 2 slides 13-16) and deck/teacher-page polish were not addressed; they were optional and do not block.
+
+Required fix from round 1 is resolved. No new defects found.
+
+**Verdict: APPROVED**
