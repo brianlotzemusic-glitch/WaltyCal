@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-12T13:30:00Z",
-  "next_run_at": "2026-10-12T22:12:00Z",
+  "updated_at": "2026-10-13T01:00:00Z",
+  "next_run_at": "2026-10-13T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 25,
-  "bundles_built": 29,
+  "listings_live": 26,
+  "bundles_built": 31,
   "uploads_pending": 2,
   "etsy_connected": true,
   "workers": [
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12am shift done. TpT nightly paused: waiting for the owner to check TpT for a duplicate of 008 and to OK two content tweaks in 009.",
-      "since": "2026-10-12T13:30:00Z"
+      "task": "6:12pm shift done. TpT 009 and 010 released for tonight's Mac nightly. Next: 6:12am ET Oct 13.",
+      "since": "2026-10-13T01:00:00Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "TpT 009 Spooky Tunes built. 022 mushroom ornaments failed QA twice and was moved to _rejected. 1 TpT built today.",
-      "since": "2026-10-12T13:30:00Z"
+      "task": "023 raven & mistletoe ornaments (fixed in round 2) and TpT 010 DMP1 Song Form built. 1 Etsy + 1 TpT today (ET).",
+      "since": "2026-10-13T01:00:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved TpT 009 (round 1). Rejected 022 twice (gnome face).",
-      "since": "2026-10-12T13:30:00Z"
+      "task": "Approved 023 and TpT 010 in round 2 (Sonnet).",
+      "since": "2026-10-13T01:00:00Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Nothing to list. TpT 008 upload failed (connection interrupted); nightly paused until the owner checks TpT.",
-      "since": "2026-10-12T13:30:00Z"
+      "task": "Listed 023 (Etsy 4594109932). 26 live. TpT 008 live; 009 and 010 released for the Mac nightly.",
+      "since": "2026-10-13T01:00:00Z"
     },
     {
       "id": "analyst",
@@ -80,12 +80,27 @@
     }
   ],
   "queue": [
-    "[dmp] DMP1 Unit 5: Song Form + intro deck",
-    "[dmp] DMP1 Units 3/4, Unit 2, then DMP2 kits and bundles",
+    "[dmp] DMP1 Units 3/4 (Chords by Ear, Bass & Melody), Unit 2 Stems & Grooves",
+    "[dmp] then DMP2 kits (Billboard Top 10, Sample Flipping, FX Deep Dive, Music for Visual Media...) and bundles",
     "(on hold: DMP1 Units 7-10, owner is finishing them)",
-    "Raven & mistletoe, Celestial Christmas (next Etsy builds)"
+    "Etsy: Celestial Christmas and the rest of queue.md"
   ],
   "feed": [
+    {
+      "t": "2026-10-13T01:00:00Z",
+      "who": "qa",
+      "msg": "Approved TpT 010 DMP1 Song Form ($10, with intro deck) in round 2. Released for upload."
+    },
+    {
+      "t": "2026-10-13T01:00:00Z",
+      "who": "lister",
+      "msg": "Listed 023: Raven & mistletoe ornaments ($4). 26 live."
+    },
+    {
+      "t": "2026-10-13T01:00:00Z",
+      "who": "lister",
+      "msg": "TpT 008 Beat From Nothing is live; 009 Spooky Tunes releases tonight."
+    },
     {
       "t": "2026-10-12T13:30:00Z",
       "who": "qa",
@@ -145,21 +160,6 @@
       "t": "2026-10-10T13:00:00Z",
       "who": "lister",
       "msg": "Listed 018: Butterflies & dragonflies clipart (12 PNG+SVG, $3.49). 22 live."
-    },
-    {
-      "t": "2026-10-10T13:00:00Z",
-      "who": "qa",
-      "msg": "Sent 018 back (split body on 03, dull 06); approved in round 2."
-    },
-    {
-      "t": "2026-10-10T13:00:00Z",
-      "who": "manager",
-      "msg": "Owner decided: no pause, keep building 2 Etsy + 2 TpT a day."
-    },
-    {
-      "t": "2026-10-10T11:20:00Z",
-      "who": "manager",
-      "msg": "Turnaround report: 6 views, 2 favourites, 0 sales (targets 100 / 5). Recommend pausing new Etsy listings; waiting on the owner."
     }
   ],
   "venture_gate": {
