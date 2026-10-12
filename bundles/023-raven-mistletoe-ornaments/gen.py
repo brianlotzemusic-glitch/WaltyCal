@@ -2,9 +2,11 @@
 
 Hanging Christmas ornaments drawn in code (no AI images), built around solid
 raven silhouettes: a raven on a branch under a crescent moon, a bauble with a
-flying raven cut out, a raven perched on a candle-lit gothic lantern, two
-ravens kissing under mistletoe in a gothic arched window, a raven on a
-crescent moon, and a raven flying through a mistletoe wreath. Every design
+perched raven, moon and stars cut out, a raven perched on a candle-lit gothic
+lantern, two ravens kissing under mistletoe in a gothic arched window, a raven
+on a crescent moon, and a raven perched inside a mistletoe wreath. Round 2
+(QA fixes): new mistletoe sprig (paired oval leaves on a forked stem with a
+three-berry cluster) in 01 and 04, 02/03/06 redrawn; 05 unchanged. Every design
 has a hanging loop and is unioned into ONE connected polygon; stars,
 mistletoe and moons are attached, never floating. Ravens are solid shapes
 (no thin-line faces); the only cut-out detail on a bird is a round eye about
@@ -281,29 +283,6 @@ def raven_perch(s=1.0, x=0, y=0, flip=1, rot=0, wing=False, feet=True, eye=True)
     return _place(U(parts), s, x, y, flip, rot), [_place(h, s, x, y, flip, rot) for h in holes]
 
 
-# Flying raven in profile facing right, body centre at (0, 0): near wing
-# raised with five fingered primaries, far wing tip peeking behind it,
-# wedge tail, heavy beak.
-FLY_BODY = [(150, -52), (110, -60), (60, -50), (0, -42), (-80, -34), (-130, -26), (-150, -24), (-236, -52), (-250, -50), (-270, -8),
-            (-250, 30), (-236, 32), (-150, 26), (-120, 30), (-60, 50), (20, 62), (90, 46), (140, 22), (172, -6), (172, -32)]
-FLY_BEAK = [(156, -46), (200, -42), (248, -18), (206, -6), (166, 0)]
-# raised near wing: leading edge to the wrist, five fingers, scalloped trailing edge
-FLY_WING = [(76, -30), (68, -96), (44, -164), (8, -224), (-28, -266),
-            (-64, -336), (-74, -284), (-108, -340), (-108, -276), (-150, -326), (-138, -262),
-            (-188, -302), (-162, -244), (-216, -268), (-176, -214),
-            (-190, -186), (-156, -160), (-168, -132), (-126, -112), (-134, -86), (-86, -62), (-40, -30)]
-
-
-def raven_fly(s=1.0, x=0, y=0, flip=1, rot=0, eye=True, far=True):
-    wing = poly(FLY_WING).buffer(8, quad_segs=8).buffer(-8, quad_segs=8)
-    parts = [wing, poly(catmull(FLY_BODY, n=10)), poly(FLY_BEAK).buffer(5).buffer(-5)]
-    if far:   # far wing: lowered, its fingers showing below the body
-        fw = affinity.scale(poly(FLY_WING).buffer(8).buffer(-8), 0.62, -0.5, origin=(40, 0))
-        parts.append(affinity.translate(fw, -10, 30))
-    holes = [circ(140, -24, 14)] if eye else []
-    return _place(U(parts), s, x, y, flip, rot), [_place(h, s, x, y, flip, rot) for h in holes]
-
-
 # ---------------------------------------------------------------- mistletoe
 def leaf(x0, y0, ang, L, W):
     """Mistletoe leaf from its stalk end: a blunt paddle, narrow at the
@@ -342,6 +321,47 @@ def mistletoe(x, y, ang=90, s=1.0, stem=80, L=130, W=50, br=22, spread=(28, 78))
     return U(parts)
 
 
+def oval_leaf(x0, y0, ang, L, W):
+    """Mistletoe leaf from its stalk end: a long smooth oval (pointed-round at
+    both ends, widest just past the middle), L long and W wide."""
+    pts = []
+    for k in range(41):
+        t = k / 40
+        w = W / 2 * math.sin(math.pi * t) ** 0.6
+        pts.append((t * L, w))
+    pts += [(x, -y) for x, y in pts[::-1][1:-1]]
+    g = poly(pts).buffer(3).buffer(-3)
+    return affinity.translate(affinity.rotate(g, ang, origin=(0, 0)), x0, y0)
+
+
+def sprig(x, y, ang=90, s=1.0, stem=60, fork=84, L=150, W=44, open_=17, spread=42, br=22, cut=False):
+    """Mistletoe sprig hanging from (x, y) along ang: a stem to a node that
+    forks in two; each fork ends in a pair of long oval leaves in a narrow V,
+    and a cluster of three round berries sits in the crotch of the fork,
+    each berry on its own stalk so they read as separate dots."""
+    nx, ny = polar(x, y, stem * s, ang)
+    sw = max(24.0, 26 * s) if cut else 15 * s   # cut stems stay >= 0.14 in wide
+    parts = [line([(x, y), (nx, ny)], sw + 2 * s)]
+    for sg in (-1, 1):
+        a = ang + sg * spread
+        tx, ty = polar(nx, ny, fork * s, a)
+        parts.append(line([(nx, ny), (tx, ty)], sw))
+        for o in (-1, 1):
+            parts.append(oval_leaf(tx, ty, a + o * open_, L * s, W * s))
+    if cut:   # cut-out: three round berry holes with solid card between them
+        b0 = polar(nx, ny, 60 * s, ang)
+        parts.append(line([(x, y), polar(nx, ny, 10 * s, ang)], sw))
+        for d, a in ((0, 0), (64, 30), (64, -30)):
+            parts.append(circ(*polar(*b0, d * s, ang + a), br * s))
+        return U(parts)
+    b0 = polar(nx, ny, 92 * s, ang)
+    parts += [line([(nx, ny), b0], sw), circ(*b0, br * s)]
+    for o in (-1, 1):   # three berries touching in a triangle: a bumpy cluster
+        bx, by = polar(*b0, 2 * br * s * 0.92, ang + o * 32)
+        parts.append(circ(bx, by, br * s))
+    return U(parts)
+
+
 # ---------------------------------------------------------------- designs
 C, R = (500, 520), 440
 
@@ -358,15 +378,15 @@ def branch(pts, w0, w1, n=8):
 
 def d1_moonlit_raven():
     """Raven perched on a bare branch across a round frame, a big crescent
-    moon behind, mistletoe and a star hanging from the frame."""
+    moon behind, a mistletoe sprig hanging from the frame."""
     solid, holes = framed()
     solid.append(crescent(330, 300, 170, 70, -48, 0.84))
-    solid.append(branch([(40, 800), (200, 770), (380, 772), (560, 770), (760, 740), (960, 700)], 34, 22))
-    solid.append(branch([(700, 752), (780, 800), (850, 812)], 20, 16))
+    inside = circ(*C, R)   # branch ends stop in the middle of the ring band, no stubs outside
+    solid.append(branch([(40, 800), (200, 770), (380, 772), (560, 770), (760, 740), (960, 700)], 34, 22).intersection(inside))
+    solid.append(branch([(700, 752), (780, 800), (850, 812)], 20, 16).intersection(inside))
     r, rh = raven_perch(1.2, 520, 762)
     solid.append(r); holes += rh
-    solid.append(mistletoe(650, 90, 90, 1.1, stem=90))
-    solid.append(hung_star(860, 200, 320, 44))
+    solid.append(sprig(680, 100, 90, 1.0, stem=74))
     return compose(solid, holes)
 
 
@@ -377,20 +397,23 @@ def bauble(cx=500, cy=570, Rb=400):
 
 
 def d2_raven_bauble():
-    """Classic bauble with a flying raven, a mistletoe sprig and stars cut out."""
+    """Classic bauble with a big perched raven on its branch, a crescent moon
+    and stars cut out of it (round 2: the flying bird read as a dove, and a
+    cut-out mistletoe sprig was too fussy to read, so it was left out)."""
     solid, holes = bauble()
-    r, rh = raven_fly(1.04, 530, 700)
-    holes.append(r)
-    holes.append(mistletoe(640, 250, 90, 0.95, stem=36))
-    for (x, y, rr) in ((300, 330, 38), (420, 260, 24), (200, 560, 28), (320, 900, 30), (700, 890, 36), (840, 600, 26)):
+    r, _ = raven_perch(1.3, 560, 762, eye=False)
+    br = branch([(150, 800), (340, 776), (560, 772), (760, 760), (880, 730)], 30, 22).intersection(circ(500, 570, 336))
+    holes += [r, br, crescent(330, 350, 110, 46, -30, 0.84)]
+    for (x, y, rr) in ((720, 300, 36), (180, 560, 32), (860, 610, 30), (470, 905, 32), (640, 880, 30), (520, 250, 26)):
         holes.append(star(x, y, rr, rr * 0.5))
     return compose(solid, holes)
 
 
 def d3_raven_lantern():
     """Raven perched on top of a gothic lantern with a candle glowing in
-    each arched window; a mistletoe sprig hangs from the roof ledge. The
-    hanging loop sits on the raven's back."""
+    each arched window. The hanging loop sits on the raven's head. Round 2:
+    raven enlarged; the mistletoe sprig was dropped (it read as a floating
+    decoration and, under the roof, as a bat)."""
     cx, top = 500, 330
     solid, holes, light = [], [], []
     solid.append(arch(cx, 440, 130, top).intersection(box(0, 0, 1000, 440)))   # dome
@@ -406,12 +429,11 @@ def d3_raven_lantern():
         light.append(poly(catmull([(cx + dx, 616), (cx + dx + 24, 668), (cx + dx + 17, 700), (cx + dx, 712),
                                    (cx + dx - 17, 700), (cx + dx - 24, 668)], n=8)))   # flame
         light.append(line([(cx + dx, 700), (cx + dx, 740)], 18))               # wick
-    s, fx = 0.86, cx - 10
+    s, fx = 1.22, cx - 14
     r, rh = raven_perch(s, fx, top - 158)
     solid.append(r); holes += rh
-    h, hh = hanger(fx + 20 * s, top - 158 - 270 * s, neck=10)
+    h, hh = hanger(fx + 36 * s, top - 158 - 290 * s, neck=36)
     solid.append(h); holes.append(hh)
-    solid.append(mistletoe(cx + 240, 470, 66, 0.95, stem=50))
     return U([compose(solid, holes)] + light)
 
 
@@ -439,7 +461,7 @@ def d4_gothic_window():
     for x, f in ((300, 1), (700, -1)):
         r, rh = raven_perch(1.15, x, sill, flip=f)
         solid.append(r); holes += rh
-    solid.append(mistletoe(cx, apex + 40, 90, 1.4, stem=50))
+    solid.append(sprig(cx, apex + 40, 90, 1.25, stem=40))
     return compose(solid, holes)
 
 
@@ -461,22 +483,33 @@ def d5_raven_moon():
 
 
 def d6_mistletoe_wreath():
-    """Mistletoe wreath (leaves all sweeping one way round a ring, berry
-    clusters between) with a raven flying through the middle."""
-    cx, cy, Rw = 500, 540, 360
-    h, hh = hanger(cx, cy - Rw - 60)
-    solid, holes = [ring(cx, cy, Rw, 30), h, rect(cx - 12, cy - Rw - 70, cx + 12, cy - Rw, 4)], [hh]
-    n = 30
+    """Round 2 redraw: a clean, even mistletoe wreath (a smooth ring band
+    with long oval leaves set alternately outside and inside it, all
+    sweeping the same way, and round three-berry clusters) and a raven
+    perched on a branch across the bottom of the wreath, clear of the
+    leaves."""
+    cx, cy, Rw, bw = 500, 520, 390, 34
+    h, hh = hanger(cx, cy - Rw - bw / 2 + 4)
+    solid, holes = [ring(cx, cy, Rw, bw), h], [hh]
+    n = 20
+    step = 360 / n
     for k in range(n):
-        th = -90 + 360 * (k + 0.5) / n
-        bx, by = polar(cx, cy, Rw, th)
+        th = -90 + step * (k + 0.5)
         out = 1 if k % 2 == 0 else -1
-        solid.append(leaf(bx, by, th + 90 - out * 30, 112, 44))
-        if k % 5 == 2:
-            for a, rr in ((0, 0), (120, 1), (240, 1)):
-                solid.append(circ(*polar(*polar(cx, cy, Rw + 40, th), 30 * rr, a + th), 24))
-    r, rh = raven_fly(1.2, cx + 20, cy + 50)
-    solid.append(r); holes += rh
+        if out < 0 and 10 < th % 360 < 170:   # no inner leaves round the raven
+            continue
+        bx, by = polar(cx, cy, Rw + out * 4, th)
+        solid.append(oval_leaf(bx, by, th + 90 - out * 34, 136, 48))
+    for k in (2, 6, 10, 14, 18):              # five three-berry clusters on the outside, each in the gap after an outer leaf
+        th = -90 + step * (k + 0.5) + 27
+        for p in (polar(cx, cy, Rw + bw / 2 + 2, th - 4.2), polar(cx, cy, Rw + bw / 2 + 2, th + 4.2),
+                  polar(cx, cy, Rw + bw / 2 + 36, th)):
+            solid.append(circ(*p, 21))
+    inside = circ(cx, cy, Rw)
+    by = cy + 236
+    solid.append(branch([(cx - 400, by + 8), (cx - 150, by + 2), (cx + 100, by), (cx + 400, by - 6)], 30, 24).intersection(inside))
+    r, rh = raven_perch(1.1, cx + 20, by + 2)
+    solid.append(r.intersection(circ(cx, cy, Rw + bw / 2))); holes += rh   # tail ends flush with the band
     return compose(solid, holes)
 
 
@@ -495,12 +528,12 @@ by Duskwood Designs Co (etsy.com/shop/DuskwoodDesignsCo)
 Thank you for your purchase!
 
 DESIGNS
-  01 Moonlit Raven Ornament (raven on a branch, crescent moon, mistletoe, star)
-  02 Raven Bauble Ornament (bauble with a flying raven, mistletoe and stars cut out)
+  01 Moonlit Raven Ornament (raven on a branch, crescent moon, mistletoe sprig)
+  02 Raven Bauble Ornament (bauble with a perched raven, moon and stars cut out)
   03 Raven Lantern Ornament (raven perched on a candle-lit gothic lantern)
   04 Gothic Window Ravens Ornament (two ravens under mistletoe in an arched window)
   05 Raven on the Moon Ornament (raven on a crescent moon with mistletoe)
-  06 Mistletoe Wreath Raven Ornament (raven flying through a mistletoe wreath)
+  06 Mistletoe Wreath Raven Ornament (raven perched inside a mistletoe wreath)
 
 FILES
   SVG/  Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator

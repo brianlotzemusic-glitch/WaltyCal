@@ -3,12 +3,12 @@ by Duskwood Designs Co (etsy.com/shop/DuskwoodDesignsCo)
 Thank you for your purchase!
 
 DESIGNS
-  01 Moonlit Raven Ornament (raven on a branch, crescent moon, mistletoe, star)
-  02 Raven Bauble Ornament (bauble with a flying raven, mistletoe and stars cut out)
+  01 Moonlit Raven Ornament (raven on a branch, crescent moon, mistletoe sprig)
+  02 Raven Bauble Ornament (bauble with a perched raven, moon and stars cut out)
   03 Raven Lantern Ornament (raven perched on a candle-lit gothic lantern)
   04 Gothic Window Ravens Ornament (two ravens under mistletoe in an arched window)
   05 Raven on the Moon Ornament (raven on a crescent moon with mistletoe)
-  06 Mistletoe Wreath Raven Ornament (raven flying through a mistletoe wreath)
+  06 Mistletoe Wreath Raven Ornament (raven perched inside a mistletoe wreath)
 
 FILES
   SVG/  Cricut Design Space, Silhouette Designer Edition, Inkscape, Illustrator
