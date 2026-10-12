@@ -3,7 +3,7 @@
 Woodland Christmas ornaments drawn in code (no AI images), all built around
 spotted fly-agaric toadstools: a toadstool trio in a snowy round frame, a
 toadstool cottage, a bauble with mushrooms cut out of it, a woodland
-gnome beside a big toadstool, a crescent moon with toadstools, and a snow
+gnome (solid nose and beard, cuts >= 0.13 in) beside a big toadstool, a crescent moon with toadstools, and a snow
 globe.
 Each has a hanging loop built in. Everything is unioned into ONE connected
 polygon; stars and trees are attached, never floating. compose() closes solid
@@ -356,43 +356,44 @@ def d3_mushroom_bauble():
 
 
 def gnome(x, gy, s=1.0, flip=1):
-    """Woodland gnome facing out: floppy pointed hat with a pompom and a cut
-    hat band, round nose, long beard with cut strands over a coat, two boots.
-    Returns (solid, holes)."""
+    """Woodland gnome facing out: floppy pointed hat with a pompom pulled down
+    over the eyes, a big solid round nose hanging from the brim, a bold solid
+    beard whose outline stands clear against the background, two boots
+    peeking out below. Cuts are >= 26 units wide (at s=0.9 about 23 units,
+    0.14 in at 6 in): a U-shaped gap that frames the nose and splits hat
+    from beard, and two short beard strands. Returns (solid, holes)."""
     T = lambda g: affinity.translate(affinity.scale(g, flip * s, s, origin=(0, 0)), x, gy)
-    hat = poly(catmull([(-132, -276), (-118, -360), (-80, -450), (-20, -530), (60, -572), (128, -556), (168, -506),
-                        (176, -452), (150, -470), (122, -500), (84, -494), (80, -430), (102, -350), (132, -276)], n=10))
-    brim = rect(-148, -300, 148, -248, 22)
-    pom = circ(178, -436, 32)
-    coat = poly(catmull([(-104, -240), (-140, -120), (-150, -40), (150, -40), (140, -120), (104, -240)], n=8))
-    beard = poly(catmull([(-108, -262), (-120, -196), (-98, -128), (-56, -80), (0, -62), (56, -80), (98, -128), (120, -196),
-                          (108, -262)], n=10))
-    nose = ellipse(0, -250, 54, 46)
-    boots = U([ellipse(-62, -24, 58, 26), ellipse(62, -24, 58, 26)])
-    arms = U([ellipse(-150, -150, 34, 56), ellipse(150, -150, 34, 56)])
-    solid = [hat, brim, pom, coat, beard, nose, boots, arms]
-    holes = [line([(-128, -310), (-60, -318), (0, -320), (60, -318), (128, -310)], 16).intersection(hat.buffer(-14)),
-             line([(66 * math.cos(math.radians(a)), -250 + 58 * math.sin(math.radians(a))) for a in range(-40, 221, 6)], 15),  # nose outline, open at the top
-             outline_cut(beard, U([coat, arms]).buffer(-16), 15)]
-    for o in (-46, 0, 46):
-        holes.append(line(catmull([(o * 0.9, -170), (o * 1.1, -136), (o * 0.95, -104)], closed=False, n=6), 15))
-    holes.append(line([(0, -96), (0, -46)], 14).intersection(coat.buffer(-30)))
+    hat = poly(catmull([(-140, -268), (-120, -360), (-80, -450), (-20, -530), (60, -572), (128, -556), (168, -506),
+                        (176, -452), (150, -470), (122, -500), (84, -494), (80, -430), (104, -350), (140, -268)], n=10))
+    brim = rect(-142, -300, 142, -254, 20)
+    pom = circ(178, -436, 34)
+    beard = poly(catmull([(-142, -290), (-142, -196), (-124, -128), (-92, -82), (-46, -44), (0, -14), (46, -44), (92, -82),
+                          (124, -128), (142, -196), (142, -290)], n=10))
+    boots = U([ellipse(-96, -18, 68, 38), ellipse(96, -18, 68, 38), rect(-40, -40, 40, 20)])
+    nose = circ(0, -222, 66)
+    solid = [hat, brim, pom, beard, boots, nose]
+    gap = 26
+    band = line([(-104, -254 + gap / 2), (104, -254 + gap / 2)], gap)           # brim / beard split (ends stay solid)
+    under = circ(0, -222, 66 + gap).intersection(rect(-200, -254, 200, 0))   # gap round the lower nose
+    holes = [U([band, under]).difference(nose)]
+    holes.append(beard.buffer(gap, quad_segs=16).difference(beard).intersection(boots.buffer(-2)).difference(rect(-34, -60, 34, 60)))   # boots clear of the beard; tip stays joined
     return [T(g) for g in solid], [T(h) for h in holes]
 
 
 def d4_gnome_toadstool():
     """A woodland gnome beside a big toadstool on a snowy hill in a round
-    frame, with a small toadstool, stars and snowflakes."""
+    frame, with a small toadstool, stars and snowflakes. The gnome and the
+    small toadstool stand clear of the frame so their outlines read."""
     solid, holes = framed()
     solid.append(snow_ground(500, 850, R, C[1], 12, 2.2))
-    add(solid, holes, toadstool(640, 862, 340, 360, 190, 86, tilt=6, spots=8, seed=31))
-    add(solid, holes, gnome(300, 872, 0.88, flip=-1))
-    solid.append(pine(800, 866, 220, 118, 3))
+    add(solid, holes, toadstool(632, 862, 340, 360, 190, 86, tilt=6, spots=8, seed=31))
+    add(solid, holes, gnome(332, 818, 0.86, flip=-1))
+    add(solid, holes, toadstool(758, 858, 104, 116, 70, 38, tilt=8, spots=3, seed=33, skirt=False))
     top = lambda x: C[1] - math.sqrt((R - 10) ** 2 - (x - 500) ** 2)
-    solid.append(hung_star(250, top(250), 300, 46))
-    solid.append(hung_star(470, top(470), 200, 40))
-    for x in (520, 760):
-        holes.append(snowflake(x, 906, 26, 14))
+    solid.append(hung_star(230, top(230), 262, 34))
+    solid.append(hung_star(470, top(470), 220, 40))
+    for x, y in ((430, 890), (560, 904)):
+        holes.append(snowflake(x, y, 26, 14))
     return compose(solid, holes)
 
 
@@ -479,9 +480,9 @@ freely, but keep the proportions locked.
 SIZING TIPS
   Cardstock, glitter card, felt or vinyl: 4 in or larger.
   Laser-cut wood or acrylic (3 mm or thinner): 4.5 in or larger.
-  The thinnest parts (star threads and the narrow cut lines of the gnome's
-  beard and the cottage door) are about 0.08 in wide at 6 in, so do not
-  go below 4 in, and do a test cut on a new material first.
+  The thinnest parts (star threads and the narrow cut line around the
+  cottage door) are about 0.08 in wide at 6 in, so do not go below 4 in,
+  and do a test cut on a new material first.
 
 LICENSE
   Personal use: unlimited.

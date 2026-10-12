@@ -23,9 +23,9 @@ freely, but keep the proportions locked.
 SIZING TIPS
   Cardstock, glitter card, felt or vinyl: 4 in or larger.
   Laser-cut wood or acrylic (3 mm or thinner): 4.5 in or larger.
-  The thinnest parts (star threads and the narrow cut lines of the gnome's
-  beard and the cottage door) are about 0.08 in wide at 6 in, so do not
-  go below 4 in, and do a test cut on a new material first.
+  The thinnest parts (star threads and the narrow cut line around the
+  cottage door) are about 0.08 in wide at 6 in, so do not go below 4 in,
+  and do a test cut on a new material first.
 
 LICENSE
   Personal use: unlimited.

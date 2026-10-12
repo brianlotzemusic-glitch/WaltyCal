@@ -23,7 +23,7 @@ WHAT'S INCLUDED
 • PNG — transparent background, 1800 px on the longest side (6 in at 300 DPI)
 
 SIZING TIP
-Default size is about 6 in on the longest side; resize freely with the proportions locked. The star threads and the fine cut lines on the gnome and the cottage door are the thinnest parts (about 0.08 in at 6 in), so we recommend 4 in or larger for cardstock, felt and vinyl and 4.5 in or larger for laser-cut wood or acrylic. Do a test cut on a new material first.
+Default size is about 6 in on the longest side; resize freely with the proportions locked. The star threads and the fine cut line around the cottage door are the thinnest parts (about 0.08 in at 6 in), so we recommend 4 in or larger for cardstock, felt and vinyl and 4.5 in or larger for laser-cut wood or acrylic. Do a test cut on a new material first.
 
 LICENSE
 Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.
@@ -44,7 +44,8 @@ mushroom svg, toadstool svg, mushroom ornament, christmas ornament, gnome svg, w
 - A holly-wreath design was tried for slot 04 and dropped in self-check (leaves read as sticks at thumbnail); replaced by the gnome and toadstool. Ferns were also dropped (merged into a blob next to frames).
 - Toadstool spots: one near the crown is placed first, so small caps never show two side-by-side "eyes".
 - Files are about 5.97-5.98 in on the longest side (viewBox pad 2); copy says "about 6 in".
-- Thinnest material ~14 units (0.08 in at 6 in): star threads; narrowest cuts ~15 units (gnome beard/nose lines, cottage door outline). Smallest cut-out 764 units² (min 600). All six are 1 part.
+- Thinnest material ~14 units (0.08 in at 6 in): star threads; narrowest cut ~15 units (cottage door outline). Smallest cut-out 764 units² (min 600). All six are 1 part.
 - Lead photo is a code-drawn "hanging on a bough" scene (01 trio, 02 cottage in red, 06 snow globe), not a photo or AI mockup; a real lifestyle mockup is still missing (same as 008, 020, 021).
 - Rebuild: `python3 gen.py` → `NODE_PATH=$(npm root -g) node render.js bundle/SVG 1800 bundle/PNG` → zip `bundle/` → `NODE_PATH=$(npm root -g) node thumbs.js`; verify with `python3 gen.py --check`. `python3 preview.py <out.png>` makes a low-res contact sheet.
-- Do a test cut of 04 (gnome beard lines) at 4 in in cardstock when hardware allows.
+- Round 2 (QA fix): 04's gnome redrawn in code ($0 AI): solid round nose hanging from the hat brim, solid bold beard with a pointed tip, boots; the only face cut is one U-shaped gap that frames the nose and splits hat from beard (>= 22 units, about 0.13 in at 6 in), plus the beard/boot split. The pine at lower right (nubs against the frame) is replaced by a small toadstool standing clear of the frame; stars and snowflakes moved off the frame edge. Listing images 2-4, contact sheet and ZIP rebuilt; image 1 does not show 04 and is unchanged.
+- Do a test cut of 04 at 4 in in cardstock when hardware allows.
