@@ -15,14 +15,14 @@ TpT takes one product file, so the PDF, the .pptx and the deck PDF go up togethe
 ## 1. Title
 
 ```
-Spooky Tunes | Halloween Film Scoring in Logic Pro | High School Music Tech
+Film Scoring in Logic Pro | Halloween Music Production Project | High School
 ```
-(75 characters; the limit is 80.)
+(76 characters; the limit is 80.)
 
 ## 2. Description
 
 ```
-Students score a one-minute video of a walk through the woods at night in Logic Pro: 32 measures in two minor keys, with reverb and delay routed through shared buses. This is the 6-day scoring-to-picture project from my Digital Music Production 1 course, the first open-ended project of the year, now cleaned up and ready for your classroom. It is a perfect fit for October, and it works just as well in November.
+Film scoring for high school music production: students score a one-minute video of a walk through the woods at night in Logic Pro, with 32 measures in two minor keys and reverb and delay on shared buses. This 6-day scoring-to-picture project is a Halloween favorite and works any time you teach music for media; the steps are written for Logic Pro, while the ideas carry over to GarageBand, Ableton Live and BandLab. It is the first open-ended project in my Digital Music Production 1 course, now cleaned up and ready for your classroom.
 
 WHAT'S INCLUDED (ZIP: 31-page PDF + 16-slide intro deck as .pptx and PDF)
 • How to use, unit overview, setup page and a one-page Logic quick reference (4 pages)
@@ -65,9 +65,10 @@ Designed with the help of digital and AI tools, and checked by hand.
 
 ## 4. Subjects
 
-- Music
-- Tags: Halloween (accepted on item 001) and Autumn (accepted on items 002, 004 and 008).
-- Formats: PDF (the only format option text proven so far). If the dry run lists a PowerPoint or ZIP format, add it, since the product includes a .pptx.
+Per tpt/METADATA-GUIDE.md. `tpt.json` keeps only values TpT has accepted so far, so the nightly upload cannot fail on an unknown option.
+- Subjects in tpt.json: Music. After the dry run, add by hand (or into tpt.json if accepted): Career and Technical Education; Computer Science - Technology
+- Tags in tpt.json: Halloween, Autumn. After the dry run, add High School, Project Based Learning, Technology if the Tag list offers them (max 6) and drop Autumn
+- Formats: PDF (add PowerPoint or ZIP if TpT offers it, since the product includes a .pptx)
 
 ## 5. Resource type
 

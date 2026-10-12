@@ -15,14 +15,14 @@ TpT takes one product file, so the PDF, the .pptx and the deck PDF go up togethe
 ## 1. Title
 
 ```
-Beat From Nothing | Logic Pro Drum Programming Unit | High School Music Tech
+Beat Making in Logic Pro | Drum Programming | High School Music Technology
 ```
-(76 characters; the limit is 80.)
+(74 characters; the limit is 80.)
 
 ## 2. Description
 
 ```
-Students build an original drum beat from nothing in Logic Pro: no loops, no pre-made grooves. This is the 4-day drum-programming unit that opens my Digital Music Production 1 course, now cleaned up and ready for your classroom. Students name the parts of the kit, learn what a loop is, count beats and measures by ear, copy one famous drum pattern, then build, mix and present their own 16-measure beat in AABA form.
+Beat making for high school music technology: students program an original drum beat from nothing in Logic Pro, with no loops and no pre-made grooves. This 4-day drum programming unit opens my Digital Music Production 1 course; the steps are written for Logic Pro, while the music ideas carry over to GarageBand, Ableton Live and BandLab. Students name the parts of the kit, learn what a loop is, count beats and measures by ear, copy one famous drum pattern, then build, mix and present their own 16-measure beat in AABA form.
 
 WHAT'S INCLUDED (ZIP: 21-page PDF + 15-slide intro deck as .pptx and PDF)
 • How to use, unit overview and setup page with a Logic quick reference (3 pages)
@@ -63,9 +63,10 @@ Designed with the help of digital and AI tools, and checked by hand.
 
 ## 4. Subjects
 
-- Music
-- Tags: Autumn (accepted on items 002 and 004; the unit runs in September). If the dry run offers "Back to School", it fits better and can be added by hand.
-- Formats: PDF (the only format option text proven so far). If the dry run lists a PowerPoint or ZIP format, add it, since the product includes a .pptx.
+Per tpt/METADATA-GUIDE.md. Already live on TpT: tpt.json holds what the owner sets by hand (the uploader cannot edit a live listing and does not run on this item again).
+- Subjects: Music; Career and Technical Education; Computer Science - Technology
+- Tags: High School, Project Based Learning, Technology, Back to School (replaces the weak "Autumn"; use whichever of these the Tag list offers)
+- Formats: PDF (add PowerPoint or ZIP if TpT offers it, since the product includes a .pptx)
 
 ## 5. Resource type
 
