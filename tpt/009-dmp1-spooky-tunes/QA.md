@@ -51,3 +51,45 @@ QA reviewed this item on 12 Oct 2026, independently of the Designer. I read the 
 3. Consider adding "PowerPoint" or "ZIP" to `formats` only if the dry run lists it.
 
 **Verdict: APPROVED**
+
+---
+
+# Round 2 (12 Oct 2026, fresh QA after two owner decisions)
+
+Owner decisions under review: (1) the corrected How-to-Bus send levels stay (about -15 dB reverb, -20 to -25 dB delay); (2) the product must not require two minor keys: no key or form required (owner's May project sheet), minor keys only as an optional tip. I read the 31-page PDF, the deck PDF, the preview PDF and every .pptx text box and speaker note (extracted with python-pptx), UPLOAD.md, tpt.json and gen.py. I rendered the PDF and deck at 40 dpi as contact sheets and looked for overflow. I changed no item files.
+
+## 1. No leftover key requirement: pass
+- Grep of the PDF, deck, preview, notes, UPLOAD.md, tpt.json and gen.py for two keys, key change, second key, modulate, required key: every hit is optional wording ("Minor keys are optional. No key is required", "any key, or none", "A second key (only if I change key)", "If you change key: pairs to try", "an extra challenge", "this example happens to change key... a choice, not a rule"). No requirement, checklist item, goal, day plan, teacher note or deck slide asks for a key or a key change.
+- Rubric is /25, five categories scored 2-5, and Composition & Pacing is now about key moments, silence and fit to the picture: no key criterion. Page 10 says the rubric has "no key criteria". Deck slide 15 matches the PDF. Checklist, requirements page and deck slide 14 list no key item.
+- Worked example (A minor, D minor at m. 17) is labelled optional/"a choice, not a rule". gen.py --check also scans outputs for the old phrases.
+- Wording notes, not blocking: (a) page 3 "What students learn" still says "Minor keys feel different from major keys, and now they know why", and deck slide 4 lists "Minor keys: darker than major" among the four spooky tools, which reads as taught to everyone; "optional" would match the rest. (b) The vocabulary page (page 26) Quick Check asks "In A minor, the half steps are B-C and ____" although minor keys are optional; ungraded, but a student who skipped the Minor Key Map cannot answer it. Consider "(optional)".
+
+## 2. Send levels: pass
+Reverb start around -15 dB (page 3 reference table, How to Bus Part 1, deck slide 8); delay -20 to -25 dB (reference table, Part 2, deck slide 9); troubleshooting "try -20 dB". Teacher-demo and worked-example track tables use varied per-track levels (-6 to -30 dB for reverb, -18 to -22 dB for delay), consistent with the guidance.
+
+## 3. No Blind Brook / student content: pass
+Grep for blind, bbhs, brook, logo, student name across the PDF, deck, preview, notes, UPLOAD.md and tpt.json: no hits. The .pptx media is four original drawings. Songs by title and artist only.
+
+## 4. Deck: pass
+16 slides, speaker notes on all 16 (280-545 characters). Contact sheets of the deck (16) and PDF (31 pages) show no clipping or overflow. Polish only, as in round 1: slide 5's tiles are tall and mostly empty, slides 8-9 step text is small for projection.
+
+## 5. ZIP and metadata: pass
+- The ZIP holds exactly one folder with spooky-tunes.pdf, the deck .pptx and the deck PDF; all three are byte-identical (cmp) to the item files, which carry the current build.
+- Title: "Film Scoring in Logic Pro | Halloween Music Production Project | High School" is **76 characters** by my own count (limit 80) and identical in UPLOAD.md and tpt.json-driven publish (title is read from UPLOAD.md).
+- tpt.json: price and license_price "12.00", tax_code set, grades 9th-12th (4), subjects Music only, tags Halloween and Autumn (both proven on 001/002/004), format PDF, all six files exist. No unproven form values; the Career/Technology subjects and extra tags are correctly left as manual post-dry-run steps in UPLOAD.md.
+- SEO opening: "Film scoring for high school music production: students score a one-minute video of a walk through the woods at night in Logic Pro, with 32 measures of atmosphere and reverb and delay on shared buses. No key, chord progression or song form is required..." leads with the phrase teachers search, names the audience, what students make, and the free-choice promise. The second line covers the 6-day schedule, the Halloween and year-round use, and the Logic-specific steps with GarageBand/Ableton/BandLab transfer (not a compatibility promise). Reads well for high-school music-production teachers.
+- Description proofread: no typos; counts (31-page PDF, 16 slides, 14 vocabulary terms, 8 minor keys, /25) match the files; the learn bullets and Good to Know are consistent with "no key required".
+
+## 6. Round-1 non-blocking items: not fixed
+1. Day 1 delay-bus wording: **not fixed.** Day 1 post step 5 (student page 14, "SET UP YOUR DELAY BUS ... Just get it set up") and the teacher demo step 7 (page 12, "Walk through setting up Bus 2 with Tape Delay") still put the delay bus on Day 1, while the pacing guide and Day 1 plan say "Delay bus setup begins on Day 2". Deck slide 9 notes say students set up the delay bus "at the start of Day 2" but the slide is in the Day 1 range (1-9).
+2. Slides 12-16: **not fixed.** Page 2 says slides 10-16 go with Day 2, but the Day 2 plan and pacing guide list only "Slides 10-11". Slides 12-16 (project, steps, deliverables, rubric) still have no slot.
+
+## Optional fixes
+1. Add one sentence reconciling the Day 1 delay-bus mentions (for example, mark Day 1 post step 5 and demo step 7 "optional, if time allows; otherwise Day 2"), and give slides 12-16 a Day 2 slot (for example at the end of the 22-30 block or after the delay bus).
+2. Mark the page 3 / slide 4 minor-key lines and the page 26 Quick Check item "optional".
+3. Deck polish as in round 1 (slides 4, 5, 12, 16 lower third; slide 10-11 labels).
+
+None of these blocks release: all content decisions from the owner are implemented, nothing requires a key or two keys, and the metadata is within the proven values.
+
+**Verdict: APPROVED**
+
