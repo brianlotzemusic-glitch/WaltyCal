@@ -1,0 +1,35 @@
+{
+  "price": "10.00",
+  "license_price": "10.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 44,
+  "answer_key": "Included",
+  "zip_contents": [
+    "song-form.pdf",
+    "song-form-intro-deck.pptx",
+    "song-form-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "song-form.zip",
+    "preview": "song-form-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
