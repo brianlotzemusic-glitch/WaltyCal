@@ -39,3 +39,35 @@
 6. Rebuild PNG/DXF, ZIP, listing images 1-4, update LISTING.md/listing.json text, re-run `gen.py --check` and resubmit.
 
 **Verdict: REJECTED**
+
+---
+
+# Round 2
+
+## Summary
+`python3 gen.py --check` prints ALL CHECKS PASS. QA viewed the 1080x720 contact sheet, a 120 px (20%) strip, 700 px views of 01, 02, 03, 05 and 06, and listing image 1. The round-1 defects are fixed. One non-blocking nit on 05 (below).
+
+## Technical checks
+| Check | Result |
+|---|---|
+| Parts / validity | PASS. All six: 1 part, valid |
+| Smallest hole (limit 600 units2) | PASS. 01: 1011, 02: 807, 03: 1045, 04: 929, 05: 850, 06: 849 (02 stars now comfortably above the limit) |
+| DXF / PNG | PASS. 6-10 polylines each, 5.98 in; PNG 1800x1800 |
+| Rebuild | PASS. ZIP (22 entries) SVGs byte-identical to bundle/SVG, all entries dated 22:35 after the last gen.py edit; contact sheet and listing images 1-4 regenerated after the ZIP and show the new art |
+| Cuttability | PASS. Single part each. Thin parts are raven toes and mistletoe stems (about 0.08 in at 6 in) with the 4 in / 4.5 in advice in the listing. Ring band of 06 and 01 is about 0.15 in. Eyes about 0.18 in. No hairline cut lines on any bird |
+
+## Design review
+- **01 Moonlit raven**: good. Branch ends now stay inside the ring. The new sprig (forked stem, two pairs of long leaves, three-berry cluster) reads as mistletoe at 100% and at 20%.
+- **02 Raven bauble**: fixed. It is now a big perched raven cut out of a solid bauble with a crescent moon and stars. Reads as a raven (heavy beak, throat hackles, wedge tail), no longer dove-like, edges smooth. No mistletoe, and the copy no longer claims it.
+- **03 Raven lantern**: fixed. Raven is much larger and clearly a raven; lantern windows and candles are clear. The hanging loop sits right on the raven's head/neck, a small oddity but acceptable. It is the thinnest design in the set but fine at 4 in.
+- **04 Gothic window ravens**: good. New sprig reads as mistletoe under the arch.
+- **05 Raven on the moon**: still good as a design (unchanged). Nit, not blocking: its sprig is still the old paddle-leaf shape and reads as a small flower/bow, not mistletoe, and it is shown in the lead image beside the new sprigs. Suggest redrawing it with the 01/04 sprig on the next refresh.
+- **06 Mistletoe wreath raven**: fixed. Even smooth ring with alternating oval leaves and berry clusters, raven perched on a branch with clear gap to the ring, bird silhouette reads at 20%. Reads as a leafy wreath; mistletoe is plausible with the berries.
+- **Set**: good variety (round, bauble, lantern, arch, moon, wreath); at 20% all six read as ravens.
+
+## Listing review
+- Title (132 chars), 13 tags and the description still match what the designs show: the description names mistletoe only for 01, 04 and 06 and describes 02 as a bauble with a perched raven, moon and stars. No over-claim. "Mistletoe" in the title and tags is supported by three of six designs plus the lead image.
+- Price, taxonomy, licence, disclosure line, sizing tip: unchanged and fine. No IP concerns.
+- Image 1 shows 05, 04 and 01, legible and consistent with the files; images 2-4 rebuilt. Code-drawn lead rather than a lifestyle mockup is the known factory gap.
+
+**Verdict: APPROVED**
