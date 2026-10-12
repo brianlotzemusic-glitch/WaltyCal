@@ -7,9 +7,11 @@
 
 The owner's own curriculum (Brian Lotze, Digital Music Production 1, "Spooky Tunes"), reformatted in the Hudson Beat
 style: a 6-day scoring-to-picture project in Logic Pro. Students score a one-minute night-woods video (32 measures at
-128 BPM) in two minor keys, with reverb and delay on shared buses. Source documents (owner's Drive, read-only):
+128 BPM) with reverb and delay on shared buses. No key, chord progression or song form is required (the owner's May project
+sheet; owner decision 12 Oct: the Restructure's minor-key rule is dropped). Source documents (owner's Drive, read-only):
 Project Sheet & Rubric, Teacher Notes, Day 1 Classroom Post, How to Bus - Reverb and Delay, the Chords and Scales
-worksheet and the DMP1 Restructure (Unit 6: 6 days 1/3/2, 32 measures, two minor keys, reflection, concrete descriptors).
+worksheet and the DMP1 Restructure (Unit 6: 6 days 1/3/2, 32 measures, reflection, concrete descriptors). Minor keys appear only
+as an optional tool (tip, Minor Key Map, reference card); the rubric keeps the owner's wording.
 School names and logos are removed; no student work, names or grades; no audio, video or album art. The owner's
 classroom video is NOT included: the teacher supplies a clip (own footage or a royalty-free stock clip), and the
 product says so. Songs are named by title and artist only, with a find-it-on-YouTube/Spotify note.
@@ -64,7 +66,7 @@ BANNED = ["Blind" + " Brook", "BB" + "HS", "blind" + "brook", "Google" + " Class
 BPM = 128
 MEASURES = 32
 SPM = 4 * 60 / BPM          # seconds per measure = 1.875
-KEY_CHANGE = 17             # key 1 = measures 1-16, key 2 = measures 17-32
+KEY_CHANGE = 17             # worked example only: its optional move from A minor to D minor lands on the visual cut at m. 17
 
 
 def tfmt(sec):
@@ -102,7 +104,7 @@ KEYS = {
 KEY_NOTES = {"A minor": "white keys only", "E minor": "one sharp (F#)", "B minor": "two sharps (F#, C#)",
              "D minor": "one flat (Bb)", "G minor": "two flats (Bb, Eb)", "C minor": "three flats (Bb, Eb, Ab)",
              "F minor": "four flats (Bb, Eb, Ab, Db)", "Bb minor": "five flats; a half step above A minor"}
-KEY1, KEY2 = "A minor", "D minor"                               # the worked example
+KEY1, KEY2 = "A minor", "D minor"                               # the worked example's (optional) keys
 PAIRS = [("A minor", "D minor", "Smooth: they share six of seven notes, so the change feels like the path turning."),
          ("A minor", "Bb minor", "A lurch: everything moves up a half step. Use it at the scariest moment."),
          ("E minor", "A minor", "Darker and lower: a good choice when the video slows down or goes still.")]
@@ -122,7 +124,7 @@ def chord(key):
 # (name, source kind, source, notes, reverb send dB or None, delay send dB or None, why, regions [(first, last) measures])
 TRACKS = [
     ("Low drone", "library", "Logic library synth pad", "A, then D at m. 17", -12, None,
-     "The floor of the piece. It moves to the new root at measure 17, so the key change is heard.", [(1, 15), (17, 32)]),
+     "The floor of the piece. It moves to D on the cut at measure 17, so the change of key is heard.", [(1, 15), (17, 32)]),
     ("Wind", "download", "Free sound-effects download", "no key", -6, None,
      "Far away and very wet: it sounds like the whole forest.", [(1, 15), (21, 32)]),
     ("Footsteps", "recording", "My recording: crumpled paper close to the mic", "no key", -30, None,
@@ -140,19 +142,18 @@ MOMENTS = [  # (measure, what happens) on the worked example's score map
     (5, "Footsteps enter, close and dry"),
     (9, "Music box melody in A minor, with delay"),
     (16, "Everything stops: one measure of silence"),
-    (17, "Visual cut: D minor; the drone moves to D"),
+    (17, "Visual cut: the drone moves to D (a change of key)"),
     (25, "Low hum enters; the reverb send swells up"),
     (29, "Impact hit; its reverb tail rings to the end"),
 ]
 
-# ---------------------------------------------------------------- the owner's words (lightly edited: school, LMS, gear, Restructure additions)
+# ---------------------------------------------------------------- the owner's words (lightly edited: school, LMS, gear, Restructure additions; no key required)
 GOALS = ["Understand what a bus is and why it exists",
          "Set up a reverb bus and a delay bus in Logic using aux channels and sends",
          "Use reverb and delay to create a sense of space, distance, and atmosphere",
          "Find, record, and import sounds from multiple sources: the Logic library, your own microphone recordings, and a free sound-effects site",
-         "Use two different minor keys to shape the mood, and change key at a moment that matters",
          "Compose music that serves a visual, making deliberate decisions about what happens when in the video",
-         "Score a one-minute video with no other structural restrictions: let the video drive the decisions"]
+         "Score a one-minute video with no structural restrictions: let the video drive the decisions"]
 VOCAB = [("Bus", "a shared channel that multiple tracks send their audio to; effects on the bus apply to everything that sends to it"),
          ("Aux channel", "the channel in Logic that acts as the bus destination; this is where you put the reverb or delay plugin"),
          ("Send", "a control on a track that routes some of its signal to a bus; turning it up sends more signal to the effect"),
@@ -171,7 +172,6 @@ REQUIREMENTS = ["Reverb bus set up correctly in Logic: aux channel, Bus 1, Space
                 "Delay bus set up correctly in Logic: aux channel, Bus 2, Tape Delay or Echo at 100% wet",
                 "At least 3 tracks sending to the reverb bus",
                 "At least 1 track sending to the delay bus",
-                "Two different minor keys: key 1 for measures 1–16, key 2 for measures 17–32 (atonal sound effects can sit on top)",
                 "Minimum 5 distinct sound sources (a combination of the Logic library, your own recording, and a free download)",
                 "At least 1 original recording made with a microphone",
                 "At least 1 sound downloaded from a free sound-effects site (such as pixabay.com) and imported into Logic",
@@ -196,27 +196,28 @@ PICTURE = [("Watch before you build", "Play the video twice without touching Log
            ("Let the video breathe", "You do not need to fill every second with sound. Sparse music over a quiet visual can be more unsettling than a wall "
             "of noise. Less is often more here."),
            ("Match the energy", "If the video gets more intense, your music should respond. Build toward moments of tension and release from them. "
-            "A swell of wet reverb signals that something is coming. Save your key change for a moment that deserves it.")]
+            "The reverb and delay buses will help: a swell of wet reverb signals that something is coming.")]
 STEPS = [  # (days, heading, text)
     ("Day 1", "Watch the video", "Watch it twice without doing anything. What moments stand out? Where does the energy shift? Make notes on your cue sheet "
                                  "before touching Logic."),
     ("Days 1–2", "Set up your buses", "Follow the How to Bus pages to set up your reverb bus (Bus 1, Space Designer) and delay bus (Bus 2, Tape Delay). "
                                      "Get both working before you start collecting sounds."),
-    ("Day 2", "Pick your keys, find your sounds", "Choose two minor keys on the Minor Key Map. Browse the Logic library, record at least one original "
-                                                  "sound, and download at least one free sound. Drag everything into Logic. Do not worry about arrangement yet."),
+    ("Day 2", "Find and import sounds", "Browse the Logic library, record at least one original sound, and download at least one free sound. "
+                                        "Drag everything into Logic. Do not worry about arrangement yet."),
     ("Day 3", "Experiment with effects", "Before you score the video, spend time just playing. Send sounds to the reverb and delay buses at different levels. "
                                          "What does a heavy reverb do to a footstep? What does a long delay do to a single note? Let yourself be surprised."),
-    ("Days 3–4", "Score the video", "Import the video and add markers at your key moments. Key 1 for measures 1–16, key 2 from measure 17. Place sounds against "
-                                    "the video. Adjust send levels so the wet/dry balance serves the mood. Build toward tension, release from it."),
+    ("Days 3–4", "Score the video", "Import the video and add markers at your key moments. Place sounds against the video. Adjust send levels so the "
+                                    "wet/dry balance serves the mood. Build toward tension, release from it."),
     ("Day 5", "Mix, reflect and submit", "Play the full piece with the video. Does the music serve what is on screen? Adjust volumes. Make sure nothing is "
                                          "clipping. Write your reflection. Export MP3 and .zip and submit before presenting."),
 ]
 TIPS = ["Set up the buses first. Do not start collecting sounds until both buses are working. If you build 10 tracks and then realize your bus routing is "
         "wrong, you have to fix everything.",
         "Record something weird. The microphone is there: use it. A recording of your own voice processed beyond recognition is more interesting than any preset.",
-        "Half steps are spooky. Try two notes a half step apart, or slide between them with the pitch-bend wheel.",
-        "Atonal does not mean random. Your sound-effect layers do not need a key, but they should feel like they belong together. Choose sounds for texture "
-        "and tension, not just because they sound unpleasant.",
+        "Want it darker? Any key, or no key at all, is fine, but a minor key sounds darker than major: try one (the Minor Key Map shows how). Half steps "
+        "are spooky too: try two notes a half step apart, or slide between them with the pitch-bend wheel.",
+        "Atonal does not mean random. Even without a key, your sounds should feel like they belong together. Choose notes for texture and tension, not "
+        "just because they sound unpleasant.",
         "Watch the video with your music at least once per working day. It is easy to lose track of whether you are actually serving the picture or just "
         "making a piece of music that happens to be playing at the same time.",
         "Keep the How to Bus pages open. If your routing stops working, the troubleshooting table will fix almost every common problem."]
@@ -224,7 +225,6 @@ CHECKLIST = ["Reverb bus set up correctly (Aux, Bus 1, Space Designer at 100% we
              "Delay bus set up correctly (Aux, Bus 2, Tape Delay or Echo at 100% wet)",
              "At least 3 tracks sending to the reverb bus",
              "At least 1 track sending to the delay bus",
-             "Two minor keys: key 1 for measures 1–16, key 2 for measures 17–32",
              "Minimum 5 distinct sound sources used",
              "At least 1 original microphone recording included",
              "At least 1 free downloaded sound imported",
@@ -233,19 +233,18 @@ CHECKLIST = ["Reverb bus set up correctly (Aux, Bus 1, Space Designer at 100% we
              "Exported as MP3 and .zip (compressed .logicx) and submitted before presenting",
              "Reflection written: two techniques and why",
              "Three feedback questions posted to the class feedback board before presenting"]
-RUBRIC = [  # owner's rubric, levels 2-5, 5 categories = /25; key-change clauses added to Composition (DMP1 Restructure)
+RUBRIC = [  # owner's rubric (May project sheet), levels 2-5, 5 categories = /25; no key criteria (owner decision, 12 Oct)
     ("Sound Design & Atmosphere",
      ["Fewer than 3 sound sources used. Sounds feel generic or unrelated to the visual. No sense of atmosphere.",
       "At least 3 sound sources used but choices feel arbitrary. Some atmospheric quality but inconsistent.",
       "At least 5 sound sources including an original recording and a free download. Sounds contribute to a consistent spooky atmosphere.",
       "Sound choices are intentional and varied. The combination of sources creates a genuinely unsettling atmosphere that serves the video at every moment."]),
     ("Composition & Pacing",
-     ["Music does not respond to the video. Sounds placed arbitrarily. Long stretches of silence or constant unvarying noise. No clear minor key.",
-      "Some response to the video but key moments are missed or poorly timed. Music feels like it is playing alongside the video rather than for it. "
-      "Two keys attempted, but the change is hard to hear.",
-      "Music responds to the video at most key moments. Energy builds and releases appropriately. No unintentional dead air. Two minor keys, and the change is clear.",
-      "Music serves the picture precisely. Key moments are acknowledged. Silence is used as a compositional tool. The move to the second minor key lands on a "
-      "moment in the video. The piece feels like it was written for this specific video."]),
+     ["Music does not respond to the video. Sounds placed arbitrarily. Long stretches of silence or constant unvarying noise.",
+      "Some response to the video but key moments are missed or poorly timed. Music feels like it is playing alongside the video rather than for it.",
+      "Music responds to the video at most key moments. Energy builds and releases appropriately. No unintentional dead air.",
+      "Music serves the picture precisely. Key moments are acknowledged. Silence is used as a compositional tool. The piece feels like it was written "
+      "for this specific video."]),
     ("Technical Skill / DAW Use",
      ["Bus routing not set up or set up incorrectly. Space Designer and Tape Delay not at 100% wet. Sends not used.",
       "Bus routing partially correct. At least one bus working but setup has errors. Some sends used but inconsistently.",
@@ -277,28 +276,28 @@ DAYS = [  # 6 days, 1/3/2 (owner's DMP1 Restructure); minute blocks for ~53-minu
                 ("35–50", "Reverb bus", "Students open the How to Bus pages and set up their own reverb bus, replicating the demo. Check each setup "
                                         "before anyone moves on."),
                 ("50–53", "Exit check", "The one thing to remember: your track still plays dry; the bus adds the wet; the send controls how much.")]},
-    {"n": 2, "kind": "Work day", "title": "Delay bus, keys, sounds", "slides": "Slides 10–11, key map, cue sheet",
-     "goal": "Both buses working, two minor keys chosen, at least 5 sounds imported.",
+    {"n": 2, "kind": "Work day", "title": "Delay bus, sounds, moments", "slides": "Slides 10–11, cue sheet, key map (optional)",
+     "goal": "Both buses working, at least 5 sounds imported, the video’s moments on the cue sheet.",
      "blocks": [("0–10", "Watch again", "Play the video again as a class. What moments stood out? Where does the energy shift? Students note 2–3 moments "
                                         "on the cue sheet."),
                 ("10–22", "Delay bus", "Students complete the delay bus. Walk around and check every student’s Space Designer settings: confirm 100% wet "
                                        "before moving on."),
-                ("22–30", "Two minor keys", "Slide 10 and the Minor Key Map: each student picks key 1 and key 2 and writes the first chord and scale "
-                                            "for both. Set the project tempo (128 BPM for a 60-second clip)."),
+                ("22–30", "Tempo + keys (optional)", "Set the project tempo (128 BPM for a 60-second clip). Slide 10: no key is required; students may "
+                                                     "work in any key or none. Anyone who wants a darker harmonic home can pick a minor key on the Minor Key Map."),
                 ("30–53", "Sound exploration", "Students browse the Logic library, record something with the microphone, and download a free sound. "
                                                "Goal: at least 5 sounds in the project before any composition decisions.")]},
     {"n": 3, "kind": "Work day", "title": "Experiment, then start scoring", "slides": "Slide 11, worked example",
-     "goal": "First draft started: the video imported, markers placed, at least half the video (measures 1–16) scored in key 1.",
+     "goal": "First draft started: the video imported, markers placed, at least half the video (measures 1–16) scored.",
      "blocks": [("0–5", "Near or far?", "Mini-lesson: one sound, send low then high. Which feels closer? Some sounds close and dry, some distant and wet."),
                 ("5–15", "Video + markers", "Import the video, set the tempo, add markers at the moments from the cue sheet."),
-                ("15–50", "Experiment + compose", "Students experiment with the effects and begin placing sounds against the video in key 1. "
+                ("15–50", "Experiment + compose", "Students experiment with the effects and begin placing sounds against the video. "
                                                   "Stuck? ‘Send one sound to the reverb bus at maximum. Now pull it back slowly. Where does it start to feel "
                                                   "right? That is your send level.’"),
                 ("50–53", "Check-in", "Every student plays you measures 1–16 with the video.")]},
-    {"n": 4, "kind": "Work day", "title": "Composition: the key change", "slides": "Project sheet",
-     "goal": "Full video scored, key 2 in place from measure 17, rough mix in place.",
-     "blocks": [("0–5", "The key change", "Mini-lesson: move the drone or bass to the new root at measure 17, on a moment in the video. "
-                                         "If the low notes stay, nobody hears the change."),
+    {"n": 4, "kind": "Work day", "title": "Composition: make the moments land", "slides": "Project sheet",
+     "goal": "Full video scored, rough mix in place.",
+     "blocks": [("0–5", "Make a moment land", "Mini-lesson: pick the biggest moment in the video and make the music change right there: a new sound, "
+                                             "a drop to silence, a reverb swell. Students working in a key can move the drone or bass to a new root."),
                 ("5–48", "Compose", "Students continue composing to the video. Circulate and ask every student to play their piece with the video. "
                                     "Does the music respond to what is on screen? If it feels like background noise, push them to acknowledge specific moments."),
                 ("48–53", "Rough mix", "Pull every fader back a little; nothing in the red. Save a copy.")]},
@@ -329,8 +328,9 @@ STRUGGLES = [
      "you find unsettling, import them into Logic, and just play. You do not need a plan yet. The plan emerges from the sounds."),
     ("Everything drenched in reverb equally", "Students discover reverb and apply maximum amounts to every track. The result is an undifferentiated wash. "
      "Prompt them: some sounds should feel close and dry, some should feel distant and wet. The contrast is what creates space."),
-    ("The key change nobody hears", "Students switch the melody to key 2 at measure 17 but leave the drone or bass on the old root, so nothing seems to "
-     "change. Have them move the lowest sound to the new root at the same moment, and place that moment on a cut or a shift in the video."),
+    ("The big moment nobody hears", "Students change something at a big moment in the video (a new melody, a new key) but leave the drone or bass "
+     "untouched, so nothing seems to change. Have them change the lowest sound at the same moment (move it, drop it out, or let silence in), and place "
+     "that moment on a cut or a shift in the video."),
 ]
 DEMO = [  # owner's Day 1 bus demo, 8 steps (lightly edited)
     "Open a new Logic project. Add 3 or 4 audio or instrument tracks with different sounds playing.",
@@ -431,7 +431,8 @@ SLIDES = [  # (kind, title, body, notes)
      "Space: reverb and delay make it feel big and far away|Silence: the sound after it feels enormous",
      "Connect their answers from the listening to four tools. Minor keys sound darker (they met major and minor earlier in the course; if not, the "
      "Minor Key Map covers it). Half steps are the smallest distance on the keyboard: play E and F together on the projector so they hear the rub. "
-     "Space comes from reverb and delay. Silence is a sound too: a sound after silence feels enormous. Every one of these is a requirement or a rubric line."),
+     "Space comes from reverb and delay. Silence is a sound too: a sound after silence feels enormous. These are tools, not rules: no key is required, "
+     "and a score with no key at all is fine."),
     ("columns", "Space is a sound", "Reverb: a room, hall or cave around the sound|Delay: an echo that repeats|Dry: the original sound|Wet: the effect only",
      "Plain-English definitions. Reverb simulates a space; decay is how long the tail lasts. Delay repeats the sound after a set time; feedback is how many "
      "repeats. Dry is the untouched sound; wet is only the effect. If you can, play one short sound in Logic dry, then with heavy reverb, then with a long "
@@ -456,33 +457,34 @@ SLIDES = [  # (kind, title, body, notes)
      "The second setup goes faster because students now understand the pattern. Point out that a track can have two sends, one to each bus. Suggest "
      "delay on only one or two sounds: selective delay draws the ear. Turning off tempo sync lets the echoes float freely, which often feels more "
      "unsettling. Students set up the delay bus at the start of Day 2."),
-    ("keys", "Two minor keys", "",
-     "Day 2. The project uses two different minor keys: key 1 for measures 1–16 and key 2 for measures 17–32. The example is A minor (white keys only) moving "
-     "to D minor (one flat, B-flat). The orange keys are the first chord: root, third and fifth (A C E, then D F A). The dots are the scale. Students "
-     "fill in the Minor Key Map for their own two keys; the reference card has eight minor keys. Remind them the drone or bass must move to the new root "
-     "at measure 17, or nobody hears the change."),
+    ("keys", "Optional: try a minor key", "",
+     "Day 2. No key is required: students may work in any key, or in none, and atonal or sound-effect scores are fine. For anyone who wants a darker "
+     "harmonic home, a minor key helps. The examples are A minor (white keys only) and D minor (one flat, B-flat). The orange keys are the first chord: root, "
+     "third and fifth (A C E, D F A). The dots are the scale. The Minor Key Map and the reference card (eight minor keys) are optional reference pages. "
+     "A student who changes key at a big moment should move the drone or bass too, or nobody hears the change."),
     ("score", "Worked example: scoring the woods", "",
      "A score map for a 60-second clip at 128 BPM: 32 measures of 4/4 is exactly one minute, so every 4 measures is 7.5 seconds. Walk the numbered "
-     "moments: the drone and wind fade in, close dry footsteps, a music-box melody with delay, a full measure of deliberate silence, then the key change on "
-     "a visual cut at measure 17, a swelling reverb send and one impact with a long tail. Your own clip’s moments will differ: that is what the cue sheet is for."),
-    ("bullets", "Your project: Spooky Tunes", "Score a one-minute woods video|32 measures in two minor keys|A reverb bus and a delay bus|"
+     "moments: the drone and wind fade in, close dry footsteps, a music-box melody with delay, a full measure of deliberate silence, then a visual cut at "
+     "measure 17 where the drone moves (this example happens to change key there; that is a choice, not a rule), a swelling reverb send and one impact "
+     "with a long tail. Your own clip’s moments will differ: that is what the cue sheet is for."),
+    ("bullets", "Your project: Spooky Tunes", "Score a one-minute woods video|32 measures: any key, or none|A reverb bus and a delay bus|"
      "5+ sound sources: the Logic library, your own recording, a free download",
      "Hand out the project sheet and rubric. This is the brief: make it sound the way the video looks. Stress the three sound sources (at least one "
-     "original microphone recording and one free download) and that both buses come before any composing. Atonal sound-effect layers are welcome on top "
-     "of the two keys."),
+     "original microphone recording and one free download) and that both buses come before any composing. There is no chord progression, song form or "
+     "key required: atonal and sound-effect scores are welcome."),
     ("days", "The steps", "",
-     "Walk the six days: Day 1 the bus demo and a working reverb bus; Day 2 the delay bus, the two keys and collecting at least 5 sounds; Days 3 and 4 "
-     "importing the video, placing markers and composing in key 1, then key 2; Day 5 mix, reflection and submit; Day 6 presentations with the video. "
+     "Walk the six days: Day 1 the bus demo and a working reverb bus; Day 2 the delay bus and collecting at least 5 sounds; Days 3 and 4 importing the "
+     "video, placing markers and composing to the whole video; Day 5 mix, reflection and submit; Day 6 presentations with the video. "
      "Students who need more time on routing get it on Day 2."),
     ("check", "What you turn in", "Reverb bus (Bus 1) and delay bus (Bus 2), both 100% wet|3+ tracks to reverb, 1+ to delay|"
-     "Two minor keys, 32 measures, the whole video|5+ sources: 1+ recording, 1+ free download|MP3 + compressed .logicx, named Your Name – Spooky Tunes|"
+     "Music for the whole video (32 measures)|5+ sources: 1+ recording, 1+ free download|MP3 + compressed .logicx, named Your Name – Spooky Tunes|"
      "Reflection + three feedback questions",
      "These are the deliverables from the submission checklist. Show where students submit (your class page) and where the feedback questions go (any "
      "class feedback board). Export: File › Bounce › Project or Section, MP3. Compress: in Finder, Control-click the .logicx project › Compress. "
      "The reflection names two specific techniques and why."),
     ("rubric", "How it’s scored", "",
      "Five categories, each scored 2 to 5, for a total out of 25. Read the 5 column aloud so students know what great looks like: an atmosphere that "
-     "serves the video at every moment, a score that lands its key change on a moment, buses used with intention, near sounds dry and far sounds wet, "
+     "serves the video at every moment, a score where key moments are acknowledged and silence is a tool, buses used with intention, near sounds dry and far sounds wet, "
      "and a confident presentation that explains the sound choices."),
     ("closer", "One last thing…", "Space is a sound.|Silence is a tool.|Celebrate the strange ones.",
      "Close the launch with the unit’s big idea. This project gives students permission to be weird. The student who uses nothing but silence and a "
@@ -742,7 +744,7 @@ def keyboard_svg(key=None, width="100%", show_chord=True, show_scale=True, label
 
 
 def score_svg(blank=False, width="100%"):
-    """32-measure score map at 128 BPM: time ruler, key 1 / key 2 band, numbered moments and track lanes (worked example)."""
+    """32-measure score map at 128 BPM: time ruler, key band (example: A minor then D minor; blank: one optional bar), moments, track lanes."""
     lw, W = 128, 1000
     mw = (W - lw - 6) / MEASURES
     X = lambda m: lw + (m - 1) * mw
@@ -756,19 +758,23 @@ def score_svg(blank=False, width="100%"):
             b.append(f'<rect x="{X(m):.1f}" y="40" width="{mw:.1f}" height="{H - 40}" fill="#e8e8e8"/>')
     for m in range(1, MEASURES + 2, 4):
         x = X(m)
-        b.append(f'<line x1="{x:.1f}" y1="22" x2="{x:.1f}" y2="{H}" stroke="#000" stroke-width="{1.6 if m in (1, KEY_CHANGE, MEASURES + 1) else .7}"/>')
+        heavy = (1, MEASURES + 1) if blank else (1, KEY_CHANGE, MEASURES + 1)
+        b.append(f'<line x1="{x:.1f}" y1="22" x2="{x:.1f}" y2="{H}" stroke="#000" stroke-width="{1.6 if m in heavy else .7}"/>')
         if m <= MEASURES:
             b.append(t_(x + 3, 14, f"m. {m}", 13, 700, anchor="start"))
             b.append(t_(x + 3, 32, tfmt(m_start(m)), 12, 400, "Source Sans 3", anchor="start"))
     b.append(t_(X(MEASURES + 1) - 2, 32, tfmt(m_start(MEASURES + 1)), 12, 400, "Source Sans 3", anchor="end"))
     for m in range(1, MEASURES + 1):
         b.append(f'<line x1="{X(m):.1f}" y1="{y0 - 6}" x2="{X(m):.1f}" y2="{y0}" stroke="#000" stroke-width=".7"/>')
-    k1, k2 = ("KEY 1 · ______ MINOR", "KEY 2 · ______ MINOR") if blank else (f"KEY 1 · {KEY1.upper()}", f"KEY 2 · {KEY2.upper()}")
-    b.append(f'<rect x="{X(1) + 1:.1f}" y="42" width="{16 * mw - 2:.1f}" height="30" rx="5" fill="#000"/>')
-    b.append(f'<rect x="{X(KEY_CHANGE) + 1:.1f}" y="42" width="{16 * mw - 2:.1f}" height="30" rx="5" fill="{ACCENT}"/>')
-    b.append(t_(X(1) + 8 * mw, 63, k1 + "  ·  m. 1–16", 16, 700, fill="#fff"))
-    b.append(t_(X(KEY_CHANGE) + 8 * mw, 63, k2 + "  ·  m. 17–32", 16, 700, fill="#fff"))
-    b.append(t_(lw - 8, 63, "KEYS", 14, 700, anchor="end"))
+    if blank:   # no key is required: one open bar, written in only if the student uses a key
+        b.append(f'<rect x="{X(1) + 1:.1f}" y="42" width="{MEASURES * mw - 2:.1f}" height="30" rx="5" fill="#fff" stroke="#000" stroke-width="1.6"/>')
+        b.append(t_(X(1) + 8, 63, "OPTIONAL · ANY KEY, OR NONE:", 15, 700, anchor="start"))
+    else:       # the worked example happens to change key on the visual cut at measure 17
+        b.append(f'<rect x="{X(1) + 1:.1f}" y="42" width="{(KEY_CHANGE - 1) * mw - 2:.1f}" height="30" rx="5" fill="#000"/>')
+        b.append(f'<rect x="{X(KEY_CHANGE) + 1:.1f}" y="42" width="{(MEASURES - KEY_CHANGE + 1) * mw - 2:.1f}" height="30" rx="5" fill="{ACCENT}"/>')
+        b.append(t_((X(1) + X(KEY_CHANGE)) / 2, 63, f"{KEY1.upper()}  ·  m. 1–{KEY_CHANGE - 1}", 16, 700, fill="#fff"))
+        b.append(t_((X(KEY_CHANGE) + X(MEASURES + 1)) / 2, 63, f"{KEY2.upper()}  ·  m. {KEY_CHANGE}–{MEASURES}", 16, 700, fill="#fff"))
+    b.append(t_(lw - 8, 63, "KEY", 14, 700, anchor="end"))
     b.append(t_(lw - 8, 100, "MOMENTS", 14, 700, anchor="end"))
     if not blank:
         for i, (m, _) in enumerate(MOMENTS):
@@ -810,7 +816,7 @@ def cover_page():
     return (f'<section class="page cover"><div class="store">{BRAND}</div>'
             f'<div style="width:7.2in">{woods_svg()}</div>'
             f'<div class="ctitle"><div class="a">Scoring to Picture in Logic Pro</div><div class="b">Spooky Tunes</div>'
-            f'<div class="c">Digital Music Production 1 · Unit 6 · reverb &amp; delay buses · two minor keys · intro deck</div></div>'
+            f'<div class="c">Digital Music Production 1 · Unit 6 · reverb &amp; delay buses · sound design · intro deck</div></div>'
             f'<div class="cband">Grades 9–12 <em>·</em> 6 days <em>·</em> {len(PLAN)} pages + {DECK_SLIDES}-slide deck</div></section>')
 
 
@@ -835,7 +841,7 @@ def howto_page(n):
     inner = (f'<div class="cols"><div>'
              f'{H2("What this is", True)}'
              f'<p>A complete 6-day scoring-to-picture project for high school music technology. Students score a one-minute video of a walk through the '
-             f'woods at night in Logic Pro: 32 measures in two minor keys, with reverb and delay on shared buses, built from the Logic library, their own '
+             f'woods at night in Logic Pro: 32 measures in any key or none, with reverb and delay on shared buses, built from the Logic library, their own '
              f'microphone recordings and free sound effects. They present their score with the video.</p>'
              f'<p>This is Unit 6 of my Digital Music Production 1 course, the first open-ended project of the year. It works just as well on its own, '
              f'and it fits October as well as November.</p>'
@@ -848,7 +854,7 @@ def howto_page(n):
              f'<li>Print or post the student pages (pages {IX["post"]}–{IX["rubric"]}).</li></ol>'
              f'{H2("The intro deck")}'
              f'<p>You present it on Day 1 (slides 1–9: hook, what makes music spooky, dry and wet, what a bus is, the reverb and delay bus in Logic) and '
-             f'Day 2 (slides 10–16: two minor keys, a worked score, the project, steps, deliverables, rubric). Every slide has speaker notes.</p>'
+             f'Day 2 (slides 10–16: minor keys as an option, a worked score, the project, steps, deliverables, rubric). Every slide has speaker notes.</p>'
              f'<p class="small">Fonts: the deck uses Oswald and Source Sans 3 (free on Google Fonts, built into Google Slides). If PowerPoint or Keynote '
              f'shows a different font, install the two fonts or present the PDF copy, which shows the intended look.</p>'
              f'</div><div>'
@@ -856,7 +862,7 @@ def howto_page(n):
              f'{VIDEO_BOX}'
              f'{H2("Make it fit your class")}'
              f'<ul><li><b>Less time or less experience?</b> Pre-build the two buses in a template (page {IX["tn4"]}).</li>'
-             f'<li><b>Haven’t taught minor keys yet?</b> The Minor Key Map and reference card (pages {IX["keys"]}–{IX["keyref"]}) teach what students need.</li>'
+             f'<li><b>Minor keys are optional.</b> No key is required; for students who want one, the Minor Key Map and reference card (pages {IX["keys"]}–{IX["keyref"]}) teach it.</li>'
              f'<li><b>Feedback board:</b> I use Padlet; any discussion board, LMS forum or paper gallery walk works.</li></ul>'
              f'</div></div>')
     return page("How to use this resource", "START HERE", "Teacher", inner, n)
@@ -865,8 +871,8 @@ def howto_page(n):
 def overview_page(n):
     inner = (f'<div class="cols"><div>'
              f'{H2("What students make", True)}'
-             f'<p>32 measures of atmospheric music scored to a one-minute video of a walk through the woods at night, in two different minor keys, with '
-             f'reverb and delay routed through shared buses.</p>'
+             f'<p>32 measures of atmospheric music scored to a one-minute video of a walk through the woods at night, with reverb and delay routed through '
+             f'shared buses. No key, chord progression or song form is required: any key, or none.</p>'
              f'{H2("What students learn")}'
              f'<p>Minor keys feel different from major keys, and now they know why. Half steps create dissonance. Reverb creates space and distance. Pitch '
              f'bending creates unease. Delay creates echo and mystery. Music can tell a story without words. Less can be more: silence and space are creative choices.</p>'
@@ -886,7 +892,7 @@ def overview_page(n):
              f'<tr><td><b>Length</b></td><td>6 periods of about 53 minutes: 1 learning, 3 work, 2 finish and present</td></tr>'
              f'<tr><td><b>Type</b></td><td>Open-ended project, scoring to picture</td></tr>'
              f'<tr><td><b>Software</b></td><td>Logic Pro: sends, aux channels, Space Designer, Tape Delay, movie import, markers, automation</td></tr>'
-             f'<tr><td><b>Product</b></td><td>A 1-minute, 32-measure score in two minor keys, MP3 + compressed project, a written reflection</td></tr>'
+             f'<tr><td><b>Product</b></td><td>A 1-minute, 32-measure score (any key, or none), MP3 + compressed project, a written reflection</td></tr>'
              f'<tr><td><b>Assessment</b></td><td>5-category rubric, /25 (page {IX["rubric"]})</td></tr></table>'
              f'{H2("Standards")}'
              f'<p>Supports the National Core Arts Standards for Music (Music Technology, high school): generating and developing musical ideas (MU:Cr1, '
@@ -965,7 +971,7 @@ def pacing_page(n, watermark=False):
              f'<table class="t"><tr><th style="width:14%">Day</th><th style="width:38%">Focus and goal</th><th style="width:30%">Minute blocks</th><th>Show / use</th></tr>{rows}</table>'
              f'{H2("Student pages by day")}<table class="t">'
              f'<tr><td><b>Day 1</b></td><td>Day 1 post (p. {IX["post"]}), How to Bus (pp. {IX["bus1"]}–{IX["bus2"]})</td></tr>'
-             f'<tr><td><b>Day 2</b></td><td>How to Bus Part 2 (p. {IX["bus3"]}), Minor Key Map (p. {IX["keys"]}), reference card (p. {IX["keyref"]}), '
+             f'<tr><td><b>Day 2</b></td><td>How to Bus Part 2 (p. {IX["bus3"]}), Minor Key Map and reference card (optional, pp. {IX["keys"]}–{IX["keyref"]}), '
              f'cue sheet (p. {IX["cue"]}), project sheet (pp. {IX["proj1"]}–{IX["proj3"]})</td></tr>'
              f'<tr><td><b>Days 3–4</b></td><td>Project sheet steps 4–5, troubleshooting (p. {IX["bus4"]}), vocabulary (p. {IX["vocab"]})</td></tr>'
              f'<tr><td><b>Day 5</b></td><td>Tips and reflection (p. {IX["proj4"]}), submission checklist (p. {IX["checklist"]})</td></tr>'
@@ -987,7 +993,7 @@ def day34_page(n):
     extra = ('<div class="box"><span class="k">Circulating prompts</span><ul style="margin:0">'
              '<li>‘Play it for me with the video. Where is the music doing something because of what’s on screen?’</li>'
              '<li>‘Which sound is closest to us? Which is farthest away? How did you make that happen?’</li>'
-             '<li>‘Where does key 2 start, and what happens in the video right there?’</li></ul></div>')
+             '<li>‘What is the biggest moment in the video, and what does your music do right there?’</li></ul></div>')
     return page("Day-by-day plans · Days 3 and 4", "DAYS 3–4", "Work", day_box(DAYS[2]) + day_box(DAYS[3]) + extra, n)
 
 
@@ -1006,15 +1012,14 @@ def tn1_page(n):
              f'multiple attempts to get the bus routing right before they can focus on the creative work.</p>'
              f'<p>The combination of bussing, an open brief and video scoring makes this unit pedagogically rich. Students who have been cautious and '
              f'mechanical in previous units often surprise themselves here. The absence of rules removes the fear of being wrong.</p>'
-             f'{H2("The two minor keys")}'
-             f'<p>The one musical rule is two different minor keys: key 1 for measures 1–16 and key 2 for 17–32, with the change placed on a moment in the '
-             f'video. It gives students a harmonic home without taking away the freedom, and it turns a key change into a storytelling decision. Atonal '
-             f'sound-effect layers sit on top. If your students have not met minor keys yet, the Minor Key Map (page {IX["keys"]}) teaches the minor '
-             f'scale and its first chord, and the reference card (page {IX["keyref"]}) gives eight keys ready to use.</p>'
+             f'{H2("Keys are optional")}'
+             f'<p>No key is required. A student may work in any key, or in none: atonal and sound-effect scores are welcome. Minor keys are offered as a '
+             f'tool, not a rule: they sound darker, and some students like a harmonic home or a change of key at a big moment in the video. For them, the '
+             f'Minor Key Map (page {IX["keys"]}) teaches the minor scale and its first chord, and the reference card (page {IX["keyref"]}) gives eight keys '
+             f'ready to use.</p>'
              f'<div class="box"><span class="k">How this kit differs from my classroom version</span><ul style="margin:0">'
              f'<li>No video is included: you supply a one-minute clip (page {IX["setup"]}).</li>'
-             f'<li>The two-minor-keys rule, the 32-measure length and the written reflection come from my course restructure; the rubric’s Composition '
-             f'&amp; Pacing row now grades the key change.</li>'
+             f'<li>The 32-measure length and the written reflection come from my course restructure; the rubric is my original, with no key criteria.</li>'
              f'<li>Equipment and websites are named as examples; any interface, microphone and free sound-effects site works.</li></ul></div></div>')
     return page("Teacher notes · what this unit does", "TEACHER NOTES", "1 of 4", inner, n)
 
@@ -1042,13 +1047,13 @@ def tn4_page(n):
     inner = (f'<div class="tn">{H2("Suggested variations", True)}'
              f'<p><b>More accessible:</b> Pre-build the reverb and delay buses in a Logic template and distribute it. Students open the template and focus on '
              f'sound collection and composition rather than routing. The How to Bus pages become a reference for understanding what is already built rather '
-             f'than a setup guide. You can also allow one key for the whole piece.</p>'
+             f'than a setup guide.</p>'
              f'<p><b>More advanced:</b> Challenge students to automate the send level on at least one track so the reverb swells in or out at a specific '
-             f'moment in the video. Introduce the idea of a wet/dry blend that changes over time as a compositional tool. Or ask for a half-step key change '
-             f'(A minor to B-flat minor) at the scariest moment.</p>'
+             f'moment in the video. Introduce the idea of a wet/dry blend that changes over time as a compositional tool. Or, as an extra challenge, try a '
+             f'half-step key change (A minor to B-flat minor) at the scariest moment.</p>'
              f'{H2("Grading tips")}<ul>'
              f'<li>Each category is scored 2–5, for a total out of 25. Students self-score first; you score in the second column (page {IX["rubric"]}).</li>'
-             f'<li>Watch once with the video for Composition &amp; Pacing (does the key change land on a moment?), once eyes-closed for Sound Design and '
+             f'<li>Watch once with the video for Composition &amp; Pacing (are key moments acknowledged? is silence used on purpose?), once eyes-closed for Sound Design and '
              f'Reverb &amp; Delay (near and far), then open the Mixer to check both buses, 100% wet, and the sends.</li>'
              f'<li>The reflection is the quickest evidence of intention: two named techniques with a reason each.</li></ul>'
              f'{H2("Resources")}<ul>'
@@ -1094,16 +1099,15 @@ def proj1_page(n):
              f'{H2("Overview")}'
              f'<p style="font-size:12pt">This is your first open-ended project. There is no chord progression required. No song form required. No right answer. '
              f'Your brief is a one-minute video of a walk through the woods at night, and your job is to score it. The music should make the video feel the way '
-             f'it looks. Use any sounds you can find or record. Experiment. Make something unsettling. Your one musical rule: two different minor keys, one '
-             f'for each half.</p>'
+             f'it looks. Use any sounds you can find or record. Experiment. Make something unsettling.</p>'
              f'<p style="font-size:12pt">The new technical skill in this unit is bussing: routing reverb and delay through shared aux channels so multiple tracks '
              f'share the same effect. Your teacher will demo this on Day 1. The How to Bus pages walk you through the setup step by step.</p>'
              f'{H2("Goals")}<ul>' + "".join(f"<li style='font-size:11.5pt'>{g}</li>" for g in GOALS) + '</ul>'
              f'<div class="box inv" style="margin-top:8pt"><span class="k">The brief</span>'
              f'<div style="display:flex;justify-content:space-between;font-family:Oswald;font-weight:700;font-size:15pt;text-transform:uppercase;letter-spacing:.03em">'
-             f'<span>1 video</span><span>about 60 seconds</span><span>32 measures</span><span>128 BPM</span><span>2 minor keys</span></div></div>'
+             f'<span>1 video</span><span>about 60 seconds</span><span>32 measures</span><span>128 BPM</span><span>any key or none</span></div></div>'
              f'<div style="margin-top:8pt">{score_svg(blank=True)}</div>'
-             f'<p class="small" style="margin-top:3pt">Key 1 plays measures 1–16, key 2 plays 17–32. Vocabulary: page {IX["vocab"]}. Rubric: page {IX["rubric"]}.</p>')
+             f'<p class="small" style="margin-top:3pt">Your score map: 32 measures, about one minute. Vocabulary: page {IX["vocab"]}. Rubric: page {IX["rubric"]}.</p>')
     return page("Project sheet · overview and goals", "STUDENT", "Project · 1 of 4", inner, n)
 
 
@@ -1191,22 +1195,24 @@ def key_slot(label, n_slots):
 
 
 def keys_page(n):
-    def sec(k, ms):
-        return (f'<div class="box" style="margin-bottom:6pt;padding:5pt 10pt"><div class="fl" style="font-size:12pt;margin-bottom:5pt"><b>Key {k} (measures {ms}):</b><span></span>'
+    def sec(label):
+        return (f'<div class="box" style="margin-bottom:6pt;padding:5pt 10pt"><div class="fl" style="font-size:12pt;margin-bottom:5pt"><b>{label}:</b><span></span>'
                 f'<b>minor</b></div>'
                 f'<div style="display:flex;gap:6pt;margin-bottom:2pt"><div style="flex:0 0 1.25in"></div>'
                 + "".join(f'<div class="lab" style="width:44pt;margin-right:5pt">{x}</div>' for x in ("Root", "Third", "Fifth")) + '</div>'
                 + key_slot("First minor chord", 3) + key_slot("Minor scale", 7) +
                 f'<div style="width:60%;margin:2pt auto 0">{keyboard_svg(None)}</div>'
                 f'<p class="small" style="text-align:center;margin:2pt 0 0">Colour or circle the chord. Put a dot on every scale note.</p></div>')
-    inner = (f'<div class="box acc-b" style="margin-bottom:8pt"><span class="k">The recipe</span>'
+    inner = (f'<p style="font-size:10.5pt;margin:0 0 5pt"><b>This page is optional.</b> Your project does not need a key: any key, or none, is fine, and '
+             f'atonal or sound-effect scores are welcome. Want a darker sound? Try a minor key. Some composers also change key at a big moment in the video.</p>'
+             f'<div class="box acc-b" style="margin-bottom:8pt"><span class="k">The recipe</span>'
              f'<p style="margin:0 0 2pt"><b>Minor scale:</b> start on any key, then go up Whole, Half, Whole, Whole, Half, Whole, Whole (a half step is the very '
              f'next key, black or white; a whole step skips one). <b>First minor chord:</b> scale notes 1, 3 and 5 (root, third, fifth).</p>'
              f'<p style="margin:0"><b>Spooky tip:</b> the half steps in a minor scale sit between notes 2–3 and 5–6. Play them together and they rub.</p></div>'
-             f'{sec(1, "1–16")}{sec(2, "17–32")}'
-             f'<div class="box"><span class="k">Good pairs to try</span>'
+             f'{sec("My key")}{sec("A second key (only if I change key)")}'
+             f'<div class="box"><span class="k">If you change key: pairs to try</span>'
              + "".join(f'<p style="margin:0 0 2pt"><b>{a} › {b}:</b> {why}</p>' for a, b, why in PAIRS) + '</div>')
-    return page("Minor key map · choose your two keys", "STUDENT", f"Day 2 · reference p. {IX['keyref']}", inner, n, name=True)
+    return page("Minor key map · optional", "STUDENT", f"Optional · reference p. {IX['keyref']}", inner, n, name=True)
 
 
 def keyref_page(n):
@@ -1216,8 +1222,8 @@ def keyref_page(n):
         f'<div style="margin:3pt 0">{keyboard_svg(k)}</div>'
         f'<p style="margin:0;font-size:9.8pt"><b>Chord:</b> {" ".join(chord(k))} &nbsp; <b>Scale:</b> {" ".join(s)}</p></div>'
         for k, s in KEYS.items())
-    inner = (f'<p style="font-size:10.5pt">Orange keys: the first minor chord (root, third, fifth). Dots: the rest of the scale. Any two of these make a good '
-             f'pair; check the Minor Key Map for ideas. “b” means flat and “#” means sharp.</p>'
+    inner = (f'<p style="font-size:10.5pt">Optional: no key is required, and atonal or sound-effect scores are fine. Want a darker sound? Pick one of these. '
+             f'Orange keys: the first minor chord (root, third, fifth). Dots: the rest of the scale. “b” means flat and “#” means sharp.</p>'
              f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8pt 12pt">{cards}</div>')
     return page("Minor key reference card · eight keys", "STUDENT", "Reference", inner, n)
 
@@ -1233,9 +1239,9 @@ def cue_page(n):
                                                                               for s, _ in CUE_PRACTICE) + '</div></div>'
              f'<p style="font-size:10.5pt;margin-top:4pt">Watch the video twice. Pause at every moment that matters and fill in a row.</p>'
              f'<table class="t"><tr><th style="width:12%">Time</th><th style="width:11%">Measure</th><th>What I see</th><th>What I’ll do with sound</th>'
-             f'<th style="width:9%">Key</th></tr>{rows}</table>'
+             f'<th style="width:11%">Key? (optional)</th></tr>{rows}</table>'
              f'<span class="k" style="margin-top:6pt">My score map</span>{score_svg(blank=True)}'
-             f'<p class="small" style="margin-top:3pt">Write your two keys in the bars, name your tracks, and sketch where each sound plays.</p>')
+             f'<p class="small" style="margin-top:3pt">Name your tracks and sketch where each sound plays. Using a key? Write it in the bar (optional).</p>')
     return page("Cue sheet · map your moments", "STUDENT", "Days 2–3", inner, n, name=True)
 
 
@@ -1252,7 +1258,7 @@ def checklist_page(n):
     inner = (f'<p style="font-size:11.5pt">Tick each box before you submit and present. If a box isn’t ticked, you aren’t done yet.</p>'
              + "".join(f'<div class="chk" style="font-size:11.5pt;margin-bottom:7pt">{checkbox(14)}<span>{c}</span></div>' for c in CHECKLIST) +
              f'{H2("My three feedback questions")}'
-             f'<p class="small">Ask about something you really want to know. Example: “Does the key change at measure 17 feel like it belongs to the video?”</p>'
+             f'<p class="small">Ask about something you really want to know. Example: “Does the silence before the cut make the next sound feel bigger?”</p>'
              f'<div class="fl"><b>1.</b><span></span></div><div class="fl"><b>2.</b><span></span></div><div class="fl"><b>3.</b><span></span></div>'
              f'{H2("Notes")}<div class="lines"></div>')
     return page("Submission checklist", "STUDENT", "Before you present", inner, n, name=True)
@@ -1274,7 +1280,7 @@ def rubric_page(n, watermark=False):
 
 def key_page(n):
     def kk(k, ms):
-        return (f'<div class="box" style="padding:6pt 8pt"><span class="k">{k} · measures {ms}</span>'
+        return (f'<div class="box" style="padding:6pt 8pt"><span class="k">{k} · worked example, m. {ms}</span>'
                 f'<p style="margin:0 0 2pt;font-size:10pt"><b>Chord (root, third, fifth):</b> {" · ".join(chord(k))} &nbsp; <b>Scale:</b> {" ".join(KEYS[k])}</p>'
                 f'{keyboard_svg(k)}</div>')
     bq = "".join(f'<p style="margin:0 0 2pt;font-size:10pt"><b>{i + 1}.</b> {a}</p>' for i, (_, a) in enumerate(BUS_QUIZ))
@@ -1282,8 +1288,8 @@ def key_page(n):
     cq = " &nbsp;·&nbsp; ".join(f"{tfmt(s)} = measure {m}" for s, m in CUE_PRACTICE)
     bp = " &nbsp;·&nbsp; ".join(f"{s} s = {b} BPM" for s, b in BPM_PRACTICE)
     inner = (f'{H2("Minor key map · example answer", True)}'
-             f'<p style="font-size:10pt">Answers depend on the keys each student picks; check them against the reference card (page {IX["keyref"]}). '
-             f'This is the worked example’s pair.</p>'
+             f'<p style="font-size:10pt">Optional page: only for students who chose a key. Check answers against the reference card (page {IX["keyref"]}). '
+             f'These are the worked example’s keys.</p>'
              f'<div class="cols" style="gap:12pt">{kk(KEY1, "1–16")}{kk(KEY2, "17–32")}</div>'
              f'<div class="cols" style="gap:14pt;margin-top:8pt"><div>{H2("How to Bus · check yourself", True)}{bq}</div>'
              f'<div>{H2("Vocabulary · quick check", True)}{vq}</div></div>'
@@ -1307,7 +1313,7 @@ def example_page(n):
              f'{score_svg()}'
              f'<div class="cols" style="gap:14pt;margin-top:6pt"><div style="flex:0 0 3.35in">{H2("The moments", True)}{mom}</div>'
              f'<div><span class="k" style="margin-top:2pt">What a 5 sounds like</span><p style="font-size:9.8pt;margin:0">The music changes because the picture '
-             f'changes; the key change lands on a cut; near sounds are dry and far sounds are wet; one moment of real silence; and a student who can name '
+             f'changes; the biggest change lands on a cut; near sounds are dry and far sounds are wet; one moment of real silence; and a student who can name '
              f'two techniques and say why. Requirement check: 6 sources (3 library, 2 recordings, 1 download), 6 tracks to the reverb bus, 2 to the delay bus.</p></div></div>'
              f'<table class="t" style="font-size:9pt;margin-top:4pt"><tr><th>Track · source</th><th>Notes</th><th>Reverb send</th><th>Delay send</th><th>Why</th></tr>{rows}</table>'
              f'<p class="small">Send levels are starting points for a demo, not targets. Trust your ears.</p>')
@@ -1356,12 +1362,12 @@ def render_page(key, watermark=False):
 
 # ---------------------------------------------------------------- intro deck (.pptx, python-pptx) + PDF copy (LibreOffice)
 RUBRIC_SHORT = ["Sounds from 5+ sources create an unsettling atmosphere that serves the video at every moment.",
-                "The music follows the picture, silence is a tool, and the key change lands on a moment.",
+                "The music serves the picture: key moments are acknowledged and silence is a tool.",
                 "Both buses set up correctly and used with intention; send levels vary to create depth.",
                 "Near sounds dry, far sounds wet: a convincing sense of physical space.",
                 "On time, named correctly, and a confident presentation that explains the sound choices."]
-DECK_DAYS = [("Day 1", "Bus demo · your reverb bus working"), ("Day 2", "Delay bus · pick two minor keys · collect 5+ sounds"),
-             ("Day 3", "Import the video · markers · score key 1"), ("Day 4", "Key 2 from measure 17 · rough mix"),
+DECK_DAYS = [("Day 1", "Bus demo · your reverb bus working"), ("Day 2", "Delay bus · collect 5+ sounds · mark your moments"),
+             ("Day 3", "Import the video · markers · start scoring"), ("Day 4", "Score the whole video · rough mix"),
              ("Day 5", "Final mix · reflection · submit"), ("Day 6", "Present with the video")]
 WOODS_WIDE = dict(vw=1200, vh=380, seed=5, moon=(0.5, 0.42, 0.25),
                   trees=[(0.05, 0.92, 0.08), (0.16, 0.62, -0.05), (0.3, 0.44, 0.05), (0.7, 0.5, -0.06), (0.84, 0.8, 0.04), (0.96, 0.96, -0.03)])
@@ -1594,7 +1600,7 @@ def cover_square():
     return sq(f'<div style="width:960px">{woods_svg()}</div>'
               f'<div><div class="hd" style="font-size:56px">Scoring to Picture in Logic Pro</div>'
               f'<div class="hd" style="font-size:150px;margin-top:6px">Spooky Tunes</div>'
-              f'<div class="sub" style="font-size:30px;margin-top:12px">6-day unit · reverb &amp; delay buses · two minor keys · intro slides</div></div>',
+              f'<div class="sub" style="font-size:30px;margin-top:12px">6-day unit · reverb &amp; delay buses · sound design · intro slides</div></div>',
               f'Grades 9–12 <em>·</em> 6 days <em>·</em> {len(PLAN)} pages + {DECK_SLIDES} slides')
 
 
@@ -1672,12 +1678,12 @@ def art_doc(w, h, inner):
 def deck_art():
     """PNG art for the deck (original drawings, rendered with the brand fonts)."""
     kb = lambda k, ms, col: (f'<div style="width:700px"><div style="font-family:Oswald;font-weight:700;font-size:48px;text-transform:uppercase;'
-                             f'color:{col}">Key {ms[0]} · {k}</div><div style="font-family:Oswald;font-weight:300;font-size:28px;margin:2px 0 12px">'
-                             f'measures {ms[1]} · chord {" ".join(chord(k))}</div>{keyboard_svg(k, octaves=1)}'
+                             f'color:{col}">{k}</div><div style="font-family:Oswald;font-weight:300;font-size:28px;margin:2px 0 12px">'
+                             f'{ms} · chord {" ".join(chord(k))}</div>{keyboard_svg(k, octaves=1)}'
                              f'<div style="font-family:\'Source Sans 3\';font-size:26px;margin-top:10px">Scale: {" ".join(KEYS[k])}</div></div>')
-    keys_html = (f'<div style="display:flex;gap:150px;padding:10px 0 0 25px">{kb(KEY1, (1, "1–16"), "#000")}{kb(KEY2, (2, "17–32"), ACCENT)}</div>'
-                 f'<div style="font-family:\'Source Sans 3\';font-weight:600;font-size:28px;margin-top:22px">Orange = the first chord (root, third, fifth). '
-                 f'Dots = the rest of the scale. Half steps rub: B–C and E–F.</div>')
+    keys_html = (f'<div style="display:flex;gap:150px;padding:10px 0 0 25px">{kb(KEY1, "white keys only", "#000")}{kb(KEY2, "one flat", ACCENT)}</div>'
+                 f'<div style="font-family:\'Source Sans 3\';font-weight:600;font-size:28px;margin-top:22px">Optional: any key, or none. Orange = the first '
+                 f'chord. Dots = the rest of the scale. Half steps rub: B–C and E–F.</div>')
     W = WOODS_WIDE
     arts = {"woods": (1500, round(1500 * W["vh"] / W["vw"]), woods_svg(**W)),
             "bus": (1800, 800, bus_svg()),
@@ -1804,7 +1810,7 @@ def verify_data():
         errs.append("example: counts changed; update the 'requirement check' line (3 library, 2 recordings, 1 download, 6 reverb, 2 delay)")
     for t in TRACKS:
         if t[0] == "Low drone" and not (KEY1[0] in t[3] and KEY2[0] in t[3] and t[7][1][0] == KEY_CHANGE):
-            errs.append("example: drone must move from key 1's root to key 2's root at measure 17")
+            errs.append("example: the drone must move from A to D on the visual cut at measure 17 (the example's optional key change)")
         if t[0] == "Low hum" and (pc("F") - pc("E")) % 12 != 1:
             errs.append("example: low hum half step")
         for v in (t[4], t[5]):
@@ -1814,7 +1820,7 @@ def verify_data():
     for nm, v in (("Low drone", -12), ("Footsteps", -30), ("Wind", -6)):
         if sends[nm] != v:
             errs.append(f"bus diagram shows {nm} at {v} dB but the example says {sends[nm]}")
-    counts = dict(vocab=(VOCAB, 14), goals=(GOALS, 7), req=(REQUIREMENTS, 13), check=(CHECKLIST, 13), steps=(STEPS, 6), tips=(TIPS, 6),
+    counts = dict(vocab=(VOCAB, 14), goals=(GOALS, 6), req=(REQUIREMENTS, 12), check=(CHECKLIST, 12), steps=(STEPS, 6), tips=(TIPS, 6),
                   demo=(DEMO, 8), part1=(BUS_PART1, 7), part2=(BUS_PART2, 6), trouble=(TROUBLE, 5), atmos=(ATMOS, 5), sources=(SOURCES, 3),
                   picture=(PICTURE, 5), struggles=(STRUGGLES, 6))
     for nm, (lst, nexp) in counts.items():
@@ -1832,6 +1838,15 @@ def verify_data():
         errs.append("deck needs 12+ slides, each with real speaker notes")
     if len(PLAN) != len(set(PLAN)):
         errs.append("plan has a repeated page")
+    # owner decision (12 Oct): no key is required. Requirements, checklist, goals and rubric must not ask for one.
+    for nm, lst in (("requirements", REQUIREMENTS), ("checklist", CHECKLIST), ("goals", GOALS), ("deck checklist", [SLIDES[13][2]]),
+                    ("rubric", [d for _, ds in RUBRIC for d in ds] + RUBRIC_SHORT)):
+        for item in lst:
+            if re.search(r"\bminor\b|\bkeys\b|key change|\bkey [12]\b|measures? 17", item, re.I):
+                errs.append(f"{nm}: asks for a key ('{item[:60]}'); no key is required (owner, 12 Oct)")
+    if RUBRIC[1][1][3] != ("Music serves the picture precisely. Key moments are acknowledged. Silence is used as a compositional tool. "
+                           "The piece feels like it was written for this specific video."):
+        errs.append("rubric: Composition & Pacing level 5 must keep the owner's wording")
     return errs
 
 
@@ -1952,6 +1967,15 @@ def verify_files():
     for dd in DAYS:
         if f"DAY {dd['n']}" not in flat[IX["pacing"] - 1]:
             errs.append(f"pacing page missing Day {dd['n']}")
+    # no output may still say two keys are required (owner, 12 Oct). Phrases split so this file never trips its own scan.
+    no_key_rule = [r"two (different )?minor " + "keys?", r"\b2 minor " + "keys", r"\bkey " + r"[12]\b", r"two " + "keys", r"one " + "musical rule",
+                   r"choose your two", r"pick two minor", r"second minor " + "key"]
+    for label, txt in (("resource PDF", " ".join(flat)), ("preview PDF", pdf_text(PREVIEW_PDF)), ("deck PDF", pdf_text(DECK_PDF)),
+                       ("deck pptx", alldeck), ("UPLOAD.md", open(UPLOAD).read()), ("tpt.json", open(TPT_JSON).read())):
+        flat_txt = re.sub(r"\s+", " ", txt)
+        for pat in no_key_rule:
+            for mm in re.finditer(pat, flat_txt, re.I):
+                errs.append(f"{label}: still states a key rule: '...{flat_txt[max(0, mm.start() - 30):mm.end() + 30]}...'")
     ptxt = [pg.extract_text() for pg in PdfReader(PREVIEW_PDF).pages]
     if sum("PREVIEW" in t for t in ptxt) != len(PREVIEW_PICKS):
         errs.append("preview PDF: watermark missing on some pages")
@@ -1964,6 +1988,8 @@ def verify_files():
         meta = PdfReader(path).metadata or {}
         blobs[f"{os.path.basename(path)} metadata"] = " ".join(str(v) for v in meta.values())
     for fn in os.listdir(HERE):
+        if fn == "QA.md":   # QA's own review record (not shipped) names the strings it searched for
+            continue
         if fn.endswith((".md", ".json", ".py", ".txt")) or fn in ("release", "uploaded"):
             blobs[fn] = open(os.path.join(HERE, fn), encoding="utf8", errors="ignore").read()
     for label, txt in blobs.items():
@@ -2025,7 +2051,7 @@ def check():
         sys.exit(1)
     print(f"CHECK OK: 8 minor keys spelled and checked (scale W-H-W-W-H-W-W, chord 0-3-7, accidental counts); 32 measures x 1.875 s = 60 s at 128 BPM, "
           f"cue/BPM practice answers; worked score covers every measure but the 1 deliberate silent one, sends and source counts match the text and the bus "
-          f"diagram; rubric 5 x (2-5) = /25 printed; 6-day blocks run 0-53; {len(PLAN)} Letter pages with footers and valid cross-references, cover "
+          f"diagram; no key required anywhere (requirements, checklist, rubric, PDF, deck, UPLOAD.md); rubric 5 x (2-5) = /25 printed; 6-day blocks run 0-53; {len(PLAN)} Letter pages with footers and valid cross-references, cover "
           f"title on one line; preview 4 watermarked pages; deck {DECK_SLIDES} slides 16:9 with speaker notes on every slide, only 4 drawn PNGs, PDF copy "
           f"{DECK_SLIDES} pages; only Oswald/Source Sans 3, all embedded; no banned strings (school name, LMS, the classroom video's title) in any output "
           f"or file here; zip holds current PDF + pptx + deck PDF; images 2000x2000; tpt.json and UPLOAD.md ok.")

@@ -40,7 +40,7 @@ TpT's form (tpt/FORM-FIELDS.json) has: Grade (up to 4), Subject Area (up to 3), 
 **009 Spooky Tunes (unreleased)** (title is 76 chars)
 - Title: `Film Scoring in Logic Pro | Halloween Music Production Project | High School`
 - Subjects: Music; Career and Technical Education; Computer Science - Technology. Grades 9-12. Tags: Halloween, High School, Project Based Learning, Technology (Autumn dropped when TpT offers the others).
-- Lines 1-2: "Film scoring for high school music production: students score a one-minute video of a night walk in Logic Pro, with two minor keys and shared reverb and delay buses. This 6-day scoring-to-picture project is a Halloween favorite, and it works any time you teach music for media; the steps are written for Logic Pro while the ideas carry over to GarageBand, Ableton Live and BandLab."
+- Lines 1-2: "Film scoring for high school music production: students score a one-minute video of a night walk in Logic Pro, with shared reverb and delay buses and no key or song form required. This 6-day scoring-to-picture project is a Halloween favorite, and it works any time you teach music for media; the steps are written for Logic Pro while the ideas carry over to GarageBand, Ableton Live and BandLab."
 
 ## Edits to make on TpT by hand (008, live)
 `tools/tpt.js` only has login, discover, publish (create) and publish-pending; it **cannot edit an existing listing**, and `publish` refuses an item with an `uploaded` file. So edit 008 by hand: My Products > Beat From Nothing > Edit.
