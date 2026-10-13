@@ -1,4 +1,4 @@
-"""Christmas Woodland Coloring Pages: build everything and run the format checks (formats/coloring.md).
+"""Mushroom & Woodland Coloring Pages: build everything and run the format checks (formats/coloring.md).
 
   python3 gen.py           # line art -> PDFs -> coloured examples -> listing images -> contact sheet -> ZIP -> checks
   python3 gen.py --skip-art  # same, but keep the existing art/svg + art/mask (process.py takes ~5 min)
@@ -13,13 +13,13 @@ Node Playwright (NODE_PATH=$(npm root -g)). No AI calls: the drafts are already 
 import json, os, re, shutil, subprocess, sys, tempfile, zipfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ZIP = "christmas-woodland-coloring-pages-printable.zip"
+ZIP = "mushroom-woodland-coloring-pages-printable.zip"
 PDFS = {  # file: (width pt, height pt, pages)
-    "christmas-woodland-coloring-pages-US-Letter.pdf": (612, 792, 20),
-    "christmas-woodland-coloring-pages-A4.pdf": (595.28, 841.89, 20),
+    "mushroom-woodland-coloring-pages-US-Letter.pdf": (612, 792, 20),
+    "mushroom-woodland-coloring-pages-A4.pdf": (595.28, 841.89, 20),
 }
 DISCLOSURE = "Designed with the help of digital and AI tools, and checked by hand."
-LEAD = "Christmas Coloring Pages"
+LEAD = "Mushroom Coloring Pages"
 TAXONOMY = 339  # Books, Movies & Music > Books > Coloring Books
 PRICE = 3.99
 MIN_REGION_MM2 = 10.0     # a colourable space on the printed page (process.py fills anything under 12 mm2)
@@ -55,7 +55,7 @@ def contact_sheet(pdf):
         fb = ImageFont.truetype(os.path.join(HERE, "fonts", "Fraunces-900.ttf"), 40)
     except OSError:
         f = fb = ImageFont.load_default()
-    d.text((20, 18), "Christmas Woodland Coloring Pages: 20 pages (US Letter, 60 dpi)", font=fb, fill="#2c1b36")
+    d.text((20, 18), "Mushroom & Woodland Coloring Pages: 20 pages (US Letter, 60 dpi)", font=fb, fill="#2c1b36")
     for i, (fn, (slug, st)) in enumerate(zip(files, stats.items())):
         x, y = 20 + (i % cols) * (w + 20), 90 + (i // cols) * (h + cap + 20)
         sheet.paste(Image.open(os.path.join(tmp, fn)), (x, y))
@@ -72,7 +72,7 @@ def build(skip_art):
     run("node", "build.js")
     run(sys.executable, "colorize.py")
     run("node", "thumbs.js")
-    contact_sheet(os.path.join(HERE, "bundle", "christmas-woodland-coloring-pages-US-Letter.pdf"))
+    contact_sheet(os.path.join(HERE, "bundle", "mushroom-woodland-coloring-pages-US-Letter.pdf"))
     with zipfile.ZipFile(os.path.join(HERE, ZIP), "w", zipfile.ZIP_DEFLATED) as z:
         for f in PDFS:
             z.write(os.path.join(HERE, "bundle", f), f)

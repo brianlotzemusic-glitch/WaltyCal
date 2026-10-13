@@ -6,7 +6,7 @@ const { execFileSync } = require('child_process');
 const S = JSON.parse(fs.readFileSync('subjects.json', 'utf8')).pages;
 const PLUM = '#2c1b36', PINE = '#2f4a3a', BERRY = '#8b2f3c', GOLD = '#e8c97a', CREAM = '#f1e6cf';
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'cwc-'));
-const PL = 'bundle/christmas-woodland-coloring-pages-US-Letter.pdf', PA = 'bundle/christmas-woodland-coloring-pages-A4.pdf';
+const PL = 'bundle/mushroom-woodland-coloring-pages-US-Letter.pdf', PA = 'bundle/mushroom-woodland-coloring-pages-A4.pdf';
 execFileSync('pdftoppm', ['-r', '110', '-png', PL, path.join(tmp, 'L')]);
 execFileSync('pdftoppm', ['-r', '90', '-png', '-f', '6', '-l', '6', PA, path.join(tmp, 'A')]);
 const B64 = (f, t = 'png') => `data:image/${t};base64,${fs.readFileSync(f).toString('base64')}`;
@@ -31,9 +31,11 @@ const mugTop = (x, y, d) => `<div class=prop style="left:${x}px;top:${y}px;width
   <circle cx="50" cy="50" r="47" fill="${CREAM}" stroke="${PLUM}" stroke-width="3"/><circle cx="50" cy="50" r="38" fill="#5a3a2a"/>
   <circle cx="40" cy="44" r="7" fill="#fbf4ea"/><circle cx="58" cy="52" r="6" fill="#fbf4ea"/><circle cx="48" cy="61" r="5.5" fill="#fbf4ea"/>
   <circle cx="50" cy="50" r="38" fill="none" stroke="${BERRY}" stroke-width="4"/></svg></div>`;
+// a small toadstool prop (drawn in code, not one of the pages)
 const sprig = (x, y, s, rot) => `<div class=prop style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;transform:rotate(${rot}deg);z-index:2">
-  <svg viewBox="0 0 100 100" style="width:100%;height:100%">${[0, 1, 2, 3, 4, 5, 6].map(i => `<path d="M50 ${92 - i * 12} l-${26 - i * 2} -10 M50 ${92 - i * 12} l${26 - i * 2} -10" stroke="#3f6a4e" stroke-width="4" stroke-linecap="round"/>`).join('')}
-  <path d="M50 96 L50 10" stroke="#5a4030" stroke-width="4"/><circle cx="34" cy="20" r="6" fill="${BERRY}"/><circle cx="44" cy="14" r="6" fill="${BERRY}"/></svg></div>`;
+  <svg viewBox="0 0 100 100" style="width:100%;height:100%"><path d="M40 52 Q38 80 34 94 L66 94 Q62 80 60 52 Z" fill="${CREAM}" stroke="${PLUM}" stroke-width="3"/>
+  <path d="M8 56 Q12 14 50 10 Q88 14 92 56 Q50 64 8 56 Z" fill="#c4473d" stroke="${PLUM}" stroke-width="3"/>
+  <circle cx="32" cy="34" r="7" fill="${CREAM}"/><circle cx="58" cy="24" r="6" fill="${CREAM}"/><circle cx="72" cy="44" r="6" fill="${CREAM}"/><circle cx="46" cy="48" r="4.5" fill="${CREAM}"/></svg></div>`;
 const PEN = ['#d9773a', '#4f7a5c', '#a8384a', '#e8c97a', '#5b4470', '#8a5a3c', '#7fa3c4'];
 const base = `@font-face{font-family:Fr;font-weight:900;src:url(${font('Fraunces-900.ttf')})}
 @font-face{font-family:Fr;font-weight:700;src:url(${font('Fraunces-700.ttf')})}
@@ -52,17 +54,17 @@ body{margin:0;width:1500px;height:1125px;overflow:hidden;position:relative;font-
 const pages = {
   '1-thumbnail': `<style>${base}
    .band{position:absolute;left:0;right:0;top:0;height:250px;background:linear-gradient(${PLUM},#3a2447);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.45);z-index:8}
-   .band h1{margin:0;font-family:Fr;font-weight:900;font-size:112px;line-height:1;color:${CREAM};white-space:nowrap}.band h1 em{font-style:normal;color:${GOLD}}
+   .band h1{margin:0;font-family:Fr;font-weight:900;font-size:100px;line-height:1;color:${CREAM};white-space:nowrap}.band h1 em{font-style:normal;color:${GOLD}}
    .band p{margin:14px 0 0;font-size:33px;letter-spacing:5px;color:${GOLD};font-weight:800}
    .badge{position:absolute;z-index:9;right:44px;bottom:40px;width:250px;height:250px;border-radius:50%;background:${BERRY};color:${CREAM};display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.45);border:7px solid ${GOLD};transform:rotate(-8deg)}
    .badge b{font-family:Fr;font-weight:900;font-size:120px;line-height:.85}.badge span{font-size:31px;font-weight:800;letter-spacing:3px}</style>
    <div class=wood></div><div class=vig></div>
-   ${pdfPage(6, 1010, 300, 450, 7, 1)}${pdfPage(18, 70, 330, 430, -8, 1)}
-   ${colPage(col('02-owl-on-snowy-pine'), 840, 270, 520, 3, 2)}
-   ${colPage(col('01-fox-in-scarf-partial'), 330, 262, 620, -2.5, 3)}
+   ${pdfPage(13, 1010, 300, 450, 7, 1)}${pdfPage(15, 70, 330, 430, -8, 1)}
+   ${colPage(col('04-fox-in-the-ferns'), 840, 270, 520, 3, 2)}
+   ${colPage(col('02-frog-on-a-toadstool-partial'), 330, 262, 620, -2.5, 3)}
    ${pencil(560, 1030, 380, -12, PEN[0], 5)}${pencil(250, 1075, 360, 6, PEN[1], 5)}${pencil(-40, 760, 340, 64, PEN[2], 5)}
-   ${mugTop(-40, 290, 170)}${sprig(1300, 740, 210, 30)}
-   <div class=band><h1>Christmas <em>Coloring Pages</em></h1><p>20 BOLD &amp; EASY COZY WOODLAND PAGES</p></div>
+   ${mugTop(-40, 290, 170)}${sprig(1290, 760, 200, -8)}
+   <div class=band><h1>Mushroom <em>Coloring Pages</em></h1><p>20 BOLD &amp; EASY COZY WOODLAND PAGES</p></div>
    <div class=badge><b>20</b><span>PAGES</span></div>`,
 
   '2-page-grid': `<style>${base} body{background:${CREAM}}
@@ -85,15 +87,15 @@ const pages = {
    .card h2{margin:0 0 18px;font-family:Fr;font-weight:900;font-size:58px;line-height:1.02}.card h2 em{font-style:normal;color:${GOLD}}
    .card li{font-size:27px;line-height:1.3;margin:0 0 14px;font-weight:700}.card ul{margin:0;padding-left:28px}
    .zoom{position:absolute;right:120px;bottom:60px;width:330px;height:330px;border-radius:50%;border:8px solid ${GOLD};overflow:hidden;z-index:9;box-shadow:0 12px 28px rgba(0,0,0,.5);background:#fff}
-   .zoom img{position:absolute;width:1300px;left:-430px;top:-560px}
+   .zoom img{position:absolute;width:1300px;left:-571px;top:-920px}
    .zl{position:absolute;right:140px;bottom:20px;z-index:9;font-size:22px;font-weight:800;color:${GOLD};width:290px;text-align:center}</style>
    <div class=wood></div><div class=vig></div>
-   ${colPage(col('02-owl-on-snowy-pine'), 60, 60, 560, -4, 2)}
-   ${colPage(col('01-fox-in-scarf'), 450, 390, 440, 5, 3)}
+   ${colPage(col('04-fox-in-the-ferns'), 60, 60, 560, -4, 2)}
+   ${colPage(col('02-frog-on-a-toadstool'), 450, 390, 440, 5, 3)}
    ${pencil(200, 1010, 400, -8, PEN[4])}${pencil(640, 1050, 360, 4, PEN[3])}${pencil(-60, 640, 330, 70, PEN[1])}${pencil(700, 140, 300, 20, PEN[0])}
    <div class=card><h2>Bold lines,<br><em>big spaces</em></h2><ul>
    <li>Thick outlines, about 2 mm</li><li>Every space closed and big enough for crayons, pencils and markers</li><li>Easy for kids, relaxing for adults</li></ul></div>
-   <div class=zoom><img src="${pg(6)}"></div><div class=zl>close-up of page 6</div>`,
+   <div class=zoom><img src="${pg(13)}"></div><div class=zl>close-up of page 13</div>`,
 
   '4-formats': `<style>${base} body{background:${PLUM};color:${CREAM}}
    h1{position:absolute;left:800px;top:110px;margin:0;font-family:Fr;font-weight:900;font-size:66px;line-height:1.05;color:${CREAM}}
@@ -102,7 +104,7 @@ const pages = {
    li{font-size:30px;margin:0 0 22px;line-height:1.25;padding-left:44px;position:relative}
    li::before{content:'';position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:50%;background:${GOLD}}
    li b{color:${GOLD}}</style>
-   <div style="position:absolute;left:60px;top:150px;width:330px;height:427px">${pdfPage(13, 0, 0, 330, -4)}</div>
+   <div style="position:absolute;left:60px;top:150px;width:330px;height:427px">${pdfPage(3, 0, 0, 330, -4)}</div>
    <div class=paper style="left:340px;top:200px;width:330px;height:466.7px;background-image:url(${B64(path.join(tmp, 'A-06.png'))});transform:rotate(4deg)"></div>
    <div class=tagp style="left:60px;top:110px;transform:rotate(-4deg)">US LETTER</div>
    <div class=tagp style="left:590px;top:170px;transform:rotate(4deg)">A4</div>

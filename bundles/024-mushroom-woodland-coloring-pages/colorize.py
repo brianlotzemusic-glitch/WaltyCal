@@ -17,26 +17,24 @@ from scipy import ndimage as nd
 HERE = os.path.dirname(os.path.abspath(__file__))
 UP = 3
 PX_MM = 896 * UP / 182.0
-SKY, NIGHT, MOON, PINE, PINE2, BARK, FOX, CREAM, BERRY, SNOW, PLUM, GOLD = (
-    "#c9b8d8", "#5b4470", "#e8c97a", "#4f7a5c", "#3f6a4e", "#8a5a3c", "#d9773a", "#f4e7cf", "#a8384a", "#dde8f0", "#7a5a8c", "#e8c97a")
+BG, MOSS, FERN, FERN2, RED, CREAM, TAN, GOLD, FOX, BARK, LEAF = (
+    "#efe6cf", "#9cb07a", "#4f7a5c", "#6f9a63", "#c4473d", "#f6ecd6", "#d9b98c", "#e8b54a", "#d9773a", "#8a5a3c", "#7a9a4c")
 
 SPECS = {
-    "01-fox-in-scarf": [
-        (450, 60, SKY), (40, 300, SKY), (860, 300, SKY), (560, 470, SKY), (270, 600, SKY),
-        (180, 330, PINE, "p"), (170, 440, PINE, "p"), (150, 530, PINE2, "p"), (150, 640, PINE, "p"), (180, 760, BARK, "p"),
-        (690, 350, PINE), (690, 470, PINE), (700, 600, PINE2), (780, 650, PINE), (690, 760, BARK),
-        (450, 610, FOX, "p"), (385, 530, CREAM, "p"), (500, 530, CREAM, "p"), (590, 820, FOX, "p"),
-        ("box", 330, 860, 560, 960, FOX, "p"),
-        ("box", 330, 690, 545, 790, BERRY, "p"),
-        ("box", 0, 820, 896, 1140, SNOW),
+    "02-frog-on-a-toadstool": [
+        (450, 200, MOSS, "p"), (290, 190, MOSS, "p"), (610, 190, MOSS, "p"), (380, 80, "#b9cf8f", "p"), (515, 80, "#b9cf8f", "p"),
+        (330, 450, RED, "p"), (190, 460, CREAM, "p"), (460, 490, CREAM, "p"), (735, 465, CREAM, "p"), (330, 350, CREAM, "p"),
+        (580, 350, CREAM, "p"), (200, 620, TAN, "p"), (700, 620, TAN, "p"), (470, 850, CREAM, "p"),
+        (290, 720, GOLD), (310, 820, "#f0cf86"), (120, 780, FERN2), (200, 850, FERN2), (280, 1040, LEAF), (790, 950, LEAF),
+        (790, 690, TAN), (650, 760, GOLD), (620, 880, "#f0cf86"), (680, 880, "#f0cf86"),
+        (60, 300, BG), (850, 300, BG), (40, 640, BG), (60, 900, BG), (860, 700, BG), (850, 1120, BG), (450, 1130, BG),
     ],
-    "02-owl-on-snowy-pine": [
-        (40, 60, NIGHT, "p"), (300, 250, MOON, "p"),
-        (155, 135, GOLD, "p"), (655, 150, GOLD, "p"), (780, 320, GOLD, "p"), (130, 350, GOLD, "p"),
-        ("box", 430, 280, 720, 740, "#a77c5a"), (620, 330, "#c9a27c"), (470, 600, "#c9a27c"), (548, 420, GOLD), (660, 900, "#a77c5a"),
-        ("box", 60, 500, 360, 640, BERRY), ("box", 60, 940, 240, 1060, BERRY),
-        ("box", 230, 740, 360, 900, BARK), ("box", 310, 930, 450, 1100, BARK),
-        ("box", 180, 600, 860, 1000, "#6b4a35"),
+    "04-fox-in-the-ferns": [
+        (560, 650, FOX, "p"), (300, 650, FOX, "p"), (520, 880, FOX, "p"), (390, 880, CREAM, "p"), (200, 620, CREAM, "p"),
+        (400, 560, CREAM, "p"), (60, 560, RED), (840, 560, RED), (740, 700, CREAM), (130, 700, CREAM),
+        ("box", 20, 470, 250, 690, CREAM), ("box", 640, 440, 880, 640, CREAM),
+        ("box", 0, 40, 896, 520, FERN, "p"), ("box", 0, 760, 896, 1150, FERN2),
+        (870, 60, BG), (20, 760, BG), (880, 1100, BG), (600, 1120, BG),
     ],
 }
 

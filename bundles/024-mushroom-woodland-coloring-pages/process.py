@@ -40,43 +40,60 @@ BLOB_OPEN_MM2 = 2500.0                # ...and only when they float in open back
 # RAW_WIPE: ("line", [(x, y), ...], radius), ("box", x0, y0, x1, y1) or ("poly", [(x, y), ...]): painted white on the draft
 # RAW_LINES: ([(x, y), ...], width): drawn black on the draft (redraws a line a wipe cut)
 RAW_WIPE = {
-    "04-mushrooms-in-snow": [("poly", [(745, 774), (797, 774), (799, 805), (791, 830), (778, 850), (768, 870), (758, 890),
-                                       (750, 912), (708, 912), (711, 900), (710, 880), (714, 860), (742, 858),
-                                       (749, 848), (754, 838), (755, 825), (754, 812), (752, 800), (749, 790)])],
-                            # crowded fern leaves between the right mushroom and its stem that filled into one black clump
-    "18-reindeer-with-wreath": [("line", [(225, 293), (236, 346)], 5),      # loose second stroke beside the left antler
-                                ("line", [(240, 400), (259, 385)], 5)],     # short tick that closed a black wedge with the tree
-    "19-hare-under-the-moon": [("box", 60, 862, 216, 962), ("box", 608, 866, 802, 968),     # 4 grass tufts that thickened
-                               ("box", 30, 1025, 255, 1150), ("box", 650, 1028, 850, 1150)],  # into solid splats
+    "01-mushroom-cottage": [("box", 640, 590, 712, 722), ("box", 792, 730, 864, 812),  # 2 fern sprigs that filled solid black
+                            ("box", 690, 712, 800, 790), ("box", 655, 700, 830, 745)],  # ...and the grass tuft around their stems
+    "10-toadstool-trio": [("poly", [(78, 700), (150, 700), (204, 780), (204, 885), (78, 895)]),         # 3 curly ferns whose loops
+                          ("poly", [(478, 680), (560, 680), (614, 820), (612, 905), (478, 905)]),       # filled into black fern
+                          ("poly", [(718, 735), (870, 735), (870, 900), (718, 900)]),                   # silhouettes
+                          ("box", 0, 880, 896, 1152),           # the spiky grass, which still held fern scraps: replaced
+                                                                # by a ground line and outlined grass blades (RAW_LINES)
+                          ("box", 188, 760, 240, 880), ("box", 452, 850, 480, 880), ("box", 340, 850, 370, 878)],  # fern scraps
+    "14-fawn-in-the-glade": [("poly", [(716, 532), (800, 532), (838, 560), (856, 640), (866, 705), (716, 705)])],  # fern by the
+                                                                        # fawn's tail that filled into a black splat
+    "19-mushroom-jar": [("line", [(590, 182), (620, 150), (660, 136), (700, 140), (735, 160), (755, 195), (752, 230),
+                                  (733, 255)], 18),                     # a wire hook on the lid that read as a straw
+                        ("line", [(558, 240), (570, 210), (590, 182)], 9), ("box", 600, 110, 780, 175), ("box", 700, 160, 790, 270),
+                        ("box", 545, 150, 628, 244)]                # ...and its legs where they crossed the lid,
 }
 RAW_LINES = {
-    "04-mushrooms-in-snow": [([(812, 772), (803, 810), (799, 830), (788, 842), (777, 860), (771, 878), (762, 890),
-                               (757, 900), (749, 920), (739, 950), (736, 962)], 8)],   # the fern's double stem as one line
-    "18-reindeer-with-wreath": [([(229, 383), (238, 397), (247, 411)], 6),  # tree edge and antler beam the tick wipe cut
-                                ([(244, 367), (258, 385), (272, 402)], 7)],
-    "19-hare-under-the-moon": [([(55, 941), (80, 936), (120, 928), (160, 914), (192, 897), (212, 882), (228, 869),
-                                 (238, 864)], 5),                                        # hill line behind tufts 1
-                               ([(728, 860), (750, 866), (770, 873), (790, 882), (808, 892)], 5)],  # ...and tuft 2
+    "10-toadstool-trio": [([(210, 662), (219, 700), (222, 800), (212, 860), (206, 880)], 6),   # mushroom stem the wipe nicked
+                          ([(207, 868), (201, 1000)], 7),   # stems carried down to the new ground
+                          ([(289, 868), (293, 1000)], 7),
+                          ([(445, 868), (441, 1000)], 7),
+                          ([(622, 868), (617, 1000)], 7),
+                          ([(713, 868), (719, 1000)], 7),
+                          ([(18, 1008), (150, 996), (300, 1002), (450, 994), (600, 1002), (750, 996), (878, 1006)], 7),  # ground
+                          # outlined grass blades on the ground, in the gaps between the stems
+                          ([(110, 1000), (110, 981), (105, 958), (94, 939), (76, 924), (62, 914), (52, 907), (54, 919), (56, 936), (62, 958), (74, 977), (93, 991), (110, 1000)], 6),
+                          ([(110, 1000), (121, 978), (130, 948), (130, 918), (123, 888), (115, 865), (110, 850), (105, 865), (97, 888), (90, 918), (90, 948), (99, 978), (110, 1000)], 6),
+                          ([(110, 1000), (127, 991), (146, 977), (158, 958), (164, 936), (166, 919), (168, 907), (158, 914), (144, 924), (126, 939), (115, 958), (110, 981), (110, 1000)], 6),
+                          ([(367, 1000), (367, 981), (362, 958), (351, 939), (333, 924), (319, 914), (309, 907), (311, 919), (313, 936), (319, 958), (331, 977), (350, 991), (367, 1000)], 6),
+                          ([(367, 1000), (378, 978), (387, 948), (387, 918), (380, 888), (372, 865), (367, 850), (362, 865), (354, 888), (347, 918), (347, 948), (356, 978), (367, 1000)], 6),
+                          ([(367, 1000), (384, 991), (403, 977), (415, 958), (421, 936), (423, 919), (425, 907), (415, 914), (401, 924), (383, 939), (372, 958), (367, 981), (367, 1000)], 6),
+                          ([(535, 1000), (535, 981), (530, 958), (519, 939), (501, 924), (487, 914), (477, 907), (479, 919), (481, 936), (487, 958), (499, 977), (518, 991), (535, 1000)], 6),
+                          ([(535, 1000), (546, 978), (555, 948), (555, 918), (548, 888), (540, 865), (535, 850), (530, 865), (522, 888), (515, 918), (515, 948), (524, 978), (535, 1000)], 6),
+                          ([(535, 1000), (552, 991), (571, 977), (583, 958), (589, 936), (591, 919), (593, 907), (583, 914), (569, 924), (551, 939), (540, 958), (535, 981), (535, 1000)], 6),
+                          ([(800, 1000), (800, 981), (795, 958), (784, 939), (766, 924), (752, 914), (742, 907), (744, 919), (746, 936), (752, 958), (764, 977), (783, 991), (800, 1000)], 6),
+                          ([(800, 1000), (811, 978), (820, 948), (820, 918), (813, 888), (805, 865), (800, 850), (795, 865), (787, 888), (780, 918), (780, 948), (789, 978), (800, 1000)], 6),
+                          ([(800, 1000), (817, 991), (836, 977), (848, 958), (854, 936), (856, 919), (858, 907), (848, 914), (834, 924), (816, 939), (805, 958), (800, 981), (800, 1000)], 6),
+                          ],
+    "14-fawn-in-the-glade": [([(815, 465), (835, 530), (850, 590), (865, 650), (873, 700)], 7)],  # mushroom stem edge
+    "19-mushroom-jar": [([(535, 192), (570, 198), (600, 203), (625, 210), (638, 219)], 9),     # lid top line
+                        ([(535, 241), (560, 238), (580, 235), (600, 230), (620, 225), (636, 219)], 9)],  # lid rim line
 }
 # ERASE: every ink shape lying wholly inside these boxes, after thickening
-ERASE = {"04-mushrooms-in-snow": [(0, 0, 896, 520)],      # 5 tiny AI snowflakes that filled solid (ink stains)
-         "15-birdhouse-in-snow": [(520, 0, 860, 320)],      # 2 AI snowflakes whose inner details filled solid
-         "18-reindeer-with-wreath": [(255, 538, 292, 568)]}  # lone ink tick inside the tree
+ERASE = {"01-mushroom-cottage": [(620, 560, 725, 650), (815, 690, 880, 850), (680, 700, 720, 790)]}  # scraps left by the wipes
 # SHAPES drawn in code: ("flake", cx, cy, arm length, rotation deg) / ("mound", cx, base y, width, height)
-SHAPES = {"04-mushrooms-in-snow": [("flake", 150, 140, 80, 0), ("flake", 450, 105, 75, 15), ("flake", 745, 150, 80, 8),
-                                   ("flake", 290, 335, 75, 20), ("flake", 615, 345, 75, 0)],
-          "15-birdhouse-in-snow": [("flake", 640, 108, 75, 10), ("flake", 790, 262, 75, 25)],
-          "19-hare-under-the-moon": [("mound", 150, 1110, 230, 70), ("mound", 745, 1118, 200, 58)]}
+SHAPES = {"01-mushroom-cottage": [("mound", 768, 768, 150, 62)]}   # a little outlined mound for the fern to grow from
 FLAKE_HW, FLAKE_BPOS, FLAKE_BLEN, FLAKE_BANG = 0.13, 0.62, 0.22, 35   # arm half-width, branch position/length/angle
 FLAKE_GAP_MM = 3.0                    # min gap between the branches of neighbouring arms
 FLAKE_POCKET_MM2 = 12.0               # every space a flake encloses (its arms + hub) at least this
 # CLUMPS: filled spaces within CLUMP_JOIN_MM of each other merge into one patch
 CLUMP_JOIN_MM, CLUMP_MM2 = 1.2, 25.0
-CLUMP_OK = {                          # slug: [((x0, y0, x1, y1), "reason")] for reviewed, accepted patches
-    "06-hedgehog-with-mug": [((480, 520, 595, 580), "the cocoa in the mug: one dark drink with a wavy top, reads as intended")],
-    "14-mouse-by-candlelight": [((235, 595, 420, 715), "the open book's page block: reads as a dark book, the cover stays open")],
-    "16-tree-in-the-clearing": [((555, 740, 660, 810), "the gift's bow: a solid black bow on an outlined box")],
-}
+CLUMP_OK = {
+    "14-fawn-in-the-glade": [((700, 340, 896, 500), "the right mushroom's gills: a dark underside to the cap, reads as shade"),
+                             ((200, 1010, 410, 1152), "the bottom-left mushroom's gills: a dark underside, reads as shade")],
+}                         # slug: [((x0, y0, x1, y1), "reason")] for reviewed, accepted patches
 BLOB_MIN_AREA_MM2 = 45.0             # faces (noses, smiles, eyes) are smaller and stay
 
 
