@@ -66,3 +66,30 @@ cover.png and preview-1..3.png are 2000 x 2000 with the HUDSON BEAT line, a heav
 4. "Shift-N" to name a region (page 5) is not a Logic default I could confirm; the same row already says to type in the Region inspector, so consider dropping the shortcut.
 
 **Verdict: REJECTED**
+
+
+---
+
+# Round 2
+
+Fresh QA pass on 13 Oct 2026 of commit d121c80 (Designer's fixes for the three round 1 content items). I read only this QA.md, the diff of gen.py against the round 1 commit, and the rebuilt files. I changed no item files. I did not re-read Drive: the diff shows no change to the rubric, the requirement or checklist lists, or any other owner text beyond the items below, so there was nothing to compare.
+
+## Checks
+
+- **`gen.py --check`: CHECK OK.** It left the working tree clean, so the committed outputs equal a fresh build. It now also guards the three fixes (no "written a melody" or "Part 4" on the project sheet, the minor-key line on the A minor card, the black-key note on page 20).
+- **Page 27/28 (rendered at 100 dpi): fixed.** Overview now reads "You have learned the keyboard and the notes of your scale. Now you are going to build the chords that give a melody its harmonic context." That is true of this kit. Page 28's tip now says "You will need these labels when you present your project." No "Part 4" remains on any student page. The only "Part 4" in the PDF text is the Unit 4 explanation on the teacher pages.
+- **Page 24, A minor card: fixed and musically right.** Closing box reads "The i chord always feels like home. The v and VII chords pull back toward i. The VI chord feels warm and open." It uses only chords on the card (i, v, VII, VI) and echoes the card's own rows (VII "Drives back toward i strongly", VI "Warm and open"). No I, V or vi remains on it. The C major card keeps the owner's I / V / vi line. The final "same in every key" line is kept. Legible, nothing clipped.
+- **Page 20: fixed and consistent with the answer key.** New teal-bordered note: "Heads up: D major (F#), B minor (F#) and D diminished (Ab) use black keys. They are formula practice only. The chords in your own key, C major or A minor, are white keys only." This matches page 32 (D major and B minor use a black key; D diminished uses A-flat) and the Ab spelling is correct. The three keyboards below are unmoved and clean; no overlap.
+- **Disclosure on page 10: present** in "How this kit differs", naming all three changes (the overview sentence, the "labels for Part 4" tip, the A minor reminder, the black-key note). It fits the box with no overflow.
+- **Rubric and other owner wording: unchanged.** The diff touches only OVERVIEW, one TIPS line, CARD_REMEMBER for the A minor card, the page 20 note and page 10. The rubric (3 categories, 2-5 each, / 15) and the other lists were not edited, and --check re-verifies the rubric prints as /15.
+- **Outputs match the rebuild.** The PDF inside the ZIP is byte-identical (cmp) to chords-by-ear.pdf, as are the deck .pptx and deck PDF. The ZIP holds the same three files as before (it nests them in a "Chords by Ear - Hudson Beat" folder, as in round 1). The preview PDF (4 pages, no changed pages in it) and preview-3.png were regenerated in the same build (identical timestamps with the PDF); the preview PDF text has no school strings.
+- **No Blind Brook / BBHS strings** in the PDF, preview PDF, gen.py, UPLOAD.md or tpt.json (grep, no hits).
+- **tpt.json:** not changed since round 1 (no diff), valid JSON.
+
+## Still optional (unchanged from round 1)
+
+Description line "checked by computer" could be softened; deck slides 2-5, 8, 20 and 21 and teacher pages 4-6 and 10-13 have empty lower space. None block release.
+
+All three required round 1 fixes are done, disclosed and correct.
+
+**Verdict: APPROVED**
