@@ -1,9 +1,21 @@
 {
-  "ran_at": "2026-10-12T14:50:16.966Z",
+  "ran_at": "2026-10-13T10:39:47.331Z",
   "published": [],
-  "failed": [],
+  "failed": [
+    {
+      "item": "009-dmp1-spooky-tunes",
+      "error": "publish stopped at step \"open the listing form\" (nothing was submitted): locator.waitFor: Timeout 30000ms exceeded. Screenshot: tpt/_publish/009-dmp1-spooky-tunes-failed.png File inputs on the page: (none)"
+    },
+    {
+      "item": "010-dmp1-song-form",
+      "error": "publish stopped at step \"open the listing form\" (nothing was submitted): locator.waitFor: Timeout 30000ms exceeded. Screenshot: tpt/_publish/010-dmp1-song-form-failed.png File inputs on the page: (none)"
+    }
+  ],
   "needs_login": false,
-  "paused": true,
-  "pending_before": [],
-  "ok": true
+  "paused": false,
+  "pending_before": [
+    "009-dmp1-spooky-tunes",
+    "010-dmp1-song-form"
+  ],
+  "ok": false
 }
