@@ -1,0 +1,94 @@
+<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:'Oswald';font-weight:300;font-style:normal;src:url('../../fonts/oswald-latin-300-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:500;font-style:normal;src:url('../../fonts/oswald-latin-500-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:700;font-style:normal;src:url('../../fonts/oswald-latin-700-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:normal;src:url('../../fonts/source-sans-3-latin-400-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:italic;src:url('../../fonts/source-sans-3-latin-400-italic.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:600;font-style:normal;src:url('../../fonts/source-sans-3-latin-600-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:700;font-style:normal;src:url('../../fonts/source-sans-3-latin-700-normal.woff2') format('woff2');}
+@page { size: 8.5in 11in; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+body { font-family: 'Source Sans 3', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; position: relative; overflow: hidden; page-break-after: always; break-after: page;
+        padding: 0.42in 0.5in 0.38in; display: flex; flex-direction: column; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+.l { font-family: 'Oswald'; font-weight: 300; }
+.top { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2.2pt solid #000; padding-bottom: 6pt; }
+.top .t { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; letter-spacing: .01em; line-height: 1; font-size: 25pt; }
+.top .t small { display: block; font-family: 'Oswald'; font-weight: 300; text-transform: none; font-size: 12pt; letter-spacing: 0; margin-top: 4pt; }
+.tag { text-align: right; }
+.tag .lv { display: inline-block; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 14pt; padding: 3pt 9pt 4pt; border-radius: 4pt; letter-spacing: .04em; }
+.tag .lv.ak { background: #0E8C7F; }
+.tag .ln { font-family: 'Oswald'; font-weight: 300; font-size: 11pt; margin-top: 3pt; }
+.name { display: flex; gap: 18pt; font-size: 12pt; margin: 9pt 0 4pt; }
+.name span { flex: 1; border-bottom: 1pt solid #000; height: 15pt; }
+.name span.d { flex: 0 0 1.6in; }
+.main { flex: 1; display: flex; flex-direction: column; min-height: 0; padding-top: 6pt; overflow: hidden; }
+.foot { display: flex; justify-content: space-between; font-size: 8.5pt; color: #333; border-top: .8pt solid #000; padding-top: 3pt; }
+.wm { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-38deg); font-family: 'Oswald'; font-weight: 700;
+      font-size: 150pt; color: rgba(0,0,0,.13); letter-spacing: .06em; white-space: nowrap; pointer-events: none; z-index: 9; }
+h2.s { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 13pt; margin: 9pt 0 3pt; letter-spacing: .02em; }
+h2.s .acc, .acc { color: #0E8C7F; }
+p, li { font-size: 10.5pt; line-height: 1.32; margin: 0 0 4pt; }
+ul, ol { margin: 0 0 4pt; padding-left: 15pt; }
+.tn p, .tn li { font-size: 11.4pt; line-height: 1.45; margin-bottom: 6pt; }
+.tn.big p { font-size: 12.8pt; line-height: 1.5; margin-bottom: 11pt; }
+.lines { flex: 1; min-height: 44pt; background: repeating-linear-gradient(to bottom, transparent 0, transparent 21pt, #000 21pt, #000 22pt); }
+table.t { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2pt 0 4pt; }
+table.t td, table.t th { border: 1pt solid #000; padding: 3pt 5pt; text-align: left; vertical-align: top; line-height: 1.25; }
+table.t.tight td { padding: 1.4pt 5pt; font-size: 9.4pt; line-height: 1.2; }
+table.t th { font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 9.5pt; background: #000; color: #fff; letter-spacing: .04em; vertical-align: middle; }
+.cols { display: flex; gap: 20pt; }
+.cols > div { flex: 1; min-width: 0; }
+.small { font-size: 9pt !important; color: #333; }
+.box { border: 1.4pt solid #000; border-radius: 8pt; padding: 7pt 10pt; }
+.box.acc-b { border-color: #0E8C7F; border-width: 2pt; }
+.box.inv { background: #000; color: #fff; border-color: #000; }
+.k { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 10pt; letter-spacing: .05em; color: #0E8C7F; display: block; margin-bottom: 2pt; }
+.box.inv .k { color: #BFE6E1; }
+.ln2 { border-bottom: 1pt solid #000; height: 22pt; }
+.fl { display: flex; align-items: flex-end; gap: 6pt; font-size: 10.5pt; margin: 0 0 8pt; }
+.fl b { font-weight: 600; white-space: nowrap; }
+.fl span { flex: 1; border-bottom: 1pt solid #000; height: 14pt; }
+.num { list-style: none; padding: 0; margin: 2pt 0 0; }
+.num li { display: flex; gap: 10pt; margin: 0 0 9pt; }
+.num .n { flex: 0 0 24pt; height: 24pt; border-radius: 12pt; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 13pt;
+          display: flex; align-items: center; justify-content: center; }
+.num .hd { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 12pt; letter-spacing: .02em; }
+.why { font-style: italic; }
+.blk { display: flex; gap: 9pt; margin: 0 0 6pt; font-size: 10.6pt; line-height: 1.32; }
+.blk .tm { flex: 0 0 40pt; text-align: center; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 10pt;
+           border-radius: 4pt; padding: 2pt 0 3pt; align-self: flex-start; }
+.blk b.h { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 10.5pt; letter-spacing: .02em; }
+.day { border: 1.4pt solid #000; border-radius: 8pt; padding: 7pt 10pt 3pt; margin-bottom: 8pt; }
+.day .dh { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1pt solid #000; padding-bottom: 3pt; margin-bottom: 6pt; }
+.day .dh b { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 14pt; }
+.day .dh span { font-family: 'Oswald'; font-weight: 300; font-size: 11pt; }
+.goal { font-size: 10.6pt; margin: 0 0 7pt; }
+.chk { display: flex; gap: 8pt; align-items: flex-start; font-size: 11pt; margin: 0 0 8pt; line-height: 1.3; }
+table.rub { border-collapse: collapse; width: 100%; }
+table.rub td, table.rub th { border: 1.1pt solid #000; padding: 9pt 6pt; vertical-align: top; font-size: 11pt; line-height: 1.38; }
+table.rub th { background: #000; color: #fff; font-family: 'Oswald'; font-weight: 500; font-size: 12pt; text-align: center; vertical-align: middle; }
+table.rub td.c { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 11pt; width: 15%; vertical-align: middle; }
+table.rub td.sc { width: 8%; }
+.cover { align-items: center; justify-content: space-between; padding: 0.55in 0.6in 0.5in;
+         background: linear-gradient(180deg, #fff 0%, #fff 55%, #ededed 100%); }
+.store { font-family: 'Oswald'; font-weight: 500; font-size: 13pt; letter-spacing: .32em; text-transform: uppercase; }
+.ctitle { text-align: center; }
+.ctitle .a, .ctitle .b, .ctitle .c { white-space: nowrap; }
+.ctitle .a { font-family: 'Oswald'; font-weight: 700; line-height: 1; letter-spacing: .02em; text-transform: uppercase; }
+.ctitle .b { font-family: 'Oswald'; font-weight: 700; line-height: .98; letter-spacing: .01em; text-transform: uppercase; }
+.ctitle .c { font-family: 'Oswald'; font-weight: 300; margin-top: 8pt; }
+.cband { width: 100%; background: #000; color: #fff; text-align: center; font-family: 'Oswald'; font-weight: 500; font-size: 14pt;
+         letter-spacing: .08em; text-transform: uppercase; padding: 8pt 0 9pt; border-radius: 4pt; white-space: nowrap; }
+.cband em { font-style: normal; color: #0E8C7F; }
+.lab { font-family: 'Oswald'; font-weight: 500; font-size: 9pt; text-transform: uppercase; letter-spacing: .05em; text-align: center; }
+table.nt { border-collapse: collapse; }
+table.nt td { border: 1.2pt solid #000; width: 40pt; height: 30pt; text-align: center; vertical-align: middle; font-family: 'Oswald'; font-weight: 700; font-size: 15pt; }
+table.nt td.g { color: #555; }
+table.nt td.st { border: none; height: 16pt; font-family: 'Oswald'; font-weight: 500; font-size: 10.5pt; color: #0E8C7F; }
+.cbox { border: 1.2pt solid #000; border-radius: 6pt; padding: 5pt 7pt 6pt; }
+.cbox b.cn { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 12pt; display: block; margin-bottom: 3pt; }
+table.ch { border-collapse: collapse; width: 100%; }
+table.ch td { border: 1.1pt solid #000; height: 26pt; text-align: center; font-family: 'Oswald'; font-weight: 700; font-size: 15pt; width: 33.3%; }
+table.ch td.lb { height: 13pt; font-family: 'Source Sans 3'; font-weight: 400; font-size: 8.5pt; border: none; color: #333; }
+table.card { border-collapse: collapse; width: 100%; }
+table.card td, table.card th { border: 1.2pt solid #000; padding: 6pt 7pt; vertical-align: middle; font-size: 11.5pt; }
+table.card th { background: #000; color: #fff; font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 11pt; letter-spacing: .04em; }
+table.card td.rn { font-family: 'Oswald'; font-weight: 700; font-size: 17pt; text-align: center; width: 11%; }
+table.card td.nt { font-family: 'Oswald'; font-weight: 500; font-size: 13pt; white-space: nowrap; }
+html,body{margin:0;background:#fff}</style></head><body><div style="width:1500px;height:915px;overflow:hidden;background:#fff"><div style="width:1500px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 562 342" width="100%" style="display:block"><rect x="0.8" y="0" width="68.4" height="250" rx="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="35.0" y="232.0" font-family="Oswald" font-weight="700" font-size="29" text-anchor="middle" fill="#000" >C</text><rect x="70.8" y="0" width="68.4" height="250" rx="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="105.0" y="232.0" font-family="Oswald" font-weight="700" font-size="29" text-anchor="middle" fill="#000" >D</text><rect x="140.8" y="0" width="68.4" height="250" rx="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="175.0" y="232.0" font-family="Oswald" font-weight="700" font-size="29" text-anchor="middle" fill="#000" >E</text><rect x="210.8" y="0" width="68.4" height="250" rx="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="245.0" y="232.0" font-family="Oswald" font-weight="700" font-size="29" text-anchor="middle" fill="#000" >F</text><rect x="280.8" y="0" width="68.4" height="250" rx="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="315.0" y="232.0" font-family="Oswald" font-weight="700" font-size="29" text-anchor="middle" fill="#000" >G</text><rect x="350.8" y="0" width="68.4" height="250" rx="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="385.0" y="232.0" font-family="Oswald" font-weight="700" font-size="29" text-anchor="middle" fill="#000" >A</text><rect x="420.8" y="0" width="68.4" height="250" rx="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="455.0" y="232.0" font-family="Oswald" font-weight="700" font-size="29" text-anchor="middle" fill="#000" >B</text><rect x="490.8" y="0" width="68.4" height="250" rx="5" fill="#fff" stroke="#000" stroke-width="2"/><text x="525.0" y="232.0" font-family="Oswald" font-weight="700" font-size="29" text-anchor="middle" fill="#000" >C</text><rect x="49.0" y="0" width="42" height="150" rx="4" fill="#000" stroke="#000" stroke-width="1.5"/><text x="70.0" y="119.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >C#</text><text x="70.0" y="140.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >Db</text><rect x="119.0" y="0" width="42" height="150" rx="4" fill="#000" stroke="#000" stroke-width="1.5"/><text x="140.0" y="119.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >D#</text><text x="140.0" y="140.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >Eb</text><rect x="259.0" y="0" width="42" height="150" rx="4" fill="#000" stroke="#000" stroke-width="1.5"/><text x="280.0" y="119.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >F#</text><text x="280.0" y="140.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >Gb</text><rect x="329.0" y="0" width="42" height="150" rx="4" fill="#000" stroke="#000" stroke-width="1.5"/><text x="350.0" y="119.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >G#</text><text x="350.0" y="140.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >Ab</text><rect x="399.0" y="0" width="42" height="150" rx="4" fill="#000" stroke="#000" stroke-width="1.5"/><text x="420.0" y="119.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >A#</text><text x="420.0" y="140.0" font-family="Oswald" font-weight="700" font-size="18" text-anchor="middle" fill="#fff" >Bb</text><path d="M175.0 272 Q210.0 302 245.0 272" fill="none" stroke="#0E8C7F" stroke-width="4"/><text x="210.0" y="332.0" font-family="Oswald" font-weight="700" font-size="26" text-anchor="middle" fill="#0E8C7F" >H</text><path d="M455.0 272 Q490.0 302 525.0 272" fill="none" stroke="#0E8C7F" stroke-width="4"/><text x="490.0" y="332.0" font-family="Oswald" font-weight="700" font-size="26" text-anchor="middle" fill="#0E8C7F" >H</text></svg></div></div></body></html>

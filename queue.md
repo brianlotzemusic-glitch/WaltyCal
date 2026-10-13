@@ -28,7 +28,7 @@ Q4 deadline: holiday themes need to be listed by about Nov 15 to sell this seaso
 - (ON HOLD, not a build item) until the owner says it is finished (owner is rewriting DMP1 Units 7-10): DMP1 Unit 7 Loops Unlocked ($12), Unit 8 EDM Full Song ($18), Unit 9 Video Game + Sound Design ($18), Unit 10 Final Project ($8)
 - [x] [dmp] DMP1 Unit 6: Spooky Tunes (scoring to picture, reverb, $12) (built 12 Oct, awaiting QA; tpt/009-dmp1-spooky-tunes, $0 AI) - build 2nd (seasonal: before Halloween if possible)
 - [x] [dmp] DMP1 Unit 5: Song Form ($10) (built 12 Oct, awaiting QA; tpt/010-dmp1-song-form, $0 AI) - build 3rd
-- [ ] [dmp] DMP1 Unit 3: Chords by Ear ($12; Units 3/4 split from Drive '3 - The Building Blocks') - build 4th
+- [x] [dmp] DMP1 Unit 3: Chords by Ear ($12; Units 3/4 split from Drive '3 - The Building Blocks') (built 13 Oct, awaiting QA; tpt/011-dmp1-chords-by-ear, $0 AI) - build 4th
 - [ ] [dmp] DMP1 Unit 4: Bass & Melody Writing ($10; Units 3/4 split from Drive '3 - The Building Blocks') - build 5th
 - [ ] [dmp] DMP1 Unit 2: Stems & Grooves ($10) - build 6th
 - [ ] [dmp] Rest of the build order in tpt/DMP-INVENTORY.md section 4 (DMP2 kits, then DMP1/DMP2/complete bundles)
