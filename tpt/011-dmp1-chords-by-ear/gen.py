@@ -16,7 +16,10 @@ teacher notes, classroom post), the Scary Stuff packet (Parts 1-3) and reference
 A minor, blank) and the owner's KCSRN worksheet. Part 2's melody project and Part 4 Basslines belong to Unit 4 (Bass & Melody
 Writing), a separate product. New here (disclosed in the teacher notes): the Day 1 Chord Feel Log and post (the Restructure
 lists the ear-first activity as still to be written), the Logic file recipe (Logic sessions are not shipped), the worked
-example and the answer keys. Songs are named by title and artist only (find them on YouTube or Spotify). School names and
+example and the answer keys. QA round 1 fixes (disclosed on teacher notes page 1): the project sheet no longer says students
+have written a melody or need labels "for Part 4"; the A minor card's closing line uses i, v / VII and VI (the owner's line names
+I, V and vi, which are not on that card); packet Part 3 tells students the D major, B minor and D diminished boxes use black keys
+and are formula practice only. Songs are named by title and artist only (find them on YouTube or Spotify). School names and
 logos removed; no student work, names or grades; no Logic sessions, audio or video.
 
 Every chord spelling, scale, Roman numeral, key signature and answer in the kit is computed by the small theory engine
@@ -204,6 +207,12 @@ BLANK_CARD = [("I", "Major"), ("ii", "Minor"), ("iii", "Minor"), ("IV", "Major")
 CARD_REMEMBER = ("Remember: Roman numerals describe chord function, not just chord names.",
                  "The I chord always feels like home.  ·  The V chord always feels unresolved.  ·  The vi chord always feels tender or melancholy.",
                  "These feelings are the same in every key — only the note names change.")
+# QA round 1: the owner's A minor card repeats the major-key line (I, V, vi), chords that are not on that card. The A minor card uses
+# its own numerals (i, v / VII, VI), in the words of its own rows; the C major card keeps the owner's line. Disclosed on the teacher notes.
+CARD_REMEMBER_MINOR = "The i chord always feels like home.  ·  The v and VII chords pull back toward i.  ·  The VI chord feels warm and open."
+# QA round 1: the owner's Part 3 packet has D major, B minor and D diminished boxes, which need black keys; say so to students on the page.
+PK3_BLACK_NOTE = ("Heads up: D major (F#), B minor (F#) and D diminished (Ab) use black keys. They are formula practice only. "
+                  "The chords in your own key, C major or A minor, are white keys only.")
 
 # owner's packet, Part 1: half step / whole step exercise (first two done as examples)
 HW_EXAMPLES = [("C", "D"), ("C#", "D")]
@@ -259,7 +268,7 @@ def short_name(notes):
 
 
 # ================================================================ the owner's words (lightly edited: LMS, unit labels)
-OVERVIEW = ("You have written a melody using scale notes. Now you are going to build the chords that give that melody its harmonic context. "
+OVERVIEW = ("You have learned the keyboard and the notes of your scale. Now you are going to build the chords that give a melody its harmonic context. "
             "You will use the R-4-3 and R-3-4 formulas to construct chords, learn how Roman numerals describe their function, and build a chord "
             "layer on top of the provided bassline in Logic.")
 REQUIREMENTS = ["Complete the chord construction pages and Roman numeral section in the Scary Stuff packet",
@@ -273,7 +282,7 @@ REQUIREMENTS = ["Complete the chord construction pages and Roman numeral section
                 "Exported as MP3 and .zip (compressed .logicx file) and submitted to your class page before presenting"]
 TIPS = ["Build one chord at a time and play it before moving on. If it sounds wrong, check the formula — count half steps carefully from the root.",
         "In the piano roll, all three notes of a chord should start at exactly the same position and last for the same duration.",
-        "Label each region with its Roman numeral as you go. You will need these labels for Part 4.",
+        "Label each region with its Roman numeral as you go. You will need these labels when you present your project.",
         "Your Reference Card is your most important tool here. Keep it open."]
 CHECKLIST = ["Chord construction pages and Roman numeral section of the Scary Stuff packet completed",
              "Reference Card completed for your chosen key",
@@ -1156,7 +1165,12 @@ def tn1_page(n):
              f'<li>My Building Blocks material runs Parts 1–3 in 6 days; this kit follows the 5 days of my course plan: the ear day, then the '
              f'keyboard and scales in one day, then the three Part 3 days (presentations on Day 5).</li>'
              f'<li>The Chord Feel Log, the Day 1 post and the Logic file recipe are new: my plan calls for an ear-first activity before the KCSRN '
-             f'worksheet. Part 2’s melody project and Part 4 (basslines) move to Unit 4.</li>'
+             f'worksheet. Part 2’s melody project and Part 4 (basslines) move to Unit 4, so on the project sheet the overview’s first sentence (“You have '
+             f'written a melody…”) now reads “You have learned the keyboard and the notes of your scale”, and the tip “You will need these labels '
+             f'for Part 4” now says “when you present your project”.</li>'
+             f'<li>On the A minor Reference Card the closing reminder uses the minor-key numerals (i, v and VII, VI) instead of my C major line '
+             f'(I, V, vi), which names chords that are not on that card. Part 3 of the packet now tells students that the D major, B minor and D '
+             f'diminished boxes use black keys and are formula practice only.</li>'
              f'<li>My LMS is written as “your class page”. The balance mini-lesson on Day 5 applies my mixing concept for this unit to chords and '
              f'bass, since melody comes in Unit 4.</li></ul></div></div>')
     return page("Teacher notes · the big idea and Day 1", "TEACHER NOTES", "1 of 4", inner, n, key="tn1")
@@ -1379,7 +1393,8 @@ def pk3_page(n):
              f'<div class="box" style="padding:4pt 9pt"><p style="margin:0"><b>R = Root</b> &nbsp;·&nbsp; 4 = 4 half steps up from the root &nbsp;·&nbsp; '
              f'3 = 3 half steps up from the previous note. <i>Do not count the note you start on: for C, C# is 1.</i></p></div>'
              f'{chord_grid()}'
-             f'<div style="margin-top:12pt">{chordkeys_svg()}</div>'
+             f'<div class="box acc-b" style="margin-top:8pt;padding:4pt 9pt"><p style="margin:0;font-size:10.5pt"><b>{PK3_BLACK_NOTE}</b></p></div>'
+             f'<div style="margin-top:10pt">{chordkeys_svg()}</div>'
              f'<p class="small" style="margin-top:3pt">Teal keys: the examples, counted from the formula. Use the keyboard to count yours.</p>')
     return page("The Scary Stuff · Part 3: Chords", "PACKET", "Part 3 · Day 3", inner, n, name=True, key="pk3")
 
@@ -1453,8 +1468,10 @@ def scale_cells(notes, n_cells=8, extra=None):
     return f"<table class='nt' style='margin:2pt 0 6pt'><tr>{cells}</tr></table>"
 
 
-def remember_box():
+def remember_box(key="C major"):
     a, b, c = CARD_REMEMBER
+    if key == "A minor":
+        b = CARD_REMEMBER_MINOR
     return (f'<div class="box acc-b" style="margin-top:8pt"><p style="margin:0;font-size:11.5pt"><b>{a}</b></p>'
             f'<p style="margin:3pt 0 0;font-size:10.5pt"><i>{b}</i></p><p style="margin:3pt 0 0;font-size:10.5pt">{c}</p></div>')
 
@@ -1465,7 +1482,7 @@ def card_page(n, key, watermark=False):
     inner = (f'<h2 class="s" style="font-size:20pt;margin:2pt 0 0">{key.split()[0]} {key.split()[1].title()} — Reference Card</h2>'
              f'<p class="l" style="font-size:12pt;margin-bottom:4pt">The Building Blocks · Unit {UNIT} · Keep this open while you work</p>'
              f'{H2("Scale")}<p style="font-size:12pt;margin:0"><b>{CARD_SCALE_TEXT[key]}</b></p>{scale_cells(sc, 8, extra)}'
-             f'{H2("Chords in this Key")}{card_table(key)}{remember_box()}'
+             f'{H2("Chords in this Key")}{card_table(key)}{remember_box(key)}'
              f'<p class="small" style="margin-top:6pt">No sharps or flats in this key: every chord is white keys only. '
              f'{"A minor uses the same seven notes: it is the relative minor." if key == "C major" else "C major uses the same seven notes: it is the relative major."}</p>')
     return page(f"Reference Card · {key}", "REFERENCE", "Keep it open", inner, n, watermark, key=f"card{key[0]}")
@@ -2536,6 +2553,19 @@ def verify_files():
         for rn, typ, name, notes_, feel in CARD[key]:
             if notes_.replace(" ", "") not in t.replace(" ", "") or feel.split(".")[0] not in t:
                 errs.append(f"{key} card page missing {rn} {notes_}")
+    # QA round 1 fixes stay fixed: no false melody / Part 4 claims on the project sheet, a minor-key reminder on the A minor card,
+    # and the black-key note on packet Part 3
+    for pk in ("proj1", "proj2"):
+        for bad in ("written a melody", "Part 4"):
+            if bad in flat[IX[pk] - 1]:
+                errs.append(f"{pk}: '{bad}' (no melody or Part 4 in this kit)")
+    ca = flat[IX["cardA"] - 1]
+    if re.search(r"\b(?:I|V|vi) chord", ca) or "The i chord always feels like home" not in ca:
+        errs.append("A minor card: closing reminder must use i / v / VII / VI, not I / V / vi")
+    if "The vi chord always feels tender" not in flat[IX["cardC"] - 1]:
+        errs.append("C major card: the owner's reminder line is missing")
+    if re.sub(r"\s+", " ", PK3_BLACK_NOTE) not in flat[IX["pk3"] - 1]:
+        errs.append("packet Part 3: black-key note for D major / B minor / D diminished missing")
     k2 = flat[IX["key2"] - 1]
     for key in ("C major", "A minor"):
         for rn, q, ns in key_chords(key):
