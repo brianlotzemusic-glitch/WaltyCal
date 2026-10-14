@@ -196,6 +196,9 @@ PARTS = {"A": ["Piano chords", "Bass"], "B": ["Piano chords", "Bass", "Pad", "Sy
          "Intro": ["Pad"], "Verse": ["Piano chords", "Bass"], "Chorus": ["Piano chords", "Bass", "Pad", "Synth plays the top note of each chord"],
          "Bridge": ["Pad", "Bass"], "Outro": ["Pad"]}
 FOUNDATION = [("A", 4), ("A", 4), ("B", 4), ("A", 4)]             # the Day 1 post: 16 measures, sections of 4 (AABA, as in Unit 1)
+ROMAN_ORDER = ["I", "ii", "iii", "IV", "V", "vi"]
+CHORDS_USED = [r for r in ROMAN_ORDER if any(r in p for p in PROGS.values())]   # every chord the two stems use, in scale order
+CHORDS_USED_TEXT = ", ".join(CHORDS_USED[:-1]) + " and " + CHORDS_USED[-1]
 FULL_SONG = [("Intro", 4), ("Verse", 8), ("Chorus", 8), ("Verse", 8), ("Chorus", 8), ("Bridge", 8), ("Chorus", 8), ("Outro", 4)]
 LETTER = {"Intro": "i", "Verse": "a", "Chorus": "b", "Bridge": "c", "Outro": "o"}
 # Worked Full Song map: one transition at every section change (the measure before the change), with the reason.
@@ -822,7 +825,7 @@ def strip_body(name, sections, trans=None, W=1600, h=118, show_letters=True):
     mw = (W - 4) / total
     out, x = [], 2.0
     emax = max(energy(s) for s, _ in sections)
-    fills = {"B": ACCENT, "Chorus": ACCENT, "Bridge": "#555", "Intro": "#8a8a8a", "Outro": "#8a8a8a"}
+    fills = {"B": ACCENT, "Chorus": ACCENT, "Bridge": "#555", "Intro": "#6e6e6e", "Outro": "#6e6e6e"}
     st = starts(sections)
     for k, (sec, n) in enumerate(sections):
         w = n * mw
@@ -1158,9 +1161,10 @@ def stems_page(n):
              f'<div class="cols roomy" style="margin-top:6pt"><div>'
              f'{H2("Where to get stems")}'
              f'<p><b>1. Make your own (safest).</b> Build a short backing track in Logic with no drums and bounce it to an audio file. The recipe '
-             f'on page {IX["makestem"]} makes one Foundation stem and one Full Song stem in about 30 minutes. Students can never tell you made it.</p>'
-             f'<p><b>2. A multitrack library that allows classroom use.</b> I source new tracks from the multitrack library at '
-             f'cambridge-mt.com/ms/mtk. Read the terms for each track, leave out (or mute) the drum tracks, and bounce the rest into one stem.</p>'
+             f'on page {IX["makestem"]} makes one Foundation stem and one Full Song stem in about 30 minutes.</p>'
+             f'<p><b>2. A multitrack library (check its terms first).</b> I source new tracks from the multitrack library at '
+             f'cambridge-mt.com/ms/mtk. Before you use it, read the library’s own terms and each track’s: some libraries allow personal '
+             f'mixing practice but not handing files to students. If the terms allow it, leave out (or mute) the drum tracks and bounce the rest into one stem.</p>'
              f'<p><b>3. Your own recordings</b>: your school band, a colleague, or you, playing without a drummer.</p>'
              f'<p><b>4. Royalty-free music</b> whose license allows you to edit it and share it with students, if you can get a version without drums.</p>'
              f'<p class="small">Only use audio you have the right to use and share in class. Do not hand out stems pulled from commercial songs.</p>'
@@ -1197,8 +1201,8 @@ def makestem_page(n):
              "instruments in the table. More instruments = more energy.",
              "Add arrangement markers for your own answer key. Then File › Bounce › Project or Section, WAV or MP3, starting at bar 1.",
              f"Name the file with its tempo, for example “Foundation 1 - {TEMPO} BPM”, and post it in the right folder."]
-    inner = (f'<p style="margin:0 0 3pt">Two original stems, C major, white keys only. Every chord is one of the I, IV, V and vi chords students '
-             f'meet in Unit 3. Change the chords, sounds or tempo to make more; keep the section lengths.</p>'
+    inner = (f'<p style="margin:0 0 3pt">Two original stems, C major, white keys only. Every chord is a white-key chord of C major: '
+             f'{CHORDS_USED_TEXT}. Change the chords, sounds or tempo to make more; keep the section lengths.</p>'
              f'<ol style="margin:0 0 4pt">' + "".join(f"<li>{s}</li>" for s in steps) + '</ol>'
              f'{H2("Foundation stem · 16 measures · A A B A")}{recipe_table(FOUNDATION, "Foundation")}'
              f'<div style="width:5.6in;margin:0 auto 2pt">{strip_svg("recipe foundation", FOUNDATION, W=1500, h=70)}</div>'
@@ -1307,8 +1311,12 @@ TN1_DIFF = [
     "My LMS is written as “your class page”. Padlet is kept: it is the board I use; any feedback board works.",
     "Day plans: Days 1 and 3 end with a 5-minute save block (my notes stop at minute 48); Day 4 is one 53-minute block. Slide numbers are "
     "added to every block.",
-    "Part 2 step 1: one closing parenthesis added. Otherwise my project sheet, rubric (/25), Day 1 post and teacher notes are word for word, "
-    "including the checklist’s “Your Name - Foundations” for both projects (see page 2).",
+    "Part 2 step 1: one closing parenthesis added. Otherwise the wording of my project sheet, rubric (/25), Day 1 post and teacher notes is "
+    "kept as I wrote it, including the checklist’s “Your Name - Foundations” for both projects (see page 2).",
+    "My Day 1 post and project sheet say to label sections “A, B, A, B, etc.”: that is an example of labelling, kept as written. The "
+    f"recipe stem and worked example in this kit are A, A, B, A (pages {IX['makestem']} and {IX['key1']}); your stems may put A and B in any order.",
+    "Added to my day plans: the Day 3 exit question (“which transition type have you not tried yet?”) and the Day 4 note that early "
+    "finishers may try the optional reverb bus.",
     f"New: the stems pages, the Logic reference, the four transitions page, gain staging, the section map, name that transition, the worked "
     f"examples and answer keys, and the deck."]
 
@@ -2507,6 +2515,16 @@ def verify_files():
             continue
         if fn.endswith((".md", ".json", ".py", ".txt")) or fn in ("release", "uploaded"):
             blobs[fn] = open(os.path.join(HERE, fn), encoding="utf8", errors="ignore").read()
+    flat = " ".join(blobs["resource PDF"].split())
+    for gone in ("allows classroom use", "never tell", "I, IV, V and vi", "are word for word"):
+        if gone in flat:
+            errs.append(f"resource PDF: QA round 1 wording is back ('{gone}')")
+    for need in (f"white-key chord of C major: {CHORDS_USED_TEXT}", "read the library’s own terms", "“A, B, A, B, etc.”: that is an example",
+                 "the Day 3 exit question", "A, A, B, A (pages"):
+        if " ".join(need.split()) not in flat and need.replace("’", "'") not in flat:
+            errs.append(f"resource PDF: missing disclosure/fix text '{need}'")
+    if CHORDS_USED != ["I", "iii", "IV", "V", "vi"]:
+        errs.append(f"stem chords changed ({CHORDS_USED}); recheck the page {IX['makestem']} sentence")
     for label, txt in blobs.items():
         low = txt.lower()
         for b in BANNED:
