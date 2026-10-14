@@ -1,19 +1,19 @@
 {
-  "updated_at": "2026-10-14T21:30:00Z",
-  "next_run_at": "2026-10-14T22:12:00Z",
+  "updated_at": "2026-10-15T00:30:00Z",
+  "next_run_at": "2026-10-15T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 27,
-  "bundles_built": 34,
-  "uploads_pending": 1,
+  "bundles_built": 35,
+  "uploads_pending": 2,
   "etsy_connected": true,
   "workers": [
     {
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "Catch-up shift done (two shifts were lost to a worker restart). Next: 6:12pm ET today.",
-      "since": "2026-10-14T21:30:00Z"
+      "task": "6:12pm shift done. TpT 012 and 013 released for the Mac nightly. Etsy build skipped: waiting on the owner's call on the Etsy slot.",
+      "since": "2026-10-15T00:30:00Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "TpT 012 DMP1 Bass & Melody Writing built (fixed in round 2). No Etsy build this catch-up shift.",
-      "since": "2026-10-14T21:30:00Z"
+      "task": "TpT 013 DMP1 Stems & Grooves built (fixed in round 2). Etsy slot not run tonight.",
+      "since": "2026-10-15T00:30:00Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved TpT 012 in round 2 (Sonnet).",
-      "since": "2026-10-14T21:30:00Z"
+      "task": "Approved TpT 013 in round 2 (Sonnet).",
+      "since": "2026-10-15T00:30:00Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "TpT 009, 010 and 011 published by the Mac nightly (URLs 200). 012 released for tonight.",
-      "since": "2026-10-14T21:30:00Z"
+      "task": "TpT 009-011 live. 012 and 013 released for the Mac nightly.",
+      "since": "2026-10-15T00:30:00Z"
     },
     {
       "id": "analyst",
@@ -80,11 +80,21 @@
     }
   ],
   "queue": [
-    "[dmp] DMP1 Unit 2 Stems & Grooves, then DMP2 kits (Billboard Top 10, Sample Flipping, FX Deep Dive, Music for Visual Media...) and bundles",
-    "(on hold: DMP1 Units 7-10, owner is finishing them)",
-    "Etsy: printables first (Botanical Valentine, cross-stitch)"
+    "[dmp] DMP2 kits: Billboard Top 10, Sample Flipping, FX Deep Dive, Music for Visual Media, then the rest",
+    "[dmp] DMP1 bundle waits for Units 7-10 (owner is finishing them); DMP2 bundle after the DMP2 kits",
+    "Etsy: printables first (Botanical Valentine, cross-stitch); Etsy slot paused until the owner decides"
   ],
   "feed": [
+    {
+      "t": "2026-10-15T00:30:00Z",
+      "who": "qa",
+      "msg": "Approved TpT 013 DMP1 Stems & Grooves ($10, with intro deck) in round 2. Released."
+    },
+    {
+      "t": "2026-10-15T00:30:00Z",
+      "who": "designer",
+      "msg": "DMP1 Units 1-6 are now built; Units 7-10 wait for the owner."
+    },
     {
       "t": "2026-10-14T21:30:00Z",
       "who": "qa",
@@ -149,16 +159,6 @@
       "t": "2026-10-12T00:00:00Z",
       "who": "qa",
       "msg": "Approved TpT 008 DMP1 Unit 1 Beat From Nothing ($9, with teacher intro deck). Released for upload."
-    },
-    {
-      "t": "2026-10-12T00:00:00Z",
-      "who": "lister",
-      "msg": "Listed 021: Woodland reindeer & stag ornaments cut files ($4). 25 live. TpT 007 is live."
-    },
-    {
-      "t": "2026-10-12T00:00:00Z",
-      "who": "manager",
-      "msg": "Owner set the TpT focus: sell the DMP1/DMP2 curriculum unit by unit plus bundles, each with an intro deck."
     }
   ],
   "venture_gate": {
