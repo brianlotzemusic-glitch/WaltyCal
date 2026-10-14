@@ -1,0 +1,8 @@
+build/lo-profile/
+build/lo-profile-fallback/
+build/lo-out/
+build/ttf/
+build/fccache/
+build/fonts.conf
+build/deck-fallback.pdf
+__pycache__/

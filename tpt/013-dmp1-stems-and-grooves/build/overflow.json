@@ -1,0 +1,197 @@
+[
+ {
+  "page": 1,
+  "key": "cover",
+  "main_over": 0,
+  "cells": []
+ },
+ {
+  "page": 2,
+  "key": "howto",
+  "main_over": 0,
+  "cells": [],
+  "free": 22
+ },
+ {
+  "page": 3,
+  "key": "overview",
+  "main_over": 0,
+  "cells": [],
+  "free": 94
+ },
+ {
+  "page": 4,
+  "key": "setup",
+  "main_over": 0,
+  "cells": [],
+  "free": 97
+ },
+ {
+  "page": 5,
+  "key": "stems",
+  "main_over": 0,
+  "cells": [],
+  "free": 170
+ },
+ {
+  "page": 6,
+  "key": "makestem",
+  "main_over": 0,
+  "cells": [],
+  "free": 159
+ },
+ {
+  "page": 7,
+  "key": "logicref",
+  "main_over": 0,
+  "cells": [],
+  "free": 184
+ },
+ {
+  "page": 8,
+  "key": "pacing",
+  "main_over": 0,
+  "cells": [],
+  "free": 164
+ },
+ {
+  "page": 9,
+  "key": "day12",
+  "main_over": 0,
+  "cells": [],
+  "free": 152
+ },
+ {
+  "page": 10,
+  "key": "day34",
+  "main_over": 0,
+  "cells": [],
+  "free": 89
+ },
+ {
+  "page": 11,
+  "key": "day56",
+  "main_over": 0,
+  "cells": [],
+  "free": 162
+ },
+ {
+  "page": 12,
+  "key": "tn1",
+  "main_over": 0,
+  "cells": [],
+  "free": 171
+ },
+ {
+  "page": 13,
+  "key": "tn2",
+  "main_over": 0,
+  "cells": [],
+  "free": 136
+ },
+ {
+  "page": 14,
+  "key": "tn3",
+  "main_over": 0,
+  "cells": [],
+  "free": 0
+ },
+ {
+  "page": 15,
+  "key": "post1",
+  "main_over": 0,
+  "cells": [],
+  "free": 127
+ },
+ {
+  "page": 16,
+  "key": "transitions",
+  "main_over": 0,
+  "cells": [],
+  "free": 153
+ },
+ {
+  "page": 17,
+  "key": "gain",
+  "main_over": 0,
+  "cells": [],
+  "free": 50
+ },
+ {
+  "page": 18,
+  "key": "map",
+  "main_over": 0,
+  "cells": [],
+  "free": 102
+ },
+ {
+  "page": 19,
+  "key": "proj1",
+  "main_over": 0,
+  "cells": [],
+  "free": 47
+ },
+ {
+  "page": 20,
+  "key": "proj2",
+  "main_over": 0,
+  "cells": [],
+  "free": 119
+ },
+ {
+  "page": 21,
+  "key": "proj3",
+  "main_over": 0,
+  "cells": [],
+  "free": 37
+ },
+ {
+  "page": 22,
+  "key": "proj4",
+  "main_over": 0,
+  "cells": [],
+  "free": 0
+ },
+ {
+  "page": 23,
+  "key": "rubric",
+  "main_over": 0,
+  "cells": [],
+  "free": 14
+ },
+ {
+  "page": 24,
+  "key": "transcheck",
+  "main_over": 0,
+  "cells": [],
+  "free": 133
+ },
+ {
+  "page": 25,
+  "key": "key1",
+  "main_over": 0,
+  "cells": [],
+  "free": 52
+ },
+ {
+  "page": 26,
+  "key": "key2",
+  "main_over": 0,
+  "cells": [],
+  "free": 182
+ },
+ {
+  "page": 27,
+  "key": "key3",
+  "main_over": 0,
+  "cells": [],
+  "free": 177
+ },
+ {
+  "page": 28,
+  "key": "terms",
+  "main_over": 0,
+  "cells": [],
+  "free": 0
+ }
+]
