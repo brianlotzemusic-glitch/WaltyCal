@@ -68,3 +68,29 @@ cover.png and preview-1..3.png are 2000 x 2000 with the HUDSON BEAT line, heavy 
 4. Consider "feedback board" instead of "(I use Padlet)" on page 4 as 010 did.
 
 **Verdict: REJECTED**
+
+
+---
+
+# Round 2 (14 Oct 2026, fresh QA)
+
+Re-ran `gen.py --check`: CHECK OK. Compared the fix commit (ef9ed8b) with round 1 by diff. Rendered PDF pages 4, 9, 14 and 29 and deck slides 7 and 17 at 100 dpi and read the text layers of all three PDFs and the .pptx.
+
+## Required fixes
+
+1. **Page 14 step 4: fixed.** Now "V to I feels resolved. Ending on V feels unfinished." No "I to V feels resolved" remains in the PDF, the preview PDF or gen.py's checks. It agrees with the V card and slide 16.
+2. **Page 9 disclosure and page 4: fixed.** The new bullet reads "Fixes to my text: the A minor Reference Card's closing line names its own chords (i, v, VII, VI), not I, V, vi; basslines post step 4 says 'V to I feels resolved' (I wrote 'I to V'); the setup uses one chord per measure, as in Unit 3 and every example (I wrote '4 chords, each lasting 4 measures')." It lists all three owner-text changes. The page 18 A minor card line matches the disclosure. Page 4 now says "4 chords, one per measure (the recipe below)", consistent with the recipe and all worked examples. The page 9 box fits the page with margin, and the earlier list items are intact (a stray `</p>` in the old bullet was also repaired).
+3. **Deck slide 7: fixed.** The tiles are shorter and the closing line sits well clear of them and above the footer rule, with no touching. gen.py now has a deck check that fails any text box within 0.1 in of a filled box.
+4. **Rebuilds: done and matching.** PDF (30 pp), deck PDF (22 pp), .pptx (22 slides) and preview PDF (4 pp) were rebuilt. The three files in the ZIP are byte-identical (cmp) to the folder copies. cover.png and preview-1..3.png are 2000 x 2000 and were regenerated (preview-2 and 3 changed), and slide7/slide17/exbass assets were refreshed.
+
+## Other checks
+
+- Rubrics: untouched in the diff. Both are still /15 (3 categories, 2-5, TOTAL / 15), word for word, in the PDF and the deck.
+- No Blind Brook, BBHS or Google Classroom strings in any PDF or the .pptx.
+- tpt.json: no change since round 1 (git diff empty) and it parses as valid JSON. The title is still 79 characters in UPLOAD.md.
+- Optional fixes made and correct. The C major bass bar now says "The last note leans into the next chord" (slide 17) and "G back to C in C major, G up to A in A minor" (page 29). Both are true, since G resolves to C or moves a step up to A. The "title and artist only" claim became "title (and artist) only" in the PDF, UPLOAD.md and gen.py, and page 29 now reads "title, and artist where given". UPLOAD.md's owner-question checklist also notes the V to I change.
+- Pagination unchanged: still 30 + 22 = 52 pages, and the page and slide references and the preview page choices are unaffected. Not blocking: slides 13, 21 and 22 still have empty lower thirds (optional item 3, left as polish).
+
+No new defects found.
+
+**Verdict: APPROVED**
