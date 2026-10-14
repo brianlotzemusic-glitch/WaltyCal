@@ -10,7 +10,7 @@ These fields follow the order of TpT's "Add a resource" form. `tools/tpt.js publ
 - Thumbnails, in this order: `cover.png`, `preview-1.png`, `preview-2.png`, `preview-3.png` (all 2000 × 2000).
 - Preview file: `bass-melody-writing-PREVIEW.pdf`, 4 watermarked pages.
 
-TpT takes one product file, so the PDF, the .pptx and the deck PDF go up together as the ZIP (`files.product` in tpt.json; `zip_contents` lists what is inside). No audio, video or Logic sessions are in the ZIP: songs are named by title and artist only, and the setup page shows how to make the chords-and-bassline file.
+TpT takes one product file, so the PDF, the .pptx and the deck PDF go up together as the ZIP (`files.product` in tpt.json; `zip_contents` lists what is inside). No audio, video or Logic sessions are in the ZIP: songs are named by title (and artist) only, and the setup page shows how to make the chords-and-bassline file.
 
 ## 1. Title
 
@@ -48,7 +48,7 @@ GOOD TO KNOW
 • Requires Logic Pro on a Mac. A MIDI keyboard helps (Musical Typing works too). Logic files are not included; students continue in their project from Unit 3, Chords by Ear (sold separately), or use your file, made from the 10-minute recipe on the setup page
 • Built for about 53-minute periods, grades 9-12; C major or A minor, white keys only; no music reading needed
 • The deck uses the free Oswald and Source Sans 3 fonts (built into Google Slides); install them for PowerPoint or Keynote, or present the PDF copy, which shows the intended look
-• Songs are named by title and artist only (Seven Nation Army by The White Stripes, Stand by Me by Ben E. King). Play them from your own YouTube or Spotify access. No audio, video, lyrics or album art are included
+• Songs are named by title only, with the artist for the two listening songs (Seven Nation Army by The White Stripes, Stand by Me by Ben E. King). Play them from your own YouTube or Spotify access. No audio, video, lyrics or album art are included
 • Every student page prints well in black and white
 
 Logic Pro is a trademark of Apple Inc., named only to describe compatibility. This resource is not affiliated with Apple.
@@ -91,5 +91,5 @@ Paid. Preview PDF (4 pages, watermarked "PREVIEW"): the 4-day pacing guide, Four
 
 - [ ] Cover and previews show "HUDSON BEAT" in type; PDF footers read "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
 - [ ] No school name, logo, student work, audio or Logic session anywhere (gen.py --check scans every output and every file in this folder).
-- [ ] Owner questions in the Designer's report answered (rubrics vs the course plan's "check-in only", the Part 4 post's "I to V feels resolved", Billie Jean as a bass-rule example, chord length in the Part 2 file, own progression vs "provided chords").
+- [ ] Owner questions in the Designer's report answered (rubrics vs the course plan's "check-in only", the Part 4 post's "I to V feels resolved" (changed to V to I after QA, disclosed on page 9), Billie Jean as a bass-rule example, chord length in the Part 2 file, own progression vs "provided chords").
 - [ ] Optional (Manager): a Google Slides copy of the deck can go in a NEW Drive folder "DMP Sale Decks"; never edit the owner's originals.

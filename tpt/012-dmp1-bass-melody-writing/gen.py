@@ -19,9 +19,9 @@ Owner text is kept word for word except: the LMS name ("your class page"), unit 
 Day 1 post's "Parts 1 and 2 of the packet" (Part 1 is in Unit 3), the Part 4 post's "Download today's Logic file" (the same
 file as the melody), and the Padlet lines (a class feedback board). All are disclosed on teacher notes page 1. Questions for
 the owner (kept as written, not changed): the Restructure's "no rubric, just a check-in" against the two /15 rubrics; the
-Part 4 post's "I to V feels resolved"; Billie Jean as an example of the bass rule; chord length in the Part 2 file.
+Part 4 post's "I to V feels resolved" (QA round 1: changed to V to I, disclosed); Billie Jean as an example of the bass rule; chord length in the Part 2 file.
 New here (disclosed): the four-methods page, the frequency separation mini-lesson, the Logic file recipe, worked examples,
-answer keys and the intro deck. Songs are named by title and artist only (find them on YouTube or Spotify). School names and
+answer keys and the intro deck. Songs are named by title (and artist) only (find them on YouTube or Spotify). School names and
 logos removed; no student work, names or grades; no Logic sessions, audio or video.
 
 Every scale, chord, Roman numeral, key signature, melody note and bass note in the kit is computed or checked by the small
@@ -251,7 +251,7 @@ MELODY = {
                 [("G4", 1), ("A4", .5), ("B4", .5), ("C5", 2)], [("B4", 1), ("C5", .5), ("B4", .5), ("G4", 2)]],
 }
 # Worked bassline (Part 4, Hudson Beat, original): a student-chosen progression from the card, one chord per measure.
-# Rhythm idea A = dotted quarter, eighth, half; idea B = four quarters; the last quarter of measure 4 walks back to the loop's first root.
+# Rhythm idea A = dotted quarter, eighth, half; idea B = four quarters; the last quarter of measure 4 (G) leads into the loop's first root.
 BASS_PROG = {"C major": ["I", "V", "vi", "IV"], "A minor": ["i", "VI", "VII", "i"]}
 BASS = {
     "C major": [[("C2", 1.5), ("C2", .5), ("C2", 2)], [("G1", 1.5), ("G1", .5), ("G1", 2)],
@@ -262,6 +262,8 @@ BASS = {
 BASS_IDEAS = ["Idea A", "Idea A", "Idea B", "Idea B + walk"]
 BASS_WHY = {"C major": "I start at home, the V pulls away, the vi turns tender, and the IV lifts it so the loop wants to start again.",
             "A minor": "I start at a darker home, the VI opens it up, and the VII drives back to the i, so it always comes home."}
+BASS_SIDE = ["Root on beat 1 of every chord", "Two rhythm ideas: A and B", "One note at a time: no overlaps",
+             "The last note leans into the next chord"]
 # Cover art: the file progression I-vi-IV-V with the worked melody and a rhythmic bassline (roots on every downbeat).
 HERO_BASS = [[("C2", 1.5), ("C2", .5), ("C2", 2)], [("A1", 1.5), ("A1", .5), ("A1", 2)],
              [("F1", 1), ("F1", 1), ("F1", 1), ("F1", 1)], [("G1", 1), ("G1", 1), ("G1", 1), ("B1", 1)]]
@@ -279,12 +281,12 @@ def flat(measures):
     return out
 
 
-# Songs (title and artist only; facts checked against the engine)
+# Songs (title and artist for the listening songs; facts checked against the engine)
 SNA = ("Seven Nation Army", "The White Stripes")
 SNA_RIFF = ["E", "E", "G", "E", "D", "C", "B"]      # the riff a stadium sings: seven notes, five different ones, all in E natural minor
 SBM = ("Stand by Me", "Ben E. King")
 SBM_FACT = ("A major", "A", ["I", "vi", "IV", "V"], ["A", "F#m", "D", "E"])   # the bass riff moves to each chord's root
-SONG_NOTE = "Songs are named by title and artist only. Play them from your own YouTube or Spotify access; no audio, video or lyrics are included."
+SONG_NOTE = "Songs are named by title (and artist) only. Play them from your own YouTube or Spotify access; no audio, video or lyrics are included."
 
 # ================================================================ the owner's words (lightly edited: LMS, unit and day labels)
 # ---- Part 2: Scales & Melody (project sheet)
@@ -393,7 +395,7 @@ WHAT2 = ("Part 2 makes the first musical demand: write something. The scale give
          "short, singable melody and a physical understanding of what a scale is for.")
 KEY2 = ("The key insight to deliver: a scale is not an exercise. It is the ingredient list for a key. Every note in a melody should come from "
         "the scale. If it does, it will sound like it belongs. That is the only rule.")
-FILE2 = ["C major or A minor key — white keys only for accessibility", "4 chords, each lasting 4 measures (or 2 measures for a shorter feel)",
+FILE2 = ["C major or A minor key — white keys only for accessibility", "4 chords, one per measure (the recipe below)",
          "Bassline using root notes of each chord", "Arrangement markers labeling each section",
          "No melody track — leave that blank for students to fill in"]
 WHAT4 = ["Part 4 has a reveal at its center. Students have been given basslines in every Logic file so far. Now they are asked to look carefully "
@@ -609,7 +611,7 @@ SLIDES = [
      "that feeling? The example shown is one possible plan."),
     (3, "pic", "Worked example: a bassline", "bassroll",
      "One possible answer for the plan on the last slide, I–V–vi–IV in C major. Every measure starts on the chord's root. Measures 1 and 2 use "
-     "one rhythm idea, measures 3 and 4 a second one, and the last note walks back toward C. One note at a time: no overlaps. It breathes: "
+     "one rhythm idea, measures 3 and 4 a second one, and the last note, G, leads back into the loop. One note at a time: no overlaps. It breathes: "
      "nothing busier than eighth notes."),
     (3, "steps", "Watch me: roots first, then rhythm", "New file: build your four chords from the card|Bass track: one whole-note root per chord|"
      "Play the bass alone, then with the chords|Add rhythm: at least two ideas|Zoom in: no overlapping notes",
@@ -1166,6 +1168,12 @@ def day34_page(n):
                 key="day34")
 
 
+# QA 012 round 1: owner-text changes made in the fix round, listed in the "How this kit differs" box
+TN1_DIFF = ("<li>Fixes to my text: the A minor Reference Card’s closing line names its own chords (i, v, VII, VI), not I, V, vi; basslines "
+            "post step 4 says “V to I feels resolved” (I wrote “I to V”); the setup uses one chord per measure, as in Unit 3 and every example "
+            "(I wrote “4 chords, each lasting 4 measures”).</li>")
+
+
 def tn1_page(n):
     inner = (f'<div class="tn big">{H2("Part one: a melody (Days 1–2)", True)}'
              f'<p>{WHAT2}</p><p>{KEY2}</p>'
@@ -1178,8 +1186,8 @@ def tn1_page(n):
              f'to the end of Day 2 (12 + 6 minutes instead of 15 + 10). Project sheets say Unit {UNIT} and the days.</li>'
              f'<li>Students write the melody in their Unit 3 project (it holds a bassline and four chords) or in your file, and analyze the bassline '
              f'in that same file, so the basslines post says “Open the Logic file from your melody project” instead of “Download today’s Logic file”. '
-             f'The melody post asks for Part 2 of the packet only (Part 1 is in Unit 3).</p>'
-             f'<li>My LMS is written as “your class page” and my Padlet steps as “the class feedback board”.</li>'
+             f'The melody post asks for Part 2 of the packet only (Part 1 is in Unit 3).</li>'
+             f'<li>My LMS is written as “your class page” and my Padlet steps as “the class feedback board”.</li>' + TN1_DIFF +
              f'<li>New: the four-ways page, the frequency separation mini-lesson, the Logic file recipe, the worked examples, the answer keys and '
              f'the deck.</li></ul></div></div>')
     return page("Teacher notes · the melody", "TEACHER NOTES", "1 of 4", inner, n, key="tn1")
@@ -1251,7 +1259,7 @@ POST2_STEPS = [
      "You are looking for the pattern. What does the bass note have to do with the chord?"),
     ("The reveal", "Read the rule in the packet. Does it match what you found in your analysis?", "Every bassline you have ever heard follows this rule."),
     ("Plan your progression", "Fill in the chord planning table in the packet. Choose 4 chords from your Reference Card using Roman numerals. Write "
-     "the root note for each.", "Think about what you want it to feel like. I to V feels resolved. Ending on V feels unfinished."),
+     "the root note for each.", "Think about what you want it to feel like. V to I feels resolved. Ending on V feels unfinished."),
     ("Write your bassline", "Open a new Logic file. Build your chord progression, then write a bassline that follows the roots. Start with just the "
      "root note for the full duration of each chord. Then add rhythm and interest.", "Get the roots right first. Add everything else second.")]
 
@@ -1536,7 +1544,7 @@ def bass_table(key):
 
 def exbass_page(n):
     inner = (f'<p style="font-size:10.2pt;margin:0 0 4pt">One possible answer for the bassline project. Idea A: dotted quarter, eighth, half. '
-             f'Idea B: four quarters. The last note of measure 4 walks back toward the first root of the loop.</p>'
+             f'Idea B: four quarters. The last note of measure 4 leads into the loop’s first chord: G back to C in C major, G up to A in A minor.</p>'
              f'{H2("C major · the plan")}{plan_table(("C major", BASS_PROG["C major"]))}'
              f'<p style="margin:5pt 0 2pt;font-size:10.4pt"><b>Why:</b> <i>{BASS_WHY["C major"]}</i></p>'
              f'<div style="width:5.7in;margin:4pt auto 0">{bassroll_svg("C major")}</div>{bass_table("C major")}'
@@ -1566,7 +1574,7 @@ def terms_page(n):
             f'<li>Curriculum, packet, reference cards, project sheets, rubrics, teacher notes and intro deck: original work by {STORE}, {BRAND}.</li>'
             f'<li>Piano-roll drawings, worked examples and layouts: original work, {BRAND}.</li>'
             f'<li>Text fonts: Oswald (The Oswald Project Authors) and Source Sans 3 (Adobe), SIL Open Font License 1.1.</li>'
-            f'<li>No audio, video, lyrics or album art are included. Songs are named for reference only (title and artist); play them from your own '
+            f'<li>No audio, video, lyrics or album art are included. Songs are named for reference only (title, and artist where given); play them from your own '
             f'YouTube or Spotify access. Song titles belong to their owners; this resource is not affiliated with or endorsed by the artists or their '
             f'labels.</li>'
             f'<li>Logic Pro is a trademark of Apple Inc., named only to describe compatibility; this resource is not affiliated with or endorsed by '
@@ -1726,17 +1734,16 @@ def build_deck(img):
         elif kind == "methods":
             for k, (a, b, c) in enumerate(METHODS):
                 col, row = k % 2, k // 2
-                x, y = 0.6 + col * 6.17, 1.98 + row * 2.42
-                tile(sl, x, y, 5.96, 2.22, f"{k + 1}  ·  {a}", f"Good when {c}.", home=(k == 0), hs=30, ss=20)
-            text(sl, 0.6, 6.55, 12.1, 0.4, "Whichever way: 2 or 4 measures, notes from your scale, start or end on the root.", 18, "Source Sans 3",
+                x, y = 0.6 + col * 6.17, 1.98 + row * 2.18     # QA 012 round 1: shorter tiles leave a clear gap above the closing line
+                tile(sl, x, y, 5.96, 2.0, f"{k + 1}  ·  {a}", f"Good when {c}.", home=(k == 0), hs=30, ss=20)
+            text(sl, 0.6, 6.42, 12.1, 0.4, "Whichever way: 2 or 4 measures, notes from your scale, start or end on the root.", 18, "Source Sans 3",
                  False, BLACK, align=PP_ALIGN.CENTER)
         elif kind == "pic":
             pw_, ph_ = img[body][1]
             yb = pic(sl, body, 0.6, 1.98, min(7.6 if body == "melroll" else 8.2, (6.85 - 1.98) * pw_ / ph_))
             side = (["Blue: your melody, one note at a time", "Black: the bassline already in the file", "Each measure starts on a note of "
                      "its chord", "Same rhythm every measure: easy to remember"] if body == "melroll" else
-                    ["Root on beat 1 of every chord", "Two rhythm ideas: A and B", "One note at a time: no overlaps",
-                     "The last note walks back home"])
+                    BASS_SIDE)
             xs = 8.55 if body == "melroll" else 9.1
             for k, s in enumerate(side):
                 yy = 2.1 + k * 1.12
@@ -2235,8 +2242,22 @@ def verify_data():
         for it in lst:
             if "Google" in it:
                 errs.append("an LMS name was left in a list")
-    if not any("Download the provided Logic file" in r for r in REQ2) or not any("I to V feels resolved" in s[2] for s in POST2_STEPS):
-        errs.append("owner wording changed: keep 'Download the provided Logic file' and 'I to V feels resolved' (flagged to the owner)")
+    if not any("Download the provided Logic file" in r for r in REQ2):
+        errs.append("owner wording changed: keep 'Download the provided Logic file' (flagged to the owner)")
+    # QA 012 round 1: the Part 4 post's tip says V to I resolves (the owner's "I to V" contradicted the V card and slide 16)
+    if any("I to V feels resolved" in s[2] for s in POST2_STEPS) or not any("V to I feels resolved. Ending on V feels unfinished." in s[2]
+                                                                           for s in POST2_STEPS):
+        errs.append("Part 4 post step 4 must read 'V to I feels resolved. Ending on V feels unfinished.' (disclosed on teacher notes page 1)")
+    # QA 012 round 1: the setup list says one chord per measure, matching the recipe and every worked example
+    if any("each lasting 4 measures" in x for x in FILE2) or not any("one per measure" in x for x in FILE2):
+        errs.append("setup page: FILE2 must say one chord per measure (not 'each lasting 4 measures')")
+    for need in ("V to I", "each lasting 4 measures", "A minor Reference Card"):
+        if need not in TN1_DIFF:
+            errs.append(f"teacher notes page 1 disclosure: missing '{need}'")
+    if any("walks back home" in x for x in BASS_SIDE) or "walks back toward C" in " ".join(n for *_, n in SLIDES):
+        errs.append("bass slide: the C major bar ends on G (V), so do not say the last note walks back home / toward C")
+    if "title and artist only" in SONG_NOTE:
+        errs.append("SONG_NOTE: two owner-text songs are title only; say 'title (and artist)'")
     # pacing: 4 days, blocks 0-53, every deck slide in exactly one block of the day the slide says
     if len(DAYS) != DAYS_N or [d["n"] for d in DAYS] != list(range(1, DAYS_N + 1)) or len(DECK_DAY_LINES) != DAYS_N:
         errs.append(f"pacing must be {DAYS_N} days (and {DAYS_N} on the deck)")
@@ -2349,6 +2370,20 @@ def deck_overflow(prs):
                 if sh.shape_type == 17:   # text boxes (not text on filled shapes)
                     boxes.append((sh.left, sh.top, sh.left + sh.width, sh.top + sh.height, sh.text_frame.text[:20]))
         pics = [(sh.left, sh.top, sh.left + sh.width, sh.top + sh.height) for sh in s.shapes if sh.shape_type == 13]
+        # QA 012 round 1 (slide 7): a text box may sit inside a filled shape, or clear of it by 0.1 in, never touching its edge
+        pad = 914400 // 10
+        fills = [(sh.left, sh.top, sh.left + sh.width, sh.top + sh.height) for sh in s.shapes
+                 if sh.shape_type == 1 and sh.width > 914400 // 2 and sh.height > 914400 // 2]
+        def inside(A, F):
+            return A[0] >= F[0] - 12700 and A[2] <= F[2] + 12700 and A[1] >= F[1] - 12700 and A[3] <= F[3] + 12700
+        for A in boxes:
+            if any(inside(A, F) for F in fills):
+                continue        # a label on a box
+            for F in fills:
+                ox = min(A[2], F[2]) - max(A[0], F[0])
+                near = min(A[3], F[3] + pad) - max(A[1], F[1] - pad) > 0
+                if ox > 12700 and near:
+                    errs.append(f"deck slide {i}: text '{A[4]}' touches a box (needs 0.1 in clearance)")
         for P in pics:
             for A in boxes:
                 if min(A[2], P[2]) - max(A[0], P[0]) > 12700 * 4 and min(A[3], P[3]) - max(A[1], P[1]) > 12700 * 4:
