@@ -1,21 +1,26 @@
 {
-  "ran_at": "2026-10-13T10:39:47.331Z",
-  "published": [],
-  "failed": [
+  "ran_at": "2026-10-14T20:27:56.013Z",
+  "published": [
     {
       "item": "009-dmp1-spooky-tunes",
-      "error": "publish stopped at step \"open the listing form\" (nothing was submitted): locator.waitFor: Timeout 30000ms exceeded. Screenshot: tpt/_publish/009-dmp1-spooky-tunes-failed.png File inputs on the page: (none)"
+      "url": "https://www.teacherspayteachers.com/Product/Film-Scoring-in-Logic-Pro-Halloween-Music-Production-Project-High-School-17953527"
     },
     {
       "item": "010-dmp1-song-form",
-      "error": "publish stopped at step \"open the listing form\" (nothing was submitted): locator.waitFor: Timeout 30000ms exceeded. Screenshot: tpt/_publish/010-dmp1-song-form-failed.png File inputs on the page: (none)"
+      "url": "https://www.teacherspayteachers.com/Product/Song-Structure-in-Logic-Pro-Pop-Song-Form-Unit-High-School-Music-Technology-17953536"
+    },
+    {
+      "item": "011-dmp1-chords-by-ear",
+      "url": "https://www.teacherspayteachers.com/Product/Chord-Progressions-in-Logic-Pro-Roman-Numerals-High-School-Music-Technology-17953543"
     }
   ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
     "009-dmp1-spooky-tunes",
-    "010-dmp1-song-form"
+    "010-dmp1-song-form",
+    "011-dmp1-chords-by-ear"
   ],
-  "ok": false
+  "ok": true
 }
