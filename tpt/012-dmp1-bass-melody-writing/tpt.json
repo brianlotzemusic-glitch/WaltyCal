@@ -1,0 +1,35 @@
+{
+  "price": "10.00",
+  "license_price": "10.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 52,
+  "answer_key": "Included",
+  "zip_contents": [
+    "bass-melody-writing.pdf",
+    "bass-melody-writing-intro-deck.pptx",
+    "bass-melody-writing-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "bass-melody-writing.zip",
+    "preview": "bass-melody-writing-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

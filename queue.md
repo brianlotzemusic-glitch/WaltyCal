@@ -29,7 +29,7 @@ Q4 deadline: holiday themes need to be listed by about Nov 15 to sell this seaso
 - [x] [dmp] DMP1 Unit 6: Spooky Tunes (scoring to picture, reverb, $12) (built 12 Oct, awaiting QA; tpt/009-dmp1-spooky-tunes, $0 AI) - build 2nd (seasonal: before Halloween if possible)
 - [x] [dmp] DMP1 Unit 5: Song Form ($10) (built 12 Oct, awaiting QA; tpt/010-dmp1-song-form, $0 AI) - build 3rd
 - [x] [dmp] DMP1 Unit 3: Chords by Ear ($12; Units 3/4 split from Drive '3 - The Building Blocks') (built 13 Oct, awaiting QA; tpt/011-dmp1-chords-by-ear, $0 AI) - build 4th
-- [ ] [dmp] DMP1 Unit 4: Bass & Melody Writing ($10; Units 3/4 split from Drive '3 - The Building Blocks') - build 5th
+- [x] [dmp] DMP1 Unit 4: Bass & Melody Writing ($10; Units 3/4 split from Drive '3 - The Building Blocks') (built 14 Oct, awaiting QA; tpt/012-dmp1-bass-melody-writing, $0 AI) - build 5th
 - [ ] [dmp] DMP1 Unit 2: Stems & Grooves ($10) - build 6th
 - [ ] [dmp] Rest of the build order in tpt/DMP-INVENTORY.md section 4 (DMP2 kits, then DMP1/DMP2/complete bundles)
 - [ ] [tpt] Solfege Snowball Melody Cards: sol-mi-la-do-re, pentatonic patterns to read and sing, build-a-melody mats (grades 2–4; task cards; price ~$4; list by 20 Nov; evidence: winter solfege games $3 (Boom) and solfege composition boards (TES) on other marketplaces, few reviews, so the niche is open (est., web 9 Oct); original patterns only)
