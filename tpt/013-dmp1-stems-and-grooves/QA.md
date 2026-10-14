@@ -79,3 +79,30 @@ cover.png and preview-1..3.png are 2000 x 2000 with the HUDSON BEAT line, a heav
 3. Consider "feedback board" rather than "(I use Padlet)" on pages 4 and 12 (as 010 did); the credits already disclaim it.
 
 **Verdict: REJECTED**
+
+---
+
+# Round 2
+
+QA re-reviewed on 14 Oct 2026 after the Designer's fixes (commit 67678bc). `python3 gen.py --check` passes (it now also fails if the round 1 wording returns) and leaves the tree unchanged. I rendered pages 5, 6, 12 and 27 at 100 dpi, diffed the text layer of all three PDFs against the round 1 build, and viewed preview-2.png.
+
+## Round 1 required fixes
+
+1. **Page 6 chords: fixed.** Now "Every chord is a white-key chord of C major: I, iii, IV, V and vi", generated from the progressions, and it matches the tables (iii in the Foundation B section) and the spelling line.
+2. **A, B, A, B / "word for word" / Day 3 exit question: fixed and disclosed.** Page 12 no longer says "word for word" ("kept as I wrote it"). Two new bullets: the owner's "A, B, A, B, etc." is an example of labelling kept as written, the recipe stem and worked example are A, A, B, A (pages 6 and 25; page 25 does say A, A, B, A), and students may order A and B freely; and the Day 3 exit question and the Day 4 early-finisher reverb bus are listed as additions. The page fits with no overflow. (The disclosure is on the teacher page only, not on the student pages, which still say "A, B, A, B, etc." as the owner wrote them. That was an acceptable option in round 1.)
+3. **Page 5 wording: fixed.** Heading is now "A multitrack library (check its terms first)", with the text that some libraries allow personal mixing practice but not handing files to students and "If the terms allow it". "allows classroom use" and "Students can never tell you made it" are gone.
+
+## Other checks
+
+- Darker INTRO/OUTRO pills (#6e6e6e) show on page 27, slide 14 and preview-2.png; the white text is now readable.
+- Text-layer diff vs round 1: only the changes above (pages 5, 6, 12). The deck PDF and the preview PDF text are unchanged. Rubric is still /25 (5 x 2-5) and other owner wording is unchanged.
+- Files: PDF 28 pages, deck PDF 22 pages, .pptx 22 slides with notes on all, preview PDF 4 pages (rebuilt), cover and preview-1..3 are 2000 x 2000 and rebuilt. The ZIP holds the PDF, .pptx and deck PDF, byte-identical (cmp) to the folder files.
+- grep for Blind Brook / Brello / BBHS in the folder (excluding this QA file), all three PDFs and the pptx XML: no hits.
+- tpt.json: unchanged from round 1 and valid JSON (price 10.00, pages 50, six files, zip_contents).
+
+## Minor, not blocking
+
+- Page 5's box says "use audio you have the right to use in class (page 5)", a self-reference on page 5 (it points at the "Where to get stems" text below).
+- Optional round 1 items 2 and 3 (larger deck diagrams, "feedback board" wording) were not done; both are polish.
+
+**Verdict: APPROVED**
