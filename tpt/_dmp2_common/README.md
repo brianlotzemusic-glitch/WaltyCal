@@ -13,10 +13,10 @@ Only content, as module-level names, then `dmp2.main(sys.modules[__name__])`. Ru
 
 | Group | Names |
 | --- | --- |
-| Product | `HERE`, `SLUG`, `TITLE`, `ACCENT`, `ACC_LIGHT` (one accent per product), `PRICE`, `CLASSES` (7), `GRADES_TEXT`, `GRADE_SLUGS`, `TAGS`, `ANSWER_KEY` (`"Included"` or `None`), `ZIP_DIR`, `ZIP_DATE` |
+| Product | `HERE`, `SLUG`, `TITLE`, `ACCENT`, `ACC_LIGHT` (one accent per product), `PRICE`, `CLASSES` (7), `GRADES_TEXT` / `GRADE_SLUGS` (optional; default and only accepted value 9–12 / 9th-12th, per METADATA-GUIDE), `TAGS`, `ANSWER_KEY` (`"Included"` or `None`), `ZIP_DIR`, `ZIP_DATE` |
 | Listing | `LISTING_TITLE` (<= 80, "Logic Pro" in the first 30), `DESC_START` (first words of the description), `DESC_MUST` |
 | Owner's sheet | `PROJ_LINE`, `TYPE`, `OVERVIEW`, `GOALS`, `VOCAB`, `REQS`, `STEPS`, `TIPS`, `CHECK`, `RUBRIC` (category, [descriptor per level]), `LEVELS`, `RUBRIC_TOTAL`, `RUBRIC_NOTE`, `RUBRIC_SHORT` (deck) |
-| Owner's teacher notes | `TN_REINFORCES`, `STRUGGLES`, `VAR_EASY`, `VAR_HARD`, `RESOURCES` (owner item, what the kit gives instead), `TN_NOTE`, `PACING` |
+| Owner's teacher notes | `TN_REINFORCES`, `STRUGGLES`, `VAR_EASY`, `VAR_HARD`, `RESOURCES` (owner item, what the kit gives instead), `TN_NOTE`, `PACING`, `GRADING` (only lines about the owner's rubric; each must say "rubric"), optional `GRADING_TIPS` (the kit's own suggestions, printed under the label "Suggestions from this kit, not part of my rubric:") |
 | Disclosure | `CHANGES` (every wording change), `CHANGES_MUST_MENTION`, `KEPT`, `NEW_MATERIAL` |
 | Deck | `SLIDES` = (class, kind, title, body, notes); kinds: title, listen, bullets, days, steps, pic, check, rubric, closer. `DRAWINGS` (name -> function returning (svg body, w, h); must include `hero`), `DRAWING_PX`, `SIDE`, `DECK_STRAP`, `RUBRIC_SLIDE_LINE` |
 | Pages | `PLAN` (page keys, cover first, terms last, must include `changes`), `PAGES` (custom page builders), `PREVIEW_PICKS` (4), `SHOTS1/2/3` (preview images) |
@@ -42,8 +42,11 @@ Standard pages: `pacing`, `tn1`, `tn2`, `changes`, `proj1`–`proj3` (the owner'
 - Drawings: every label fits its room; labels on one row do not overlap.
 - Files: ZIP holds exactly the PDF, .pptx and deck PDF (current copies, no audio or sessions); preview 4 watermarked pages; images
   2000 x 2000; only Oswald/Source Sans 3, embedded.
+- No unlabeled additions: the kit's grading tips print under their label; never claim "word for word", "word by word",
+  "word-for-word" or "verbatim" (PDF, deck text, speaker notes, description). When the deck shortens the owner's wording (a step as short
+  slide lines), say "shortened" in the notes and list it in `CHANGES`.
 - Banned strings anywhere (school name and initials, the LMS name, the owner's unsellable audio titles) plus `BANNED_EXTRA`.
-- `tpt.json`: current, proven values only (grades 9th-12th slugs, tags from 001-013, format PDF, answer key "Included" or absent);
+- `tpt.json`: current, proven values only (grades exactly 9th-12th, tags from 001-013, format PDF, answer key "Included" or absent);
   `UPLOAD.md`: title block and exact character count, SEO opening, disclosure line last; no `release` or `uploaded` file.
 
 Each kit adds its own checks in `verify_content()` (owner list counts, music arithmetic, songs named) and `verify_outputs()`.

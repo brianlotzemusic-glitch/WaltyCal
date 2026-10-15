@@ -32,6 +32,10 @@ COPY = f"© {YEAR} {STORE} · {BRAND} · For single-classroom use"
 TAX = "Other Digital Goods - No Physical Media"
 PROVEN_TAGS = {"Halloween", "Autumn", "Winter", "Thanksgiving"}          # tag texts TpT has accepted (items 001-013)
 PROVEN_GRADES = {f"{g}-grade" for g in ("9th", "10th", "11th", "12th")}   # slugs used on 008-013
+GRADES = (["9th-grade", "10th-grade", "11th-grade", "12th-grade"], "9–12")  # METADATA-GUIDE (a): every DMP kit lists 9th-12th
+# The kit's own grading suggestions (K.GRADING_TIPS) print under this label, so they never read as the owner's rubric.
+GRADING_TIPS_LABEL = "Suggestions from this kit, not part of my rubric:"
+CLAIMS = ("word for word", "word by word", "word-for-word", "verbatim")   # never claimed anywhere (PDF, deck, notes, description)
 # Strings that must never appear in any output or kit file (split so this file never contains them).
 BANNED = ["Blind" + " Brook", "BB" + "HS", "blind" + "brook", "Google" + " Classroom", "Thunder" + "struck", "London" + "Bounce",
           "Falling" + " For U", "Brello", "nsd" + ".org"]
@@ -432,6 +436,8 @@ def tn2_page(n):
     inner = (f'<div class="tn">{H2("Suggested resources", True)}<table class="t" style="font-size:10.6pt"><tr><th style="width:44%">My list</th>'
              f'<th>In this kit</th></tr>{res}</table>'
              f'{H2("How to grade")}<ul>' + "".join(f"<li>{fill(g)}</li>" for g in K.GRADING) + '</ul>'
+             + (f'<p style="margin:4pt 0 2pt"><i>{GRADING_TIPS_LABEL}</i></p><ul>'
+                + "".join(f"<li>{fill(g)}</li>" for g in K.GRADING_TIPS) + '</ul>' if getattr(K, "GRADING_TIPS", None) else '') +
              f'{H2("Notes / observations")}<p>{K.TN_NOTE}</p></div><div class="lines"></div>')
     return page("Teacher notes · resources, grading, notes", "TEACHER NOTES", "2 of 2", inner, n, key="tn2")
 
@@ -1065,6 +1071,8 @@ def verify_data():
             errs.append(f"preview {i} headline/subtitle too wide")
     if set(K.GRADE_SLUGS) - PROVEN_GRADES or not 1 <= len(K.GRADE_SLUGS) <= 4:
         errs.append("grades: 1-4 proven slugs only")
+    if (list(K.GRADE_SLUGS), K.GRADES_TEXT) != GRADES:
+        errs.append("grades: METADATA-GUIDE prescribes 9th-12th (GRADE_SLUGS 9th..12th, GRADES_TEXT '9–12')")
     if K.ANSWER_KEY not in (None, "Included"):
         errs.append("answer_key: only the proven 'Included', or None")
     if not set(K.TAGS) <= PROVEN_TAGS or not 1 <= len(K.TAGS) <= 6:
@@ -1276,8 +1284,13 @@ def verify_files():
             errs.append(f"'What changed' page must mention '{need}'")
     if re.search(r"@[A-Z]{3,}", alltext):
         errs.append("an @PLACEHOLDER was printed unfilled")
-    if "word for word" in alltext.lower():
-        errs.append("never claim 'word for word'")
+    for claim in CLAIMS:
+        if claim in alltext.lower() or claim in alldeck.lower():
+            errs.append(f"never claim '{claim}' (PDF, deck or speaker notes)")
+    if any("rubric" not in g.lower() for g in K.GRADING):
+        errs.append("GRADING holds only lines about the owner's rubric; put the kit's own tips in GRADING_TIPS (printed under a label)")
+    if getattr(K, "GRADING_TIPS", None) and GRADING_TIPS_LABEL not in flat_[IX("tn2") - 1]:
+        errs.append("teacher notes 2: the kit's grading tips must print under GRADING_TIPS_LABEL")
     ptxt = [pg.extract_text() for pg in PdfReader(F["preview"]).pages]
     if sum("PREVIEW" in t for t in ptxt) != 4:
         errs.append("preview PDF: watermark missing on some pages")
@@ -1335,7 +1348,7 @@ def verify_files():
                 errs.append(f"UPLOAD.md description: missing '{need}'")
         if re.search(r"  +\S|\s[,.]\s|\bteh\b|\s{2,}$", desc, re.M):
             errs.append("UPLOAD.md description: double space or stray punctuation")
-        if "any DAW" in desc or "word for word" in desc.lower():
+        if "any DAW" in desc or any(c in desc.lower() for c in CLAIMS):
             errs.append("UPLOAD.md description: unverifiable claim")
     for need in (f"${K.PRICE}", f"{len(K.PLAN)} pages", os.path.basename(F["zip"]), os.path.basename(F["deck"]), DISCLOSURE):
         if need not in up_:
@@ -1364,6 +1377,9 @@ def check():
 def main(kit):
     global K
     K = kit
+    for nm, default in (("GRADE_SLUGS", list(GRADES[0])), ("GRADES_TEXT", GRADES[1])):   # default grades: 9th-12th
+        if not hasattr(K, nm):
+            setattr(K, nm, default)
     if "--check" in sys.argv:
         check()
     else:

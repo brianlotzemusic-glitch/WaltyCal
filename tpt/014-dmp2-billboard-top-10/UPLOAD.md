@@ -46,7 +46,7 @@ GOOD TO KNOW
 • Requires Logic Pro on a Mac (a current version). A MIDI keyboard helps but is not required
 • There are no songs in this resource: students choose from the current Billboard Top 10 (billboard.com) and listen on YouTube or Spotify through your own access. Preview the songs for your school
 • Rubric: 5 categories scored 1-5, /25; the final grade is the average of the student's and the teacher's score
-• Grades 10-12 (the second year of my music production course); no music reading needed
+• Grades 9-12 (the second year of my music production course); no music reading needed
 • The deck uses the free Oswald and Source Sans 3 fonts (built into Google Slides); install them for PowerPoint or Keynote, or present the PDF copy, which shows the intended look
 • A "What changed from the original" page lists every change to my classroom wording
 • Every student page prints well in black and white
@@ -58,7 +58,7 @@ Designed with the help of digital and AI tools, and checked by hand.
 
 ## 3. Grades
 
-10th, 11th, 12th (`10th-grade`, `11th-grade`, `12th-grade` in tpt.json). These slugs are proven on items 008-013. DMP2 is the owner's second-year course, so 9th is left out; add `9th-grade` if the owner wants it (the slug is proven too).
+9th, 10th, 11th, 12th (`9th-grade`, `10th-grade`, `11th-grade`, `12th-grade` in tpt.json), as tpt/METADATA-GUIDE.md prescribes for every DMP item. These slugs are proven on items 008-013. DMP2 is the owner's second-year course (the PDF and description say so); some schools take it in 9th grade.
 
 ## 4. Subjects and tags
 
@@ -92,5 +92,5 @@ Paid. Preview PDF (4 pages, watermarked "PREVIEW"): the 7-class pacing guide, th
 
 - [ ] Cover and previews show "HUDSON BEAT" in type; PDF footers read "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
 - [ ] No school name, logo, student work, songs, audio or Logic session anywhere (`gen.py --check` scans every output and every file in this folder).
-- [ ] Owner questions in the Designer's report answered (see log/ACTION-LOG.md, 15 Oct: "Billboard" in the title and on the cover; the rubric's "reflection" wording with no reflection task on the sheet; the 2023 Billboard doc and form from another teacher's account in Drive; the grade range).
+- [ ] Owner questions in the Designer's report answered (see log/ACTION-LOG.md, 15 Oct: "Billboard" in the title and on the cover; the rubric's "reflection" wording with no reflection task on the sheet; the 2023 Billboard doc and form from another teacher's account in Drive).
 - [ ] Optional (Manager): a Google Slides copy of the deck can go in a NEW Drive folder "DMP Sale Decks"; never edit the owner's originals.

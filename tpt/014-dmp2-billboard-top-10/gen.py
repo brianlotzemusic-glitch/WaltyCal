@@ -26,8 +26,9 @@ ACCENT = "#B0127A"          # this product's single accent: magenta (008 red, 00
 ACC_LIGHT = "#F6C3E4"
 PRICE = "12.00"
 CLASSES = 7
-GRADES_TEXT = "10–12"
-GRADE_SLUGS = ["10th-grade", "11th-grade", "12th-grade"]   # proven slugs (008-013); DMP2 is the second-year course
+GRADES_TEXT = "9–12"
+GRADE_SLUGS = ["9th-grade", "10th-grade", "11th-grade", "12th-grade"]   # METADATA-GUIDE (a); proven slugs (008-013).
+#   DMP2 is the second-year course (page 3 says so); some schools take it in 9th grade.
 TAGS = ["Autumn"]                                           # the only proven tag that fits a fall-semester course; extras in UPLOAD.md
 ANSWER_KEY = None            # no answer key in this kit; "Included" is the only proven option text
 LISTING_TITLE = "Song Form in Logic Pro | Billboard Top 10 Remake | High School Music Technology"
@@ -126,8 +127,9 @@ RESOURCES = [("Google Form for Billboard analysis (link on your class page)", "T
 TN_NOTE = ("This project works well early when students need structure. The Top 10 analysis and the song form and drum pattern pages "
            "front-load the analytical work.")
 GRADING = ["My rubric: five categories, each scored 1–5, /25 (page @RUBRIC). Students score themselves first; the final grade is the "
-           "average of their score and yours.",
-           "Composition &amp; Structure: hold the student’s Song Form map next to their Arrangement Markers. Do the sections, bar counts and "
+           "average of their score and yours."]
+# kit suggestions, NOT the owner's rubric: printed under a "Suggestions from this kit" label (dmp2.GRADING_TIPS_LABEL)
+GRADING_TIPS = ["Composition &amp; Structure: hold the student’s Song Form map next to their Arrangement Markers. Do the sections, bar counts and "
            "tempo match the original?",
            "Technical Skill: are the drums programmed by the student (percussion loops only as accents), with some velocity variation?",
            "Sound Design &amp; Mix: solo a few tracks. Is there EQ on every track, panning for width, and nothing clipping on the loudest "
@@ -174,16 +176,19 @@ CHANGES = [
     "Page numbers are added to steps 1–3 (step 3 points to the drum pattern page, page @DRUMS).",
     "My closing note says “The Top 10 analysis and the song form and drum pattern pages front-load the analytical work” instead of "
     "“The Google Form and spreadsheets front-load the analytical work”.",
-    "My pacing guide’s “Classes 3–5” row is shown once across the Class 3, 4 and 5 rows, so each class can name its slides.",
-    "Layout only: the rubric’s Name and Date lines moved to the top of the page; the Notes box became ruled lines.",
+    "My pacing guide’s “Classes 3–5” row spans the Class 3, 4 and 5 rows, so each class can name its slides.",
+    "Layout only: the rubric’s Name and Date lines moved to the top; its Notes box became ruled lines.",
+    "The intro deck shortens my wording (full wording on pages @PROJ1–@PROJ3): step 6 becomes four short lines on slide 13 (“EQ "
+    "every track · Pan for width · Adjust levels · Add plug-ins for authenticity”); slides 3, 5, 11, 12 and 14 condense the emulation "
+    "definition, steps 1, 4 and 5 and the checklist.",
 ]
-CHANGES_MUST_MENTION = ["your class page", "Google Form", "Song Form spreadsheet", "Page numbers", "front-load", "Classes 3–5", "Layout only"]
+CHANGES_MUST_MENTION = ["your class page", "Google Form", "Song Form spreadsheet", "Page numbers", "front-load", "Classes 3–5", "Layout only", "intro deck shortens", "step 6 becomes four short lines on slide 13"]
 KEPT = ("Everything else from my three documents is kept as I wrote it: the overview, goals, vocabulary, requirements, steps, tips, "
         "checklist and file name (“Your Name – Billboard Top 10”), the rubric (five categories scored 1–5, /25, the average of the "
         "student’s and the teacher’s score), what the project reinforces, the four common struggles, the variations, my resource list "
         "and my day-by-day pacing, and the project menu entry quoted on page @OVERVIEW. No requirement or rubric row is added.")
-NEW_MATERIAL = ("Everything else is new and is written to support my sheets, not to change them: how to use the kit, the overview and setup "
-                "pages, the teacher moves and slide numbers in the pacing guide, the grading tips, the Logic quick reference, the worked "
+NEW_MATERIAL = ("Everything else is new and supports my sheets without changing them: how to use the kit, the overview and setup "
+                "pages, the teacher moves and slide numbers in the pacing guide, the grading suggestions, the Logic quick reference, the worked "
                 "example (an original practice map, not a real song), the Top 10 analysis, the Song Form map and the drum pattern pages, "
                 "the vocabulary page, the presentation planner and the intro deck. None of these adds a requirement or a rubric row.")
 
@@ -336,7 +341,8 @@ SLIDES = [
      "don’t try to perfectly match every single sound; focus on capturing the vibe, structure and energy. Class 5 is a full working day "
      "with no new slide: refine the arrangement."),
     (6, "bullets", "Mix and refine", "EQ every track|Pan for width|Adjust levels|Add plug-ins for authenticity",
-     "Class 6, final mix and bounce. Step 6 of the sheet, word by word on the slide. My notes warn that students copy the arrangement but "
+     "Class 6, final mix and bounce. The four parts of step 6 of the sheet, shortened to fit the slide; the full step is on the "
+     "project sheet. My notes warn that students copy the arrangement but "
      "ignore the mix, and the EQ and panning step often gets skipped, so make it visible: ask every student to show you one EQ and one pan "
      "change before they bounce."),
     (6, "check", "What you turn in", "Top 10 analysis completed|Song form as Arrangement Markers in Logic|Bounced .mp3 or .wav uploaded|"
@@ -668,6 +674,21 @@ def verify_outputs(flat, stext, notes):
                  "original practice map, not a real song", "Your Name – Billboard Top 10", "Final Grade = Average of Student + Teacher"):
         if need not in txt:
             errs.append(f"PDF must say: '{need}'")
+    # QA round 1 fixes: grades 9-12 (METADATA-GUIDE), slide 13 note truthful about the shortened step 6, grading tips labelled
+    if GRADES_TEXT != "9–12" or "Grades 9–12" not in txt or "10–12" in txt or "second-year course" not in txt:
+        errs.append("PDF: 'Grades 9–12' and 'the second-year course' (no '10–12')")
+    up = open(os.path.join(HERE, "UPLOAD.md"), encoding="utf8").read()
+    if "Grades 9-12" not in up or "10-12" in up or "`9th-grade`, `10th-grade`, `11th-grade`, `12th-grade`" not in up:
+        errs.append("UPLOAD.md: grades 9-12 in the description and section 3")
+    if "shortened" not in notes[12] or "word by word" in notes[12] or SLIDES[12][2] != "Mix and refine":
+        errs.append("deck slide 13 notes: must say step 6 is shortened, never 'word by word'")
+    ch = flat[D.IX("changes") - 1]
+    if "slide 13" not in ch or "EQ every track · Pan for width · Adjust levels · Add plug-ins for authenticity" not in ch:
+        errs.append("'What changed' page must list the shortened step 6 on slide 13")
+    tn2 = flat[D.IX("tn2") - 1]
+    lab = tn2.find(D.GRADING_TIPS_LABEL)
+    if lab < 0 or tn2.find("nothing clipping") < lab or any("clipping" in g for g in GRADING):
+        errs.append("page tn2: 'nothing clipping' must sit under the kit-suggestions label, never in the owner's rubric line")
     for gone in ("Google Form analysis", "Song Form spreadsheet before", "complete Google Form"):
         if gone in txt and gone not in flat[D.IX("changes") - 1]:
             errs.append(f"old wording '{gone}' outside the changes page")
@@ -678,7 +699,8 @@ def check_summary():
     return (f"Practice map {TOTAL_BARS} bars at {TEMPO} BPM = {mmss(TOTAL_BARS * bar_secs())} ({BEATS_15S} beats in 15 s x 4); verse and "
             f"chorus grooves checked (kick on 1, snare on 2 and 4, chorus kick every beat, clap = snare), velocity lane matches the "
             f"hi-hats; the owner's lists counted (4 goals, 5 terms, 6 requirements, 7 steps, 4 tips, 7 checklist items, 4 struggles); "
-            f"{len(CHANGES)} wording changes disclosed.")
+            f"{len(CHANGES)} wording changes disclosed (incl. the deck's shortened step 6); grades 9-12; grading tips labelled as "
+            f"suggestions.")
 
 
 if __name__ == "__main__":
