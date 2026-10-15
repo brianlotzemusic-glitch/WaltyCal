@@ -1,21 +1,16 @@
 {
-  "ran_at": "2026-10-15T14:56:51.851Z",
-  "published": [
+  "ran_at": "2026-10-15T18:51:22.606Z",
+  "published": [],
+  "failed": [
     {
-      "item": "012-dmp1-bass-melody-writing",
-      "url": "https://www.teacherspayteachers.com/Product/Melody-Writing-in-Logic-Pro-Basslines-Scales-High-School-Music-Technology-17961588"
-    },
-    {
-      "item": "013-dmp1-stems-and-grooves",
-      "url": "https://www.teacherspayteachers.com/Product/Drum-Fills-in-Logic-Pro-Stems-Transitions-High-School-Music-Technology-17961597"
+      "item": "014-dmp2-billboard-top-10",
+      "error": "still on the form 2 minutes after Submit; check My Products on TpT before retrying, it may have been created. TpT says: (nothing) Screenshot: tpt/_publish/014-dmp2-billboard-top-10-submit-failed.png"
     }
   ],
-  "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "012-dmp1-bass-melody-writing",
-    "013-dmp1-stems-and-grooves"
+    "014-dmp2-billboard-top-10"
   ],
-  "ok": true
+  "ok": false
 }
