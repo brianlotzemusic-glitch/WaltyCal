@@ -1,26 +1,21 @@
 {
-  "ran_at": "2026-10-14T20:27:56.013Z",
+  "ran_at": "2026-10-15T14:56:51.851Z",
   "published": [
     {
-      "item": "009-dmp1-spooky-tunes",
-      "url": "https://www.teacherspayteachers.com/Product/Film-Scoring-in-Logic-Pro-Halloween-Music-Production-Project-High-School-17953527"
+      "item": "012-dmp1-bass-melody-writing",
+      "url": "https://www.teacherspayteachers.com/Product/Melody-Writing-in-Logic-Pro-Basslines-Scales-High-School-Music-Technology-17961588"
     },
     {
-      "item": "010-dmp1-song-form",
-      "url": "https://www.teacherspayteachers.com/Product/Song-Structure-in-Logic-Pro-Pop-Song-Form-Unit-High-School-Music-Technology-17953536"
-    },
-    {
-      "item": "011-dmp1-chords-by-ear",
-      "url": "https://www.teacherspayteachers.com/Product/Chord-Progressions-in-Logic-Pro-Roman-Numerals-High-School-Music-Technology-17953543"
+      "item": "013-dmp1-stems-and-grooves",
+      "url": "https://www.teacherspayteachers.com/Product/Drum-Fills-in-Logic-Pro-Stems-Transitions-High-School-Music-Technology-17961597"
     }
   ],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "009-dmp1-spooky-tunes",
-    "010-dmp1-song-form",
-    "011-dmp1-chords-by-ear"
+    "012-dmp1-bass-melody-writing",
+    "013-dmp1-stems-and-grooves"
   ],
   "ok": true
 }
