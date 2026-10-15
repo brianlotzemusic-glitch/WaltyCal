@@ -1,0 +1,34 @@
+{
+  "price": "12.00",
+  "license_price": "12.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 38,
+  "zip_contents": [
+    "sample-flipping.pdf",
+    "sample-flipping-intro-deck.pptx",
+    "sample-flipping-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "sample-flipping.zip",
+    "preview": "sample-flipping-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

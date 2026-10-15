@@ -504,7 +504,7 @@ def vocab_page(n, watermark=False):
         f'font-size:13pt;text-transform:uppercase;letter-spacing:.02em">{a}</b> — {b}</p>'
         f'<div class="fl" style="margin:9pt 0 9pt"><b>In my own words:</b><span></span></div>'
         f'<div class="fl" style="margin:0 0 4pt"><b>{K.VOCAB_PROMPT}</b><span></span></div></div>' for a, b in K.VOCAB)
-    inner = (f'<p style="font-size:11.4pt;margin:0 0 7pt">The five words from your project sheet, with my definitions. Rewrite each in your '
+    inner = (f'<p style="font-size:11.4pt;margin:0 0 7pt">The {({3: "three", 4: "four", 5: "five", 6: "six", 7: "seven"}.get(len(K.VOCAB), str(len(K.VOCAB))))} words from your project sheet, with my definitions. Rewrite each in your '
              f'own words, then show where it happens in your own project.</p>{cells}')
     return page("Key vocabulary", "STUDENT", "Vocabulary", inner, n, watermark, name=True, key="vocab")
 
