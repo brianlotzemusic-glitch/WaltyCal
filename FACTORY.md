@@ -17,7 +17,11 @@ The **Manager** runs 2 shifts a day: **6:12am and 6:12pm Eastern** (owner, 8 Oct
 **Usage budget (owner, 8 Oct 2026).** The factory must leave room in the owner's weekly Claude usage:
 - **Keep the Manager's own context small.** Heavy work (research, design, QA, listing, stats) runs inside subagents, whose transcripts don't enter the Manager's context. The Manager itself reads only office/status.json, the last ~15 log lines and the FACTORY.md sections it needs (grep, not the whole file). Don't load images, PDFs or long command output into the Manager's own context. Pipe output through `tail` and let subagents look at renders.
 - Briefs are lean: point the agent at the exact FACTORY.md sections and files it needs (grep, don't read everything), and cap research at about 10 searches.
-- Models: the Designer runs on Opus; the Researcher, Trend Hunter, Trend Judge, QA, Analyst and Scout run on Sonnet (Agent tool `model: "sonnet"`).
+- **Models (owner, 15 Oct 2026: "maintain functionality but lower weekly usage").** In the Manager v2 session's first 6 days, Opus Designer runs were about 70% of the factory's usage ($121 of $174 at list price), mostly long TpT kits plus their fix rounds. So:
+  - **Every agent runs on Sonnet by default**, the Designer included (Agent tool `model: "sonnet"`).
+  - **Escalate to Opus only on failure**: when a product has failed QA twice on Sonnet, the third attempt is one Opus Designer run (`model: "opus"`). If that also fails, the product goes to `_rejected` as usual. Log every escalation, so the weekly report can show whether Sonnet quality holds.
+  - **Fix rounds always run on Sonnet**: they are small edits to existing files, given QA.md's findings.
+- **Short reports back**: every subagent ends with a summary of at most 8 lines (what it made, the verdict, file paths, open questions), not a narrative. Long reports are the main thing that grows the Manager's context.
 - Fix rounds use a **fresh** Designer or QA agent with a short brief (the QA.md findings and the files to change); never resume a long-running agent, because it carries its whole context into every step.
 - Visual checks use low-resolution renders (about 60–100 dpi, contact sheets, sampled pages), with 100% crops only where a defect is suspected.
 - If a shift finds the usage limit hit, it records that in status.json and stops; it does not retry.
@@ -162,6 +166,13 @@ When a decision or a blocker needs the owner, the Manager sends one push notific
 - Send it once per question, and once more if it's still open 12 h later. Log each one in `log/ACTION-LOG.md`.
 - Every question has a deadline and a default, so work never stalls waiting for an answer.
 - Quiet hours: push notifications only between 8:00am and 8:00pm US Eastern (America/New_York). Night shifts (8pm–8am) never notify: they log the question as "HELD for 8am: <question; deadline; default>" and the first shift after 8am sends any held questions together in one notification. If a deadline falls in quiet hours, move it to 10:00am Eastern.
+
+## Rotating the Manager (when its context gets big)
+The Manager session re-reads its whole conversation on every step, so its cost grows every shift. When its context passes about 300k tokens (`get_session` → `external_metadata.context_usage.used_tokens`), any Claude chat with the claude-code-remote tools can rotate it:
+1. `create_session` with source_url https://github.com/brianlotzemusic-glitch/WaltyCal, source_revision `shop-factory`, environment env_018UJ8V6WCMk8EYcV2VZr7ig, model claude-sonnet-5-5, and title "Shop factory: Manager vN". The prompt is a readiness check only: sync, commit and push one log line, then `etsy.py ping`, `imagegen.py spend`, `printify.py shops`, and an Artifact read of the dashboard. Reply in 4 lines.
+2. When that push lands on `shop-factory`, `create_trigger` with the same cron (`CRON_TZ=America/New_York 12 6,18 * * *`) and `persistent_session_id` set to the new session, copying the current shift routine's prompt (`get_trigger` on it).
+3. Disable the old shift routine (keep it as the fallback). Update the session and routine ids in "The team" and log the rotation.
+Rotations so far: v1 → v2 on 9 Oct (537k tokens), v2 → v3 on 15 Oct (630k tokens).
 
 ## Changing the schedule
 Shifts run from routines (the "Shop factory: shifts" routine, plus the watchdog). Before switching to a new or changed shift routine:
