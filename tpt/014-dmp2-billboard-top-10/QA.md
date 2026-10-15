@@ -64,3 +64,35 @@ dmp2.py (77 KB) and README.md are committed (no __pycache__ tracked). README doc
 3. Add Project Based Learning, Technology, High School and extra subjects once a dry run proves the option text (METADATA-GUIDE process).
 
 **Verdict: REJECTED**
+
+---
+
+# Round 2
+
+QA re-reviewed on 15 Oct 2026 as a fresh reviewer who read only this file's round 1 notes. I changed no item files.
+
+## Checks run
+
+- `gen.py --check`: CHECK OK, and `git status` shows it rewrote nothing. The check now also enforces grades 9-12, the grading-tips label and the claim ban.
+- Rubric (Drive id 1kw1__GA, read-only): all 25 descriptors and the heading, scoring line, "/25", score lines and the "Final Grade = Average of Student + Teacher" line on page 17 match the Drive text exactly. Rubric unchanged. The "reflection" question to the owner remains raised in UPLOAD.md.
+- Rebuild consistency: the ZIP's three files are byte-identical to the PDF, pptx and deck PDF in the folder. The preview PDF, cover.png and preview-1..3 are rebuilt (the current commit touches the preview and preview-3). 20 pages + 17 slides = 37 in tpt.json. The ZIP listing is the three expected files and nothing else.
+- Blind Brook, BBHS and Google Classroom: no hits in the PDF, deck PDF, preview PDF, UPLOAD.md or tpt.json. tpt.json is valid JSON.
+
+## Round 1 fixes, verified at 100 dpi
+
+1. **Grades (fixed).** tpt.json lists 9th, 10th, 11th, 12th. "GRADES 9-12" is on the cover (page 1), page 2/3 "At a glance" reads "9-12: the second-year course", and the UPLOAD.md "Good to know" line and section 3 say 9-12. No "10-12" or "10th-12th" remains in any output or UPLOAD.md. The only "10-12" in gen.py is the check that forbids it.
+2. **Slide 13 note (fixed).** It now reads "The four parts of step 6 of the sheet, shortened to fit the slide; the full step is on the project sheet." That is true: the slide shows four short lines. "Word by word" is gone.
+3. **Page 7 (fixed).** Under "How to grade", the owner's rubric line comes first (/25, page 17). The three tips sit under the italic label "Suggestions from this kit, not part of my rubric:". "Nothing clipping" now reads as the kit's suggestion, not the owner's rubric.
+4. **Page 8 (accurate and complete).** I compared all 17 slides with the owner's sheet. The deck condenses the emulation definition (slide 3), steps 1, 4 and 5 (slides 5, 11, 12), step 6 (slide 13) and the checklist (slide 14). Page 8 lists step 6 on slide 13 by name and slides 3, 5, 11, 12 and 14 for the rest. Every other wording change from round 1 is still listed and correct (class page, Top 10 analysis, Song Form map, page numbers, closing note, Classes 3-5 row split, rubric layout). "New in this kit" now includes "the grading suggestions". The page fits, with no overflow and a clear footer margin. Slide 15 quotes only the top descriptor of each rubric row. That is an excerpt, not a rewording, and the full rubric is on page 17. I accept it as in round 1.
+
+## Builder diff (tpt/_dmp2_common)
+
+Correct and generic. `GRADES` is the 9-12 default, applied in `main()` when a kit omits the names, and `verify_data` rejects anything else. That is stricter than the old "1-4 proven slugs" test, which is intended. `GRADING_TIPS` and `GRADING_TIPS_LABEL` print the tips under the label, and `verify_files` requires the label on page tn2 and that every `GRADING` line mentions "rubric". `CLAIMS` bans "word for word", "word by word", "word-for-word" and "verbatim" in the PDF text, the deck and notes (`alldeck`), and the description. The README matches the code (names, the 9-12 default, the new checks). The diff has no Billboard, Sorry, Bieber, school or other project content, and the BANNED list is still built from split strings. No __pycache__ is tracked.
+
+## Remaining (optional, not blocking)
+
+Round 1 optional polish is untouched: page 3 has an empty lower third, slide 7's timeline gap, slide 9's half-empty velocity lane, and extra TpT subjects and tags once proven.
+
+No required fix remains.
+
+**Verdict: APPROVED**
