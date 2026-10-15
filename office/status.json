@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-15T14:30:00Z",
-  "next_run_at": "2026-10-15T22:12:00Z",
+  "updated_at": "2026-10-15T23:09:24Z",
+  "next_run_at": "2026-10-16T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 27,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12am shift done. TpT 014 Billboard Top 10 is approved but held: waiting on the owner (content provenance and 'Billboard' in the title).",
-      "since": "2026-10-15T14:30:00Z"
+      "task": "6:12pm shift done. 015 Sample Flipping released. TpT nightly PAUSED: 014 submit failed, waiting on owner to check TpT My Products.",
+      "since": "2026-10-15T23:09:24Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "TpT 014 DMP2 Billboard Top 10 built (fixed in round 2) with a shared DMP2 builder for the next 13 kits.",
-      "since": "2026-10-15T14:30:00Z"
+      "task": "TpT 015 DMP2 Sample Flipping built; next: FX Deep Dive.",
+      "since": "2026-10-15T23:09:24Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved TpT 014 in round 2 (Sonnet).",
-      "since": "2026-10-15T14:30:00Z"
+      "task": "Approved TpT 015 in round 1 (Sonnet).",
+      "since": "2026-10-15T23:09:24Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "TpT 012 and 013 are released and waiting for the Mac nightly (it has not run since Oct 14 20:27 UTC).",
-      "since": "2026-10-15T14:30:00Z"
+      "task": "TpT 012 and 013 live. 014 submit failed (maybe created); 015 released; nightly paused.",
+      "since": "2026-10-15T23:09:24Z"
     },
     {
       "id": "analyst",
@@ -85,6 +85,16 @@
     "Etsy slot on hold until the owner decides"
   ],
   "feed": [
+    {
+      "t": "2026-10-15T23:09:24Z",
+      "who": "lister",
+      "msg": "TpT 012 and 013 live. 014 Billboard submit failed; nightly paused until the owner checks TpT."
+    },
+    {
+      "t": "2026-10-15T23:09:24Z",
+      "who": "qa",
+      "msg": "Approved TpT 015 DMP2 Sample Flipping ($12) in round 1; owner released it."
+    },
     {
       "t": "2026-10-15T14:30:00Z",
       "who": "qa",
