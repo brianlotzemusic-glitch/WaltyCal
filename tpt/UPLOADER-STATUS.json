@@ -1,16 +1,16 @@
 {
-  "ran_at": "2026-10-16T00:39:53.418Z",
-  "published": [],
-  "failed": [
+  "ran_at": "2026-10-16T11:37:23.593Z",
+  "published": [
     {
       "item": "015-dmp2-sample-flipping",
-      "error": "publish stopped at step \"upload thumb4 (preview-3.png), attempt 2 via the file picker\" (nothing was submitted): not submitted: thumb4: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/015-dmp2-sample-flipping-thumb4-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview"
+      "url": "https://www.teacherspayteachers.com/Product/Sample-Flipping-in-Logic-Pro-Quick-Sampler-Project-High-School-Music-Tech-17972017"
     }
   ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
     "015-dmp2-sample-flipping"
   ],
-  "ok": false
+  "ok": true
 }
