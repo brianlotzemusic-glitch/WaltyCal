@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-15T23:09:24Z",
-  "next_run_at": "2026-10-16T10:12:00Z",
+  "updated_at": "2026-10-16T10:23:31Z",
+  "next_run_at": "2026-10-16T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 27,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12pm shift done. 015 Sample Flipping released. TpT nightly PAUSED: 014 submit failed, waiting on owner to check TpT My Products.",
-      "since": "2026-10-15T23:09:24Z"
+      "task": "6:12am shift done. 016 FX Deep Dive and 017 Music for Visual Media are QA approved, held for the owner to release. 015 retries tonight on the Mac.",
+      "since": "2026-10-16T10:23:31Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "TpT 015 DMP2 Sample Flipping built; next: FX Deep Dive.",
-      "since": "2026-10-15T23:09:24Z"
+      "task": "TpT 017 DMP2 Music for Visual Media built; next: Alchemy Architect.",
+      "since": "2026-10-16T10:23:31Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved TpT 015 in round 1 (Sonnet).",
-      "since": "2026-10-15T23:09:24Z"
+      "task": "Approved TpT 016 and 017 in round 1 (Sonnet).",
+      "since": "2026-10-16T10:23:31Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "TpT 012 and 013 live. 014 submit failed (maybe created); 015 released; nightly paused.",
-      "since": "2026-10-15T23:09:24Z"
+      "task": "TpT 014 live. 015 released; Mac nightly stopped at a thumbnail upload (nothing submitted), retries tonight.",
+      "since": "2026-10-16T10:23:31Z"
     },
     {
       "id": "analyst",
@@ -85,6 +85,16 @@
     "Etsy slot on hold until the owner decides"
   ],
   "feed": [
+    {
+      "t": "2026-10-16T10:23:31Z",
+      "who": "lister",
+      "msg": "TpT 014 Billboard Top 10 is live. 015 publish stopped at a thumbnail upload; retries tonight."
+    },
+    {
+      "t": "2026-10-16T10:23:31Z",
+      "who": "qa",
+      "msg": "Approved TpT 016 FX Deep Dive ($10) and 017 Music for Visual Media ($12) in round 1. Held for the owner's release."
+    },
     {
       "t": "2026-10-15T23:09:24Z",
       "who": "lister",
