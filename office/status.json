@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-17T19:11:04Z",
-  "next_run_at": "2026-10-17T22:12:00Z",
+  "updated_at": "2026-10-17T22:22:39Z",
+  "next_run_at": "2026-10-18T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 27,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "All five DMP2 kits (014-018) are live on TpT. Rebuilt versions with the Reflection step are QA approved and wait for the owner to re-upload.",
-      "since": "2026-10-17T19:11:04Z"
+      "task": "6:12pm shift done. 019 Anti-Music Manifesto is QA approved and waiting for the owner to release it. Etsy Ads test is running (day 1, no live-listing edits).",
+      "since": "2026-10-17T22:22:39Z"
     },
     {
       "id": "researcher",
@@ -26,15 +26,15 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "Rebuilt TpT 014-018 with a Reflection step; next: Anti-Music Manifesto.",
-      "since": "2026-10-17T19:11:04Z"
+      "task": "TpT 019 DMP2 Anti-Music Manifesto built; next: Found Sound.",
+      "since": "2026-10-17T22:22:39Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved the rebuilt TpT 014-018 files (Reflection step).",
-      "since": "2026-10-17T19:11:04Z"
+      "task": "Approved TpT 019 in round 1 (Sonnet).",
+      "since": "2026-10-17T22:22:39Z"
     },
     {
       "id": "lister",
@@ -85,6 +85,11 @@
     "Etsy slot on hold until the owner decides"
   ],
   "feed": [
+    {
+      "t": "2026-10-17T22:22:39Z",
+      "who": "qa",
+      "msg": "Approved TpT 019 DMP2 Anti-Music Manifesto ($10) in round 1. Waiting for the owner's release."
+    },
     {
       "t": "2026-10-17T19:11:04Z",
       "who": "lister",
