@@ -33,3 +33,5 @@ Valid JSON. Price and license_price 10.00, tax_code "Other Digital Goods - No Ph
 3. Owner questions in UPLOAD.md section 9 (which 11 FX; EQ Cheatsheet and Plug-in Links not in Drive; "reflection" wording in the rubric) do not block release.
 
 **Verdict: APPROVED**
+
+> NOTE (17 Oct 2026): this approval is STALE. The kit was rebuilt with supporting artifacts (FX list, tutorial links page; 23 pages). It needs a fresh QA round (no QA.md exists).
