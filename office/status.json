@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17T17:41:29Z",
+  "updated_at": "2026-10-17T18:54:42Z",
   "next_run_at": "2026-10-17T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "016, 017, 018 rebuilt with the owner's supporting materials and QA approved again. Held for the owner to release.",
-      "since": "2026-10-17T17:41:29Z"
+      "task": "016, 017, 018 released at the owner's request. The Mac nightly publishes them.",
+      "since": "2026-10-17T18:54:42Z"
     },
     {
       "id": "researcher",
@@ -40,8 +40,8 @@
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "TpT 014 and 015 are live. 016, 017, 018 wait for the owner to release them.",
-      "since": "2026-10-16T22:24:26Z"
+      "task": "TpT 014 and 015 live. 016, 017, 018 released; waiting for the Mac nightly.",
+      "since": "2026-10-17T18:54:42Z"
     },
     {
       "id": "analyst",
@@ -85,6 +85,11 @@
     "Etsy slot on hold until the owner decides"
   ],
   "feed": [
+    {
+      "t": "2026-10-17T18:54:42Z",
+      "who": "manager",
+      "msg": "Released TpT 016 FX Deep Dive, 017 Music for Visual Media and 018 Alchemy Architect. The Mac nightly publishes them."
+    },
     {
       "t": "2026-10-17T17:41:29Z",
       "who": "qa",
