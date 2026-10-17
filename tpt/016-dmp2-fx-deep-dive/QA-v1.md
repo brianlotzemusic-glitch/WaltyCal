@@ -6,11 +6,11 @@ QA reviewed this item on 15 Oct 2026, independently of the Designer, following t
 - Rubric is the owner's /25 (5 categories, 1-5, descriptors match Drive, "Final Grade = Average of Student + Teacher = ___ / 25" kept) on page 19; slide 16 quotes only the top descriptor per row, labelled as an excerpt. The old 2025 /20 rubric was not used.
 - Overview, 4 goals, 6 vocabulary terms, 5 requirements, 7 steps, 4 tips, 7 checklist items, the 5 struggles, 2 variations, 4 resources, pacing and the notes line match Drive except for the changes on page 8.
 - Page 7 "How to grade": the owner's rubric line comes first; the three tips sit under the italic label "Suggestions from this kit, not part of my rubric". Pass.
-- Page 8 "What changed from the original" is present, accurate (class page for Google Classroom, page numbers, resources not included, Classes 2-5 split, rubric layout, deck shortening by slide) and has "Kept as I wrote it" and "New in this kit" sections. No "word for word" claim anywhere (grep of PDFs, pptx XML, notes, UPLOAD.md, tpt.json).
+- Page 8 "What changed from the original" is present, accurate (class page for the LMS, page numbers, resources not included, Classes 2-5 split, rubric layout, deck shortening by slide) and has "Kept as I wrote it" and "New in this kit" sections. No "word for word" claim anywhere (grep of PDFs, pptx XML, notes, UPLOAD.md, tpt.json).
 - The "11 FX" vs the video title "10 FX" mismatch is left blank for students and raised as an owner question in UPLOAD.md. Correct handling.
 
 ## 2. Third-party and branding: pass
-No audio, lyrics, songs, chart data or sessions; Cambridge-MT, Native Instruments, Padlet, YouTube named by title only; Logic trademark line present. No Blind Brook, BBHS, school or Google Classroom text, and no student names, in any output. Footers read "(c) 2026 Brian Lotze, Hudson Beat".
+No audio, lyrics, songs, chart data or sessions; Cambridge-MT, Native Instruments, Padlet, YouTube named by title only; Logic trademark line present. No school branding, school abbreviation or LMS text, and no student names, in any output. Footers read "(c) 2026 Brian Lotze, Hudson Beat".
 
 ## 3. Logic and facts: pass
 Delay times at 100 BPM (quarter 600, eighth 300, dotted eighth 450, sixteenth 150 ms) are right. Compression example: threshold -18 dB, 4:1, peak -6 dB gives 12 dB over, 3 dB over after, so -15 dB, 9 dB gain reduction. Correct. The invented session has 8 tracks with balanced pans.

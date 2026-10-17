@@ -13,7 +13,7 @@ average of student and teacher scores), TEACHER NOTES > "FX Deep Dive - Teacher 
 from the older DMP2 > Projects > "FX Deep Dive" folder (read-only), which the Teacher Notes name: (a) the owner's "Audio FX - notes"
 table, whose 11 rows settle the "11 FX" (the Native Instruments video title says 10; the class covers 11, and the owner's Plug-in Links
 doc has the same 11 categories); (b) the owner's "Plug-in Links" doc, reproduced as page "links" (titles and URLs only, nothing
-embedded); (c) the "EQ Cheatsheet.pdf", which is NOT the owner's work (its cover says "Made by Jay Dwivedi"), so it is named only and
+embedded); (c) the "EQ Cheatsheet.pdf", which is NOT the owner's work (its cover names another author), so it is named only and
 never reproduced; the kit's own EQ guide stays original. The older "Project 4 - FX Deep Dive" doc (/20 rubric) is not used. Every change to the owner's wording is listed in CHANGES and printed on the "What changed from the original" page.
 
 NO AUDIO IS INCLUDED. The owner's project works on a student's own earlier project or on a multitrack from the Cambridge-MT library
@@ -129,8 +129,8 @@ RESOURCES = [("10 FX Every Music Producer Needs to Know — Native Instruments (
               "11 (page @FXNOTES lists them). Page @LOGICREF shows where each kind of effect lives in Logic."),
              ("Cambridge-MT Multitrack Library", "Not included and not mine to hand out: students download a session from the library’s "
               "own site. Page @SOURCE helps you pre-select sessions and reminds students to read the library’s terms."),
-             ("EQ Cheatsheet PDF (in course materials)", "Not included: its cover credits it to Jay Dwivedi, so it is not mine to hand "
-              "out. Use your own copy beside page @EQGUIDE, this kit’s own EQ guide and live-demo plan."),
+             ("EQ Cheatsheet PDF (in course materials)", "Not included: it is by another author, so it is not mine to hand "
+              "out. You may find a third-party EQ cheatsheet and use it under its own terms, beside page @EQGUIDE, this kit’s own EQ guide and live-demo plan."),
              ("Plug-in Links doc with tutorials for each effect category", "Included, from the teacher’s own materials: page @LINKS "
               "lists my tutorial links (titles and web addresses only) for each of the 11 FX. Page @LOGICREF lists the Logic plug-in "
               "for each.")]
@@ -182,7 +182,7 @@ CHANGES = [
     "My LMS name is written as “your class page” (checklist items 1 and 2).",
     "Page numbers are added to steps 1 to 4 (the FX notes, the Source log, the FX log and the Track map).",
     "My four resources are named as I wrote them (page @TN2). My Plug-in Links doc is reproduced in this kit’s layout as page @LINKS "
-    "(titles and web addresses only). The EQ Cheatsheet is by another author, so it is named only. The video and the library are "
+    "(titles and web addresses only). The EQ Cheatsheet is by another author, so it is not included; you may find a third-party EQ cheatsheet and use it under its own terms. The video and the library are "
     "named by title only.",
     "The 11 FX my sheets mention are listed on page @FXNOTES, from my own FX notes table (the Native Instruments video title says "
     "10; my class covers 11).",
@@ -201,9 +201,9 @@ KEPT = ("Everything else from my three documents is kept as I wrote it: the over
 NEW_MATERIAL = ("Everything else is new and supports my sheets without changing them: how to use the kit, the overview and setup "
                 "pages (including how to choose a source track), the teacher moves and slide numbers in the pacing guide, the grading "
                 "suggestions, the Logic quick reference, the EQ guide and demo plan, the worked example (an invented eight-track "
-                "session described on paper, not a recording), the Source log, the FX notes page, the Track map, the FX log, the "
+                "session described on paper, not a recording), the Source log, the Track map, the FX log, the "
                 "vocabulary page, the presentation planner and the intro deck. None of these adds a requirement or a rubric row. "
-                "The tutorial links page and the list of the 11 FX come from my own materials, laid out for this kit.")
+                "The FX notes page (my 11 FX) and the tutorial links page come from my own materials, laid out for this kit.")
 
 # ================================================================ the worked example (Hudson Beat original: an invented session on paper)
 TEMPO = 100
@@ -538,7 +538,7 @@ CREDITS = ["Worked example (an invented eight-track session described on paper),
            "No audio, video, lyrics, album art, chart data or multitrack sessions are included. Cambridge-MT and Native Instruments are "
            "named only as the owner’s resource list names them; they are not affiliated with or endorsing this resource. The list of the "
            "11 FX and the tutorial links page are from the teacher’s own materials; the linked sites and videos belong to their "
-           "makers and are not included. The EQ Cheatsheet in the teacher’s course materials is by another author and is not included. Padlet and "
+           "makers and are not included. The EQ cheatsheet in the teacher’s course materials is a third-party document and is not included; you may find a third-party EQ cheatsheet and use it under its own terms. Padlet and "
            "YouTube are named only as examples of tools you may already use."]
 LOGIC_INTRO = ("Everything students need in Logic for this project, in one table. Demonstrate EQ (slide 8) and sends (slide 10), then let "
                "students work. Names are from current Logic Pro versions.")
@@ -745,7 +745,7 @@ def example_page(n, wm=False):
 def links_page(n, wm=False):
     def one(t, u):
         return (f'<div style="margin:0 0 2.5pt;line-height:1.15"><span style="font-size:9.4pt">{t.replace("&", "&amp;")}</span><br>'
-                f'<span style="font-size:8pt;color:#333;word-break:break-all">{u}</span></div>')
+                f'<span style="font-size:8pt;color:#333;white-space:nowrap">{u}</span></div>')
 
     def lab(c):
         return (f'<div style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:10.4pt;margin:5pt 0 2pt;'

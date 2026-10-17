@@ -10,7 +10,7 @@ QA reviewed this item on 16 Oct 2026, independently of the Designer, following t
 - Page 8 "What changed from the original" is present, with Wording changes, "Kept as I wrote it" and "New in this kit". No "word for word" or "verbatim" anywhere (PDFs, pptx text, notes, UPLOAD.md, tpt.json).
 
 ## 2. Third-party and branding: pass
-No audio, video, lyrics, songs, chart data or linked clips; the kit says it neither contains nor links any clip and tells teachers to check the site's terms. YouTube/Vimeo/Padlet named as examples only; Logic trademark line present. No Blind Brook, BBHS, school or Google Classroom text, no student names, no URLs (the only "http" strings in the pptx are XML namespaces). Footers: "(c) 2026 Brian Lotze, Hudson Beat".
+No audio, video, lyrics, songs, chart data or linked clips; the kit says it neither contains nor links any clip and tells teachers to check the site's terms. YouTube/Vimeo/Padlet named as examples only; Logic trademark line present. No school branding, school abbreviation or LMS text, no student names, no URLs (the only "http" strings in the pptx are XML namespaces). Footers: "(c) 2026 Brian Lotze, Hudson Beat".
 
 ## 3. Logic and facts: pass
 Bar math checks out (120 BPM = 2 s a bar, 100 BPM = 2.4 s; hit 17.5 s = bar 9 beat 4 = 00:00:17:12 at 24 fps; 90 s scene = 45 bars), as does the worked example. Invented scene only.
