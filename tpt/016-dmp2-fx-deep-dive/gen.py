@@ -47,6 +47,7 @@ ZIP_DATE = (2026, 10, 15, 12, 0, 0)
 TYPE = "Structured Project"
 PROJ_LINE = "Digital Music Production | <i>Structured Project</i> | 7 class periods"
 DECK_STRAP = "EQ, pan, reverb and delay in Logic Pro"
+LIVE = True                 # already uploaded to TpT (Manager-owned uploaded file); this rebuild is for a later re-upload
 BANNED_EXTRA = []
 
 # ================================================================ the owner's words

@@ -54,6 +54,7 @@ VIDEO_FILES = [("How to import a movie into Logic.mov", 243604831), ("Walking Th
 TYPE = "Open-Ended Project"
 PROJ_LINE = "Digital Music Production | <i>Open-Ended Project</i> | 7 class periods"
 DECK_STRAP = "Mood, timing and hit points in Logic Pro"
+LIVE = True                 # already uploaded to TpT (Manager-owned uploaded file); this rebuild is for a later re-upload
 BANNED_EXTRA = []
 
 # ================================================================ the owner's words
