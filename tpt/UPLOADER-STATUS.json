@@ -1,9 +1,26 @@
 {
-  "ran_at": "2026-10-17T17:30:39.503Z",
-  "published": [],
+  "ran_at": "2026-10-17T18:56:01.960Z",
+  "published": [
+    {
+      "item": "016-dmp2-fx-deep-dive",
+      "url": "https://www.teacherspayteachers.com/Product/FX-Deep-Dive-in-Logic-Pro-EQ-Reverb-Delay-Mixing-Project-High-School-Music-17987346"
+    },
+    {
+      "item": "017-dmp2-music-for-visual-media",
+      "url": "https://www.teacherspayteachers.com/Product/Film-Scoring-in-Logic-Pro-Music-for-Visual-Media-Project-High-School-Music-17987355"
+    },
+    {
+      "item": "018-dmp2-alchemy-architect",
+      "url": "https://www.teacherspayteachers.com/Product/Alchemy-Synth-in-Logic-Pro-Sound-Design-Synthesis-Project-High-School-Music-17987375"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "016-dmp2-fx-deep-dive",
+    "017-dmp2-music-for-visual-media",
+    "018-dmp2-alchemy-architect"
+  ],
   "ok": true
 }
