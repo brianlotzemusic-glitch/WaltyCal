@@ -43,6 +43,7 @@ ZIP_DATE = (2026, 10, 15, 12, 0, 0)
 TYPE = "Open-Ended Project"
 PROJ_LINE = "Digital Music Production | <i>Open-Ended Project</i> | 7 class periods"
 DECK_STRAP = "Chop, pitch and flip in Logic Pro"
+LIVE = True                 # already live on TpT (uploaded/release files belong to the Manager); this rebuild is for the later re-upload
 BANNED_EXTRA = ["50 Vocal" + " Samples", "Rivals" + " 01", "COY" + "_", "Vocal Chop" + " Loop"]
 
 # ================================================================ the owner's words
@@ -128,8 +129,7 @@ GRADING_TIPS = ["Technical Skill: ask the student to open Quick Sampler and show
                 "(a chop, a reverse, a pitch change).",
                 "Creativity: play the raw sample, then the track. Can you hear what changed, and did the student make something new "
                 "around it?",
-                "Documentation &amp; Presentation: the Sample log (page @PICK) and the three Padlet questions are the evidence. My rubric "
-                "mentions reflection, so you may want to ask for a sentence or two."]
+                "Documentation &amp; Presentation: the Sample log (page @PICK) and the three Padlet questions are the evidence, along with the Reflection page (page @REFLECT)."]
 PACING = [
     {"n": 1, "owner": "<b>Class 1:</b> Introduction to sample flipping and Quick Sampler demo. Select sample.",
      "do": "Slides 1–6: hook (before and after), what flipping is, sampling ethics, the seven classes, step 1. Hand out the project "
@@ -177,7 +177,7 @@ CHANGES_MUST_MENTION = ["your class page", "includes no samples", "Page numbers"
 KEPT = ("Everything else from my three documents is kept as I wrote it: the overview, goals, vocabulary, requirements 2 to 6, steps, "
         "tips, checklist and file name (“Your Name – Sample Flipping”), the rubric (five categories scored 1–5, /25, the average of "
         "the student’s and the teacher’s score), what the project reinforces, the four common struggles, the variations, my day-by-day "
-        "pacing and my closing note, and the project menu entry quoted on page @OVERVIEW. No requirement or rubric row is added.")
+        "pacing and my closing note, and the project menu entry quoted on page @OVERVIEW. No rubric row is added and the requirements are unchanged.")
 NEW_MATERIAL = ("Everything else is new and supports my sheets without changing them: how to use the kit, the overview and setup "
                 "pages (including how to build a cleared sample set), the sampling ethics page, the teacher moves and slide numbers in the "
                 "pacing guide, the grading suggestions, the Logic quick reference, the worked example (an original practice sample "
@@ -388,7 +388,7 @@ SHOTS3 = [("setup", "Cleared sample set"), ("ethics", "Sampling ethics"), ("exam
 
 # ================================================================ page plan
 PLAN = ["cover", "howto", "overview", "setup", "ethics", "pacing", "tn1", "tn2", "changes", "logicref", "example",
-        "pick", "chops", "drums", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "terms"]
+        "pick", "chops", "drums", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "reflect", "terms"]
 PREVIEW_PICKS = ["pacing", "chops", "proj2", "rubric"]
 
 COVER_A = "Chop, pitch and flip a sample"
@@ -454,8 +454,8 @@ RUBRIC_EXTRA = ""
 def howto_page(n, wm=False):
     parts = [("Teacher pages", "howto", "example", "How to use, overview, sample set, ethics, pacing, teacher notes, what changed, Logic "
               "reference, worked example"),
-             ("Student pages", "pick", "present", "Sample log, Chop map, drum plan, project sheet (3 pages), rubric, vocabulary, "
-              "feedback planner"),
+             ("Student pages", "pick", "reflect", "Sample log, Chop map, drum plan, project sheet (3 pages), rubric, vocabulary, "
+              "feedback planner, reflection"),
              ("Intro deck (separate file)", None, None, f"{len(SLIDES)} slides, .pptx + PDF, speaker notes on every slide")]
     trs = "".join(f"<tr><td><b>{a}</b></td><td style='white-space:nowrap'>{('pages ' + str(D.IX(f)) + '–' + str(D.IX(l))) if f else 'deck'}</td>"
                   f"<td>{u}</td></tr>" for a, f, l, u in parts)
@@ -468,7 +468,7 @@ def howto_page(n, wm=False):
              f'{D.H2("Quick start")}<ol>'
              f'<li style="margin-bottom:5pt">Read the pacing guide (page {D.IX("pacing")}) and my teacher notes (pages {D.IX("tn1")}–{D.IX("tn2")}).</li>'
              f'<li style="margin-bottom:5pt">Build your cleared sample set (page {D.IX("setup")}): no samples are included.</li>'
-             f'<li style="margin-bottom:5pt">Print the student pages (pages {D.IX("pick")}–{D.IX("present")}), one set per student.</li>'
+             f'<li style="margin-bottom:5pt">Print the student pages (pages {D.IX("pick")}–{D.IX("reflect")}), one set per student.</li>'
              f'<li>Open the intro deck and read the speaker notes for Class 1.</li></ol>'
              f'{D.H2("The intro deck")}'
              f'<p>Every slide has a class: {D.deck_class_line()}. Class 5 is a working day with no new slide. Every slide has speaker notes.</p>'
@@ -527,7 +527,7 @@ def setup_page(n, wm=False):
              f'Build it from the options on the right.</li>'
              f'<li><b>A place to share the set</b> with your students and to submit an .mp3 or .wav and a zipped .logicx project (your class page).</li>'
              f'<li><b>A feedback board</b> for the three questions (my sheets use Padlet).</li>'
-             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("pick")}–{D.IX("present")}).</li></ul>'
+             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("pick")}–{D.IX("reflect")}).</li></ul>'
              f'{D.H2("Before Class 1")}'
              + "".join(D.chk(c, 13, "font-size:12pt;margin-bottom:8pt") for c in [
                  "Build and test the sample set; write each sample’s source and license in a list for yourself.",

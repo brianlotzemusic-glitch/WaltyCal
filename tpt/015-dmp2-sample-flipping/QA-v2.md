@@ -1,5 +1,7 @@
 # QA: TpT 015 DMP2 Sample Flipping (round 1)
 
+**Superseded: this file is the review of the earlier build and is no longer current. The kit was rebuilt on 17 Oct 2026 (Reflection page added to every DMP2 kit). It needs a new QA pass; no approval is on record.**
+
 QA reviewed this item on 15 Oct 2026, independently of the Designer. I ran `gen.py --check` (CHECK OK; `git status` shows it rewrote nothing), extracted the text of the 21-page PDF, the 17-page deck PDF and the 4-page preview PDF, read every slide's text and speaker note from the .pptx (python-pptx), rendered all 21 PDF pages and all 17 deck pages as contact sheets (40 dpi) and viewed cover.png and preview-1.png at full size. I compared the owner's text with the Drive docs (read-only): "Sample Flipping - Project Sheet & Rubric" (modified 26 Mar 2026) and "Sample Flipping - Teacher Notes". I changed no item files.
 
 ## 1. Faithful to the owner's content: pass
@@ -10,9 +12,9 @@ QA reviewed this item on 15 Oct 2026, independently of the Designer. I ran `gen.
 - The older 2023 "Project Outline" (10 classes, 4-row /20 rubric) was correctly not used; the 7-class, /25 sheet is the current one.
 
 ## 2. Third-party media and the 50 samples: pass
-- **No samples bundled.** The ZIP holds exactly three files (PDF, .pptx, deck PDF), each byte-identical to the file in the folder. The .pptx media is three original PNG drawings (no audio, video, fonts). The repo has no .wav/.mp3/.aif/.m4a/.flac files. The only ".wav" hits in the PDF/deck are the student submission format (".mp3 or .wav"). "50 Vocal Samples" appears nowhere in the product.
+- **No samples bundled.** The ZIP holds exactly three files (PDF, .pptx, deck PDF), each byte-identical to the file in the folder. The .pptx media is three original PNG drawings (no audio, video, fonts). The repo has no .wav/.mp3/.aif/.m4a/.flac files. The only ".wav" hits in the PDF/deck are the student submission format (".mp3 or .wav"). the owner's unsellable sample-pack title appears nowhere in the product.
 - The kit's page 4 tells teachers to build their own cleared sample set (record it, public domain, CC0, licensed), with a "Is it cleared?" table and sampling-ethics page. The wording "my class set has 50" is disclosed on page 9. No song, lyrics, chart data or commercial audio is named; the tip line "J Dilla, Kanye, Madlib" is the owner's own tip (artist names only). Apple trademark and Padlet/YouTube named as tools only.
-- No Blind Brook, BBHS, school branding, student names or Google Classroom (grep of PDF text, deck, notes, UPLOAD.md, tpt.json). Footers: "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
+- No the school name and initials, school branding, student names or the LMS name (grep of PDF text, deck, notes, UPLOAD.md, tpt.json). Footers: "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
 
 ## 3. Music facts and logic: pass
 Practice sample 9.6 s = 4 bars at 100 BPM (2.4 s per bar), 8 slices of 1.2 s = 2 beats each; start times 0.0-8.4 s correct; the flip order 1,1,4,2R,6,3R,5,8-down-12 gives 8 slots in 4 bars with bar starts 0.0/2.4/4.8/7.2 s; the drum grid (kick on 1, "and" of 2... as drawn, snare 2 and 4, eighth hi-hats) matches page 11 and slide 9. Logic steps (Quick Sampler Classic/One Shot/Slice, Reverse, Drum Machine Designer, Step Sequencer, EQ, bounce) are right for Logic Pro 10.5+. "Logic" is stated as the tool; other DAWs only as "ideas carry over".
@@ -37,4 +39,4 @@ cover.png, preview-1..3.png are all 2000 x 2000. Cover has the HUDSON BEAT line,
 
 No required fix remains.
 
-**Verdict: APPROVED**
+Previous verdict (before the Reflection page was added): approved.

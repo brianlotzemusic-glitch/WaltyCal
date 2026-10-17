@@ -36,7 +36,7 @@
   "main_over": 0,
   "cells": [],
   "clipped": [],
-  "free": 41
+  "free": 3
  },
  {
   "page": 6,
@@ -60,7 +60,7 @@
   "main_over": 0,
   "cells": [],
   "clipped": [],
-  "free": 22
+  "free": 50
  },
  {
   "page": 9,
@@ -176,6 +176,14 @@
  },
  {
   "page": 23,
+  "key": "reflect",
+  "main_over": 0,
+  "cells": [],
+  "clipped": [],
+  "free": 0
+ },
+ {
+  "page": 24,
   "key": "terms",
   "main_over": 0,
   "cells": [],

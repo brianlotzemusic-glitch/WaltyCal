@@ -12,7 +12,7 @@
   "main_over": 0,
   "cells": [],
   "clipped": [],
-  "free": 88
+  "free": 55
  },
  {
   "page": 3,
@@ -32,14 +32,22 @@
  },
  {
   "page": 5,
+  "key": "videos",
+  "main_over": 0,
+  "cells": [],
+  "clipped": [],
+  "free": 180
+ },
+ {
+  "page": 6,
   "key": "pacing",
   "main_over": 0,
   "cells": [],
   "clipped": [],
-  "free": 10
+  "free": 72
  },
  {
-  "page": 6,
+  "page": 7,
   "key": "tn1",
   "main_over": 0,
   "cells": [],
@@ -47,7 +55,7 @@
   "free": 192
  },
  {
-  "page": 7,
+  "page": 8,
   "key": "tn2",
   "main_over": 0,
   "cells": [],
@@ -55,15 +63,15 @@
   "free": 0
  },
  {
-  "page": 8,
+  "page": 9,
   "key": "changes",
   "main_over": 0,
   "cells": [],
   "clipped": [],
-  "free": 46
+  "free": 20
  },
  {
-  "page": 9,
+  "page": 10,
   "key": "logicref",
   "main_over": 0,
   "cells": [],
@@ -71,7 +79,7 @@
   "free": 123
  },
  {
-  "page": 10,
+  "page": 11,
   "key": "syncguide",
   "main_over": 0,
   "cells": [],
@@ -79,7 +87,7 @@
   "free": 76
  },
  {
-  "page": 11,
+  "page": 12,
   "key": "picture",
   "main_over": 0,
   "cells": [],
@@ -87,7 +95,7 @@
   "free": 84
  },
  {
-  "page": 12,
+  "page": 13,
   "key": "example",
   "main_over": 0,
   "cells": [],
@@ -95,7 +103,7 @@
   "free": 193
  },
  {
-  "page": 13,
+  "page": 14,
   "key": "clip",
   "main_over": 0,
   "cells": [],
@@ -103,7 +111,7 @@
   "free": 173
  },
  {
-  "page": 14,
+  "page": 15,
   "key": "watch",
   "main_over": 0,
   "cells": [],
@@ -111,7 +119,7 @@
   "free": 76
  },
  {
-  "page": 15,
+  "page": 16,
   "key": "plan",
   "main_over": 0,
   "cells": [],
@@ -119,7 +127,7 @@
   "free": 200
  },
  {
-  "page": 16,
+  "page": 17,
   "key": "cues",
   "main_over": 0,
   "cells": [],
@@ -127,7 +135,7 @@
   "free": 196
  },
  {
-  "page": 17,
+  "page": 18,
   "key": "sync",
   "main_over": 0,
   "cells": [],
@@ -135,7 +143,7 @@
   "free": 139
  },
  {
-  "page": 18,
+  "page": 19,
   "key": "proj1",
   "main_over": 0,
   "cells": [],
@@ -143,7 +151,7 @@
   "free": 99
  },
  {
-  "page": 19,
+  "page": 20,
   "key": "proj2",
   "main_over": 0,
   "cells": [],
@@ -151,7 +159,7 @@
   "free": 85
  },
  {
-  "page": 20,
+  "page": 21,
   "key": "proj3",
   "main_over": 0,
   "cells": [],
@@ -159,7 +167,7 @@
   "free": 0
  },
  {
-  "page": 21,
+  "page": 22,
   "key": "rubric",
   "main_over": 0,
   "cells": [],
@@ -167,7 +175,7 @@
   "free": 131
  },
  {
-  "page": 22,
+  "page": 23,
   "key": "vocab",
   "main_over": 0,
   "cells": [],
@@ -175,7 +183,7 @@
   "free": 171
  },
  {
-  "page": 23,
+  "page": 24,
   "key": "present",
   "main_over": 0,
   "cells": [],
@@ -183,7 +191,15 @@
   "free": 53
  },
  {
-  "page": 24,
+  "page": 25,
+  "key": "reflect",
+  "main_over": 0,
+  "cells": [],
+  "clipped": [],
+  "free": 0
+ },
+ {
+  "page": 26,
   "key": "terms",
   "main_over": 0,
   "cells": [],

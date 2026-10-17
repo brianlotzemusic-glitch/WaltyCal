@@ -1,5 +1,7 @@
 # QA: TpT 018 DMP2 Alchemy Architect (round 2, rebuild of 17 Oct 2026)
 
+**Superseded: this file is the review of the earlier build and is no longer current. The kit was rebuilt on 17 Oct 2026 (Reflection page added to every DMP2 kit). It needs a new QA pass; no approval is on record.**
+
 QA reviewed this rebuild on 17 Oct 2026, independently of the Designer, following QA-v1.md, FACTORY.md "Teachers Pay Teachers" and tpt/METADATA-GUIDE. I did not re-compare with the owner's Drive docs. I changed no item files and wrote no release file.
 
 ## 1. Checks run
@@ -14,7 +16,7 @@ QA reviewed this rebuild on 17 Oct 2026, independently of the Designer, followin
 - "What changed from the original" (page 8) is updated: it now covers the resources list and the tutorial-link treatment under wording changes / new in this kit.
 
 ## 3. Third-party, branding, wording: pass
-No "word for word" or "verbatim", no Blind Brook or school branding, no student names, no audio, video, lyrics or chart data in the PDF, deck PDF, UPLOAD.md or tpt.json. Apple trademark line present. Footers "(c) 2026 Brian Lotze, Hudson Beat".
+No "word for word" or "verbatim", no the school name or school branding, no student names, no audio, video, lyrics or chart data in the PDF, deck PDF, UPLOAD.md or tpt.json. Apple trademark line present. Footers "(c) 2026 Brian Lotze, Hudson Beat".
 
 ## 4. Deck: pass
 18 slides, seven classes, CLASS badge on every slide, speaker notes on all 18 (248-499 characters), deck PDF is 18 pages. No overflow, clipping or typos.
@@ -35,4 +37,4 @@ None.
 1. Owner questions in UPLOAD.md section 9 stand ("Simple view" label, the two third-party .mp4 videos and Alchemy presets not used, "reflection" in the rubric).
 2. Cover empty band under HUDSON BEAT could be tightened with a smaller `gap`/top padding in a later pass.
 
-**Verdict: APPROVED**
+Previous verdict (before the Reflection page was added): approved.

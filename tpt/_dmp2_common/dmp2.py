@@ -403,7 +403,8 @@ def pacing_page(n, watermark=False):
     for k, d in enumerate(K.PACING):
         sl = f"Slides {rng(*d['slides'])}" if d["slides"] and d["slides"][0] != d["slides"][1] else (
             f"Slide {d['slides'][0]}" if d["slides"] else "No new slides")
-        pg = ", ".join(f"p. {IX(k_)}" for k_ in d["pages"]) or "—"
+        last = k == len(K.PACING) - 1 and reflect_on()
+        pg = ", ".join(f"p. {IX(k_)}" for k_ in d["pages"] + (["reflect"] if last and "reflect" not in d["pages"] else [])) or "—"
         own = ""
         if d["owner"] is not None:   # owner None = this class shares the row above's text (e.g. the owner's "Classes 3–5")
             span_ = 1
@@ -411,7 +412,7 @@ def pacing_page(n, watermark=False):
                 span_ += 1
             own = f"<td rowspan='{span_}' style='font-size:11.2pt;line-height:1.4'>{d['owner']}</td>"
         rows.append(f"<tr><td style='white-space:nowrap'><b class='acc' style='font-family:Oswald;font-size:13pt'>CLASS {d['n']}</b></td>"
-                    f"{own}<td style='font-size:10.4pt;line-height:1.36'>{fill(d['do'])}</td>"
+                    f"{own}<td style='font-size:{getattr(K, 'PACING_SIZE', 10.4)}pt;line-height:1.36'>{fill(d['do'] + (reflect_do() if last else ''))}</td>"
                     f"<td style='font-size:10.4pt'>{sl}</td><td style='font-size:10.4pt'>{pg}</td></tr>")
     inner = (f'<p>{K.CLASSES} class periods, as on my project menu. The “My plan” column is my day-by-day pacing guide as I wrote it; the '
              f'other columns show what to put on the screen and in students’ hands.</p>'
@@ -433,23 +434,37 @@ def tn1_page(n):
 
 def tn2_page(n):
     res = "".join(f"<tr><td>{a}</td><td>{fill(b)}</td></tr>" for a, b in K.RESOURCES)
-    inner = (f'<div class="tn">{H2("Suggested resources", True)}<table class="t" style="font-size:10.6pt"><tr><th style="width:44%">My list</th>'
+    z = getattr(K, "TN2_SIZE", 10.9 if reflect_on() else 11.6)
+    inner = (f'<style>.tn2 p, .tn2 li {{ font-size: {z}pt; line-height: 1.4; margin-bottom: {z * 0.5:.1f}pt; }}</style>'
+             f'<div class="tn tn2">{H2("Suggested resources", True)}<table class="t" style="font-size:10.6pt"><tr><th style="width:44%">My list</th>'
              f'<th>In this kit</th></tr>{res}</table>'
              f'{H2("How to grade")}<ul>' + "".join(f"<li>{fill(g)}</li>" for g in K.GRADING) + '</ul>'
              + (f'<p style="margin:4pt 0 2pt"><i>{GRADING_TIPS_LABEL}</i></p><ul>'
                 + "".join(f"<li>{fill(g)}</li>" for g in K.GRADING_TIPS) + '</ul>' if getattr(K, "GRADING_TIPS", None) else '') +
+             (fill(reflect_tn()) if reflect_on() else '') +
              f'{H2("Notes / observations")}<p>{K.TN_NOTE}</p></div><div class="lines"></div>')
     return page("Teacher notes · resources, grading, notes", "TEACHER NOTES", "2 of 2", inner, n, key="tn2")
 
 
+REFLECT_CHANGE = ("<b>Reflection added (page @REFLECT).</b> My rubric mentions reflection, but the project sheet has no reflection task. This kit "
+                  "adds one, following my definition: a written or oral conversation about how the student did on the project and what "
+                  "they would do differently next time. It adds no points and no rubric row.")
+REFLECT_NEW = (" The one addition that asks something of students is the Reflection page (page @REFLECT), explained under Wording changes; "
+               "the rubric is unchanged.")
+
+
 def changes_page(n):
     lis = "".join(f"<li>{fill(x)}</li>" for x in K.CHANGES)
-    inner = (f'<div class="big"><p>This kit is built from three of my documents: the <b>Project Sheet &amp; Rubric</b>, the <b>Teacher Notes</b> '
+    if reflect_on():
+        lis += (f"<li>{fill(REFLECT_CHANGE)}</li>")
+    z = getattr(K, "CHANGES_SIZE", 11.2 if reflect_on() else 12.2)
+    inner = (f'<style>.chg p, .chg li {{ font-size: {z}pt; line-height: 1.42; margin-bottom: {z * 0.55:.1f}pt; }}</style>'
+             f'<div class="big chg"><p>This kit is built from three of my documents: the <b>Project Sheet &amp; Rubric</b>, the <b>Teacher Notes</b> '
              f'and the <b>{K.TITLE}</b> entry on my DMP2 project menu. This page lists every change to my wording, so you know exactly what '
              f'is mine and what was added.</p>'
              f'{H2("Wording changes")}<ul>{lis}</ul>'
              f'{H2("Kept as I wrote it")}<p>{fill(K.KEPT)}</p>'
-             f'{H2("New in this kit")}<p>{fill(K.NEW_MATERIAL)}</p></div>')
+             f'{H2("New in this kit")}<p>{fill(K.NEW_MATERIAL)}{fill(REFLECT_NEW) if reflect_on() else ""}</p></div>')
     return page("What changed from the original", "CHANGES", "Teacher", inner, n, key="changes")
 
 
@@ -523,6 +538,56 @@ def present_page(n, watermark=False):
     return page("Present and get feedback", "STUDENT", f"Classes {K.CLASSES - 1}–{K.CLASSES}", inner, n, watermark, name=True, key="present")
 
 
+# ---- Reflection (standard element, on by default; a kit opts out with REFLECTION = False)
+# The owner's rubric (Documentation & Presentation) mentions reflection but the project sheets have no reflection task. The owner's
+# definition (17 Oct 2026): a written or oral conversation about how the student did on the project and what they would do
+# differently next time. Every DMP2 kit therefore carries one student page, a teacher note on teacher notes 2, a line on the
+# closing slide, a pacing line and a "What changed" statement. It adds no rubric row, no points and no requirement.
+REFLECT_DEFINITION = ("a written or oral conversation about how you did on the project and what you would do differently next time")
+REFLECT_PROMPTS = [("What went well?", "Name something in your project you are proud of, and say why it worked."),
+                   ("What did you struggle with?", "Say what was hard and what you tried to fix it."),
+                   ("What would you do differently next time?", "Be specific: a step, a choice, a sound or a tool."),
+                   ("Look at the rubric (page @RUBRIC).", "Which category are you proudest of, and which would you work on first next time?")]
+
+
+def reflect_on():
+    return getattr(K, "REFLECTION", True)
+
+
+def reflect_page(n, watermark=False):
+    pr = "".join(
+        f'<div style="flex:1;display:flex;flex-direction:column;min-height:0;margin-bottom:6pt"><p style="margin:0 0 1pt;font-size:11.4pt">'
+        f'<b style="font-family:Oswald;font-size:13pt;color:{K.ACCENT}">{i}</b>&nbsp; <b>{fill(a)}</b> {fill(b)}</p><div class="lines" style="min-height:48pt"></div></div>'
+        for i, (a, b) in enumerate(REFLECT_PROMPTS, start=1))
+    inner = (f'<div class="box acc-b"><span class="k">What a reflection is</span><p style="margin:0;font-size:11.6pt">A reflection is '
+             f'{REFLECT_DEFINITION}. Answer all four prompts in your own words. You choose how.</p></div>'
+             f'<div style="display:flex;gap:18pt;margin:8pt 0 4pt">'
+             f'<div style="flex:1">{chk("<b>Written.</b> I will write my answers on this page.", 13, "font-size:11.4pt;margin:0")}</div>'
+             f'<div style="flex:1">{chk("<b>Oral.</b> I will talk my answers through with my teacher. My teacher fills in the box at the bottom.", 13, "font-size:11.4pt;margin:0")}</div></div>'
+             f'{pr}'
+             f'<div class="box" style="margin-top:2pt"><span class="k">Oral reflection · teacher</span><div class="fl" style="margin:0"><b>Date:</b>'
+             f'<span style="flex:0 0 1.4in"></span><b>Prompts covered (1-4):</b><span></span></div>'
+             f'<div class="fl" style="margin:6pt 0 0"><b>Key points I heard:</b><span></span></div></div>')
+    return page("Reflection · how did it go?", "STUDENT", "After presenting", inner, n, watermark, name=True, key="reflect")
+
+
+def reflect_tn():
+    """Teacher note for teacher notes 2 (printed under the label 'Added by this kit')."""
+    return (f'{H2("Reflection · added by this kit")}<p>The rubric mentions reflection, but the project sheet has no reflection task, so this kit '
+            f'adds one (page @REFLECT): {REFLECT_DEFINITION}. Students write it or talk it through with you; either way they answer '
+            f'the four prompts. Allow about 10 minutes after the presentations. It adds no points and no rubric row; use it as evidence '
+            f'when you score Documentation &amp; Presentation.</p>')
+
+
+def reflect_do():
+    return " Reflection (page @REFLECT) follows the presentations."
+
+
+def reflect_slide_notes():
+    return (" Reflection: point students to the Reflection page. A reflection is a written or oral conversation about how they did on the "
+            "project and what they would do differently next time; they choose to write it or to talk it through with you.")
+
+
 def logicref_page(n, watermark=False):
     rows = "".join(f"<tr><td style='width:22%;padding:6pt 7pt'><b>{a}</b></td><td style='padding:6pt 7pt'>{b}</td></tr>" for a, b in K.LOGIC_REF)
     inner = (f'<p>{fill(K.LOGIC_INTRO)}</p><table class="t" style="font-size:{getattr(K, "LOGIC_SIZE", 11.4)}pt;line-height:1.45">{rows}</table>'
@@ -558,7 +623,7 @@ def terms_page(n, watermark=False):
 STD_PAGES = {"cover": lambda n, wm=False: cover_page(n), "pacing": pacing_page, "tn1": lambda n, wm=False: tn1_page(n),
              "tn2": lambda n, wm=False: tn2_page(n), "changes": lambda n, wm=False: changes_page(n), "proj1": proj1_page,
              "proj2": proj2_page, "proj3": proj3_page, "rubric": rubric_page, "vocab": vocab_page, "present": present_page,
-             "logicref": logicref_page, "terms": terms_page}
+             "logicref": logicref_page, "terms": terms_page, "reflect": reflect_page}
 
 
 def render_page(key, watermark=False):
@@ -679,6 +744,11 @@ def build_deck(img):
             bullets(sl, items, w=6.4, size=30, y=2.1, gap=1.9)
             w = fit("hero", 5.6, 4.6)
             pic(sl, "hero", 12.73 - w, 2.3, w)
+            if reflect_on():
+                box(sl, 0.6, 5.85, 6.4, 1.05, ACC, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
+                text(sl, 0.8, 5.9, 6.0, 0.4, f"Reflection · page {IX('reflect')}", 20, "Oswald", True, WHITE, caps=True)
+                text(sl, 0.8, 6.3, 6.0, 0.55, "Write it or talk it through: what went well, what was hard, what you would change.", 15,
+                     "Source Sans 3", False, WHITE)
         elif kind == "days":
             rowh = min(0.83, 4.85 / len(K.PACING))
             for k, d in enumerate(K.PACING):
@@ -931,6 +1001,11 @@ def deck_art():
     return jobs, out
 
 
+def zip_extra():
+    """Extra files a kit ships in its ZIP besides the PDF, deck and deck PDF (K.ZIP_EXTRA, paths relative to the kit folder; default none)."""
+    return [P(x) for x in getattr(K, "ZIP_EXTRA", [])]
+
+
 def files():
     s = K.SLUG
     return dict(pdf=P(f"{s}.pdf"), deck=P(f"{s}-intro-deck.pptx"), deck_pdf=P(f"{s}-intro-deck.pdf"), zip=P(f"{s}.zip"),
@@ -943,7 +1018,7 @@ def tpt_json():
     tj = {
         "price": K.PRICE, "license_price": K.PRICE, "tax_code": TAX, "grades": K.GRADE_SLUGS, "subjects": ["Music"], "tags": K.TAGS,
         "formats": ["PDF"], "pages": len(K.PLAN) + len(K.SLIDES),
-        "zip_contents": [os.path.basename(F["pdf"]), os.path.basename(F["deck"]), os.path.basename(F["deck_pdf"])],
+        "zip_contents": [os.path.basename(x) for x in (F["pdf"], F["deck"], F["deck_pdf"], *zip_extra())],
         "files": {"product": os.path.basename(F["zip"]), "preview": os.path.basename(F["preview"]), "thumb1": "cover.png",
                   "thumb2": "preview-1.png", "thumb3": "preview-2.png", "thumb4": "preview-3.png"},
     }
@@ -957,7 +1032,7 @@ def make_zip():
     if os.path.exists(F["zip"]):
         os.remove(F["zip"])
     with zipfile.ZipFile(F["zip"], "w", zipfile.ZIP_DEFLATED) as z:
-        for p in (F["pdf"], F["deck"], F["deck_pdf"]):
+        for p in (F["pdf"], F["deck"], F["deck_pdf"], *zip_extra()):
             zi = zipfile.ZipInfo(f"{K.ZIP_DIR}/{os.path.basename(p)}", date_time=K.ZIP_DATE)
             zi.compress_type = zipfile.ZIP_DEFLATED
             with open(p, "rb") as fh:
@@ -1235,16 +1310,20 @@ def verify_files():
         errs.append("deck is not 16:9")
     alldeck = " ".join(stext + notes)
     names = zipfile.ZipFile(F["zip"]).namelist()
-    for p in (F["pdf"], F["deck"], F["deck_pdf"]):
+    for p in (F["pdf"], F["deck"], F["deck_pdf"], *zip_extra()):
         n = f"{K.ZIP_DIR}/{os.path.basename(p)}"
         if n not in names:
             errs.append(f"zip is missing {os.path.basename(p)}")
         elif zipfile.ZipFile(F["zip"]).read(n) != open(p, "rb").read():
             errs.append(f"zip copy of {os.path.basename(p)} is stale; rebuild")
-    if len(names) != 3:
-        errs.append(f"zip should hold exactly 3 files, has {names}")
-    if any(re.search(r"\.(wav|mp3|aif|aiff|m4a|logicx|mov|mp4)$", nm, re.I) for nm in names):
-        errs.append("zip holds audio, video or a Logic session")
+    extra = {os.path.basename(x) for x in zip_extra()}
+    if len(names) != 3 + len(extra):
+        errs.append(f"zip should hold exactly {3 + len(extra)} files, has {names}")
+    if any(re.search(r"\.(wav|mp3|aif|aiff|m4a|logicx|mov|mp4)$", nm, re.I) and os.path.basename(nm) not in extra for nm in names):
+        errs.append("zip holds audio, video or a Logic session that the kit does not list in ZIP_EXTRA")
+    for x in zip_extra():
+        if not os.path.exists(x) or os.path.getsize(x) > 90 * 10**6:
+            errs.append(f"ZIP_EXTRA {os.path.basename(x)}: missing or over 90 MB (too big for git and the TpT file limit)")
     flat_ = page_texts(F["pdf"])
     raw0 = subprocess.run(["pdftotext", "-f", "1", "-l", "1", F["pdf"], "-"], capture_output=True, text=True, check=True).stdout
     lines0 = [re.sub(r"\s+", " ", ln.strip()) for ln in raw0.splitlines() if ln.strip()]
@@ -1286,6 +1365,19 @@ def verify_files():
             errs.append(f"'What changed' page must mention '{need}'")
     if re.search(r"@[A-Z]{3,}", alltext):
         errs.append("an @PLACEHOLDER was printed unfilled")
+    if reflect_on():
+        rf, tn2t = flat_[IX("reflect") - 1], flat_[IX("tn2") - 1]
+        if "written or oral conversation" not in rf or rf.count("?") < 3 or "Written." not in rf or "Oral." not in rf:
+            errs.append("reflect page: needs the owner's definition, 3-4 prompts and the written / oral choice")
+        if "reflection" not in tn2t.lower() or "written or oral conversation" not in tn2t:
+            errs.append("teacher notes 2: reflection note missing")
+        ch_ = re.sub(r"\s+", " ", flat_[IX("changes") - 1]).lower()
+        if not all(x in ch_ for x in ("mentions reflection", "no reflection task", "adds one", "written or oral")):
+            errs.append("'What changed' page must say the rubric mentions reflection, the project sheet has no reflection task, and this kit adds one")
+        if "reflection" not in stext[[i for i, x in enumerate(K.SLIDES) if x[1] == "closer"][-1]].lower() or "Reflection:" not in notes[[i for i, x in enumerate(K.SLIDES) if x[1] == "closer"][-1]]:
+            errs.append("deck wrap-up slide and its notes must mention the Reflection")
+        if "Reflection (page" not in " ".join(flat_[IX("pacing") - 1:IX("pacing")]):
+            errs.append("pacing page must name the Reflection page")
     for claim in CLAIMS:
         if claim in alltext.lower() or claim in alldeck.lower():
             errs.append(f"never claim '{claim}' (PDF, deck or speaker notes)")
@@ -1356,7 +1448,7 @@ def verify_files():
         if need not in up_:
             errs.append(f"UPLOAD.md: missing '{need}'")
     for f in ("release", "uploaded"):
-        if os.path.exists(P(f)):
+        if os.path.exists(P(f)) and not getattr(K, "LIVE", False):   # LIVE = True: the kit is already on TpT; its files are the Manager's
             errs.append(f"{f} exists: only the Manager / uploader writes it")
     errs += K.verify_outputs(flat_, stext, notes)
     return errs
@@ -1382,6 +1474,13 @@ def main(kit):
     for nm, default in (("GRADE_SLUGS", list(GRADES[0])), ("GRADES_TEXT", GRADES[1])):   # default grades: 9th-12th
         if not hasattr(K, nm):
             setattr(K, nm, default)
+    if reflect_on():
+        if "reflect" not in K.PLAN:       # default: right before the terms page (kits that print page counts at import time list it themselves)
+            K.PLAN.insert(K.PLAN.index("terms"), "reflect")
+        last = [i for i, sl in enumerate(K.SLIDES) if sl[1] == "closer"][-1]
+        c, kd, t, b, nt = K.SLIDES[last]
+        if "Reflection:" not in nt:
+            K.SLIDES[last] = (c, kd, t, b, nt + reflect_slide_notes())
     if "--check" in sys.argv:
         check()
     else:

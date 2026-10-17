@@ -144,8 +144,7 @@ GRADING_TIPS = ["Technical Skill: ask the student to open Channel EQ on one trac
                 "on headphones and on the main speakers.",
                 "Composition &amp; Structure: the source track brings its own form. Look at whether the mix supports it (does the chorus "
                 "open up?), not whether the student wrote it.",
-                "Documentation &amp; Presentation: the FX log (page @FXLOG) and the three Padlet questions are the evidence. My rubric "
-                "mentions reflection, so you may want to ask for a sentence or two."]
+                "Documentation &amp; Presentation: the FX log (page @FXLOG) and the three Padlet questions are the evidence, along with the Reflection page (page @REFLECT)."]
 PACING = [
     {"n": 1, "owner": "<b>Class 1:</b> Review the 11 FX from class notes. Listen to examples. Students choose their source.",
      "do": "Slides 1–6: hook (dry, then mixed), what effects do, the seven classes, steps 1 and 2, why each effect needs a reason. Hand "
@@ -197,7 +196,7 @@ KEPT = ("Everything else from my three documents is kept as I wrote it: the over
         "requirements, steps (apart from the page numbers), tips, checklist and file name (“Your Name – FX Deep Dive”), the rubric (five "
         "categories scored 1–5, /25, the average of the student’s and the teacher’s score), what the project reinforces, the five common "
         "struggles, the variations, my day-by-day pacing and my closing note, and the project menu entry quoted on page @OVERVIEW. "
-        "No requirement or rubric row is added.")
+        "No rubric row is added and the requirements are unchanged.")
 NEW_MATERIAL = ("Everything else is new and supports my sheets without changing them: how to use the kit, the overview and setup "
                 "pages (including how to choose a source track), the teacher moves and slide numbers in the pacing guide, the grading "
                 "suggestions, the Logic quick reference, the EQ guide and demo plan, the worked example (an invented eight-track "
@@ -515,7 +514,7 @@ SHOTS3 = [("setup", "Choosing a source"), ("eqguide", "EQ guide"), ("example", "
 
 # ================================================================ page plan
 PLAN = ["cover", "howto", "overview", "setup", "pacing", "tn1", "tn2", "changes", "logicref", "eqguide", "links", "example",
-        "source", "fxnotes", "trackmap", "fxlog", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "terms"]
+        "source", "fxnotes", "trackmap", "fxlog", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "reflect", "terms"]
 PREVIEW_PICKS = ["pacing", "trackmap", "proj2", "rubric"]
 
 COVER_A = "Shape tone, depth and space"
@@ -586,8 +585,8 @@ RUBRIC_EXTRA = ""
 def howto_page(n, wm=False):
     parts = [("Teacher pages", "howto", "example", "How to use, overview, choosing a source, pacing, teacher notes, what changed, Logic "
               "reference, EQ guide, tutorial links, worked example"),
-             ("Student pages", "source", "present", "Source log, FX notes, Track map, FX log, project sheet (3 pages), rubric, vocabulary, "
-              "feedback planner"),
+             ("Student pages", "source", "reflect", "Source log, FX notes, Track map, FX log, project sheet (3 pages), rubric, vocabulary, "
+              "feedback planner, reflection"),
              ("Intro deck (separate file)", None, None, f"{len(SLIDES)} slides, .pptx + PDF, speaker notes on every slide")]
     trs = "".join(f"<tr><td><b>{a}</b></td><td style='white-space:nowrap'>{('pages ' + str(D.IX(f)) + '–' + str(D.IX(l))) if f else 'deck'}</td>"
                   f"<td>{u}</td></tr>" for a, f, l, u in parts)
@@ -601,7 +600,7 @@ def howto_page(n, wm=False):
              f'{D.H2("Quick start")}<ol>'
              f'<li style="margin-bottom:5pt">Read the pacing guide (page {D.IX("pacing")}) and my teacher notes (pages {D.IX("tn1")}–{D.IX("tn2")}).</li>'
              f'<li style="margin-bottom:5pt">Decide where source tracks come from and pre-select sessions (page {D.IX("setup")}): no audio is included.</li>'
-             f'<li style="margin-bottom:5pt">Print the student pages (pages {D.IX("source")}–{D.IX("present")}), one set per student.</li>'
+             f'<li style="margin-bottom:5pt">Print the student pages (pages {D.IX("source")}–{D.IX("reflect")}), one set per student.</li>'
              f'<li>Open the intro deck and read the speaker notes for Class 1.</li></ol>'
              f'{D.H2("The intro deck")}'
              f'<p>Every slide has a class: {D.deck_class_line()}. Class 5 is a working day with no new slide. Every slide has speaker notes.</p>'
@@ -660,7 +659,7 @@ def setup_page(n, wm=False):
              f'<li><b>A source track for every student</b>: their own earlier project, or a multitrack they download. Nothing is included.</li>'
              f'<li><b>A place to submit</b> an .mp3 or .wav and a zipped .logicx project (your class page).</li>'
              f'<li><b>A feedback board</b> for the three questions (my sheets use Padlet).</li>'
-             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("source")}–{D.IX("present")}).</li></ul>'
+             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("source")}–{D.IX("reflect")}).</li></ul>'
              f'{D.H2("Before Class 1")}'
              + "".join(D.chk(c, 13, "font-size:12pt;margin-bottom:8pt") for c in [
                  "Pre-select 5–10 multitrack sessions with sensible track counts (8–16), as my notes suggest, or decide to let students choose.",

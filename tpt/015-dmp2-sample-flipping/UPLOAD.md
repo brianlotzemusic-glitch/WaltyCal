@@ -4,7 +4,7 @@ These fields follow the order of TpT's "Add a resource" form. `tools/tpt.js publ
 
 **Files to attach**
 - Resource (digital download): `sample-flipping.zip`. It holds three files in a folder "Sample Flipping - Hudson Beat":
-  - `sample-flipping.pdf`: the teacher and student resource, 21 pages, US Letter portrait.
+  - `sample-flipping.pdf`: the teacher and student resource, 22 pages, US Letter portrait.
   - `sample-flipping-intro-deck.pptx`: the teacher-presented intro deck, 17 slides (16:9), speaker notes and a Class badge on every slide.
   - `sample-flipping-intro-deck.pdf`: a PDF copy of the deck, 17 pages.
 - Thumbnails, in this order: `cover.png`, `preview-1.png`, `preview-2.png`, `preview-3.png` (all 2000 × 2000).
@@ -24,9 +24,9 @@ Sample Flipping in Logic Pro | Quick Sampler Project | High School Music Tech
 ```
 Sampling and Quick Sampler for high school music technology: students pick one sample, chop, pitch and reverse it in Logic Pro's Quick Sampler, program their own drums and build an original track around it. This Sample Flipping project takes 7 class periods and comes from my Digital Music Production 2 course; the steps are written for Logic Pro, while the music ideas (chopping, pitching, drum patterns, arrangement, mixing) carry over to GarageBand, Ableton Live and BandLab.
 
-WHAT'S INCLUDED (ZIP: 21-page PDF + 17-slide intro deck as .pptx and PDF)
+WHAT'S INCLUDED (ZIP: 22-page PDF + 17-slide intro deck as .pptx and PDF)
 • Teacher pages: how to use, project overview, setup with a guide to building your own cleared sample set, a sampling ethics and copyright page with discussion questions, a 7-class pacing guide with the deck slides for each class, two pages of teacher notes (struggles, variations, resources, grading), a "What changed from the original" page, a Logic quick reference and a worked example (an original practice sample on paper, with slice, flip and drum grids) (11 pages)
-• Student pages: Sample log, Chop map, drum plan grids, the 3-page project sheet (overview, goals, vocabulary, requirements, steps, tips, submission checklist), the /25 rubric, a vocabulary page and a presentation and feedback planner (9 pages)
+• Student pages: Sample log, Chop map, drum plan grids, the 3-page project sheet (overview, goals, vocabulary, requirements, steps, tips, submission checklist), the /25 rubric, a vocabulary page and a presentation and feedback planner and a Reflection page (written or oral) (10 pages)
 • Teacher-presented intro deck, 17 slides with speaker notes on every slide: a before-and-after hook, a plain-English definition of flipping, sampling ethics, worked examples, three Logic demos, the steps, what to turn in and the rubric
 
 THE SEVEN CLASS PERIODS
@@ -85,10 +85,12 @@ National Core Arts Standards, Music (Music Technology, high school): MU:Cr2.1, M
 
 ## 8. Free or paid / free preview pages
 
-Paid. Preview PDF (4 watermarked pages): the 7-class pacing guide, the Chop map, the project sheet requirements and steps, and the /25 rubric. "Number of pages or slides" is 38 (21 pages + 17 slides).
+Paid. Preview PDF (4 watermarked pages): the 7-class pacing guide, the Chop map, the project sheet requirements and steps, and the /25 rubric. "Number of pages or slides" is 39 (22 pages + 17 slides).
 
 ## 9. Before you click publish
 
+- [ ] **Already live on TpT: the rebuilt PDF, ZIP, deck and images add the Reflection page and are for the owner's later re-upload.** The `uploaded` and `release` files are untouched; the new files need a fresh QA pass (QA-v2.md) before any re-upload.
 - [ ] Cover and previews show "HUDSON BEAT" in type; PDF footers read "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
 - [ ] No school name, logo, student work, samples, audio or Logic session anywhere (`gen.py --check` scans every output and every file in this folder).
-- [ ] **Open question for the owner (inventory question 7):** the provided sample set in Drive (a folder of .wav files and a 109 MB ZIP) has file names that look like commercial sample-pack loops, not the owner's own recordings. Who made them and under what license? Until the owner confirms they are his own or licensed for redistribution, they stay out of the product. Also: the rubric's "reflection" wording has no reflection task on the sheet (the kit leaves it as written and says so on the grading page); the older 2023 "Project Outline" doc is a 10-class version with a different 4-row rubric and was not used.
+- [x] **Reflection added (owner, 17 Oct 2026).** The owner's rubric (Documentation & Presentation) mentions reflection, but the project sheet has no reflection task. By the owner's definition (a written or oral conversation about how the student did on the project and what they would do differently next time) every DMP2 kit now has a Reflection student page (written or oral, 4 prompts), a teacher note, a pacing line and a line on the closing slide. The /25 rubric is untouched and the page adds no points. Shared builder: `tpt/_dmp2_common/dmp2.py`.
+- [ ] **Open question for the owner (inventory question 7):** the provided sample set in Drive (a folder of .wav files and a 109 MB ZIP) has file names that look like commercial sample-pack loops, not the owner's own recordings. Who made them and under what license? Until the owner confirms they are his own or licensed for redistribution, they stay out of the product. Also: the older 2023 "Project Outline" doc is a 10-class version with a different 4-row rubric and was not used.

@@ -4,7 +4,7 @@ These fields follow the order of TpT's "Add a resource" form. `tools/tpt.js publ
 
 **Files to attach**
 - Resource (digital download): `billboard-top-10.zip`. It holds three files in a folder "Billboard Top 10 - Hudson Beat":
-  - `billboard-top-10.pdf`: the teacher and student resource, 20 pages, US Letter portrait.
+  - `billboard-top-10.pdf`: the teacher and student resource, 21 pages, US Letter portrait.
   - `billboard-top-10-intro-deck.pptx`: the teacher-presented intro deck, 17 slides (16:9), speaker notes and a Class badge on every slide.
   - `billboard-top-10-intro-deck.pdf`: a PDF copy of the deck, 17 pages.
 - Thumbnails, in this order: `cover.png`, `preview-1.png`, `preview-2.png`, `preview-3.png` (all 2000 × 2000).
@@ -24,9 +24,9 @@ Song Form in Logic Pro | Billboard Top 10 Remake | High School Music Technology
 ```
 Song form and drum programming for high school music technology: students study the current Billboard Top 10, pick one song, map its form, program its drums and recreate it in Logic Pro at the original tempo. This project takes 7 class periods and comes from my Digital Music Production 2 course; the steps are written for Logic Pro, while the music ideas (song form, tempo, drum patterns, arrangement, mixing) carry over to GarageBand, Ableton Live and BandLab.
 
-WHAT'S INCLUDED (ZIP: 20-page PDF + 17-slide intro deck as .pptx and PDF)
+WHAT'S INCLUDED (ZIP: 21-page PDF + 17-slide intro deck as .pptx and PDF)
 • Teacher pages: how to use, project overview, setup with a song-choice guide, a 7-class pacing guide with the deck slides for each class, two pages of teacher notes (struggles, variations, resources, grading), a "What changed from the original" page, a Logic quick reference and a worked example (an original practice song map with tempo math and drum grids) (9 pages)
-• Student pages: Top 10 analysis, Song Form map, drum pattern analysis grids, the 3-page project sheet (overview, goals, vocabulary, requirements, steps, tips, submission checklist), the /25 rubric, a vocabulary page and a presentation and feedback planner (9 pages)
+• Student pages: Top 10 analysis, Song Form map, drum pattern analysis grids, the 3-page project sheet (overview, goals, vocabulary, requirements, steps, tips, submission checklist), the /25 rubric, a vocabulary page and a presentation and feedback planner and a Reflection page (written or oral) (10 pages)
 • Teacher-presented intro deck, 17 slides with speaker notes on every slide: a pop-culture hook (this week's No. 1), a plain-English definition of emulation, guided listening questions, worked examples, two Logic demos, the steps, what to turn in and the rubric
 
 THE SEVEN CLASS PERIODS
@@ -86,11 +86,13 @@ National Core Arts Standards, Music (Music Technology, high school): MU:Re7.2 (a
 
 ## 8. Free or paid / free preview pages
 
-Paid. Preview PDF (4 pages, watermarked "PREVIEW"): the 7-class pacing guide, the Song Form map, the project sheet requirements and steps, and the /25 rubric. "Number of pages or slides" is 37 (20 pages + 17 slides).
+Paid. Preview PDF (4 pages, watermarked "PREVIEW"): the 7-class pacing guide, the Song Form map, the project sheet requirements and steps, and the /25 rubric. "Number of pages or slides" is 38 (21 pages + 17 slides).
 
 ## 9. Before you click publish
 
+- [ ] **Already live on TpT: the rebuilt PDF, ZIP, deck and images add the Reflection page and are for the owner's later re-upload.** The `uploaded` and `release` files are untouched; the new files need a fresh QA pass (QA-v2.md) before any re-upload.
 - [ ] Cover and previews show "HUDSON BEAT" in type; PDF footers read "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
 - [ ] No school name, logo, student work, songs, audio or Logic session anywhere (`gen.py --check` scans every output and every file in this folder).
-- [ ] Owner questions in the Designer's report answered (see log/ACTION-LOG.md, 15 Oct: "Billboard" in the title and on the cover; the rubric's "reflection" wording with no reflection task on the sheet; the 2023 Billboard doc and form from another teacher's account in Drive).
+- [x] **Reflection added (owner, 17 Oct 2026).** The owner's rubric (Documentation & Presentation) mentions reflection, but the project sheet has no reflection task. By the owner's definition (a written or oral conversation about how the student did on the project and what they would do differently next time) every DMP2 kit now has a Reflection student page (written or oral, 4 prompts), a teacher note, a pacing line and a line on the closing slide. The /25 rubric is untouched and the page adds no points. Shared builder: `tpt/_dmp2_common/dmp2.py`.
+- [ ] Owner questions in the Designer's report answered (see log/ACTION-LOG.md, 15 Oct: "Billboard" in the title and on the cover; the 2023 Billboard doc and form from another teacher's account in Drive).
 - [ ] Optional (Manager): a Google Slides copy of the deck can go in a NEW Drive folder "DMP Sale Decks"; never edit the owner's originals.

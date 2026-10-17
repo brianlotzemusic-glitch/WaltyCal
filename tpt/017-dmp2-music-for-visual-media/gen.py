@@ -12,10 +12,15 @@ DMP2 > Projects (New) > Music for Visual Media > "Music for Visual Media - Proje
 periods), and the project's entry on "DMP2 - Project Menu" (the June 2026 menu with Type / Focus columns).
 Supporting artifact (owner rule 17 Oct 2026): the "Composing to Picture" table from DMP1 (New) > 5 - Spooky Tunes > "Project Sheet &
 Rubric - Spooky Tunes" (page "picture", the owner's own text, credited as from the teacher's own materials). Searched and not found:
-film scoring examples list, Logic markers tutorial, the 3-5 pre-selected clips (easier variation). Left out on purpose: the owner's
-video files (How to import a movie into Logic, Walking Through the Woods at Night), the older 2024/2025 outlines, student work.
+film scoring examples list, Logic markers tutorial, the 3-5 pre-selected clips (easier variation); the owner confirmed (17 Oct 2026)
+there is no clip list and no film-scoring or markers-tutorial links to add. Left out on purpose: the older 2024/2025 outlines, student work.
+VIDEOS (owner, 17 Oct 2026: include the two DMP1 Unit 5 videos in the ZIP). They are in Drive > 5 - Spooky Project (read-only):
+"How to import a movie into Logic.mov" (243,604,831 bytes) and "Walking Through the Woods at Night.mp4" (209,166,623 bytes). Both are
+far over the ~90 MB per-file ceiling for git and TpT, git LFS is not set up in this repo, and a 200+ MB file cannot be pulled through
+the Drive connector, so they are NOT in the ZIP. Fallback: a labelled "Videos" page (key "videos") names each file, its size and where
+to get it. If the owner supplies compressed copies (under 90 MB each) put them in this folder and list them in ZIP_EXTRA.
 
-NO VIDEO AND NO AUDIO ARE INCLUDED. The project has students score a video clip (their own, or one from YouTube or Vimeo). Video
+NO VIDEO AND NO AUDIO ARE INCLUDED (the two tutorial videos are only named, on the Videos page). The project has students score a video clip (their own, or one from YouTube or Vimeo). Video
 clips belong to their makers, so this kit never contains, hosts or links to a specific clip: it tells teachers how to choose a
 clip that students may use, and the worked example is an invented 90-second scene described on paper, with a timeline, a bars-
 and-seconds ruler and a dynamics picture drawn in code. No films, games, songs, lyrics or chart data are named.
@@ -44,6 +49,8 @@ DESC_START = "Film scoring and sync for high school music technology:"
 DESC_MUST = ["Music for Visual Media", "no video", "hit point", "their own clip"]
 ZIP_DIR = "Music for Visual Media - Hudson Beat"
 ZIP_DATE = (2026, 10, 16, 12, 0, 0)
+ZIP_EXTRA = []   # the two Unit 5 videos would go here once compressed copies under 90 MB each exist (see VIDEO_FILES / the Videos page)
+VIDEO_FILES = [("How to import a movie into Logic.mov", 243604831), ("Walking Through the Woods at Night.mp4", 209166623)]
 TYPE = "Open-Ended Project"
 PROJ_LINE = "Digital Music Production | <i>Open-Ended Project</i> | 7 class periods"
 DECK_STRAP = "Mood, timing and hit points in Logic Pro"
@@ -121,8 +128,9 @@ STRUGGLES = ["Students pick clips that are too long or too complex. Encourage 1�
 VAR_EASY = "Provide 3–5 pre-selected video clips to choose from. Shorter clips (60–90 seconds) reduce overwhelm."
 VAR_HARD = "Require at least 3 specific sync points. Add a requirement for original sound effects alongside the score."
 RESOURCES = [("YouTube and Vimeo for royalty-free video clips",
-              "Not included: no video is included or linked here, because clips belong to their makers. Page @SETUP shows how to choose a "
-              "clip students may use, and page @CLIP is where each student records where theirs came from."),
+              "Not included: no clip is included or linked here, because clips belong to their makers. Page @SETUP shows how to choose a "
+              "clip students may use, and page @CLIP is where each student records where theirs came from. Two tutorial videos of mine "
+              "are named on page @VIDEOS."),
              ("Film scoring examples on YouTube",
               "Not included: search by title. My own scoring-to-picture guidance is on page @PICTURE, and slide 2 and the notes for Class 1 "
               "say how to use a scene you may show, first with the sound off and then with its score."),
@@ -138,8 +146,7 @@ GRADING_TIPS = ["Technical Skill: ask the student to point to three markers in t
                 "is there a quiet moment as well as a loud one?",
                 "Sound Design &amp; Mix Quality: play the finished video once with the sound off and once on. Check that the clip’s own "
                 "audio is muted and that dialogue or effects in the clip do not fight the score.",
-                "Documentation &amp; Presentation: the cue sheet (page @CUES) and the Sync log (page @SYNC) are the evidence. My rubric "
-                "mentions reflection, so you may want to ask for a sentence or two."]
+                "Documentation &amp; Presentation: the cue sheet (page @CUES) and the Sync log (page @SYNC) are the evidence, along with the Reflection page (page @REFLECT)."]
 PACING = [
     {"n": 1, "owner": "<b>Class 1:</b> Introduction. Students select and import their video. Study the clip.",
      "do": "Slides 1–6: the hook (a scene with the sound off, then on), what a score does, the seven classes, steps 1 and 2, and choosing "
@@ -165,10 +172,10 @@ PACING = [
      "slides": (17, 18), "pages": ["present"], "deck": "Presentations with Padlet Q&A"},
 ]
 PACING_EXTRA = (
-    '<div class="cols" style="margin-top:8pt;gap:14pt"><div class="box acc-b"><span class="k">The one rule for Class 1</span>'
-    '<p style="margin:0;font-size:10pt">From my common struggles: steer students to a clip with 1–2 minutes of actual scored content. '
+    '<div class="cols" style="margin-top:4pt;gap:14pt"><div class="box acc-b"><span class="k">The one rule for Class 1</span>'
+    '<p style="margin:0;font-size:9.4pt">From my common struggles: steer students to a clip with 1–2 minutes of actual scored content. '
     'Slide 6 and the clip checks on page @SETUP are your script, and page @CLIP is where students record where their clip comes from.</p></div>'
-    '<div class="box"><span class="k">Classes 3–5</span><p style="margin:0;font-size:10pt">Working days. Slides 12 and 13 open Classes 3 '
+    '<div class="box"><span class="k">Classes 3–5</span><p style="margin:0;font-size:9.4pt">Working days. Slides 12 and 13 open Classes 3 '
     'and 4; Class 5 has no new slide. Circulate and ask: where is your next hit point, and what does the music do there?'
     '</p></div></div>')
 
@@ -176,25 +183,26 @@ PACING_EXTRA = (
 CHANGES = [
     "My LMS name is written as “your class page” (checklist items 1 and 2).",
     "Page numbers are added to steps 1, 2, 3 and 5 (the Clip log, Watch notes, Score plan, Cue sheet and Sync log).",
-    "My three resources are not included (page @TN2). No video clip, list or tutorial is included, and no 3–5 clip list was in my materials.",
+    "My three resources are not included (page @TN2): no clip list, film-scoring links or markers tutorial is added, because none exists in my materials.",
+    "Page @VIDEOS is new. It names the two videos from my older DMP1 Unit 5 project (the Logic import screen recording and the “Walking Through the Woods at Night” video) with their sizes and where to get them. The files are not in the ZIP because each is over 200 MB, too big for a TpT download.",
     "Page @PICTURE is my “Composing to Picture” advice from my Spooky Tunes sheet; the last sentence (about its reverb buses) is left out.",
     "My pacing guide’s “Classes 3–5” row spans the Class 3, 4 and 5 rows, so each class can name its slides.",
     "Layout only: the rubric’s Name and Date lines moved to the top; its Notes box became ruled lines.",
     "The intro deck shortens my wording (full wording on pages @PROJ1–@PROJ3): slide 5 shortens steps 1 and 2, slide 10 shortens step 3, "
     "slide 12 shortens step 4, slide 13 shortens step 5, and slide 14 shortens step 6.",
 ]
-CHANGES_MUST_MENTION = ["Composing to Picture", "your class page", "Page numbers", "No video", "Classes 3–5", "Layout only", "intro deck shortens"]
+CHANGES_MUST_MENTION = ["Composing to Picture", "your class page", "Page numbers", "not in the ZIP", "Classes 3–5", "Layout only", "intro deck shortens"]
 KEPT = ("Everything else from my three documents is kept as I wrote it: the overview, goals, the five vocabulary terms, the five "
         "requirements, steps (apart from the page numbers), tips, checklist and file name (“Your Name – Music for Visual Media”), the "
         "rubric (five categories scored 1–5, /25, the average of the student’s and the teacher’s score), what the project reinforces, "
         "the four common struggles, the variations, my day-by-day pacing and my closing note, and the project menu entry quoted on "
-        "page @OVERVIEW. No requirement or rubric row is added.")
+        "page @OVERVIEW. No rubric row is added and the requirements are unchanged.")
 NEW_MATERIAL = ("Everything else is new and supports my sheets without changing them (page @PICTURE is from my other materials, "
                 "as listed above): how to use the kit, the overview and setup "
                 "pages (including how to choose a clip students may use), the teacher moves and slide numbers in the pacing guide, "
                 "the grading suggestions, the Logic quick reference, the sync and timing guide, the worked example (an invented "
                 "90-second scene described on paper, not a video), the Clip log, Watch notes, Score plan, Cue sheet and Sync log, the "
-                "vocabulary page, the presentation planner and the intro deck. None of these adds a requirement or a rubric row.")
+                "vocabulary page, the presentation planner, the Videos page and the intro deck. None of these adds a requirement or a rubric row.")
 
 # ================================================================ the worked example (Hudson Beat original: an invented scene on paper)
 TEMPO = 120                     # beats per minute, 4/4
@@ -487,8 +495,8 @@ SHOTS3 = [("setup", "Choosing a clip"), ("syncguide", "Sync guide"), ("example",
           ("proj2", "Steps"), ("plan", "Score plan"), ("sync", "Sync log"), ("changes", "What changed")]
 
 # ================================================================ page plan
-PLAN = ["cover", "howto", "overview", "setup", "pacing", "tn1", "tn2", "changes", "logicref", "syncguide", "picture", "example",
-        "clip", "watch", "plan", "cues", "sync", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "terms"]
+PLAN = ["cover", "howto", "overview", "setup", "videos", "pacing", "tn1", "tn2", "changes", "logicref", "syncguide", "picture", "example",
+        "clip", "watch", "plan", "cues", "sync", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "reflect", "terms"]
 PREVIEW_PICKS = ["pacing", "cues", "proj2", "rubric"]
 
 COVER_A = "Score the picture"
@@ -542,6 +550,8 @@ TN1_EXTRA = (
     '<li style="font-size:10.8pt;margin-bottom:2pt">Sync is hard: the markers demo (slide 8), the sync guide (page @SYNCGUIDE) and the Cue sheet (page @CUES).</li>'
     '<li style="font-size:10.8pt;margin-bottom:0">Same volume the whole time: slide 11 and the dynamics row of the Score plan (page @PLAN).</li></ul></div>')
 TN1_SIZE = 13.6
+TN2_SIZE = 10.6
+PACING_SIZE = 9.8
 PROJ_SIZE = 14.2
 VOCAB_GAP = 8
 LOGIC_SIZE = 10.8
@@ -552,9 +562,9 @@ RUBRIC_EXTRA = ""
 # ================================================================ custom pages
 def howto_page(n, wm=False):
     parts = [("Teacher pages", "howto", "example", "How to use, overview, choosing a clip, pacing, teacher notes, what changed, Logic "
-              "reference, sync guide, composing to picture, worked example"),
-             ("Student pages", "clip", "present", "Clip log, Watch notes, Score plan, Cue sheet, Sync log, project sheet (3 pages), rubric, "
-              "vocabulary, feedback planner"),
+              "reference, sync guide, composing to picture, worked example, the two tutorial videos (named, not included)"),
+             ("Student pages", "clip", "reflect", "Clip log, Watch notes, Score plan, Cue sheet, Sync log, project sheet (3 pages), rubric, "
+              "vocabulary, feedback planner, reflection"),
              ("Intro deck (separate file)", None, None, f"{len(SLIDES)} slides, .pptx + PDF, speaker notes on every slide")]
     trs = "".join(f"<tr><td><b>{a}</b></td><td style='white-space:nowrap'>{('pages ' + str(D.IX(f)) + '–' + str(D.IX(l))) if f else 'deck'}</td>"
                   f"<td>{u}</td></tr>" for a, f, l, u in parts)
@@ -568,7 +578,7 @@ def howto_page(n, wm=False):
              f'{D.H2("Quick start")}<ol>'
              f'<li style="margin-bottom:5pt">Read the pacing guide (page {D.IX("pacing")}) and my teacher notes (pages {D.IX("tn1")}–{D.IX("tn2")}).</li>'
              f'<li style="margin-bottom:5pt">Decide how students will find a clip they may use (page {D.IX("setup")}): no video is included.</li>'
-             f'<li style="margin-bottom:5pt">Print the student pages (pages {D.IX("clip")}–{D.IX("present")}), one set per student.</li>'
+             f'<li style="margin-bottom:5pt">Print the student pages (pages {D.IX("clip")}–{D.IX("reflect")}), one set per student.</li>'
              f'<li>Open the intro deck and read the speaker notes for Class 1.</li></ol>'
              f'{D.H2("The intro deck")}'
              f'<p>Every slide has a class: {D.deck_class_line()}. Class 5 is a working day with no new slide. Every slide has speaker notes.</p>'
@@ -627,7 +637,7 @@ def setup_page(n, wm=False):
              f'<li><b>A video clip for every student</b>: their own footage, or one they may use. Nothing is included.</li>'
              f'<li><b>A place to submit</b> an .mp3 or .wav and a zipped .logicx project (your class page).</li>'
              f'<li><b>A feedback board</b> for the three questions (my sheets use Padlet).</li>'
-             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("clip")}–{D.IX("present")}).</li></ul>'
+             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("clip")}–{D.IX("reflect")}).</li></ul>'
              f'{D.H2("Before Class 1")}'
              + "".join(D.chk(c, 13, "font-size:12pt;margin-bottom:8pt") for c in [
                  "Decide how clips will be chosen: your own footage, ones students find, or a short list you provide (my easier variation).",
@@ -654,6 +664,35 @@ def setup_page(n, wm=False):
              f'links to no clip.</p></div>'
              f'</div></div>')
     return D.page("Setup and choosing a clip", "SETUP", "Teacher", inner, n, key="setup")
+
+
+def mb(b):
+    return f"{b / 1e6:.0f} MB"
+
+
+def videos_page(n, wm=False):
+    (f1, b1), (f2, b2) = VIDEO_FILES
+    rows = (f"<tr><td style='width:29%;padding:6pt'><b>{f1}</b></td><td style='width:11%'>{mb(b1)}<br>QuickTime</td>"
+            f"<td>My screen recording of importing a movie into Logic. Use it in Class 1 for step 1, “Choose your video”. The steps are "
+            f"also written in the Logic quick reference (page @LOGICREF).</td></tr>"
+            f"<tr><td><b>{f2}</b></td><td>{mb(b2)}<br>MP4</td>"
+            f"<td>A video from my DMP1 Unit 5 project. Use it as a scene you may show on slide 2 (sound off, then on) and for the markers "
+            f"demo on slide 8, if you do not have a scene of your own.</td></tr>")
+    inner = (f'<div class="box acc-b"><span class="k">Not in this ZIP</span><p style="margin:0;font-size:13.4pt;line-height:1.5">Two videos from my '
+             f'older DMP1 Unit 5 project go with this unit. Each file is over 200 MB, far too big for a Teachers Pay Teachers download, so '
+             f'they are named here and are <b>not</b> in the ZIP.</p></div>'
+             f'{D.H2("The two videos")}<table class="t" style="font-size:12.6pt;line-height:1.45"><tr><th>File</th><th>Size</th><th>What it is for</th></tr>{rows}</table>'
+             f'{D.H2("Where to get them")}<p style="font-size:13.2pt;line-height:1.5">Ask for the download link in the Q&amp;A tab of the '
+             f'{D.BRAND} by {D.STORE} store on Teachers Pay Teachers, and give the file names above. The files are meant for your own '
+             f'students, under the terms on the last page.</p>'
+             f'{D.H2("The project works without them")}<ul style="font-size:12.2pt;line-height:1.45">'
+             f'<li>Class 1 and Class 2 run fine with a short scene you may show: page @SETUP shows how to choose one.</li>'
+             f'<li>The Logic quick reference (page @LOGICREF) has the import steps (File › Movie › Open Movie), markers, SMPTE time and the frame rate.</li>'
+             f'<li>Students use their own clip, or one they may use, as my project sheet says (page @PROJ2).</li></ul>'
+             f'<div class="box" style="margin-top:6pt"><span class="k">Why a page and not the files</span><p style="margin:0;font-size:12.4pt">'
+             f'A TpT product file has a size limit, and a ZIP with these two videos would be about {mb(b1 + b2)}. Naming them keeps this download '
+             f'small and keeps the PDF and deck as the product.</p></div>')
+    return D.page("Videos · named, not included", "SETUP", "Teacher", D.fill(inner), n, key="videos")
 
 
 def syncguide_page(n, wm=False):
@@ -832,7 +871,7 @@ def picture_page(n, wm=False):
     return D.page("Composing to picture", "TEACHER + STUDENT", "Classes 1-2", inner, n, wm, key="picture")
 
 
-PAGES = {"howto": howto_page, "overview": overview_page, "setup": setup_page, "syncguide": syncguide_page, "picture": picture_page, "example": example_page,
+PAGES = {"videos": videos_page, "howto": howto_page, "overview": overview_page, "setup": setup_page, "syncguide": syncguide_page, "picture": picture_page, "example": example_page,
          "clip": clip_page, "watch": watch_page, "plan": plan_page, "cues": cues_page, "sync": sync_page}
 
 
@@ -876,6 +915,15 @@ def verify_content():
 def verify_outputs(flat, stext, notes):
     errs = []
     alldeck = " ".join(stext + notes)
+    vp = flat[D.IX("videos") - 1]
+    for f_, b_ in VIDEO_FILES:
+        if not all(w in vp for w in f_.split()) or mb(b_) not in vp:
+            errs.append(f"Videos page must name {f_} and its size {mb(b_)}")
+    if "Not in this ZIP" not in vp.replace("NOT IN THIS ZIP", "Not in this ZIP") or ZIP_EXTRA:
+        errs.append("Videos page: must say the files are not in the ZIP (fallback) while ZIP_EXTRA is empty")
+    for f_, _ in VIDEO_FILES:
+        if os.path.exists(os.path.join(HERE, f_)):
+            errs.append(f"{f_} must not be committed (over 90 MB)")
     for need in ("No video",):
         if need not in notes[0]:
             errs.append(f"deck slide 1 notes must say '{need}'")
@@ -889,8 +937,8 @@ def verify_outputs(flat, stext, notes):
     up = open(os.path.join(HERE, "UPLOAD.md"), encoding="utf8").read()
     if "Grades 9-12" not in up or "10-12" in up or "`9th-grade`, `10th-grade`, `11th-grade`, `12th-grade`" not in up:
         errs.append("UPLOAD.md: grades 9-12 in the description and section 3")
-    if "no video" not in up.lower() or "Open question" not in up:
-        errs.append("UPLOAD.md: must say no video is included and record the open questions")
+    if "no video" not in up.lower() or "Open question" not in up or "Videos page" not in up:
+        errs.append("UPLOAD.md: must say no video is included, explain the Videos page and record the open questions")
     for i in (4, 9, 11, 12, 13):   # slides that shorten the owner's wording must say so
         if "shortened" not in notes[i].lower():
             errs.append(f"deck slide {i + 1} notes: must say the owner's wording is shortened")
@@ -912,7 +960,7 @@ def check_summary():
     return (f"At {TEMPO} BPM one bar is {bar_len():.0f} s (100 BPM: {bar_len(100):.1f} s); the six hit points land on bars "
             f"{', '.join(str(pos(t)[0]) for t, *_ in HITS)}; 0:17.5 is 00:00:17:12 at {FPS} fps; the invented scene is {CLIP_S} s, 45 bars; "
             f"the owner's lists counted (4 goals, 5 terms, 5 requirements, 7 steps, 4 tips, 6 checklist items, 4 struggles, 3 resources); "
-            f"{len(CHANGES)} wording changes disclosed; no video or audio included; grades 9-12; grading tips labelled as suggestions.")
+            f"{len(CHANGES)} wording changes disclosed; no video or audio included (the two Unit 5 videos are named on the Videos page, over 90 MB each, not in the ZIP); grades 9-12; grading tips labelled as suggestions.")
 
 
 if __name__ == "__main__":

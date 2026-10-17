@@ -39,6 +39,7 @@ ZIP_DATE = (2026, 10, 15, 12, 0, 0)
 TYPE = "Structured Project"
 PROJ_LINE = "Digital Music Production | <i>Structured Project</i> | 7 class periods"
 DECK_STRAP = "Song form and drums in Logic Pro"
+LIVE = True                 # already live on TpT (uploaded/release files belong to the Manager); this rebuild is for the later re-upload
 BANNED_EXTRA = ["Bieber" + " example spreadsheet"]
 
 # ================================================================ the owner's words
@@ -186,7 +187,7 @@ CHANGES_MUST_MENTION = ["your class page", "Google Form", "Song Form spreadsheet
 KEPT = ("Everything else from my three documents is kept as I wrote it: the overview, goals, vocabulary, requirements, steps, tips, "
         "checklist and file name (“Your Name – Billboard Top 10”), the rubric (five categories scored 1–5, /25, the average of the "
         "student’s and the teacher’s score), what the project reinforces, the four common struggles, the variations, my resource list "
-        "and my day-by-day pacing, and the project menu entry quoted on page @OVERVIEW. No requirement or rubric row is added.")
+        "and my day-by-day pacing, and the project menu entry quoted on page @OVERVIEW. No rubric row is added and the requirements are unchanged.")
 NEW_MATERIAL = ("Everything else is new and supports my sheets without changing them: how to use the kit, the overview and setup "
                 "pages, the teacher moves and slide numbers in the pacing guide, the grading suggestions, the Logic quick reference, the worked "
                 "example (an original practice map, not a real song), the Top 10 analysis, the Song Form map and the drum pattern pages, "
@@ -374,7 +375,7 @@ SHOTS3 = [("analysis", "Top 10 analysis"), ("drums", "Drum patterns"), ("example
 
 # ================================================================ page plan
 PLAN = ["cover", "howto", "overview", "setup", "pacing", "tn1", "tn2", "changes", "logicref", "example",
-        "analysis", "formmap", "drums", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "terms"]
+        "analysis", "formmap", "drums", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "reflect", "terms"]
 PREVIEW_PICKS = ["pacing", "formmap", "proj2", "rubric"]
 
 COVER_A = "Recreate a hit in Logic Pro"
@@ -440,8 +441,8 @@ RUBRIC_EXTRA = ""
 def howto_page(n, wm=False):
     parts = [("Teacher pages", "howto", "example", "How to use, overview, setup, pacing, teacher notes, what changed, Logic reference, "
               "worked example"),
-             ("Student pages", "analysis", "present", "Top 10 analysis, Song Form map, drum patterns, project sheet (3 pages), rubric, "
-              "vocabulary, feedback planner"),
+             ("Student pages", "analysis", "reflect", "Top 10 analysis, Song Form map, drum patterns, project sheet (3 pages), rubric, "
+              "vocabulary, feedback planner, reflection"),
              ("Intro deck (separate file)", None, None, f"{len(SLIDES)} slides, .pptx + PDF, speaker notes on every slide")]
     trs = "".join(f"<tr><td><b>{a}</b></td><td style='white-space:nowrap'>{('pages ' + str(D.IX(f)) + '–' + str(D.IX(l))) if f else 'deck'}</td>"
                   f"<td>{u}</td></tr>" for a, f, l, u in parts)
@@ -454,7 +455,7 @@ def howto_page(n, wm=False):
              f'{D.H2("Quick start")}<ol>'
              f'<li>Read the pacing guide (page {D.IX("pacing")}) and my teacher notes (pages {D.IX("tn1")}–{D.IX("tn2")}).</li>'
              f'<li>Check this week’s Top 10 on billboard.com and preview the songs (page {D.IX("setup")}).</li>'
-             f'<li>Print the student pages (pages {D.IX("analysis")}–{D.IX("present")}), one set per student.</li>'
+             f'<li>Print the student pages (pages {D.IX("analysis")}–{D.IX("reflect")}), one set per student.</li>'
              f'<li>Open the intro deck and read the speaker notes for Class 1.</li></ol>'
              f'{D.H2("The intro deck")}'
              f'<p>Every slide has a class: {D.deck_class_line()}. Class 5 is a working day with no new slide. Every slide has speaker notes.</p>'
@@ -513,7 +514,7 @@ def setup_page(n, wm=False):
              f'<li><b>A way to play the songs</b>: YouTube or Spotify through your school’s own access. Nothing is included.</li>'
              f'<li><b>A place to submit</b> an .mp3 or .wav and a zipped .logicx project (your class page).</li>'
              f'<li><b>A feedback board</b> for the three questions (my sheets use Padlet).</li>'
-             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("analysis")}–{D.IX("present")}).</li></ul>'
+             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("analysis")}–{D.IX("reflect")}).</li></ul>'
              f'{D.H2("A MIDI keyboard?")}<p>Helpful for bass, chords and melodies, not required: notes can be drawn in the Piano Roll.</p>'
              f'</div><div class="big">'
              f'{D.H2("Before Class 1", True)}'

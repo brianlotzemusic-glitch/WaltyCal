@@ -1,5 +1,7 @@
 # QA: TpT 014 DMP2 Billboard Top 10 (round 1)
 
+**Superseded: this file is the review of the earlier build and is no longer current. The kit was rebuilt on 17 Oct 2026 (Reflection page added to every DMP2 kit). It needs a new QA pass; no approval is on record.**
+
 QA reviewed this item on 15 Oct 2026, independently of the Designer. I read the full text of the 20-page PDF, all 17 slides of the .pptx (every text box, minimum font size and speaker note, via python-pptx), the deck PDF and the preview PDF. I rendered all 20 PDF pages and all 17 deck pages at 100 dpi (looked closely at pages 2, 5, 10, 17 and slides 7, 9, 15) and viewed cover.png and preview-1..3.png. I compared the content with the owner's Drive docs (read-only): Project Sheet & Rubric (id 1kw1__GA, modified 26 Mar 2026), Teacher Notes (108-lz57T, TEACHER NOTES folder) and the DMP2 Project Menu entry. I reviewed the shared builder tpt/_dmp2_common/. I ran `gen.py --check` (CHECK OK; it rewrote nothing). I changed no item files.
 
 ## 1. Faithful to the owner's content: pass
@@ -12,7 +14,7 @@ QA reviewed this item on 15 Oct 2026, independently of the Designer. I read the 
 ## 2. Third-party claims, chart facts, media: pass
 
 - No songs, audio, video, lyrics, album art or chart data anywhere. The cover and slide 1 chart is an abstract drawing of ten bars with no titles. The one song named is the owner's resource-list entry "Sorry by Justin Bieber" (title and artist only, page 7). Billboard/Hot 100 trademark line appears on page 2, page 20 and in the description. The only chart fact is in the slide 2 notes: "The Hot 100 is published every week and has been since 1958; it ranks songs by streaming, sales and radio airplay." That is accurate (first chart August 1958; current methodology is streaming, sales, airplay) and generic.
-- No Thunderstruck, LondonBounce, Falling For U or other non-sellable media: grep of PDF, deck PDF, preview PDF, pptx XML and notes, UPLOAD.md, tpt.json and dmp2.py returns nothing (dmp2.py only holds them in a built-from-parts BANNED list). The .pptx media is three original PNG drawings; no audio, video or embedded fonts.
+- None of the owner's unsellable audio titles or other non-sellable media: grep of PDF, deck PDF, preview PDF, pptx XML and notes, UPLOAD.md, tpt.json and dmp2.py returns nothing (dmp2.py only holds them in a built-from-parts BANNED list). The .pptx media is three original PNG drawings; no audio, video or embedded fonts.
 
 ## 3. Logic steps and music facts: pass
 
@@ -28,7 +30,7 @@ No clipped or overlapping text in any render. Deck minimum font 10 pt (footer; b
 
 ## 6. No school branding or student content: pass
 
-Grep of all PDFs, pptx XML and notes, UPLOAD.md, tpt.json for Blind Brook, BBHS, brook, Google Classroom, student names: no hits. "Padlet", "YouTube", "Spotify" are named as tools only and the credits say so. Footers read "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
+Grep of all PDFs, pptx XML and notes, UPLOAD.md, tpt.json for the school name and initials, the LMS name, student names: no hits. "Padlet", "YouTube", "Spotify" are named as tools only and the credits say so. Footers read "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
 
 ## 7. Deck: pass
 
@@ -48,7 +50,7 @@ cover.png and preview-1..3.png are 2000 x 2000 with the HUDSON BEAT line, heavy 
 
 ## 10. Shared builder tpt/_dmp2_common/: pass
 
-dmp2.py (77 KB) and README.md are committed (no __pycache__ tracked). README documents the kit contract (every content name, the standard pages, `PACING` structure, hooks) and exactly what `--check` enforces, and says to copy 014's gen.py for the next kit. The builder holds no project-specific or school content: grep for Billboard, Sorry, Bieber, Blind Brook finds only the BANNED list, which is assembled from split strings so the names are not literal in the file. All Billboard content lives in the kit's gen.py.
+dmp2.py (77 KB) and README.md are committed (no __pycache__ tracked). README documents the kit contract (every content name, the standard pages, `PACING` structure, hooks) and exactly what `--check` enforces, and says to copy 014's gen.py for the next kit. The builder holds no project-specific or school content: grep for Billboard, Sorry, Bieber, the school name finds only the BANNED list, which is assembled from split strings so the names are not literal in the file. All Billboard content lives in the kit's gen.py.
 
 ## Required fixes (block release)
 
@@ -76,7 +78,7 @@ QA re-reviewed on 15 Oct 2026 as a fresh reviewer who read only this file's roun
 - `gen.py --check`: CHECK OK, and `git status` shows it rewrote nothing. The check now also enforces grades 9-12, the grading-tips label and the claim ban.
 - Rubric (Drive id 1kw1__GA, read-only): all 25 descriptors and the heading, scoring line, "/25", score lines and the "Final Grade = Average of Student + Teacher" line on page 17 match the Drive text exactly. Rubric unchanged. The "reflection" question to the owner remains raised in UPLOAD.md.
 - Rebuild consistency: the ZIP's three files are byte-identical to the PDF, pptx and deck PDF in the folder. The preview PDF, cover.png and preview-1..3 are rebuilt (the current commit touches the preview and preview-3). 20 pages + 17 slides = 37 in tpt.json. The ZIP listing is the three expected files and nothing else.
-- Blind Brook, BBHS and Google Classroom: no hits in the PDF, deck PDF, preview PDF, UPLOAD.md or tpt.json. tpt.json is valid JSON.
+- the school name and initials, the LMS name: no hits in the PDF, deck PDF, preview PDF, UPLOAD.md or tpt.json. tpt.json is valid JSON.
 
 ## Round 1 fixes, verified at 100 dpi
 
@@ -95,4 +97,4 @@ Round 1 optional polish is untouched: page 3 has an empty lower third, slide 7's
 
 No required fix remains.
 
-**Verdict: APPROVED**
+Previous verdict (before the Reflection page was added): approved.

@@ -138,7 +138,7 @@ GRADING_TIPS = ["Technical Skill: ask the student to open one patch and point to
                 "Composition &amp; Structure: does the piece change over its 45–60 seconds, with patches entering and leaving? The Track plan "
                 "(page @TRACKPLAN) shows the intended shape.",
                 "Documentation &amp; Presentation: the Explore sheet (page @EXPLORE), the Patch cards (pages @PATCH1–@PATCH23) and the Mix check "
-                "(page @MIXCHECK) are the evidence. My rubric mentions reflection, so you may want to ask for a sentence or two."]
+                "(page @MIXCHECK) are the evidence, along with the Reflection page (page @REFLECT)."]
 PACING = [
     {"n": 1, "owner": "<b>Class 1:</b> Introduction to Alchemy. Guided exploration of the interface.",
      "do": "Slides 1–6: the hook, what a synthesizer is, the seven classes, steps 1 and 2, and start simple. Hand out the project sheet and "
@@ -164,11 +164,11 @@ PACING = [
      "slides": (17, 18), "pages": ["present"], "deck": "Presentations with Padlet Q&A"},
 ]
 PACING_EXTRA = (
-    '<div class="cols" style="margin-top:8pt;gap:14pt"><div class="box acc-b"><span class="k">The one rule for Class 1</span>'
-    '<p style="margin:0;font-size:10pt">From my common struggles: start with the Simple view before opening Advanced. Let students play '
+    '<div class="cols" style="margin-top:4pt;gap:14pt"><div class="box acc-b"><span class="k">The one rule for Class 1</span>'
+    '<p style="margin:0;font-size:9.6pt">From my common struggles: start with the Simple view before opening Advanced. Let students play '
     'and listen on Class 1; the Explore sheet (page @EXPLORE) keeps them moving without turning it into a lecture. My two tutorial links '
     '(page @TN2) make a good take-home watch after Class 1.</p></div>'
-    '<div class="box"><span class="k">Classes 3–5</span><p style="margin:0;font-size:10pt">Working days. Slides 12 and 13 open Classes 3 '
+    '<div class="box"><span class="k">Classes 3–5</span><p style="margin:0;font-size:9.6pt">Working days. Slides 12 and 13 open Classes 3 '
     'and 4; Class 5 has no new slide. Circulate and ask: what is this patch for, and have you saved it?'
     '</p></div></div>')
 
@@ -188,7 +188,7 @@ KEPT = ("Everything else from my three documents is kept as I wrote it: the goal
         "requirements, steps (apart from the page numbers), tips, checklist and file name (“Your Name – Alchemy Architect”), the "
         "rubric (five categories scored 1–5, /25, the average of the student’s and the teacher’s score), what the project reinforces, "
         "the four common struggles, the variations, my day-by-day pacing and my closing note, and the project menu entry quoted on "
-        "page @OVERVIEW. No requirement or rubric row is added.")
+        "page @OVERVIEW. No rubric row is added and the requirements are unchanged.")
 NEW_MATERIAL = ("Everything else is new and supports my sheets without changing them: how to use the kit, the overview and setup "
                 "pages, the teacher moves and slide numbers in the pacing guide, the grading suggestions, the Alchemy quick reference, "
                 "the synth guide (waveforms, harmonics, filter, envelope and LFO numbers), the worked example (three invented patches "
@@ -536,7 +536,7 @@ SHOTS3 = [("setup", "Setup"), ("synthguide", "Synth guide"), ("example", "Worked
 
 # ================================================================ page plan
 PLAN = ["cover", "howto", "overview", "setup", "pacing", "tn1", "tn2", "changes", "logicref", "synthguide", "example",
-        "explore", "patch1", "patch23", "trackplan", "mixcheck", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "terms"]
+        "explore", "patch1", "patch23", "trackplan", "mixcheck", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "reflect", "terms"]
 PREVIEW_PICKS = ["pacing", "example", "proj2", "rubric"]
 
 COVER_A = "Design the sound"
@@ -603,8 +603,8 @@ RUBRIC_EXTRA = ""
 def howto_page(n, wm=False):
     parts = [("Teacher pages", "howto", "example", "How to use, overview, setup, pacing, teacher notes, what changed, Alchemy "
               "quick reference, synth guide, worked example"),
-             ("Student pages", "explore", "present", "Explore sheet, Patch cards, Track plan, Mix check, project sheet (3 pages), rubric, "
-              "vocabulary, feedback planner"),
+             ("Student pages", "explore", "reflect", "Explore sheet, Patch cards, Track plan, Mix check, project sheet (3 pages), rubric, "
+              "vocabulary, feedback planner, reflection"),
              ("Intro deck (separate file)", None, None, f"{len(SLIDES)} slides, .pptx + PDF, speaker notes on every slide")]
     trs = "".join(f"<tr><td><b>{a}</b></td><td style='white-space:nowrap'>{('pages ' + str(D.IX(f)) + '–' + str(D.IX(l))) if f else 'deck'}</td>"
                   f"<td>{u}</td></tr>" for a, f, l, u in parts)
@@ -617,7 +617,7 @@ def howto_page(n, wm=False):
              f'{D.H2("Quick start")}<ol>'
              f'<li style="margin-bottom:5pt">Read the pacing guide (page {D.IX("pacing")}) and my teacher notes (pages {D.IX("tn1")}–{D.IX("tn2")}).</li>'
              f'<li style="margin-bottom:5pt">Check that Alchemy opens on every computer (page {D.IX("setup")}).</li>'
-             f'<li style="margin-bottom:5pt">Print the student pages (pages {D.IX("explore")}–{D.IX("present")}), one set per student.</li>'
+             f'<li style="margin-bottom:5pt">Print the student pages (pages {D.IX("explore")}–{D.IX("reflect")}), one set per student.</li>'
              f'<li>Open the intro deck and read the speaker notes for Class 1.</li></ol>'
              f'{D.H2("The intro deck")}'
              f'<p>Every slide has a class: {D.deck_class_line()}. Class 5 is a working day with no new slide. Every slide has speaker notes.</p>'
@@ -673,7 +673,7 @@ def setup_page(n, wm=False):
              f'<li><b>Logic’s sound library downloaded</b>, so Alchemy’s presets show up.</li>'
              f'<li><b>A place to submit</b> an .mp3 or .wav and a zipped .logicx project (your class page).</li>'
              f'<li><b>A feedback board</b> for the three questions (my sheets use Padlet).</li>'
-             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("explore")}–{D.IX("present")}).</li></ul>'
+             f'<li><b>Printed student pages</b>, one set each (pages {D.IX("explore")}–{D.IX("reflect")}).</li></ul>'
              f'{D.H2("Before Class 1")}'
              + "".join(D.chk(c, 13, "font-size:13pt;margin-bottom:11pt") for c in [
                  "Open Alchemy on a student computer. Check that presets load and that the sound plays through headphones.",

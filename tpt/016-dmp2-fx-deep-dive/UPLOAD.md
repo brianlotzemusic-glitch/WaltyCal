@@ -4,7 +4,7 @@ These fields follow the order of TpT's "Add a resource" form. `tools/tpt.js publ
 
 **Files to attach**
 - Resource (digital download): `fx-deep-dive.zip`. It holds three files in a folder "FX Deep Dive - Hudson Beat":
-  - `fx-deep-dive.pdf`: the teacher and student resource, 23 pages, US Letter portrait.
+  - `fx-deep-dive.pdf`: the teacher and student resource, 24 pages, US Letter portrait.
   - `fx-deep-dive-intro-deck.pptx`: the teacher-presented intro deck, 18 slides (16:9), speaker notes and a Class badge on every slide.
   - `fx-deep-dive-intro-deck.pdf`: a PDF copy of the deck, 18 pages.
 - Thumbnails, in this order: `cover.png`, `preview-1.png`, `preview-2.png`, `preview-3.png` (all 2000 × 2000).
@@ -24,9 +24,9 @@ FX Deep Dive in Logic Pro | EQ, Reverb, Delay Mixing Project | High School Music
 ```
 Mixing and audio effects for high school music technology: students take an existing track, EQ and pan every part, and add at least 5 different effects in Logic Pro, each chosen for a reason. This FX Deep Dive project takes 7 class periods and comes from my Digital Music Production 2 course; the steps are written for Logic Pro, while the ideas (EQ, compression, reverb, delay, panning, modulation) carry over to GarageBand, Ableton Live and BandLab.
 
-WHAT'S INCLUDED (ZIP: 23-page PDF + 18-slide intro deck as .pptx and PDF)
+WHAT'S INCLUDED (ZIP: 24-page PDF + 18-slide intro deck as .pptx and PDF)
 • Teacher pages: how to use, project overview, setup with a guide to choosing a source track, a 7-class pacing guide with the deck slides for each class, two pages of teacher notes (struggles, variations, resources, grading), a "What changed from the original" page, a Logic quick reference, an EQ guide with a five-minute live demo plan, a tutorial-links page (my own list of tutorials for each of the 11 FX, as titles and web addresses) and a worked example (an invented eight-track session on paper, with an EQ map, pan map, delay times and a compressor example) (11 pages)
-• Student pages: Source log, FX notes (the 11 FX listed), Track map, FX log, the 3-page project sheet (overview, goals, vocabulary, requirements, steps, tips, submission checklist), the /25 rubric, a vocabulary page and a presentation and feedback planner (10 pages)
+• Student pages: Source log, FX notes (the 11 FX listed), Track map, FX log, the 3-page project sheet (overview, goals, vocabulary, requirements, steps, tips, submission checklist), the /25 rubric, a vocabulary page and a presentation and feedback planner and a Reflection page (written or oral) (11 pages)
 • Teacher-presented intro deck, 18 slides with speaker notes on every slide: a dry-and-mixed hook, what effects do, choosing a source, a live EQ demo, panning, reverb and delay on a send, compression by the numbers, the steps, what to turn in and the rubric
 
 THE SEVEN CLASS PERIODS
@@ -85,13 +85,14 @@ National Core Arts Standards, Music (Music Technology, high school): MU:Cr3.1, M
 
 ## 8. Free or paid / free preview pages
 
-Paid. Preview PDF (4 watermarked pages): the 7-class pacing guide, the Track map, the project sheet requirements and steps, and the /25 rubric. "Number of pages or slides" is 41 (23 pages + 18 slides).
+Paid. Preview PDF (4 watermarked pages): the 7-class pacing guide, the Track map, the project sheet requirements and steps, and the /25 rubric. "Number of pages or slides" is 42 (24 pages + 18 slides).
 
 ## 9. Before you click publish
 
 - [ ] Cover and previews show "HUDSON BEAT" in type; PDF footers read "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
 - [ ] No school name, logo, student work, audio or Logic session anywhere (`gen.py --check` scans every output and every file in this folder).
+- [x] **Reflection added (owner, 17 Oct 2026).** The owner's rubric (Documentation & Presentation) mentions reflection, but the project sheet has no reflection task. By the owner's definition (a written or oral conversation about how the student did on the project and what they would do differently next time) every DMP2 kit now has a Reflection student page (written or oral, 4 prompts), a teacher note, a pacing line and a line on the closing slide. The /25 rubric is untouched and the page adds no points. Shared builder: `tpt/_dmp2_common/dmp2.py`.
 - [x] **Resolved from the owner's own docs (17 Oct 2026 rebuild):** the class covers **11 FX**: the rows of the owner's DMP2 > Projects > FX Deep Dive > "Audio FX - notes" table (Panning, Delay, EQ, Compression, Distortion, Reverb, Chorus, Phaser, Pitch Correction, Tremolo, Filter), which match the categories of the owner's Plug-in Links doc. The Native Instruments video's own title says "10 FX"; that is the video, not the class. Page 14 (FX notes) now lists the 11.
 - [x] **Supporting artifacts found** (older DMP2 > Projects > FX Deep Dive folder; Drive read-only; they never override Projects (New)): Plug-in Links doc, reproduced as page 11 ("from the teacher's own materials", titles and addresses only, no embeds); Audio FX - notes (the 11 FX).
-- [ ] **Open question for the owner:** the "EQ Cheatsheet.pdf" named in the Teacher Notes exists in Drive (several copies), but it is by another author, so it is not your work and is not in the kit (only named on the teacher-notes page; the kit's EQ guide stays original). Do you have permission to include it, or should the kit just point teachers to their own copy? Also: the rubric's "reflection" wording has no reflection task on the sheet (the kit leaves it as written and says so on the grading page). The older 2025 "Project 4 - FX Deep Dive" doc (/20 rubric, 10 class periods) was not used. No other examples or tutorials were found for this project in the other DMP2 folders beyond the links doc; DMP1 was not searched in depth (the notes do not point there).
+- [ ] **Open question for the owner:** the "EQ Cheatsheet.pdf" named in the Teacher Notes exists in Drive (several copies), but it is by another author, so it is not your work and is not in the kit (only named on the teacher-notes page; the kit's EQ guide stays original). Do you have permission to include it, or should the kit just point teachers to their own copy? The older 2025 "Project 4 - FX Deep Dive" doc (/20 rubric, 10 class periods) was not used. No other examples or tutorials were found for this project in the other DMP2 folders beyond the links doc; DMP1 was not searched in depth (the notes do not point there).
 - [ ] Price stays **$10.00**: the new pages (FX list, 11 tutorial groups) are useful but small additions; I would not raise the price for them.
