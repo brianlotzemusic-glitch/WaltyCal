@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17T10:13:36Z",
+  "updated_at": "2026-10-17T17:41:29Z",
   "next_run_at": "2026-10-17T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12am shift: nothing built. 016, 017, 018 are QA approved and waiting for the owner to release them; building paused until some are released.",
-      "since": "2026-10-17T10:13:36Z"
+      "task": "016, 017, 018 rebuilt with the owner's supporting materials and QA approved again. Held for the owner to release.",
+      "since": "2026-10-17T17:41:29Z"
     },
     {
       "id": "researcher",
@@ -26,15 +26,15 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "Paused after TpT 018 Alchemy Architect; next: Anti-Music Manifesto once 016-018 are released.",
-      "since": "2026-10-17T10:13:36Z"
+      "task": "Rebuilt TpT 016, 017, 018 with supporting artifacts from the other DMP2 folders. Building paused until they are released.",
+      "since": "2026-10-17T17:41:29Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved TpT 018 in round 1 (Sonnet).",
-      "since": "2026-10-16T22:24:26Z"
+      "task": "Re-approved TpT 016, 017 and 018 after the rebuilds (Sonnet).",
+      "since": "2026-10-17T17:41:29Z"
     },
     {
       "id": "lister",
@@ -85,6 +85,11 @@
     "Etsy slot on hold until the owner decides"
   ],
   "feed": [
+    {
+      "t": "2026-10-17T17:41:29Z",
+      "who": "qa",
+      "msg": "Re-approved rebuilt TpT 016 FX Deep Dive, 017 Music for Visual Media and 018 Alchemy Architect. Waiting for the owner's release."
+    },
     {
       "t": "2026-10-17T10:13:36Z",
       "who": "manager",
