@@ -120,10 +120,11 @@ RESOURCES = [("YouTube and Vimeo for royalty-free video clips",
               "Not included: no video is included or linked here, because clips belong to their makers. Page @SETUP shows how to choose a "
               "clip students may use, and page @CLIP is where each student records where theirs came from."),
              ("Film scoring examples on YouTube",
-              "Not included: search by title. Slide 2 and the notes for Class 1 say how to use a scene you may show, first with the sound "
-              "off and then with its score."),
+              "Not included: search by title. My own scoring-to-picture guidance is on page @PICTURE, and slide 2 and the notes for Class 1 "
+              "say how to use a scene you may show, first with the sound off and then with its score."),
              ("Logic Pro markers tutorial for sync points",
-              "Not included. Page @SYNCGUIDE and page @LOGICREF cover markers, SMPTE time and frames; add your own tutorial link.")]
+              "Not included: no tutorial is in the materials this kit is built from. Page @PICTURE (my “mark your moments” advice), page "
+              "@SYNCGUIDE and page @LOGICREF cover markers, SMPTE time and frames; add your own tutorial link.")]
 TN_NOTE = ("This is one of the most rewarding projects when students nail the sync. Consider showing a before/after of a clip with and "
            "without music.")
 GRADING = ["My rubric: five categories, each scored 1–5, /25 (page @RUBRIC). Students score themselves first; the final grade is the "
@@ -172,19 +173,24 @@ CHANGES = [
     "My LMS name is written as “your class page” (checklist items 1 and 2).",
     "Page numbers are added to steps 1, 2, 3 and 5 (the Clip log, Watch notes, Score plan, Cue sheet and Sync log).",
     "My three resources are not included; each is named as I wrote it, and the kit says what it offers instead (page @TN2). No video "
-    "clip is included or linked.",
+    "clip is included or linked. My easier variation (3–5 pre-selected clips) is kept, but no clip list is included, because none "
+    "was in the materials this kit is built from.",
+    "Page @PICTURE reproduces my “Composing to Picture” advice from my Spooky Tunes project in this kit’s layout. I changed “the "
+    "video” to “the picture” or “your clip” where needed, and left out its last sentence, which is about that project’s reverb and "
+    "delay buses.",
     "My pacing guide’s “Classes 3–5” row spans the Class 3, 4 and 5 rows, so each class can name its slides.",
     "Layout only: the rubric’s Name and Date lines moved to the top; its Notes box became ruled lines.",
     "The intro deck shortens my wording (full wording on pages @PROJ1–@PROJ3): slide 5 shortens steps 1 and 2, slide 10 shortens step 3, "
     "slide 12 shortens step 4, slide 13 shortens step 5, and slide 14 shortens step 6.",
 ]
-CHANGES_MUST_MENTION = ["your class page", "Page numbers", "No video", "Classes 3–5", "Layout only", "intro deck shortens"]
+CHANGES_MUST_MENTION = ["Composing to Picture", "your class page", "Page numbers", "No video", "Classes 3–5", "Layout only", "intro deck shortens"]
 KEPT = ("Everything else from my three documents is kept as I wrote it: the overview, goals, the five vocabulary terms, the five "
         "requirements, steps (apart from the page numbers), tips, checklist and file name (“Your Name – Music for Visual Media”), the "
         "rubric (five categories scored 1–5, /25, the average of the student’s and the teacher’s score), what the project reinforces, "
         "the four common struggles, the variations, my day-by-day pacing and my closing note, and the project menu entry quoted on "
         "page @OVERVIEW. No requirement or rubric row is added.")
-NEW_MATERIAL = ("Everything else is new and supports my sheets without changing them: how to use the kit, the overview and setup "
+NEW_MATERIAL = ("Everything else is new and supports my sheets without changing them (page @PICTURE is from my other materials, "
+                "as listed above): how to use the kit, the overview and setup "
                 "pages (including how to choose a clip students may use), the teacher moves and slide numbers in the pacing guide, "
                 "the grading suggestions, the Logic quick reference, the sync and timing guide, the worked example (an invented "
                 "90-second scene described on paper, not a video), the Clip log, Watch notes, Score plan, Cue sheet and Sync log, the "
@@ -481,7 +487,7 @@ SHOTS3 = [("setup", "Choosing a clip"), ("syncguide", "Sync guide"), ("example",
           ("proj2", "Steps"), ("plan", "Score plan"), ("sync", "Sync log"), ("changes", "What changed")]
 
 # ================================================================ page plan
-PLAN = ["cover", "howto", "overview", "setup", "pacing", "tn1", "tn2", "changes", "logicref", "syncguide", "example",
+PLAN = ["cover", "howto", "overview", "setup", "pacing", "tn1", "tn2", "changes", "logicref", "syncguide", "picture", "example",
         "clip", "watch", "plan", "cues", "sync", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "terms"]
 PREVIEW_PICKS = ["pacing", "cues", "proj2", "rubric"]
 
@@ -546,7 +552,7 @@ RUBRIC_EXTRA = ""
 # ================================================================ custom pages
 def howto_page(n, wm=False):
     parts = [("Teacher pages", "howto", "example", "How to use, overview, choosing a clip, pacing, teacher notes, what changed, Logic "
-              "reference, sync guide, worked example"),
+              "reference, sync guide, composing to picture, worked example"),
              ("Student pages", "clip", "present", "Clip log, Watch notes, Score plan, Cue sheet, Sync log, project sheet (3 pages), rubric, "
               "vocabulary, feedback planner"),
              ("Intro deck (separate file)", None, None, f"{len(SLIDES)} slides, .pptx + PDF, speaker notes on every slide")]
@@ -790,7 +796,39 @@ def sync_page(n, wm=False):
     return D.page("Sync log", "STUDENT", "Classes 3–6", inner, n, wm, name=True, key="sync")
 
 
-PAGES = {"howto": howto_page, "overview": overview_page, "setup": setup_page, "syncguide": syncguide_page, "example": example_page,
+PICTURE_MOVES = [
+    ("Watch before you build", "Play the clip twice without touching Logic. What moments stand out? Where does the energy change? What "
+     "would a sound do to that moment? Write notes before you open a single plug-in."),
+    ("Mark your moments", "Add markers in Logic at the timestamps where you want something to happen. A footstep. A sudden silence. "
+     "A swell. Having the map in advance stops you from improvising past the moments that matter."),
+    ("Silence is a tool", "If nothing is playing for a moment and then a sound enters, the entry feels enormous. Silence is not dead "
+     "air; it is tension. Use it deliberately."),
+    ("Let the picture breathe", "You do not need to fill every second with sound. Sparse music over a quiet visual can be more "
+     "unsettling than a wall of noise. Less is often more here."),
+    ("Match the energy", "If the picture gets more intense, your music should respond. Build toward moments of tension and release "
+     "from them."),
+]
+
+
+def picture_page(n, wm=False):
+    rows = "".join(f"<tr><td style='width:27%;font-size:12.4pt'><b>{a}</b></td><td style='font-size:12pt;line-height:1.42'>{b}</td></tr>"
+                   for a, b in PICTURE_MOVES)
+    inner = (f'<p style="margin:0 0 6pt;font-size:11.8pt">From the teacher’s own materials: the advice I give my own students when they '
+             f'score a picture for the first time. Project it, or hand it out on Class 1 or 2, next to the Watch notes (page {D.IX("watch")}) '
+             f'and the Cue sheet (page {D.IX("cues")}).</p>'
+             f'{D.H2("Composing to picture", True)}<table class="t">{rows}</table>'
+             f'<div class="cols" style="gap:14pt;margin-top:10pt"><div class="box acc-b"><span class="k">Try this in Class 1</span>'
+             f'<p style="margin:0;font-size:11.6pt">Play a scene you may show to the class with no comment. Then ask: what would you '
+             f'expect to hear if this were a film? Take answers aloud before anyone opens Logic.</p></div>'
+             f'<div class="box"><span class="k">Where it connects</span><ul style="margin:0;font-size:11.4pt">'
+             f'<li>Markers: demo on slide 8, then the Sync log (page {D.IX("sync")}).</li>'
+             f'<li>Silence and space: the dynamics picture on slide 11.</li>'
+             f'<li>Hit points: the Sync guide (page {D.IX("syncguide")}).</li></ul></div></div>'
+             f'<p class="small" style="margin-top:8pt">Film scoring examples are not included. Search by title for a scene you may show.</p>')
+    return D.page("Composing to picture", "TEACHER + STUDENT", "Classes 1-2", inner, n, wm, key="picture")
+
+
+PAGES = {"howto": howto_page, "overview": overview_page, "setup": setup_page, "syncguide": syncguide_page, "picture": picture_page, "example": example_page,
          "clip": clip_page, "watch": watch_page, "plan": plan_page, "cues": cues_page, "sync": sync_page}
 
 

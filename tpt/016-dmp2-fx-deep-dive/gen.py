@@ -9,7 +9,12 @@
 The owner's own curriculum (Brian Lotze, Digital Music Production 2), in the Hudson Beat style. Source (Drive, read-only):
 DMP2 > Projects (New) > FX Deep Dive > "FX Deep Dive - Project Sheet & Rubric" (rubric 5 categories scored 1-5, /25, final grade =
 average of student and teacher scores), TEACHER NOTES > "FX Deep Dive - Teacher Notes" (7 class periods), and the project's entry on
-"DMP2 - Project Menu". Every change to the owner's wording is listed in CHANGES and printed on the "What changed from the original" page.
+"DMP2 - Project Menu". These three set the project text, steps, rubric and pacing (owner rule, 17 Oct 2026). Supporting material comes
+from the older DMP2 > Projects > "FX Deep Dive" folder (read-only), which the Teacher Notes name: (a) the owner's "Audio FX - notes"
+table, whose 11 rows settle the "11 FX" (the Native Instruments video title says 10; the class covers 11, and the owner's Plug-in Links
+doc has the same 11 categories); (b) the owner's "Plug-in Links" doc, reproduced as page "links" (titles and URLs only, nothing
+embedded); (c) the "EQ Cheatsheet.pdf", which is NOT the owner's work (its cover says "Made by Jay Dwivedi"), so it is named only and
+never reproduced; the kit's own EQ guide stays original. The older "Project 4 - FX Deep Dive" doc (/20 rubric) is not used. Every change to the owner's wording is listed in CHANGES and printed on the "What changed from the original" page.
 
 NO AUDIO IS INCLUDED. The owner's project works on a student's own earlier project or on a multitrack from the Cambridge-MT library
 (third party, named only; students download it from the library). The worked example is an invented eight-track session described on
@@ -120,14 +125,15 @@ STRUGGLES = ["Students apply FX randomly without purpose — push them to articu
 VAR_EASY = "Reduce the FX requirement to 3 and provide a pre-mixed reference with notes on which effects were used."
 VAR_HARD = ("Require 7+ FX including at least one send/bus effect. Have them write a paragraph justifying each FX choice.")
 RESOURCES = [("10 FX Every Music Producer Needs to Know — Native Instruments (YouTube)",
-              "Not included: it is a video on YouTube, so search it by title. Page @FXNOTES is where students keep their notes on the 11 "
-              "FX, and page @LOGICREF shows where each kind of effect lives in Logic."),
+              "Not included: it is a video on YouTube, so search it by title (link on page @LINKS). Its title says 10; my class covers "
+              "11 (page @FXNOTES lists them). Page @LOGICREF shows where each kind of effect lives in Logic."),
              ("Cambridge-MT Multitrack Library", "Not included and not mine to hand out: students download a session from the library’s "
               "own site. Page @SOURCE helps you pre-select sessions and reminds students to read the library’s terms."),
-             ("EQ Cheatsheet PDF (in course materials)", "Not included (it is in my course materials). Page @EQGUIDE is this kit’s own EQ "
-              "guide and live-demo plan; use it beside your cheatsheet."),
-             ("Plug-in Links doc with tutorials for each effect category", "Not included. Page @LOGICREF lists the Logic plug-in for each "
-              "effect category; add your own tutorial links.")]
+             ("EQ Cheatsheet PDF (in course materials)", "Not included: its cover credits it to Jay Dwivedi, so it is not mine to hand "
+              "out. Use your own copy beside page @EQGUIDE, this kit’s own EQ guide and live-demo plan."),
+             ("Plug-in Links doc with tutorials for each effect category", "Included, from the teacher’s own materials: page @LINKS "
+              "lists my tutorial links (titles and web addresses only) for each of the 11 FX. Page @LOGICREF lists the Logic plug-in "
+              "for each.")]
 TN_NOTE = ("Great project to revisit the EQ Cheatsheet. Consider a mix critique day where you workshop student projects on the "
            "main speakers.")
 GRADING = ["My rubric: five categories, each scored 1–5, /25 (page @RUBRIC). Students score themselves first; the final grade is the "
@@ -175,14 +181,18 @@ PACING_EXTRA = (
 CHANGES = [
     "My LMS name is written as “your class page” (checklist items 1 and 2).",
     "Page numbers are added to steps 1 to 4 (the FX notes, the Source log, the FX log and the Track map).",
-    "My four resources are not included; each is named as I wrote it, and the kit says what it offers instead (page @TN2). The two "
-    "videos and the library are named by title only.",
+    "My four resources are named as I wrote them (page @TN2). My Plug-in Links doc is reproduced in this kit’s layout as page @LINKS "
+    "(titles and web addresses only). The EQ Cheatsheet is by another author, so it is named only. The video and the library are "
+    "named by title only.",
+    "The 11 FX my sheets mention are listed on page @FXNOTES, from my own FX notes table (the Native Instruments video title says "
+    "10; my class covers 11).",
     "My pacing guide’s “Classes 2–5” row spans the Class 2, 3, 4 and 5 rows, so each class can name its slides.",
     "Layout only: the rubric’s Name and Date lines moved to the top; its Notes box became ruled lines.",
     "The intro deck shortens my wording (full wording on pages @PROJ1–@PROJ3): slide 5 shortens steps 1 and 2, slide 12 shortens step 4, "
     "slide 13 shortens steps 3 and 5, and slide 14 shortens steps 5 and 6.",
 ]
-CHANGES_MUST_MENTION = ["your class page", "Page numbers", "named by title only", "Classes 2–5", "Layout only", "intro deck shortens"]
+CHANGES_MUST_MENTION = ["your class page", "Page numbers", "named by title only", "Classes 2–5", "Layout only", "intro deck shortens",
+                        "reproduced in this kit’s layout", "my class covers 11"]
 KEPT = ("Everything else from my three documents is kept as I wrote it: the overview, goals, the six vocabulary terms, the five "
         "requirements, steps (apart from the page numbers), tips, checklist and file name (“Your Name – FX Deep Dive”), the rubric (five "
         "categories scored 1–5, /25, the average of the student’s and the teacher’s score), what the project reinforces, the five common "
@@ -193,10 +203,39 @@ NEW_MATERIAL = ("Everything else is new and supports my sheets without changing 
                 "suggestions, the Logic quick reference, the EQ guide and demo plan, the worked example (an invented eight-track "
                 "session described on paper, not a recording), the Source log, the FX notes page, the Track map, the FX log, the "
                 "vocabulary page, the presentation planner and the intro deck. None of these adds a requirement or a rubric row. "
-                "I do not list the 11 FX in class notes here; students write them on page @FXNOTES.")
+                "The tutorial links page and the list of the 11 FX come from my own materials, laid out for this kit.")
 
 # ================================================================ the worked example (Hudson Beat original: an invented session on paper)
 TEMPO = 100
+# The 11 FX the class covers: the rows of the owner's "Audio FX - notes" table (the Plug-in Links doc uses the same 11 categories).
+FX11 = ["Panning", "Delay", "EQ", "Compression", "Distortion", "Reverb", "Chorus", "Phaser", "Pitch Correction", "Tremolo", "Filter"]
+# The owner's "Plug-in Links" doc (category, [(title, url)]). External sites: titles and URLs only, nothing embedded.
+LINKS = [
+    ("Panning", [("Panning for a Wider Mix", "youtube.com/watch?v=xT1tQgqBWyU")]),
+    ("Delay", [("Sound Basics - Reverb & Delay", "youtube.com/watch?v=-jPPJEHMepA"),
+               ("How to use a Delay Effect", "youtube.com/watch?v=boCZejIYUJg")]),
+    ("EQ", [("Sound Basics - EQ", "youtube.com/watch?v=I6ZF_NHvqzU"),
+            ("EQ Explained in 4 minutes", "youtube.com/watch?v=34lHk6lfpkI"),
+            ("How to Use EQ: 10 Amazing Tips for a Professional Mix", "musicianonamission.com/approach-equalization-two-types-eq/"),
+            ("The Ultimate EQ Cheat Sheet for Every Common Instrument", "blog.sonicbids.com/the-ultimate-eq-cheat-sheet-for-every-common-instrument"),
+            ("How to hear EQ", "youtu.be/U40thp61nrE")]),
+    ("Compression", [("Compressors Explained", "youtube.com/watch?v=IbIC7B4BU6g"),
+                     ("Beginner’s Guide to Compression, Part 1", "youtube.com/watch?v=BIVfpsoPnOo"),
+                     ("Part 2", "youtube.com/watch?v=ebHGH3k7g4I"), ("Part 3", "youtube.com/watch?v=FE_8-Q6CZXE")]),
+    ("Distortion", [("Distortion As An Active Production Element", "youtube.com/watch?v=KCcDBHKfp5g"),
+                    ("Using Distortion Plug-ins", "youtube.com/watch?v=c9NbXzdnVB8")]),
+    ("Reverb", [("Reverb and Delay Explained – Sound Basics", "youtube.com/watch?v=-jPPJEHMepA"),
+                ("How to use Reverb", "youtube.com/watch?v=JxG3PQhCH0M"),
+                ("What is Reverb? The Beginner's Guide to Reverb in Music Production", "blog.landr.com/what-is-reverb/")]),
+    ("Chorus", [("Chorus Effect Tutorial: How To Understand & Apply A Chorus Effect For Fuller Vocals", "youtube.com/watch?v=l0BtzSXw538")]),
+    ("Phaser", [("How To Use The Phaser Tool", "youtube.com/watch?v=-lpL9pv_4Eo")]),
+    ("Pitch Correction", [("Pitch Correction & Mastering", "youtube.com/watch?v=E4eUe4IWM0U")]),
+    ("Tremolo", [("How To Use Tremolo", "youtube.com/watch?v=ltwb3-lW-GE")]),
+    ("Filter", [("Exploring the AutoFilter", "youtube.com/watch?v=CvnZTAnLyTY")]),
+]
+LINKS_EXTRA = [("10 FX every music producer needs to know | Native Instruments", "youtube.com/watch?v=IkiJMTa6lWo"),
+               ("Multi Track Mixing Stems (Cambridge-MT)", "cambridge-mt.com/ms/mtk/")]
+
 SESSION = [  # track, pan (-100 left .. +100 right), EQ move, FX
     ("Kick", 0, "Boost 60 Hz +3 dB; cut 300 Hz −4 dB", "Compressor"),
     ("Snare", 0, "Cut 400 Hz −3 dB; boost 4 kHz +3 dB", "Reverb (short, on a send)"),
@@ -475,7 +514,7 @@ SHOTS3 = [("setup", "Choosing a source"), ("eqguide", "EQ guide"), ("example", "
           ("proj2", "Steps"), ("fxnotes", "FX notes"), ("fxlog", "FX log"), ("changes", "What changed")]
 
 # ================================================================ page plan
-PLAN = ["cover", "howto", "overview", "setup", "pacing", "tn1", "tn2", "changes", "logicref", "eqguide", "example",
+PLAN = ["cover", "howto", "overview", "setup", "pacing", "tn1", "tn2", "changes", "logicref", "eqguide", "links", "example",
         "source", "fxnotes", "trackmap", "fxlog", "proj1", "proj2", "proj3", "rubric", "vocab", "present", "terms"]
 PREVIEW_PICKS = ["pacing", "trackmap", "proj2", "rubric"]
 
@@ -487,7 +526,7 @@ SQ_B_LINES = ["FX Deep Dive"]
 SQ_SUB = "7 class periods · EQ · pan · reverb · delay · intro slides"
 SQ_HEADS = {1: ("Ready to teach Monday", 76, "Teacher notes, pacing, student pages and the /25 rubric in one PDF", 28),
             2: ("Intro deck included", 76, f"{len(SLIDES)} editable slides (.pptx + PDF) with speaker notes on every slide", 28),
-            3: ("Everything inside", 72, "Source guide, EQ guide, worked example, FX log, project sheet", 28)}
+            3: ("Everything inside", 72, "Source guide, EQ guide, tutorial links, worked example, FX log", 28)}
 SQ_BANDS = {1: "Review <em>·</em> choose <em>·</em> EQ and pan <em>·</em> effects <em>·</em> present",
             2: "Hook <em>·</em> EQ demo <em>·</em> pan <em>·</em> compression <em>·</em> rubric",
             3: f"{len(PLAN)} pages <em>·</em> US Letter PDF <em>·</em> no audio included"}
@@ -497,7 +536,9 @@ SONG_NOTE = ("No audio, video, lyrics or songs are included. Students bring a tr
 CREDITS = ["Worked example (an invented eight-track session described on paper), the EQ map, pan map and compressor drawings and "
            "layouts: original work, Hudson Beat.",
            "No audio, video, lyrics, album art, chart data or multitrack sessions are included. Cambridge-MT and Native Instruments are "
-           "named only as the owner’s resource list names them; they are not affiliated with or endorsing this resource. Padlet and "
+           "named only as the owner’s resource list names them; they are not affiliated with or endorsing this resource. The list of the "
+           "11 FX and the tutorial links page are from the teacher’s own materials; the linked sites and videos belong to their "
+           "makers and are not included. The EQ Cheatsheet in the teacher’s course materials is by another author and is not included. Padlet and "
            "YouTube are named only as examples of tools you may already use."]
 LOGIC_INTRO = ("Everything students need in Logic for this project, in one table. Demonstrate EQ (slide 8) and sends (slide 10), then let "
                "students work. Names are from current Logic Pro versions.")
@@ -544,7 +585,7 @@ RUBRIC_EXTRA = ""
 # ================================================================ custom pages
 def howto_page(n, wm=False):
     parts = [("Teacher pages", "howto", "example", "How to use, overview, choosing a source, pacing, teacher notes, what changed, Logic "
-              "reference, EQ guide, worked example"),
+              "reference, EQ guide, tutorial links, worked example"),
              ("Student pages", "source", "present", "Source log, FX notes, Track map, FX log, project sheet (3 pages), rubric, vocabulary, "
               "feedback planner"),
              ("Intro deck (separate file)", None, None, f"{len(SLIDES)} slides, .pptx + PDF, speaker notes on every slide")]
@@ -606,7 +647,7 @@ def overview_page(n, wm=False):
              f'and the teacher’s score (page {D.IX("rubric")})</td></tr></table>'
              f'<div class="box" style="margin-top:6pt"><span class="k">Before they start</span><p style="margin:0">Students should already '
              f'know how to open a project, work in the Mixer, and save, bounce and zip in Logic. My project uses the 11 FX they took notes '
-             f'on in class; the Logic quick reference (page {D.IX("logicref")}) covers every tool this project uses.</p></div>'
+             f'on in class (listed on page {D.IX("fxnotes")}); the Logic quick reference (page {D.IX("logicref")}) covers every tool this project uses.</p></div>'
              f'</div></div>')
     return D.page("Project overview", "OVERVIEW", "DMP2 · Structured", inner, n, key="overview")
 
@@ -701,6 +742,27 @@ def example_page(n, wm=False):
     return D.page("Worked example · an invented session", "EXAMPLE", "Teacher", inner, n, ak=True, key="example")
 
 
+def links_page(n, wm=False):
+    def one(t, u):
+        return (f'<div style="margin:0 0 2.5pt;line-height:1.15"><span style="font-size:9.4pt">{t.replace("&", "&amp;")}</span><br>'
+                f'<span style="font-size:8pt;color:#333;word-break:break-all">{u}</span></div>')
+
+    def lab(c):
+        return (f'<div style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:10.4pt;margin:5pt 0 2pt;'
+                f'border-bottom:1pt solid #000">{c}</div>')
+
+    def block(c, ls):
+        return lab(c) + "".join(one(t, u) for t, u in ls)
+    half = 6
+    left = "".join(block(c, ls) for c, ls in LINKS[:half])
+    right = "".join(block(c, ls) for c, ls in LINKS[half:]) + lab("Also on my list") + "".join(one(t, u) for t, u in LINKS_EXTRA)
+    inner = (f'<p style="margin:0 0 2pt;font-size:10.6pt;line-height:1.3">My own list of tutorials, one group for each of the 11 FX (page '
+             f'{D.IX("fxnotes")}), from the teacher’s own materials. Each is a web address to type in, or search the title. Nothing is embedded '
+             f'or included; the sites belong to their makers and addresses can change.</p>'
+             f'<div class="cols" style="gap:16pt"><div>{left}</div><div>{right}</div></div>')
+    return D.page("Tutorial links for each effect", "LINKS", "Teacher + student", inner, n, key="links")
+
+
 def source_page(n, wm=False):
     rows = "".join(f"<tr><td style='text-align:center'><b>{i}</b></td><td></td><td></td><td></td></tr>" for i in range(1, 17))
     inner = (f'<div class="fl"><b>My source:</b><span style="flex:0 0 0.2in"></span><span style="flex:0 0 0.3in;height:15pt;border:1.2pt solid #000"></span>'
@@ -717,9 +779,10 @@ def source_page(n, wm=False):
 
 
 def fxnotes_page(n, wm=False):
-    rows = "".join(f"<tr><td style='text-align:center;height:34pt'><b>{i}</b></td><td></td><td></td><td></td></tr>" for i in range(1, 12))
-    inner = (f'<p style="margin:0 0 5pt;font-size:11pt">Write the 11 FX from your class notes, one per row, in your own words. Then circle '
-             f'the ones you plan to use: you need at least 5 different effects.</p>'
+    rows = "".join(f"<tr><td style='text-align:center;height:34pt'><b>{i}</b></td><td><b>{fx}</b></td><td></td><td></td></tr>" for i, fx in enumerate(FX11, 1))
+    inner = (f'<p style="margin:0 0 5pt;font-size:11pt">These are the 11 FX from the class notes. For each one, write in your own words what it '
+             f'does to the sound and where you might use it. Then circle the ones you plan to use: you need at least 5 different effects. '
+             f'Tutorial links for each are on page {D.IX("links")}.</p>'
              f'<table class="map"><tr><th style="width:6%">#</th><th style="width:22%">Effect</th><th style="width:36%">What it does to the sound</th>'
              f'<th>Where I might use it</th></tr>{rows}</table>'
              f'<div class="cols" style="gap:12pt;margin-top:8pt"><div class="box acc-b"><span class="k">Rule</span><p style="margin:0">'
@@ -760,7 +823,7 @@ def fxlog_page(n, wm=False):
     return D.page("FX log", "STUDENT", "Classes 2–7", inner, n, wm, name=True, key="fxlog")
 
 
-PAGES = {"howto": howto_page, "overview": overview_page, "setup": setup_page, "eqguide": eqguide_page, "example": example_page,
+PAGES = {"links": links_page, "howto": howto_page, "overview": overview_page, "setup": setup_page, "eqguide": eqguide_page, "example": example_page,
          "source": source_page, "fxnotes": fxnotes_page, "trackmap": trackmap_page, "fxlog": fxlog_page}
 
 

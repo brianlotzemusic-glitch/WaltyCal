@@ -9,7 +9,12 @@
 The owner's own curriculum (Brian Lotze, Digital Music Production 2), in the Hudson Beat style. Source (Drive, read-only):
 DMP2 > Projects (New) > Alchemy Architect > "Alchemy Architect - Project Sheet & Rubric" (rubric 5 categories scored 1-5, /25,
 final grade = average of student and teacher scores), TEACHER NOTES > "Alchemy Architect - Teacher Notes" (7 class periods), and
-the project's entry on "DMP2 - Project Menu" (the June 2026 menu with Type / Focus columns).
+the project's entry on "DMP2 - Project Menu" (the June 2026 menu with Type / Focus columns; owner, 17 Oct 2026: the June entry is fine).
+Supporting artifacts (owner, 17 Oct 2026, FACTORY.md "DMP2 sources"): the two tutorial links and the owner's one-line notes on them come
+from DMP2 > Projects (old) > Alchemy Architect (Sound Synthesis) > "Youtube tutorials - Alchemy Architect" (the owner's own Doc);
+they are shown as titles + links only. Logic's built-in Alchemy documentation: no owner file or link exists, so it is named only. Not used:
+the folder's two saved .mp4 copies of third-party videos, the "Alchemy Samples" folder (.aaz presets), the 2025 Project Outline (older rubric).
+'Simple view' appears only in the Teacher Notes (no other owner file uses a label), so the kit keeps it with "check the labels on yours".
 
 NO AUDIO IS INCLUDED. Students design three synthesizer patches in Logic's Alchemy and compose a 45-60 second track with them.
 The worked example is three invented patches described on paper (Slow Tide, Sub Pulse, Glass Bell) and an invented 26-bar track plan;
@@ -115,12 +120,14 @@ STRUGGLES = ["Alchemy is overwhelming at first. Start with the Simple view befor
 VAR_EASY = "Provide a guided walkthrough for building one patch together as a class. Reduce to 2 custom patches."
 VAR_HARD = "Require 5 patches with at least 2 using advanced modulation routing. Extend track to 90 seconds."
 RESOURCES = [("Alchemy — A Short Tutorial (YouTube)",
-              "Not included and not linked: videos belong to their makers. Page @SYNTHGUIDE and the demo on slides 7–11 teach the same four "
-              "building blocks; add your own tutorial link if you like."),
+              "Link: youtube.com/watch?v=NjvQeYeSHBM (a link only; the video is not included and belongs to its maker). My note on it, from "
+              "my own resource list: “Excellent, in-depth beginner tutorial for Alchemy.” Page @SYNTHGUIDE and the demo on slides 7–11 "
+              "teach the same four building blocks."),
              ("A More User-Friendly Intro to Alchemy (YouTube)",
-              "Not included, for the same reason. Page @LOGICREF is a plain-language tour of where each control lives, for Class 1."),
+              "Link: youtube.com/watch?v=1FAiUtaBpdE (a link only; not included). My note on it: “Seids always makes great, easy to "
+              "understand tutorials!” Page @LOGICREF is a plain-language tour of where each control lives, for Class 1."),
              ("Logic’s built-in Alchemy documentation",
-              "Not included: it belongs to Apple. Open it from Logic’s Help menu; page @LOGICREF says what to look up.")]
+              "Named only: it belongs to Apple and I have no link for it. Open it from Logic’s Help menu; page @LOGICREF says what to look up.")]
 TN_NOTE = ("Consider having students name their patches creatively and share them with the class as a sound library.")
 GRADING = ["My rubric: five categories, each scored 1–5, /25 (page @RUBRIC). Students score themselves first; the final grade is the "
            "average of their score and yours."]
@@ -159,7 +166,8 @@ PACING = [
 PACING_EXTRA = (
     '<div class="cols" style="margin-top:8pt;gap:14pt"><div class="box acc-b"><span class="k">The one rule for Class 1</span>'
     '<p style="margin:0;font-size:10pt">From my common struggles: start with the Simple view before opening Advanced. Let students play '
-    'and listen on Class 1; the Explore sheet (page @EXPLORE) keeps them moving without turning it into a lecture.</p></div>'
+    'and listen on Class 1; the Explore sheet (page @EXPLORE) keeps them moving without turning it into a lecture. My two tutorial links '
+    '(page @TN2) make a good take-home watch after Class 1.</p></div>'
     '<div class="box"><span class="k">Classes 3–5</span><p style="margin:0;font-size:10pt">Working days. Slides 12 and 13 open Classes 3 '
     'and 4; Class 5 has no new slide. Circulate and ask: what is this patch for, and have you saved it?'
     '</p></div></div>')
@@ -168,14 +176,14 @@ PACING_EXTRA = (
 CHANGES = [
     "My LMS name is written as “your class page” (checklist items 1 and 2).",
     "Page numbers are added to steps 1 to 6 (the Explore sheet, Synth guide, Patch cards, Track plan and Mix check).",
-    "My three resources are not included; each is named as I wrote it, and the kit says what it offers instead (page @TN2). No tutorial "
-    "video is included or linked.",
+    "My three resources are listed as I wrote them (page @TN2). The two YouTube tutorials carry the links and short notes from my own "
+    "resource list for this project; Logic’s own documentation is named only. No tutorial video is included, copied or embedded.",
     "My pacing guide’s “Classes 3–5” row spans the Class 3, 4 and 5 rows, so each class can name its slides.",
     "Layout only: the rubric’s Name and Date lines moved to the top; its Notes box became ruled lines.",
     "The intro deck shortens my wording (full wording on pages @PROJ1–@PROJ3): slide 5 shortens steps 1 and 2, slide 11 shortens step 3, "
     "slide 12 shortens step 4, slide 13 shortens step 5, and slide 14 shortens step 6.",
 ]
-CHANGES_MUST_MENTION = ["your class page", "Page numbers", "tutorial video", "Classes 3–5", "Layout only", "intro deck shortens"]
+CHANGES_MUST_MENTION = ["your class page", "Page numbers", "No tutorial video", "Classes 3–5", "Layout only", "intro deck shortens"]
 KEPT = ("Everything else from my three documents is kept as I wrote it: the goals, the six vocabulary terms, the five "
         "requirements, steps (apart from the page numbers), tips, checklist and file name (“Your Name – Alchemy Architect”), the "
         "rubric (five categories scored 1–5, /25, the average of the student’s and the teacher’s score), what the project reinforces, "
@@ -534,7 +542,7 @@ PREVIEW_PICKS = ["pacing", "example", "proj2", "rubric"]
 COVER_A = "Design the sound"
 COVER_C = "DMP2 · oscillators · filters · envelopes · modulation · intro slides"
 PDF_COVER = dict(a=32, b=58, c=14, art=7.3)
-SQ_COVER = dict(a=50, b=140, c=27, art=700)
+SQ_COVER = dict(a=50, b=140, c=27, art=900, gap=70)
 SQ_B_LINES = ["Alchemy", "Architect"]
 SQ_SUB = "7 class periods · synth patches · sound design · intro slides"
 SQ_HEADS = {1: ("Ready to teach Monday", 76, "Teacher notes, pacing, student pages and the /25 rubric in one PDF", 28),
@@ -549,8 +557,7 @@ SONG_NOTE = ("No audio, video, songs or presets are included. Students make ever
              "school allows.")
 CREDITS = ["Worked example (three invented patches and a 26-bar track plan, described on paper), the waveform, filter, envelope, LFO and "
            "track-lane drawings and layouts: original work, Hudson Beat.",
-           "No audio, video, lyrics, album art, screenshots, Alchemy presets or chart data are included. YouTube is named only as the owner’s "
-           "resource list names it; it is not affiliated with or endorsing this resource. Padlet is named only as an example of a tool you "
+           "No audio, video, lyrics, album art, screenshots, Alchemy presets or chart data are included. The two YouTube tutorials are given as links and titles only (from the teacher’s own materials); YouTube is not affiliated with or endorsing this resource. Padlet is named only as an example of a tool you "
            "may already use."]
 LOGIC_INTRO = ("Where each Alchemy control lives, in one table. Demonstrate the building blocks (slides 7 to 11) and then let students "
                "work. Names are from current Logic Pro versions; check the labels on yours.")

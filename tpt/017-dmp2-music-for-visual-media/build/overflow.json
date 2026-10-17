@@ -12,7 +12,7 @@
   "main_over": 0,
   "cells": [],
   "clipped": [],
-  "free": 104
+  "free": 88
  },
  {
   "page": 3,
@@ -57,10 +57,12 @@
  {
   "page": 8,
   "key": "changes",
-  "main_over": 0,
-  "cells": [],
+  "main_over": 2,
+  "cells": [
+   "DIV: This kit is built from three of my documents:"
+  ],
   "clipped": [],
-  "free": 126
+  "free": -2
  },
  {
   "page": 9,
@@ -80,6 +82,14 @@
  },
  {
   "page": 11,
+  "key": "picture",
+  "main_over": 0,
+  "cells": [],
+  "clipped": [],
+  "free": 278
+ },
+ {
+  "page": 12,
   "key": "example",
   "main_over": 0,
   "cells": [],
@@ -87,7 +97,7 @@
   "free": 193
  },
  {
-  "page": 12,
+  "page": 13,
   "key": "clip",
   "main_over": 0,
   "cells": [],
@@ -95,7 +105,7 @@
   "free": 173
  },
  {
-  "page": 13,
+  "page": 14,
   "key": "watch",
   "main_over": 0,
   "cells": [],
@@ -103,7 +113,7 @@
   "free": 76
  },
  {
-  "page": 14,
+  "page": 15,
   "key": "plan",
   "main_over": 0,
   "cells": [],
@@ -111,7 +121,7 @@
   "free": 200
  },
  {
-  "page": 15,
+  "page": 16,
   "key": "cues",
   "main_over": 0,
   "cells": [],
@@ -119,7 +129,7 @@
   "free": 196
  },
  {
-  "page": 16,
+  "page": 17,
   "key": "sync",
   "main_over": 0,
   "cells": [],
@@ -127,7 +137,7 @@
   "free": 139
  },
  {
-  "page": 17,
+  "page": 18,
   "key": "proj1",
   "main_over": 0,
   "cells": [],
@@ -135,7 +145,7 @@
   "free": 99
  },
  {
-  "page": 18,
+  "page": 19,
   "key": "proj2",
   "main_over": 0,
   "cells": [],
@@ -143,7 +153,7 @@
   "free": 85
  },
  {
-  "page": 19,
+  "page": 20,
   "key": "proj3",
   "main_over": 0,
   "cells": [],
@@ -151,7 +161,7 @@
   "free": 0
  },
  {
-  "page": 20,
+  "page": 21,
   "key": "rubric",
   "main_over": 0,
   "cells": [],
@@ -159,7 +169,7 @@
   "free": 131
  },
  {
-  "page": 21,
+  "page": 22,
   "key": "vocab",
   "main_over": 0,
   "cells": [],
@@ -167,7 +177,7 @@
   "free": 171
  },
  {
-  "page": 22,
+  "page": 23,
   "key": "present",
   "main_over": 0,
   "cells": [],
@@ -175,7 +185,7 @@
   "free": 53
  },
  {
-  "page": 23,
+  "page": 24,
   "key": "terms",
   "main_over": 0,
   "cells": [],

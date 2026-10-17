@@ -806,10 +806,12 @@ def sq_band():
 
 def cover_square():
     s = K.SQ_COVER
-    return sq(f'<div style="width:{s.get("art", 900)}px">{body_svg(K.hero_body())}</div>'
+    g = s.get("gap")
+    wrap = (lambda x: f'<div style="display:flex;flex-direction:column;align-items:center;gap:{g}px">{x}</div>') if g else (lambda x: x)
+    return sq(wrap(f'<div style="width:{s.get("art", 900)}px">{body_svg(K.hero_body())}</div>'
               f'<div><div class="hd" style="font-size:{s["a"]}px">{K.COVER_A}</div>'
               + "".join(f'<div class="hd" style="font-size:{s["b"]}px;margin-top:4px">{escape(x)}</div>' for x in K.SQ_B_LINES) +
-              f'<div class="sub" style="font-size:{s["c"]}px;margin-top:10px">{K.SQ_SUB}</div></div>',
+              f'<div class="sub" style="font-size:{s["c"]}px;margin-top:10px">{K.SQ_SUB}</div></div>'),
               sq_band().replace(" · ", " <em>·</em> "))
 
 

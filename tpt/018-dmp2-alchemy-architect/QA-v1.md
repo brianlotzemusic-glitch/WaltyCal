@@ -1,3 +1,5 @@
+> STALE: this approval covers the first build (16 Oct 2026). The kit was rebuilt on 17 Oct 2026 (tutorial links, cover gap fix); it needs re-QA. Do not treat as approved.
+
 # QA: TpT 018 DMP2 Alchemy Architect (round 1)
 
 QA reviewed this item on 16 Oct 2026, independently of the Designer, following the format of 016 and 017. I ran `gen.py --check` (CHECK OK). I rendered all 23 PDF pages, all 18 deck pages and the 4 preview pages as contact sheets, viewed cover.png and preview-1..3.png at full size, read all 18 speaker notes via python-pptx, and grepped the PDF text and UPLOAD.md/tpt.json. I did not re-compare with the owner's Drive docs. I changed no item files.
