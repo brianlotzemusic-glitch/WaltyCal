@@ -89,6 +89,7 @@ Paid. Preview PDF (4 watermarked pages): the 7-class pacing guide, the Track map
 
 ## 9. Before you click publish
 
+- [ ] **Already live on TpT: the rebuilt PDF, ZIP, deck and images add the Reflection page and are for the owner's later re-upload.** The `uploaded` and `release` files are untouched; the new files need a fresh QA pass (QA-v3.md) before any re-upload.
 - [ ] Cover and previews show "HUDSON BEAT" in type; PDF footers read "© 2026 Brian Lotze · Hudson Beat · For single-classroom use".
 - [ ] No school name, logo, student work, audio or Logic session anywhere (`gen.py --check` scans every output and every file in this folder).
 - [x] **Reflection added (owner, 17 Oct 2026).** The owner's rubric (Documentation & Presentation) mentions reflection, but the project sheet has no reflection task. By the owner's definition (a written or oral conversation about how the student did on the project and what they would do differently next time) every DMP2 kit now has a Reflection student page (written or oral, 4 prompts), a teacher note, a pacing line and a line on the closing slide. The /25 rubric is untouched and the page adds no points. Shared builder: `tpt/_dmp2_common/dmp2.py`.

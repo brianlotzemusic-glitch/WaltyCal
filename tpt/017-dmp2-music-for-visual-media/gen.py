@@ -185,14 +185,14 @@ CHANGES = [
     "My LMS name is written as “your class page” (checklist items 1 and 2).",
     "Page numbers are added to steps 1, 2, 3 and 5 (the Clip log, Watch notes, Score plan, Cue sheet and Sync log).",
     "My three resources are not included (page @TN2): no clip list, film-scoring links or markers tutorial is added, because none exists in my materials.",
-    "Page @VIDEOS is new. It names the two videos from my older DMP1 Unit 5 project (the Logic import screen recording and the “Walking Through the Woods at Night” video) with their sizes and where to get them. The files are not in the ZIP because each is over 200 MB, too big for a TpT download.",
+    "Page @VIDEOS is new. It names the two videos from my older DMP1 Unit 5 project (the Logic import screen recording and the “Walking Through the Woods at Night” video) with their sizes. The files are not included in this download because each is over 200 MB, too big for a TpT download.",
     "Page @PICTURE is my “Composing to Picture” advice from my Spooky Tunes sheet; the last sentence (about its reverb buses) is left out.",
     "My pacing guide’s “Classes 3–5” row spans the Class 3, 4 and 5 rows, so each class can name its slides.",
     "Layout only: the rubric’s Name and Date lines moved to the top; its Notes box became ruled lines.",
     "The intro deck shortens my wording (full wording on pages @PROJ1–@PROJ3): slide 5 shortens steps 1 and 2, slide 10 shortens step 3, "
     "slide 12 shortens step 4, slide 13 shortens step 5, and slide 14 shortens step 6.",
 ]
-CHANGES_MUST_MENTION = ["Composing to Picture", "your class page", "Page numbers", "not in the ZIP", "Classes 3–5", "Layout only", "intro deck shortens"]
+CHANGES_MUST_MENTION = ["Composing to Picture", "your class page", "Page numbers", "not included in this download", "Classes 3–5", "Layout only", "intro deck shortens"]
 KEPT = ("Everything else from my three documents is kept as I wrote it: the overview, goals, the five vocabulary terms, the five "
         "requirements, steps (apart from the page numbers), tips, checklist and file name (“Your Name – Music for Visual Media”), the "
         "rubric (five categories scored 1–5, /25, the average of the student’s and the teacher’s score), what the project reinforces, "
@@ -679,13 +679,11 @@ def videos_page(n, wm=False):
             f"<tr><td><b>{f2}</b></td><td>{mb(b2)}<br>MP4</td>"
             f"<td>A video from my DMP1 Unit 5 project. Use it as a scene you may show on slide 2 (sound off, then on) and for the markers "
             f"demo on slide 8, if you do not have a scene of your own.</td></tr>")
-    inner = (f'<div class="box acc-b"><span class="k">Not in this ZIP</span><p style="margin:0;font-size:13.4pt;line-height:1.5">Two videos from my '
-             f'older DMP1 Unit 5 project go with this unit. Each file is over 200 MB, far too big for a Teachers Pay Teachers download, so '
-             f'they are named here and are <b>not</b> in the ZIP.</p></div>'
+    inner = (f'<div class="box acc-b"><span class="k">Not in this download</span><p style="margin:0;font-size:13.4pt;line-height:1.5">Two videos from my '
+             f'older DMP1 Unit 5 project are named on this page. Each file is over 200 MB, far too big for a Teachers Pay Teachers download, so '
+             f'they are <b>not</b> included in this download.</p></div>'
              f'{D.H2("The two videos")}<table class="t" style="font-size:12.6pt;line-height:1.45"><tr><th>File</th><th>Size</th><th>What it is for</th></tr>{rows}</table>'
-             f'{D.H2("Where to get them")}<p style="font-size:13.2pt;line-height:1.5">Ask for the download link in the Q&amp;A tab of the '
-             f'{D.BRAND} by {D.STORE} store on Teachers Pay Teachers, and give the file names above. The files are meant for your own '
-             f'students, under the terms on the last page.</p>'
+             f'{D.H2("Your own copies")}<p style="font-size:13.2pt;line-height:1.5">You can use your own copies or recordings of these demonstrations (for example, a screen recording of the Logic movie import, and any short scene you may show). The files are not part of this download.</p>'
              f'{D.H2("The project works without them")}<ul style="font-size:12.2pt;line-height:1.45">'
              f'<li>Class 1 and Class 2 run fine with a short scene you may show: page @SETUP shows how to choose one.</li>'
              f'<li>The Logic quick reference (page @LOGICREF) has the import steps (File › Movie › Open Movie), markers, SMPTE time and the frame rate.</li>'
@@ -920,7 +918,7 @@ def verify_outputs(flat, stext, notes):
     for f_, b_ in VIDEO_FILES:
         if not all(w in vp for w in f_.split()) or mb(b_) not in vp:
             errs.append(f"Videos page must name {f_} and its size {mb(b_)}")
-    if "Not in this ZIP" not in vp.replace("NOT IN THIS ZIP", "Not in this ZIP") or ZIP_EXTRA:
+    if "Not in this download" not in vp.replace("NOT IN THIS DOWNLOAD", "Not in this download") or ZIP_EXTRA:
         errs.append("Videos page: must say the files are not in the ZIP (fallback) while ZIP_EXTRA is empty")
     for f_, _ in VIDEO_FILES:
         if os.path.exists(os.path.join(HERE, f_)):
