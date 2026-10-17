@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-16T22:24:26Z",
-  "next_run_at": "2026-10-17T10:12:00Z",
+  "updated_at": "2026-10-17T10:13:36Z",
+  "next_run_at": "2026-10-17T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
   "listings_live": 27,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12pm shift done. 016, 017, 018 are QA approved and held for the owner to release. 015 is live on TpT.",
-      "since": "2026-10-16T22:24:26Z"
+      "task": "6:12am shift: nothing built. 016, 017, 018 are QA approved and waiting for the owner to release them; building paused until some are released.",
+      "since": "2026-10-17T10:13:36Z"
     },
     {
       "id": "researcher",
@@ -26,8 +26,8 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "TpT 018 DMP2 Alchemy Architect built; next: Anti-Music Manifesto.",
-      "since": "2026-10-16T22:24:26Z"
+      "task": "Paused after TpT 018 Alchemy Architect; next: Anti-Music Manifesto once 016-018 are released.",
+      "since": "2026-10-17T10:13:36Z"
     },
     {
       "id": "qa",
@@ -85,6 +85,11 @@
     "Etsy slot on hold until the owner decides"
   ],
   "feed": [
+    {
+      "t": "2026-10-17T10:13:36Z",
+      "who": "manager",
+      "msg": "Three DMP2 kits (016, 017, 018) are approved and waiting for the owner's release. Building paused so the queue doesn't pile up."
+    },
     {
       "t": "2026-10-16T22:24:26Z",
       "who": "lister",
