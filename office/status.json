@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17T18:54:42Z",
+  "updated_at": "2026-10-17T19:11:04Z",
   "next_run_at": "2026-10-17T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "016, 017, 018 released at the owner's request. The Mac nightly publishes them.",
-      "since": "2026-10-17T18:54:42Z"
+      "task": "All five DMP2 kits (014-018) are live on TpT. Rebuilt versions with the Reflection step are QA approved and wait for the owner to re-upload.",
+      "since": "2026-10-17T19:11:04Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "Rebuilt TpT 016, 017, 018 with supporting artifacts from the other DMP2 folders. Building paused until they are released.",
-      "since": "2026-10-17T17:41:29Z"
+      "task": "Rebuilt TpT 014-018 with a Reflection step; next: Anti-Music Manifesto.",
+      "since": "2026-10-17T19:11:04Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Re-approved TpT 016, 017 and 018 after the rebuilds (Sonnet).",
-      "since": "2026-10-17T17:41:29Z"
+      "task": "Approved the rebuilt TpT 014-018 files (Reflection step).",
+      "since": "2026-10-17T19:11:04Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "TpT 014 and 015 live. 016, 017, 018 released; waiting for the Mac nightly.",
-      "since": "2026-10-17T18:54:42Z"
+      "task": "TpT 014-018 live. Rebuilt files for 014-018 (with Reflection) wait for the owner to re-upload; 017 videos need the owner's decision.",
+      "since": "2026-10-17T19:11:04Z"
     },
     {
       "id": "analyst",
@@ -85,6 +85,11 @@
     "Etsy slot on hold until the owner decides"
   ],
   "feed": [
+    {
+      "t": "2026-10-17T19:11:04Z",
+      "who": "lister",
+      "msg": "TpT 016, 017, 018 went live (Mac nightly). Rebuilt files with the owner's Reflection step are approved for re-upload."
+    },
     {
       "t": "2026-10-17T18:54:42Z",
       "who": "manager",

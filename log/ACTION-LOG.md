@@ -248,3 +248,4 @@
 - 2026-10-17 QA of rebuilt DMP2 kits 016, 017, 018 (Reflection page): all three REJECTED pending fixes (017 Videos page Q&A promise; re-upload note missing in UPLOAD.md); see each QA.md.
 - 2026-10-17 Designer fix round: 017 Videos page no longer promises a video link (reworded, UPLOAD.md note fixed, ZIP_EXTRA hook kept); re-upload notes added to 016/017/018 UPLOAD.md; all three CHECK OK; QA.md moved to QA-v3.md, needs re-QA; no release files.
 - 2026-10-17 QA re-review of 016, 017, 018 after fix round (check OK, 017 page 5 viewed, re-upload notes present, zips identical, uploaded files untouched): all three APPROVED for the owner's later re-upload.
+- 2026-10-17 19:11 UTC: Manager v3: TpT 016, 017, 018 went live at 18:56 UTC (before the release files were pulled). Rebuilt 014-018 with the Reflection step are QA approved, for the owner's re-upload. Open: 017 videos (209/244 MB) not in the ZIP; owner to choose how to supply them.
