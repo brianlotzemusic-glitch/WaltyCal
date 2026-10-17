@@ -10,7 +10,7 @@ QA reviewed this item on 16 Oct 2026, independently of the Designer, following t
 - Page 8 "What changed from the original" present (Wording changes, Kept as I wrote it, New in this kit). No "word for word" or "verbatim" in the PDF, UPLOAD.md or tpt.json.
 
 ## 2. Third-party and branding: pass
-No audio, video, lyrics, songs or chart data. YouTube appears only in the owner's resource list, marked "not included"; no links. Logic/Alchemy trademark line present. No Blind Brook or school text, no student names. Footers "(c) 2026 Brian Lotze, Hudson Beat".
+No audio, video, lyrics, songs or chart data. (v1: no links; v2 adds the owner's two tutorial links, titles and URLs only.) Logic/Alchemy trademark line present. No school branding or text, no student names. Footers "(c) 2026 Brian Lotze, Hudson Beat".
 
 ## 3. Logic and facts: pass
 Harmonics math (110 Hz saw under a 1000 Hz cutoff keeps 9; 55 Hz sub with 400 Hz keeps 7), 0.5 Hz LFO = one cycle per 2 s bar at 120 BPM, 26 bars = 52 s (inside 45-60 s), quarter-note delay 500 ms all check out. Invented patches only.

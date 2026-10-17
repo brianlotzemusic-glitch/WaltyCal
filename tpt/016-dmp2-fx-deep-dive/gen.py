@@ -753,7 +753,7 @@ def links_page(n, wm=False):
 
     def block(c, ls):
         return lab(c) + "".join(one(t, u) for t, u in ls)
-    half = 6
+    half = 4
     left = "".join(block(c, ls) for c, ls in LINKS[:half])
     right = "".join(block(c, ls) for c, ls in LINKS[half:]) + lab("Also on my list") + "".join(one(t, u) for t, u in LINKS_EXTRA)
     inner = (f'<p style="margin:0 0 2pt;font-size:10.6pt;line-height:1.3">My own list of tutorials, one group for each of the 11 FX (page '

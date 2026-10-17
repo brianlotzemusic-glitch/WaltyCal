@@ -10,6 +10,10 @@ The owner's own curriculum (Brian Lotze, Digital Music Production 2), in the Hud
 DMP2 > Projects (New) > Music for Visual Media > "Music for Visual Media - Project Sheet & Rubric" (rubric 5 categories scored 1-5,
 /25, final grade = average of student and teacher scores), TEACHER NOTES > "Music for Visual Media - Teacher Notes" (7 class
 periods), and the project's entry on "DMP2 - Project Menu" (the June 2026 menu with Type / Focus columns).
+Supporting artifact (owner rule 17 Oct 2026): the "Composing to Picture" table from DMP1 (New) > 5 - Spooky Tunes > "Project Sheet &
+Rubric - Spooky Tunes" (page "picture", the owner's own text, credited as from the teacher's own materials). Searched and not found:
+film scoring examples list, Logic markers tutorial, the 3-5 pre-selected clips (easier variation). Left out on purpose: the owner's
+video files (How to import a movie into Logic, Walking Through the Woods at Night), the older 2024/2025 outlines, student work.
 
 NO VIDEO AND NO AUDIO ARE INCLUDED. The project has students score a video clip (their own, or one from YouTube or Vimeo). Video
 clips belong to their makers, so this kit never contains, hosts or links to a specific clip: it tells teachers how to choose a
