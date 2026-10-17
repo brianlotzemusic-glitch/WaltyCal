@@ -57,12 +57,10 @@
  {
   "page": 8,
   "key": "changes",
-  "main_over": 2,
-  "cells": [
-   "DIV: This kit is built from three of my documents:"
-  ],
+  "main_over": 0,
+  "cells": [],
   "clipped": [],
-  "free": -2
+  "free": 46
  },
  {
   "page": 9,
@@ -86,7 +84,7 @@
   "main_over": 0,
   "cells": [],
   "clipped": [],
-  "free": 278
+  "free": 84
  },
  {
   "page": 12,

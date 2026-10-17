@@ -176,12 +176,8 @@ PACING_EXTRA = (
 CHANGES = [
     "My LMS name is written as “your class page” (checklist items 1 and 2).",
     "Page numbers are added to steps 1, 2, 3 and 5 (the Clip log, Watch notes, Score plan, Cue sheet and Sync log).",
-    "My three resources are not included; each is named as I wrote it, and the kit says what it offers instead (page @TN2). No video "
-    "clip is included or linked. My easier variation (3–5 pre-selected clips) is kept, but no clip list is included, because none "
-    "was in the materials this kit is built from.",
-    "Page @PICTURE reproduces my “Composing to Picture” advice from my Spooky Tunes project in this kit’s layout. I changed “the "
-    "video” to “the picture” or “your clip” where needed, and left out its last sentence, which is about that project’s reverb and "
-    "delay buses.",
+    "My three resources are not included (page @TN2). No video clip, list or tutorial is included, and no 3–5 clip list was in my materials.",
+    "Page @PICTURE is my “Composing to Picture” advice from my Spooky Tunes sheet; the last sentence (about its reverb buses) is left out.",
     "My pacing guide’s “Classes 3–5” row spans the Class 3, 4 and 5 rows, so each class can name its slides.",
     "Layout only: the rubric’s Name and Date lines moved to the top; its Notes box became ruled lines.",
     "The intro deck shortens my wording (full wording on pages @PROJ1–@PROJ3): slide 5 shortens steps 1 and 2, slide 10 shortens step 3, "
@@ -815,7 +811,7 @@ PICTURE_MOVES = [
 
 
 def picture_page(n, wm=False):
-    rows = "".join(f"<tr><td style='width:27%;font-size:12.4pt'><b>{a}</b></td><td style='font-size:12pt;line-height:1.42'>{b}</td></tr>"
+    rows = "".join(f"<tr><td style='width:27%;font-size:13.4pt'><b>{a}</b></td><td style='font-size:13pt;line-height:1.5'>{b}</td></tr>"
                    for a, b in PICTURE_MOVES)
     inner = (f'<p style="margin:0 0 6pt;font-size:11.8pt">From the teacher’s own materials: the advice I give my own students when they '
              f'score a picture for the first time. Project it, or hand it out on Class 1 or 2, next to the Watch notes (page {D.IX("watch")}) '
@@ -828,6 +824,10 @@ def picture_page(n, wm=False):
              f'<li>Markers: demo on slide 8, then the Sync log (page {D.IX("sync")}).</li>'
              f'<li>Silence and space: the dynamics picture on slide 11.</li>'
              f'<li>Hit points: the Sync guide (page {D.IX("syncguide")}).</li></ul></div></div>'
+             f'<div class="box" style="margin-top:10pt"><span class="k">Ask your students</span><ul style="margin:0;font-size:12pt;line-height:1.5">'
+             f'<li>Which moment in your clip would feel biggest if the music stopped?</li>'
+             f'<li>Where are you filling space that the picture does not need filled?</li>'
+             f'<li>Does your music follow the picture, or just play alongside it?</li></ul></div>'
              f'<p class="small" style="margin-top:8pt">Film scoring examples are not included. Search by title for a scene you may show.</p>')
     return D.page("Composing to picture", "TEACHER + STUDENT", "Classes 1-2", inner, n, wm, key="picture")
 

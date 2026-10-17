@@ -1,3 +1,5 @@
+> SUPERSEDED 17 Oct 2026: this approval covers build v1 only. The kit was rebuilt (v2: new page 11, 24 pages, changed pages 7, 8 and UPLOAD.md) and needs a fresh QA.md.
+
 # QA: TpT 017 DMP2 Music for Visual Media (round 1)
 
 QA reviewed this item on 16 Oct 2026, independently of the Designer, following the format of 015 and 016. I ran `gen.py --check` (CHECK OK). I rendered all 23 PDF pages, all 18 deck pages and the 4 preview pages at 40 dpi (contact sheets), viewed cover.png and preview-1..3.png, read all 18 speaker notes via python-pptx, and grepped the PDF text, pptx XML and UPLOAD.md. I did not re-compare with the owner's Drive docs this round (I relied on the Designer's gen.py checks of the owner's lists and on the page 7-8 disclosures). I changed no item files.
