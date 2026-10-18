@@ -1,0 +1,5 @@
+# AI images (Recraft, cheap recipe: 2 flash images at 1024x1024 + 2 upscales, about 22 credits total)
+Both prompts follow the clipart block in shop-profile/STYLE.md (no grain, flat colour, no text).
+1. art/animals.png: "Christmas clipart sheet, flat vector illustration style with clean dark plum outlines and flat colours, limited palette: russet orange, cream, pine green, berry red, soft gold, deep plum; crisp edges. A grid of 6 separate small woodland animal illustrations on a plain pure white background, 3 columns by 2 rows with wide white gaps ...: a sitting fox, a snowy owl, a stag with antlers, a robin on a holly sprig, a hedgehog, a rabbit. No text ..."
+2. art/botanicals.png: same block, 6 items: red toadstool cluster, pine branch with cones, luna moth, holly sprig, mistletoe sprig, crescent moon with two stars.
+Both upscaled 4x (imagegen.py upscale), then cut into 12 transparent motifs by prep_art.py (art/motifs/). Borders, shapes, patterns, text, hole marks and all layout are drawn in code (tags.js, build.js, listing.js).
