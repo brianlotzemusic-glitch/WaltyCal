@@ -275,6 +275,47 @@ def tee(src, out, on, width_px=3000, top=300, lo=20, hi=70, prep=None, post=None
     print(out, canvas.size, "design", art.size, "= %.1f x %.1f in" % (art.width / 300, art.height / 300), "upsample %.2f" % s)
 
 
+# ---- 005: wreath art + "FAMILY CHRISTMAS 2026" set in code inside the wreath opening ------------
+def type_005(rgba):
+    """Stacked serif type centred in the wreath's empty middle (pine green). Drawn at 4x and downsampled."""
+    from PIL import ImageDraw, ImageFont
+    S = 3
+    a = rgba.astype(np.float64)
+    ys, xs = np.where(a[..., 3] > 0)  # decontaminate the fringe (as 004): semi-transparent pixels take the nearest opaque colour
+    y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
+    sub = a[y0:y1, x0:x1]
+    rgb = inpaint_limited(sub[..., :3], sub[..., 3] < 250, iters=6)
+    semi = (sub[..., 3] > 0) & (sub[..., 3] < 250)
+    sub[..., :3][semi] = rgb[semi]
+    img = Image.fromarray(np.clip(a, 0, 255).round().astype(np.uint8), "RGBA")
+    W, H = img.size
+    cx, cy = TYPE_005["cx"], TYPE_005["cy"]
+    layer = Image.new("L", (W * S, H * S) if False else (1800 * S, 1700 * S), 0)
+    d = ImageDraw.Draw(layer)
+    bold = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
+    y = 0
+    rows = []
+    for text, size, track in TYPE_005["rows"]:
+        f = ImageFont.truetype(bold, size * S)
+        w = sum(d.textlength(c, font=f) for c in text) + track * S * (len(text) - 1)
+        rows.append((text, f, w, size))
+    total = sum(r[3] * S * 1.25 for r in rows)
+    y = (1700 * S - total) / 2
+    for text, f, w, size in rows:
+        x = (1800 * S - w) / 2
+        for c in text:
+            d.text((x, y), c, font=f, fill=255)
+            x += d.textlength(c, font=f) + TYPE_005["track"] * S
+        y += size * S * 1.25
+    layer = layer.resize((1800, 1700), Image.LANCZOS)
+    img.paste(Image.new("RGBA", layer.size, TYPE_005["colour"]), (cx - 900, cy - 850), layer)
+    return img
+
+
+TYPE_005 = dict(cx=2285, cy=1640, track=6, colour=(44, 27, 54, 255),
+                rows=[("FAMILY", 135, 6), ("CHRISTMAS", 108, 4), ("2026", 270, 8)])
+
+
 if __name__ == "__main__":
     mug("001-luna-moth-mug/candidates/moth-3.png", "001-luna-moth-mug/mug-wrap-2700x1120.png", height=920, accent=moon_accent)
     mug("002-gothic-ornament-mug/candidates/ornament-3.png", "002-gothic-ornament-mug/mug-wrap-2700x1120.png",
@@ -284,3 +325,5 @@ if __name__ == "__main__":
     # only 36% keyed at lo=20 and would print as a light patch on Ash); gold (min channel ~122) stays opaque
     tee("004-bat-wing-tree-tee/candidates/battree-3-up.png", "004-bat-wing-tree-tee/tee-front-4500x5100.png", on="white",
         lo=45, hi=95, prep=clean_stars, post=fix_004)
+    tee("005-family-christmas-woodland-tee/candidates/wreath-1-up.png", "005-family-christmas-woodland-tee/tee-front-4500x5100.png", on="white",
+        lo=45, hi=95, post=type_005)

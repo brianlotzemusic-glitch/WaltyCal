@@ -1,0 +1,20 @@
+{
+ "printify_product_id": "6ad54586be00d0941b00d725",
+ "note": "created 18 Oct 2026, NOT published (external empty). mockups/ = downloaded Printify renders; lead-lifestyle.jpg is composed locally from them and is the intended first Etsy photo.",
+ "downloaded": {
+  "front-white": "https://images.printify.com/mockup/6ad54586be00d0941b00d725/18542/92547/family-christmas-2026-shirt-woodland-christmas-t-shirt-fox-deer-owl-wreath-matching-family-tee-cozy-holiday-photo-shirt-unisex.jpg?camera_label=front",
+  "front-natural": "https://images.printify.com/mockup/6ad54586be00d0941b00d725/18390/92547/family-christmas-2026-shirt-woodland-christmas-t-shirt-fox-deer-owl-wreath-matching-family-tee-cozy-holiday-photo-shirt-unisex.jpg?camera_label=front",
+  "front-ash": "https://images.printify.com/mockup/6ad54586be00d0941b00d725/38608/92547/family-christmas-2026-shirt-woodland-christmas-t-shirt-fox-deer-owl-wreath-matching-family-tee-cozy-holiday-photo-shirt-unisex.jpg?camera_label=front",
+  "front-soft-cream": "https://images.printify.com/mockup/6ad54586be00d0941b00d725/18462/92547/family-christmas-2026-shirt-woodland-christmas-t-shirt-fox-deer-owl-wreath-matching-family-tee-cozy-holiday-photo-shirt-unisex.jpg?camera_label=front",
+  "folded-white": "https://images.printify.com/mockup/6ad54586be00d0941b00d725/18542/102046/family-christmas-2026-shirt-woodland-christmas-t-shirt-fox-deer-owl-wreath-matching-family-tee-cozy-holiday-photo-shirt-unisex.jpg?camera_label=folded",
+  "folded-natural": "https://images.printify.com/mockup/6ad54586be00d0941b00d725/18390/102046/family-christmas-2026-shirt-woodland-christmas-t-shirt-fox-deer-owl-wreath-matching-family-tee-cozy-holiday-photo-shirt-unisex.jpg?camera_label=folded",
+  "hanging-white": "https://images.printify.com/mockup/6ad54586be00d0941b00d725/18542/102048/family-christmas-2026-shirt-woodland-christmas-t-shirt-fox-deer-owl-wreath-matching-family-tee-cozy-holiday-photo-shirt-unisex.jpg?camera_label=hanging-1"
+ },
+ "etsy_lead_photo_plan": [
+  "mockups/lead-lifestyle.jpg",
+  "mockups/folded-natural.jpg",
+  "mockups/folded-white.jpg",
+  "mockups/front-ash.jpg",
+  "mockups/front-soft-cream.jpg"
+ ]
+}
