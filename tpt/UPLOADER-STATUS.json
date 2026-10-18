@@ -1,16 +1,9 @@
 {
-  "ran_at": "2026-10-18T02:01:13.676Z",
-  "published": [
-    {
-      "item": "019-dmp2-anti-music-manifesto",
-      "url": "https://www.teacherspayteachers.com/Product/Anti-Music-in-Logic-Pro-Experimental-Music-Manifesto-Project-High-School-17991267"
-    }
-  ],
+  "ran_at": "2026-10-18T12:48:12.575Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "019-dmp2-anti-music-manifesto"
-  ],
+  "pending_before": [],
   "ok": true
 }
