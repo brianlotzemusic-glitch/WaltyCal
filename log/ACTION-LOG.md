@@ -257,3 +257,4 @@
 - 2026-10-18 01:55 UTC: Owner (18 Oct): resume 2 Etsy listings a day; not code-only art (use AI images within the Recraft balance); Trend Hunter to bring new ideas; owner has a Printful shop (message cut off after 'connected to'). Recorded in FACTORY.md. Trend Hunter scan run now.
 - 2026-10-18 UTC: Trend Hunter scan (owner-requested): 10 Etsy ideas (4 POD, 6 digital) in trends/2026-10-18.md and appended to queue.md as [trend]; no dated TikTok-viral item found, picks are seasonal (EtsyHunt 1 Oct, eRank 29 Sep). Open: Printful vs Printify.
 - 2026-10-18 02:00 UTC: Owner clarified (18 Oct): the connected POD shop is Printify (not Printful); use Printify for the new POD items. FACTORY.md corrected.
+- 2026-10-18 02:01 UTC: Owner said 'release the TpT': released TpT 019 Anti-Music Manifesto (QA approved, gate checks pass). Mac nightly publishes it. Rebuilt 014-018 (Reflection) still need the owner's manual re-upload.
