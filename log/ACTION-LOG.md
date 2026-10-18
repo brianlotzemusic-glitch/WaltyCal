@@ -267,3 +267,4 @@
 - 2026-10-18 12:48 UTC: Owner standing order: always release QA-approved TpT items, don't ask. Recorded in FACTORY.md. Released TpT 020 Found Sound ($10, QA approved round 1, gate checks pass).
 - 2026-10-18 UTC: Designer built pod/005 Family Christmas 2026 woodland tee (Printify 6ad54586be00d0941b00d725, created as unpublished draft, $28.99 all sizes, 18 Recraft credits: 2 flash + 1 upscale); waiting for QA, then Lister runs printify.py publish.
 - 2026-10-18 UTC: QA reviewed pod/005 Family Christmas woodland tee: REJECTED (art, Printify product, prices and copy pass; lead-lifestyle.jpg composite has duplicated '026' headline text, a stray 'm, Ash' fragment and overlapping cards; rebuild it, then re-QA).
+- 2026-10-18 UTC: QA re-reviewed pod/005 Family Christmas woodland tee after fix round 58b3561: APPROVED (lead photo clean at full and thumbnail size, Printify still unpublished, 13 tags, title 130).

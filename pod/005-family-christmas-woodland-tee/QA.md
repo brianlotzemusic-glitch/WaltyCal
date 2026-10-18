@@ -23,6 +23,10 @@ The plain Printify renders (front-*.jpg) are fine; only the composite is broken.
 2. Update mockups.json etsy_lead_photo_plan if the photo order changes (the publish instructions above name lead-lifestyle.jpg, folded-natural.jpg, folded-white.jpg and front-ash.jpg).
 Nothing else needs changing; Printify product, art and copy are approved as they stand.
 
-(fix round: lead photo rebuilt)
+## Re-review after fix round (commit 58b3561, QA, 18 Oct 2026)
+**Lead photo (mockups/lead-lifestyle.jpg, 2000x2020): pass.** Full size: one headline "Family Christmas 2026 Woodland Tee", one subline "Unisex S to 3XL | 4 colors", clean 2x2 grid of real Printify front mockups (White, Natural, Soft Cream, Ash) with one label chip each; no duplicated or clipped text, no stray fragments, no overlap, whole wreath (fox, deer, owl, hedgehog, text) visible on every card, single uniform background. Honest: real renders of the real design in the four listed colours, no claims beyond the listing. Thumbnail (300 px): headline and subline stay readable, the four colours read clearly. Advisory only: the print is small on the shirts, so the wreath is about 35 px at thumbnail and the pale shirts on a cream background are low contrast; it is a clean, trustworthy colour-grid lead, not a high-impact one. Not blocking; consider a closer crop for a future A/B test.
+**Earlier passes still hold:** Printify 6ad54586be00d0941b00d725 re-read live: external empty (unpublished), 24 enabled variants, title 130 chars, 13 tags. Copy and tags unchanged since the first pass.
+**Publish order:** the command puts lead-lifestyle.jpg #1, folded-natural #2, folded-white #3, front-ash #4, matching the first four of mockups.json etsy_lead_photo_plan (which also lists front-soft-cream fifth; the command omits it, so it arrives only via Printify's own photos; harmless, optionally add it to the command). Folded-natural/white are Printify's standard folded renders: correct colours and design, hedgehog cut off by the fold at the bottom edge (same style as 003/004), acceptable as supporting photos. Remaining Printify photos (fronts, hanging) are fine. Run the quick TESS check on "Family Christmas 2026" at publish time (flag, not blocking).
+Required fixes: none.
 
-**Verdict: REJECTED**
+**Verdict: APPROVED**
