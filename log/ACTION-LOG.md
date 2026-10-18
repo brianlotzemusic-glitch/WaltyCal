@@ -269,3 +269,4 @@
 - 2026-10-18 UTC: QA reviewed pod/005 Family Christmas woodland tee: REJECTED (art, Printify product, prices and copy pass; lead-lifestyle.jpg composite has duplicated '026' headline text, a stray 'm, Ash' fragment and overlapping cards; rebuild it, then re-QA).
 - 2026-10-18 UTC: QA re-reviewed pod/005 Family Christmas woodland tee after fix round 58b3561: APPROVED (lead photo clean at full and thumbnail size, Printify still unpublished, 13 tags, title 130).
 - 2026-10-18 UTC: Designer built TpT 021 Free Play (DMP2, tpt/021-dmp2-free-play, $9, 22 pages + 19 slides, gen.py --check OK); waiting for QA. Owner questions: (1) are Apple Loops allowed in Free Play (sheets do not forbid, Harder variation asks for none; kit leaves it to the teacher); (2) Teacher Notes suggest playing past student work: none used, an invented example on paper instead.
+- 2026-10-18 QA: tpt/021-dmp2-free-play (Free Play, DMP2, $9) APPROVED, no fixes (tpt/021-dmp2-free-play/QA.md)
