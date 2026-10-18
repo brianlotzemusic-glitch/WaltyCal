@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-17T22:22:39Z",
-  "next_run_at": "2026-10-18T10:12:00Z",
+  "updated_at": "2026-10-18T10:28:11Z",
+  "next_run_at": "2026-10-18T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 27,
-  "bundles_built": 36,
+  "listings_live": 28,
+  "bundles_built": 37,
   "uploads_pending": 3,
   "etsy_connected": true,
   "workers": [
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12pm shift done. 019 Anti-Music Manifesto is QA approved and waiting for the owner to release it. Etsy Ads test is running (day 1, no live-listing edits).",
-      "since": "2026-10-17T22:22:39Z"
+      "task": "6:12am shift done. Etsy listing 025 gift tags live; TpT 020 Found Sound approved, held for the owner. Etsy Ads test running.",
+      "since": "2026-10-18T10:28:11Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "TpT 019 DMP2 Anti-Music Manifesto built; next: Found Sound.",
-      "since": "2026-10-17T22:22:39Z"
+      "task": "Etsy 025 woodland gift tags built; TpT 020 Found Sound built. Next: Family Christmas tee (POD) and TpT Free Play.",
+      "since": "2026-10-18T10:28:11Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved TpT 019 in round 1 (Sonnet).",
-      "since": "2026-10-17T22:22:39Z"
+      "task": "Approved Etsy 025 gift tags and TpT 020 Found Sound in round 1 (Sonnet).",
+      "since": "2026-10-18T10:28:11Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "TpT 014-018 live. Rebuilt files for 014-018 (with Reflection) wait for the owner to re-upload; 017 videos need the owner's decision.",
-      "since": "2026-10-17T19:11:04Z"
+      "task": "Etsy 4597905719 (woodland gift tags) live. TpT 019 live; 020 waits for the owner.",
+      "since": "2026-10-18T10:28:11Z"
     },
     {
       "id": "analyst",
@@ -68,8 +68,8 @@
       "id": "hunter",
       "name": "Trend Hunter",
       "state": "idle",
-      "task": "Oct 12 Monday scan: no picks (TikTok roundups stale). Next scan Oct 19.",
-      "since": "2026-10-12T13:30:00Z"
+      "task": "Oct 18 scan: 10 ideas; Judge kept 6. TikTok recheck next Monday scan.",
+      "since": "2026-10-18T10:28:11Z"
     },
     {
       "id": "judge",
@@ -80,11 +80,21 @@
     }
   ],
   "queue": [
-    "[dmp] DMP2 kits after Billboard: Sample Flipping, FX Deep Dive, Music for Visual Media, then the rest",
-    "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10",
-    "Etsy: 2 new listings a day resumed (owner, 18 Oct)"
+    "Etsy: Family Christmas 2026 woodland tee (POD, Printify), then moth-and-holly tee",
+    "[dmp] DMP2 kits after Found Sound: Free Play, Genre Exploration, Infinite Horizon, then the rest",
+    "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10"
   ],
   "feed": [
+    {
+      "t": "2026-10-18T10:28:11Z",
+      "who": "qa",
+      "msg": "Approved TpT 020 DMP2 Found Sound ($10). Waiting for the owner's release."
+    },
+    {
+      "t": "2026-10-18T10:28:11Z",
+      "who": "lister",
+      "msg": "Published Printable Christmas Gift Tags, Woodland (Etsy 4597905719, $3.50). 28 live."
+    },
     {
       "t": "2026-10-17T22:22:39Z",
       "who": "qa",
