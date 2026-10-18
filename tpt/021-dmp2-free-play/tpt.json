@@ -1,0 +1,34 @@
+{
+  "price": "9.00",
+  "license_price": "9.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 41,
+  "zip_contents": [
+    "free-play.pdf",
+    "free-play-intro-deck.pptx",
+    "free-play-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "free-play.zip",
+    "preview": "free-play-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
