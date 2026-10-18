@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-18T10:28:11Z",
-  "next_run_at": "2026-10-18T22:12:00Z",
+  "updated_at": "2026-10-18T22:23:47Z",
+  "next_run_at": "2026-10-19T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 28,
+  "listings_live": 29,
   "bundles_built": 37,
   "uploads_pending": 3,
   "etsy_connected": true,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12am shift done. Etsy listing 025 gift tags live; TpT 020 Found Sound approved, held for the owner. Etsy Ads test running.",
-      "since": "2026-10-18T10:28:11Z"
+      "task": "6:12pm shift done. Etsy tee 4598280195 live; TpT 021 Free Play released. Etsy Ads test day 2.",
+      "since": "2026-10-18T22:23:47Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "Etsy 025 woodland gift tags built; TpT 020 Found Sound built. Next: Family Christmas tee (POD) and TpT Free Play.",
-      "since": "2026-10-18T10:28:11Z"
+      "task": "Etsy POD tee and TpT 021 Free Play built. Next: moth-and-holly tee (POD) and TpT Genre Exploration.",
+      "since": "2026-10-18T22:23:47Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved Etsy 025 gift tags and TpT 020 Found Sound in round 1 (Sonnet).",
-      "since": "2026-10-18T10:28:11Z"
+      "task": "Approved the Family Christmas tee (after one fix round) and TpT 021 Free Play.",
+      "since": "2026-10-18T22:23:47Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Etsy 4597905719 (woodland gift tags) live. TpT 019 live; 020 waits for the owner.",
-      "since": "2026-10-18T10:28:11Z"
+      "task": "Etsy 4598280195 (Family Christmas 2026 tee) live, 29 listings. TpT 020 live; 021 released, waits for the Mac nightly.",
+      "since": "2026-10-18T22:23:47Z"
     },
     {
       "id": "analyst",
@@ -80,11 +80,21 @@
     }
   ],
   "queue": [
-    "Etsy: Family Christmas 2026 woodland tee (POD, Printify), then moth-and-holly tee",
-    "[dmp] DMP2 kits after Found Sound: Free Play, Genre Exploration, Infinite Horizon, then the rest",
+    "Etsy: moth-and-holly tee (POD, Printify), then winter wall art / reading mug",
+    "[dmp] DMP2 kits after Free Play: Genre Exploration, Infinite Horizon, then the rest",
     "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10"
   ],
   "feed": [
+    {
+      "t": "2026-10-18T22:23:47Z",
+      "who": "qa",
+      "msg": "Approved TpT 021 DMP2 Free Play ($9); released."
+    },
+    {
+      "t": "2026-10-18T22:23:47Z",
+      "who": "lister",
+      "msg": "Published Family Christmas 2026 Woodland Tee (Etsy 4598280195, via Printify). 29 live."
+    },
     {
       "t": "2026-10-18T10:28:11Z",
       "who": "qa",
