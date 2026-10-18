@@ -258,3 +258,4 @@
 - 2026-10-18 UTC: Trend Hunter scan (owner-requested): 10 Etsy ideas (4 POD, 6 digital) in trends/2026-10-18.md and appended to queue.md as [trend]; no dated TikTok-viral item found, picks are seasonal (EtsyHunt 1 Oct, eRank 29 Sep). Open: Printful vs Printify.
 - 2026-10-18 02:00 UTC: Owner clarified (18 Oct): the connected POD shop is Printify (not Printful); use Printify for the new POD items. FACTORY.md corrected.
 - 2026-10-18 02:01 UTC: Owner said 'release the TpT': released TpT 019 Anti-Music Manifesto (QA approved, gate checks pass). Mac nightly publishes it. Rebuilt 014-018 (Reflection) still need the owner's manual re-upload.
+- 2026-10-18 UTC: Trend Judge: ranked 6 [trend] items (gift tags, family tee, moth tee, wall art, mug, poster), rejected 4 (gingerbread alphabet dup of 4587461298, moth/mushroom dup of 005/022, clipart, coloring dup of 014/024). Next digital: woodland gift tags; next POD: Family Christmas 2026 tee.
