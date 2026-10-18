@@ -23,4 +23,6 @@ The plain Printify renders (front-*.jpg) are fine; only the composite is broken.
 2. Update mockups.json etsy_lead_photo_plan if the photo order changes (the publish instructions above name lead-lifestyle.jpg, folded-natural.jpg, folded-white.jpg and front-ash.jpg).
 Nothing else needs changing; Printify product, art and copy are approved as they stand.
 
+(fix round: lead photo rebuilt)
+
 **Verdict: REJECTED**
