@@ -15,4 +15,5 @@
 
 Would I pay $3.50? Yes. It is a cohesive, attractive set with usable tags in two sizes.
 
+(fix round: page-count header and US spelling fixed)
 **Verdict: APPROVED**

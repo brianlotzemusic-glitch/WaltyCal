@@ -48,9 +48,9 @@ function guidePage(W, H) {
   fs.mkdirSync('bundle', { recursive: true });
   for (const [key, [W, H, name]] of Object.entries(PAPER)) {
     const pages = [
-      tagsPage(W, H, DESIGNS.slice(0, 6), 'large', 'Woodland Christmas gift tags · <i>Large</i> · 1 of 3', 0),
-      tagsPage(W, H, DESIGNS.slice(6), 'large', 'Woodland Christmas gift tags · <i>Large</i> · 2 of 3', 6),
-      tagsPage(W, H, smallDesigns, 'small', 'Woodland Christmas gift tags · <i>Small</i> · 3 of 3', 12),
+      tagsPage(W, H, DESIGNS.slice(0, 6), 'large', 'Woodland Christmas gift tags · <i>Large</i> · 1 of 4', 0),
+      tagsPage(W, H, DESIGNS.slice(6), 'large', 'Woodland Christmas gift tags · <i>Large</i> · 2 of 4', 6),
+      tagsPage(W, H, smallDesigns, 'small', 'Woodland Christmas gift tags · <i>Small</i> · 3 of 4', 12),
       guidePage(W, H)];
     await p.setContent(`<!doctype html><html><head><meta charset=utf-8><style>${css(W, H)}</style></head><body>${motifDefs()}${pages.join('')}</body></html>`, { waitUntil: 'load' });
     await p.evaluate(() => document.fonts.ready);

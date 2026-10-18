@@ -21,7 +21,7 @@ HOW TO PRINT AND MAKE
 4. Write To and From with a pen or pencil, thread twine, ribbon or string, and tie on.
 
 GOOD TO KNOW
-- The tags use full colour; plain white paper or card stock is fine. Colours may differ slightly between screen and paper.
+- The tags use full color; plain white paper or card stock is fine. Colors may differ slightly between screen and paper.
 - Fonts are embedded, so the pages print the same everywhere.
 - Printing, card stock and string are not included. This is a digital download; nothing is shipped.
 

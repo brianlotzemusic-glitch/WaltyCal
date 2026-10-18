@@ -28,7 +28,7 @@ HOW TO USE
 • Fonts are embedded, so the pages print the same everywhere
 
 GOOD TO KNOW
-• The tags use full colour, so expect normal ink use for a coloured page
+• The tags use full color, so expect normal ink use for a colored page
 • Colors can look slightly different on screen and on paper
 • Printing, card stock and string are not included
 
