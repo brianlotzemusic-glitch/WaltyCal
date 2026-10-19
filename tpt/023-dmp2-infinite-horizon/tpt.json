@@ -1,0 +1,34 @@
+{
+  "price": "10.00",
+  "license_price": "10.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 43,
+  "zip_contents": [
+    "infinite-horizon.pdf",
+    "infinite-horizon-intro-deck.pptx",
+    "infinite-horizon-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "infinite-horizon.zip",
+    "preview": "infinite-horizon-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
