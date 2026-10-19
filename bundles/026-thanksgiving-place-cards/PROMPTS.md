@@ -1,0 +1,5 @@
+# AI images (Recraft, cheap recipe: 2 flash images at 1024x1024 + 2 upscales, about 36 credits total)
+Both prompts follow the clipart block in shop-profile/STYLE.md (flat colour, no grain, no text), with an autumn palette: russet orange, ochre gold, cream, olive and pine green, burgundy, soft brown, deep plum.
+1. art/animals.png: "Autumn harvest clipart sheet, flat vector illustration style with clean dark plum outlines and flat colours, ... A grid of 6 separate small woodland animal illustrations on a plain pure white background, 3 columns by 2 rows with wide white gaps so nothing touches: a sitting fox, a hedgehog, a squirrel holding an acorn, a round owl, a wild turkey, a deer with small antlers. No text ..."
+2. art/botanicals.png: same block, 6 items: two acorns with an oak leaf, a large oak leaf, a bundle of wheat, a cluster of brown mushrooms, a red maple leaf, a red apple with a leaf.
+Both upscaled 4x (imagegen.py upscale; the -4x files are deleted to save space), then cut into 12 transparent motifs by prep_art.py (art/motifs/). Cards, patterns, text, fold and cut lines and all layout are drawn in code (cards.js, build.js, listing.js).
