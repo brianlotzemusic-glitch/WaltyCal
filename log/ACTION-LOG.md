@@ -275,3 +275,4 @@
 - 2026-10-19 Designer: pod/006-moth-holly-tee (Moth and Holly Christmas Tee, Printify 6ad5edd9821a8565d600df74, blueprint 12 / Monster Digital 29, 4 dark colours, $29.99, 18 Recraft credits) built, NOT published, awaiting QA.
 2026-10-19T10:19:25Z QA: reviewed pod/006-moth-holly-tee, REJECTED (description says 10 in wide, art is 11.8 in); art, Printify product, lead photo pass
 2026-10-19T10:40:00Z QA: re-reviewed pod/006-moth-holly-tee, APPROVED (12 in fix verified in LISTING.md, product.json and live Printify; unpublished)
+- 2026-10-19 10:21 UTC: 6:12am ET shift (Manager v3): Monday trend scan (no usable TikTok product trend; 3 candidates queued). Moth and Holly Tee (pod/006, Printify) QA rejected once (description width), fixed, approved, published to Etsy 4598568483 ($29.99, 18 credits, 30 live), photos ordered. TpT 022 Genre Exploration in build.
