@@ -19,4 +19,8 @@ Publish step after approval: `python3 tools/printify.py publish pod/006-moth-hol
 
 Publish step after approval is unchanged (see top): `python3 tools/printify.py publish pod/006-moth-holly-tee`, then `etsy-id`, then the `etsy.py lead-photos` command above.
 
-**Verdict: REJECTED**
+
+## Re-review (QA, 19 Oct 2026) (re-review: 12 in fix verified)
+LISTING.md, product.json and the live Printify description (read-only GET) all say "Print: design about 12 in wide on the front"; live description is identical to product.json. Product still unpublished (external null). Earlier passes hold: title 126 (live matches), exactly 13 tags, max 20 chars, live tags match; 24 enabled variants, all $29.99, ids match product.json; art and all 8 mockups (incl. lead-lifestyle.jpg) unchanged since the build commit. Required fix 1 is done; nothing else outstanding.
+
+**Verdict: APPROVED**
