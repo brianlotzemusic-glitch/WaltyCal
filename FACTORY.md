@@ -173,7 +173,7 @@ The Manager session re-reads its whole conversation on every step, so its cost g
 1. `create_session` with source_url https://github.com/brianlotzemusic-glitch/WaltyCal, source_revision `shop-factory`, environment env_018UJ8V6WCMk8EYcV2VZr7ig, model claude-sonnet-5-5, and title "Shop factory: Manager vN". The prompt is a readiness check only: sync, commit and push one log line, then `etsy.py ping`, `imagegen.py spend`, `printify.py shops`, and an Artifact read of the dashboard. Reply in 4 lines.
 2. When that push lands on `shop-factory`, `create_trigger` with the same cron (`CRON_TZ=America/New_York 12 6,18 * * *`) and `persistent_session_id` set to the new session, copying the current shift routine's prompt (`get_trigger` on it).
 3. Disable the old shift routine (keep it as the fallback). Update the session and routine ids in "The team" and log the rotation.
-Rotations so far: v1 → v2 on 9 Oct (537k tokens), v2 → v3 on 15 Oct (630k tokens).
+Rotations so far: v1 → v2 on 9 Oct (537k tokens), v2 → v3 on 15 Oct (630k tokens), v3 → v4 on 19 Oct (470k tokens; session_01S6uJYEB3RbemxDTYZH724b, routine trig_01EHYqh6LwZQkSsYHRvdbWw9; the v3 routine trig_01SXEcTaKkqRpA1K2EauNGFf is disabled and kept as a fallback).
 
 ## Changing the schedule
 Shifts run from routines (the "Shop factory: shifts" routine, plus the watchdog). Before switching to a new or changed shift routine:

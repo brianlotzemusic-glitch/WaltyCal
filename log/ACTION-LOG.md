@@ -285,3 +285,4 @@
 - 2026-10-19 UTC: QA reviewed TpT 023 dmp2-infinite-horizon, APPROVED (no required fixes; Drive sheet confirms no reflection task)
 - 2026-10-19 22:24 UTC: 6:12pm ET shift (Manager v3): built, QA-approved (round 1) and published Etsy 026 Thanksgiving Place Cards (4599024574, $3.50, 22 credits, 31 live). Built and QA-approved TpT 023 Infinite Horizon ($10), released (standing order). Weekly report reports/2026-10-19-weekly.md. Session at 470k context: rotating to Manager v4.
 - 2026-10-19 22:25 UTC: Manager v4 session ready (readiness check; takes over from the 19 Oct 6:12pm ET shift).
+- 2026-10-19 22:25 UTC: Manager rotation v3 -> v4 (v3 at 470k tokens). New session session_01S6uJYEB3RbemxDTYZH724b, readiness push landed (cde42ec); new routine trig_01EHYqh6LwZQkSsYHRvdbWw9 (same cron, 6:12a/6:12p ET) created; old routine trig_01SXEcTaKkqRpA1K2EauNGFf disabled (fallback). First v4 shift: 6:12am ET 20 Oct.
