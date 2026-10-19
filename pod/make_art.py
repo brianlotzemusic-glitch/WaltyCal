@@ -327,3 +327,4 @@ if __name__ == "__main__":
         lo=45, hi=95, prep=clean_stars, post=fix_004)
     tee("005-family-christmas-woodland-tee/candidates/wreath-1-up.png", "005-family-christmas-woodland-tee/tee-front-4500x5100.png", on="white",
         lo=45, hi=95, post=type_005)
+    tee("006-moth-holly-tee/candidates/moth-2-up.png", "006-moth-holly-tee/tee-front-4500x5100.png", on="black", lo=25, hi=80, width_px=3600, top=300)
