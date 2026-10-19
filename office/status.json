@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-19T10:26:07Z",
-  "next_run_at": "2026-10-19T22:12:00Z",
+  "updated_at": "2026-10-19T22:24:08Z",
+  "next_run_at": "2026-10-20T10:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 30,
+  "listings_live": 31,
   "bundles_built": 37,
   "uploads_pending": 3,
   "etsy_connected": true,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12am shift done. Moth and holly tee live on Etsy (30 listings); TpT 022 Genre Exploration released. Etsy Ads test day 3.",
-      "since": "2026-10-19T10:26:07Z"
+      "task": "6:12pm shift done. Etsy place cards live (31 listings); TpT 023 Infinite Horizon released. Handing shifts to a fresh Manager session (context over 300k).",
+      "since": "2026-10-19T22:24:08Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "Etsy POD moth-and-holly tee and TpT 022 Genre Exploration built. Next: Etsy item from the trend queue; TpT Infinite Horizon.",
-      "since": "2026-10-19T10:26:07Z"
+      "task": "Etsy 026 place cards and TpT 023 Infinite Horizon built. Next: Etsy item from the trend queue; TpT Pattern Prodigy.",
+      "since": "2026-10-19T22:24:08Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved the moth-and-holly tee (after one fix) and TpT 022 Genre Exploration.",
-      "since": "2026-10-19T10:26:07Z"
+      "task": "Approved Etsy 026 place cards and TpT 023 Infinite Horizon in round 1.",
+      "since": "2026-10-19T22:24:08Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Etsy 4598568483 (moth and holly tee) live, 30 listings. TpT 021 live; 022 released, waits for the Mac nightly.",
-      "since": "2026-10-19T10:26:07Z"
+      "task": "Etsy 4599024574 (Thanksgiving place cards) live, 31 listings. TpT 022 live; 023 released, waits for the Mac nightly.",
+      "since": "2026-10-19T22:24:08Z"
     },
     {
       "id": "analyst",
@@ -80,11 +80,21 @@
     }
   ],
   "queue": [
-    "Etsy: next from the trend queue (winter wall art needs 3 images; reading mug reuses moth art; Thanksgiving place cards by 24 Oct)",
-    "[dmp] DMP2 kits after Genre Exploration: Infinite Horizon, Pattern Prodigy, Royalty Free, Session Player's Studio, Sonic Time Capsule",
+    "Etsy: next from the trend queue (reading mug reusing moth art, bow tee, winter wall art needs 3 images)",
+    "[dmp] DMP2 kits after Infinite Horizon: Pattern Prodigy, Royalty Free, Session Player's Studio, Sonic Time Capsule",
     "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10"
   ],
   "feed": [
+    {
+      "t": "2026-10-19T22:24:08Z",
+      "who": "qa",
+      "msg": "Approved TpT 023 DMP2 Infinite Horizon ($10); released."
+    },
+    {
+      "t": "2026-10-19T22:24:08Z",
+      "who": "lister",
+      "msg": "Published Thanksgiving Place Cards Printable (Etsy 4599024574, $3.50). 31 live."
+    },
     {
       "t": "2026-10-19T10:26:07Z",
       "who": "qa",
@@ -224,16 +234,6 @@
       "t": "2026-10-13T01:00:00Z",
       "who": "qa",
       "msg": "Approved TpT 010 DMP1 Song Form ($10, with intro deck) in round 2. Released for upload."
-    },
-    {
-      "t": "2026-10-13T01:00:00Z",
-      "who": "lister",
-      "msg": "Listed 023: Raven & mistletoe ornaments ($4). 26 live."
-    },
-    {
-      "t": "2026-10-13T01:00:00Z",
-      "who": "lister",
-      "msg": "TpT 008 Beat From Nothing is live; 009 Spooky Tunes releases tonight."
     }
   ],
   "venture_gate": {
