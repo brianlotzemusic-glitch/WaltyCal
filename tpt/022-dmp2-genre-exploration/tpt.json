@@ -1,0 +1,34 @@
+{
+  "price": "11.00",
+  "license_price": "11.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 42,
+  "zip_contents": [
+    "genre-exploration.pdf",
+    "genre-exploration-intro-deck.pptx",
+    "genre-exploration-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "genre-exploration.zip",
+    "preview": "genre-exploration-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
