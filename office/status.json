@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-18T22:23:47Z",
-  "next_run_at": "2026-10-19T10:12:00Z",
+  "updated_at": "2026-10-19T10:26:07Z",
+  "next_run_at": "2026-10-19T22:12:00Z",
   "goal_usd": 70000,
   "revenue_usd": 0,
-  "listings_live": 29,
+  "listings_live": 30,
   "bundles_built": 37,
   "uploads_pending": 3,
   "etsy_connected": true,
@@ -12,8 +12,8 @@
       "id": "manager",
       "name": "Manager",
       "state": "idle",
-      "task": "6:12pm shift done. Etsy tee 4598280195 live; TpT 021 Free Play released. Etsy Ads test day 2.",
-      "since": "2026-10-18T22:23:47Z"
+      "task": "6:12am shift done. Moth and holly tee live on Etsy (30 listings); TpT 022 Genre Exploration released. Etsy Ads test day 3.",
+      "since": "2026-10-19T10:26:07Z"
     },
     {
       "id": "researcher",
@@ -26,22 +26,22 @@
       "id": "designer",
       "name": "Designer",
       "state": "idle",
-      "task": "Etsy POD tee and TpT 021 Free Play built. Next: moth-and-holly tee (POD) and TpT Genre Exploration.",
-      "since": "2026-10-18T22:23:47Z"
+      "task": "Etsy POD moth-and-holly tee and TpT 022 Genre Exploration built. Next: Etsy item from the trend queue; TpT Infinite Horizon.",
+      "since": "2026-10-19T10:26:07Z"
     },
     {
       "id": "qa",
       "name": "QA",
       "state": "idle",
-      "task": "Approved the Family Christmas tee (after one fix round) and TpT 021 Free Play.",
-      "since": "2026-10-18T22:23:47Z"
+      "task": "Approved the moth-and-holly tee (after one fix) and TpT 022 Genre Exploration.",
+      "since": "2026-10-19T10:26:07Z"
     },
     {
       "id": "lister",
       "name": "Lister",
       "state": "idle",
-      "task": "Etsy 4598280195 (Family Christmas 2026 tee) live, 29 listings. TpT 020 live; 021 released, waits for the Mac nightly.",
-      "since": "2026-10-18T22:23:47Z"
+      "task": "Etsy 4598568483 (moth and holly tee) live, 30 listings. TpT 021 live; 022 released, waits for the Mac nightly.",
+      "since": "2026-10-19T10:26:07Z"
     },
     {
       "id": "analyst",
@@ -68,8 +68,8 @@
       "id": "hunter",
       "name": "Trend Hunter",
       "state": "idle",
-      "task": "Oct 18 scan: 10 ideas; Judge kept 6. TikTok recheck next Monday scan.",
-      "since": "2026-10-18T10:28:11Z"
+      "task": "Oct 19 scan: no usable TikTok product trend; 3 candidates queued. Next scan Oct 26.",
+      "since": "2026-10-19T10:26:07Z"
     },
     {
       "id": "judge",
@@ -80,11 +80,21 @@
     }
   ],
   "queue": [
-    "Etsy: moth-and-holly tee (POD, Printify), then winter wall art / reading mug",
-    "[dmp] DMP2 kits after Free Play: Genre Exploration, Infinite Horizon, then the rest",
+    "Etsy: next from the trend queue (winter wall art needs 3 images; reading mug reuses moth art; Thanksgiving place cards by 24 Oct)",
+    "[dmp] DMP2 kits after Genre Exploration: Infinite Horizon, Pattern Prodigy, Royalty Free, Session Player's Studio, Sonic Time Capsule",
     "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10"
   ],
   "feed": [
+    {
+      "t": "2026-10-19T10:26:07Z",
+      "who": "qa",
+      "msg": "Approved TpT 022 DMP2 Genre Exploration ($11); released."
+    },
+    {
+      "t": "2026-10-19T10:26:07Z",
+      "who": "lister",
+      "msg": "Published Moth and Holly Tee, Cottagecore Christmas (Etsy 4598568483, via Printify). 30 live."
+    },
     {
       "t": "2026-10-18T22:23:47Z",
       "who": "qa",
@@ -224,16 +234,6 @@
       "t": "2026-10-13T01:00:00Z",
       "who": "lister",
       "msg": "TpT 008 Beat From Nothing is live; 009 Spooky Tunes releases tonight."
-    },
-    {
-      "t": "2026-10-12T13:30:00Z",
-      "who": "qa",
-      "msg": "Approved TpT 009 DMP1 Spooky Tunes ($12, with intro deck). Rejected 022 mushroom ornaments twice; moved to _rejected."
-    },
-    {
-      "t": "2026-10-12T13:30:00Z",
-      "who": "lister",
-      "msg": "TpT 008 upload failed: connection interrupted. Nightly paused until the owner checks TpT for a duplicate."
     }
   ],
   "venture_gate": {
