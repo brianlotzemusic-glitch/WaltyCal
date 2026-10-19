@@ -28,7 +28,7 @@ Details
 - Shirt: Bella+Canvas 3001 unisex jersey tee, retail fit, crew neck, side-seamed, tear-away label
 - Material: 100% Airlume combed and ring-spun cotton, 4.2 oz/yd² (Dark Grey Heather and Asphalt are cotton/polyester blends, check the size chart)
 - Sizes: S to 3XL, unisex adult sizing (runs like a standard men's fit); size up for a looser fit. Youth and toddler sizes are not offered
-- Print: design about 10 in wide on the front
+- Print: design about 12 in wide on the front
 - Care: machine wash cold inside out with similar colours, tumble dry low or hang dry, do not iron directly on the print, do not dry clean
 
 Production and shipping
