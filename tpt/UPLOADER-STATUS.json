@@ -1,16 +1,16 @@
 {
-  "ran_at": "2026-10-19T00:30:07.122Z",
+  "ran_at": "2026-10-19T16:24:46.746Z",
   "published": [
     {
-      "item": "021-dmp2-free-play",
-      "url": "https://www.teacherspayteachers.com/Product/Free-Play-Project-in-Logic-Pro-Open-Ended-Music-Production-High-School-18000854"
+      "item": "022-dmp2-genre-exploration",
+      "url": "https://www.teacherspayteachers.com/Product/Genre-Exploration-in-Logic-Pro-Production-Research-Project-High-School-18007480"
     }
   ],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "021-dmp2-free-play"
+    "022-dmp2-genre-exploration"
   ],
   "ok": true
 }
