@@ -1,0 +1,4 @@
+# QA slot: 008 (Designer built 20 Oct 2026; Printify product 6ad7e94cb0c1203caf05de9a created, NOT published)
+Checks per formats/pod.md: art 4500x5100 RGBA on Black/Navy/Dark Heather/Asphalt (red/gold/cream, no halo), mockups (front x4, folded-black, folded-navy, hanging-navy), copy (title 133 chars, 13 tags <= 20), live product (24 variants, $28.99, costs 1177/1438/1677, profit 13.67/11.06/8.67), distinctness vs 003-006 (no shared art, title words or tags).
+Not done by Designer: lead-lifestyle.jpg (2x2 grid, as 006); advisory: art is code-drawn (0 AI credits), clean but simpler than the AI tees, bow reads small on the shirt (11.5 in wide, about 40% of chest). USPTO phrase check: "Christmas bow" / "coquette" generic, no names or marks used.
+Publish step after approval: `python3 tools/printify.py publish pod/008-christmas-bow-tee`, then `etsy-id`, then `etsy.py lead-photos`.
