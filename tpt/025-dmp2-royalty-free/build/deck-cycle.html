@@ -1,0 +1,70 @@
+<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:'Oswald';font-weight:300;font-style:normal;src:url('../../fonts/oswald-latin-300-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:500;font-style:normal;src:url('../../fonts/oswald-latin-500-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:700;font-style:normal;src:url('../../fonts/oswald-latin-700-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:normal;src:url('../../fonts/source-sans-3-latin-400-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:italic;src:url('../../fonts/source-sans-3-latin-400-italic.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:600;font-style:normal;src:url('../../fonts/source-sans-3-latin-600-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:700;font-style:normal;src:url('../../fonts/source-sans-3-latin-700-normal.woff2') format('woff2');}
+@page { size: 8.5in 11in; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+body { font-family: 'Source Sans 3', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; position: relative; overflow: hidden; page-break-after: always; break-after: page;
+        padding: 0.42in 0.5in 0.38in; display: flex; flex-direction: column; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+.l { font-family: 'Oswald'; font-weight: 300; }
+.top { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2.2pt solid #000; padding-bottom: 6pt; }
+.top .t { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; letter-spacing: .01em; line-height: 1; font-size: 25pt; }
+.top .t small { display: block; font-family: 'Oswald'; font-weight: 300; text-transform: none; font-size: 12pt; letter-spacing: 0; margin-top: 4pt; }
+.tag { text-align: right; }
+.tag .lv { display: inline-block; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 14pt; padding: 3pt 9pt 4pt; border-radius: 4pt; letter-spacing: .04em; }
+.tag .lv.ak { background: #9B4DA6; }
+.tag .ln { font-family: 'Oswald'; font-weight: 300; font-size: 11pt; margin-top: 3pt; }
+.name { display: flex; gap: 18pt; font-size: 12pt; margin: 9pt 0 4pt; }
+.name span { flex: 1; border-bottom: 1pt solid #000; height: 15pt; }
+.name span.d { flex: 0 0 1.6in; }
+.main { flex: 1; display: flex; flex-direction: column; min-height: 0; padding-top: 6pt; overflow: hidden; }
+.foot { display: flex; justify-content: space-between; font-size: 8.5pt; color: #333; border-top: .8pt solid #000; padding-top: 3pt; }
+.wm { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-38deg); font-family: 'Oswald'; font-weight: 700;
+      font-size: 150pt; color: rgba(0,0,0,.13); letter-spacing: .06em; white-space: nowrap; pointer-events: none; z-index: 9; }
+h2.s { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 13pt; margin: 9pt 0 3pt; letter-spacing: .02em; }
+h2.s .acc, .acc { color: #9B4DA6; }
+p, li { font-size: 10.5pt; line-height: 1.32; margin: 0 0 4pt; }
+ul, ol { margin: 0 0 4pt; padding-left: 15pt; }
+.tn p, .tn li { font-size: 11.6pt; line-height: 1.45; margin-bottom: 6pt; }
+.big p, .big li { font-size: 12.2pt; line-height: 1.46; margin-bottom: 7pt; }
+.lines { flex: 1; min-height: 44pt; background: repeating-linear-gradient(to bottom, transparent 0, transparent 23pt, #000 23pt, #000 24pt); }
+table.t { border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 2pt 0 4pt; }
+table.t td, table.t th { border: 1pt solid #000; padding: 3pt 5pt; text-align: left; vertical-align: top; line-height: 1.25; }
+table.t th { font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 9.5pt; background: #000; color: #fff; letter-spacing: .04em; vertical-align: middle; }
+.cols { display: flex; gap: 20pt; }
+.cols > div { flex: 1; min-width: 0; }
+.small { font-size: 9pt !important; color: #333; }
+.box { border: 1.4pt solid #000; border-radius: 8pt; padding: 7pt 10pt; }
+.box.acc-b { border-color: #9B4DA6; border-width: 2pt; }
+.box.inv { background: #000; color: #fff; border-color: #000; }
+.k { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 10pt; letter-spacing: .05em; color: #9B4DA6; display: block; margin-bottom: 2pt; }
+.box.inv .k { color: #EBD6EF; }
+.ln2 { border-bottom: 1pt solid #000; height: 24pt; }
+.fl { display: flex; align-items: flex-end; gap: 6pt; font-size: 11pt; margin: 0 0 9pt; }
+.fl b { font-weight: 600; white-space: nowrap; }
+.fl span { flex: 1; border-bottom: 1pt solid #000; height: 15pt; }
+.num { list-style: none; padding: 0; margin: 2pt 0 0; }
+.num li { display: flex; gap: 10pt; margin: 0 0 8pt; }
+.num .n { flex: 0 0 24pt; height: 24pt; border-radius: 12pt; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 13pt;
+          display: flex; align-items: center; justify-content: center; }
+.chk { display: flex; gap: 8pt; align-items: flex-start; font-size: 11pt; margin: 0 0 8pt; line-height: 1.3; }
+table.rub { border-collapse: collapse; width: 100%; }
+table.rub td, table.rub th { border: 1.1pt solid #000; padding: 6pt 5pt; vertical-align: top; font-size: 10.4pt; line-height: 1.32; }
+table.rub th { background: #000; color: #fff; font-family: 'Oswald'; font-weight: 500; font-size: 12pt; text-align: center; vertical-align: middle; }
+table.rub td.c { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 10.5pt; width: 15%; vertical-align: middle; }
+.cover { align-items: center; justify-content: space-between; padding: 0.55in 0.6in 0.5in;
+         background: linear-gradient(180deg, #fff 0%, #fff 55%, #ededed 100%); }
+.store { font-family: 'Oswald'; font-weight: 500; font-size: 13pt; letter-spacing: .32em; text-transform: uppercase; }
+.ctitle { text-align: center; }
+.ctitle .a, .ctitle .b, .ctitle .c { white-space: nowrap; }
+.ctitle .a { font-family: 'Oswald'; font-weight: 700; line-height: 1; letter-spacing: .02em; text-transform: uppercase; }
+.ctitle .b { font-family: 'Oswald'; font-weight: 700; line-height: .98; letter-spacing: .01em; text-transform: uppercase; }
+.ctitle .c { font-family: 'Oswald'; font-weight: 300; margin-top: 8pt; }
+.cband { width: 100%; background: #000; color: #fff; text-align: center; font-family: 'Oswald'; font-weight: 500; font-size: 14pt;
+         letter-spacing: .08em; text-transform: uppercase; padding: 8pt 0 9pt; border-radius: 4pt; white-space: nowrap; }
+.cband em { font-style: normal; color: #9B4DA6; }
+table.map { border-collapse: collapse; width: 100%; }
+table.map td, table.map th { border: 1.2pt solid #000; padding: 4pt 6pt; font-size: 10.5pt; height: 27pt; }
+table.map th { background: #000; color: #fff; font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 9.6pt; letter-spacing: .04em; height: auto; }
+.stp { font-family: 'Oswald'; font-weight: 500; letter-spacing: .12em; }
+html,body{margin:0;background:#fff}</style></head><body><div style="width:2000px;height:330px;overflow:hidden;background:#fff"><div style="width:2000px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 262" width="100%" style="display:block"><rect x="0.0" y="4" width="260.8" height="190" rx="12" fill="#000"/><text x="130.4" y="93.0" font-family="Oswald" font-weight="700" font-size="30" text-anchor="middle" fill="#fff" >CHOOSE</text><text x="130.4" y="137.0" font-family="Oswald" font-weight="500" font-size="22" text-anchor="middle" fill="#fff" >3 words</text><text x="24.0" y="44.0" font-family="Oswald" font-weight="700" font-size="28" text-anchor="start" fill="#fff" >1</text><line x1="270.8" y1="99.0" x2="308.8" y2="99.0" stroke="#000" stroke-width="6" stroke-linecap="round"/><polygon points="328.8,99.0 304.8,84.0 304.8,114.0" fill="#000"/><rect x="334.8" y="4" width="260.8" height="190" rx="12" fill="#9B4DA6"/><text x="465.2" y="93.0" font-family="Oswald" font-weight="700" font-size="30" text-anchor="middle" fill="#fff" >PLAN</text><text x="465.2" y="137.0" font-family="Oswald" font-weight="500" font-size="22" text-anchor="middle" fill="#fff" >the brief</text><text x="358.8" y="44.0" font-family="Oswald" font-weight="700" font-size="28" text-anchor="start" fill="#fff" >2</text><line x1="605.6" y1="99.0" x2="643.6" y2="99.0" stroke="#000" stroke-width="6" stroke-linecap="round"/><polygon points="663.6,99.0 639.6,84.0 639.6,114.0" fill="#000"/><rect x="669.6" y="4" width="260.8" height="190" rx="12" fill="#000"/><text x="800.0" y="93.0" font-family="Oswald" font-weight="700" font-size="30" text-anchor="middle" fill="#fff" >COMPOSE</text><text x="800.0" y="137.0" font-family="Oswald" font-weight="500" font-size="22" text-anchor="middle" fill="#fff" >1 minute</text><text x="693.6" y="44.0" font-family="Oswald" font-weight="700" font-size="28" text-anchor="start" fill="#fff" >3</text><line x1="940.4" y1="99.0" x2="978.4" y2="99.0" stroke="#000" stroke-width="6" stroke-linecap="round"/><polygon points="998.4,99.0 974.4,84.0 974.4,114.0" fill="#000"/><rect x="1004.4" y="4" width="260.8" height="190" rx="12" fill="#9B4DA6"/><text x="1134.8" y="93.0" font-family="Oswald" font-weight="700" font-size="30" text-anchor="middle" fill="#fff" >MIX</text><text x="1134.8" y="137.0" font-family="Oswald" font-weight="500" font-size="22" text-anchor="middle" fill="#fff" >EQ · pan · balance</text><text x="1028.4" y="44.0" font-family="Oswald" font-weight="700" font-size="28" text-anchor="start" fill="#fff" >4</text><line x1="1275.2" y1="99.0" x2="1313.2" y2="99.0" stroke="#000" stroke-width="6" stroke-linecap="round"/><polygon points="1333.2,99.0 1309.2,84.0 1309.2,114.0" fill="#000"/><rect x="1339.2" y="4" width="260.8" height="190" rx="12" fill="#000"/><text x="1469.6" y="93.0" font-family="Oswald" font-weight="700" font-size="30" text-anchor="middle" fill="#fff" >REFLECT</text><text x="1469.6" y="137.0" font-family="Oswald" font-weight="500" font-size="22" text-anchor="middle" fill="#fff" >a paragraph</text><text x="1363.2" y="44.0" font-family="Oswald" font-weight="700" font-size="28" text-anchor="start" fill="#fff" >5</text><text x="800.0" y="246.0" font-family="Oswald" font-weight="500" font-size="24" text-anchor="middle" fill="#000" >Then finalize: bounce, present and get feedback</text></svg></div></div></body></html>
