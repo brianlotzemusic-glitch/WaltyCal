@@ -1,246 +1,256 @@
 {
-  "updated_at": "2026-10-19T22:24:08Z",
-  "next_run_at": "2026-10-20T10:12:00Z",
-  "goal_usd": 70000,
-  "revenue_usd": 0,
-  "listings_live": 31,
-  "bundles_built": 37,
-  "uploads_pending": 3,
-  "etsy_connected": true,
-  "workers": [
-    {
-      "id": "manager",
-      "name": "Manager",
-      "state": "idle",
-      "task": "6:12pm shift done. Etsy place cards live (31 listings); TpT 023 Infinite Horizon released. Handing shifts to a fresh Manager session (context over 300k).",
-      "since": "2026-10-19T22:24:08Z"
-    },
-    {
-      "id": "researcher",
-      "name": "Researcher",
-      "state": "idle",
-      "task": "Oct 10 refresh: non-cut printables moved up; AI-free items first (Recraft ~$2.73 left).",
-      "since": "2026-10-10T23:30:00Z"
-    },
-    {
-      "id": "designer",
-      "name": "Designer",
-      "state": "idle",
-      "task": "Etsy 026 place cards and TpT 023 Infinite Horizon built. Next: Etsy item from the trend queue; TpT Pattern Prodigy.",
-      "since": "2026-10-19T22:24:08Z"
-    },
-    {
-      "id": "qa",
-      "name": "QA",
-      "state": "idle",
-      "task": "Approved Etsy 026 place cards and TpT 023 Infinite Horizon in round 1.",
-      "since": "2026-10-19T22:24:08Z"
-    },
-    {
-      "id": "lister",
-      "name": "Lister",
-      "state": "idle",
-      "task": "Etsy 4599024574 (Thanksgiving place cards) live, 31 listings. TpT 022 live; 023 released, waits for the Mac nightly.",
-      "since": "2026-10-19T22:24:08Z"
-    },
-    {
-      "id": "analyst",
-      "name": "Analyst",
-      "state": "idle",
-      "task": "Oct 14: 27 listings, 7 views, 2 favourites, 0 sales. TpT 001-011 URLs live.",
-      "since": "2026-10-14T21:30:00Z"
-    },
-    {
-      "id": "scout",
-      "name": "Scout",
-      "state": "idle",
-      "task": "Oct 9 weekly check: no change, laser-cut file shop still #1. Next check Oct 16.",
-      "since": "2026-10-09T10:52:57Z"
-    },
-    {
-      "id": "launcher",
-      "name": "Launcher",
-      "state": "idle",
-      "task": "Locked until the Etsy shop earns $300 or has been live 30 days.",
-      "since": "2026-10-01T12:50:00Z"
-    },
-    {
-      "id": "hunter",
-      "name": "Trend Hunter",
-      "state": "idle",
-      "task": "Oct 19 scan: no usable TikTok product trend; 3 candidates queued. Next scan Oct 26.",
-      "since": "2026-10-19T10:26:07Z"
-    },
-    {
-      "id": "judge",
-      "name": "Trend Judge",
-      "state": "idle",
-      "task": "Nothing to judge from scan 7.",
-      "since": "2026-10-07T19:27:46Z"
-    }
-  ],
-  "queue": [
-    "Etsy: next from the trend queue (reading mug reusing moth art, bow tee, winter wall art needs 3 images)",
-    "[dmp] DMP2 kits after Infinite Horizon: Pattern Prodigy, Royalty Free, Session Player's Studio, Sonic Time Capsule",
-    "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10"
-  ],
-  "feed": [
-    {
-      "t": "2026-10-19T22:24:08Z",
-      "who": "qa",
-      "msg": "Approved TpT 023 DMP2 Infinite Horizon ($10); released."
-    },
-    {
-      "t": "2026-10-19T22:24:08Z",
-      "who": "lister",
-      "msg": "Published Thanksgiving Place Cards Printable (Etsy 4599024574, $3.50). 31 live."
-    },
-    {
-      "t": "2026-10-19T10:26:07Z",
-      "who": "qa",
-      "msg": "Approved TpT 022 DMP2 Genre Exploration ($11); released."
-    },
-    {
-      "t": "2026-10-19T10:26:07Z",
-      "who": "lister",
-      "msg": "Published Moth and Holly Tee, Cottagecore Christmas (Etsy 4598568483, via Printify). 30 live."
-    },
-    {
-      "t": "2026-10-18T22:23:47Z",
-      "who": "qa",
-      "msg": "Approved TpT 021 DMP2 Free Play ($9); released."
-    },
-    {
-      "t": "2026-10-18T22:23:47Z",
-      "who": "lister",
-      "msg": "Published Family Christmas 2026 Woodland Tee (Etsy 4598280195, via Printify). 29 live."
-    },
-    {
-      "t": "2026-10-18T10:28:11Z",
-      "who": "qa",
-      "msg": "Approved TpT 020 DMP2 Found Sound ($10). Waiting for the owner's release."
-    },
-    {
-      "t": "2026-10-18T10:28:11Z",
-      "who": "lister",
-      "msg": "Published Printable Christmas Gift Tags, Woodland (Etsy 4597905719, $3.50). 28 live."
-    },
-    {
-      "t": "2026-10-17T22:22:39Z",
-      "who": "qa",
-      "msg": "Approved TpT 019 DMP2 Anti-Music Manifesto ($10) in round 1. Waiting for the owner's release."
-    },
-    {
-      "t": "2026-10-17T19:11:04Z",
-      "who": "lister",
-      "msg": "TpT 016, 017, 018 went live (Mac nightly). Rebuilt files with the owner's Reflection step are approved for re-upload."
-    },
-    {
-      "t": "2026-10-17T18:54:42Z",
-      "who": "manager",
-      "msg": "Released TpT 016 FX Deep Dive, 017 Music for Visual Media and 018 Alchemy Architect. The Mac nightly publishes them."
-    },
-    {
-      "t": "2026-10-17T17:41:29Z",
-      "who": "qa",
-      "msg": "Re-approved rebuilt TpT 016 FX Deep Dive, 017 Music for Visual Media and 018 Alchemy Architect. Waiting for the owner's release."
-    },
-    {
-      "t": "2026-10-17T10:13:36Z",
-      "who": "manager",
-      "msg": "Three DMP2 kits (016, 017, 018) are approved and waiting for the owner's release. Building paused so the queue doesn't pile up."
-    },
-    {
-      "t": "2026-10-16T22:24:26Z",
-      "who": "lister",
-      "msg": "TpT 015 Sample Flipping is live on TpT."
-    },
-    {
-      "t": "2026-10-16T22:24:26Z",
-      "who": "qa",
-      "msg": "Approved TpT 018 DMP2 Alchemy Architect ($10) in round 1. Held for the owner's release."
-    },
-    {
-      "t": "2026-10-16T10:23:31Z",
-      "who": "lister",
-      "msg": "TpT 014 Billboard Top 10 is live. 015 publish stopped at a thumbnail upload; retries tonight."
-    },
-    {
-      "t": "2026-10-16T10:23:31Z",
-      "who": "qa",
-      "msg": "Approved TpT 016 FX Deep Dive ($10) and 017 Music for Visual Media ($12) in round 1. Held for the owner's release."
-    },
-    {
-      "t": "2026-10-15T23:09:24Z",
-      "who": "lister",
-      "msg": "TpT 012 and 013 live. 014 Billboard submit failed; nightly paused until the owner checks TpT."
-    },
-    {
-      "t": "2026-10-15T23:09:24Z",
-      "who": "qa",
-      "msg": "Approved TpT 015 DMP2 Sample Flipping ($12) in round 1; owner released it."
-    },
-    {
-      "t": "2026-10-15T14:30:00Z",
-      "who": "qa",
-      "msg": "Approved TpT 014 DMP2 Billboard Top 10 ($12) in round 2. Held for the owner's OK on two questions."
-    },
-    {
-      "t": "2026-10-15T14:30:00Z",
-      "who": "designer",
-      "msg": "Built a shared DMP2 kit builder; 13 DMP2 kits to go."
-    },
-    {
-      "t": "2026-10-15T00:30:00Z",
-      "who": "qa",
-      "msg": "Approved TpT 013 DMP1 Stems & Grooves ($10, with intro deck) in round 2. Released."
-    },
-    {
-      "t": "2026-10-15T00:30:00Z",
-      "who": "designer",
-      "msg": "DMP1 Units 1-6 are now built; Units 7-10 wait for the owner."
-    },
-    {
-      "t": "2026-10-14T21:30:00Z",
-      "who": "qa",
-      "msg": "Approved TpT 012 DMP1 Bass & Melody Writing ($10, with intro deck) in round 2. Released."
-    },
-    {
-      "t": "2026-10-14T21:30:00Z",
-      "who": "lister",
-      "msg": "TpT 009 Spooky Tunes, 010 Song Form and 011 Chords by Ear are live on TpT."
-    },
-    {
-      "t": "2026-10-14T21:30:00Z",
-      "who": "analyst",
-      "msg": "Stats: 7 views, 2 favourites, 0 sales (27 Etsy listings)."
-    },
-    {
-      "t": "2026-10-13T14:30:00Z",
-      "who": "lister",
-      "msg": "TpT nightly could not open the listing form for 009 and 010 (nothing submitted). Needs a retry on the owner's Mac."
-    },
-    {
-      "t": "2026-10-13T14:30:00Z",
-      "who": "qa",
-      "msg": "Approved TpT 011 DMP1 Chords by Ear ($12) in round 2 and Etsy 024 coloring pages."
-    },
-    {
-      "t": "2026-10-13T14:30:00Z",
-      "who": "lister",
-      "msg": "Listed 024: Mushroom & woodland coloring pages ($3.99). 27 live."
-    },
-    {
-      "t": "2026-10-13T01:00:00Z",
-      "who": "qa",
-      "msg": "Approved TpT 010 DMP1 Song Form ($10, with intro deck) in round 2. Released for upload."
-    }
-  ],
-  "venture_gate": {
-    "revenue_target_usd": 300,
-    "days_live_target": 30,
-    "first_listing_live_at": "2026-10-01T22:37:00Z",
-    "met": false,
-    "next_pick": "Laser-cut file shop (Etsy sister shop)"
+ "updated_at": "2026-10-20T10:50:00Z",
+ "next_run_at": "2026-10-20T22:12:00Z",
+ "goal_usd": 70000,
+ "revenue_usd": 0,
+ "listings_live": 32,
+ "bundles_built": 39,
+ "uploads_pending": 4,
+ "etsy_connected": true,
+ "workers": [
+  {
+   "id": "manager",
+   "name": "Manager",
+   "state": "idle",
+   "task": "6:12am shift done: Etsy 007 reading mug live (32 listings), TpT 024 Pattern Prodigy released. Next shift 6:12pm ET.",
+   "since": "2026-10-20T10:50:00Z"
+  },
+  {
+   "id": "researcher",
+   "name": "Researcher",
+   "state": "idle",
+   "task": "Oct 10 refresh: non-cut printables moved up; AI-free items first (Recraft ~$2.73 left).",
+   "since": "2026-10-10T23:30:00Z"
+  },
+  {
+   "id": "designer",
+   "name": "Designer",
+   "state": "idle",
+   "task": "Built Etsy pod/007 reading mug (fixed after QA round 1) and TpT 024 Pattern Prodigy. Next: Etsy item from trend queue (bow tee, winter wall art); TpT Royalty Free.",
+   "since": "2026-10-20T10:50:00Z"
+  },
+  {
+   "id": "qa",
+   "name": "QA",
+   "state": "idle",
+   "task": "Approved pod/007 mug in round 2 (round 1 rejected: too close to mug 001) and TpT 024 in round 1.",
+   "since": "2026-10-20T10:50:00Z"
+  },
+  {
+   "id": "lister",
+   "name": "Lister",
+   "state": "idle",
+   "task": "Etsy 4599341848 (Cozy Winter Reading Mug, $18.99) live, 32 listings. TpT 024 released, waits for the Mac nightly.",
+   "since": "2026-10-20T10:50:00Z"
+  },
+  {
+   "id": "analyst",
+   "name": "Analyst",
+   "state": "idle",
+   "task": "Oct 14: 27 listings, 7 views, 2 favourites, 0 sales. TpT 001-011 URLs live.",
+   "since": "2026-10-14T21:30:00Z"
+  },
+  {
+   "id": "scout",
+   "name": "Scout",
+   "state": "idle",
+   "task": "Oct 9 weekly check: no change, laser-cut file shop still #1. Next check Oct 16.",
+   "since": "2026-10-09T10:52:57Z"
+  },
+  {
+   "id": "launcher",
+   "name": "Launcher",
+   "state": "idle",
+   "task": "Locked until the Etsy shop earns $300 or has been live 30 days.",
+   "since": "2026-10-01T12:50:00Z"
+  },
+  {
+   "id": "hunter",
+   "name": "Trend Hunter",
+   "state": "idle",
+   "task": "Oct 19 scan: no usable TikTok product trend; 3 candidates queued. Next scan Oct 26.",
+   "since": "2026-10-19T10:26:07Z"
+  },
+  {
+   "id": "judge",
+   "name": "Trend Judge",
+   "state": "idle",
+   "task": "Nothing to judge from scan 7.",
+   "since": "2026-10-07T19:27:46Z"
   }
+ ],
+ "queue": [
+  "Etsy: next from the trend queue (reading mug reusing moth art, bow tee, winter wall art needs 3 images)",
+  "[dmp] DMP2 kits after Infinite Horizon: Pattern Prodigy, Royalty Free, Session Player's Studio, Sonic Time Capsule",
+  "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10"
+ ],
+ "feed": [
+  {
+   "t": "2026-10-20T10:50:00Z",
+   "who": "lister",
+   "msg": "Published Cozy Winter Reading Mug (Etsy 4599341848). 32 listings live."
+  },
+  {
+   "t": "2026-10-20T10:50:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 024 Pattern Prodigy; Manager released it."
+  },
+  {
+   "t": "2026-10-19T22:24:08Z",
+   "who": "qa",
+   "msg": "Approved TpT 023 DMP2 Infinite Horizon ($10); released."
+  },
+  {
+   "t": "2026-10-19T22:24:08Z",
+   "who": "lister",
+   "msg": "Published Thanksgiving Place Cards Printable (Etsy 4599024574, $3.50). 31 live."
+  },
+  {
+   "t": "2026-10-19T10:26:07Z",
+   "who": "qa",
+   "msg": "Approved TpT 022 DMP2 Genre Exploration ($11); released."
+  },
+  {
+   "t": "2026-10-19T10:26:07Z",
+   "who": "lister",
+   "msg": "Published Moth and Holly Tee, Cottagecore Christmas (Etsy 4598568483, via Printify). 30 live."
+  },
+  {
+   "t": "2026-10-18T22:23:47Z",
+   "who": "qa",
+   "msg": "Approved TpT 021 DMP2 Free Play ($9); released."
+  },
+  {
+   "t": "2026-10-18T22:23:47Z",
+   "who": "lister",
+   "msg": "Published Family Christmas 2026 Woodland Tee (Etsy 4598280195, via Printify). 29 live."
+  },
+  {
+   "t": "2026-10-18T10:28:11Z",
+   "who": "qa",
+   "msg": "Approved TpT 020 DMP2 Found Sound ($10). Waiting for the owner's release."
+  },
+  {
+   "t": "2026-10-18T10:28:11Z",
+   "who": "lister",
+   "msg": "Published Printable Christmas Gift Tags, Woodland (Etsy 4597905719, $3.50). 28 live."
+  },
+  {
+   "t": "2026-10-17T22:22:39Z",
+   "who": "qa",
+   "msg": "Approved TpT 019 DMP2 Anti-Music Manifesto ($10) in round 1. Waiting for the owner's release."
+  },
+  {
+   "t": "2026-10-17T19:11:04Z",
+   "who": "lister",
+   "msg": "TpT 016, 017, 018 went live (Mac nightly). Rebuilt files with the owner's Reflection step are approved for re-upload."
+  },
+  {
+   "t": "2026-10-17T18:54:42Z",
+   "who": "manager",
+   "msg": "Released TpT 016 FX Deep Dive, 017 Music for Visual Media and 018 Alchemy Architect. The Mac nightly publishes them."
+  },
+  {
+   "t": "2026-10-17T17:41:29Z",
+   "who": "qa",
+   "msg": "Re-approved rebuilt TpT 016 FX Deep Dive, 017 Music for Visual Media and 018 Alchemy Architect. Waiting for the owner's release."
+  },
+  {
+   "t": "2026-10-17T10:13:36Z",
+   "who": "manager",
+   "msg": "Three DMP2 kits (016, 017, 018) are approved and waiting for the owner's release. Building paused so the queue doesn't pile up."
+  },
+  {
+   "t": "2026-10-16T22:24:26Z",
+   "who": "lister",
+   "msg": "TpT 015 Sample Flipping is live on TpT."
+  },
+  {
+   "t": "2026-10-16T22:24:26Z",
+   "who": "qa",
+   "msg": "Approved TpT 018 DMP2 Alchemy Architect ($10) in round 1. Held for the owner's release."
+  },
+  {
+   "t": "2026-10-16T10:23:31Z",
+   "who": "lister",
+   "msg": "TpT 014 Billboard Top 10 is live. 015 publish stopped at a thumbnail upload; retries tonight."
+  },
+  {
+   "t": "2026-10-16T10:23:31Z",
+   "who": "qa",
+   "msg": "Approved TpT 016 FX Deep Dive ($10) and 017 Music for Visual Media ($12) in round 1. Held for the owner's release."
+  },
+  {
+   "t": "2026-10-15T23:09:24Z",
+   "who": "lister",
+   "msg": "TpT 012 and 013 live. 014 Billboard submit failed; nightly paused until the owner checks TpT."
+  },
+  {
+   "t": "2026-10-15T23:09:24Z",
+   "who": "qa",
+   "msg": "Approved TpT 015 DMP2 Sample Flipping ($12) in round 1; owner released it."
+  },
+  {
+   "t": "2026-10-15T14:30:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 014 DMP2 Billboard Top 10 ($12) in round 2. Held for the owner's OK on two questions."
+  },
+  {
+   "t": "2026-10-15T14:30:00Z",
+   "who": "designer",
+   "msg": "Built a shared DMP2 kit builder; 13 DMP2 kits to go."
+  },
+  {
+   "t": "2026-10-15T00:30:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 013 DMP1 Stems & Grooves ($10, with intro deck) in round 2. Released."
+  },
+  {
+   "t": "2026-10-15T00:30:00Z",
+   "who": "designer",
+   "msg": "DMP1 Units 1-6 are now built; Units 7-10 wait for the owner."
+  },
+  {
+   "t": "2026-10-14T21:30:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 012 DMP1 Bass & Melody Writing ($10, with intro deck) in round 2. Released."
+  },
+  {
+   "t": "2026-10-14T21:30:00Z",
+   "who": "lister",
+   "msg": "TpT 009 Spooky Tunes, 010 Song Form and 011 Chords by Ear are live on TpT."
+  },
+  {
+   "t": "2026-10-14T21:30:00Z",
+   "who": "analyst",
+   "msg": "Stats: 7 views, 2 favourites, 0 sales (27 Etsy listings)."
+  },
+  {
+   "t": "2026-10-13T14:30:00Z",
+   "who": "lister",
+   "msg": "TpT nightly could not open the listing form for 009 and 010 (nothing submitted). Needs a retry on the owner's Mac."
+  },
+  {
+   "t": "2026-10-13T14:30:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 011 DMP1 Chords by Ear ($12) in round 2 and Etsy 024 coloring pages."
+  },
+  {
+   "t": "2026-10-13T14:30:00Z",
+   "who": "lister",
+   "msg": "Listed 024: Mushroom & woodland coloring pages ($3.99). 27 live."
+  },
+  {
+   "t": "2026-10-13T01:00:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 010 DMP1 Song Form ($10, with intro deck) in round 2. Released for upload."
+  }
+ ],
+ "venture_gate": {
+  "revenue_target_usd": 300,
+  "days_live_target": 30,
+  "first_listing_live_at": "2026-10-01T22:37:00Z",
+  "met": false,
+  "next_pick": "Laser-cut file shop (Etsy sister shop)"
+ }
 }
