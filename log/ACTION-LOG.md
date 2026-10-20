@@ -297,3 +297,4 @@
 - 2026-10-20 Designer: built pod/008-christmas-bow-tee (Printify 6ad7e94cb0c1203caf05de9a, unpublished), code-drawn red satin bow, $28.99, profit $13.67/$11.06/$8.67, 0 AI credits; awaiting QA.
 - 2026-10-20 QA: pod/008 Christmas bow tee REJECTED (art reads as flat clip-art, dark loops vanish on black, weak on grey tees; listing, product, profit all pass). See pod/008-christmas-bow-tee/QA.md.
 - 2026-10-21 Designer: pod/008 bow tee fix round 2 (Recraft redraw about 0.034 USD, Printify updated unpublished, lead-lifestyle.jpg built); awaiting QA
+- 2026-10-20 QA: pod/008 Christmas bow tee round 2 APPROVED (art, contrast accepted on all 4 colours, profit >= $8.67); condition: sync stale Printify description (11.5 in) via printify.py update --no-art before publish; upload order lead, black, navy, dark-heather, asphalt. See QA.md.
