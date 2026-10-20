@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-20T10:50:00Z",
- "next_run_at": "2026-10-20T22:12:00Z",
+ "updated_at": "2026-10-20T23:20:00Z",
+ "next_run_at": "2026-10-21T10:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 32,
- "bundles_built": 39,
- "uploads_pending": 4,
+ "bundles_built": 41,
+ "uploads_pending": 5,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "6:12am shift done: Etsy 007 reading mug live (32 listings), TpT 024 Pattern Prodigy released. Next shift 6:12pm ET.",
-   "since": "2026-10-20T10:50:00Z"
+   "task": "6:12pm shift done: Etsy 008 bow tee live, TpT 025 Royalty Free released. Next shift 6:12am ET.",
+   "since": "2026-10-20T23:20:00Z"
   },
   {
    "id": "researcher",
@@ -26,22 +26,22 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Built Etsy pod/007 reading mug (fixed after QA round 1) and TpT 024 Pattern Prodigy. Next: Etsy item from trend queue (bow tee, winter wall art); TpT Royalty Free.",
-   "since": "2026-10-20T10:50:00Z"
+   "task": "Built Etsy pod/008 bow tee (redrawn after QA round 1) and TpT 025 Royalty Free. Next: Etsy item from trend queue (winter wall art); TpT Session Player's Studio.",
+   "since": "2026-10-20T23:20:00Z"
   },
   {
    "id": "qa",
    "name": "QA",
    "state": "idle",
-   "task": "Approved pod/007 mug in round 2 (round 1 rejected: too close to mug 001) and TpT 024 in round 1.",
-   "since": "2026-10-20T10:50:00Z"
+   "task": "Approved pod/008 bow tee in round 2 (round 1 rejected: flat art) and TpT 025 in round 1.",
+   "since": "2026-10-20T23:20:00Z"
   },
   {
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Etsy 4599341848 (Cozy Winter Reading Mug, $18.99) live, 32 listings. TpT 024 released, waits for the Mac nightly.",
-   "since": "2026-10-20T10:50:00Z"
+   "task": "Etsy 4599800994 (Christmas Bow Tee, $28.99) live; Etsy reports 32 active. TpT 025 released, waits for the Mac nightly.",
+   "since": "2026-10-20T23:20:00Z"
   },
   {
    "id": "analyst",
@@ -80,11 +80,21 @@
   }
  ],
  "queue": [
-  "Etsy: next from the trend queue (reading mug reusing moth art, bow tee, winter wall art needs 3 images)",
-  "[dmp] DMP2 kits after Infinite Horizon: Pattern Prodigy, Royalty Free, Session Player's Studio, Sonic Time Capsule",
+  "Etsy: next from the trend queue (winter wall art set of 3 needs 3 images; else birdwatching silhouettes)",
+  "[dmp] DMP2 kits after Infinite Horizon: Session Player's Studio, Sonic Time Capsule",
   "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10"
  ],
  "feed": [
+  {
+   "t": "2026-10-20T23:20:00Z",
+   "who": "lister",
+   "msg": "Published Christmas Bow Tee (Etsy 4599800994, via Printify). 32 live per Etsy."
+  },
+  {
+   "t": "2026-10-20T23:20:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 025 DMP2 Royalty Free ($10); released."
+  },
   {
    "t": "2026-10-20T10:50:00Z",
    "who": "lister",
@@ -234,16 +244,6 @@
    "t": "2026-10-13T14:30:00Z",
    "who": "qa",
    "msg": "Approved TpT 011 DMP1 Chords by Ear ($12) in round 2 and Etsy 024 coloring pages."
-  },
-  {
-   "t": "2026-10-13T14:30:00Z",
-   "who": "lister",
-   "msg": "Listed 024: Mushroom & woodland coloring pages ($3.99). 27 live."
-  },
-  {
-   "t": "2026-10-13T01:00:00Z",
-   "who": "qa",
-   "msg": "Approved TpT 010 DMP1 Song Form ($10, with intro deck) in round 2. Released for upload."
   }
  ],
  "venture_gate": {
