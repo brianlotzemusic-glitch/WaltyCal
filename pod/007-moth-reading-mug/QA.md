@@ -23,3 +23,23 @@ No orders, nothing paid. Photos to produce free from Printify's mockup generator
 
 ## Constraints respected
 No live Etsy listing or price touched (Ads test runs to 24 Oct); this is a new, unpublished product. No orders created. No new spend.
+
+---
+# Round 2 (QA, 20 Oct 2026): **APPROVED for publish, gated on the photo set below**
+Verified independently (live Printify GET, wrap pixels, mockup), not from the Designer's notes.
+- **Distinct from 001**: one large moth rising out of a gilded open book with holly, stars only on the back; 001 has two moths + crescent moons on plum. 0 of 13 tags shared with any of pod/001-006; title has no "luna moth/cottagecore/dark academia/whimsigoth"; shares only generic "moth", "coffee mug", "11 oz ceramic mug". Different shopper (bookworm/librarian/teacher gift). Price differs too ($18.99 vs 001 $16.99). Round-1 fix 1 PASS.
+- **Art at 100%**: 2700x1120 RGB 300 DPI, black bg, ink spans x 232-2466, y 55-1025 (clear of the edge and the handle seam). Book is now a gilded illustrated book (fine linework, page curl, flourishes, holly with berries) matching the moth's style; no clip-art look, no text, no stray marks. Only nits (not blockers): moth tails end bluntly where they meet the pages; the back/sides are sparse stars only. Round-1 fix 2 PASS. Front mockup is complete and centred, nothing cut.
+- **Listing vs real wrap**: "scene on the front on a black background, sprinkle of gold stars around the sides", "no words", "moth rising out of a gilded open book with holly" all match. 11 oz, 3.8 x 3.2 in standard. Title 129 chars, 13 unique tags all <= 20. No IP phrases; disclosure line present; "lead and BPA free" claim is gone (round-1 note 4 resolved).
+- **Live Printify 6ad73fcb5c40fb7fca0af0be == product.json**: title, tags, description (tag-stripped) identical; blueprint 68, SPOKE 1, one enabled variant 33719 at $18.99, cost $6.44; print file mug-wrap-2700x1120.png 2700x1120, x/y 0.5, scale 1, angle 0; `external` null (not on Etsy).
+- **Profit**: 18.99 - 6.44 - (10% x 18.99 + 0.20 = 2.10) - 0.67 (10% of $6.69 shipping) = **$9.78**; at 13% fees $9.88 less 0.67 is still about $9.2. >= $6. PASS. $18.99 is a premium over 001 and the $15-21 range in PROVIDERS.md, still inside it.
+
+## Photos: can the Lister publish with front + code-made images? YES, with these exact files
+Printify only supplies the front. I re-tested: the live product has 1 image, and swapping `camera_label` to left/right/context-1/context-2 on the mockup URL returns the identical front JPEG (same 221,212 bytes), so left/right/lifestyle cameras are NOT obtainable via API now (001/002 had them only because they were captured at create time). FACTORY.md "Listing photos" requires photo #1 to show the product in use, and formats/pod.md has the Lister upload photos with `etsy.py lead-photos` (they become #1, #2...; Printify's front stays after them). So needed before publish, all free, built in code (PIL) from `mockups/front-11oz.jpg` (cut the mug out) and `mug-wrap-2700x1120.png`, saved at 2000x2000 (or 1200 min) in `pod/007-moth-reading-mug/mockups/`:
+1. `context-1-11oz.jpg` (lead, required): the real front mockup mug composited on a warm wood-table scene with a lamp-glow gradient, a closed book stack and a tea cup/steam drawn or gradient-made; must look like a plausible photo, mug art unaltered and the same size/shape as the real product, no fake claims. If a code scene looks flat/cheap, spend one flash image ($0.007) for the background only and composite the mug over it (still inside budget).
+2. `front-11oz.jpg` (already there) goes as #2.
+3. `flat-wrap.jpg` (recommended): the full wrap laid out on black with a thin frame, caption-free, showing the sparse star back honestly.
+4. `size-info.jpg` (required for Etsy conversion): mug with dimension lines, "11 oz, about 3.8 x 3.2 in, glossy white ceramic, hand wash", on the cream/black brand colours.
+Minimum acceptable gallery = 1 (lifestyle) + 2 (front) + 4 (size/info) = 3 photos; 3 is the recommended 4. Lister command: `etsy.py lead-photos pod/007-moth-reading-mug mockups/context-1-11oz.jpg mockups/size-info.jpg mockups/flat-wrap.jpg`, then check the first listing image by download and log `etsy_lead_photo` in mockups.json. Housekeeping: `mockups.json` still holds the old front URL slug (cosmetic; the downloaded front-11oz.jpg is current).
+
+## Gate
+Do not publish until the photos above exist and are QA-checked (one quick look by QA is enough; no full round). Timing: not before the Ads test ends on 24 Oct unless the owner says otherwise (it is a new listing, so no live listing is touched, but it counts toward the daily listing cap). Constraints respected: no orders, no paid action (only free GETs), no live Etsy edit.
