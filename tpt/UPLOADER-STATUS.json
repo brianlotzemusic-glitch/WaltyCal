@@ -1,16 +1,16 @@
 {
-  "ran_at": "2026-10-19T16:24:46.746Z",
+  "ran_at": "2026-10-20T00:30:12.142Z",
   "published": [
     {
-      "item": "022-dmp2-genre-exploration",
-      "url": "https://www.teacherspayteachers.com/Product/Genre-Exploration-in-Logic-Pro-Production-Research-Project-High-School-18007480"
+      "item": "023-dmp2-infinite-horizon",
+      "url": "https://www.teacherspayteachers.com/Product/Infinite-Horizon-in-Logic-Pro-Ambient-Soundscape-Project-High-School-18012547"
     }
   ],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "022-dmp2-genre-exploration"
+    "023-dmp2-infinite-horizon"
   ],
   "ok": true
 }
