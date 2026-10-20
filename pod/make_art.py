@@ -83,6 +83,52 @@ def moon_accent(canvas, gold=(250, 194, 104), cx=1350, cy=540, S=4):
     return canvas
 
 
+def book_accent(canvas, cx=1350, cy=560, S=4):
+    """Code-drawn open book (cream pages, gold edge) with gold sparkles, for the reading mug: sits at the
+    front of the wrap (1/2), between the two moths."""
+    import math
+    from PIL import ImageDraw
+    W, H = canvas.size
+    cream, gold = (241, 230, 207), (232, 201, 122)
+    def pt(p): return (p[0] * S, p[1] * S)
+    def page(sign):
+        # one page: top edge bows up toward the spine, outer edge straight, bottom edge bows down
+        pts = []
+        for t in np.linspace(0, 1, 40):
+            pts.append((cx + sign * (14 + 165 * t), cy - 70 - 40 * math.sin(math.pi * t) * 0.6 + 36 * t))
+        for t in np.linspace(1, 0, 40):
+            pts.append((cx + sign * (14 + 165 * t), cy + 90 - 36 * math.sin(math.pi * t) * -0.6 + 36 * t))
+        return [pt(p) for p in pts]
+    for colour, grow in ((gold, 8), (cream, 0)):
+        layer = Image.new("L", (W * S, H * S), 0)
+        d = ImageDraw.Draw(layer)
+        for sign in (-1, 1):
+            d.polygon(page(sign), fill=255)
+        if grow:
+            layer = layer.filter(ImageFilter.MaxFilter(grow * S // 2 * 2 + 1))
+        canvas.paste(Image.new("RGB", (W, H), colour), (0, 0), layer.resize((W, H), Image.LANCZOS))
+    layer = Image.new("L", (W * S, H * S), 0)
+    d = ImageDraw.Draw(layer)
+    for sign in (-1, 1):  # faint text lines as plain gold strokes
+        for k in range(4):
+            y = cy - 20 + k * 30
+            x0, x1 = cx + sign * 50, cx + sign * (135 - (k % 2) * 25)
+            d.line([pt((x0, y)), pt((x1, y))], fill=255, width=5 * S)
+    d.line([pt((cx, cy - 78)), pt((cx, cy + 130))], fill=255, width=7 * S)
+    canvas.paste(Image.new("RGB", (W, H), gold), (0, 0), layer.resize((W, H), Image.LANCZOS))
+    layer = Image.new("L", (W * S, H * S), 0)
+    d = ImageDraw.Draw(layer)
+    for x, y, R in [(1250, 330, 24), (1460, 360, 14), (1350, 250, 12), (1290, 830, 16), (1430, 850, 12)]:
+        pts = []
+        for k in range(8):
+            ang = math.pi / 2 * (k // 2) + (math.pi / 4 if k % 2 else 0)
+            rad = R if k % 2 == 0 else R * 0.22
+            pts.append(pt((x + rad * math.cos(ang), y + rad * math.sin(ang))))
+        d.polygon(pts, fill=255)
+    canvas.paste(Image.new("RGB", (W, H), gold), (0, 0), layer.resize((W, H), Image.LANCZOS))
+    return canvas
+
+
 # ---- 004: replace AI-garbled gold stars with clean drawn ones -------------------------------
 def gold_mask(a):
     r,g,b=a[...,0],a[...,1],a[...,2]
@@ -317,6 +363,7 @@ TYPE_005 = dict(cx=2285, cy=1640, track=6, colour=(44, 27, 54, 255),
 
 
 if __name__ == "__main__":
+    mug("006-moth-holly-tee/candidates/moth-2-up.png", "007-moth-reading-mug/mug-wrap-2700x1120.png", height=790, accent=book_accent)
     mug("001-luna-moth-mug/candidates/moth-3.png", "001-luna-moth-mug/mug-wrap-2700x1120.png", height=920, accent=moon_accent)
     mug("002-gothic-ornament-mug/candidates/ornament-3.png", "002-gothic-ornament-mug/mug-wrap-2700x1120.png",
         fix=[(1010, 1575, 1036, 1598)], height=960, centres=(675, 1350, 2025))

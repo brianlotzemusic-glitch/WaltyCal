@@ -1,0 +1,3 @@
+# QA slot: 007 (Designer built 20 Oct 2026; Printify product 6ad73fcb5c40fb7fca0af0be created, NOT published)
+Check: wrap art 2700x1120 (no text, moth wings clear of book), front mockup (mockups/front-11oz.jpg), title 128 chars + 13 tags <= 20, price $16.99 / cost $6.44 / profit $7.98, live product matches product.json. Printify only returned the front camera in the product GET; left/right/context cameras were in the create response only.
+Publish after approval: `python3 tools/printify.py publish pod/007-moth-reading-mug`, then `etsy-id`, then `etsy.py lead-photos` (lead lifestyle photo still to make by the Lister/Designer).
