@@ -296,4 +296,4 @@
 - 2026-10-20 10:50 UTC: 6:12am ET shift (Manager v4): Etsy pod/007 Cozy Winter Reading Mug built, QA rejected round 1 (too close to mug 001), fixed, approved round 2, published Etsy 4599341848 ($18.99, ~$0.02 AI, 32 live). TpT 024 Pattern Prodigy ($10) QA approved round 1, released. Next: 6:12pm ET.
 - 2026-10-20 Designer: built pod/008-christmas-bow-tee (Printify 6ad7e94cb0c1203caf05de9a, unpublished), code-drawn red satin bow, $28.99, profit $13.67/$11.06/$8.67, 0 AI credits; awaiting QA.
 - 2026-10-20 QA: pod/008 Christmas bow tee REJECTED (art reads as flat clip-art, dark loops vanish on black, weak on grey tees; listing, product, profit all pass). See pod/008-christmas-bow-tee/QA.md.
-- 2026-10-21 Designer: pod/008 bow tee fix round 2 (Recraft redraw /bin/bash.034, Printify updated unpublished, lead-lifestyle.jpg built); awaiting QA
+- 2026-10-21 Designer: pod/008 bow tee fix round 2 (Recraft redraw about 0.034 USD, Printify updated unpublished, lead-lifestyle.jpg built); awaiting QA
