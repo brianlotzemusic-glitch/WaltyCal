@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-20T23:20:00Z",
- "next_run_at": "2026-10-21T10:12:00Z",
+ "updated_at": "2026-10-21T19:40:00Z",
+ "next_run_at": "2026-10-22T10:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 32,
- "bundles_built": 41,
- "uploads_pending": 5,
+ "listings_live": 34,
+ "bundles_built": 43,
+ "uploads_pending": 6,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "6:12pm shift done: Etsy 008 bow tee live, TpT 025 Royalty Free released. Next shift 6:12am ET.",
-   "since": "2026-10-20T23:20:00Z"
+   "task": "6:12am shift done (finished after a weekly-limit pause): Etsy 027 winter wall art live (34 listings), TpT 026 Session Player's Studio released. Next shift 6:12pm ET.",
+   "since": "2026-10-21T19:40:00Z"
   },
   {
    "id": "researcher",
@@ -26,22 +26,22 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Built Etsy pod/008 bow tee (redrawn after QA round 1) and TpT 025 Royalty Free. Next: Etsy item from trend queue (winter wall art); TpT Session Player's Studio.",
-   "since": "2026-10-20T23:20:00Z"
+   "task": "Built Etsy 027 winter wall art set and TpT 026 Session Player's Studio. Next: Etsy item from trend queue; TpT Sonic Time Capsule.",
+   "since": "2026-10-21T19:40:00Z"
   },
   {
    "id": "qa",
    "name": "QA",
    "state": "idle",
-   "task": "Approved pod/008 bow tee in round 2 (round 1 rejected: flat art) and TpT 025 in round 1.",
-   "since": "2026-10-20T23:20:00Z"
+   "task": "Approved Etsy 027 wall art in round 2 (round 1: wording fixes) and TpT 026 in round 1.",
+   "since": "2026-10-21T19:40:00Z"
   },
   {
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Etsy 4599800994 (Christmas Bow Tee, $28.99) live; Etsy reports 32 active. TpT 025 released, waits for the Mac nightly.",
-   "since": "2026-10-20T23:20:00Z"
+   "task": "Etsy 4600119414 (Winter Wall Art Set of 3, $5) live; Etsy reports 34 active. TpT 026 released, waits for the Mac nightly.",
+   "since": "2026-10-21T19:40:00Z"
   },
   {
    "id": "analyst",
@@ -80,11 +80,21 @@
   }
  ],
  "queue": [
-  "Etsy: next from the trend queue (winter wall art set of 3 needs 3 images; else birdwatching silhouettes)",
-  "[dmp] DMP2 kits after Infinite Horizon: Session Player's Studio, Sonic Time Capsule",
+  "Etsy: next from the queue (birdwatching silhouettes or a [format] printable)",
+  "[dmp] DMP2 kits after Infinite Horizon: Sonic Time Capsule",
   "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10"
  ],
  "feed": [
+  {
+   "t": "2026-10-21T19:40:00Z",
+   "who": "lister",
+   "msg": "Published Winter Wall Art Set of 3, Midnight Blue (Etsy 4600119414, $5). 34 live."
+  },
+  {
+   "t": "2026-10-21T19:40:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 026 DMP2 Session Player's Studio ($10); released."
+  },
   {
    "t": "2026-10-20T23:20:00Z",
    "who": "lister",
@@ -234,16 +244,6 @@
    "t": "2026-10-14T21:30:00Z",
    "who": "analyst",
    "msg": "Stats: 7 views, 2 favourites, 0 sales (27 Etsy listings)."
-  },
-  {
-   "t": "2026-10-13T14:30:00Z",
-   "who": "lister",
-   "msg": "TpT nightly could not open the listing form for 009 and 010 (nothing submitted). Needs a retry on the owner's Mac."
-  },
-  {
-   "t": "2026-10-13T14:30:00Z",
-   "who": "qa",
-   "msg": "Approved TpT 011 DMP1 Chords by Ear ($12) in round 2 and Etsy 024 coloring pages."
   }
  ],
  "venture_gate": {
