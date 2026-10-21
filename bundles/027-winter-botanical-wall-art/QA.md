@@ -1,5 +1,22 @@
 # QA: 027 Winter Botanical Wall Art, set of 3 ($5.00)
-Designer self-check only; QA still to do. mk.py needs the 4x originals (deleted to save space; regenerate or run it from the zip contents).
-- `python3 gen.py --check` prints ALL CHECKS PASS (zip 19.2 MB, 15 JPG + 5 PDF + README; pixel sizes, 300 DPI tag, ratios, PDF page sizes, listing rules).
-- Looked at: the three unified images side by side (clean, no artefacts, matching navy), 100% crop of the 24x36 fern (slightly crystalline AI detail, fine), a PDF page strip, all 4 listing images.
-- Known limits for QA to weigh: native art about 3186x4096, so 24x36 is an enlargement (stated in listing and README); PDFs are lower resolution (about 80-130 DPI at the largest size) to keep the ZIP under Etsy's 20 MB; the lead image is a code-drawn room, not an AI lifestyle photo (saved credits). Only one digital file per listing is supported by tools/etsy.py.
+Independent QA, 2026-10-21. Verdict: **REJECTED round 1 (3 small text fixes, art and files are fine)**.
+
+## Checked and OK
+- `gen.py --check`: ALL CHECKS PASS. It needs `out/` (not committed), so I ran it on an extract of the shipped ZIP rebuilt into `out/`: 15 JPG + 5 PDF + README, 19.18 MB (under 20 MB), pixel sizes, 300 DPI tag, ratios, PDF page sizes, title/13 tags/disclosure/taxonomy 2078/price/images 3000x2250.
+- Art: contact sheet and 100% crops of all three at 2:3. No garbled shapes, extra limbs or stray marks. The fern is slightly crystalline and the rose petals mushy at 100%, both fine for wall art viewed at normal distance. Background is the same #152444 on all three.
+- Cohesion: good palette and background. Weaker points: the pine is clearly narrower and smaller than the fern and rose, and the rose has more colour and heavier outline than the other two. Acceptable as a set; not a reject.
+- Ratios and sizes in LISTING.md match the ZIP and README. "About 300 DPI up to roughly 11x14" is honest (art core 3186x4096). The 24x36 JPG is about 183 DPI on the canvas and the art is an enlargement; the listing says so. ACCEPTABLE: it is stated, and the spec's "300 DPI at 24x36" cannot be met with a 4096 px upscale.
+- Lead image (code-drawn room): clean, shows the real art, readable at thumbnail. Flat and basic but honest; accepted for this pilot given credits. Images 2 and 4 clean.
+- Listing text: no trademark/IP phrases, no medical claims, disclosure line present, 13 unique tags, title 130 chars. "Christmas rose" is the plain flower name; fine.
+- Price $5 for 3 prints x 5 ratios + PDFs: plausible for the niche (sets of 3 usually $3 to $8); I did not look up competitors live.
+- art/unified/ (38 MB) not a QA concern.
+
+## Fix before approval
+1. LISTING.md and listing.json (keep them identical, gen.py checks that): the PDFs are about 80 to 130 DPI at their largest size, but the listing only says "set to the largest size of that ratio". Change the PDF bullet to say they are lighter files for print shops and smaller sizes, and add to GOOD TO KNOW: "Use the JPG files for the best quality; the PDFs are lower resolution." Same honest wording as README.
+2. listing-images/3-sizes.png: "Fits every standard frame" and "so you never have to crop or resize" are overclaims (no 5x7, 8.5x11, 50x70 cm etc., and the buyer must scale/fit). Change to "Fits most standard frames" and e.g. "Five ratios included, sized for popular frames". Re-run listing_images.py; 3000x2250 check must still pass. Optional: the big empty band between the ratio labels and the bottom panel looks unfinished.
+3. Image 2 says "15 high-res JPGs": fine, but "any size from 4 x 6 to 24 x 36 in" next to it should read "most sizes from 4 x 6 to 24 x 36 in".
+No art change needed. Rebuild the ZIP only if README changes (it does not need to).
+
+## Notes for Manager
+- `gen.py --check` cannot run from a fresh checkout (out/ absent, 4x originals deleted). Not blocking.
+- Ads test until 24 Oct: nothing touched on Etsy.
