@@ -1,9 +1,16 @@
 {
-  "ran_at": "2026-10-21T19:09:53.063Z",
-  "published": [],
+  "ran_at": "2026-10-21T19:24:22.194Z",
+  "published": [
+    {
+      "item": "026-dmp2-session-players-studio",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Session-Players-Project-Session-Players-Studio-High-School-18033617"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "026-dmp2-session-players-studio"
+  ],
   "ok": true
 }
