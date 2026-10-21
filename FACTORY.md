@@ -36,8 +36,8 @@ The **Manager** runs 2 shifts a day: **6:12am and 6:12pm Eastern** (owner, 8 Oct
 | Analyst | `python3 tools/etsy.py stats`, then applies the optimization rules | Etsy variables set and stats older than 24 h |
 | Scout | Researches which business to open next (see "New businesses"); writes `ventures/research/YYYY-MM-DD.md` and re-ranks `ventures/shortlist.md` | Last research older than 7 days |
 | Launcher | Builds a launch kit for the Scout's #1 pick (see "New businesses") | Venture gate met, and no kit in progress or the last kit's owner steps are done |
-| Trend Hunter | Scans what is going viral right now and writes candidates to `trends/` (see "Trend desk") | Once a week: the Monday 6am shift (owner, 8 Oct 2026, after 8 empty scans; was daily) |
-| Trend Judge | Screens the Hunter's candidates for IP risk, buyer demand and lifespan; puts approved ones at the top of `queue.md` as `[trend]` | Right after the Trend Hunter |
+| Trend Hunter | Scans what is going viral right now and writes candidates to `trends/` (see "Trend desk") | **Paused** (owner, 21 Oct 2026: no approved picks in any scan). Don't run it until the owner turns it back on. |
+| Trend Judge | Screens the Hunter's candidates for IP risk, buyer demand and lifespan; puts approved ones at the top of `queue.md` as `[trend]` | Paused with the Trend Hunter |
 
 Work out "last done" times from `office/status.json` and `git log`. If nothing is due, the Manager only refreshes the status file (workers shown as idle with what they're waiting for) and ends the run.
 
@@ -290,6 +290,20 @@ The owner also sells on TpT: https://www.teacherspayteachers.com/store/brian-lot
   - "Logic Pro" and other product names only to describe compatibility.
   - The disclosure line goes in the description: "Designed with the help of digital and AI tools, and checked by hand."
 - **Money**: no TpT fees are paid by the factory. Basic seller keeps 55% minus $0.30 per resource; Premium costs $59.95/yr, and only the owner decides on it.
+
+## Owner decisions, 21 Oct 2026 (after the full evaluation, reports/2026-10-21-evaluation.md)
+- **The first TpT sale was 001 Halloween Color by Note.** Color-by-note is the proven format, so make more of it (see queue.md).
+- **TpT bundles and a free product** (approved):
+  - Build a **DMP1 Units 1–6 bundle** (kits 008–013) and a **winter/holiday pack** (003, 005, 006 plus new winter items), at about 20–25% off the sum of the parts.
+  - The DMP2 bundle stays as already queued (after all 14 kits are approved).
+  - Build one **free product**: a short color-by-note sampler (2–3 pages, one level each of treble, bass and rhythm, with Hudson Beat branding and a "see the full set" page linking to the paid items). TpT followers are notified of every new upload, and free items are the usual way to win followers.
+  - **Use TpT's native Bundle product type if tools/tpt.js can drive it.** First, extend `discover` to record the bundle form's fields on the Mac's nightly run. Otherwise, fall back to one Digital Download ZIP that holds the kits' files, with the bundle's own cover and preview. Never re-upload or change the existing listings.
+- **TpT stats from the Mac** (approved): add `node tools/tpt.js stats` and run it from `tools/tpt-nightly.sh` after publish-pending.
+  - It reads the seller dashboard pages for sales and product views with the saved login, and writes `stats/tpt.csv`. Columns: date, product id, title, views, sales, earnings.
+  - Commit per-product totals only, never buyer names, schools or locations.
+  - The first run should also save the page structure, as `tpt/STATS-FIELDS.json` (like FORM-FIELDS.json), so the cloud can fix the parser if TpT's layout differs.
+  - The Analyst then reads `stats/tpt.csv` daily, and the weekly report gets a TpT section: best sellers, views per product, conversion.
+- **The trend desk is paused** (Trend Hunter and Trend Judge); see the team table.
 
 ## Rules
 - Original work only. No copyrighted characters, logos, brand names, trademarked phrases, or other sellers' designs. Avoid "Creepmas".
