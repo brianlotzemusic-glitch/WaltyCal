@@ -306,3 +306,4 @@
 - 2026-10-21 QA: bundles/027 Winter Botanical Wall Art REJECTED round 1 (art and ZIP fine; fix listing PDF-resolution wording, image 3 overclaims 'fits every frame / never crop or resize'). Not published.
 - 2026-10-21 Designer: bundles/027 fix round 2 applied (PDF ~80-130 DPI + use-JPG wording in LISTING.md/listing.json; images 2 and 3 softened to 'most'; listing images rebuilt 3000x2250; ZIP unchanged). Awaiting QA re-check. Not published.
 - 2026-10-21 QA: 027 winter botanical wall art round 2 APPROVED (PDF DPI wording, images 2/3 softened, ZIP unchanged 19.18 MB); nothing touched on Etsy
+- 2026-10-21 UTC Lister: published bundles/027-winter-botanical-wall-art (Winter Wall Art Set of 3) to Etsy 4600119414 ($5.00, taxonomy 2078; verified active, 13 tags, 4 images 3000x2250 with room mockup first, ZIP attached 18.29 MB). New listing only, no existing listing touched, no spend. Etsy reports 34 active (expected 33 after 32; reconcile at next Analyst pull).
