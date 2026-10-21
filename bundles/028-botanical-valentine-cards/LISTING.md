@@ -10,7 +10,7 @@ Valentine Gift Tags and Cards Printable, Botanical Woodland Animals and Roses, L
 **List by:** early Jan 2027 (Valentine's season; queue note), earlier is fine
 
 **Tags**
-valentine gift tags, printable valentine, valentine cards, galentine gift tags, valentine tags, be mine card, printable gift tags, valentines day, woodland valentine, floral valentine, treat bag tags, class valentines, valentine printable
+valentine gift tags, printable valentine, valentine cards, friend valentine, valentine tags, be mine card, printable gift tags, valentines day, woodland valentine, floral valentine, treat bag tags, class valentines, valentine printable
 
 **Description**
 Make Valentine's Day gifts that look store-bought for the price of a printout. This set has 8 flat Valentine cards and 18 gift tags drawn with lovebirds, a dove, a fox, a bunny, a hedgehog, roses, peonies, tulips and heart wreaths, each framed by a gingham, tartan, stripe or polka dot band in rose, berry, blush and sage. Print at home, cut, punch the tag hole, write a note and give.
