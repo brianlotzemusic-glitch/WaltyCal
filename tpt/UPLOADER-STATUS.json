@@ -1,21 +1,9 @@
 {
-  "ran_at": "2026-10-20T22:44:58.489Z",
-  "published": [
-    {
-      "item": "024-dmp2-pattern-prodigy",
-      "url": "https://www.teacherspayteachers.com/Product/Pattern-Prodigy-in-Logic-Pro-Step-Sequencer-Beat-Project-High-School-18023936"
-    },
-    {
-      "item": "025-dmp2-royalty-free",
-      "url": "https://www.teacherspayteachers.com/Product/Royalty-Free-in-Logic-Pro-Compose-to-a-Creative-Brief-High-School-18023950"
-    }
-  ],
+  "ran_at": "2026-10-21T00:30:02.940Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "024-dmp2-pattern-prodigy",
-    "025-dmp2-royalty-free"
-  ],
+  "pending_before": [],
   "ok": true
 }
