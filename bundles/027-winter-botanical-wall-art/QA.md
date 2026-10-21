@@ -20,3 +20,10 @@ No art change needed. Rebuild the ZIP only if README changes (it does not need t
 ## Notes for Manager
 - `gen.py --check` cannot run from a fresh checkout (out/ absent, 4x originals deleted). Not blocking.
 - Ads test until 24 Oct: nothing touched on Etsy.
+
+## Round 2 (2026-10-21): **APPROVED**
+- Fix 1 verified: LISTING.md and listing.json PDF bullet now says lighter, lower-resolution (about 80-130 DPI at largest size), use JPGs for best quality; GOOD TO KNOW line added. Description text in LISTING.md and listing.json is byte-identical (checked by script). Title 130 chars, 13 tags unchanged.
+- Fix 2 verified (viewed at low-res): image 3 reads "Fits most standard frames" / "Five ratios included, sized for popular frames". Layout intact; the empty band is still there (optional, not blocking).
+- Fix 3 verified: image 2 reads "most sizes from 4 x 6 to 24 x 36 in". Images 1 and 4 not modified. All four images 3000x2250.
+- ZIP unchanged vs round 1 (git diff empty, 19,178,013 bytes = 19.18 MB, under 20 MB). No new problems found.
+- Still true: no Etsy edits made; upload and publishing remain a Manager/owner decision.

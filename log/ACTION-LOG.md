@@ -305,3 +305,4 @@
 - 2026-10-21 Designer: built bundles/027-winter-botanical-wall-art (Winter Wall Art Set of 3, Midnight Blue; $5.00, digital PDF+JPG, 3 AI images via flash n=4 + upscale, 100 credits incl. drafts, balance 1914; new formats/printable-wall-art.md; gen.py --check OK; zip 19.2 MB). Awaiting QA. Not published.
 - 2026-10-21 QA: bundles/027 Winter Botanical Wall Art REJECTED round 1 (art and ZIP fine; fix listing PDF-resolution wording, image 3 overclaims 'fits every frame / never crop or resize'). Not published.
 - 2026-10-21 Designer: bundles/027 fix round 2 applied (PDF ~80-130 DPI + use-JPG wording in LISTING.md/listing.json; images 2 and 3 softened to 'most'; listing images rebuilt 3000x2250; ZIP unchanged). Awaiting QA re-check. Not published.
+- 2026-10-21 QA: 027 winter botanical wall art round 2 APPROVED (PDF DPI wording, images 2/3 softened, ZIP unchanged 19.18 MB); nothing touched on Etsy
