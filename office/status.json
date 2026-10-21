@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-21T19:40:00Z",
+ "updated_at": "2026-10-21T23:50:00Z",
  "next_run_at": "2026-10-22T10:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 34,
- "bundles_built": 43,
- "uploads_pending": 6,
+ "listings_live": 35,
+ "bundles_built": 45,
+ "uploads_pending": 7,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "6:12am shift done (finished after a weekly-limit pause): Etsy 027 winter wall art live (34 listings), TpT 026 Session Player's Studio released. Next shift 6:12pm ET.",
-   "since": "2026-10-21T19:40:00Z"
+   "task": "6:12pm shift done: Etsy 028 Valentine cards live (35 listings), TpT 027 Thanksgiving Color by Note released. Next shift 6:12am ET.",
+   "since": "2026-10-21T23:50:00Z"
   },
   {
    "id": "researcher",
@@ -26,22 +26,22 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Built Etsy 027 winter wall art set and TpT 026 Session Player's Studio. Next: Etsy item from trend queue; TpT Sonic Time Capsule.",
-   "since": "2026-10-21T19:40:00Z"
+   "task": "Built Etsy 028 botanical Valentine cards and TpT 027 Thanksgiving Color by Note. Next: free Color by Note sampler, Winter Color by Note; an Etsy printable.",
+   "since": "2026-10-21T23:50:00Z"
   },
   {
    "id": "qa",
    "name": "QA",
    "state": "idle",
-   "task": "Approved Etsy 027 wall art in round 2 (round 1: wording fixes) and TpT 026 in round 1.",
-   "since": "2026-10-21T19:40:00Z"
+   "task": "Approved Etsy 028 and TpT 027 in round 1.",
+   "since": "2026-10-21T23:50:00Z"
   },
   {
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Etsy 4600119414 (Winter Wall Art Set of 3, $5) live; Etsy reports 34 active. TpT 026 released, waits for the Mac nightly.",
-   "since": "2026-10-21T19:40:00Z"
+   "task": "Etsy 4600571734 (Botanical Valentine Cards & Tags, $3.50) live; Etsy reports 35 active. TpT 027 released, waits for the Mac nightly.",
+   "since": "2026-10-21T23:50:00Z"
   },
   {
    "id": "analyst",
@@ -68,23 +68,34 @@
    "id": "hunter",
    "name": "Trend Hunter",
    "state": "idle",
-   "task": "Oct 19 scan: no usable TikTok product trend; 3 candidates queued. Next scan Oct 26.",
-   "since": "2026-10-19T10:26:07Z"
+   "task": "Paused by the owner (21 Oct) until turned back on.",
+   "since": "2026-10-21T23:50:00Z"
   },
   {
    "id": "judge",
    "name": "Trend Judge",
    "state": "idle",
-   "task": "Nothing to judge from scan 7.",
-   "since": "2026-10-07T19:27:46Z"
+   "task": "Paused with the Trend Hunter (owner, 21 Oct).",
+   "since": "2026-10-21T23:50:00Z"
   }
  ],
  "queue": [
-  "Etsy: next from the queue (birdwatching silhouettes or a [format] printable)",
-  "[dmp] DMP2 kits after Infinite Horizon: Sonic Time Capsule",
-  "[dmp] DMP2 bundle after the kits; DMP1 and complete bundles wait for Units 7-10"
+  "[tpt] FREE Color by Note Sampler (owner priority, 21 Oct)",
+  "[tpt] Winter / Christmas Color by Note; DMP1 Units 1-6 bundle; winter pack",
+  "[dmp] DMP2 Sonic Time Capsule; then the DMP2 bundle",
+  "Etsy: next printable from queue.md (birdwatching silhouettes, bees coloring pages, mushroom clipart)"
  ],
  "feed": [
+  {
+   "t": "2026-10-21T23:50:00Z",
+   "who": "lister",
+   "msg": "Published Botanical Valentine Cards & Gift Tags (Etsy 4600571734, $3.50). 35 live."
+  },
+  {
+   "t": "2026-10-21T23:50:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 027 Thanksgiving Color by Note ($3.75); released."
+  },
   {
    "t": "2026-10-21T19:40:00Z",
    "who": "lister",
@@ -234,16 +245,6 @@
    "t": "2026-10-14T21:30:00Z",
    "who": "qa",
    "msg": "Approved TpT 012 DMP1 Bass & Melody Writing ($10, with intro deck) in round 2. Released."
-  },
-  {
-   "t": "2026-10-14T21:30:00Z",
-   "who": "lister",
-   "msg": "TpT 009 Spooky Tunes, 010 Song Form and 011 Chords by Ear are live on TpT."
-  },
-  {
-   "t": "2026-10-14T21:30:00Z",
-   "who": "analyst",
-   "msg": "Stats: 7 views, 2 favourites, 0 sales (27 Etsy listings)."
   }
  ],
  "venture_gate": {
