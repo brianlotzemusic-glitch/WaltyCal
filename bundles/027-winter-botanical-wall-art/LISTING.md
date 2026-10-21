@@ -17,7 +17,7 @@ Bring a calm, cool winter mood to your walls. This set of 3 printable botanical 
 WHAT'S INCLUDED
 - 3 prints: Frosted Pine, Frosted Fern, Winter Rose
 - 15 high-resolution JPG files: each print in 5 ratios (2:3, 3:4, 4:5, 11x14 and ISO/A-series)
-- 5 PDF files: one per ratio, 3 pages each, set to the largest size of that ratio
+- 5 PDF files: one per ratio, 3 pages each. These are lighter, lower-resolution files (about 80-130 DPI at the largest size), handy for print shops and smaller sizes. Use the JPG files for the best quality
 - A short guide with the size list and printing tips
 
 SIZES YOU CAN PRINT
@@ -29,6 +29,7 @@ SIZES YOU CAN PRINT
 Every print has a flat midnight blue background that continues to the edge of each ratio, so nothing important is cropped.
 
 GOOD TO KNOW
+- Use the JPG files for the best quality; the PDFs are lower resolution (about 80-130 DPI at their largest size)
 - JPG files are about 300 DPI up to roughly 11 x 14 in. Larger sizes (up to 24 x 36 in) are high-resolution enlargements: they look fine from normal viewing distance, but fine detail is softer up close
 - Print at 100% (actual size) on matte or satin photo paper, or send the JPG to a print shop; the deep blue looks best on matte paper
 - Colors can look slightly different on screen and on paper, and between printers

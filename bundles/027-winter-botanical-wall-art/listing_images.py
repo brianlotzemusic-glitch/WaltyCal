@@ -64,7 +64,7 @@ for (n, slug), cx in zip(ART, (500, 1500, 2500)):
     d.rectangle((cx - aw // 2, 330, cx + aw // 2, 330 + a.height), outline=ICE, width=3)
     text_c(d, 330 + a.height + 24, {"pine": "Frosted pine", "fern": "Frosted fern", "hellebore": "Winter rose"}[n], F("Fraunces-700", 60), CREAM, cx=cx)
 d.rounded_rectangle((200, 1750, 2800, 2150), 40, fill=(33, 52, 92))
-for i, (h1, h2) in enumerate((("15 JPG files", "3 prints in each of 5 ratios, up to 4400 x 6600 px"), ("5 PDF files", "one per ratio, 3 pages, sized for print shops"), ("Print at home or order a print", "any frame, any size from 4 x 6 to 24 x 36 in"))):
+for i, (h1, h2) in enumerate((("15 JPG files", "3 prints in each of 5 ratios, up to 4400 x 6600 px"), ("5 PDF files", "one per ratio, 3 pages, sized for print shops"), ("Print at home or order a print", "most sizes from 4 x 6 to 24 x 36 in"))):
     x = 260 + i * 850
     text_c(d, 1790, h1, F("Fraunces-700", 56), GOLD, cx=x + 380); 
     f = F("Nunito-700", 42); words = h2.split(); line = ""; y = 1890
@@ -75,8 +75,8 @@ for i, (h1, h2) in enumerate((("15 JPG files", "3 prints in each of 5 ratios, up
 im.save("listing-images/2-whats-included.png")
 # 3 sizes
 im = Image.new("RGB", (W, H), CREAM); d = ImageDraw.Draw(im)
-text_c(d, 60, "Fits every standard frame", F("Fraunces-900", 118), NAVY)
-text_c(d, 205, "Five ratios included, so you never have to crop or resize", F("Nunito-800", 58), (74, 44, 85))
+text_c(d, 60, "Fits most standard frames", F("Fraunces-900", 118), NAVY)
+text_c(d, 205, "Five ratios included, sized for popular frames", F("Nunito-800", 58), (74, 44, 85))
 R = [("2:3", "4x6  8x12  10x15\n12x18  16x24  20x30  24x36", 2 / 3), ("3:4", "6x8  9x12  12x16\n15x20  18x24", .75), ("4:5", "4x5  8x10\n12x15  16x20", .8), ("11x14", "11x14 in", 11 / 14), ("ISO", "A5  A4  A3  A2\n(1:1.41)", 1 / 1.414)]
 for i, (lab, sizes, r) in enumerate(R):
     cx = 300 + i * 600; hh = 700; ww = int(hh * r)
