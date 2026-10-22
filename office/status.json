@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22T18:00:00Z",
+ "updated_at": "2026-10-22T20:00:00Z",
  "next_run_at": "2026-10-22T22:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "Redrew TpT 027 Fall Color by Note art (Opus attempt 3, QA approved round 4). 027 is LIVE with the old art: owner re-uploads the rebuilt PDF by hand. 028 free sampler waits for a hand upload (Free checkbox). Next shift 6:12pm ET.",
-   "since": "2026-10-22T18:00:00Z"
+   "task": "Owner 22 Oct: no hand work. Built automatic free-item publish and automatic file replacement on live TpT products (027 marked). First Mac nightly records the edit form, the next swaps 027 files. Etsy AI box stays a manual tick (no API field). Next shift 6:12pm ET.",
+   "since": "2026-10-22T20:00:00Z"
   },
   {
    "id": "researcher",
