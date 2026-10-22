@@ -1,0 +1,230 @@
+{
+ "01-fly-agaric": {
+  "name": "Fly agaric toadstool",
+  "px": [
+   2399,
+   3600
+  ],
+  "inches": [
+   8.0,
+   12.0
+  ],
+  "png_mb": 0.43,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 305,
+  "coverage_pct": 45.7,
+  "svg_ink_pct_of_shape": 13.5,
+  "svg_paths": 71
+ },
+ "02-morel": {
+  "name": "Morel",
+  "px": [
+   1606,
+   3600
+  ],
+  "inches": [
+   5.35,
+   12.0
+  ],
+  "png_mb": 0.45,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 68,
+  "coverage_pct": 67.9,
+  "svg_ink_pct_of_shape": 24.9,
+  "svg_paths": 118
+ },
+ "03-chanterelles": {
+  "name": "Chanterelle cluster",
+  "px": [
+   3600,
+   3280
+  ],
+  "inches": [
+   12.0,
+   10.93
+  ],
+  "png_mb": 0.98,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 674,
+  "coverage_pct": 54.1,
+  "svg_ink_pct_of_shape": 21.8,
+  "svg_paths": 106
+ },
+ "04-porcini": {
+  "name": "Porcini",
+  "px": [
+   3218,
+   3600
+  ],
+  "inches": [
+   10.73,
+   12.0
+  ],
+  "png_mb": 0.8,
+  "pieces": 4,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 551,
+  "coverage_pct": 67.7,
+  "svg_ink_pct_of_shape": 16.8,
+  "svg_paths": 57
+ },
+ "05-oyster-cluster": {
+  "name": "Oyster mushroom cluster",
+  "px": [
+   3600,
+   3586
+  ],
+  "inches": [
+   12.0,
+   11.95
+  ],
+  "png_mb": 1.08,
+  "pieces": 4,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 304,
+  "coverage_pct": 61.5,
+  "svg_ink_pct_of_shape": 35.4,
+  "svg_paths": 48
+ },
+ "06-puffball": {
+  "name": "Puffball",
+  "px": [
+   3600,
+   3015
+  ],
+  "inches": [
+   12.0,
+   10.05
+  ],
+  "png_mb": 0.64,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 1239,
+  "coverage_pct": 65.0,
+  "svg_ink_pct_of_shape": 27.6,
+  "svg_paths": 34
+ },
+ "07-amethyst-deceiver": {
+  "name": "Amethyst deceiver trio",
+  "px": [
+   2038,
+   3600
+  ],
+  "inches": [
+   6.79,
+   12.0
+  ],
+  "png_mb": 0.56,
+  "pieces": 4,
+  "specks_removed": 3,
+  "holes_filled": 0,
+  "white_px_cleared": 3975,
+  "coverage_pct": 44.6,
+  "svg_ink_pct_of_shape": 20.7,
+  "svg_paths": 95
+ },
+ "08-turkey-tail": {
+  "name": "Turkey tail bracket",
+  "px": [
+   3254,
+   3600
+  ],
+  "inches": [
+   10.85,
+   12.0
+  ],
+  "png_mb": 1.12,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 50,
+  "coverage_pct": 76.0,
+  "svg_ink_pct_of_shape": 36.9,
+  "svg_paths": 82
+ },
+ "09-mushroom-and-ferns": {
+  "name": "Mushroom with ferns",
+  "px": [
+   3600,
+   3549
+  ],
+  "inches": [
+   12.0,
+   11.83
+  ],
+  "png_mb": 1.09,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 1588,
+  "coverage_pct": 52.0,
+  "svg_ink_pct_of_shape": 27.3,
+  "svg_paths": 115
+ },
+ "10-toadstools-and-acorns": {
+  "name": "Toadstools with oak leaves",
+  "px": [
+   3600,
+   3576
+  ],
+  "inches": [
+   12.0,
+   11.92
+  ],
+  "png_mb": 0.9,
+  "pieces": 1,
+  "specks_removed": 1,
+  "holes_filled": 0,
+  "white_px_cleared": 1380,
+  "coverage_pct": 58.3,
+  "svg_ink_pct_of_shape": 14.9,
+  "svg_paths": 67
+ },
+ "11-honey-fungus": {
+  "name": "Honey fungus cluster",
+  "px": [
+   2909,
+   3600
+  ],
+  "inches": [
+   9.7,
+   12.0
+  ],
+  "png_mb": 0.73,
+  "pieces": 5,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 7717,
+  "coverage_pct": 55.3,
+  "svg_ink_pct_of_shape": 31.6,
+  "svg_paths": 134
+ },
+ "12-parasol": {
+  "name": "Parasol mushroom",
+  "px": [
+   2788,
+   3600
+  ],
+  "inches": [
+   9.29,
+   12.0
+  ],
+  "png_mb": 0.49,
+  "pieces": 1,
+  "specks_removed": 0,
+  "holes_filled": 0,
+  "white_px_cleared": 644,
+  "coverage_pct": 31.3,
+  "svg_ink_pct_of_shape": 24.0,
+  "svg_paths": 87
+ }
+}
