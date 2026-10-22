@@ -138,3 +138,27 @@ STYLE.md section 2 says cover art "uses only the accent and black" and cites 001
 1. Approve changing the cover/headers to FALL (recommended) and renaming the PDF?
 2. Accept tints of the accent on cover art (STYLE.md one-line amendment)?
 3. Maple leaf and pie redraws need one more Designer pass; the rest can ship as is.
+
+---
+
+# Round 4 re-check (after Designer commit 2e0d059): APPROVE
+
+## Mechanics: pass
+- Own decoder re-run on `build/resource.html` across ALL THREE levels (A by glyph vs key table, B/C by staff-line y, clef on its line, ledger and stem checks, region containment via shapely): 435 regions, 529 symbols, 0 mismatches vs answer-key fills, 0 symbols outside a region, 0 regions without a symbol, key tables and geometry identical between worksheet and key. `gen.py --check` OK for 027 (58 pages, preview 4) and 028 (5 pages, preview 4).
+- tpt/001 untouched (git diff empty), `release` and `uploaded` files untouched. 028 PDFs rebuilt (same size); 028 "See the full set" page accurate (turkey, pumpkin, owl, pie are in 027; both links present).
+
+## Art (rendered 100 dpi plus 200 dpi crops of worksheet and key, cover, preview 1 and 3)
+- Maple Leaf: **B**. Stem now slim, veins thin. The four veins are lone hairlines inside the lobes and close no regions, but at 100 dpi they read as ordinary leaf veins, not scratches, and the lobes are closed by the sinus rays, so colouring is unambiguous. Acceptable. Shape is still simple and wedge-like, hence B not B+.
+- Pumpkin Pie: **B**. Centred crust, square crust ends on the lifted slice, yellow plate, white cream is distinct. Still a little wheel-like on the worksheet but reads as a pie with one slice out.
+- Other 7 pictures unchanged (pictures.py diff touches only maple and pie): turkey A-, mushrooms B+, owl B+, pumpkin, acorn, basket, sunflower B. Cover **B+**, previews **B+**.
+
+## Text: pass
+- FALL on cover, every worksheet header, teacher page, preview 1 headline and band, document title (PDF metadata title also "Fall Color by Note"). Zero "Thanksgiving" in either PDF's text.
+- Remaining occurrences, all acceptable: gen.py SLUG/file names and the UPLOAD.md check word, ACCENT comment, UPLOAD.md subject line and tag, a Nov-26 listing reminder and file names, tpt.json tag and file names, pictures.py docstrings (internal). STYLE.md has the added tints line.
+
+## Verdict: APPROVE
+Bar met: every picture B or better, turkey A-, cover B+.
+
+## Open questions for owner
+1. The live listing (uploaded 22 Oct 13:17) carries the old THANKSGIVING-headed files; replacing the live PDF and thumbnails with this build needs the uploader (not run here).
+2. Optional: rename PDF file to fall-color-by-note.pdf (not done; not required).
