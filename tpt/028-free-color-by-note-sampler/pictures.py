@@ -112,6 +112,12 @@ def dot(cx, cy, r=6.5):
     return circle(cx, cy, r)
 
 
+def eye(cx, cy, r=8.5):
+    """Black eye with a small white highlight (a hole in the ink)."""
+    hr = min(r * .3, 6.0)          # small enough that the hole never becomes a colouring space
+    return circle(cx, cy, r).difference(circle(cx + r * .32, cy - r * .32, hr))
+
+
 def rot(g, a, origin):
     return affinity.rotate(g, a, origin=origin)
 
@@ -215,63 +221,6 @@ def pumpkin():
     return layers, ink
 
 
-def tangent_cut(pts, t, half=260, bow=0.0):
-    """Curved line across a swept tube at fraction t of its centre line (bowed along the tube)."""
-    cl = LineString(pts)
-    p = cl.interpolate(t, normalized=True)
-    q = cl.interpolate(min(1.0, t + .01), normalized=True)
-    p0 = cl.interpolate(max(0.0, t - .01), normalized=True)
-    dx, dy = q.x - p0.x, q.y - p0.y
-    n = math.hypot(dx, dy)
-    tx, ty = dx / n, dy / n
-    nx, ny = -ty, tx
-    out = []
-    for k in range(-26, 27):
-        sdist = half * k / 26
-        off = bow * (1 - (sdist / 100.0) ** 2)
-        out.append((p.x + nx * sdist + tx * off, p.y + ny * sdist + ty * off))
-    return LineString(out)
-
-
-BOW = 20
-
-
-def band_layers(shape, cl_pts, ts, colours):
-    """Split a swept shape into bands (perpendicular cuts at ts), one layer per band."""
-    edges = [0.0] + list(ts) + [1.0]
-    out = []
-    for i in range(len(edges) - 1):
-        lo, hi = edges[i], edges[i + 1]
-        a = tangent_cut(cl_pts, lo, bow=BOW) if lo > 0 else None
-        b = tangent_cut(cl_pts, hi, bow=BOW) if hi < 1 else None
-        cutter = box(-100, -100, 700, 700)
-        from shapely.ops import split
-        part = shape
-        if a is not None:
-            pieces = [p for p in split(shape, a).geoms]
-            part = max(pieces, key=lambda p: tangent_side(p, a, cl_pts[-1]))
-        if b is not None:
-            pieces = [p for p in split(part, b).geoms]
-            part = min(pieces, key=lambda p: tangent_side(p, b, cl_pts[-1]))
-        out.append(L(part, colours[i % len(colours)]))
-    return out
-
-
-def tangent_side(p, ln, ref):
-    """Signed side of polygon p's centroid relative to line ln, using ref (a far point) as positive."""
-    (x0, y0), (x1, y1) = list(ln.coords)[0], list(ln.coords)[-1]
-    def sd(x, y):
-        return (x1 - x0) * (y - y0) - (y1 - y0) * (x - x0)
-    c = p.centroid
-    return sd(c.x, c.y) * (1 if sd(*ref) > 0 else -1)
-
-
-def pear_shape(cx, cy, s=1.0):
-    return soft(tube([(cx, cy - 36 * s), (cx, cy + 24 * s)], [27 * s, 46 * s]), 5)
-
-
-
-
 MAPLE_PROFILE = [(0, 236), (6, 184), (11, 204), (16, 150), (22, 124), (30, 150), (38, 180), (42, 160), (49, 200),
                  (55, 210), (62, 168), (67, 188), (73, 132), (80, 108), (88, 122), (96, 156), (106, 188), (112, 204), (118, 172),
                  (123, 188), (129, 138), (137, 86), (150, 62), (165, 56), (180, 54)]
@@ -306,14 +255,12 @@ def acorn():
                 pts.append((x, y + depth * math.sin(math.pi * t)))
         return LineString(pts)
 
-    shine = rot(ellipse(232, 376, 25, 60), 10, (232, 376))
     layers = [L(FRAME, "blue"),
               L(circle(470, 74, 42), "yellow"),
               L(hill(452, 12), "green"),
               L(soft(leaf_at(20, 330, 112, 76, -20, 8), 4), "orange"),
               L(soft(leaf_at(520, 352, 112, 76, 200, 8), 4), "orange"),
               L(nut, "orange"),
-              L(shine.intersection(nut), "yellow"),
               L(cap, "brown", cuts=[scallop_line(172, 16), scallop_line(238, 16)])]
     ink = [stem("M270 108 C268 84 278 66 298 56", 11)]
     return layers, ink
@@ -395,160 +342,114 @@ def teardrop(r0, r1, w):
 
 
 def turkey():
-    cx, cy = 270, 318
+    """Classic front-facing turkey: two rows of tail feathers, a pear-shaped body with the head on
+    top, a round bib, two wings, a big red wattle and three-toed feet on the grass."""
+    cx, cy = 270, 300                    # fan centre (hidden behind the body)
     layers = [L(FRAME, "blue"), L(hill(452, 10), "green")]
-    # one clean fan of seven matching teardrop feathers, drawn from the sides in toward the middle
-    n, step = 7, 29.0
-    angs = [-90 + (k - 3) * step for k in range(n)]
-    order = sorted(range(n), key=lambda k: -abs(k - 3))
-    ink = []
-    for k in order:
-        f = rot(mv(teardrop(40, 262, 92), cx, cy), angs[k], (cx, cy))
-        layers.append(L(f, "red" if k % 2 == 0 else "orange"))
-    for k in range(n):               # quill line up the middle of each feather
-        q = LineString([(cx + 84, cy), (cx + 150, cy)]).buffer(OUTLINE / 2, quad_segs=4)
-        ink.append(rot(q, angs[k], (cx, cy)))
-    layers += [L(ellipse(270, 392, 104, 92), "brown"),
-               L(rot(mv(ellipse(0, 0, 34, 56), 190, 424), 24, (190, 424)), "orange"),
-               L(rot(mv(ellipse(0, 0, 34, 56), 350, 424), -24, (350, 424)), "orange"),
-               L(circle(270, 304, 68), "brown")]
-    ink += [dot(247, 280, 7), dot(293, 280, 7),
-            soft(Polygon([(258, 292), (282, 292), (270, 310)]), 3),
-            soft(P("M266 310 C260 318 261 326 270 329 C279 326 280 318 274 310 Z"), 2)]
-    for x in (236, 304):          # legs and three-toed feet
-        ink.append(stem(f"M{x} 462 L{x} 478", 7))
-        for dx in (-16, 0, 16):
-            ink.append(stem(f"M{x} 476 L{x + dx} 490", 5))
+    # back row: nine long red feathers, drawn from the sides in
+    n, step = 9, 20.5
+    angs = [-90 + (k - 4) * step for k in range(n)]
+    for k in sorted(range(n), key=lambda k: -abs(k - 4)):
+        f = rot(mv(teardrop(30, 258, 72), cx, cy), angs[k], (cx, cy))
+        layers.append(L(f, "red"))
+    # front row: eight shorter orange feathers sitting between the long ones
+    for k in range(n - 1):
+        a = (angs[k] + angs[k + 1]) / 2
+        f = rot(mv(teardrop(30, 200, 70), cx, cy), a, (cx, cy))
+        layers.append(L(f, "orange"))
+    body = soft(unary_union([ellipse(270, 376, 108, 96), circle(270, 236, 66),
+                             Polygon([(214, 262), (326, 262), (360, 330), (180, 330)])]), 16)
+    layers += [L(body, "brown"),
+               L(ellipse(270, 416, 86, 72).intersection(body), "orange"),
+               L(soft(rot(ellipse(178, 392, 34, 64), 24, (178, 392)), 3), "brown"),
+               L(soft(rot(ellipse(362, 392, 34, 64), -24, (362, 392)), 3), "brown"),
+               L(soft(unary_union([circle(270, 312, 30), Polygon([(262, 248), (278, 248), (296, 306), (244, 306)])]), 4), "red")]
+    ink = [eye(246, 214, 9), eye(294, 214, 9),
+           soft(Polygon([(253, 230), (287, 230), (270, 256)]), 3)]
+    for x in (232, 308):          # legs and three-toed feet
+        ink.append(stem(f"M{x} 466 L{x} 476", 7))
+        for dx in (-15, 0, 15):
+            ink.append(stem(f"M{x} 474 L{x + dx} 488", 5))
     return layers, ink
 
 
-def horn_centre():
-    pts = _bez((236, 292), (320, 430), (490, 440), (488, 270), n=60)
-    pts += _bez((484, 270), (490, 180), (456, 110), (410, 100), n=40)
-    return [(236, 292)] + pts
-
-
-def horn_radii(n):
-    return [92 - 76 * (i / (n - 1)) ** 1.15 for i in range(n)]
-
-
-def cornucopia():
-    pts = horn_centre()
-    n = len(pts)
-    horn = tube(pts, horn_radii(n), n=n - 1)
-    tx, ty = pts[4][0] - pts[0][0], pts[4][1] - pts[0][1]
-    ang = math.degrees(math.atan2(ty, tx))
-    nrm = math.hypot(tx, ty); tx, ty = tx / nrm, ty / nrm
-    p0 = pts[0]
-    cut = Polygon([(p0[0] - 130 * ty, p0[1] + 130 * tx), (p0[0] + 130 * ty, p0[1] - 130 * tx),
-                   (p0[0] + 130 * ty - 70 * tx, p0[1] - 130 * tx - 70 * ty) if False else (p0[0] + 130 * ty - 90 * tx, p0[1] - 130 * tx - 90 * ty),
-                   (p0[0] - 130 * ty - 90 * tx, p0[1] + 130 * tx - 90 * ty)])
-    horn = soft(horn.difference(cut), 4)
-    cuts = [tangent_cut(pts, t, half=140, bow=0) for t in (0.22, 0.42, 0.6, 0.78)]
-    # opening: ellipse at the mouth, perpendicular to the horn
-    mouth = rot(mv(ellipse(0, 0, 34, 94), pts[0][0] + 4, pts[0][1]), ang, pts[0])
-    layers = [L(FRAME, "blue"), L(hill(416, 12), "green")]
-    # horn bands drawn as separate layers (alternating colours)
-    edges = [0.0, .2, .4, .58, .76, 1.0]
-    from shapely.ops import split as _split
-    cls = ["orange", "brown", "orange", "brown", "orange"]
-    cl = LineString(pts)
-    for i in range(5):
-        part = horn
-        if i > 0:
-            ps = list(_split(horn, cuts[i - 1]).geoms)
-            part = max(ps, key=lambda p: cl.project(p.centroid))
-        if i < 4:
-            ps = list(_split(part, cuts[i]).geoms)
-            part = min(ps, key=lambda p: cl.project(p.centroid))
-        layers.append(L(part, cls[i]))
-    layers += [L(mouth, "brown"),
-               L(soft(leaf_at(190, 140, 140, 70, -24, 6), 3), "green"),
-               L(pear_shape(160, 170, 1.0), "green"),
-               L(circle(104, 306, 58), "orange"),
-               L(apple_shape(180, 262, 56), "red"),
-               L(apple_shape(150, 366, 66), "red"),
-               L(circle(228, 412, 38), "orange")]
-    ink = [stem("M160 122 C162 110 168 104 178 100", 5),
-           stem("M180 212 C178 202 184 196 194 192", 5), stem("M150 314 C148 302 154 296 164 292", 5),
-           stem("M96 242 C96 232 100 226 108 222", 5)]
-    return layers, ink
-
-
-def pie():
-    # three-quarter view: tin wall, fluted crust ring, filling cut in 6 slices, cream swirl in the middle
-    cx, cy = 270, 232
-    rx, ry = 234, 124
-    n_b = 38
-    bumps = unary_union([circle(cx + rx * math.cos(2 * math.pi * k / n_b), cy + ry * math.sin(2 * math.pi * k / n_b), 12)
-                         for k in range(n_b)])
-    rim = unary_union([ellipse(cx, cy, rx, ry), bumps])
-    inner = ellipse(cx, cy + 6, 176, 88)
-    base = ellipse(cx, cy + 104, 190, 100)
-    wall = unary_union([rim, base, Polygon([(cx - rx, cy), (cx - 190, cy + 104), (cx + 190, cy + 104), (cx + rx, cy)])]).difference(rim)
-    layers = [L(FRAME, "blue"),
-              L(soft(leaf_at(14, 46, 130, 78, 14, 6), 4), "orange"), L(soft(leaf_at(526, 52, 130, 78, 166, 6), 4), "orange"),
-              L(soft(leaf_at(14, 462, 130, 78, -14, 6), 4), "orange"), L(soft(leaf_at(526, 452, 130, 78, 194, 6), 4), "orange"),
-              L(wall, "gray"), L(rim, "brown"), L(inner, "orange")]
-    cuts = [LineString([(cx, cy + 6), (cx + 400 * math.cos(math.radians(a)), cy + 6 + 400 * 0.46 * math.sin(math.radians(a)))])
-            for a in (30, 90, 150)]
-    layers[-1] = L(inner, "orange", cuts=[LineString([(cx - 300, cy + 6), (cx + 300, cy + 6)]),
-                                          LineString([(cx, cy - 100), (cx, cy + 112)])])
-    layers.append(L(rosette(cx, cy + 6, 52), "white"))
+def mushrooms():
+    """Two spotted forest mushrooms on a grassy hill, with fallen leaves."""
+    layers = [L(FRAME, "blue"), L(cloud(458, 74, .78), "white"), L(hill(430, 14), "green")]
+    cap = soft(P("M60 262 C60 120 160 52 262 52 C364 52 464 120 464 262 C400 292 124 292 60 262 Z"), 8)
+    stem_g = soft(P("M206 270 C200 330 186 390 190 446 C230 470 294 470 334 446 C338 390 324 330 318 270 Z"), 10)
+    cap2 = soft(P("M352 352 C352 290 400 252 448 252 C496 252 532 290 532 352 C500 368 384 368 352 352 Z"), 6)
+    stem2 = soft(P("M418 356 C414 392 410 428 412 462 C432 474 468 474 488 462 C490 428 484 392 480 356 Z"), 8)
+    spots = [circle(150, 196, 36), circle(268, 118, 38), circle(388, 186, 36), circle(264, 236, 30).union(circle(264, 230, 30))]
+    layers += [L(soft(leaf_at(34, 474, 112, 68, -16, 6), 4), "orange"),
+               L(stem_g, "white"), L(cap, "red"),
+               *[L(sp.intersection(cap), "white") for sp in spots],
+               L(stem2, "white"), L(cap2, "orange"),
+               L(circle(452, 300, 31).intersection(cap2), "white")]
     return layers, []
 
 
-def corn():
-    """Corn cob on the diagonal: tapered cob, curved rows of kernels in barrel-shaped columns, husks peeling down."""
-    cx = 270
-    ear = P("M270 6 C354 6 384 110 384 206 C384 300 352 382 270 408 C188 382 156 300 156 206 C156 110 186 6 270 6 Z")
-    rows = [6, 96, 156, 216, 276, 330]
-    fr = [-1.0, -0.5, 0.0, 0.5, 1.0]
-    PIV = (270, 250)
-    ANG = 0
+def pie():
+    """Pumpkin pie seen from above on a plate: fluted crust, six slices with one pulled
+    out, a whipped-cream swirl in the middle and autumn leaves in the corners."""
+    cx, cy = 262, 244
+    n_b = 28
+    R = 170
+    fluted = unary_union([circle(cx, cy, R)] + [circle(*polar(cx, cy, R, k * 360 / n_b), 15) for k in range(n_b)])
+    filling = circle(cx, cy, 124)
+    a0, a1 = 15, 75                           # the slice that is pulled out (lower right)
+    off = polar(0, 0, 56, (a0 + a1) / 2)
 
-    def R(g):
-        return rot(mv(g, 0, 20), ANG, PIV)
+    def wedge(r, b0, b1):
+        return sector(cx, cy, 0, r, b0, b1, n=40)
+    out_crust = mv(fluted.intersection(wedge(260, a0, a1)).difference(filling), *off)
+    out_fill = mv(filling.intersection(wedge(260, a0, a1)), *off)
+    rest = wedge(260, a1, a0 + 360)
+    cuts = [LineString([(cx, cy), polar(cx, cy, 260, a1 + 60 * k)]) for k in range(1, 5)]
+    leaf = lambda x, y, a, c: L(soft(leaf_at(x, y, 124, 76, a, 6), 4), c)
+    plate = circle(270, 250, 236)
+    layers = [L(FRAME, "blue"),
+              leaf(-6, 36, 24, "red"), leaf(546, 36, 156, "orange"), leaf(-6, 466, -24, "orange"),
+              leaf(546, 466, 204, "red"),
+              L(soft(plate, 3), "white"),
+              L(fluted.intersection(rest).difference(filling), "brown", cuts=cuts),
+              L(filling.intersection(rest), "orange", cuts=cuts),
+              L(rosette(cx, cy, 58), "white"),
+              L(out_crust, "brown"), L(out_fill, "orange")]
+    return layers, []
 
-    def hw(y):
-        seg = ear.intersection(LineString([(0, y), (540, y)]))
-        return max(30.0, (seg.bounds[2] - seg.bounds[0]) / 2) if not seg.is_empty else 30.0
 
-    def cell(ri, ci, fr=fr):
-        def xat(f, y):
-            return cx + f * hw(min(max(y, 40), 400)) * 1.04
+def owl():
+    """Round owl on a branch in front of a full moon: ear tufts, heart-shaped face mask,
+    big eyes, scalloped belly, two wings, and leaves on the branch."""
+    cx = 262
+    layers = [L(FRAME, "blue"), L(circle(420, 128, 90), "yellow")]
+    branch = soft(P("M-20 432 C120 416 300 414 560 398 L560 446 C300 462 120 466 -20 482 Z"), 4)
+    layers += [L(soft(leaf_at(40, 436, 124, 76, 252, 6), 4), "red"),
+               L(soft(leaf_at(92, 432, 112, 72, 292, 6), 4), "orange"),
+               L(soft(leaf_at(442, 414, 124, 76, 246, 6), 4), "orange"),
+               L(soft(leaf_at(488, 410, 118, 72, 286, 6), 4), "red")]
+    body = soft(unary_union([ellipse(cx, 286, 118, 156),
+                             P(f"M{cx - 112} 210 L{cx - 106} 76 L{cx - 34} 140 Z"),
+                             P(f"M{cx + 112} 210 L{cx + 106} 76 L{cx + 34} 140 Z")]), 8)
+    belly = ellipse(cx, 362, 134, 112).intersection(body)
 
-        def ycurve(y0, x):
-            return y0 + 9 * (1 - ((x - cx) / 100.0) ** 2)
-        pts = []
-        for k in range(13):
-            f = fr[ci] + (fr[ci + 1] - fr[ci]) * k / 12
-            x = xat(f, rows[ri])
-            pts.append((x, ycurve(rows[ri], x)))
-        for k in range(13):
-            f = fr[ci + 1] + (fr[ci] - fr[ci + 1]) * k / 12
-            x = xat(f, rows[ri + 1])
-            pts.append((x, ycurve(rows[ri + 1], x)))
-        return Polygon(pts).buffer(0)
-
-    fl = P("M262 470 C150 462 96 380 108 270 C112 250 124 248 132 262 C160 322 214 342 270 346 Z")
-    mid = P("M270 494 C206 450 200 360 270 296 C340 360 334 450 270 494 Z")
-    front = [soft(mv(fl, 0, 30), 6), soft(mv(mirror(fl), 0, 30), 6)]
-    midg = soft(mv(mid, 0, 30), 4)
-    hide = unary_union(front + [midg])
-    layers = [L(FRAME, "blue"), L(circle(86, 84, 44), "yellow"), L(hill(446, 14), "brown")]
-    for ri in range(len(rows) - 1):
-        last = ri == len(rows) - 2
-        for ci in range(2 if last else 4):
-            c = ear.intersection(cell(ri, ci, [-1.0, 0.0, 1.0] if last else fr).buffer(.3, join_style=2))
-            if ri == 0:
-                if ci > 0:
-                    continue
-                c = ear.intersection(Polygon([(0, 0), (540, 0), (540, rows[1] + 10), (0, rows[1] + 10)]).intersection(box(0, 0, 540, rows[1]))) if False else ear.intersection(box(0, 0, 540, rows[1] + 9))
-            if c.area > 120:
-                layers.append(L(R(c), "yellow" if ri == 0 or (ci in (1, 2) and not last) else "orange"))
-    layers += [L(R(f), "green") for f in front] + [L(R(midg), "green")]
-    ink = [R(stem("M270 8 C270 -6 274 -14 282 -20", 6)), R(S("M270 520 C262 470 262 410 270 366", 1.6))]
+    def scallop_line(y, depth=14, x0=150, x1=390, nb=5):
+        w = (x1 - x0) / nb
+        return LineString([(x0 + w * (k + j / 10) - 8, y + depth * math.sin(math.pi * j / 10)) for k in range(nb) for j in range(11)])
+    mask = soft(unary_union([circle(cx - 50, 218, 58), circle(cx + 50, 218, 58)]), 6)
+    # wings: the sides of the body, split off by a curved inner edge
+    wing = soft(body.intersection(P(f"M{cx - 200} 200 L{cx - 92} 220 C{cx - 60} 290 {cx - 62} 380 {cx - 96} 440 L{cx - 200} 440 Z")), 3)
+    layers += [L(body, "brown"),
+               L(belly, "orange", cuts=[scallop_line(350)]),
+               L(wing, "brown"), L(mirror(wing, cx), "brown"),
+               L(mask, "yellow"),
+               L(branch, "brown")]
+    ink = [eye(cx - 50, 214, 23), eye(cx + 50, 214, 23),
+           soft(Polygon([(cx - 15, 246), (cx + 15, 246), (cx, 276)]), 3)]
+    for x in (cx - 42, cx + 42):          # toes gripping the branch
+        for dx in (-12, 0, 12):
+            ink.append(stem(f"M{x + dx} 410 C{x + dx} 420 {x + dx * 1.3} 428 {x + dx * 1.5 - 3} 434", 6))
     return layers, ink
 
 
@@ -593,11 +494,11 @@ def maple():
 PICTURES = [
     ("turkey", "Friendly Turkey", turkey),
     ("pumpkin", "Harvest Pumpkin", pumpkin),
-    ("cornucopia", "Cornucopia", cornucopia),
+    ("mushrooms", "Forest Mushrooms", mushrooms),
     ("maple", "Maple Leaf", maple),
     ("acorn", "Acorn", acorn),
     ("basket", "Apple Basket", apple_basket),
     ("pie", "Pumpkin Pie", pie),
-    ("corn", "Corn on the Cob", corn),
+    ("owl", "Autumn Owl", owl),
     ("sunflower", "Sunflower", sunflower),
 ]

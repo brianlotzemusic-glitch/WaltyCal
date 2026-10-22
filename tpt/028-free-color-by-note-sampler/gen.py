@@ -189,7 +189,7 @@ def picture_svg(sheet, answer=False, fills=None, show_symbols=None, width="100%"
         else:
             col = COLORS[sheet.answer_color(r)] if answer else "#fff"
         out.append(f'<path d="{poly_path(r["poly"])}" fill="{col}" fill-rule="evenodd" stroke="#000" stroke-width="{stroke}" stroke-linejoin="round"/>')
-    out.append(f'<path d="{geom_path(sheet.ink)}" fill="#000"/>')
+    out.append(f'<path d="{geom_path(sheet.ink)}" fill="#000" fill-rule="evenodd"/>')
     if show_symbols:
         for r in sheet.regions:
             if fills is not None and r["id"] in fills:
@@ -378,7 +378,7 @@ def fullset_page():
             f'<h2>Halloween Color by Note <span class="acc">·</span> grades 1–5</h2>'
             f'<p>Nine original, kid-friendly Halloween pictures at all three levels. On TpT:<br>{link(URL_001)}</p>'
             f'<h2>Fall Color by Note <span class="acc">·</span> grades 1–5</h2>'
-            f'<p>Nine cozy autumn pictures (turkey, pumpkin, cornucopia, maple leaf and more) at all three levels. Find it in the {BRAND} store on TpT:<br>{link(URL_STORE)}</p>'
+            f'<p>Nine cozy autumn pictures (turkey, pumpkin, owl, pumpkin pie and more) at all three levels. Find it in the {BRAND} store on TpT:<br>{link(URL_STORE)}</p>'
             f'<h2>More from {BRAND}</h2>'
             f'<p>Winter and holiday Color by Note sets are coming. <b>Follow the store on TpT</b> and you will be notified of every new set.</p>'
             f'<h2>Terms of use</h2>'

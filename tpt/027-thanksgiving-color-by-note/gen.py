@@ -52,6 +52,8 @@ ACCENT = "#B5471B"  # this product's single accent (Thanksgiving rust)
 COLORS = {  # crayon name -> answer-key fill
     "orange": "#F39234", "black": "#2E2E2E", "green": "#5DB04C", "purple": "#9467C9",
     "yellow": "#FFD94A", "brown": "#9A6434", "gray": "#A8A8A8", "white": "#FFFFFF", "blue": "#4F88DA", "red": "#D6402F", "accent": ACCENT,
+    # cover-only tints of the accent (the cover stays black + one accent, per STYLE.md)
+    "accent_lt": "#E08A5C", "accent_xlt": "#F6D2BC", "accent_dk": "#6E2A0F",
 }
 LEVELS = {
     "A": {"name": "Rhythm values", "kind": "rhythm", "grades": "1–2",
@@ -181,7 +183,7 @@ def picture_svg(sheet, answer=False, fills=None, show_symbols=None, width="100%"
         else:
             col = COLORS[sheet.answer_color(r)] if answer else "#fff"
         out.append(f'<path d="{poly_path(r["poly"])}" fill="{col}" fill-rule="evenodd" stroke="#000" stroke-width="{stroke}" stroke-linejoin="round"/>')
-    out.append(f'<path d="{geom_path(sheet.ink)}" fill="#000"/>')
+    out.append(f'<path d="{geom_path(sheet.ink)}" fill="#000" fill-rule="evenodd"/>')
     if show_symbols:
         for r in sheet.regions:
             if fills is not None and r["id"] in fills:
@@ -333,13 +335,13 @@ def answer_page(sh, watermark=False):
 
 
 def cover_art(sheet):
-    """Turkey half coloured in the accent + black (one-accent rule), symbols left in the rest."""
+    """The whole turkey filled in the accent and its tints (one-accent rule); sky and grass
+    stay as line art with their notes, so the cover still shows the activity."""
+    tone = {"red": "accent", "orange": "accent_lt", "brown": "accent_dk"}
     out = {}
     for r in sheet.regions:
-        if r["color"] == "red":
-            out[r["id"]] = "accent"
-        elif r["color"] == "brown" and r["poly"].centroid.y > 345:
-            out[r["id"]] = "black"
+        if r["color"] in tone:
+            out[r["id"]] = tone[r["color"]]
     return out
 
 
@@ -699,6 +701,13 @@ def verify_files():
         errs.append("UPLOAD.md: title block not found")
     elif len(m.group(1).strip()) > 80:
         errs.append(f"UPLOAD.md: title is {len(m.group(1).strip())} chars (max 80)")
+    pics = re.search(r"^PICTURES: (.+)$", up, re.M)
+    if not pics:
+        errs.append("UPLOAD.md: PICTURES line not found")
+    else:
+        for _, title, _ in PICTURES:
+            if title.lower() not in pics.group(1).lower():
+                errs.append(f"UPLOAD.md: picture '{title}' missing from the PICTURES line")
     for need in ("Designed with the help of digital and AI tools, and checked by hand.", "$3.75", "Holidays/Seasonal", "Thanksgiving"):
         if need not in up:
             errs.append(f"UPLOAD.md: missing '{need}'")

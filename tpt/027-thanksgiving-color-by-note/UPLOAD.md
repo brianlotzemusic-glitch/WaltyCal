@@ -26,7 +26,7 @@ WHAT'S INCLUDED (58 pages, PDF, US Letter)
 • Level C: Bass clef note names, E2 to middle C with ledger lines, 9 worksheets + 9 answer keys (grades 4–5)
 • Terms of use and credits (1 page)
 
-PICTURES: friendly turkey, harvest pumpkin, cornucopia, maple leaf, acorn, apple basket, pumpkin pie, corn on the cob and sunflower. Cozy autumn art for the whole fall season.
+PICTURES: friendly turkey, harvest pumpkin, forest mushrooms, maple leaf, acorn, apple basket, pumpkin pie, autumn owl and sunflower. Cozy autumn art for the whole fall season.
 
 HOW TO USE
 Students read the note or rest in each space, find it in the color key, and color the space. In levels B and C every space shows its note on a small staff with a clef, and the key uses letter names. Each worksheet has a matching full-color answer key, and every key is generated from the same data as the worksheet and checked by hand. Great for early finishers, music centers, sub plans and a quick note-reading check in November (including a Thanksgiving week activity).
