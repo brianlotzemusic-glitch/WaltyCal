@@ -338,7 +338,7 @@ def cover_art(sheet):
     for r in sheet.regions:
         if r["color"] == "red":
             out[r["id"]] = "accent"
-        elif r["color"] == "brown" and r["poly"].area >= 40000:
+        elif r["color"] == "brown" and r["poly"].centroid.y > 345:
             out[r["id"]] = "black"
     return out
 
