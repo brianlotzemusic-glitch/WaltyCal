@@ -322,3 +322,4 @@
 2026-10-22 Designer fix r2 TpT 028: tags set to ["Autumn"], UPLOAD.md sections 4/9 updated; PDF unchanged; awaiting re-QA
 2026-10-22 Designer: TpT 027 retitled "Fall Color by Note | ..." after TpT Seasonal Titles block (tags Autumn+Thanksgiving, Thanksgiving kept as use case); 028 page 5 heading renamed and PDF rebuilt (--check OK); release and UPLOADER-STATUS.json untouched
 2026-10-22 Designer: built bundle 029 Bee & Honeycomb Coloring Pages (20 pages drawn in code, gen.py --check ALL CHECKS PASS, $0 AI, Recraft untouched); awaiting QA, not published
+2026-10-22 QA bundle 029 bee coloring pages: REJECTED (page 05 leaf/antenna tangle; disclosure line says AI but art is code-drawn: use plain 'Designed by Duskwood Designs Co, drawn with digital tools and checked by hand.'); gen --check, ZIP, taxonomy 339, price, images OK
