@@ -25,6 +25,10 @@
 //                                     file; writes `uploaded` on success. --dry-run fills the form, lists any
 //                                     values TpT rejects with the options it offers, and does not submit.
 //
+//   Free items (tpt.json "free": true, price "0.00"): the form's "Free Resource" toggle (F.free = #item-free)
+//   is ticked instead of filling the price boxes; a missing selector stops with a clear message.
+//   Offline test: node tools/test-tpt-free.js
+//
 //   node tools/tpt.js publish-pending
 //                                     publish items the cloud Manager has released (a `release` file), at most 3
 //                                     per run, unless tpt/PAUSED exists; writes tpt/UPLOADER-STATUS.json.
@@ -35,7 +39,10 @@
 const fs = require("fs"), path = require("path");
 let chromium;
 try { ({ chromium } = require("playwright")); }
-catch (e) { ({ chromium } = require(path.join(require("child_process").execSync("npm root -g").toString().trim(), "playwright"))); }
+catch (e) {
+  try { ({ chromium } = require(path.join(require("child_process").execSync("npm root -g").toString().trim(), "playwright"))); }
+  catch (e2) { if (require.main === module) throw e2; } // imported by a test: browser not needed
+}
 
 const ROOT = path.dirname(__dirname);
 const LOGIN_URL = "https://www.teacherspayteachers.com/Login";
@@ -212,6 +219,10 @@ function checkItem(item, it, F) {
   if (!it.subjects?.length || it.subjects.length > 3) p.push("tpt.json: subjects needs 1-3 entries");
   if (!it.tags?.length || it.tags.length > 6) p.push("tpt.json: tags needs 1-6 entries");
   if ((it.formats || []).length > 3) p.push("tpt.json: at most 3 formats");
+  if (it.free === true) { // free items only: paid items never reach these checks
+    if (!F.free) p.push("tpt/FORM.json has no `free` selector (the Free Resource checkbox, #item-free per FORM-FIELDS.json): cannot publish a free item");
+    for (const k of ["price", "license_price"]) if (Number(it[k]) !== 0) p.push(`tpt.json: free item needs ${k} "0.00" (got ${JSON.stringify(it[k])})`);
+  }
   const files = it.files || {};
   if (!files.product) p.push("tpt.json: files.product is not set");
   for (const [k, f] of Object.entries(files)) {
@@ -309,9 +320,25 @@ async function publish(item, dryRun) {
     }
     if (!(await ed.innerText()).includes((it.description || "").slice(0, 40))) fail("description did not appear in the editor");
 
+    if (it.free === true) {
+      // Free item: tick TpT's "Free Resource" toggle (#item-free) and leave the price boxes alone.
+      step = "free resource checkbox";
+      const box = page.locator(F.free);
+      if (!(await box.count())) fail(`free: no "Free Resource" control matching ${F.free}; TpT's form changed, rerun discover`);
+      else {
+        const on = async () => (await box.getAttribute("aria-checked")) === "true" || (await box.isChecked().catch(() => false))
+          || (await page.locator('input[name="data[Item][free]"]').isChecked().catch(() => false));
+        if (!(await on())) { await box.click(); await page.waitForTimeout(1000); }
+        if (!(await on())) {
+          await snap(page, shots, `${slug}-free`).catch(() => {});
+          fail(`free: clicked ${F.free} but it does not show as ticked (screenshot tpt/_publish/${slug}-free.png)`);
+        }
+      }
+    } else {
     step = "prices";
     await page.locator(F.price).fill(String(it.price ?? ""));
     await page.locator(F.license_price).fill(String(it.license_price ?? ""));
+    }
 
     // Listbox comboboxes (tax code, answer key, teaching duration).
     const listbox = async (name, toggle, want) => {
@@ -448,8 +475,10 @@ async function publishPending() {
   if (!status.ok) process.exitCode = 1;
 }
 
+module.exports = { checkItem, loadItem, isApproved };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
+if (require.main === module)
 (cmd === "login" ? loginCmd() : cmd === "discover" ? discover() : cmd === "publish" ? publish(arg, dryRun)
   : cmd === "publish-pending" ? publishPending()
   : Promise.reject(new Error("usage: login | discover | publish <tpt/NNN-slug> [--dry-run] | publish-pending")))

@@ -289,6 +289,7 @@ The owner also sells on TpT: https://www.teacherspayteachers.com/store/brian-lot
   - No copyrighted songs, lyrics or arrangements; public-domain folk songs and composers are fine.
   - "Logic Pro" and other product names only to describe compatibility.
   - The disclosure line goes in the description: "Designed with the help of digital and AI tools, and checked by hand."
+- **Tool notes (22 Oct 2026)**: `tools/tpt.js` now publishes free items by itself: with `"free": true` in `tpt.json` (price/license "0.00") it ticks TpT's Free Resource toggle (`#item-free`, selector `free` in tpt/FORM.json) instead of filling the price boxes, and stops with a clear message if the selector is missing or the tick doesn't register; paid items are unchanged. Offline test: `node tools/test-tpt-free.js`; the live click is untested until the first free nightly run (check tpt/UPLOADER-STATUS.json). Etsy: `tools/etsy.py` cannot set Etsy's AI-content box because Etsy's Open API v3 has no such field (checked 22 Oct against the published OpenAPI spec; a June 2026 feature request in etsy/open-api is unanswered), so it stays one manual tick per new listing; `etsy.py upload` now prints a reminder of what to tick (test: `python3 tools/test_etsy_ai.py`). Re-check the spec when Etsy announces the field.
 - **Money**: no TpT fees are paid by the factory. Basic seller keeps 55% minus $0.30 per resource; Premium costs $59.95/yr, and only the owner decides on it.
 
 ## Owner decisions, 21 Oct 2026 (after the full evaluation, reports/2026-10-21-evaluation.md)

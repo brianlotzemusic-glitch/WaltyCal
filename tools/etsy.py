@@ -19,7 +19,7 @@ Environment (set in the cloud environment settings, never committed):
   ETSY_TAXONOMY_ID                     default taxonomy id for cut-file listings
   ETSY_PUBLISH=0                       keep new listings as drafts (default: publish immediately)
 """
-import csv, json, mimetypes, os, sys, time
+import csv, json, mimetypes, os, re, sys, time
 import urllib.request, urllib.parse, urllib.error, uuid
 
 API = "https://openapi.etsy.com/v3/application"
@@ -88,6 +88,18 @@ def shop_id():
     return str(call("GET", f"/users/{env('ETSY_USER_ID')}/shops")["shop_id"])
 
 
+def ai_note(spec):
+    """Etsy's Open API v3 has NO field for the AI-content disclosure (checked 22 Oct 2026 against Etsy's published
+    OpenAPI spec: createDraftListing/updateListing/ShopListing have no such property), so it stays a manual tick
+    in the Etsy listing editor. Returns a one-line reminder of what to tick, from the description's disclosure line
+    (or listing.json "ai_generated": true/false, which wins). Pure function; never calls Etsy."""
+    flag = spec.get("ai_generated")
+    if flag is None:
+        flag = bool(re.search(r"\bAI\b", spec.get("description", "")))
+    return ("Etsy AI box (manual, no API field): tick 'created with AI tools' to match the disclosure line"
+            if flag else "Etsy AI box (manual, no API field): no AI tools; leave it as 'made by hand/digital tools'")
+
+
 def upload(bundle_dir):
     spec = json.load(open(os.path.join(bundle_dir, "listing.json")))
     if os.path.exists(os.path.join(bundle_dir, "etsy_listing_id")):
@@ -110,6 +122,7 @@ def upload(bundle_dir):
     with open(os.path.join(bundle_dir, "etsy_listing_id"), "w") as f:
         f.write(str(lid))
     print(f"listing {lid} {'published' if os.environ.get('ETSY_PUBLISH') != '0' else 'saved as draft'}: {spec['title']}")
+    print(ai_note(spec))
 
 
 def update(bundle_dir):

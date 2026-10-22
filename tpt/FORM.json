@@ -14,6 +14,7 @@
   "description": "[data-testid=\"description-editor-frame\"] [contenteditable=\"true\"]",
   "price": "#item-price",
   "license_price": "#item-license-price",
+  "free": "#item-free",
   "tax_code": { "toggle": "#taxCode-toggle-button", "menu": "#taxCode-menu" },
   "grade_checkbox": "[id=\"data.Grade.Grade-checkbox_{slug}\"]",
   "subjects": "#subject-areas",
