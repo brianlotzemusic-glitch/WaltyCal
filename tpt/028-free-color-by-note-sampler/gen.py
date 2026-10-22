@@ -197,7 +197,7 @@ def picture_svg(sheet, answer=False, fills=None, show_symbols=None, width="100%"
             for cx, cy, sym in r["symbols"]:
                 out.append(symbol_svg(sheet.level, sym, cx, cy))
     if frame:
-        out.append(f'<rect x="0" y="0" width="{W}" height="{H}" fill="none" stroke="#000" stroke-width="{stroke * 1.4}"/>')
+        out.append(f'<rect x="0" y="0" width="{W}" height="{H}" rx="28" ry="28" fill="none" stroke="#000" stroke-width="{stroke * 1.4}"/>')
     out.append("</svg>")
     return "".join(out)
 

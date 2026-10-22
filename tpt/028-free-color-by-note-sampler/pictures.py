@@ -1,16 +1,28 @@
-"""Thanksgiving / autumn line-art pictures for the colour-by-note set, drawn in code.
+"""Thanksgiving / autumn pictures for the colour-by-note set, drawn in code.
 
-Each picture is a list of layers in painter's order (bottom first). A layer is
-a shapely geometry with a colour name; optional `cuts` split its visible part
-into more regions. `ink` shapes are pre-printed black details (not regions).
-Coordinates are PostScript points, y pointing down, on a W x H canvas.
+Style rules shared by all nine pictures (so they read as one product line):
+  * every picture is a hero object on a simple scene (sky + rolling hill), in a rounded frame
+  * all outlines are one weight (the renderer strokes every region the same); no thick
+    black strokes except small solid "ink" details: stems and eyes
+  * thin ink lines (same weight as the outline) are used only for fine detail that sits
+    away from where the notes go (curls, quill marks, stitches)
+  * shapes are soft and rounded (corners are rounded with a morphological opening/closing)
+  * never more than five colours per picture (one per note in the key); every region is
+    big enough for the largest note label (a staff of about 40 x 43 pt)
+
+Each picture is a list of layers in painter's order (bottom first). A layer is a shapely
+geometry with a colour name; optional `cuts` split its visible part into more regions.
+`ink` shapes are pre-printed black details (not regions). Coordinates are PostScript
+points, y pointing down, on a W x H canvas.
 """
 import math
+import re
 from shapely.geometry import Point, Polygon, LineString, box
 from shapely import affinity
 from shapely.ops import unary_union
 
 W, H = 540, 500
+OUTLINE = 1.6          # matches the stroke the renderer draws round every region
 
 
 # ---------- geometry helpers ----------
@@ -29,60 +41,94 @@ def rrect(x0, y0, x1, y1, r):
     return box(x0 + r, y0 + r, x1 - r, y1 - r).buffer(r, quad_segs=12)
 
 
-def catmull(pts, closed=False, n=14):
-    pts = list(pts)
-    if closed:
-        ext = [pts[-1]] + pts + [pts[0], pts[1]]
-    else:
-        ext = [pts[0]] + pts + [pts[-1]]
+def _bez(p0, p1, p2, p3, n=22):
     out = []
-    for i in range(1, len(ext) - 2):
-        p0, p1, p2, p3 = ext[i - 1], ext[i], ext[i + 1], ext[i + 2]
-        for k in range(n):
-            t = k / n
-            t2, t3 = t * t, t * t * t
-            out.append(tuple(0.5 * ((2 * p1[j]) + (-p0[j] + p2[j]) * t
-                                    + (2 * p0[j] - 5 * p1[j] + 4 * p2[j] - p3[j]) * t2
-                                    + (-p0[j] + 3 * p1[j] - 3 * p2[j] + p3[j]) * t3)
-                             for j in range(2)))
-    if not closed:
-        out.append(pts[-1])
+    for k in range(1, n + 1):
+        t = k / n
+        u = 1 - t
+        out.append((u ** 3 * p0[0] + 3 * u * u * t * p1[0] + 3 * u * t * t * p2[0] + t ** 3 * p3[0],
+                    u ** 3 * p0[1] + 3 * u * u * t * p1[1] + 3 * u * t * t * p2[1] + t ** 3 * p3[1]))
     return out
 
 
-def blob(pts):
-    return Polygon(catmull(pts, closed=True)).buffer(0)
+def path_points(d):
+    """Sample an SVG-style path (absolute M L C Q Z only) into a list of points."""
+    toks = re.findall(r"[MLCQZ]|-?\d+\.?\d*", d)
+    pts, i, cmd, cur = [], 0, None, (0, 0)
+    while i < len(toks):
+        t = toks[i]
+        if t in "MLCQZ":
+            cmd = t
+            i += 1
+            if cmd == "Z":
+                continue
+        nums = lambda k: [float(x) for x in toks[i:i + k]]
+        if cmd == "M" or cmd == "L":
+            x, y = nums(2)
+            i += 2
+            cur = (x, y)
+            pts.append(cur)
+            cmd = "L"
+        elif cmd == "C":
+            a = nums(6)
+            i += 6
+            pts += _bez(cur, (a[0], a[1]), (a[2], a[3]), (a[4], a[5]))
+            cur = (a[4], a[5])
+        elif cmd == "Q":
+            a = nums(4)
+            i += 4
+            c1 = (cur[0] + 2 / 3 * (a[0] - cur[0]), cur[1] + 2 / 3 * (a[1] - cur[1]))
+            c2 = (a[2] + 2 / 3 * (a[0] - a[2]), a[3] + 2 / 3 * (a[1] - a[3]))
+            pts += _bez(cur, c1, c2, (a[2], a[3]))
+            cur = (a[2], a[3])
+    return pts
 
 
-def curve(pts):
-    return LineString(catmull(pts))
+def P(d):
+    """Closed filled shape from path data."""
+    return Polygon(path_points(d)).buffer(0)
 
 
-def thick(pts, w, smooth=True):
-    line = LineString(catmull(pts)) if smooth else LineString(pts)
-    return line.buffer(w / 2, quad_segs=8)
+def S(d, w=OUTLINE):
+    """Thin ink line (same weight as the outline) from path data."""
+    return LineString(path_points(d)).buffer(w / 2, quad_segs=6)
 
 
-def star(cx, cy, R, r, n=5, rot=-90, round_=4):
-    pts = []
-    for i in range(2 * n):
-        a = math.radians(rot + i * 180 / n)
-        rad = R if i % 2 == 0 else r
-        pts.append((cx + rad * math.cos(a), cy + rad * math.sin(a)))
-    return Polygon(pts).buffer(round_).buffer(-round_)
+def line(d):
+    return LineString(path_points(d))
 
 
-def cloud(cx, cy, s=1.0):
-    parts = [circle(cx - 45 * s, cy + 8 * s, 32 * s), circle(cx, cy - 12 * s, 42 * s),
-             circle(cx + 48 * s, cy + 6 * s, 34 * s), rrect(cx - 78 * s, cy + 2 * s, cx + 82 * s, cy + 40 * s, 18 * s)]
-    return unary_union(parts)
+def soft(g, r=6):
+    """Round off corners: opening rounds convex corners, closing rounds concave ones."""
+    return g.buffer(-r, quad_segs=10).buffer(2 * r, quad_segs=10).buffer(-r, quad_segs=10)
+
+
+def stem(d, w=5.5):
+    """Small solid black stem or curl."""
+    return LineString(path_points(d)).buffer(w / 2, quad_segs=8)
+
+
+def dot(cx, cy, r=6.5):
+    return circle(cx, cy, r)
+
+
+def rot(g, a, origin):
+    return affinity.rotate(g, a, origin=origin)
+
+
+def mv(g, dx, dy):
+    return affinity.translate(g, dx, dy)
 
 
 def mirror(g, cx=W / 2):
     return affinity.scale(g, -1, 1, origin=(cx, 0))
 
 
-def sector(cx, cy, r0, r1, a0, a1, n=24):
+def sym(g, cx=W / 2):
+    return unary_union([g, mirror(g, cx)])
+
+
+def sector(cx, cy, r0, r1, a0, a1, n=30):
     pts = []
     for i in range(n + 1):
         a = math.radians(a0 + (a1 - a0) * i / n)
@@ -93,172 +139,377 @@ def sector(cx, cy, r0, r1, a0, a1, n=24):
     return Polygon(pts)
 
 
-FRAME = box(0, 0, W, H)
+def polar(cx, cy, r, a):
+    return (cx + r * math.cos(math.radians(a)), cy + r * math.sin(math.radians(a)))
+
+
+def tube(centre_pts, radii, n=60):
+    """Smooth tapering tube swept along a centre line (list of points) with radii list."""
+    cl = LineString(centre_pts)
+    parts = []
+    for k in range(n + 1):
+        t = k / n
+        p = cl.interpolate(t, normalized=True)
+        # piecewise-linear radius along the line
+        x = t * (len(radii) - 1)
+        j = min(int(x), len(radii) - 2)
+        r = radii[j] + (radii[j + 1] - radii[j]) * (x - j)
+        parts.append(circle(p.x, p.y, r))
+    return unary_union(parts)
+
+
+FRAME = rrect(0, 0, W, H, 28)
 
 
 def L(geom, color, cuts=None):
     return {"geom": geom, "color": color, "cuts": cuts or []}
 
 
+# ---------- shared scene pieces ----------
+def hill(y, amp=14, left=-30, right=570):
+    """Rolling ground, filled down to the bottom of the frame."""
+    return P(f"M{left} {y + amp * .3} C 90 {y - amp} 200 {y - amp} 290 {y - amp * .1} "
+             f"C 370 {y + amp * .7} 450 {y - amp * .9} {right} {y - amp * .2} L{right} 530 L{left} 530 Z")
+
+
+def leaf_shape(length, width, bend=0.0):
+    """Pointed leaf lying along +x from (0,0) to (length,0), with an optional bend."""
+    h = width / 2
+    return P(f"M0 0 C {length * .18} {-h * 1.05 - bend} {length * .62} {-h * 1.15 - bend} {length} 0 "
+             f"C {length * .62} {h * 1.15 - bend} {length * .18} {h * 1.05 - bend} 0 0 Z")
+
+
+def leaf_at(x, y, length, width, ang, bend=0.0):
+    return rot(mv(leaf_shape(length, width, bend), x, y), ang, (x, y))
+
+
+def scallops(cx, cy, r, n, rb, phase=0.0):
+    return unary_union([circle(*polar(cx, cy, r, phase + k * 360 / n), rb) for k in range(n)])
+
+
 # ---------- pictures ----------
-def ground(y, color="green", wob=12):
-    return L(blob([(-20, y), (140, y - wob), (300, y + wob * .6), (450, y - wob), (560, y), (560, 520), (-20, 520)]), color)
+def feather(cx, cy, r1, a0, a1, rr):
+    """Fan feather: wedge from the fan centre with a softly rounded outer end."""
+    return unary_union([soft(sector(cx, cy, 30, r1, a0, a1), rr), sector(cx, cy, 0, 90, a0, a1)])
 
 
 def turkey():
-    layers = [L(FRAME, "blue", cuts=[curve([(-10, 130), (140, 110), (300, 140), (550, 105)])]),
-              ground(430, "brown")]
-    cols = ["red", "orange", "yellow", "orange", "red"]
-    for a, c in zip((-72, -36, 0, 36, 72), cols):
-        r = math.radians(a)
-        cx, cy = 270 + 150 * math.sin(r), 275 - 150 * math.cos(r)
-        layers.append(L(ellipse(cx, cy, 46, 100, rot=a), c))
-    layers += [
-        L(ellipse(270, 372, 108, 100), "brown", cuts=[curve([(150, 385), (270, 360), (390, 385)])]),
-        L(circle(270, 240, 76), "brown"),
-    ]
-    ink = [circle(240, 224, 7), circle(300, 224, 7),
-           Polygon([(252, 262), (288, 262), (270, 296)]).buffer(2),
-           blob([(286, 296), (306, 298), (308, 326), (292, 332), (284, 314)]),
-           thick([(240, 466), (240, 486)], 5, smooth=False), thick([(300, 466), (300, 486)], 5, smooth=False)]
+    cx, cy = 270, 296            # fan centre
+    layers = [L(FRAME, "blue"),
+              L(soft(leaf_at(22, 70, 120, 74, 22, 8), 4), "orange"),
+              L(soft(leaf_at(518, 70, 120, 74, 158, 8), 4), "red"),
+              L(hill(448, 10), "green")]
+    n, a_start, span = 5, -190.0, 200.0
+    step = span / n
+    for i in range(n):
+        a0, a1 = a_start + i * step, a_start + (i + 1) * step
+        layers.append(L(feather(cx, cy, 236, a0, a1, 38), "red" if i % 2 == 0 else "orange"))
+    for i in range(n):
+        a0, a1 = a_start + i * step, a_start + (i + 1) * step
+        layers.append(L(feather(cx, cy, 148, a0, a1, 30), "orange" if i % 2 == 0 else "red"))
+    body = ellipse(270, 390, 112, 98)
+    wingL = P("M176 356 C128 362 108 422 138 464 C170 472 212 440 220 400 C224 374 206 354 176 356 Z")
+    layers += [L(body, "brown"), L(soft(wingL, 8), "orange"), L(soft(mirror(wingL), 8), "orange"),
+               L(circle(270, 306, 70), "brown")]
+    ink = [dot(246, 306, 7.5), dot(294, 306, 7.5),
+           soft(Polygon([(257, 322), (283, 322), (270, 342)]), 3),
+           soft(Polygon([(263, 336), (279, 336), (272, 362)]), 3).buffer(0)]
     return layers, ink
 
 
 def pumpkin():
-    layers = [L(FRAME, "blue", cuts=[curve([(-10, 140), (140, 120), (300, 150), (550, 115)])]),
-              L(circle(95, 85, 46), "yellow"),
-              ground(430, "green"),
-              L(ellipse(175, 320, 105, 125), "orange"), L(ellipse(365, 320, 105, 125), "orange"),
-              L(ellipse(270, 320, 105, 135), "orange"),
-              L(rrect(240, 118, 302, 205, 12), "brown"),
-              L(ellipse(358, 160, 66, 34, rot=-22), "green")]
-    ink = [thick([(270, 200), (270, 450)], 3), thick([(185, 210), (125, 330), (180, 440)], 3), thick([(355, 210), (415, 330), (360, 440)], 3),
-           ]
+    cx, cy = 226, 312
+    layers = [L(FRAME, "blue"),
+              L(circle(446, 82, 46), "yellow"),
+              L(hill(396, 16), "green")]
+    outer = ellipse(cx - 124, cy + 6, 92, 120, rot=-9)
+    mid = ellipse(cx - 64, cy, 88, 132, rot=-4)
+    ctr = ellipse(cx, cy - 2, 76, 138)
+    stem_g = soft(P(f"M{cx - 30} 182 C{cx - 28} 150 {cx - 22} 122 {cx - 10} 102 C{cx} 94 {cx + 20} 96 {cx + 28} 108 "
+                    f"C{cx + 28} 134 {cx + 32} 160 {cx + 30} 182 Z"), 4)
+    layers += [L(soft(leaf_at(cx - 10, 176, 160, 84, 206, 12), 4), "green"),
+               L(soft(leaf_at(cx + 10, 176, 160, 84, -26, 12), 4), "green"),
+               L(outer, "orange"), L(mirror(outer, cx), "orange"),
+               L(mid, "orange"), L(mirror(mid, cx), "orange"), L(ctr, "orange"),
+               L(stem_g, "brown"),
+               L(ellipse(458, 410, 58, 48), "orange")]
+    ink = [stem("M458 366 C458 354 462 348 470 344", 6)]
     return layers, ink
+
+
+def tangent_cut(pts, t, half=260, bow=0.0):
+    """Curved line across a swept tube at fraction t of its centre line (bowed along the tube)."""
+    cl = LineString(pts)
+    p = cl.interpolate(t, normalized=True)
+    q = cl.interpolate(min(1.0, t + .01), normalized=True)
+    p0 = cl.interpolate(max(0.0, t - .01), normalized=True)
+    dx, dy = q.x - p0.x, q.y - p0.y
+    n = math.hypot(dx, dy)
+    tx, ty = dx / n, dy / n
+    nx, ny = -ty, tx
+    out = []
+    for k in range(-26, 27):
+        sdist = half * k / 26
+        off = bow * (1 - (sdist / 100.0) ** 2)
+        out.append((p.x + nx * sdist + tx * off, p.y + ny * sdist + ty * off))
+    return LineString(out)
+
+
+BOW = 20
+
+
+def band_layers(shape, cl_pts, ts, colours):
+    """Split a swept shape into bands (perpendicular cuts at ts), one layer per band."""
+    edges = [0.0] + list(ts) + [1.0]
+    out = []
+    for i in range(len(edges) - 1):
+        lo, hi = edges[i], edges[i + 1]
+        a = tangent_cut(cl_pts, lo, bow=BOW) if lo > 0 else None
+        b = tangent_cut(cl_pts, hi, bow=BOW) if hi < 1 else None
+        cutter = box(-100, -100, 700, 700)
+        from shapely.ops import split
+        part = shape
+        if a is not None:
+            pieces = [p for p in split(shape, a).geoms]
+            part = max(pieces, key=lambda p: tangent_side(p, a, cl_pts[-1]))
+        if b is not None:
+            pieces = [p for p in split(part, b).geoms]
+            part = min(pieces, key=lambda p: tangent_side(p, b, cl_pts[-1]))
+        out.append(L(part, colours[i % len(colours)]))
+    return out
+
+
+def tangent_side(p, ln, ref):
+    """Signed side of polygon p's centroid relative to line ln, using ref (a far point) as positive."""
+    (x0, y0), (x1, y1) = list(ln.coords)[0], list(ln.coords)[-1]
+    def sd(x, y):
+        return (x1 - x0) * (y - y0) - (y1 - y0) * (x - x0)
+    c = p.centroid
+    return sd(c.x, c.y) * (1 if sd(*ref) > 0 else -1)
+
+
+def pear_shape(cx, cy, s=1.0):
+    return soft(tube([(cx, cy - 36 * s), (cx, cy + 24 * s)], [27 * s, 46 * s]), 5)
 
 
 def cornucopia():
-    path = [(190, 245, 98), (265, 295, 86), (340, 340, 66), (410, 372, 46), (465, 378, 30), (505, 350, 16)]
-    pts = []
-    for (x0, y0, r0), (x1, y1, r1) in zip(path, path[1:]):
-        for k in range(9):
-            t = k / 9
-            pts.append(circle(x0 + (x1 - x0) * t, y0 + (y1 - y0) * t, r0 + (r1 - r0) * t))
-    horn = unary_union(pts)
-    layers = [
-        L(FRAME, "yellow"),
-        L(horn, "brown", cuts=[LineString([(255, 140), (270, 280), (300, 460)]), LineString([(345, 200), (362, 330), (380, 460)])]),
-        L(circle(88, 232, 60), "red"),
-        L(circle(100, 110, 52), "red"),
-        L(ellipse(205, 150, 72, 60), "orange"),
-        L(ellipse(290, 112, 50, 32, rot=15), "green"),
-        L(ellipse(190, 46, 44, 26, rot=-8), "green"),
-        L(ellipse(60, 360, 52, 30, rot=25), "green"),
+    centre = [(224, 324), (276, 372), (348, 392), (432, 364), (478, 294), (478, 214), (450, 150), (418, 128)]
+    horn = soft(tube(centre, [86, 82, 72, 58, 46, 38, 32, 24]), 8)
+    layers = [L(FRAME, "yellow"), L(hill(446, 12), "green")]
+    layers += band_layers(horn, centre, (0.28, 0.5, 0.7), ["brown", "orange"])
+    layers += [
+        L(soft(leaf_at(212, 110, 150, 76, 8), 4), "green"),
+        L(pear_shape(238, 206, 1.05), "green"),
+        L(apple_shape(100, 238, 70), "red"),
+        L(circle(182, 322, 84), "orange"),
+        L(soft(leaf_at(14, 420, 140, 74, -18), 4), "green"),
     ]
-    ink = [thick([(205, 92), (210, 74)], 4, smooth=False), thick([(100, 60), (106, 42)], 4, smooth=False)]
+    ink = [stem("M100 192 C98 174 104 162 116 154"), stem("M238 162 C240 148 246 140 256 136"),
+           stem("M182 246 C182 230 188 222 198 218"),
+           S("M150 276 C124 306 124 352 150 380", 1.6), S("M214 276 C240 306 240 352 214 380", 1.6)]
     return layers, ink
+
+
+MAPLE_PROFILE = [(0, 236), (6, 184), (11, 204), (16, 150), (22, 124), (30, 150), (38, 180), (42, 160), (49, 200),
+                 (55, 210), (62, 168), (67, 188), (73, 132), (80, 108), (88, 122), (96, 156), (106, 188), (112, 204), (118, 172),
+                 (123, 188), (129, 138), (137, 86), (150, 62), (165, 56), (180, 54)]
+
+
+def maple_outline(cx, cy, sc=1.0):
+    """Five-lobed maple leaf from a hand-tuned polar profile (angle clockwise from up, radius), mirrored."""
+    right = [(cx + r * sc * math.sin(math.radians(a)), cy - r * sc * math.cos(math.radians(a))) for a, r in MAPLE_PROFILE]
+    left = [(2 * cx - x, y) for x, y in reversed(right[1:-1])]
+    return Polygon(right + left).buffer(0)
 
 
 def maple():
-    cx, cy = 270, 255
-    spec = [(-90, 185), (-45, 160), (-10, 112), (30, 135), (65, 108), (115, 108), (150, 135), (190, 112), (225, 160)]
-    pts = []
-    for a, r in spec:
-        pts.append((cx + r * math.cos(math.radians(a)), cy + r * math.sin(math.radians(a))))
-        n = a + 17
-        pts.append((cx + 78 * math.cos(math.radians(n)), cy + 78 * math.sin(math.radians(n))))
-    big = affinity.scale(Polygon(pts).buffer(8).buffer(-16).buffer(8), 1.25, 1.25, origin=(cx, cy))
-    layers = [
-        L(FRAME, "yellow"),
-        L(ellipse(105, 425, 100, 44, rot=-22), "green"),
-        L(ellipse(440, 430, 100, 44, rot=18), "orange"),
-        L(big, "red"),
-    ]
-    ink = [thick([(270, 255), (270, 475)], 9, smooth=False),
-           thick([(270, 255), (270, 50)], 4, smooth=False),
-           thick([(270, 255), (180, 165)], 4, smooth=False), thick([(270, 255), (360, 165)], 4, smooth=False),
-           thick([(270, 255), (185, 315)], 4, smooth=False), thick([(270, 255), (355, 315)], 4, smooth=False),
-           thick([(55, 445), (140, 418)], 4, smooth=False), thick([(400, 440), (480, 420)], 4, smooth=False)]
+    cx, cy, sc = 270, 262, 1.04
+    leaf = soft(maple_outline(cx, cy, sc), 5)
+    pv = (cx, cy + 18)
+
+    def wedge(a0, a1):
+        pts = [pv]
+        for k in range(0, 21):
+            a = math.radians(a0 + (a1 - a0) * k / 20)
+            pts.append((pv[0] + 700 * math.sin(a), pv[1] - 700 * math.cos(a)))
+        return Polygon(pts)
+
+    def part(a0, a1, colour):
+        return L(leaf.intersection(wedge(a0, a1)), colour)
+
+    layers = [L(FRAME, "blue"), L(circle(78, 80, 44), "yellow"), L(hill(452, 12), "green"),
+              part(-22, 22, "red"), part(22, 80, "orange"), part(80, 180, "yellow"),
+              part(180, 280, "yellow"), part(280, 338, "orange")]
+    base_y = cy + 54 * sc
+    ink = [stem(f"M{cx} {base_y - 14} C{cx} {base_y + 50} {cx + 2} {base_y + 100} {cx} {base_y + 160}", 8)]
+    # veins along the middle of each lobe, stopping short of the tips and of the notes
+    for ang in (0, 55, 112, -55, -112):
+        d = (math.sin(math.radians(ang)), -math.cos(math.radians(ang)))
+        ray = LineString([(pv[0] + d[0] * 52, pv[1] + d[1] * 52), (pv[0] + d[0] * 700, pv[1] + d[1] * 700)])
+        seg = ray.intersection(leaf)
+        seg = max(seg.geoms, key=lambda g: g.length) if hasattr(seg, "geoms") else seg
+        p0 = seg.interpolate(0.0, normalized=True)
+        p1 = seg.interpolate(0.62, normalized=True)
+        ink.append(LineString([(p0.x, p0.y), (p1.x, p1.y)]).buffer(OUTLINE / 2, quad_segs=6))
     return layers, ink
+
+
+def small_maple(cx, cy, sc, ang):
+    """A small maple leaf (the same outline as the big one) to fall through a scene."""
+    g = soft(maple_outline(cx, cy, sc), 4)
+    return rot(g, ang, (cx, cy))
 
 
 def acorn():
-    nut = blob([(165, 245), (375, 245), (385, 330), (345, 410), (270, 465), (195, 410), (155, 330)])
-    cap = unary_union([ellipse(270, 235, 128, 82), box(142, 235, 398, 262)])
-    layers = [
-        L(FRAME, "blue", cuts=[curve([(-10, 130), (140, 115), (300, 140), (550, 108)])]),
-        L(circle(455, 75, 44), "yellow"),
-        ground(450, "green"),
-        L(nut, "orange"),
-        L(cap, "brown", cuts=[curve([(130, 235), (270, 205), (410, 235)])]),
-        L(ellipse(105, 95, 80, 38, rot=-20), "green"),
-        L(ellipse(440, 205, 76, 36, rot=25), "green"),
-    ]
-    ink = [thick([(270, 155), (272, 120), (290, 100)], 12), thick([(60, 110), (125, 85)], 3, smooth=False),
-           thick([(405, 220), (460, 195)], 3, smooth=False)]
+    cap = soft(P("M120 280 C116 180 190 104 270 104 C350 104 424 180 420 280 C376 308 164 308 120 280 Z"), 6)
+    nut = soft(P("M142 268 C144 350 180 438 270 490 C360 438 396 350 398 268 Z"), 10)
+
+    def scallop_line(y, depth, x0=100, x1=440, nb=7):
+        w = (x1 - x0) / nb
+        pts = []
+        for k in range(nb):
+            for j in range(0, 11):
+                t = j / 10
+                x = x0 + w * (k + t)
+                pts.append((x, y + depth * math.sin(math.pi * t)))
+        return LineString(pts)
+
+    shine = rot(ellipse(232, 376, 25, 60), 10, (232, 376))
+    layers = [L(FRAME, "blue"),
+              L(circle(470, 74, 42), "yellow"),
+              L(hill(452, 12), "green"),
+              L(soft(leaf_at(20, 330, 112, 76, -20, 8), 4), "orange"),
+              L(soft(leaf_at(520, 352, 112, 76, 200, 8), 4), "orange"),
+              L(nut, "orange"),
+              L(shine.intersection(nut), "yellow"),
+              L(cap, "brown", cuts=[scallop_line(172, 16), scallop_line(238, 16)])]
+    ink = [stem("M270 108 C268 84 278 66 298 56", 11)]
     return layers, ink
+
+
+def apple_shape(cx, cy, r):
+    base = unary_union([circle(cx - r * .28, cy - r * .02, r * .76), circle(cx + r * .28, cy - r * .02, r * .76),
+                        circle(cx, cy + r * .14, r * .74)])
+    dent = ellipse(cx, cy - r * .84, r * .13, r * .09)
+    return soft(base.difference(dent), 5)
 
 
 def apple_basket():
-    layers = [
-        L(FRAME, "blue"),
-        ground(405, "green"),
-        L(circle(270, 175, 76), "yellow"),
-        L(circle(205, 245, 76), "red"),
-        L(circle(335, 245, 76), "red"),
-        L(Polygon([(95, 290), (445, 290), (410, 460), (130, 460)]).buffer(10).buffer(-10), "brown",
-          cuts=[LineString([(80, 348), (460, 348)]), LineString([(80, 404), (460, 404)])]),
-    ]
-    ink = [thick([(270, 100), (276, 70)], 5, smooth=False), thick([(205, 170), (211, 142)], 5, smooth=False),
-           thick([(335, 170), (341, 142)], 5, smooth=False)]
+    cx = 270
+    body = soft(P("M92 322 L448 322 C440 400 420 452 396 484 L144 484 C120 452 100 400 92 322 Z"), 10)
+    rim = rrect(62, 296, 478, 358, 26)
+    arch = ellipse(cx, 322, 210, 276).difference(ellipse(cx, 322, 150, 214)).intersection(box(0, 0, 540, 312))
+    layers = [L(FRAME, "blue"), L(hill(418, 12), "green"),
+              L(arch, "brown"),
+              L(apple_shape(cx, 252, 98), "green"),
+              L(apple_shape(172, 280, 86), "red"),
+              L(apple_shape(368, 280, 86), "red")]
+    top, bot = 358, 484
+    nrow, ncol = 2, 5
+
+    def xs(y):
+        f = (y - 322) / (484 - 322)
+        return 92 + 48 * f, 448 - 48 * f
+
+    for j in range(nrow):
+        y0 = top + (bot - top) * j / nrow
+        y1 = top + (bot - top) * (j + 1) / nrow
+        for i in range(ncol):
+            xa0, xb0 = xs(y0)
+            xa1, xb1 = xs(y1)
+            q = Polygon([(xa0 + (xb0 - xa0) * i / ncol, y0), (xa0 + (xb0 - xa0) * (i + 1) / ncol, y0),
+                         (xa1 + (xb1 - xa1) * (i + 1) / ncol, y1), (xa1 + (xb1 - xa1) * i / ncol, y1)])
+            layers.append(L(body.intersection(q.buffer(.4, join_style=2)), "yellow" if (i + j) % 2 else "brown"))
+    layers.append(L(rim, "brown"))
+    ink = [stem("M270 182 C268 166 274 154 284 146"), stem("M172 222 C170 206 176 194 186 186"),
+           stem("M368 222 C366 206 372 194 382 186")]
     return layers, ink
+
+
+def cloud(cx, cy, s=1.0):
+    parts = [circle(cx - 40 * s, cy + 6 * s, 30 * s), circle(cx, cy - 12 * s, 40 * s), circle(cx + 44 * s, cy + 4 * s, 32 * s),
+             rrect(cx - 72 * s, cy + 2 * s, cx + 76 * s, cy + 36 * s, 17 * s)]
+    return soft(unary_union(parts), 4)
+
+
+def rosette(cx, cy, r):
+    return unary_union([circle(cx, cy, r * .78), scallops(cx, cy, r * .66, 9, r * .3)])
 
 
 def pie():
-    cx, cy = 270, 250
-    layers = [L(FRAME, "red"), L(circle(cx, cy, 228), "brown"), L(circle(cx, cy, 150), "orange")]
-    for k in range(6):
-        if k % 2:
-            wedge = sector(cx, cy, 0, 150, k * 60 + 30, k * 60 + 90)
-            layers.append(L(wedge, "yellow"))
-    layers.append(L(circle(cx, cy, 62), "white"))
-    ink = []
-    for k in range(6):
-        a = math.radians(k * 60 + 30)
-        ink.append(thick([(cx + 62 * math.cos(a), cy + 62 * math.sin(a)), (cx + 228 * math.cos(a), cy + 228 * math.sin(a))], 4, smooth=False))
-    return layers, ink
+    # whole pie in a tin, three-quarter view: crimped crust ring, filling with a cream swirl, tin wall
+    cx, cy = 270, 226
+    rx, ry = 236, 128
+    n_b = 46
+    bumps = unary_union([circle(cx + rx * math.cos(2 * math.pi * k / n_b), cy + ry * math.sin(2 * math.pi * k / n_b), 11)
+                         for k in range(n_b)])
+    rim = unary_union([ellipse(cx, cy, rx, ry), bumps])
+    inner = ellipse(cx, cy, 176, 76)
+    base = ellipse(cx, cy + 92, 198, 104)
+    wall = unary_union([rim, base, Polygon([(cx - rx, cy), (cx - 198, cy + 92), (cx + 198, cy + 92), (cx + rx, cy)])])
+    wall = wall.difference(rim)
+    ring = rim.difference(inner)
+    layers = [L(FRAME, "blue"),
+              L(soft(leaf_at(22, 36, 112, 66, 10, 6), 4), "orange"), L(soft(leaf_at(518, 56, 112, 66, 170, 6), 4), "orange"),
+              L(soft(leaf_at(24, 466, 112, 66, -10, 6), 4), "orange"), L(soft(leaf_at(516, 456, 112, 66, 190, 6), 4), "orange"),
+              L(wall, "gray")]
+    for a0, a1 in ((225, 315), (315, 405), (405, 495), (495, 585)):
+        layers.append(L(ring.intersection(sector(cx, cy, 0, 700, a0, a1)), "brown"))
+    layers += [L(inner, "orange"),
+               L(rosette(cx, cy + 2, 60), "white")]
+    return layers, []
 
 
 def corn():
-    ear = ellipse(270, 235, 82, 185)
-    husk_l = Polygon(catmull([(270, 440), (150, 330), (140, 230), (200, 330), (270, 400)], closed=True, n=8)).buffer(0)
-    layers = [
-        L(FRAME, "blue", cuts=[curve([(-10, 120), (140, 105), (300, 130), (550, 100)])]),
-        L(circle(455, 80, 46), "orange"),
-        ground(440, "brown"),
-        L(ellipse(105, 300, 40, 150, rot=12), "green"),
-        L(ellipse(435, 300, 40, 150, rot=-12), "green"),
-        L(ear, "yellow", cuts=[curve([(150, 160), (270, 135), (390, 160)]), curve([(150, 260), (270, 235), (390, 260)]),
-                               curve([(150, 360), (270, 335), (390, 360)])]),
-        L(Polygon(catmull([(270, 470), (170, 400), (160, 270), (225, 380), (270, 420)], closed=True, n=8)).buffer(0), "green"),
-        L(Polygon(catmull([(270, 470), (370, 400), (380, 270), (315, 380), (270, 420)], closed=True, n=8)).buffer(0), "green"),
-    ]
-    ink = [thick([(270, 60), (270, 50)], 3, smooth=False)]
+    ear = P("M270 50 C338 50 368 138 368 232 C368 330 336 420 270 446 C204 420 172 330 172 232 C172 138 202 50 270 50 Z")
+    layers = [L(FRAME, "blue"), L(circle(454, 78, 44), "yellow"), L(hill(436, 14), "brown")]
+    # back husks (tall leaves behind the ear)
+    hl = P("M262 462 C148 446 84 336 100 190 C104 148 138 140 152 176 C170 238 214 300 270 330 Z")
+    layers += [L(soft(hl, 6), "green"), L(soft(mirror(hl), 6), "green")]
+    # kernels: a rounded tip cap and three columns of rows, bowed like a cylinder
+    def row_y(y0, x):
+        return y0 + 9 * (1 - ((x - 270) / 100.0) ** 2)
+
+    def band(y0, y1, x0, x1, n=20):
+        top = [(x0 + (x1 - x0) * k / n, row_y(y0, x0 + (x1 - x0) * k / n)) for k in range(n + 1)]
+        bot = [(x1 - (x1 - x0) * k / n, row_y(y1, x1 - (x1 - x0) * k / n)) for k in range(n + 1)]
+        return Polygon(top + bot)
+
+    rows = [118, 178, 238]
+    cols = [(0, 239), (239, 301), (301, 540)]
+    tip = ear.intersection(Polygon([(0, 0), (540, 0)] + [(540 - 540 * k / 20, row_y(rows[0], 540 - 540 * k / 20)) for k in range(21)]))
+    layers.append(L(tip, "yellow"))
+    # front husks: their top edge decides where the last row of kernels ends
+    fl = P("M270 484 C176 478 106 420 112 332 C114 304 120 292 126 288 C170 304 236 314 270 338 Z")
+    front = [soft(fl, 6), soft(mirror(fl), 6)]
+    last_bottom = unary_union(front)
+    for ri, y0 in enumerate(rows):
+        y1 = rows[ri + 1] if ri + 1 < len(rows) else 420
+        for ci, (x0, x1) in enumerate(cols):
+            cell = ear.intersection(band(y0, y1, x0, x1))
+            if ri + 1 == len(rows):
+                cell = cell.difference(last_bottom)
+            layers.append(L(cell, "yellow" if (ri + ci) % 2 == 0 else "orange"))
+    layers += [L(front[0], "green"), L(front[1], "green")]
+    ink = [stem("M270 52 C270 40 274 32 282 26", 6)]
     return layers, ink
 
 
 def sunflower():
-    cx, cy = 270, 215
-    layers = [L(FRAME, "blue"),
-              ground(372, "green", 8),
-              L(rrect(242, 280, 298, 480, 8), "green")]
-    for k in range(10):
-        a = k * 36 + 18
-        r = math.radians(a)
-        layers.append(L(ellipse(cx + 128 * math.sin(r), cy - 128 * math.cos(r), 42, 80, rot=a), "orange" if k % 2 else "yellow"))
-    layers += [L(ellipse(150, 440, 90, 34, rot=-18), "green"), L(ellipse(390, 440, 90, 34, rot=18), "green"),
-               L(circle(cx, cy, 84), "brown")]
-    return layers, []
+    cx, cy = 270, 212
+    layers = [L(FRAME, "blue"), L(hill(434, 12), "green")]
+    lf = P("M268 456 C196 384 96 392 60 440 C94 498 206 508 268 456 Z")
+    layers += [L(soft(lf, 5), "green"), L(soft(mirror(lf), 5), "green")]
+    layers.append(L(soft(P("M240 300 C244 360 238 430 228 500 L312 500 C302 430 296 360 300 300 Z"), 4), "green"))
+    n = 12
+    petal = P("M0 -60 C -58 -92 -64 -176 0 -206 C 64 -176 58 -92 0 -60 Z")
+    for k in range(n):
+        g = mv(rot(petal, k * 360 / n + 15, (0, 0)), cx, cy)
+        layers.append(L(g, "yellow" if k % 2 == 0 else "orange"))
+    layers.append(L(circle(cx, cy, 94), "brown"))
+    # seed dots round the edge of the disc (tiny, same ink as the eyes and stems)
+    ink = [circle(cx + 80 * math.cos(math.radians(k * 15)), cy + 80 * math.sin(math.radians(k * 15)), 2.6) for k in range(24)]
+    return layers, ink
 
 
 PICTURES = [
