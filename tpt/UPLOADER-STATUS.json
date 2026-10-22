@@ -1,16 +1,16 @@
 {
-  "ran_at": "2026-10-22T00:30:12.633Z",
-  "published": [],
-  "failed": [
+  "ran_at": "2026-10-22T13:16:30.844Z",
+  "published": [
     {
       "item": "027-thanksgiving-color-by-note",
-      "error": "still on the form 2 minutes after Submit; check My Products on TpT before retrying, it may have been created. TpT says: Seasonal Titles Help us create the best search experience for educators by only naming a holiday or season in your product titles when the resource is specific to that holiday or season. If your resource covers multiple holidays or seasons, we recommend using the appropriate subj"
+      "url": "https://www.teacherspayteachers.com/Product/Fall-Color-by-Note-Rhythm-Treble-Bass-Clef-Worksheets-Answer-Keys-18040698"
     }
   ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
     "027-thanksgiving-color-by-note"
   ],
-  "ok": false
+  "ok": true
 }
