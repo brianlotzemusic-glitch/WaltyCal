@@ -212,49 +212,53 @@ def pine(cx, top, base, hw, tiers=3):
 
 
 def snowman():
-    layers = [L(FRAME, "blue"), L(circle(92, 90, 46), "yellow"), L(hill(444, 12), "white")]
-    layers += [L(circle(270, 394, 94), "white"), L(circle(270, 272, 78), "white"), L(circle(270, 150, 70), "white")]
-    band = rot(rrect(196, 198, 344, 244, 22), -3, (270, 221))
-    tail = rot(rrect(296, 230, 344, 306, 14), 8, (320, 230))
+    layers = [L(FRAME, "blue"), L(circle(84, 96, 44), "yellow"), L(hill(436, 10), "white")]
+    layers += [L(circle(270, 432, 92), "white"), L(circle(270, 326, 80), "white"), L(circle(270, 190, 66), "white")]
+    # scarf: a band wrapped round the neck (curving with the body) plus a dangling tail
+    band = P("M196 228 C226 256 314 256 344 228 L350 268 C318 298 222 298 190 268 Z")
+    tail = rot(rrect(298, 256, 354, 358, 14), -6, (326, 256))
     layers.append(L(soft(unary_union([band, tail]), 4), "red"))
-    hat = unary_union([rrect(216, 12, 324, 92, 12), rrect(184, 78, 356, 102, 10)])
-    layers.append(L(soft(hat, 4), "black"))
-    ink = [stem("M198 266 C160 262 130 242 104 206", 6), stem("M140 244 C132 232 130 222 134 210", 4.6), stem("M122 224 C112 224 104 222 96 214", 4.6),
-           stem("M342 266 C380 262 410 242 436 206", 6), stem("M400 244 C408 232 410 222 406 210", 4.6), stem("M418 224 C428 224 436 222 444 214", 4.6),
-           dot(246, 158, 6.5), dot(294, 158, 6.5),
-           soft(Polygon([(268, 170), (268, 184), (330, 180)]), 3)]
-    ink += [dot(270, y, 6.5) for y in (276, 314)]
-    ink += flakes([(52, 200), (160, 120), (180, 330), (60, 330), (480, 110), (470, 230), (410, 320), (500, 340), (430, 40), (150, 30)])
+    layers.append(L(rrect(214, 4, 326, 126, 10), "black"))
+    layers.append(L(rrect(202, 70, 338, 126, 8), "red"))
+    ink = [stem("M194 314 C158 310 126 290 98 250", 7), stem("M136 292 C128 280 126 270 130 258", 5), stem("M116 270 C106 270 98 268 90 260", 5),
+           stem("M346 314 C382 310 414 290 442 250", 7), stem("M404 292 C412 280 414 270 410 258", 5), stem("M424 270 C434 270 442 268 450 260", 5),
+           dot(250, 176, 6.5), dot(290, 176, 6.5),
+           soft(Polygon([(266, 192), (266, 208), (330, 202)]), 3)]
+    ink += [dot(258, y, 6.5) for y in (330, 372, 414)]
+    ink += flakes([(44, 200), (150, 160), (170, 400), (50, 370), (490, 120), (480, 250), (420, 390), (500, 410), (440, 50), (140, 40)])
     return layers, ink
 
 
 def mitten_parts():
-    """One mitten in local coordinates: cuff top edge at y = 0, thumb on the right."""
-    palm = P("M-78 6 L-78 -110 C-78 -178 -44 -204 0 -204 C44 -204 78 -178 78 -110 L78 6 Z")
-    thumb = rot(ellipse(92, -62, 28, 58), -48, (92, -62))
-    body = soft(unary_union([palm, thumb]), 10)
-    cuff = rrect(-84, 0, 84, 64, 14)
-    badge = circle(0, -104, 40)
-    return body, cuff, badge
+    """One mitten in local coordinates: cuff top edge at y = 0, short thumb on the right."""
+    palm = P("M-72 8 L-76 -112 C-78 -170 -44 -196 0 -196 C44 -196 78 -170 76 -112 L72 8 Z")
+    thumb = rot(ellipse(90, -78, 25, 44), -34, (90, -78))
+    body = soft(unary_union([palm, thumb]), 9)
+    cuff = rrect(-80, 0, 80, 62, 14)
+    badge = star_shape(0, -100, 58, 33)
+    ribs = unary_union([stem(f"M{x} 12 L{x} 50", 1.6) for x in (-64, -52, 52, 64)])
+    return body, cuff, badge, ribs
 
 
 def place_mitten(g, side):
-    cx = 172 if side < 0 else 368
+    cx = 158 if side < 0 else 382
     if side < 0:
         g = affinity.scale(g, -1, 1, origin=(0, 0))
-    g = affinity.scale(g, 1.1, 1.1, origin=(0, 0))
-    g = mv(g, 0, 370)
-    g = rot(g, 7 * side, (0, 370))
+    g = affinity.scale(g, 1.22, 1.22, origin=(0, 0))
+    g = mv(g, 0, 400)
+    g = rot(g, 6 * side, (0, 400))
     return mv(g, cx, 0)
 
 
 def mittens():
-    layers = [L(FRAME, "blue"), L(hill(430, 12), "white")]
+    layers = [L(FRAME, "blue"), L(hill(450, 12), "white")]
+    ink = []
     for side, col in ((-1, "red"), (1, "green")):
-        body, cuff, badge = mitten_parts()
+        body, cuff, badge, ribs = mitten_parts()
         for g, c in ((body, col), (cuff, "white"), (badge, "yellow")):
             layers.append(L(place_mitten(g, side), c))
-    ink = flakes([(270, 70), (60, 60), (480, 60), (270, 200), (40, 190), (500, 200), (270, 130), (110, 30), (430, 30), (270, 300), (270, 380)])
+        ink.append(place_mitten(ribs, side))
+    ink += flakes([(270, 70), (60, 60), (480, 60), (270, 190), (40, 150), (500, 150), (110, 30), (430, 30), (270, 120)])
     return layers, ink
 
 
@@ -358,48 +362,49 @@ def cardinal():
 
 
 def gingerbread():
-    layers = [L(FRAME, "blue"), L(hill(436, 12), "white")]
-    layers.append(L(rrect(80, 258, 460, 432, 4), "brown"))
-    layers.append(L(soft(P("M40 296 L270 76 L500 296 Z"), 6), "red"))
+    layers = [L(FRAME, "blue"), L(hill(440, 10), "white")]
+    layers.append(L(rrect(84, 262, 456, 434, 4), "brown"))
+    layers.append(L(rrect(376, 112, 432, 270, 6), "brown"))
+    layers.append(L(rrect(366, 82, 442, 134, 14), "white"))
+    layers.append(L(soft(P("M44 300 L270 86 L496 300 Z"), 6), "red"))
     n = 9
-    drip = unary_union([rrect(48, 240, 492, 288, 10)] + [circle(48 + 444 * (k + .5) / n, 288, 24) for k in range(n)])
+    drip = unary_union([rrect(52, 250, 488, 296, 10)] + [circle(52 + 436 * (k + .5) / n, 296, 24) for k in range(n)])
     layers.append(L(drip, "white"))
-    for (x, y) in ((196, 214), (344, 214)):
-        layers.append(L(circle(x, y, 34), "green"))
-    layers.append(L(unary_union([box(242, 364, 298, 432), ellipse(270, 364, 28, 28)]), "green"))
-    layers += [L(rrect(130, 332, 196, 398, 12), "white"), L(rrect(344, 332, 410, 398, 12), "white")]
-    ink = [dot(286, 400, 3.6)]
-    ink += flakes([(180, 50), (360, 50), (270, 24), (80, 130), (460, 130), (36, 200), (504, 200), (150, 470), (390, 470), (40, 60), (500, 60)])
+    for (x, y) in ((196, 236), (270, 166), (344, 236)):
+        layers.append(L(circle(x, y, 33), "green"))
+    layers.append(L(unary_union([box(242, 366, 298, 434), ellipse(270, 366, 28, 28)]), "green"))
+    layers += [L(rrect(132, 338, 200, 404, 12), "white"), L(rrect(340, 338, 408, 404, 12), "white")]
+    ink = flakes([(180, 50), (360, 40), (270, 24), (80, 130), (460, 150), (36, 200), (504, 220), (150, 474), (390, 474), (40, 60), (500, 60)])
     return layers, ink
 
 
 def ornament():
-    cx, cy, R = 270, 306, 160
+    cx, cy, R = 270, 300, 164
     layers = [L(FRAME, "blue")]
     ball = circle(cx, cy, R)
     layers.append(L(ball, "white"))
-    layers.append(L(ball.intersection(ellipse(cx, cy, 112, R + 4)), "red"))
-    layers.append(L(ball.intersection(ellipse(cx, cy, 50, R + 4)), "green"))
-    layers.append(L(rrect(218, 120, 322, 174, 12), "yellow"))
-    bough = unary_union([box(-20, -20, 560, 52)] + [circle(-10 + 38 * k, 52, 24) for k in range(16)])
-    layers.append(L(soft(bough, 4), "green"))
-    ink = [stem("M270 120 C270 104 270 92 270 80", 3.6)]
-    ink += flakes([(50, 140), (480, 140), (60, 270), (480, 270), (60, 400), (484, 400), (110, 470), (430, 470), (40, 200), (500, 200)])
+    layers.append(L(ball.intersection(ellipse(cx, cy, 116, R + 4)), "red"))
+    layers.append(L(ball.intersection(ellipse(cx, cy, 52, R + 4)), "green"))
+    layers.append(L(star_shape(cx, cy + 6, 78, 42), "yellow"))
+    layers.append(L(rrect(216, 112, 324, 170, 12), "yellow"))
+    ink = [circle(270, 88, 15).difference(circle(270, 88, 6)), stem("M270 100 L270 112", 4)]
+    ink += flakes([(50, 100), (490, 100), (60, 270), (480, 270), (60, 400), (484, 400), (110, 470), (430, 470), (40, 190), (500, 190)])
     return layers, ink
 
 
 def gift():
     layers = [L(FRAME, "blue"), L(hill(452, 12), "white")]
     layers.append(L(rrect(88, 340, 452, 464, 6), "red"))
+    layers.append(L(rrect(150, 190, 390, 306, 10), "green"))
     layers.append(L(rrect(72, 288, 468, 344, 10), "red"))
     layers.append(L(rrect(236, 288, 304, 464, 0), "yellow"))
-    layers.append(L(rrect(150, 182, 390, 290, 10), "green"))
-    layers.append(L(rrect(236, 182, 304, 290, 0), "yellow"))
-    loop = soft(P("M0 0 C-26 -60 -78 -104 -128 -84 C-168 -66 -140 -6 -74 6 C-40 12 -14 8 0 0 Z"), 5)
-    for g in (mv(loop, 270, 184), mv(mirror(loop, 0), 270, 184)):
-        layers.append(L(g, "yellow"))
-    layers.append(L(circle(270, 184, 31), "yellow"))
-    ink = flakes([(60, 80), (140, 150), (60, 260), (480, 90), (410, 150), (490, 250), (270, 60), (90, 400), (460, 410)])
+    layers.append(L(rrect(236, 190, 304, 290, 0), "yellow"))
+    loop = soft(ellipse(-58, -26, 64, 42, -22), 4)
+    for g in (loop, mirror(loop, 0)):
+        layers.append(L(mv(g, 270, 186), "yellow"))
+    layers.append(L(ellipse(270, 188, 36, 30), "yellow"))
+    ink = [stem("M236 160 C214 138 180 136 160 148", 1.6), stem("M304 160 C326 138 360 136 380 148", 1.6)]
+    ink += flakes([(60, 80), (140, 60), (60, 230), (480, 90), (420, 50), (490, 230), (270, 40), (44, 400), (500, 410)])
     return layers, ink
 
 

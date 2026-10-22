@@ -335,9 +335,9 @@ def answer_page(sh, watermark=False):
 
 
 def cover_art(sheet):
-    """The snowman scene filled in the accent and its tints (one-accent rule); the snowman and
-    snow stay as line art with their notes, so the cover still shows the activity."""
-    tone = {"blue": "accent_xlt", "yellow": "accent_lt", "red": "accent", "black": "accent_dk"}
+    """The snowflake filled in the accent and its tints (one-accent rule); the flake arms
+    stay as line art with their notes, so the cover still shows the activity."""
+    tone = {"purple": "accent_dk", "blue": "accent_lt", "yellow": "accent", "red": "accent", "black": "accent_dk"}
     out = {}
     for r in sheet.regions:
         if r["color"] in tone:
@@ -346,7 +346,7 @@ def cover_art(sheet):
 
 
 def cover_page(sheets):
-    pump = next(s for s in sheets if s.level == "A" and s.slug == "snowman")
+    pump = next(s for s in sheets if s.level == "A" and s.slug == "snowflake")
     return (f'<section class="page cover"><div class="store">{BRAND}</div>'
             f'<div style="width:6.2in">{picture_svg(pump, fills=cover_art(pump), stroke=2.2)}</div>'
             f'<div class="ctitle"><div class="a">WINTER</div><div class="b">COLOR BY NOTE</div>'
@@ -492,7 +492,7 @@ def sq_doc(body):
 
 
 def cover_square(sheets):
-    pump = next(s for s in sheets if s.level == "A" and s.slug == "snowman")
+    pump = next(s for s in sheets if s.level == "A" and s.slug == "snowflake")
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div style="width:610px;margin-top:22px">{picture_svg(pump, fills=cover_art(pump), stroke=2.4)}</div>'
