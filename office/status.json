@@ -1,47 +1,47 @@
 {
- "updated_at": "2026-10-22T20:00:00Z",
- "next_run_at": "2026-10-22T22:12:00Z",
+ "updated_at": "2026-10-23T01:00:00Z",
+ "next_run_at": "2026-10-23T10:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 36,
- "bundles_built": 47,
- "uploads_pending": 9,
+ "bundles_built": 49,
+ "uploads_pending": 10,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "Owner 22 Oct: no hand work. Built automatic free-item publish and automatic file replacement on live TpT products (027 marked). First Mac nightly records the edit form, the next swaps 027 files. Etsy AI box stays a manual tick (no API field). Next shift 6:12pm ET.",
-   "since": "2026-10-22T20:00:00Z"
+   "task": "6:12pm shift done: Etsy 030 mushroom clipart live (36 active after the cross-stitch deactivation); TpT 029 Winter Color by Note released. Owner to tick the AI box on Etsy 4600901568 and 4601336420 (no API field). Next shift 6:12am ET.",
+   "since": "2026-10-23T01:00:00Z"
   },
   {
    "id": "researcher",
    "name": "Researcher",
    "state": "idle",
-   "task": "Oct 10 refresh: non-cut printables moved up; AI-free items first (Recraft ~$2.73 left).",
-   "since": "2026-10-10T23:30:00Z"
+   "task": "Oct 22: Etsy image-requirements read attempted (pages blocked); report in reports/. Checklist applied to new listings.",
+   "since": "2026-10-23T01:00:00Z"
   },
   {
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Redrew the nine Fall Color by Note pictures after the owner said they looked bad; rebuilt the free sampler. Next: Winter Color by Note, DMP1 bundle, an Etsy printable.",
-   "since": "2026-10-22T18:00:00Z"
+   "task": "Built TpT 029 Winter Color by Note (Opus attempt 3 for two pictures) and Etsy 030 mushroom clipart. Next: DMP1 bundle, winter pack, Sonic Time Capsule, an Etsy printable.",
+   "since": "2026-10-23T01:00:00Z"
   },
   {
    "id": "qa",
    "name": "QA",
    "state": "idle",
-   "task": "Approved the redrawn 027/028 art in round 4 (rounds 1-3 rejected on art quality).",
-   "since": "2026-10-22T18:00:00Z"
+   "task": "Approved TpT 029 (round 3) and Etsy 030 (round 2).",
+   "since": "2026-10-23T01:00:00Z"
   },
   {
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Etsy 4600901568 (Bee & Honeycomb Coloring Pages, $3.99) live; Etsy reports 36 active. TpT 027/028 wait for the Mac nightly (028 is a free item).",
-   "since": "2026-10-22T14:30:00Z"
+   "task": "Etsy 4601336420 (Mushroom Clipart, $3.49) live; Etsy reports 36 active. TpT 027 file swap, 028 free sampler and 029 wait for the Mac nightly.",
+   "since": "2026-10-23T01:00:00Z"
   },
   {
    "id": "analyst",
@@ -80,12 +80,22 @@
   }
  ],
  "queue": [
-  "[tpt] Winter / Christmas Color by Note",
-  "[tpt] DMP1 Units 1-6 bundle; winter pack; [tool] TpT stats in the Mac nightly",
+  "[tpt] DMP1 Units 1-6 bundle; winter pack (003, 005, 006, 029)",
   "[dmp] DMP2 Sonic Time Capsule; then the DMP2 bundle",
-  "Etsy: next printable (mushroom clipart ~$0.55 AI, birdwatching silhouettes)"
+  "[tool] TpT stats in the Mac nightly",
+  "Etsy: next non-pattern printable or clipart (birdwatching silhouettes)"
  ],
  "feed": [
+  {
+   "t": "2026-10-23T01:00:00Z",
+   "who": "lister",
+   "msg": "Published Mushroom Clipart set (Etsy 4601336420, $3.49). 36 active."
+  },
+  {
+   "t": "2026-10-23T01:00:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 029 Winter Color by Note ($3.75); released."
+  },
   {
    "t": "2026-10-22T18:00:00Z",
    "who": "qa",
@@ -235,16 +245,6 @@
    "t": "2026-10-15T23:09:24Z",
    "who": "lister",
    "msg": "TpT 012 and 013 live. 014 Billboard submit failed; nightly paused until the owner checks TpT."
-  },
-  {
-   "t": "2026-10-15T23:09:24Z",
-   "who": "qa",
-   "msg": "Approved TpT 015 DMP2 Sample Flipping ($12) in round 1; owner released it."
-  },
-  {
-   "t": "2026-10-15T14:30:00Z",
-   "who": "qa",
-   "msg": "Approved TpT 014 DMP2 Billboard Top 10 ($12) in round 2. Held for the owner's OK on two questions."
   }
  ],
  "venture_gate": {
