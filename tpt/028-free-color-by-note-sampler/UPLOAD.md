@@ -39,9 +39,10 @@ Designed with the help of digital and AI tools, and checked by hand.
 
 1, 2, 3, 4 (TpT allows four; the description says grades 1–5).
 
-## 4. Subjects
+## 4. Subjects and tags
 
-- Music
+- Subject: Music
+- Tags (tpt.json): Autumn (the pictures are sunflower, acorn and apple basket; Autumn is on TpT's proven tag list and satisfies the 1-6 tag gate)
 
 ## 5. Resource type
 
@@ -65,4 +66,4 @@ Free. Preview PDF: the three worksheets (levels A, B, C) and the answer-key page
 ## 9. Before you click publish
 
 - Do not write a `release` file until the Free-checkbox question below is settled.
-- Open owner questions: (1) Free checkbox in tools/tpt.js (above). (2) Page 5 links 001 by its live URL, but 027 Thanksgiving has no TpT URL yet (its upload failed on 21 Oct: TpT's "Seasonal Titles" notice), so page 5 links the store page for it. Once 027 is live, add its product URL to gen.py (a `URL_027` replacing the store link in `fullset_page`), rebuild, and re-upload this file. (3) Logo beside HUDSON BEAT (see tpt/STYLE.md). (4) Please check the three keys by eye. (5) Tags: none set; add Music-friendly tags on the form if TpT offers them (no seasonal tag, the pictures are year-round).
+- Open owner questions: (1) Free checkbox in tools/tpt.js (above). (2) Page 5 links 001 by its live URL, but 027 Thanksgiving has no TpT URL yet (its upload failed on 21 Oct: TpT's "Seasonal Titles" notice), so page 5 links the store page for it. Once 027 is live, add its product URL to gen.py (a `URL_027` replacing the store link in `fullset_page`), rebuild, and re-upload this file. (3) Logo beside HUDSON BEAT (see tpt/STYLE.md). (4) Please check the three keys by eye. (5) Tags: tpt.json has ["Autumn"] (needed for the 1-6 tag gate); add Music-friendly tags on the form if TpT offers them.

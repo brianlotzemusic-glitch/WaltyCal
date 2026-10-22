@@ -3,10 +3,21 @@
   "license_price": "0.00",
   "free": true,
   "tax_code": "Other Digital Goods - No Physical Media",
-  "grades": ["1st-grade", "2nd-grade", "3rd-grade", "4th-grade"],
-  "subjects": ["Music"],
-  "tags": [],
-  "formats": ["PDF"],
+  "grades": [
+    "1st-grade",
+    "2nd-grade",
+    "3rd-grade",
+    "4th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
   "pages": 5,
   "answer_key": "Included",
   "files": {
