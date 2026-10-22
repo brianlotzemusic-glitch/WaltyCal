@@ -1,0 +1,1 @@
+2026-10-22 released by Manager (QA round 1 rejected on tags only; fix verified by Manager: tags [Autumn], gate passes; owner standing order 'always release'). NOTE: nightly uploader cannot tick TpT's Free Resource checkbox; owner uploads by hand or tools/tpt.js is extended.
