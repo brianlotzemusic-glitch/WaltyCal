@@ -28,3 +28,6 @@ Each prompt = base + ` Subject: ` + the subject below. Original designs only: no
 | 10 Toadstools with oak leaves | two red spotted toadstools, one tall and one small, with two green oak leaves and two brown acorns tucked at their base, arranged as a compact group | #3 of 4 (flash) |
 | 11 Honey fungus cluster | a tight cluster of five honey fungus mushrooms of different sizes, honey-yellow and amber caps with tiny dark scales at their centres, slim cream stems with rings, joined at the base | #3 of 4 (flash) |
 | 12 Parasol mushroom | a single tall parasol mushroom, a wide umbrella-shaped cap in cream with warm brown shaggy scales and a brown centre knob, a long slender stem with a double ring, a bulbous base | #4 of 4 (flash) |
+
+## Round 2 (22 Oct 2026, QA fixes)
+Designs 01 and 12 re-rolled with cheap recipe (flash n4 + removebg + upscale, $0.042 each plus one wasted style-less n4 for 12 at $0.028 = about $0.11 total; balance 1,268 -> ~1,270 credits). 01: prompt asked for a swollen cream bulb base wrapped in white scaly warts (volva); kept draft #4, two floating ornaments removed from its mask. 12: plain stem and small plain base, kept draft #2 of the second set (fern tufts at the foot). Listing image 5 re-laid out; README cut to formats, sizes and software; tag "foraging clipart" -> "mushroom art".

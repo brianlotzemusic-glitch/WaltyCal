@@ -58,7 +58,7 @@ const pages = {
    .badge{position:absolute;z-index:9;right:40px;bottom:36px;width:230px;height:230px;border-radius:50%;background:${BERRY};color:${CREAM};display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.45);border:7px solid ${GOLD};transform:rotate(-8deg)}
    .badge b{font-family:Fr;font-weight:900;font-size:112px;line-height:.85}.badge span{font-size:28px;font-weight:800;letter-spacing:3px}</style>
    ${flakes(70, 7)}
-   ${img(png(slug(1)), 500, 235, 520, 0, 2, 'filter:drop-shadow(0 14px 20px rgba(0,0,0,.5))')}
+   ${img(png(slug(1)), 520, 225, 470, 0, 2, 'filter:drop-shadow(0 14px 20px rgba(0,0,0,.5))')}
    ${img(png(slug(3)), 40, 300, 400, -4, 3, 'filter:drop-shadow(0 12px 16px rgba(0,0,0,.45))')}
    ${img(png(slug(8)), 1090, 280, 420, 4, 3, 'filter:drop-shadow(0 12px 16px rgba(0,0,0,.45))')}
    ${img(png(slug(2)), 120, 740, 340, -3, 4, 'filter:drop-shadow(0 10px 14px rgba(0,0,0,.45))')}
@@ -84,8 +84,8 @@ const pages = {
    li{font-size:29px;margin:0 0 20px;line-height:1.25;padding-left:44px;position:relative;font-weight:700}
    li::before{content:'';position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:50%;background:${PINE}}
    li b{color:${BERRY}}</style>
-   ${img(png(slug(1)), 250, 150, 820, -3, 2, 'filter:drop-shadow(0 12px 16px rgba(44,27,54,.35))')}
-   ${img(png(slug(3)), 40, 800, 260, -8, 3, 'filter:drop-shadow(0 10px 14px rgba(44,27,54,.35))')}
+   ${img(png(slug(1)), 110, 150, 540, -3, 2, 'filter:drop-shadow(0 12px 16px rgba(44,27,54,.35))')}
+   ${img(png(slug(3)), 860, 770, 330, -6, 3, 'filter:drop-shadow(0 10px 14px rgba(44,27,54,.35))')}
    <h1>What you<br><em>download</em></h1>
    <ul><li><b>12 PNG files,</b> transparent background, 300 dpi</li>
    <li><b>3600 px</b> on the longest side (12 in)</li>

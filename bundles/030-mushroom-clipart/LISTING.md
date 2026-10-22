@@ -40,7 +40,7 @@ No physical item will be shipped. The files are available right after purchase i
 Designed with the help of digital and AI tools, and checked by hand.
 
 **Tags (13)**
-mushroom clipart, mushroom png, mushroom svg, toadstool clipart, fly agaric, cottagecore png, forest clipart, fungi clipart, sublimation designs, commercial use png, woodland clipart, foraging clipart, mushroom sublimation
+mushroom clipart, mushroom png, mushroom svg, toadstool clipart, fly agaric, cottagecore png, forest clipart, fungi clipart, sublimation designs, commercial use png, woodland clipart, mushroom art, mushroom sublimation
 
 **Photos (in order)**
 1. `listing-images/1-all-designs.png` — flat, accurate preview: all 12 real PNGs, numbered and named, on white

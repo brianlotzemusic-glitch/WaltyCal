@@ -21,24 +21,16 @@ NOTE
   These are decorative illustrations, not identification pictures. Never eat
   a wild mushroom based on an image.
 
-USING THE PNG FILES
-  The background is transparent, so the designs sit cleanly on any color.
-  At 12 in they are big enough for adult tees, sweatshirts and tote bags;
-  scale them down for mugs, tumblers, cards, tags and stickers.
-  Sublimation: print mirrored onto sublimation paper and press onto white
-  or light polyester (or a polyester-coated blank) as your paper and
-  blank instructions say.
-  Print Then Cut (Cricut and similar): upload the PNG, keep it as a
-  print-then-cut image, and size it within your machine's printable area.
-  Works in Canva, Cricut Design Space, Silhouette Studio, Procreate
-  and most other design and photo apps.
+FILE FORMATS AND SIZES
+  PNG: full color, transparent background, 300 dpi, 3600 px on the
+       longest side (12 in at 300 dpi)
+  SVG: one-color line art, single layer, one path per design, scalable
+       to any size. Not designed as vinyl cut files: some lines are fine.
 
-USING THE SVG FILES
-  Single-layer line-art versions of the same designs, in one color.
-  Use them for one-color prints, stamps, engraving-style art, embroidery
-  templates, coloring, or to recolor in any vector app.
-  They are NOT designed as vinyl cut files: some lines are fine and
-  close together, so cut them only at a large size, or use the PNGs.
+COMPATIBLE SOFTWARE
+  Canva, Cricut Design Space, Silhouette Studio, Procreate, Adobe
+  Photoshop, Adobe Illustrator, Inkscape, Affinity Designer and most
+  other design and photo apps.
 
 LICENSE (personal and small-business use)
   You may:

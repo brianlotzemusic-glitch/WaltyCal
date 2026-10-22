@@ -35,7 +35,12 @@ HALO_OK = {
     "07-amethyst-deceiver": [((1330, 1300, 1380, 1325), "a small pale highlight on a cap, outlined in plum"),
                              ((1345, 3300, 1380, 3330), "a pale pebble or stem highlight at the base")],
     "11-honey-fungus": [((180, 1960, 2800, 2900), "the two pale sage fern fronds beside the cluster: solid light-green art, no paper fringe (looked at 100% on dark)")],
-    "12-parasol": [((840, 3000, 885, 3020), "a pale highlight on the stem ring, outlined in plum")],
+    "12-parasol": [((600, 2700, 1100, 3200), "pale cream highlight strips on the lower stem, outlined in plum (looked at 100% on dark)"),
+                 ((1000, 3300, 1060, 3360), "pale highlight at the stem foot")],
+    "01-fly-agaric": [((0, 0, 2619, 1000), "the white warts on the red cap, outlined in plum"),
+                      ((1450, 1250, 1750, 1700), "the white skirt ring of the stem"),
+                      ((0, 1000, 2619, 2400), "the cream cap rim, white gills and pale stem edge (looked at 100% on dark: solid cream art, no paper fringe)"),
+                      ((500, 2550, 2300, 3600), "the white scaly warts of the volva (cup base), outlined in plum")],
 }
 # Opacity (QA round 1, S2): no near-opaque alpha (250-254) anywhere; >= 99% of the solid interior (> 3 px inside
 # the edge) and >= 98% of all pixels with alpha > 127 are exactly 255. The rest is anti-aliased edge and 08's glow.
