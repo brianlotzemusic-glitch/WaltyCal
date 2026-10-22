@@ -306,6 +306,17 @@ The owner also sells on TpT: https://www.teacherspayteachers.com/store/brian-lot
   - The Analyst then reads `stats/tpt.csv` daily, and the weekly report gets a TpT section: best sellers, views per product, conversion.
 - **The trend desk is paused** (Trend Hunter and Trend Judge); see the team table.
 
+## Etsy AI policy (Etsy, 22 Oct 2026: seller-handbook article 1522733284810, "Important updates to AI use on Etsy")
+- **No functional guides on Etsy**, meaning patterns (cross-stitch, crochet, knitting, sewing), recipes, tutorials or instructions. Etsy now requires these to be the seller's own work, with a photo of a real made result. The cross-stitch listing 4588680067 was deactivated on 22 Oct (owner), and pattern items were removed from the queue. Don't propose this format again. TpT teaching resources aren't affected by this Etsy rule.
+- **The usage notes in a product** (READMEs, how-to-cut tips) stay short and factual: file formats, sizes and software names. No step-by-step craft instructions.
+- **Disclosure stays on every listing:** "Designed with the help of digital and AI tools, and checked by hand." Never call anything handmade.
+- **Photos:**
+  - Every photo shows exactly what the buyer gets.
+  - The first photo is the most realistic one.
+  - Any listing that uses AI or digital mockups says so in its description: "Listing photos include digital mockups; you receive the digital files shown."
+  - Etsy says different photo rules apply to print-on-demand and digital items. The Researcher reads Etsy's "Listing Image Requirements" policy once, and the Manager applies anything it requires (log the result).
+- **Bot-generated listings:** Etsy bans "bot-generated listings without any human involvement" and may remove the shop. The owner was told this and chose to keep auto-publishing (22 Oct). Keep the owner's decisions visible in the log (themes, formats, prices, approvals), and keep quality high, so nothing looks like spam. If Etsy ever flags or removes a listing for this reason, pause all Etsy publishing (`ETSY_PUBLISH=0` behaviour: drafts only) and push the owner at once.
+
 ## Rules
 - Original work only. No copyrighted characters, logos, brand names, trademarked phrases, or other sellers' designs. Avoid "Creepmas".
 - No weapons, hate content, medical claims, or adult content.
