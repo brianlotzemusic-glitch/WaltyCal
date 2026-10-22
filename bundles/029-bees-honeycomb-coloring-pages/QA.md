@@ -17,3 +17,20 @@ REJECTED, two small fixes needed (page 05 art, disclosure line). Everything else
 
 ## Open questions
 - Etsy's own AI-content tick box: with no AI used, the owner/Lister should answer it as not AI-generated.
+
+# Round 2
+
+## Verdict
+APPROVED.
+
+## Verified independently
+- Page 05, rendered at 100% and 150 dpi from the Letter PDF inside the ZIP: both lower leaves are clean closed shapes, no stray wedge, no loose line segment; the lower bee was moved clear of the leaves and stem, antenna touches nothing. Upper bee sits beside the petals with no tangle. Only a tiny pinch where the right leaf meets the stem (cosmetic, still colourable).
+- listing-images/2-page-grid.png shows the redrawn page 05 (same as the PDF) and still lists 20 pages with matching names.
+- Other pages: pixel diff of the round-1 ZIP vs the shipped ZIP at 100 dpi shows pages 01-04 and 06-20 identical; only page 05 differs. Letter and A4 PDFs are 20 pages each, correct sizes, no text or fonts.
+- Disclosure: last line of listing.json description and LISTING.md is "Designed by Duskwood Designs Co, drawn with digital tools and checked by hand." (identical). LISTING.md Creation method now says no AI, owner ticks Etsy's option and confirms.
+- ZIP contents: Letter PDF, A4 PDF, README-LICENSE.txt, matching LISTING.md.
+- `python3 gen.py --check`: ALL CHECKS PASS.
+- Cost $0, no Etsy edits.
+
+## Open questions
+- Owner confirms Etsy's AI-content answer (not AI-generated) at listing time.

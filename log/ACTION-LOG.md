@@ -324,3 +324,4 @@
 2026-10-22 Designer: built bundle 029 Bee & Honeycomb Coloring Pages (20 pages drawn in code, gen.py --check ALL CHECKS PASS, $0 AI, Recraft untouched); awaiting QA, not published
 2026-10-22 QA bundle 029 bee coloring pages: REJECTED (page 05 leaf/antenna tangle; disclosure line says AI but art is code-drawn: use plain 'Designed by Duskwood Designs Co, drawn with digital tools and checked by hand.'); gen --check, ZIP, taxonomy 339, price, images OK
 2026-10-22 Designer fix round 2 bundle 029: page 05 leaves redrawn clean (bee moved clear), page grid/ZIP/contact sheet refreshed, disclosure line changed to plain form in listing.json/LISTING.md/gen.py, gen --check ALL CHECKS PASS, $0, not published; awaiting QA re-check
+2026-10-22 QA bundle 029 bee coloring pages round 2: APPROVED (page 05 clean, other 19 pages unchanged, disclosure line consistent, ZIP matches LISTING.md, gen --check pass); $0, no Etsy edits
