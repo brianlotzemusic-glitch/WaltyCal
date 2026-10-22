@@ -320,3 +320,4 @@
 - 2026-10-22 Designer: built tpt/028 FREE Color by Note Sampler (sunflower rhythm, acorn treble, apple basket bass; 5 pages, gen.py --check OK, $0). Awaiting QA. Open owner questions in its UPLOAD.md: tools/tpt.js cannot tick the Free Resource checkbox (#item-free), 027 has no TpT URL yet so page 5 links the store.
 2026-10-22 QA TpT 028 FREE sampler: REJECTED (tags empty fails gate); colour decode, links, terms OK; nightly uploader cannot tick #item-free
 2026-10-22 Designer fix r2 TpT 028: tags set to ["Autumn"], UPLOAD.md sections 4/9 updated; PDF unchanged; awaiting re-QA
+2026-10-22 Designer: TpT 027 retitled "Fall Color by Note | ..." after TpT Seasonal Titles block (tags Autumn+Thanksgiving, Thanksgiving kept as use case); 028 page 5 heading renamed and PDF rebuilt (--check OK); release and UPLOADER-STATUS.json untouched

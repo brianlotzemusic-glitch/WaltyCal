@@ -377,7 +377,7 @@ def fullset_page():
             f'a student reference page and teacher notes, in one 58-page download.</p>'
             f'<h2>Halloween Color by Note <span class="acc">·</span> grades 1–5</h2>'
             f'<p>Nine original, kid-friendly Halloween pictures at all three levels. On TpT:<br>{link(URL_001)}</p>'
-            f'<h2>Thanksgiving Color by Note <span class="acc">·</span> grades 1–5</h2>'
+            f'<h2>Fall Color by Note <span class="acc">·</span> grades 1–5</h2>'
             f'<p>Nine cozy autumn pictures (turkey, pumpkin, cornucopia, maple leaf and more) at all three levels. Find it in the {BRAND} store on TpT:<br>{link(URL_STORE)}</p>'
             f'<h2>More from {BRAND}</h2>'
             f'<p>Winter and holiday Color by Note sets are coming. <b>Follow the store on TpT</b> and you will be notified of every new set.</p>'

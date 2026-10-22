@@ -1,4 +1,4 @@
-# UPLOAD: Thanksgiving Color by Note (TpT 027)
+# UPLOAD: Fall Color by Note (TpT 027)
 
 These fields follow the order of TpT's "Add a resource" form. Same format as 001 Halloween Color by Note (the first TpT sale).
 
@@ -10,13 +10,13 @@ These fields follow the order of TpT's "Add a resource" form. Same format as 001
 ## 1. Title
 
 ```
-Thanksgiving Color by Note | Rhythm, Treble & Bass Clef Worksheets, Answer Keys
+Fall Color by Note | Rhythm, Treble & Bass Clef Worksheets, Answer Keys
 ```
 
 ## 2. Description
 
 ```
-Thanksgiving Color by Note with three levels in one set, so every student in your class can color the same picture at their own reading level. 9 original, kid-friendly autumn pictures, 27 worksheets and 27 full-color answer keys.
+Fall Color by Note with three levels in one set, so every student in your class can color the same picture at their own reading level. 9 original, kid-friendly autumn pictures, 27 worksheets and 27 full-color answer keys.
 
 WHAT'S INCLUDED (58 pages, PDF, US Letter)
 • Teacher notes with a level guide and page list (1 page)
@@ -29,7 +29,7 @@ WHAT'S INCLUDED (58 pages, PDF, US Letter)
 PICTURES: friendly turkey, harvest pumpkin, cornucopia, maple leaf, acorn, apple basket, pumpkin pie, corn on the cob and sunflower. Cozy autumn art for the whole fall season.
 
 HOW TO USE
-Students read the note or rest in each space, find it in the color key, and color the space. In levels B and C every space shows its note on a small staff with a clef, and the key uses letter names. Each worksheet has a matching full-color answer key, and every key is generated from the same data as the worksheet and checked by hand. Great for early finishers, music centers, sub plans and a quick note-reading check in November.
+Students read the note or rest in each space, find it in the color key, and color the space. In levels B and C every space shows its note on a small staff with a clef, and the key uses letter names. Each worksheet has a matching full-color answer key, and every key is generated from the same data as the worksheet and checked by hand. Great for early finishers, music centers, sub plans and a quick note-reading check in November (including a Thanksgiving week activity).
 
 • Grades 1–5 (choose the level that fits)
 • Print in black and white: every color in the key is also written as a word
@@ -45,7 +45,7 @@ Designed with the help of digital and AI tools, and checked by hand.
 ## 4. Subjects
 
 - Music
-- Holidays/Seasonal → Thanksgiving
+- Holidays/Seasonal → Thanksgiving (subject/tag only; the title says Fall because TpT's Seasonal Titles rule blocked a holiday name)
 
 ## 5. Resource type
 
