@@ -52,7 +52,7 @@ BRAND = "Hudson Beat"      # store line on covers and previews (owner, 4 Oct)
 YEAR = 2026
 ACCENT = "#B5471B"  # same rust accent as 027 (sampler sits beside the fall sets)
 URL_001 = "https://www.teacherspayteachers.com/Product/Halloween-Color-by-Note-Rhythm-Treble-Bass-Clef-Worksheets-with-Answer-Keys-17837169"
-URL_STORE = "https://www.teacherspayteachers.com/store/brian-lotze"
+URL_027 = "https://www.teacherspayteachers.com/Product/Fall-Color-by-Note-Rhythm-Treble-Bass-Clef-Worksheets-Answer-Keys-18040698"
 PICK = {"A": "sunflower", "B": "acorn", "C": "basket"}  # level -> picture
 
 COLORS = {  # crayon name -> answer-key fill
@@ -378,7 +378,7 @@ def fullset_page():
             f'<h2>Halloween Color by Note <span class="acc">·</span> grades 1–5</h2>'
             f'<p>Nine original, kid-friendly Halloween pictures at all three levels. On TpT:<br>{link(URL_001)}</p>'
             f'<h2>Fall Color by Note <span class="acc">·</span> grades 1–5</h2>'
-            f'<p>Nine cozy autumn pictures (turkey, pumpkin, owl, pumpkin pie and more) at all three levels. Find it in the {BRAND} store on TpT:<br>{link(URL_STORE)}</p>'
+            f'<p>Nine cozy autumn pictures (turkey, pumpkin, owl, pumpkin pie and more) at all three levels. On TpT:<br>{link(URL_027)}</p>'
             f'<h2>More from {BRAND}</h2>'
             f'<p>Winter and holiday Color by Note sets are coming. <b>Follow the store on TpT</b> and you will be notified of every new set.</p>'
             f'<h2>Terms of use</h2>'
@@ -642,6 +642,10 @@ def verify_files():
         for fam in ("Bravura", "Oswald", "SourceSans3"):
             if fam.lower() not in names.lower().replace(" ", ""):
                 errs.append(f"{os.path.basename(path)}: {fam} not found in PDF fonts")
+    full = PdfReader(PDF).pages[4].extract_text().replace("\n", "").replace(" ", "")
+    for nm, url in (("001", URL_001), ("027", URL_027)):
+        if url.replace(" ", "") not in full:
+            errs.append(f"PDF page 5: {nm} product URL not printed")
     txt = " ".join(PdfReader(PREVIEW_PDF).pages[i].extract_text() for i in range(4))
     if txt.count("PREVIEW") < 4:
         errs.append("preview PDF: watermark missing on some pages")
@@ -654,6 +658,8 @@ def verify_files():
         errs.append("UPLOAD.md: title block not found")
     elif len(m.group(1).strip()) > 80:
         errs.append(f"UPLOAD.md: title is {len(m.group(1).strip())} chars (max 80)")
+    if URL_027 not in up:
+        errs.append("UPLOAD.md: live 027 product URL missing")
     for need in ("Designed with the help of digital and AI tools, and checked by hand.", "$0", "Free Resource"):
         if need not in up:
             errs.append(f"UPLOAD.md: missing '{need}'")
