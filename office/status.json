@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-21T23:50:00Z",
- "next_run_at": "2026-10-22T10:12:00Z",
+ "updated_at": "2026-10-22T14:30:00Z",
+ "next_run_at": "2026-10-22T22:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 35,
- "bundles_built": 45,
- "uploads_pending": 7,
+ "listings_live": 36,
+ "bundles_built": 47,
+ "uploads_pending": 9,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "6:12pm shift done: Etsy 028 Valentine cards live (35 listings), TpT 027 Thanksgiving Color by Note released. Next shift 6:12am ET.",
-   "since": "2026-10-21T23:50:00Z"
+   "task": "6:12am shift done: Etsy 029 bee coloring pages live (36 listings); TpT 028 free sampler released (needs the Free checkbox: owner uploads by hand or extends tools/tpt.js); TpT 027 retitled \"Fall Color by Note\" after the Seasonal Titles notice. Next shift 6:12pm ET.",
+   "since": "2026-10-22T14:30:00Z"
   },
   {
    "id": "researcher",
@@ -26,22 +26,22 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Built Etsy 028 botanical Valentine cards and TpT 027 Thanksgiving Color by Note. Next: free Color by Note sampler, Winter Color by Note; an Etsy printable.",
-   "since": "2026-10-21T23:50:00Z"
+   "task": "Built TpT 028 free Color by Note sampler and Etsy 029 bee coloring pages; retitled TpT 027. Next: Winter Color by Note, DMP1 bundle, Sonic Time Capsule, an Etsy printable.",
+   "since": "2026-10-22T14:30:00Z"
   },
   {
    "id": "qa",
    "name": "QA",
    "state": "idle",
-   "task": "Approved Etsy 028 and TpT 027 in round 1.",
-   "since": "2026-10-21T23:50:00Z"
+   "task": "Approved Etsy 029 (round 2) and TpT 028 (tags fix). ",
+   "since": "2026-10-22T14:30:00Z"
   },
   {
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Etsy 4600571734 (Botanical Valentine Cards & Tags, $3.50) live; Etsy reports 35 active. TpT 027 released, waits for the Mac nightly.",
-   "since": "2026-10-21T23:50:00Z"
+   "task": "Etsy 4600901568 (Bee & Honeycomb Coloring Pages, $3.99) live; Etsy reports 36 active. TpT 027/028 wait for the Mac nightly (028 is a free item).",
+   "since": "2026-10-22T14:30:00Z"
   },
   {
    "id": "analyst",
@@ -80,12 +80,22 @@
   }
  ],
  "queue": [
-  "[tpt] FREE Color by Note Sampler (owner priority, 21 Oct)",
-  "[tpt] Winter / Christmas Color by Note; DMP1 Units 1-6 bundle; winter pack",
+  "[tpt] Winter / Christmas Color by Note",
+  "[tpt] DMP1 Units 1-6 bundle; winter pack; [tool] TpT stats in the Mac nightly",
   "[dmp] DMP2 Sonic Time Capsule; then the DMP2 bundle",
-  "Etsy: next printable from queue.md (birdwatching silhouettes, bees coloring pages, mushroom clipart)"
+  "Etsy: next printable (mushroom clipart ~$0.55 AI, birdwatching silhouettes)"
  ],
  "feed": [
+  {
+   "t": "2026-10-22T14:30:00Z",
+   "who": "lister",
+   "msg": "Published Bee & Honeycomb Coloring Pages (Etsy 4600901568, $3.99). 36 live."
+  },
+  {
+   "t": "2026-10-22T14:30:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 028 free Color by Note sampler; released."
+  },
   {
    "t": "2026-10-21T23:50:00Z",
    "who": "lister",
@@ -235,16 +245,6 @@
    "t": "2026-10-15T00:30:00Z",
    "who": "qa",
    "msg": "Approved TpT 013 DMP1 Stems & Grooves ($10, with intro deck) in round 2. Released."
-  },
-  {
-   "t": "2026-10-15T00:30:00Z",
-   "who": "designer",
-   "msg": "DMP1 Units 1-6 are now built; Units 7-10 wait for the owner."
-  },
-  {
-   "t": "2026-10-14T21:30:00Z",
-   "who": "qa",
-   "msg": "Approved TpT 012 DMP1 Bass & Melody Writing ($10, with intro deck) in round 2. Released."
   }
  ],
  "venture_gate": {
