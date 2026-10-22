@@ -34,6 +34,22 @@
 //                                     per run, unless tpt/PAUSED exists; writes tpt/UPLOADER-STATUS.json.
 //                                     Run nightly by tools/tpt-nightly.sh (see tpt/LOCAL-SETUP.md).
 //
+//   node tools/tpt.js discover-edit [tpt/NNN-slug]
+//                                     read-only: open a live product's edit page (an item with `uploaded` +
+//                                     `reupload`, or the one named) and record its form fields, edit URL pattern
+//                                     and file inputs in tpt/EDIT-FIELDS.json. Saves nothing on TpT.
+//   node tools/tpt.js reupload tpt/NNN-slug [--dry-run]
+//                                     (owner exception, 22 Oct 2026) REPLACE ONLY THE FILES of an already-live
+//                                     product with the current build, for an item the Manager marked with a
+//                                     `reupload` file after QA approval. Never touches title, price, description,
+//                                     tags, subjects, grades. Writes `reuploaded` (time + sha256 of each file).
+//                                     --dry-run is offline: lists what would be replaced, opens nothing.
+//   node tools/tpt.js reupload-pending
+//                                     nightly step after publish-pending: processes every item with a `reupload`
+//                                     marker (max 3, not while tpt/PAUSED). If tpt/EDIT-FIELDS.json is missing it
+//                                     runs discover-edit instead and replaces nothing that night.
+//   Offline test: node tools/test-tpt-reupload.js
+//
 // When a publish step fails or an upload times out, a screenshot goes to tpt/_publish/ (gitignored)
 // along with the list of file inputs on the page.
 const fs = require("fs"), path = require("path");
@@ -41,7 +57,7 @@ let chromium;
 try { ({ chromium } = require("playwright")); }
 catch (e) {
   try { ({ chromium } = require(path.join(require("child_process").execSync("npm root -g").toString().trim(), "playwright"))); }
-  catch (e2) { if (require.main === module) throw e2; } // imported by a test: browser not needed
+  catch (e2) { chromium = null; } // browser not needed for dry-runs, refusals and tests; openBrowser() says so if it is
 }
 
 const ROOT = path.dirname(__dirname);
@@ -53,6 +69,7 @@ const PROFILE = process.env.TPT_PROFILE_DIR || path.join(require("os").homedir()
 const MY_PRODUCTS_URL = "https://www.teacherspayteachers.com/My-Products";
 
 async function openBrowser() {
+  if (!chromium) throw new Error("playwright is not installed here (this command needs the owner's Mac): see tpt/LOCAL-SETUP.md");
   const context = await chromium.launchPersistentContext(PROFILE, { headless: HEADLESS, viewport: { width: 1400, height: 1000 } });
   const page = context.pages()[0] || await context.newPage();
   page.setDefaultTimeout(30000);
@@ -449,6 +466,8 @@ function pendingItems() {
 
 async function publishPending() {
   const status = { ran_at: new Date().toISOString(), published: [], failed: [], needs_login: false, paused: false, pending_before: [] };
+  try { status.reupload = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "UPLOADER-STATUS.json"), "utf8")).reupload; } catch (e) { /* none yet */ }
+  if (!status.reupload) delete status.reupload;
   const write = () => fs.writeFileSync(path.join(ROOT, "tpt", "UPLOADER-STATUS.json"), JSON.stringify(status, null, 2) + "\n");
   if (fs.existsSync(path.join(ROOT, "tpt", "PAUSED"))) {
     status.paused = true; status.ok = true; write();
@@ -475,11 +494,273 @@ async function publishPending() {
   if (!status.ok) process.exitCode = 1;
 }
 
-module.exports = { checkItem, loadItem, isApproved };
+// ---- reupload: replace ONLY the files of a live product (owner exception, 22 Oct 2026) ----------
+// Markers in tpt/NNN-slug/ (all written/read as plain files; git is the state):
+//   uploaded        written by publish; line 2 is the product URL
+//   reupload        written by the Manager after QA approval of the rebuild (date + reason). A new
+//                   marker (different content) is the ONLY thing that allows another replacement.
+//   reuploaded      written here on success: JSON, time + marker hash + sha256 of every file replaced
+//   reupload-failed written here on any mismatch/failure: holds the marker hash so the same marker is
+//                   never retried blindly. The Manager reads UPLOADER-STATUS.json, then writes a new
+//                   marker (or the owner deletes this file) once the cause is understood.
+const crypto = require("crypto");
+const EDIT_FIELDS = () => path.join(ROOT, "tpt", "EDIT-FIELDS.json");
+const PRODUCT_URL_RE = /^https:\/\/www\.teacherspayteachers\.com\/Product\/[^\s]+-(\d+)$/;
+const FILE_SLOTS = ["product", "preview", "thumb1", "thumb2", "thumb3", "thumb4"];
+
+function sha256File(fp) { return crypto.createHash("sha256").update(fs.readFileSync(fp)).digest("hex"); }
+function readTrim(fp) { try { return fs.readFileSync(fp, "utf8"); } catch (e) { return null; } }
+
+// One of: no-marker | no-url | not-approved | done | failed-hold | pending. Pure file reads.
+function reuploadState(item) {
+  const marker = readTrim(path.join(item, "reupload"));
+  if (marker === null || !marker.trim()) return { state: "no-marker", reason: "no `reupload` marker (the Manager writes it after QA approves the rebuild)" };
+  const markerHash = crypto.createHash("sha256").update(marker).digest("hex");
+  const up = readTrim(path.join(item, "uploaded"));
+  const url = up ? (up.split("\n")[1] || "").trim() : "";
+  if (!up) return { state: "no-url", markerHash, reason: "no `uploaded` file: the product is not live, nothing to replace (publish it instead)" };
+  if (!PRODUCT_URL_RE.test(url)) return { state: "no-url", markerHash, reason: `\`uploaded\` line 2 is not a TpT product URL: ${JSON.stringify(url)}` };
+  if (!isApproved(item)) return { state: "not-approved", markerHash, url, reason: "QA.md has no '**Verdict: APPROVED**' line" };
+  const done = readTrim(path.join(item, "reuploaded"));
+  if (done) { try { if (JSON.parse(done).marker_sha256 === markerHash) return { state: "done", markerHash, url, reason: "this reupload marker was already processed (see `reuploaded`); write a new marker to replace again" }; } catch (e) { /* unreadable: treat as not done */ } }
+  const failed = readTrim(path.join(item, "reupload-failed"));
+  if (failed) { try { if (JSON.parse(failed).marker_sha256 === markerHash) return { state: "failed-hold", markerHash, url, reason: "an earlier attempt for this marker failed (see `reupload-failed`); not retrying until a new marker is written or that file is deleted" }; } catch (e) { return { state: "failed-hold", markerHash, url, reason: "`reupload-failed` exists and is unreadable; not retrying" }; } }
+  return { state: "pending", markerHash, url, productId: url.match(PRODUCT_URL_RE)[1] };
+}
+
+function idOf(sel) { const m = String(sel || "").match(/#([\w-]+)\s*$/); return m ? m[1] : null; }
+function editSel(F, slot) { return { ...(F.files[slot] || {}), ...((F.edit && F.edit.files && F.edit.files[slot]) || {}) }; }
+
+// Everything checkable without a browser. Returns { problems, files, state }.
+function prepareReupload(item, F, editFields) {
+  const st = reuploadState(item), problems = [], files = [];
+  if (st.state !== "pending") return { problems: [st.reason], files, state: st };
+  let cfg; try { cfg = JSON.parse(fs.readFileSync(path.join(item, "tpt.json"), "utf8")); } catch (e) { return { problems: ["tpt.json unreadable: " + e.message], files, state: st }; }
+  const listed = cfg.files || {};
+  if (!listed.product) problems.push("tpt.json: files.product is not set");
+  for (const slot of FILE_SLOTS) {
+    if (!listed[slot]) continue;
+    const fp = path.join(item, listed[slot]);
+    if (!fs.existsSync(fp)) { problems.push(`missing file ${fp}`); continue; }
+    const bytes = fs.statSync(fp).size, spec = F.files[slot];
+    if (!spec) { problems.push(`FORM.json has no file slot ${slot}`); continue; }
+    if (!bytes) problems.push(`${listed[slot]} is empty`);
+    if (bytes / 1048576 > spec.max_mb) problems.push(`${listed[slot]} is ${(bytes / 1048576).toFixed(1)} MB (max ${spec.max_mb} MB for ${slot})`);
+    files.push({ slot, file: listed[slot], path: fp, bytes, sha256: sha256File(fp) });
+  }
+  for (const k of Object.keys(listed)) if (!FILE_SLOTS.includes(k)) problems.push(`tpt.json: unknown file slot ${k}`);
+  if (editFields !== undefined) { // null/invalid = discover-edit has not run yet
+    if (!editFields || !Array.isArray(editFields.fields) || !editFields.fields.length)
+      problems.push("tpt/EDIT-FIELDS.json is missing or empty: the edit form is not recorded yet. The next nightly run records it (node tools/tpt.js discover-edit); reupload acts after that");
+    else {
+      if (!editFields.edit_url_template && !editFields.edit_link_text) problems.push("tpt/EDIT-FIELDS.json records no way to reach the edit page (edit_url_template / edit_link_text)");
+      const ids = new Set(editFields.fields.map((f) => f.id).filter(Boolean));
+      for (const f of files) {
+        const id = idOf(editSel(F, f.slot).input);
+        if (!id || !ids.has(id)) problems.push(`edit form has no file box for ${f.slot} (${editSel(F, f.slot).input}); set edit.files.${f.slot} in tpt/FORM.json from tpt/EDIT-FIELDS.json`);
+      }
+    }
+  }
+  return { problems, files, state: st };
+}
+
+function readEditFields() { try { return JSON.parse(fs.readFileSync(EDIT_FIELDS(), "utf8")); } catch (e) { return null; } }
+
+function recordReuploadStatus(patch) {
+  const fp = path.join(ROOT, "tpt", "UPLOADER-STATUS.json");
+  let cur = {}; try { cur = JSON.parse(fs.readFileSync(fp, "utf8")); } catch (e) { /* new file */ }
+  cur.reupload = { ...(cur.reupload || {}), ...patch };
+  fs.writeFileSync(fp, JSON.stringify(cur, null, 2) + "\n");
+}
+
+async function reupload(item, dryRun) {
+  if (!item) throw new Error("usage: node tools/tpt.js reupload tpt/NNN-slug [--dry-run]");
+  item = path.resolve(item);
+  const slug = path.basename(item), shots = path.join(ROOT, "tpt", "_publish");
+  const F = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8"));
+  const editFields = readEditFields();
+  const plan = prepareReupload(item, F, dryRun ? undefined : editFields);
+  if (plan.problems.length) throw new Error(`not replacing files for ${slug}:\n- ` + plan.problems.join("\n- "));
+  const { files, state } = plan;
+  if (dryRun) {
+    console.log(`DRY RUN (offline, TpT not opened): would replace ONLY these files on ${state.url}`);
+    for (const f of files) console.log(`  ${f.slot.padEnd(8)} ${f.file}  ${f.bytes} bytes  sha256 ${f.sha256}`);
+    console.log("Would NOT change: title, price, description, tags, subjects, grades, listing status.");
+    console.log(`Would write ${path.relative(ROOT, item)}/reuploaded on success. tpt/EDIT-FIELDS.json: ${editFields ? "present" : "MISSING (a real run would stop; the nightly records it first)"}.`);
+    return;
+  }
+
+  const fail = async (page, step, msg) => { // record, screenshot, never retry this marker
+    await snap(page, shots, `${slug}-reupload-failed`).catch(() => {});
+    const rec = { at: new Date().toISOString(), marker_sha256: state.markerHash, step, error: msg, files: files.map((f) => ({ slot: f.slot, file: f.file, sha256: f.sha256 })), screenshot: `tpt/_publish/${slug}-reupload-failed.png` };
+    fs.writeFileSync(path.join(item, "reupload-failed"), JSON.stringify(rec, null, 2) + "\n");
+    throw Object.assign(new Error(`reupload stopped at "${step}": ${msg}\nScreenshot: ${rec.screenshot}. Not retrying this marker.`), { recorded: true });
+  };
+  let step = "open browser", page, context, saved = false;
+  ({ context, page } = await openBrowser());
+  try {
+    step = "check login"; await ensureLoggedIn(page);
+
+    step = "open the live product page";
+    const resp = await page.goto(state.url, { waitUntil: "domcontentloaded" });
+    if (!resp || resp.status() >= 400) await fail(page, step, `${state.url} answered ${resp ? resp.status() : "nothing"}`);
+
+    step = "open the edit page";
+    if (editFields.edit_url_template) await page.goto(editFields.edit_url_template.replace("{id}", state.productId), { waitUntil: "domcontentloaded" });
+    else {
+      const link = page.getByRole("link", { name: new RegExp(editFields.edit_link_text, "i") }).first();
+      if (!(await link.count())) await fail(page, step, `no link "${editFields.edit_link_text}" on the product page`);
+      await link.click(); await page.waitForLoadState("domcontentloaded");
+    }
+    await page.waitForTimeout(3000);
+    if (/\/login/i.test(page.url())) await fail(page, step, "TpT sent us to the login page");
+    const editUrl = page.url();
+
+    // Fields that must NOT change: read now, compare after saving.
+    const readGuard = async () => {
+      const g = {};
+      for (const k of ["title", "price", "license_price"]) {
+        const loc = F[k] && page.locator(F[k]);
+        g[k] = loc && (await loc.count()) ? await loc.first().inputValue().catch(() => null) : null;
+      }
+      const d = F.description && page.locator(F.description);
+      g.description = d && (await d.count()) ? (await d.first().innerText().catch(() => "")).trim().slice(0, 300) : null;
+      return g;
+    };
+    const before = await readGuard();
+    if (!before.title) await fail(page, step, `the edit page did not show the title box (${F.title}); wrong page or TpT changed`);
+
+    const keys = {};
+    for (const f of files) {
+      step = `replace ${f.slot} (${f.file})`;
+      const spec = editSel(F, f.slot), input = page.locator(spec.input);
+      try { await input.waitFor({ state: "attached", timeout: 20000 }); } catch (e) { await fail(page, step, `no upload box ${spec.input} on the edit page`); }
+      const oldKey = await page.locator(spec.key).first().inputValue().catch(() => "");
+      await input.setInputFiles(f.path, { timeout: 30000 });
+      const minutes = f.slot === "product" ? 15 : f.slot === "preview" ? 5 : 3;
+      const ok = await page.waitForFunction(([s, old]) => { const el = document.querySelector(s); return el && el.value && el.value !== old; }, [spec.key, oldKey], { timeout: minutes * 60000 }).then(() => true, () => false);
+      if (!ok) await fail(page, step, `TpT did not accept ${f.file} within ${minutes} min (the upload key never changed)`);
+      keys[f.slot] = await page.locator(spec.key).first().inputValue();
+    }
+
+    step = "save";
+    const submit = page.locator((F.edit && F.edit.submit) || F.submit);
+    if (!(await submit.count())) await fail(page, step, "no save button found");
+    saved = true; // from here on TpT may have changed
+    await submit.first().click();
+    await page.waitForLoadState("domcontentloaded", { timeout: 120000 }).catch(() => {});
+    await page.waitForTimeout(5000);
+
+    step = "verify";
+    const r2 = await page.goto(state.url, { waitUntil: "domcontentloaded" });
+    if (!r2 || r2.status() >= 400) await fail(page, step, `product page answered ${r2 ? r2.status() : "nothing"} after saving`);
+    await page.goto(editUrl, { waitUntil: "domcontentloaded" }); await page.waitForTimeout(3000);
+    const after = await readGuard();
+    for (const k of Object.keys(before)) if (before[k] !== after[k]) await fail(page, step, `field "${k}" changed during the save (before ${JSON.stringify(before[k])}, after ${JSON.stringify(after[k])})`);
+    const text = await page.locator("body").innerText().catch(() => "");
+    let filled = 0;
+    for (const f of files) {
+      const spec = editSel(F, f.slot), v = await page.locator(spec.key).first().inputValue().catch(() => "");
+      if (v) filled++; else await fail(page, step, `after saving, ${f.slot} (${f.file}) shows no file on the edit page`);
+      if ((f.slot === "product" || f.slot === "preview") && !text.includes(path.basename(f.file)) && !v.includes(path.basename(f.file)))
+        await fail(page, step, `after saving, the edit page does not list the file name ${f.file} for ${f.slot}`);
+    }
+    if (filled !== files.length) await fail(page, step, `expected ${files.length} files on the product, found ${filled}`);
+
+    fs.writeFileSync(path.join(item, "reuploaded"), JSON.stringify({
+      at: new Date().toISOString(), tool: "tools/tpt.js reupload", url: state.url, marker_sha256: state.markerHash,
+      files: files.map((f) => ({ slot: f.slot, file: f.file, bytes: f.bytes, sha256: f.sha256 })),
+    }, null, 2) + "\n");
+    console.log(`Replaced ${files.length} files on ${state.url}; wrote ${path.relative(ROOT, item)}/reuploaded`);
+    return { url: state.url, files: files.length };
+  } catch (e) {
+    if (e.recorded) throw e;
+    if (step !== "check login" && step !== "open browser") { // unexpected error: same rule, record and hold
+      try { await fail(page, step, e.message.split("\n")[0] + (saved ? " (the save click had already happened: check the product on TpT)" : " (nothing was saved)")); } catch (e2) { throw e2; }
+    }
+    throw e;
+  } finally {
+    await context.close();
+  }
+}
+
+async function reuploadPending() {
+  const dir = path.join(ROOT, "tpt");
+  const res = { ran_at: new Date().toISOString(), replaced: [], failed: [], waiting: [], skipped: [], needs_login: false, needs_edit_fields: false, discovered_edit: false };
+  const done = (ok) => { res.ok = ok; recordReuploadStatus(res); console.log(`Reupload: replaced ${res.replaced.length}, failed ${res.failed.length}, waiting ${res.waiting.length}.`); if (!ok) process.exitCode = 1; };
+  if (fs.existsSync(path.join(dir, "PAUSED"))) { res.skipped.push("tpt/PAUSED exists"); console.log("tpt/PAUSED exists: replacing nothing."); return done(true); }
+  const marked = fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d)).filter((d) => fs.existsSync(path.join(d, "reupload"))).sort();
+  const pending = marked.filter((d) => reuploadState(d).state === "pending");
+  for (const d of marked) if (!pending.includes(d)) { const s = reuploadState(d); if (s.state !== "done") res.skipped.push(`${path.basename(d)}: ${s.state}`); }
+  res.waiting = pending.map((d) => path.basename(d));
+  if (!pending.length) { console.log("No item waiting for a file replacement."); return done(true); }
+  console.log(`Marked for reupload: ${res.waiting.join(", ")}`);
+  if (!readEditFields()) { // first run: learn the edit form, change nothing
+    res.needs_edit_fields = true;
+    try { await discoverEdit(pending[0]); res.discovered_edit = true; console.log("Recorded tpt/EDIT-FIELDS.json; files are replaced from the next run."); }
+    catch (e) { res.failed.push({ item: path.basename(pending[0]), error: "discover-edit: " + e.message.split("\n").slice(0, 2).join(" ").slice(0, 300) }); if (/not logged in|session expired/i.test(e.message)) res.needs_login = true; }
+    return done(res.discovered_edit);
+  }
+  for (const item of pending.slice(0, MAX_PER_RUN)) {
+    const slug = path.basename(item);
+    try { const r = await reupload(item, false); res.replaced.push({ item: slug, url: r.url, files: r.files }); res.waiting = res.waiting.filter((x) => x !== slug); }
+    catch (e) {
+      const msg = e.message.split("\n").slice(0, 3).join(" ").slice(0, 400);
+      res.failed.push({ item: slug, error: msg }); console.error(`${slug}: ${msg}`);
+      if (/not logged in|session expired/i.test(msg)) { res.needs_login = true; break; }
+      if (e.recorded || /stopped at/.test(msg)) break; // a TpT-side mismatch: stop the whole step, do not push on to other items
+    }
+  }
+  done(!res.needs_login && res.failed.length === 0);
+}
+
+// Read-only: records the edit form's structure for a live product. Saves nothing on TpT.
+async function discoverEdit(arg) {
+  let item = arg && path.resolve(arg);
+  if (!item) {
+    const dir = path.join(ROOT, "tpt");
+    item = fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d)).sort().find((d) => reuploadState(d).state === "pending");
+    if (!item) throw new Error("discover-edit: no item with a `reupload` marker and an `uploaded` URL; name one: node tools/tpt.js discover-edit tpt/NNN-slug");
+  }
+  const url = (readTrim(path.join(item, "uploaded")) || "").split("\n")[1] || "";
+  const m = url.trim().match(PRODUCT_URL_RE);
+  if (!m) throw new Error(`discover-edit: ${path.basename(item)} has no TpT product URL in \`uploaded\``);
+  const dir = path.join(ROOT, "tpt", "_discover"), out = { discovered_at: new Date().toISOString(), source_item: path.basename(item), product_page_links: [] };
+  const { context, page } = await openBrowser();
+  try {
+    await ensureLoggedIn(page);
+    await page.goto(url.trim(), { waitUntil: "domcontentloaded" }); await page.waitForTimeout(3000);
+    await snap(page, dir, "10-product-page");
+    const links = await page.evaluate(() => [...document.querySelectorAll("a")].map((a) => ({ text: a.innerText.trim().slice(0, 60), href: a.getAttribute("href") || "" }))
+      .filter((l) => /edit/i.test(l.text) || /\/edit|My-Products\/(Edit|New)/i.test(l.href)));
+    out.product_page_links = links.map((l) => ({ text: l.text, href: l.href.replace(m[1], "{id}") }));
+    let target = links.find((l) => /^\s*edit\b/i.test(l.text)) || links[0];
+    if (!target) throw new Error("no Edit link found on the product page (screenshot tpt/_discover/10-product-page.png); TpT may only show it to the seller account");
+    const href = new URL(target.href, page.url()).toString();
+    await page.goto(href, { waitUntil: "domcontentloaded" }); await page.waitForTimeout(4000); // opens the form only; nothing is clicked or typed
+    await snap(page, dir, "11-edit-page");
+    if (/\/login/i.test(page.url())) throw new Error("edit page sent us to login");
+    out.edit_link_text = target.text || "Edit";
+    out.edit_url_template = page.url().includes(m[1]) ? page.url().split(m[1]).join("{id}") : null;
+    out.edit_url_example = page.url().split(m[1]).join("{id}");
+    out.fields = await formFields(page);
+    out.file_input_ids = out.fields.filter((f) => f.type === "file").map((f) => f.id);
+    out.note = "Read-only discovery of the live product's edit form. Nothing was changed on TpT.";
+  } finally {
+    if (out.fields) fs.writeFileSync(EDIT_FIELDS(), JSON.stringify(out, null, 2) + "\n");
+    await context.close();
+  }
+  console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
+}
+
+module.exports = { checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)
 (cmd === "login" ? loginCmd() : cmd === "discover" ? discover() : cmd === "publish" ? publish(arg, dryRun)
   : cmd === "publish-pending" ? publishPending()
-  : Promise.reject(new Error("usage: login | discover | publish <tpt/NNN-slug> [--dry-run] | publish-pending")))
+  : cmd === "reupload" ? reupload(arg, dryRun)
+  : cmd === "reupload-pending" ? reuploadPending()
+  : cmd === "discover-edit" ? discoverEdit(arg && !arg.startsWith("--") ? arg : null)
+  : Promise.reject(new Error("usage: login | discover | publish <tpt/NNN-slug> [--dry-run] | publish-pending | discover-edit [item] | reupload <tpt/NNN-slug> [--dry-run] | reupload-pending")))
   .catch((e) => { console.error(e.message); process.exit(1); });
