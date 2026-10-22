@@ -390,28 +390,30 @@ def mushrooms():
 
 
 def pie():
-    """Pumpkin pie seen from above on a plate: fluted crust, six slices with one pulled
-    out, a whipped-cream swirl in the middle and autumn leaves in the corners."""
-    cx, cy = 262, 244
-    n_b = 28
+    """Pumpkin pie seen from above on a yellow plate: fluted crust, eight slices with one
+    lifted out a little, a whipped-cream swirl in the middle and autumn leaves in the corners."""
+    cx, cy = 270, 250
+    n_b = 32
     R = 170
-    fluted = unary_union([circle(cx, cy, R)] + [circle(*polar(cx, cy, R, k * 360 / n_b), 15) for k in range(n_b)])
+    step = 360 / n_b
+    fluted = unary_union([circle(cx, cy, R)] + [circle(*polar(cx, cy, R, k * step), 15) for k in range(n_b)])
     filling = circle(cx, cy, 124)
-    a0, a1 = 15, 75                           # the slice that is pulled out (lower right)
-    off = polar(0, 0, 56, (a0 + a1) / 2)
+    a0 = step * 1.5                           # slice edges sit in the valleys between scallops
+    a1 = a0 + 4 * step                        # the slice that is lifted out (lower right), 45 degrees
+    off = polar(0, 0, 30, (a0 + a1) / 2)
 
     def wedge(r, b0, b1):
         return sector(cx, cy, 0, r, b0, b1, n=40)
     out_crust = mv(fluted.intersection(wedge(260, a0, a1)).difference(filling), *off)
     out_fill = mv(filling.intersection(wedge(260, a0, a1)), *off)
     rest = wedge(260, a1, a0 + 360)
-    cuts = [LineString([(cx, cy), polar(cx, cy, 260, a1 + 60 * k)]) for k in range(1, 5)]
+    cuts = [LineString([(cx, cy), polar(cx, cy, 260, a1 + 45 * k)]) for k in range(1, 7)]
     leaf = lambda x, y, a, c: L(soft(leaf_at(x, y, 124, 76, a, 6), 4), c)
-    plate = circle(270, 250, 236)
+    plate = circle(cx, cy, 236)
     layers = [L(FRAME, "blue"),
-              leaf(-6, 36, 24, "red"), leaf(546, 36, 156, "orange"), leaf(-6, 466, -24, "orange"),
-              leaf(546, 466, 204, "red"),
-              L(soft(plate, 3), "white"),
+              leaf(-6, 36, 24, "orange"), leaf(546, 36, 156, "orange"), leaf(-6, 466, -24, "orange"),
+              leaf(546, 466, 204, "orange"),
+              L(soft(plate, 3), "yellow"),
               L(fluted.intersection(rest).difference(filling), "brown", cuts=cuts),
               L(filling.intersection(rest), "orange", cuts=cuts),
               L(rosette(cx, cy, 58), "white"),
@@ -482,12 +484,11 @@ def maple():
     spec = [(edges[i], edges[i + 1], m[cols[i]]) for i in range(6)]
     for a0, a1, c in spec:
         layers.append(L(half(a0, a1), c))
-    centre = half(-33.5, 33.5)
-    veins_ink = []
-    for ang_, r_ in ((58.5, 150), (-58.5, 150), (114.7, 120), (-114.7, 120)):
+    ink = []                      # thin veins run out along each side lobe (the sinus rays close the lobes)
+    for ang_, r0_, r1_ in ((58.5, 36, 168), (-58.5, 36, 168), (114.7, 36, 136), (-114.7, 36, 136)):
         d_ = (math.sin(math.radians(ang_)), -math.cos(math.radians(ang_)))
-        veins_ink.append(LineString([(pv[0] + d_[0] * 40, pv[1] + d_[1] * 40), (pv[0] + d_[0] * r_, pv[1] + d_[1] * r_)]).buffer(OUTLINE / 2, quad_segs=4))
-    ink = veins_ink + [stem(f"M{cx} {cy + 8} C{cx} {cy + 110} {cx + 2} {cy + 170} {cx} {cy + 196}", 5)]
+        ink.append(LineString([(pv[0] + d_[0] * r0_, pv[1] + d_[1] * r0_), (pv[0] + d_[0] * r1_, pv[1] + d_[1] * r1_)]).buffer(0.2, quad_segs=4))
+    ink.append(stem(f"M{cx} {cy + 8} C{cx} {cy + 110} {cx + 2} {cy + 170} {cx} {cy + 196}", 2.2))
     return layers, ink
 
 

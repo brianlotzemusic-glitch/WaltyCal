@@ -24,7 +24,7 @@ The machine has no condensed system fonts (fc-list shows only DejaVu, Liberation
 
 - **The base is black (#000) on white.** All type, rules, line art and bands use it, as on the owner's covers. The owner's white-to-grey gradient is fine for high-school covers. For K-8 use flat white, which prints cleanly.
 - **One accent per product**, used only for small things: the dots in the cover band, the "ANSWER KEY" tag, and section-heading dots. Pick it from the theme: Halloween #E8731A orange, Thanksgiving/fall rust, winter icy blue, and so on. Record it in the item's `gen.py` as `ACCENT`.
-- **Activity content can be in full colour** where colour *is* the activity: answer keys, colour keys and preview images of coloured pictures. Store chrome (covers, headers, footers) never goes beyond black, white and the accent. On the cover, art uses only the accent and black, as in item 001, where the jack-o'-lantern is filled orange and black and the rest is left as uncoloured line art.
+- **Activity content can be in full colour** where colour *is* the activity: answer keys, colour keys and preview images of coloured pictures. Store chrome (covers, headers, footers) never goes beyond black, white and the accent. On the cover, art uses only the accent and black, as in item 001, where the jack-o'-lantern is filled orange and black and the rest is left as uncoloured line art. Tints and shades of the single accent are also allowed on the cover art (as on item 027's rust turkey); no other hues.
 - Every worksheet must still work in black-and-white printing. Write colour names as words next to each swatch.
 
 ## 3. Cover / thumbnail (2000 × 2000 px PNG)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Thanksgiving Color by Note (TpT 027): build the resource and verify it.
+"""Fall Color by Note (TpT 027): build the resource and verify it.
 
     python3 gen.py           build everything (PDFs, PNGs) into this folder
     python3 gen.py --check   verify data, answer keys, pages, fonts and files
@@ -313,7 +313,7 @@ def worksheet_page(sh, watermark=False):
     helper = f'<div class="helper">{HELPER[lv["kind"]]}</div>' if sh.level != "A" else '<div class="helper">Every note and rest is shown without a staff. Look at the notehead, stem and flag.</div>'
     wm = '<div class="wm">PREVIEW</div>' if watermark else ""
     return (f'<section class="page">{wm}'
-            f'<div class="top"><div class="h t">Thanksgiving Color by Note<small>{sh.number}. {escape(sh.title)}</small></div>'
+            f'<div class="top"><div class="h t">Fall Color by Note<small>{sh.number}. {escape(sh.title)}</small></div>'
             f'<div class="tag"><div class="lv">LEVEL {sh.level}</div><div class="ln">{lv["name"]}</div></div></div>'
             f'<div class="name">Name<span></span>Date<span class="d"></span></div>'
             f'<div class="how"><b>How to play:</b> {lv["how"]}</div>'
@@ -349,7 +349,7 @@ def cover_page(sheets):
     pump = next(s for s in sheets if s.level == "A" and s.slug == "turkey")
     return (f'<section class="page cover"><div class="store">{BRAND}</div>'
             f'<div style="width:6.2in">{picture_svg(pump, fills=cover_art(pump), stroke=2.2)}</div>'
-            f'<div class="ctitle"><div class="a">THANKSGIVING</div><div class="b">COLOR BY NOTE</div>'
+            f'<div class="ctitle"><div class="a">FALL</div><div class="b">COLOR BY NOTE</div>'
             f'<div class="c">Rhythm values · Treble clef · Bass clef — 3 levels with answer keys</div></div>'
             f'<div class="cband">Grades 1–5 <em>·</em> 27 worksheets <em>·</em> 27 answer keys</div></section>')
 
@@ -358,7 +358,7 @@ def teacher_page(sheets, toc):
     rows = "".join(f'<tr><td style="white-space:nowrap"><b>Level {k}</b></td><td>{v["name"]}</td><td style="white-space:nowrap">Grades {v["grades"]}</td><td>{toc[k]}</td></tr>' for k, v in LEVELS.items())
     pics = ", ".join(f"{i + 1}. {t}" for i, (_, t, _) in enumerate(PICTURES))
     return (f'<section class="page doc"><div class="rule"><h1>Teacher Notes</h1>'
-            f'<div class="l" style="font-size:13pt">Thanksgiving Color by Note · 3 levels · grades 1–5</div></div>'
+            f'<div class="l" style="font-size:13pt">Fall Color by Note · 3 levels · grades 1–5</div></div>'
             f'<div class="cols"><div>'
             f'<h2>How to use</h2><ul>'
             f'<li>Pick a level for each student or group, print the worksheets single-sided, and hand out crayons or colored pencils.</li>'
@@ -367,7 +367,7 @@ def teacher_page(sheets, toc):
             f'<li>Check with the answer key that follows each level. Keys are full-color pages you can print or project.</li>'
             f'<li>All three levels use the same nine pictures, so one class can color the same picture at three different reading levels.</li></ul>'
             f'<h2>Great for</h2><ul><li>Early finishers and music centers</li><li>Sub plans (no music background needed with the answer keys)</li>'
-            f'<li>A quick check of note-reading before or after Thanksgiving and autumn lessons</li></ul>'
+            f'<li>A quick check of note-reading before or after autumn lessons</li></ul>'
             f'</div><div>'
             f'<h2>Level guide</h2><table><tr><th>Level</th><th>Skill</th><th>Suggested</th><th>Pages</th></tr>{rows}</table>'
             f'<p class="small">Level A: whole, half, quarter and eighth notes and the quarter rest. Level B: treble-clef notes from middle C (C4) to A5. '
@@ -496,7 +496,7 @@ def cover_square(sheets):
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div style="width:610px;margin-top:22px">{picture_svg(pump, fills=cover_art(pump), stroke=2.4)}</div>'
-        f'<div class="hd" style="font-size:66px;margin-top:20px">Thanksgiving</div>'
+        f'<div class="hd" style="font-size:66px;margin-top:20px">Fall</div>'
         f'<div class="hd" style="font-size:112px">Color by Note</div>'
         f'<div class="sub" style="font-size:29px;margin-top:12px">Rhythm values · Treble clef · Bass clef — with answer keys</div>'
         f'<div class="band">Grades 1–5 <em>·</em> 3 levels <em>·</em> 27 worksheets</div></div>')
@@ -511,7 +511,7 @@ def preview_square_1(img):
         f'<div class="hd" style="font-size:78px;margin-top:20px">3 levels, same pictures</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Differentiate in one lesson: everyone colors the same picture at their own level</div>'
         f'<div style="display:flex;gap:26px;margin-top:60px">{shots}</div>'
-        f'<div class="band">9 Thanksgiving pictures <em>·</em> 27 worksheets</div></div>')
+        f'<div class="band">9 Fall pictures <em>·</em> 27 worksheets</div></div>')
 
 
 def preview_square_2(ws, key):
@@ -569,7 +569,7 @@ def build():
         print("\n".join(problems))
         sys.exit("data check failed; not rendering")
     pages, _ = full_pages(sheets)
-    full = write("resource.html", html_doc(pages, "Thanksgiving Color by Note"))
+    full = write("resource.html", html_doc(pages, "Fall Color by Note"))
     prev = write("preview.html", html_doc(preview_pages(sheets), "Preview"))
     render([{"html": full, "pdf": PDF}, {"html": prev, "pdf": PREVIEW_PDF}])
     # page images for the square previews (from the watermarked preview PDF)
