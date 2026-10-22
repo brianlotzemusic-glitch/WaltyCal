@@ -58,3 +58,27 @@ Reviewed 22 Oct 2026 at commit 50048fe. Rendered the cover, 3 previews, all 58 p
 2. Gingerbread: replace the three large roof discs with 5-7 small gumdrop discs along a zig-zag icing line, or 2-3 horizontal icing stripes across the roof; add a candy-cane stripe, wreath or round window to the door; keep the scalloped eaves.
 3. Optional polish: snowman hat band no wider than the hat; cover dots on arm tips and corners removed.
 After redraw: rerun gen.py, regenerate PNG/PDF, --check, request QA round 3 for gifts, gingerbread and cover (re-run decoder; other pictures can stay).
+
+---
+
+# Round 3 (final)
+
+**Verdict: APPROVE (every picture B or better, cover A-; mechanics pass)**
+
+Reviewed 22 Oct 2026 at commit 0e77f9d, independently. Rendered the cover, previews 1-3 (preview 3 viewed), all 9 answer keys of Level A at 100 dpi, 200 dpi crops of the gingerbread roof/door and the gift bow, and worksheets B-9 and C-7. No item files changed.
+
+## Mechanics: pass
+- Own decoder re-run on all 3 levels (parses build/resource.html; fontTools Bravura glyph bounds; Level A by codepoint, B/C by staff-line y and clef glyph; answer-key tables compared with worksheet tables): 400 symbols across 27 worksheets, 0 problems. Each symbol sits inside exactly one region, its answer-key fill equals the key colour for that symbol, no region of area over 30 lacks a symbol, no overlapping symbols, right clef per level, key tables identical. Labels and key cells legible.
+- gen.py --check OK (306 regions, 400 symbols, 58 Letter pages, preview 4, 2000x2000 images, UPLOAD.md ok); working tree unchanged afterward. tpt.json: 3.75, Winter, 4 grades, Music, PDF, 58 pages; UPLOAD.md price $3.75, title "Winter Color by Note | Rhythm, Treble & Bass Clef Worksheets, Answer Keys", no Christmas wording. git diff shows tpt/001 and tpt/027 untouched.
+
+## Art grades
+- 1 Snowman B+ (hat band now flush with the hat). 2 Mittens B+. 3 Cabin B+. 4 Tree B+. 5 Snowflake A-. 6 Cardinal B+. 8 Ornament B+. No regression versus round 2.
+- 7 Gingerbread **B** (was B-). Tiered iced roof with scalloped white stripes, three green gumdrops, wreath door, scalloped eaves, snow-capped chimney: reads as a gingerbread house, clearly better, and good at thumbnail. 'Stripes plus 3 gumdrops' is acceptable. Nits, not blocking: the white eave slab is a heavy flat block with a small bump at its left end; a tiny white sliver above the wreath bow; the gumdrops are a little bell-shaped; one snow dot sits on the door (reads as a knob).
+- 9 Gifts **B** (was B-). Black crescents gone, bow reads as a bow with a knot and two ribbon tails, box seating fine. Nits: loops are fat rounded paddles rather than pointed teardrops, and the tail ends have small notches.
+- Cover **A-**: clean snowflake, stray dots are now proper light-blue discs. Previews fine.
+
+## Optional polish (not required)
+Remove the snow dot on the gingerbread door; trim the eave bump; point the bow loops. Ship as is.
+
+## Open owner questions (do not block)
+1. Logo beside HUDSON BEAT. 2. Owner to flip through some keys so "checked by hand" stays true. 3. Bundle with 027/001 later.
