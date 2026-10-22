@@ -24,3 +24,36 @@
 ## Open questions for the owner/Manager
 - Does the Lister set Etsy's AI checkbox and "Designed by" (the research report asks)?
 - Etsy's image-requirements page was not retrievable, so the 2000 px and opaque rules are unconfirmed by Etsy itself; this bundle meets them anyway.
+
+---
+
+# QA 030 Mushroom Clipart (round 2, 22 Oct 2026)
+
+**Verdict: APPROVED.** All five round-1 must-fixes are resolved. No blocking issues; two optional nits below.
+
+## Round-1 fixes, verified
+1. **Design 01 fly agaric (new scaly volva).** Viewed at 100% on dark green and on magenta (volva, cap, gills, ring, leaves). The base is now a swollen bulb with rows of white scales and a plum underline: reads as a fly agaric volva, no anatomical joke. Edges are clean on both grounds, no paper fringe. SVG rendered at 3600 px: clean single-colour line art, the same scales, no stray blobs.
+2. **Design 12 parasol (plain stem with fern tufts).** The swirl-filled bulb is gone: a plain stem with a rounded foot, two rings, fern tufts at the left and right. Clean edges on dark and magenta; SVG renders cleanly at 100%.
+3. **Listing image 5.** Layout redone, no overlap: all six bullets and dots visible, "3600 px" intact, art sits left and bottom right.
+4. **README-LICENSE.txt.** Only FILES, FILE FORMATS AND SIZES, COMPATIBLE SOFTWARE, designs list, not-identification note and licence remain. No how-to steps.
+5. **Tag.** "foraging clipart" replaced by "mushroom art" (13 tags, all <= 20 chars; no foraging, edibility or ID wording).
+
+## Independent checks
+- **HALO_OK.** The new 01 boxes are very large (cap 0-1000 and rim 1000-2400 span the full width, volva 500-2300 x 2550-3600), so the halo test is effectively off for 01. I re-ran the halo mask with no boxes: all hits sit on real white/cream art (warts, rim, gills, ring, volva scales) and I found no paper fringe on dark or magenta at 100%. 12's boxes (stem highlights at 600-1100 x 2700-3200, foot) hold only pale stem highlights; unboxed 12 has one 196 px patch, harmless. Nothing real hidden. Suggestion: tighten 01's boxes later; not blocking.
+- **PNGs.** 12 of 12 PNGs and 12 of 12 SVGs in the ZIP are byte-identical to art/png and art/svg (ZIP names carry a "mushroom-" prefix); README identical. ZIP = PNG x12 + SVG x12 + README only.
+- **Listing images.** All five are 3000x2250 RGB, opaque, >= 2000 px both sides, 1.0-3.5 MB. Image 1 is a flat white-ground preview of the real PNGs, showing the NEW 01 (scaly volva) and 12 (plain stem). Image 2 shows 01 on checker/green/SVG plus four SVGs; image 3 is a composite with the new 01 and no text overlap; image 4 shows the real SVGs; image 5 as above. No text overlaps anywhere.
+- **LISTING.md vs ZIP/listing.json.** Counts, 300 dpi, 3600 px, formats match. Title 125 chars with no edibility/ID claims; "fly agaric" and the mushroom names are species art names, and the description says "not mushroom identification pictures". Disclosure line is last; mockup sentence present. Taxonomy 6844, price $3.49, who_made i_did.
+- `python3 gen.py --check`: ALL CHECKS PASS.
+
+## Description: "ready for sublimation, print and print-then-cut"
+**Acceptable, no change required.** It is one short factual use-case/compatibility phrase (what the file is suitable for), with no steps, settings or instructions; Etsy's rule bans step-by-step craft instructions, and FACTORY.md allows formats, sizes and software names. If the Manager wants zero risk, the neutral version is: "12 PNG files, transparent background, 300 dpi, 3600 px on the longest side (12 in)". Not required.
+
+## Optional nits (not blocking)
+- 12: a tiny scribble reading like "0.9" on the upper ring (about 25 px at 100%) and a faint ghost smudge in the fern. Invisible at listing size.
+- 01: a few stray hatch strokes on the volva; reads as texture.
+- Image 5 has empty space lower left; fine.
+
+## Open questions for the owner/Manager (unchanged)
+- Does the Lister tick Etsy's AI checkbox and "Designed by"? (LISTING.md says yes.)
+- Etsy's image-requirements page was still not retrievable; the bundle meets 2000 px and opaque anyway.
+- Images 1 and 3 are over 1 MB; consider JPG if uploads are slow.
