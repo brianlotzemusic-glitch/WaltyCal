@@ -18,7 +18,7 @@ PDFS = {  # file: (width pt, height pt, pages)
     "bee-honeycomb-coloring-pages-US-Letter.pdf": (612, 792, 20),
     "bee-honeycomb-coloring-pages-A4.pdf": (595.28, 841.89, 20),
 }
-DISCLOSURE = "Designed with the help of digital and AI tools, and checked by hand."
+DISCLOSURE = "Designed by Duskwood Designs Co, drawn with digital tools and checked by hand."
 LEAD = "Bee Coloring Pages"
 TAXONOMY = 339  # Books, Movies & Music > Books > Coloring Books
 PRICE = 3.99

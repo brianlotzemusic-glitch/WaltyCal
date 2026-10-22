@@ -7,7 +7,7 @@ Bee Coloring Pages, 20 Bold and Easy Honeycomb Coloring Pages for Kids & Adults,
 
 **Category:** Books, Movies & Music > Books > Coloring Books (`taxonomy_id` 339, per formats/coloring.md)
 **Type:** Digital · **Who made it:** I did · **When:** 2020–2026 · **What is it:** A finished product
-**Creation method:** the line art is drawn in code (no AI images). The shop's standard disclosure line stays at the end of the description; whether to tick Etsy's AI box is the owner's call (open question for the owner).
+**Creation method:** the line art is drawn in code (no AI images), so the owner ticks Etsy's "I made it / no AI" option (the owner still confirms in the Etsy form). The description ends with the plain disclosure line.
 
 **Description**
 Twenty sweet bee and honeycomb coloring pages with thick, bold outlines and big, easy spaces to fill. Print them tonight and color with your kids, your class, or on your own with a cup of tea: a bee on a daisy, a queen bee with her crown, a straw skep beehive, a honey jar and dipper, a sleepy bee on the moon, a honeycomb where every cell holds a picture, and fourteen more.
@@ -37,7 +37,7 @@ Personal use: print as many copies as you like for your own home, family and cla
 THIS IS A DIGITAL DOWNLOAD
 No physical item will be shipped. The files are available right after purchase in a single ZIP from Duskwood Designs Co. Printing and paper are not included.
 
-Designed with the help of digital and AI tools, and checked by hand.
+Designed by Duskwood Designs Co, drawn with digital tools and checked by hand.
 
 **Tags (13)**
 bee coloring pages, honeycomb, coloring pages, bumblebee coloring, kids coloring pages, bold and easy, adult coloring page, printable coloring, honey bee, spring coloring, garden coloring, coloring book pdf, animal coloring

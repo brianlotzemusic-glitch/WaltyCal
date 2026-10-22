@@ -206,8 +206,8 @@ def p04(c):  # honey jar and dipper
 def p05(c):  # sunflower with two bees
     ground(c, 1040, 14, 4)
     stem(c, [(CX, 1050), (CX + 8, 900), (CX - 4, 720)], 40, 36)
-    leaf(c, CX + 4, 960, 220, 56, -22)
-    leaf(c, CX - 4, 900, 210, 54, -158)
+    leaf(c, CX + 6, 1000, 165, 40, -10, vein=False)
+    leaf(c, CX - 6, 985, 175, 42, -170, vein=False)
     petal_flower(c, CX, 520, 330, 16, 130, rot=4, pointed=True, dots=False)
     # sunflower seeds: dots in two rings
     for r, n in ((46, 8), (92, 14)):
@@ -216,7 +216,7 @@ def p05(c):  # sunflower with two bees
             c.dot(CX + r * math.cos(a), 520 + r * math.sin(a), 6)
     c.dot(CX, 520, 7)
     bee(c, 190, 150, 0.8, -10)
-    bee(c, 745, 945, 0.8, 8, flip=True)
+    bee(c, 775, 950, 0.8, 8, flip=True)
 
 
 def p06(c):  # queen bee
