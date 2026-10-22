@@ -30,3 +30,39 @@ $3.75 is within the owner's $3.50–4 range. A 25-cent gap from 001 is fine for 
 3. The owner should flip through a few keys so "checked by hand" stays true.
 4. Suggestion for a later build: the B/C staffs use a 5.4 pt staff space (small for grade 2). The same carries over from 001.
 5. Timing: list by early November (Thanksgiving is 26 Nov).
+
+---
+
+# Re-review after Designer redraw (22 Oct 2026)
+
+**Verdict: REJECT (art not yet shippable; mechanics all pass)**
+
+Reviewed independently of the Designer: cover, all 3 previews, all 9 Level A worksheets, Level B cornucopia + its key, Level B/C pages sampled, 028 sampler (5 pages). Judged as a skeptical buyer comparing with top-selling colour-by-number sets.
+
+## Mechanics: pass
+- Own decoder (parses `build/resource.html`, shapely point-in-polygon; Level A by glyph codepoint, B/C by staff-line y of the notehead and clef): 468 symbols (156 per level), 0 mismatches vs the answer-key fills, 0 symbols ambiguous, every region holds at least one symbol (except none uncovered), worksheet and key region geometry identical. Smallest region is about 3,470 px2 in SVG units (readable).
+- `gen.py --check` OK on 027 (58 pages, 3 levels, 27+27) and 028 (5 pages, 3+3). 028 "See the full set" page is correct (Halloween link, Fall listing names turkey/pumpkin/cornucopia/maple leaf, store link). tpt.json valid, tags Autumn + Thanksgiving, title "Fall Color by Note | ..." matches UPLOAD.md. tpt/001 untouched (no commits since its QA).
+
+## Art: per picture
+- 1 Friendly Turkey: **C**. Feathers are rounded blobs of uneven size, no tail-feather detail, no wattle/feet, body circle mostly hidden behind head and wing blobs. Reads as a flower with a face. Fix: 7-9 symmetrical teardrop feathers of one size in a clean fan, oval body with visible belly, a red wattle region, two feet, a head smaller than the body.
+- 2 Harvest Pumpkin: **B**. Good silhouette and ribs, stem and leaves fine. The big white rib regions are easy to colour. Minor: vines missing; stem region has a note touching its edge.
+- 3 Cornucopia: **C- (worst)**. Not recognisable as a horn: it is a bent grey-brown tube with a lumpy bend, an orange disc with two stray parentheses, a pear, an apple and leaves piled on it. Odd polygonal outline with kinks. Fix: redraw as a classic horn (wide curled mouth opening left, tapering tail curling up right) with a woven-band pattern, and fruit spilling from the mouth in a clear row (apple, pear, grapes, small pumpkin); remove the parenthesis highlights.
+- 4 Maple Leaf: **B-**. Recognisable, but veins are thick bars that do not close regions, so the leaf is effectively 3 big blobs; stem is very heavy. Fix: thinner stem, close the veins so each lobe is its own region.
+- 5 Acorn: **B**. Cap scallops good, nut oval patch looks odd (floating ellipse); thick stem OK. Fix: drop or reshape the highlight.
+- 6 Apple Basket: **B**. Clear, big handle, nice weave cells. Apples are plain circles overlapping with stems that float; add a leaf per apple.
+- 7 Pumpkin Pie: **C**. Perspective is confused: scalloped crust ellipse, an inner filling ellipse and a lower rim ellipse do not agree; slice lines stop in mid-air. Fix: a straight 3/4 view (rim ellipse + side band + filling + whipped cream swirl) with 6 slice regions.
+- 8 Corn on the Cob: **C**. Egg-shaped grid of rectangles does not read as kernels; husks are two leaf blobs. Fix: elongated cob with rows of rounded kernels, 2-3 husk leaves peeling down.
+- 9 Sunflower: **B**. Best of the set: 14 petals, dotted seed head, stem and leaves. The dotted ring is fine. Petals are slightly uneven.
+- Cover: **B-**. Turkey is the weakest picture and is the hero of the cover, so it carries the C. Layout, title and black band are good. Previews 1-3 are clean and the coloured 9-picture grid looks professional; the worksheets themselves look weaker than the coloured previews (marketing/product gap).
+- 028 Sampler: **B**. It uses the three best pictures (sunflower, acorn, basket), so it is fine as is; if the set is redrawn, rebuild it.
+
+## Buyer view
+At $3.75 a teacher would likely buy for the music levels, but with the turkey on the cover and a cornucopia nobody can identify, the first page reviews would say the pictures are childish and odd. Top sellers have recognisable symmetrical subjects. Not proud to ship.
+
+## Required before approval
+1. Redraw turkey (cover hero) and cornucopia as described.
+2. Fix pie and corn (C to at least B); polish maple leaf veins.
+3. Rebuild 027 and 028, re-run `gen.py --check`, regenerate previews and cover.
+
+## Open questions
+- Owner: acceptable to drop cornucopia for a simpler subject (e.g. a leaf wreath or a pilgrim hat) if it cannot be drawn well?
