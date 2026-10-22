@@ -92,3 +92,49 @@ Reviewed independently: cover, 3 previews, 9 Level A worksheets + 9 keys rendere
 
 ## Verdict: REJECT
 Cover and turkey are B, not B+; pie (C+), cornucopia (C+) and corn (C) are below B. Fixes: see per-picture notes above (corn is the weak spot; swap allowed). Re-run `gen.py --check` for 027 and 028 after any change; 028 shares pictures.py.
+
+---
+
+# Round 3 re-review (after Designer round 3, commit afc3bbd): REJECT (close)
+
+Reviewed independently as a skeptical buyer: cover, 3 previews, all 9 Level A worksheets, Level A keys for turkey/pie/owl/maple, Level B turkey and Level C owl pages, pie at 150 dpi crop, 028 page 5.
+
+## Mechanics: pass (all three levels decoded this time)
+- Own decoder (parses `build/resource.html`; Level A by glyph codepoint vs the key's printed names, Levels B and C by staff-line y of the notehead -> letter, clef on its correct line, ledger-line count, stem direction; shapely point-in-polygon for the region): 517 symbols (A, B and C, 9 pictures each), 0 mismatches vs the answer-key fill, 0 symbols outside a region, 0 regions without a symbol, 0 clef/ledger/stem issues, worksheet and key geometry identical. Matches `gen.py`'s own count (423 regions, 517 symbols).
+- `gen.py --check` OK for 027 (58 pages, preview 4 pages, fonts, 2000x2000) and 028 (5 pages, 3+3). Labels and staves legible at 100 dpi. 028 "See the full set" is accurate: turkey, pumpkin, owl and pumpkin pie are all in 027; Halloween link and store link present. tpt/001 untouched (no commit since its QA).
+
+## Art grades
+- 1 Friendly Turkey: **A-**. Symmetric 7+7 feather fan, wattle, wings, feet, head smaller than body. Clean, recognisable, comparable to top sellers. Only nit: the worksheet body is a plain grid of big regions (easy colouring, fine).
+- 2 Harvest Pumpkin: **B**.
+- 3 Forest Mushrooms: **B+**. Instantly readable, big spotted cap, small second mushroom, clean regions.
+- 4 Maple Leaf: **B-**. Unchanged: thick stem and four thick bars inside the lobes that look like scratches and close nothing. The bars are the one amateur detail left in the set.
+- 5 Acorn: **B**. Highlight gone, good.
+- 6 Apple Basket: **B**.
+- 7 Pumpkin Pie: **B-**. Top-down plate, scalloped crust, filling and cream swirl are readable, and the lifted slice is a nice idea. Defects at 150 dpi: the removed-slice gap and the slice lines read as a pinwheel/wagon wheel on the black-and-white worksheet; crust on the cut slice ends in a sharp pointed shard that pokes past the plate edge area; the crust ring is off-centre (thick top-left, thin bottom-right); the cream swirl is white like the plate and the gap, so the three whites merge in the key. Fix: centre the crust ring on the filling, make the cut-slice crust end square, give the cream a one-colour fill and the plate a pale grey or accent colour in the key, and shorten or remove the gap so the pie reads as a whole pie with one slice line.
+- 8 Autumn Owl: **B+**. Big eyes, ear tufts, feathered chest, perched on a branch with leaves; charming and professional.
+- 9 Sunflower: **B**.
+- Cover: **B+**. Turkey filled with three tints of the one rust accent plus black on white, feather depth reads well, title and band strong. This is a clear step up from the uncoloured cover and holds up at thumbnail size.
+- Previews 1-3: **B+**. The 9-picture grid is attractive. 028 sampler: **B**.
+
+## Verdict: REJECT (near-miss: two pictures at B-)
+Turkey and cover meet B+ and the set is much improved, but maple leaf (B-) and pie (B-) are under the B bar. Fix list: maple leaf, replace the four thick bars with thin lines that close each lobe into its own region and slim the stem; pie, as in the grade note above. Rebuild 027 and 028 (028 shares pictures.py but uses sunflower/acorn/basket, so it is unaffected unless pictures.py changes them), rerun `gen.py --check`.
+
+## STYLE.md one-accent rule vs the tinted cover
+STYLE.md section 2 says cover art "uses only the accent and black" and cites 001's orange-and-black fill. The new cover uses three tints of the accent (#E08A5C, #F6D2BC, #6E2A0F) plus black. I judge it within the spirit: still one hue, no new colours, no extra store chrome; the tints are the reason the cover now looks finished. But the letter of the rule is "accent + black", so STYLE.md should be amended in one line ("tints and shades of the single accent are allowed on the cover art") and `gen.py` already labels them cover-only. Owner/Designer to confirm; not a blocker.
+
+## Title consistency (Thanksgiving vs "Fall")
+- The listing title is "Fall Color by Note | ..." because TpT's Seasonal Titles notice blocked a holiday-named title; the pictures are general autumn (mushrooms, owl, maple, acorn, sunflower, only the turkey and pie are holiday-ish). The product itself still says THANKSGIVING on the cover (the biggest word), every worksheet header, the teacher page, preview 1/3 band and the resource.html title. A buyer or TpT reviewer opening the thumbnail sees "THANKSGIVING" against a "Fall" title; that mismatch is likely to re-trigger the notice and is also a conversion risk (not Thanksgiving-only use). Recommendation: **yes, change to Fall**. Exact text fixes in `tpt/027-thanksgiving-color-by-note/gen.py` (folder, file slugs and tpt.json name can stay; renaming the PDF is optional):
+  1. L316 worksheet header `Thanksgiving Color by Note` -> `Fall Color by Note` (every worksheet, and the answer-key headers that share the pattern).
+  2. L352 cover `<div class="a">THANKSGIVING</div>` -> `FALL` (keep `COLOR BY NOTE` big line).
+  3. L361 teacher page `Thanksgiving Color by Note · 3 levels · grades 1–5` -> `Fall Color by Note · ...`.
+  4. L370 teacher bullet `before or after Thanksgiving and autumn lessons` -> `before or after autumn lessons` (Thanksgiving may stay as one mention in the description, not in headers).
+  5. L499 preview 1 headline `Thanksgiving` -> `Fall`; L514 band `9 Thanksgiving pictures` -> `9 Fall pictures` (or `9 autumn pictures`).
+  6. L572 document title -> `Fall Color by Note`.
+  7. The word-list check at L711 requires `Thanksgiving` in UPLOAD.md; keep it in section 4 (subject) and the description's closing sentence only.
+  8. UPLOAD.md: description is already Fall-led; the line "(including a Thanksgiving week activity)" is fine as a use case. Rename 027's folder/PDF only if the owner wants; filenames are not shown to buyers on the listing but the PDF name is seen on download: suggest `fall-color-by-note.pdf` (update SLUG, UPLOAD.md, tpt.json, and `tools/tpt.js` if it refers to the file).
+- Also, STYLE.md's colour table lists "Thanksgiving/fall rust"; harmless.
+
+## Open questions for owner
+1. Approve changing the cover/headers to FALL (recommended) and renaming the PDF?
+2. Accept tints of the accent on cover art (STYLE.md one-line amendment)?
+3. Maple leaf and pie redraws need one more Designer pass; the rest can ship as is.
