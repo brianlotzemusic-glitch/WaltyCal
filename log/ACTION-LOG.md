@@ -346,3 +346,4 @@
 - 2026-10-22 Designer (TpT): built tpt/029-winter-color-by-note (Winter Color by Note, 9 pictures x 3 levels, 58 pp, $3.75, 027 pipeline; gen.py --check OK), awaiting QA; not released/uploaded.
 - 2026-10-22 QA (TpT 029 Winter): REJECT round 1. Mechanics pass (385 symbols, 0 mismatches, --check OK); art: mittens C+, gingerbread C+, gifts C+/B-, snowman/ornament/cover B-. Fixes in tpt/029-winter-color-by-note/QA.md.
 - 2026-10-22 Designer (TpT): 029 Winter round 2 art fixes: mittens, gingerbread, gifts, snowman, ornament redrawn; cover hero switched to snowflake; PDFs/previews/cover regenerated, gen.py --check OK; awaiting QA round 2.
+- 2026-10-22 QA (TpT 029 Winter): REJECT round 2. Mechanics pass (391 symbols, 0 problems, --check OK); mittens B+, snowman B+, ornament B+, cover A-/B+; gifts B- (bow reads as a face) and gingerbread B- need fixes in QA.md.
