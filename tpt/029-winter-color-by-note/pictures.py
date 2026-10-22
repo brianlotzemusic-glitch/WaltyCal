@@ -219,7 +219,7 @@ def snowman():
     tail = rot(rrect(298, 256, 354, 358, 14), -6, (326, 256))
     layers.append(L(soft(unary_union([band, tail]), 4), "red"))
     layers.append(L(rrect(214, 4, 326, 126, 10), "black"))
-    layers.append(L(rrect(202, 70, 338, 126, 8), "red"))
+    layers.append(L(rrect(214, 70, 326, 126, 8), "red"))
     ink = [stem("M194 314 C158 310 126 290 98 250", 7), stem("M136 292 C128 280 126 270 130 258", 5), stem("M116 270 C106 270 98 268 90 260", 5),
            stem("M346 314 C382 310 414 290 442 250", 7), stem("M404 292 C412 280 414 270 410 258", 5), stem("M424 270 C434 270 442 268 450 260", 5),
            dot(250, 176, 6.5), dot(290, 176, 6.5),
@@ -327,8 +327,7 @@ def snowflake():
         x, y = polar(cx, cy, 206, k * 60 - 60)
         layers.append(L(circle(x, y, 31), "blue"))
     layers.append(L(soft(Polygon([polar(cx, cy, 84, k * 60 - 90) for k in range(6)]), 8), "yellow"))
-    ink = flakes([(40, 40), (500, 40), (40, 460), (500, 460), (270, 16), (270, 484), (30, 250), (510, 250)])
-    return layers, ink
+    return layers, []  # no drifting flakes: they sat on the arm tips and frame corners (QA r2)
 
 
 def cardinal():
@@ -361,20 +360,36 @@ def cardinal():
     return layers, ink
 
 
+def gumdrop(cx, cy):
+    """Gumdrop: a squat cone with a domed top and a wide base, just roomy enough for one staff label."""
+    cone = Polygon([(cx - 32, cy + 24), (cx + 32, cy + 24), (cx + 23.5, cy - 14), (cx - 23.5, cy - 14)])
+    return soft(unary_union([cone, ellipse(cx, cy - 14, 23.5, 17)]), 4)
+
+
 def gingerbread():
-    layers = [L(FRAME, "blue"), L(hill(440, 10), "white")]
-    layers.append(L(rrect(84, 262, 456, 434, 4), "brown"))
-    layers.append(L(rrect(376, 112, 432, 270, 6), "brown"))
-    layers.append(L(rrect(366, 82, 442, 134, 14), "white"))
-    layers.append(L(soft(P("M44 300 L270 86 L496 300 Z"), 6), "red"))
+    layers = [L(FRAME, "blue"), L(hill(452, 10), "white")]
+    layers.append(L(rrect(84, 262, 456, 446, 4), "brown"))
+    layers.append(L(rrect(392, 80, 452, 230, 6), "brown"))
+    layers.append(L(rrect(382, 46, 462, 96, 14), "white"))
+    roof = soft(P("M30 300 L270 18 L510 300 Z"), 6)
+    layers.append(L(roof, "red"))
+    # piped icing: a trim along both roof edges and two scalloped stripes across the roof, all
+    # one white piece with the scalloped eaves; a row of gumdrops sits on the eaves
+    trim = roof.difference(roof.buffer(-9, join_style=2))
+    def stripe(y):
+        return unary_union([box(0, y - 5, 540, y + 5)] + [circle(16 + 28 * k, y + 5, 6.5) for k in range(19)])
     n = 9
-    drip = unary_union([rrect(52, 250, 488, 296, 10)] + [circle(52 + 436 * (k + .5) / n, 296, 24) for k in range(n)])
-    layers.append(L(drip, "white"))
-    for (x, y) in ((196, 236), (270, 166), (344, 236)):
-        layers.append(L(circle(x, y, 33), "green"))
-    layers.append(L(unary_union([box(242, 366, 298, 434), ellipse(270, 366, 28, 28)]), "green"))
-    layers += [L(rrect(132, 338, 200, 404, 12), "white"), L(rrect(340, 338, 408, 404, 12), "white")]
-    ink = flakes([(180, 50), (360, 40), (270, 24), (80, 130), (460, 150), (36, 200), (504, 220), (150, 474), (390, 474), (40, 60), (500, 60)])
+    drip = unary_union([rrect(40, 250, 500, 292, 10)] + [circle(40 + 460 * (k + .5) / n, 292, 23) for k in range(n)])
+    layers.append(L(unary_union([trim, stripe(106).intersection(roof), stripe(166).intersection(roof), drip]), "white"))
+    for x in (162, 270, 378):
+        layers.append(L(gumdrop(x, 214), "green"))
+    # door with a wreath; windows
+    door = unary_union([box(226, 370, 314, 446), circle(270, 370, 44)])
+    layers.append(L(door, "red"))
+    layers.append(L(soft(unary_union([circle(270, 366, 30.5)] + [circle(*polar(270, 366, 30, k * 30), 6) for k in range(12)]), 2), "green"))
+    layers += [L(rrect(138, 338, 206, 406, 12), "white"), L(rrect(334, 338, 402, 406, 12), "white")]
+    ink = [dot(300, 424, 4), soft(Polygon([(258, 332), (270, 340), (258, 348)]), 1), soft(Polygon([(282, 332), (270, 340), (282, 348)]), 1), dot(270, 340, 4)]
+    ink += flakes([(150, 40), (390, 30), (60, 120), (480, 150), (36, 200), (504, 230), (150, 476), (390, 476), (40, 50), (500, 50), (230, 24)])
     return layers, ink
 
 
@@ -399,11 +414,22 @@ def gift():
     layers.append(L(rrect(72, 288, 468, 344, 10), "red"))
     layers.append(L(rrect(236, 288, 304, 464, 0), "yellow"))
     layers.append(L(rrect(236, 190, 304, 290, 0), "yellow"))
-    loop = soft(ellipse(-58, -26, 64, 42, -22), 4)
-    for g in (loop, mirror(loop, 0)):
-        layers.append(L(mv(g, 270, 186), "yellow"))
-    layers.append(L(ellipse(270, 188, 36, 30), "yellow"))
-    ink = [stem("M236 160 C214 138 180 136 160 148", 1.6), stem("M304 160 C326 138 360 136 380 148", 1.6)]
+    # bow: two pointed teardrop loops angled up and out from the knot, a ribbon tail each side
+    kx, ky = 270, 184
+    def loop(sign):
+        a = math.radians(180 + 27 if sign < 0 else -27)
+        pts = [(86, 34), (54, 27), (0, 2)]
+        return soft(unary_union([circle(kx + d * math.cos(a), ky + d * math.sin(a), r) for d, r in pts]).convex_hull, 3)
+    def tail(sign):
+        # ribbon tail: a strip leaving the knot down and out, with a notched end
+        t = P("M0 -12 L100 -13 L88 0 L100 13 L0 12 Z")
+        return rot(mv(t, kx, ky), 180 - 58 if sign < 0 else 58, (kx, ky))
+    ribbon = layers.pop()  # the lid's vertical ribbon joins the tails: one ribbon piece under the knot
+    layers.append(L(unary_union([ribbon["geom"], tail(-1), tail(1)]), "yellow"))
+    for sg in (-1, 1):
+        layers.append(L(loop(sg), "yellow"))
+    layers.append(L(ellipse(kx, ky, 31, 30), "yellow"))
+    ink = []
     ink += flakes([(60, 80), (140, 60), (60, 230), (480, 90), (420, 50), (490, 230), (270, 40), (44, 400), (500, 410)])
     return layers, ink
 
