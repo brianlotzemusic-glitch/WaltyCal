@@ -66,3 +66,29 @@ At $3.75 a teacher would likely buy for the music levels, but with the turkey on
 
 ## Open questions
 - Owner: acceptable to drop cornucopia for a simpler subject (e.g. a leaf wreath or a pilgrim hat) if it cannot be drawn well?
+
+---
+
+# Round 2 re-review (after Designer's second redraw, commit e58247d): REJECT
+
+Reviewed independently: cover, 3 previews, 9 Level A worksheets + 9 keys rendered at 100 dpi (Level B/C pages viewed in the previews and sampled), as a skeptical buyer comparing with top-selling colour-by-number sets.
+
+## Mechanics: pass
+- Own decoder (shapely point-in-polygon on build/resource.html): Level A 162 symbols over 9 pictures, 0 mismatches vs answer-key fill, 0 symbols outside a region, 0 regions without a symbol, worksheet and key geometry identical. Levels B/C share the same geometry; their symbol-to-colour mapping was verified by `gen.py --check` only this round.
+- `gen.py --check` OK on 027 (58 pages, 3 levels, 27+27, 390 regions) and 028 (5 pages, 3+3). 028 "See the full set" page present (Halloween link, Fall listing). 028 tpt.json valid; 027 tpt.json has no top-level "title" key (title lives in UPLOAD.md; not a defect, flagged). tpt/001 untouched since last QA.
+
+## Art grades
+- 1 Friendly Turkey: **B**. Big improvement: 7 matching teardrop feathers in a symmetric fan, round body, wings, feet. Remaining: quill lines look like stray sticks, beak is a small black triangle with no red wattle, face is a flat circle with a stray whole-note oval on the cheek, body is a plain dark circle. Clean and recognisable but still plain.
+- 2 Harvest Pumpkin: **B**. Unchanged and fine.
+- 3 Cornucopia: **C+**. Now a horn shape, but the mouth is not a clear opening, the weave is a few wedges rather than bands, and the fruit is a clumped pile with overlapping circles and a stem touching the apple; the pear and leaf float. Still the weakest subject apart from corn. Fix: either simplify to a horn with an obvious oval mouth and 3-4 woven bands plus 3 non-overlapping fruits in a row, or swap for a simpler subject (leaf wreath, pilgrim hat, acorn pair).
+- 4 Maple Leaf: **B**. Recognisable, lobes separate.
+- 5 Acorn: **B**. Unchanged.
+- 6 Apple Basket: **B**. Unchanged.
+- 7 Pumpkin Pie: **C+**. Still a flat top-down oval with huge scalloped crust and a separate tin band below that does not match the perspective; four slice regions fine but the cream blob is tiny and cute-less. Fix: a true 3/4 view (rim ellipse, one side band with a fluted edge, filling, whipped cream swirl) or a simple top-down circle pie with 6-8 wedge slices.
+- 8 Corn on the Cob: **C**. Still an egg of a grid with a stem on top; husks are two big blobs. Does not read as corn. Fix: swap for a simpler subject, or draw a pointed cob with rounded kernels in staggered rows and 3 narrow husk leaves.
+- 9 Sunflower: **B**. Unchanged.
+- Cover: **B**. Layout and title strong, turkey is now clean; but the cover is mostly uncoloured line art next to the title and looks dull against coloured competitor covers. A coloured turkey (as in the preview) would lift it to B+.
+- 028 Sampler: **B**.
+
+## Verdict: REJECT
+Cover and turkey are B, not B+; pie (C+), cornucopia (C+) and corn (C) are below B. Fixes: see per-picture notes above (corn is the weak spot; swap allowed). Re-run `gen.py --check` for 027 and 028 after any change; 028 shares pictures.py.
