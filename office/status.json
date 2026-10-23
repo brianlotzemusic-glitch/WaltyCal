@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-23T18:00:00Z",
+ "updated_at": "2026-10-23T14:30:00Z",
  "next_run_at": "2026-10-23T22:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "6:12am shift done: Etsy 031 celestial ornaments live (37 listings); TpT 030 DMP1 Units 1-6 Bundle released. Fixed the uploader approval check that skipped 027/029 and hid 028. Next shift 6:12pm ET.",
-   "since": "2026-10-23T18:00:00Z"
+   "task": "TpT audit 23 Oct: 025 of 26 live pages correct; 027 is live at $0.00 free with no preview (fix queued for the Mac nightly: price 3.75, un-tick Free, preview, files). 015-018 live page counts are lower than tpt.json (older files): next candidates for the file-replace rule after 027 is confirmed. Next shift 6:12pm ET.",
+   "since": "2026-10-23T14:30:00Z"
   },
   {
    "id": "researcher",
@@ -40,8 +40,8 @@
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Etsy 4601589020 (Celestial Christmas Ornaments, $4) live; Etsy reports 37 active. TpT 027 file swap, 028, 029, 030 wait for the Mac nightly.",
-   "since": "2026-10-23T18:00:00Z"
+   "task": "TpT 027 fix, 028, 029, 030 wait for the Mac nightly. Run python3 tools/tpt-verify-live.py each shift.",
+   "since": "2026-10-23T14:30:00Z"
   },
   {
    "id": "analyst",
@@ -86,6 +86,11 @@
   "Etsy: next non-pattern item (Gothic Valentine from December; birdwatching silhouettes)"
  ],
  "feed": [
+  {
+   "t": "2026-10-23T14:30:00Z",
+   "who": "manager",
+   "msg": "TpT audit: 25 of 26 live items correct. 027 is live as free ($0.00) with no preview; automatic fix queued for the Mac nightly."
+  },
   {
    "t": "2026-10-23T18:00:00Z",
    "who": "lister",
@@ -235,16 +240,6 @@
    "t": "2026-10-16T22:24:26Z",
    "who": "lister",
    "msg": "TpT 015 Sample Flipping is live on TpT."
-  },
-  {
-   "t": "2026-10-16T22:24:26Z",
-   "who": "qa",
-   "msg": "Approved TpT 018 DMP2 Alchemy Architect ($10) in round 1. Held for the owner's release."
-  },
-  {
-   "t": "2026-10-16T10:23:31Z",
-   "who": "lister",
-   "msg": "TpT 014 Billboard Top 10 is live. 015 publish stopped at a thumbnail upload; retries tonight."
   }
  ],
  "venture_gate": {
