@@ -84,7 +84,7 @@ console.log("ok marker directives, fix planning, same-night gate");
 const before = cp.execSync("git status --porcelain", { cwd: ROOT }).toString();
 const r = cp.spawnSync("node", [path.join(ROOT, "tools", "tpt.js"), "reupload", "tpt/027-thanksgiving-color-by-note", "--dry-run"], { encoding: "utf8" });
 assert.strictEqual(r.status, 0, r.stderr);
-assert(/price 3\.75 and license price 3\.75/.test(r.stdout) && /un-tick/.test(r.stdout) && /PREVIEW\.pdf/.test(r.stdout), r.stdout);
+assert(/price 3\.75, license price 3\.75, tax code/.test(r.stdout) && /un-tick/.test(r.stdout) && /PREVIEW\.pdf/.test(r.stdout), r.stdout);
 assert.strictEqual(cp.execSync("git status --porcelain", { cwd: ROOT }).toString(), before);
 console.log("ok CLI dry-run lists the price/preview fix");
 
