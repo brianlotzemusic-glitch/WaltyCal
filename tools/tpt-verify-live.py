@@ -14,54 +14,25 @@ import argparse, glob, json, os, re, sys, time, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UA = "Mozilla/5.0"
-ID_KEYS = r'"(?:id|productId|itemId)"\s*:\s*"?'
-
-
 def parse_live(html, product_id=None):
-    anchor, note = -1, None
-    if product_id:
-        m = re.search(ID_KEYS + re.escape(str(product_id)) + r"\b", html)
-        if m:
-            anchor = m.start()
-    if anchor < 0:
-        m = re.search(r'"isFree"\s*:\s*(?:true|false)', html)
-        anchor = m.start() if m else -1
-        note = "anchored on first isFree"
-    if anchor < 0:
-        return {"error": 'no "isFree" field in the page (blocked, login wall or TpT changed the page)'}
-    end = anchor + 4000
-    if product_id:
-        nx = re.compile(ID_KEYS + r"\d+").search(html, anchor + 6)
-        if nx and nx.start() < end:
-            end = nx.start()
-
-    def near(pat):
-        rx = re.compile(pat)
-        m = rx.search(html, anchor)
-        if m and m.start() < end:
-            return m
-        best = None
-        for m in rx.finditer(html):
-            d = abs(m.start() - anchor)
-            if d <= 4000 and (best is None or d < best[0]):
-                best = (d, m)
-        return best[1] if best else None
-
-    price = near(r'"price"\s*:\s*"?(-?\d+(?:\.\d+)?)"?')
-    prev = near(r'"previewUrl"\s*:\s*(null|"[^"]*")')
-    pages = near(r'"pageCount"\s*:\s*"?(\d+)"?')
-    free = near(r'"isFree"\s*:\s*(true|false)')
+    """Real TpT page: JSON-LD Offer price + embedded app JSON isFree / pageCount / previewUrl; first occurrence of each
+    is the product's own. Mirrors tools/tpt-live.js. Missing field -> "error" (never passes as a match)."""
+    def first(pat):
+        m = re.search(pat, html)
+        return m.group(1) if m else None
+    offer = re.search(r'@type\\?"\s*:\s*\\?"Offer\\?"[\s\S]{0,600}?price\\?"\s*:\s*\\?"?(-?\d+(?:\.\d+)?)', html)
+    free = first(r'isFree\\?"\s*:\s*(true|false)')
+    prev = first(r'previewUrl\\?"\s*:\s*(null|\\?"[^"]+)')
+    pages = first(r'pageCount\\?"\s*:\s*\\?"?(\d+)')
     out = {
-        "price": "%.2f" % float(price.group(1)) if price else None,
-        "isFree": (free.group(1) == "true") if free else None,
-        "previewUrl": None if (prev and prev.group(1) == "null") else (prev.group(1)[1:-1] if prev else None),
-        "pageCount": int(pages.group(1)) if pages else None,
+        "price": "%.2f" % float(offer.group(1)) if offer else None,
+        "isFree": None if free is None else free == "true",
+        "previewUrl": None if prev in (None, "null") else re.sub(r'^\\?"', "", prev),
+        "pageCount": int(pages) if pages else None,
     }
-    if note:
-        out["note"] = note
-    missing = [k for k, v in (("price", price), ("isFree", free), ("previewUrl", prev)) if not v]
+    missing = [k for k, v in (("price", offer), ("isFree", free), ("previewUrl", prev)) if not v]
     if missing:
-        out["error"] = "no %s field found near the product in the page (TpT changed the page?)" % "/".join(missing)
+        out["error"] = "no %s field found in the page (blocked, login wall or TpT changed the page)" % "/".join(missing)
     return out
 
 
@@ -76,9 +47,14 @@ def compare_live(expected, live):
         p.append("isFree: live %s, expected %s" % (str(live["isFree"]).lower(), str(want_free).lower()))
     if (expected.get("files") or {}).get("preview") and not live.get("previewUrl") and not live.get("error"):
         p.append("previewUrl: live page has no preview file (tpt.json declares one)")
-    if expected.get("pages") and live.get("pageCount") is not None and int(expected["pages"]) != live["pageCount"]:
-        p.append("pages: live %s, tpt.json %s" % (live["pageCount"], expected["pages"]))
     return p
+
+
+def page_warning(expected, live):
+    """Page count differs: a WARNING only (TpT derives it; does not affect the exit code)."""
+    if expected.get("pages") and live.get("pageCount") is not None and int(expected["pages"]) != live["pageCount"]:
+        return "pages: live %s, tpt.json %s" % (live["pageCount"], expected["pages"])
+    return None
 
 
 def fetch(url):
@@ -101,7 +77,7 @@ def main():
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
 
-    rows, bad = [], 0
+    rows, bad, skipped = [], 0, []
     for d in sorted(glob.glob(os.path.join(ROOT, "tpt", "[0-9][0-9][0-9]-*"))):
         slug = os.path.basename(d)
         up = os.path.join(d, "uploaded")
@@ -115,6 +91,9 @@ def main():
         exp = json.load(open(os.path.join(d, "tpt.json")))
         row = {"item": slug, "url": url, "expected": {"price": "%.2f" % float(exp.get("price") or 0), "free": exp.get("free") is True,
                "preview": bool((exp.get("files") or {}).get("preview")), "pages": exp.get("pages")}}
+        if not m and re.search(r"URL not yet recorded", "\n".join(lines), re.I):
+            skipped.append(slug + ": no URL recorded in `uploaded` (owner confirmed it live; add the URL on line 2 to check it)")
+            continue
         try:
             if not m:
                 raise RuntimeError("`uploaded` line 2 is not a TpT product URL: %r" % url)
@@ -122,6 +101,7 @@ def main():
             live = parse_live(html, m.group(1))
             row["live"] = {"price": live.get("price"), "free": live.get("isFree"), "preview": bool(live.get("previewUrl")), "pages": live.get("pageCount")}
             row["problems"] = compare_live(exp, live)
+            row["warnings"] = [w for w in [page_warning(exp, live)] if w]
         except Exception as e:  # noqa: BLE001
             row["live"] = None
             row["problems"] = [str(e)]
@@ -129,7 +109,7 @@ def main():
         rows.append(row)
 
     if a.json:
-        print(json.dumps({"checked": len(rows), "mismatched": bad, "items": rows}, indent=2))
+        print(json.dumps({"checked": len(rows), "mismatched": bad, "skipped": skipped, "items": rows}, indent=2))
     else:
         print("%-38s %-16s %-16s %-14s %-9s" % ("item", "price exp/live", "free exp/live", "preview e/l", "pages e/l"))
         for r in rows:
@@ -138,10 +118,14 @@ def main():
             print("%-38s %-16s %-16s %-14s %-9s %s" % (
                 r["item"][:38], "%s/%s" % (e["price"], l.get("price") or "-"),
                 "%s/%s" % (yn(e["free"]), yn(l.get("free"))), "%s/%s" % (yn(e["preview"]), yn(l.get("preview"))),
-                "%s/%s" % (e["pages"] or "-", l.get("pages") or "-"), "OK" if not r["problems"] else "MISMATCH"))
+                "%s/%s" % (e["pages"] or "-", l.get("pages") or "-"), "MISMATCH" if r["problems"] else ("OK (page warning)" if r.get("warnings") else "OK")))
+            for w in r.get("warnings", []):
+                print("    ~ warning: " + w)
             for p in r["problems"]:
                 print("    - " + p)
-        print("\nchecked %d live items, %d with problems" % (len(rows), bad))
+        for k in skipped:
+            print("SKIPPED (not a failure): " + k)
+        print("\nchecked %d live items, %d with problems, %d page-count warnings, %d skipped" % (len(rows), bad, sum(bool(r.get("warnings")) for r in rows), len(skipped)))
     return 1 if bad else 0
 
 

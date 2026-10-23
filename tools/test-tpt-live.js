@@ -5,19 +5,27 @@ const ROOT = path.dirname(__dirname);
 const T = require("./tpt.js"), L = require("./tpt-live.js");
 const F = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8"));
 const I27 = path.join(ROOT, "tpt", "027-thanksgiving-color-by-note");
-const html = fs.readFileSync(path.join(I27, "live-page.fixture.html"), "utf8");
+const I26 = path.join(ROOT, "tpt", "026-dmp2-session-players-studio");
+const html = fs.readFileSync(path.join(I27, "live-page.fixture.html"), "utf8"); // trimmed REAL page, 23 Oct 2026
+const html26 = fs.readFileSync(path.join(I26, "live-page.fixture.html"), "utf8");
 const cfg27 = JSON.parse(fs.readFileSync(path.join(I27, "tpt.json"), "utf8"));
 
 // 1. public-page parser: the broken 027 page is detected, the related product on the page is ignored
-let live = L.parseLive(html, "18040698");
+let live = L.parseLive(html);
 assert.deepStrictEqual([live.price, live.isFree, live.previewUrl, live.pageCount], ["0.00", true, null, 58]);
 const probs = L.compareLive(cfg27, live);
 assert.strictEqual(probs.length, 3, probs.join("|"));
 assert(probs.some((m) => /^price/.test(m)) && probs.some((m) => /^isFree/.test(m)) && probs.some((m) => /^previewUrl/.test(m)));
-const fixed = html.replace('"price":"0.00","isFree":true,"previewUrl":null', '"price":"3.75","isFree":false,"previewUrl":"https://example.invalid/p.pdf"');
-assert.deepStrictEqual(L.compareLive(cfg27, L.parseLive(fixed, "18040698")), []);
-assert(L.compareLive(cfg27, L.parseLive("<html>login wall</html>", "1")).length > 0); // unparsable page = mismatch, never a pass
-assert.strictEqual(L.compareLive({ ...cfg27, free: true, price: "0.00", license_price: "0.00" }, L.parseLive(html, "18040698")).some((m) => /isFree/.test(m)), false);
+const fixed = html.replace('"price":"0.00"', '"price":"3.75"').replace('"isFree":true', '"isFree":false').replace('"previewUrl":null', '"previewUrl":"\\u002FPreview\\u002Fx"');
+assert.deepStrictEqual(L.compareLive(cfg27, L.parseLive(fixed)), []);
+// healthy real item (026): paid, preview present
+const l26 = L.parseLive(html26);
+assert.deepStrictEqual([l26.price, l26.isFree, !!l26.previewUrl, l26.pageCount], ["10.00", false, true, 44]);
+assert.deepStrictEqual(L.compareLive(JSON.parse(fs.readFileSync(path.join(I26, "tpt.json"), "utf8")), l26), []);
+// escaped-quote variant (JSON inside a string) parses the same
+assert.deepStrictEqual(L.parseLive(html.replace(/"/g, '\\"')).price, "0.00");
+assert(L.compareLive(cfg27, L.parseLive("<html>login wall</html>")).length > 0); // unparsable page = mismatch, never a pass
+assert.strictEqual(L.compareLive({ ...cfg27, free: true, price: "0.00", license_price: "0.00" }, L.parseLive(html)).some((m) => /isFree/.test(m)), false);
 console.log("ok parser: broken 027 page gives price/isFree/previewUrl mismatches, fixed page passes, junk page fails");
 
 // 2. publish guards (checkItem)
@@ -86,6 +94,7 @@ const py = (...a) => cp.spawnSync("python3", ["-I", path.join(ROOT, "tools", "tp
 fs.writeFileSync(path.join(dir, "027-thanksgiving-color-by-note.html"), html);
 let o = py("027", "--offline", dir); assert.strictEqual(o.status, 1, o.stdout + o.stderr); assert(/MISMATCH/.test(o.stdout) && /isFree/.test(o.stdout));
 fs.writeFileSync(path.join(dir, "027-thanksgiving-color-by-note.html"), fixed);
+fs.writeFileSync(path.join(dir, "026-dmp2-session-players-studio.html"), html26);
 o = py("027", "--offline", dir); assert.strictEqual(o.status, 0, o.stdout + o.stderr);
 fs.writeFileSync(path.join(dir, "027-thanksgiving-color-by-note.html"), "<html></html>");
 assert.strictEqual(py("027", "--offline", dir).status, 1);
