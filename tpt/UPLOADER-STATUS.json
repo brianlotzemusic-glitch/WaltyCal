@@ -1,16 +1,9 @@
 {
-  "ran_at": "2026-10-22T13:16:30.844Z",
-  "published": [
-    {
-      "item": "027-thanksgiving-color-by-note",
-      "url": "https://www.teacherspayteachers.com/Product/Fall-Color-by-Note-Rhythm-Treble-Bass-Clef-Worksheets-Answer-Keys-18040698"
-    }
-  ],
+  "ran_at": "2026-10-23T00:30:13.688Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "027-thanksgiving-color-by-note"
-  ],
+  "pending_before": [],
   "ok": true
 }
