@@ -28,3 +28,9 @@ assert(!publishSteps(free).includes("tax_code"));
 const paid = loadItem(path.join(__dirname, "..", "tpt", "029-winter-color-by-note"));
 assert(publishSteps(paid).includes("tax_code"));
 console.log("ok step lists (028 free skips tax_code, 029 paid keeps it)");
+
+// Renamed options still match (& vs and, dash variants).
+assert.strictEqual(matchOption(["Career & Technical Education"], "Career and Technical Education"), 0);
+assert.strictEqual(matchOption(["Computer Science – Technology"], "Computer Science - Technology"), 0);
+assert.strictEqual(matchOption(["Career Education"], "Career and Technical Education"), -1);
+console.log("ok normalised option matching");

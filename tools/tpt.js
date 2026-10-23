@@ -270,7 +270,8 @@ function typeaheadPrefixes(v) {
 }
 // Index of the option whose text (or any line of it, since TpT may add a group label) equals `want`, case-insensitively; -1 if none.
 function matchOption(texts, want) {
-  const norm = (x) => String(x).replace(/\s+/g, " ").trim().toLowerCase(), w = norm(want);
+  // "&" == "and", any dash == "-" (TpT may rename "Career and Technical Education" to "Career & Technical Education").
+  const norm = (x) => String(x).replace(/&/g, " and ").replace(/[‐-―]/g, "-").replace(/\s*-\s*/g, " - ").replace(/\s+/g, " ").trim().toLowerCase(), w = norm(want);
   let i = texts.findIndex((t) => norm(t) === w);
   if (i < 0) i = texts.findIndex((t) => String(t).split("\n").some((l) => norm(l) === w));
   return i;
@@ -457,7 +458,7 @@ async function publish(item, dryRun) {
         if (chosen.includes(v.toLowerCase())) continue;
         await input.click();
         let i = -1, texts = [];
-        const log = [];
+        const log = [`already selected: ${chosen.filter(Boolean).join(" | ") || "(none)"}`];
         for (const typed of typeaheadPrefixes(v)) {
           await input.fill("");
           await input.fill(typed);
@@ -471,6 +472,28 @@ async function publish(item, dryRun) {
           log.push(`"${typed}" -> ${texts.join(" | ") || "(nothing)"}`);
           i = matchOption(texts, v);
           if (i >= 0) { await opts.nth(i).click(); break; }
+        }
+        if (i < 0) {
+          // Fallbacks (030, 23 Oct: nothing offered for any prefix). (1) real key presses instead of fill(): react-select may
+          // ignore a programmatic value; (2) empty input + ArrowDown/click to list ALL options, scrolling the menu, and match by
+          // normalised text. A value that still is not found fails loudly (never dropped silently).
+          for (const mode of ["keys", "list-all"]) {
+            if (i >= 0) break;
+            await input.fill(""); await input.click();
+            if (mode === "keys") { await input.pressSequentially(String(v).split(/\s+/)[0], { delay: 120 }); }
+            else await page.keyboard.press("ArrowDown");
+            const opts = page.getByRole("option"), seenAll = new Set();
+            for (let t = 0; t < (mode === "keys" ? 8 : 40) && i < 0; t++) {
+              await page.waitForTimeout(500);
+              texts = (await opts.allInnerTexts()).map((x) => x.trim());
+              texts.forEach((x) => seenAll.add(x));
+              i = matchOption(texts, v);
+              if (i < 0 && mode === "list-all") { await page.keyboard.press("PageDown").catch(() => {}); await page.mouse.wheel(0, 400).catch(() => {}); }
+            }
+            const menu = await page.locator('[class*="menu" i], [role="listbox"]').first().innerText().catch(() => "");
+            log.push(`${mode} -> ${[...seenAll].slice(0, 40).join(" | ") || "(nothing)"}${menu && !seenAll.size ? ` [menu text: ${menu.replace(/\s+/g, " ").slice(0, 80)}]` : ""}`);
+            if (i >= 0) await opts.nth(i).click();
+          }
         }
         if (i < 0) {
           await snap(page, shots, `${slug}-${name}-${v.replace(/[^A-Za-z0-9]+/g, "-").slice(0, 40)}`).catch(() => {}); // dropdown still open
@@ -827,12 +850,43 @@ async function reupload(item, dryRun) {
       step = `replace ${f.slot} (${f.file})`;
       const spec = editSel(F, f.slot), input = page.locator(spec.input);
       try { await input.waitFor({ state: "attached", timeout: 20000 }); } catch (e) { await fail(page, step, `no upload box ${spec.input} on the edit page`); }
-      const oldKey = await page.locator(spec.key).first().inputValue().catch(() => "");
-      await input.setInputFiles(f.path, { timeout: 30000 });
+      // 23 Oct 2026 (027): the product key never changed in 15 min with a plain setInputFiles. Two untested causes:
+      // (a) the edit form ignores a programmatic file set (the NEW form did too for the product, run 5), (b) the key
+      // selector from the NEW form (data[ItemDigital][...]) does not exist on the edit form (EDIT-FIELDS.json recorded no hidden inputs).
+      // So: attempt 1 = setInputFiles (90 s), attempt 2 = TpT's own "Select file" label + file chooser (rest of the time),
+      // key found by the FORM.json selector or, if absent, by a hidden input whose name contains the slot; and a diagnostic
+      // (key element count, hidden ItemDigital inputs, upload requests seen) goes into the failure message.
       const minutes = f.slot === "product" ? 15 : f.slot === "preview" ? 5 : 3;
-      const ok = await page.waitForFunction(([s, old]) => { const el = document.querySelector(s); return el && el.value && el.value !== old; }, [spec.key, oldKey], { timeout: minutes * 60000 }).then(() => true, () => false);
-      if (!ok) await fail(page, step, `TpT did not accept ${f.file} within ${minutes} min (the upload key never changed)`);
-      keys[f.slot] = await page.locator(spec.key).first().inputValue();
+      const keyProbe = () => page.evaluate(([s, slot]) => {
+        let el = document.querySelector(s);
+        const hidden = [...document.querySelectorAll('input[type="hidden"]')].filter((e) => /ItemDigital|upload|file/i.test(e.name || e.id || ""));
+        if (!el) el = hidden.find((e) => new RegExp(slot.replace(/\d+$/, (d) => ".*" + d), "i").test(e.name || e.id || "")) || null;
+        return { found: !!el, name: el ? el.name || el.id : null, value: el ? el.value : "", hidden: hidden.map((e) => `${e.name || e.id}=${String(e.value).slice(0, 40)}`).slice(0, 25) };
+      }, [spec.key, f.slot]);
+      const seen = [];
+      const onResp = (r) => { try { const q = r.request(); if (q.method() !== "GET") seen.push(`${q.method()} ${r.status()} ${r.url().replace(/\?.*/, "").slice(0, 90)}`); } catch (e) {} };
+      page.on("response", onResp);
+      const before0 = await keyProbe();
+      const oldKey = before0.value;
+      const changed = async (ms) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { const k = await keyProbe().catch(() => null); if (k && k.found && k.value && k.value !== oldKey) return k; await page.waitForTimeout(1000); } return null; };
+      console.log(`${f.slot}: edit-form key ${before0.found ? before0.name : "NOT FOUND"} (old value ${oldKey ? "set" : "empty"}); hidden: ${before0.hidden.join(", ") || "(none)"}`);
+      await input.setInputFiles(f.path, { timeout: 30000 });
+      let got = await changed(90000);
+      if (!got) {
+        console.log(`${f.slot}: TpT did not take the file in 90 s; trying its "Select file" button`);
+        try {
+          const label = page.locator("label", { has: input }).first();
+          const [chooser] = await Promise.all([page.waitForEvent("filechooser", { timeout: 15000 }), label.click({ timeout: 15000 })]);
+          await chooser.setFiles(f.path);
+          got = await changed(Math.max(60000, minutes * 60000 - 90000));
+        } catch (e) { seen.push("attempt 2 failed: " + e.message.split("\n")[0]); }
+      }
+      page.off("response", onResp);
+      if (!got) {
+        const k = await keyProbe().catch(() => before0);
+        await fail(page, step, `TpT did not accept ${f.file} within ${minutes} min (the upload key never changed). Diagnostics: key element ${k.found ? k.name : "NOT FOUND with " + spec.key} value ${k.value ? "set" : "empty"}; hidden inputs: ${k.hidden.join(", ") || "(none)"}; non-GET responses: ${seen.slice(-8).join(" | ") || "(none)"}`);
+      }
+      keys[f.slot] = got.value;
     }
 
     if (fixPrice) {
