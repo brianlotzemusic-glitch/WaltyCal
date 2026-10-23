@@ -234,6 +234,27 @@ function loadItem(item) {
   return { ...cfg, title: codeBlockUnder(md, "1\\."), description: codeBlockUnder(md, "2\\.") };
 }
 
+// Typeahead helpers (pure, tested offline by tools/test-tpt-typeahead.js).
+// Strings to type into a react-select box, most specific first: the full text, then progressively
+// shorter word prefixes ("Career and Technical Education" -> "Career and Technical" -> "Career and" -> "Career").
+function typeaheadPrefixes(v) {
+  const words = String(v).trim().split(/\s+/).filter(Boolean), out = [];
+  for (let n = words.length; n >= 1; n--) { const s = words.slice(0, n).join(" "); if (!out.includes(s)) out.push(s); }
+  return out;
+}
+// Index of the option whose text (or any line of it, since TpT may add a group label) equals `want`, case-insensitively; -1 if none.
+function matchOption(texts, want) {
+  const norm = (x) => String(x).replace(/\s+/g, " ").trim().toLowerCase(), w = norm(want);
+  let i = texts.findIndex((t) => norm(t) === w);
+  if (i < 0) i = texts.findIndex((t) => String(t).split("\n").some((l) => norm(l) === w));
+  return i;
+}
+// Ordered list of the price-/free-dependent publish steps for an item. Free items have no Tax Code listbox
+// (TpT hides it on a Free Resource: 028 timed out clicking #taxCode-toggle-button); paid items are unchanged.
+function publishSteps(it) {
+  return it.free === true ? ["free resource checkbox"] : ["prices", "tax_code"];
+}
+
 // Checks that need no browser. Returns a list of problems.
 function checkItem(item, it, F) {
   const p = [];
@@ -393,7 +414,8 @@ async function publish(item, dryRun) {
       if (i < 0) { await page.keyboard.press("Escape"); return fail(`${name}: "${want}" is not an option. Options: ${texts.join(" | ")}`); }
       await opts.nth(i).click();
     };
-    await listbox("tax_code", F.tax_code.toggle, it.tax_code);
+    if (publishSteps(it).includes("tax_code")) await listbox("tax_code", F.tax_code.toggle, it.tax_code);
+    else console.log("tax_code: skipped (free item; TpT hides the Tax Code box on a Free Resource)");
 
     step = "grades";
     for (const g of it.grades || []) {
@@ -413,17 +435,28 @@ async function publish(item, dryRun) {
         const chosen = (await control.count()) ? (await control.innerText()).split("\n").map((t) => t.trim().toLowerCase()) : [];
         if (chosen.includes(v.toLowerCase())) continue;
         await input.click();
-        await input.fill(v);
-        const opts = page.getByRole("option");
-        let texts = [];
-        for (let t = 0; t < 10; t++) { // up to 5 s for TpT's option list
-          await page.waitForTimeout(500);
-          texts = (await opts.allInnerTexts()).map((x) => x.trim());
-          if (texts.some((x) => x.toLowerCase() === v.toLowerCase())) break;
+        let i = -1, texts = [];
+        const log = [];
+        for (const typed of typeaheadPrefixes(v)) {
+          await input.fill("");
+          await input.fill(typed);
+          const opts = page.getByRole("option");
+          texts = [];
+          for (let t = 0; t < 10; t++) { // up to 5 s for TpT's option list
+            await page.waitForTimeout(500);
+            texts = (await opts.allInnerTexts()).map((x) => x.trim());
+            if (matchOption(texts, v) >= 0) break;
+          }
+          log.push(`"${typed}" -> ${texts.join(" | ") || "(nothing)"}`);
+          i = matchOption(texts, v);
+          if (i >= 0) { await opts.nth(i).click(); break; }
         }
-        const i = texts.findIndex((t) => t.toLowerCase() === v.toLowerCase());
-        if (i < 0) { await input.fill(""); await page.keyboard.press("Escape"); fail(`${name}: "${v}" is not an option. Typing it offered: ${texts.join(" | ") || "(nothing)"}`); continue; }
-        await opts.nth(i).click();
+        if (i < 0) {
+          await snap(page, shots, `${slug}-${name}-${v.replace(/[^A-Za-z0-9]+/g, "-").slice(0, 40)}`).catch(() => {}); // dropdown still open
+          await input.fill(""); await page.keyboard.press("Escape");
+          fail(`${name}: "${v}" is not an option. Typed and offered: ${log.join("; ")} (screenshot tpt/_publish/${slug}-${name}-*.png)`);
+          continue;
+        }
         await page.keyboard.press("Escape");
       }
     };
@@ -937,7 +970,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)
