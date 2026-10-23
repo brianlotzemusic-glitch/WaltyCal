@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-10-23T01:00:00Z",
- "next_run_at": "2026-10-23T10:12:00Z",
+ "updated_at": "2026-10-23T18:00:00Z",
+ "next_run_at": "2026-10-23T22:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 36,
- "bundles_built": 49,
- "uploads_pending": 10,
+ "listings_live": 37,
+ "bundles_built": 51,
+ "uploads_pending": 12,
  "etsy_connected": true,
  "workers": [
   {
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "6:12pm shift done: Etsy 030 mushroom clipart live (36 active after the cross-stitch deactivation); TpT 029 Winter Color by Note released. Owner to tick the AI box on Etsy 4600901568 and 4601336420 (no API field). Next shift 6:12am ET.",
-   "since": "2026-10-23T01:00:00Z"
+   "task": "6:12am shift done: Etsy 031 celestial ornaments live (37 listings); TpT 030 DMP1 Units 1-6 Bundle released. Fixed the uploader approval check that skipped 027/029 and hid 028. Next shift 6:12pm ET.",
+   "since": "2026-10-23T18:00:00Z"
   },
   {
    "id": "researcher",
@@ -26,22 +26,22 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Built TpT 029 Winter Color by Note (Opus attempt 3 for two pictures) and Etsy 030 mushroom clipart. Next: DMP1 bundle, winter pack, Sonic Time Capsule, an Etsy printable.",
-   "since": "2026-10-23T01:00:00Z"
+   "task": "Built TpT 030 DMP1 bundle and Etsy 031 celestial ornaments. Next: winter pack bundle, Sonic Time Capsule, an Etsy item (Gothic Valentine from December).",
+   "since": "2026-10-23T18:00:00Z"
   },
   {
    "id": "qa",
    "name": "QA",
    "state": "idle",
-   "task": "Approved TpT 029 (round 3) and Etsy 030 (round 2).",
-   "since": "2026-10-23T01:00:00Z"
+   "task": "Approved TpT 030 (round 1) and Etsy 031 (round 2).",
+   "since": "2026-10-23T18:00:00Z"
   },
   {
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Etsy 4601336420 (Mushroom Clipart, $3.49) live; Etsy reports 36 active. TpT 027 file swap, 028 free sampler and 029 wait for the Mac nightly.",
-   "since": "2026-10-23T01:00:00Z"
+   "task": "Etsy 4601589020 (Celestial Christmas Ornaments, $4) live; Etsy reports 37 active. TpT 027 file swap, 028, 029, 030 wait for the Mac nightly.",
+   "since": "2026-10-23T18:00:00Z"
   },
   {
    "id": "analyst",
@@ -80,12 +80,22 @@
   }
  ],
  "queue": [
-  "[tpt] DMP1 Units 1-6 bundle; winter pack (003, 005, 006, 029)",
+  "[tpt] Winter & Holiday Music Pack bundle (003, 005, 006, 029)",
   "[dmp] DMP2 Sonic Time Capsule; then the DMP2 bundle",
   "[tool] TpT stats in the Mac nightly",
-  "Etsy: next non-pattern printable or clipart (birdwatching silhouettes)"
+  "Etsy: next non-pattern item (Gothic Valentine from December; birdwatching silhouettes)"
  ],
  "feed": [
+  {
+   "t": "2026-10-23T18:00:00Z",
+   "who": "lister",
+   "msg": "Published Celestial Christmas Ornaments (Etsy 4601589020, $4). 37 active."
+  },
+  {
+   "t": "2026-10-23T18:00:00Z",
+   "who": "qa",
+   "msg": "Approved TpT 030 DMP1 Units 1-6 Bundle ($49); released."
+  },
   {
    "t": "2026-10-23T01:00:00Z",
    "who": "lister",
@@ -235,16 +245,6 @@
    "t": "2026-10-16T10:23:31Z",
    "who": "lister",
    "msg": "TpT 014 Billboard Top 10 is live. 015 publish stopped at a thumbnail upload; retries tonight."
-  },
-  {
-   "t": "2026-10-16T10:23:31Z",
-   "who": "qa",
-   "msg": "Approved TpT 016 FX Deep Dive ($10) and 017 Music for Visual Media ($12) in round 1. Held for the owner's release."
-  },
-  {
-   "t": "2026-10-15T23:09:24Z",
-   "who": "lister",
-   "msg": "TpT 012 and 013 live. 014 Billboard submit failed; nightly paused until the owner checks TpT."
   }
  ],
  "venture_gate": {
