@@ -62,3 +62,17 @@ if (!fs.existsSync(path.join(ROOT, "tpt", "EDIT-FIELDS.json"))) { // real run mu
 assert.strictEqual(cp.execSync("git status --porcelain", { cwd: ROOT }).toString(), before);
 console.log("ok CLI: 001 refused, 027 dry-run lists 6 files, real run refuses without EDIT-FIELDS.json, nothing written");
 fs.rmSync(tmp, { recursive: true });
+
+// QA verdict formats (22 Oct bug: 027 "## Verdict: APPROVE", 029 "**Verdict: APPROVE (...)**" were not recognised)
+{
+  const t2 = fs.mkdtempSync(path.join(os.tmpdir(), "qa-"));
+  const qa = (txt, rel) => { const x = fs.mkdtempSync(path.join(t2, "i-")); fs.writeFileSync(path.join(x, "QA.md"), txt); if (rel) fs.writeFileSync(path.join(x, "release"), rel); return x; };
+  assert(T.isApproved(qa("**Verdict: APPROVED**\n")));
+  assert(T.isApproved(qa("**Verdict: REJECT (x)**\n\n## Verdict: APPROVE\n")));
+  assert(T.isApproved(qa("# Round 3\n\n**Verdict: APPROVE (every picture B)**\n")));
+  assert(!T.isApproved(qa("**Verdict: APPROVE**\n\n**Verdict: REJECTED** (tags)\n")));
+  assert(!T.isApproved(qa("no verdict here\n")));
+  assert(T.releasedOverQA(qa("**Verdict: REJECTED**\n", "released; fix verified by Manager")));
+  assert(!T.releasedOverQA(qa("**Verdict: REJECTED**\n", "released")));
+  console.log("ok QA verdict parsing");
+}

@@ -253,9 +253,18 @@ function checkItem(item, it, F) {
   return p;
 }
 
+// QA.md approval = the LAST "Verdict:" line says APPROVE or APPROVED. Accepts "**Verdict: APPROVED**",
+// "## Verdict: APPROVE" and "**Verdict: APPROVE (reason)**" (QA wrote all three); a later REJECT wins.
 function isApproved(item) {
   const qa = path.join(item, "QA.md");
-  return fs.existsSync(qa) && /^\*\*Verdict:\s*APPROVED\*\*/m.test(fs.readFileSync(qa, "utf8"));
+  if (!fs.existsSync(qa)) return false;
+  const v = [...fs.readFileSync(qa, "utf8").matchAll(/^[#>*\s-]*Verdict:?\**\s*(APPROVED?|REJECT(?:ED)?)\b/gim)];
+  return v.length > 0 && /^APPROVE/i.test(v[v.length - 1][1]);
+}
+// The Manager may release an item whose last QA verdict is a mechanical REJECT it verified itself; it
+// must say so in the `release` file ("... verified by Manager ...").
+function releasedOverQA(item) {
+  try { return /verified by Manager/i.test(fs.readFileSync(path.join(item, "release"), "utf8")); } catch (e) { return false; }
 }
 
 async function publish(item, dryRun) {
@@ -263,7 +272,7 @@ async function publish(item, dryRun) {
   item = path.resolve(item);
   const F = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8"));
   if (fs.existsSync(path.join(item, "uploaded"))) throw new Error(`already uploaded: ${item}`);
-  if (!isApproved(item)) throw new Error("QA.md has no '**Verdict: APPROVED**' line");
+  if (!isApproved(item) && !releasedOverQA(item)) throw new Error("QA.md last verdict is not APPROVE (and the release file does not say \"verified by Manager\")");
   const it = loadItem(item);
   const problems = checkItem(item, it, F);
   if (problems.length && !dryRun) throw new Error("not publishing:\n- " + problems.join("\n- "));
@@ -460,8 +469,20 @@ function pendingItems() {
   const dir = path.join(ROOT, "tpt");
   return fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d))
     .filter((d) => fs.existsSync(path.join(d, "tpt.json")) && fs.existsSync(path.join(d, "release"))
-      && isApproved(d) && !fs.existsSync(path.join(d, "uploaded")))
+      && (isApproved(d) || releasedOverQA(d)) && !fs.existsSync(path.join(d, "uploaded")))
     .sort();
+}
+
+// Released items (release file, no uploaded) that pendingItems() did NOT pick up, with the reason.
+function releasedButSkipped() {
+  const dir = path.join(ROOT, "tpt"), out = [];
+  for (const n of fs.readdirSync(dir).filter((x) => /^\d{3}-/.test(x)).sort()) {
+    const d = path.join(dir, n);
+    if (!fs.existsSync(path.join(d, "release")) || fs.existsSync(path.join(d, "uploaded"))) continue;
+    if (!fs.existsSync(path.join(d, "tpt.json"))) out.push(`${n}: no tpt.json`);
+    else if (!(isApproved(d) || releasedOverQA(d))) out.push(`${n}: QA.md last verdict is not APPROVE`);
+  }
+  return out;
 }
 
 async function publishPending() {
@@ -475,6 +496,13 @@ async function publishPending() {
   }
   const items = pendingItems().slice(0, MAX_PER_RUN);
   status.pending_before = items.map((d) => path.basename(d));
+  const skipped = releasedButSkipped();
+  if (skipped.length) { status.warning = `released items NOT published: ${skipped.join("; ")}`; console.warn("WARNING: " + status.warning); }
+  const relNoUp = fs.readdirSync(path.join(ROOT, "tpt")).filter((n) => /^\d{3}-/.test(n) && fs.existsSync(path.join(ROOT, "tpt", n, "release")) && !fs.existsSync(path.join(ROOT, "tpt", n, "uploaded")));
+  if (!items.length && relNoUp.length) {
+    status.warning = (status.warning ? status.warning + " | " : "") + `SANITY: 0 pending but release files without \`uploaded\` exist (${relNoUp.join(", ")}); check the repo is current and tools/tpt.js is up to date on this machine`;
+    console.warn("WARNING: " + status.warning);
+  }
   console.log(items.length ? `Released and waiting: ${status.pending_before.join(", ")}` : "Nothing released to publish.");
   for (const item of items) {
     const slug = path.basename(item);
@@ -753,7 +781,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)
