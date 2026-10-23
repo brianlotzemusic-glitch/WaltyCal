@@ -64,9 +64,9 @@ const ids = ["ItemDigitalProduct", "ItemDigitalPreview", "ItemDigitalThumb1", "I
 const ef = { fields: ids.map((id) => ({ id })), edit_url_template: "https://x/{id}" };
 let pl = T.prepareReupload(I27, F, ef);
 assert.deepStrictEqual(pl.problems, []); assert.strictEqual(pl.files.length, 6); assert.deepStrictEqual(pl.fix, ["price", "preview"]);
-// same-night gate: an edit form without the price/free boxes is NOT ready for the fix
+// same-night gate: an edit form without the Free Resource toggle is NOT ready (price boxes are conditional) for the fix
 const noFree = T.prepareReupload(I27, F, { ...ef, fields: ef.fields.filter((f) => f.id !== "item-free") });
-assert(noFree.problems.some((p) => /fix price: edit form has no field for free/.test(p)));
+assert(noFree.problems.some((p) => /fix price: edit form has no Free Resource control/.test(p)));
 // price 0 in tpt.json can never be "fixed" into the product
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "fix-"));
 fs.cpSync(I27, tmp, { recursive: true, filter: (s) => !/build|__pycache__/.test(s) });

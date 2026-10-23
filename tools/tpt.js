@@ -153,6 +153,32 @@ async function snap(page, dir, name) {
   fs.writeFileSync(path.join(dir, `${name}.html`), await page.content());
 }
 
+// Shared by the new-item flow and the reupload fix. Opens a listbox combobox and picks `want`.
+// Returns null on success, else an error string (the caller screenshots + fails).
+async function pickListbox(page, name, toggle, want) {
+  await page.locator(toggle).click();
+  const opts = page.getByRole("option");
+  await opts.first().waitFor({ timeout: 5000 }).catch(() => {});
+  const texts = (await opts.allInnerTexts()).map((t) => t.trim());
+  const i = texts.findIndex((t) => t.toLowerCase() === String(want).toLowerCase());
+  if (i < 0) { await page.keyboard.press("Escape"); return `${name}: "${want}" is not an option. Options: ${texts.join(" | ")}`; }
+  await opts.nth(i).click();
+  return null;
+}
+
+// Is TpT's "Free Resource" toggle (#item-free) ON? aria-checked, native checked, or the hidden data[Item][free] input.
+async function freeIsOn(page, sel) {
+  const box = page.locator(sel).first();
+  return (await box.getAttribute("aria-checked").catch(() => null)) === "true" || (await box.isChecked().catch(() => false))
+    || (await page.locator('input[name="data[Item][free]"]').first().isChecked().catch(() => false));
+}
+
+// ids/names of every visible form control (for the untick diagnostics).
+async function visibleFieldIds(page) {
+  return page.evaluate(() => [...document.querySelectorAll("input,button,select,textarea,[role=combobox]")]
+    .filter((e) => e.offsetParent !== null).map((e) => e.id || e.name || "").filter(Boolean));
+}
+
 // Labels, names and types of the form controls only (no values), so it is safe to commit.
 async function formFields(page) {
   return page.evaluate(() => {
@@ -406,13 +432,8 @@ async function publish(item, dryRun) {
     // Listbox comboboxes (tax code, answer key, teaching duration).
     const listbox = async (name, toggle, want) => {
       step = name;
-      await page.locator(toggle).click();
-      const opts = page.getByRole("option");
-      await opts.first().waitFor({ timeout: 5000 }).catch(() => {});
-      const texts = (await opts.allInnerTexts()).map((t) => t.trim());
-      const i = texts.findIndex((t) => t.toLowerCase() === String(want).toLowerCase());
-      if (i < 0) { await page.keyboard.press("Escape"); return fail(`${name}: "${want}" is not an option. Options: ${texts.join(" | ")}`); }
-      await opts.nth(i).click();
+      const err = await pickListbox(page, name, toggle, want);
+      if (err) return fail(err);
     };
     if (publishSteps(it).includes("tax_code")) await listbox("tax_code", F.tax_code.toggle, it.tax_code);
     else console.log("tax_code: skipped (free item; TpT hides the Tax Code box on a Free Resource)");
@@ -690,6 +711,7 @@ function prepareReupload(item, F, editFields) {
   if (fix.includes("price")) {
     for (const k of ["price", "license_price"]) if (!/^\d+(\.\d{2})?$/.test(String(cfg[k] ?? "")) || !(Number(cfg[k]) > 0)) problems.push(`fix price: tpt.json ${k} must be a price above 0 like "3.75" (got ${JSON.stringify(cfg[k])})`);
     if (cfg.free === true) problems.push('fix price: tpt.json says "free": true; this fix only sets a paid price');
+    if (!cfg.tax_code) problems.push("fix price: tpt.json tax_code is not set");
   }
   if (fix.includes("preview") && !listed.preview) problems.push("fix preview: tpt.json files.preview is not set");
   for (const slot of FILE_SLOTS) {
@@ -715,9 +737,11 @@ function prepareReupload(item, F, editFields) {
         const id = idOf(editSel(F, f.slot).input);
         if (!id || !ids.has(id)) problems.push(`edit form has no file box for ${f.slot} (${editSel(F, f.slot).input}); set edit.files.${f.slot} in tpt/FORM.json from tpt/EDIT-FIELDS.json`);
       }
-      if (fix.includes("price")) for (const [k, sel] of [["price", F.price], ["license_price", F.license_price], ["free", F.free]]) {
-        const id = idOf(sel);
-        if (!id || !ids.has(id)) problems.push(`fix price: edit form has no field for ${k} (${sel}); see tpt/EDIT-FIELDS.json`);
+      // Price, license price and tax code are CONDITIONAL on the edit form: TpT hides them while Free Resource is ON
+      // (027 went live free). So the only control that must already exist is the Free Resource toggle.
+      if (fix.includes("price")) {
+        const id = idOf(F.free);
+        if (!id || !ids.has(id)) problems.push(`fix price: edit form has no Free Resource control (${F.free}); see tpt/EDIT-FIELDS.json`);
       }
     }
   }
@@ -748,7 +772,7 @@ async function reupload(item, dryRun) {
     for (const f of files) console.log(`  ${f.slot.padEnd(8)} ${f.file}  ${f.bytes} bytes  sha256 ${f.sha256}`);
     if (fix.length) {
       console.log(`Marker asks for the corrective fix: ${fix.join(", ")}`);
-      if (fixPrice) console.log(`  price: would set price ${cfg.price} and license price ${cfg.license_price} (tpt.json), un-tick "Free Resource" if ticked`);
+      if (fixPrice) console.log(`  price: would set price ${cfg.price}, license price ${cfg.license_price}, tax code ${cfg.tax_code} (tpt.json), un-tick "Free Resource" if ticked`);
       if (fix.includes("preview")) console.log(`  preview: would attach ${cfg.files.preview}`);
       console.log("  afterwards: public page must show price == tpt.json, isFree false, previewUrl present, title unchanged (description checked on the edit form); any mismatch -> reupload-failed + screenshot, no retry");
     }
@@ -812,22 +836,44 @@ async function reupload(item, dryRun) {
     }
 
     if (fixPrice) {
-      // Un-tick Free first (TpT may disable the price boxes while it is ticked), then set both prices.
+      // TpT hides price, license price and tax code while Free Resource is ON. So: screenshot, read #item-free, untick
+      // it if ON, WAIT for the three controls to appear (fail safe with a screenshot + newly visible ids if they do
+      // not), then fill them. UNVERIFIED (23 Oct 2026): the selectors of the revealed boxes (F.price, F.license_price,
+      // F.tax_code) come from tpt/FORM.json, recorded on the NEW-item form, and are ASSUMED to match the edit form.
+      // The run therefore logs the revealed field ids and snaps -fix-subject / -fix-untick (before / after).
       step = "fix price: un-tick Free Resource";
       const box = page.locator(F.free);
       if (!(await box.count())) await fail(page, step, `no "Free Resource" control ${F.free} on the edit page`);
-      const isOn = async () => (await box.first().getAttribute("aria-checked")) === "true" || (await box.first().isChecked().catch(() => false));
-      if (await isOn()) { await box.first().click(); await page.waitForTimeout(1000); }
-      if (await isOn()) await fail(page, step, `clicked ${F.free} but "Free Resource" still shows as ticked`);
+      const idsBefore = await visibleFieldIds(page);
+      await snap(page, shots, `${slug}-fix-subject`).catch(() => {});
+      const wasOn = await freeIsOn(page, F.free);
+      console.log(`fix price: ${F.free} is ${wasOn ? "ON" : "OFF"}; visible field ids before: ${idsBefore.join(", ")}`);
+      const priceSels = [["price", F.price], ["license_price", F.license_price], ["tax_code", F.tax_code.toggle]];
+      if (wasOn) {
+        await box.first().click();
+        await page.waitForTimeout(1000);
+        if (await freeIsOn(page, F.free)) { await snap(page, shots, `${slug}-fix-untick`).catch(() => {}); await fail(page, step, `clicked ${F.free} but "Free Resource" still shows as ticked`); }
+      }
+      step = "fix price: wait for price, license price and tax code controls";
+      const appeared = async () => { for (const [, sel] of priceSels) if (!(await page.locator(sel).first().isVisible().catch(() => false))) return false; return true; };
+      const t0 = Date.now(); let ok = await appeared();
+      while (!ok && Date.now() - t0 < 20000) { await page.waitForTimeout(500); ok = await appeared(); }
+      const idsAfter = await visibleFieldIds(page);
+      const fresh = idsAfter.filter((x) => !idsBefore.includes(x));
+      console.log(`fix price: after untick, newly visible field ids: ${fresh.join(", ") || "(none)"}`);
+      await snap(page, shots, `${slug}-fix-untick`).catch(() => {});
+      if (!ok) await fail(page, step, `after un-ticking Free, ${priceSels.map(([k, x]) => k + " " + x).join(", ")} did not all appear within 20 s. Newly visible fields: ${fresh.join(", ") || "(none)"}`);
       step = "fix price: set price and license price";
       for (const k of ["price", "license_price"]) {
         const loc = page.locator(F[k]).first();
-        if (!(await page.locator(F[k]).count())) await fail(page, step, `no ${k} box ${F[k]} on the edit page`);
         await loc.fill(String(cfg[k]));
         const got = await loc.inputValue().catch(() => "");
         if (Math.abs(Number(got) - Number(cfg[k])) > 0.001) await fail(page, step, `typed ${cfg[k]} into ${k} but the box shows ${JSON.stringify(got)}`);
       }
-      if (await isOn()) await fail(page, step, '"Free Resource" got ticked again after setting the price');
+      step = "fix price: tax code";
+      const taxErr = await pickListbox(page, "tax_code", F.tax_code.toggle, cfg.tax_code);
+      if (taxErr) { await snap(page, shots, `${slug}-fix-dropdown`).catch(() => {}); await fail(page, step, taxErr); }
+      if (await freeIsOn(page, F.free)) await fail(page, step, '"Free Resource" got ticked again after setting the price');
     }
     if (fix.includes("preview") && !keys.preview) await fail(page, "fix preview", "the preview file was not uploaded (no key)");
 
@@ -856,7 +902,7 @@ async function reupload(item, dryRun) {
     if (filled !== files.length) await fail(page, step, `expected ${files.length} files on the product, found ${filled}`);
     if (fixPrice) {
       for (const k of ["price", "license_price"]) if (Math.abs(Number(after[k]) - Number(cfg[k])) > 0.001) await fail(page, step, `after saving, ${k} on the edit form is ${JSON.stringify(after[k])}, expected ${cfg[k]}`);
-      if (F.free && (await page.locator(F.free).count()) && ((await page.locator(F.free).first().getAttribute("aria-checked")) === "true" || (await page.locator(F.free).first().isChecked().catch(() => false))))
+      if (F.free && (await page.locator(F.free).count()) && (await freeIsOn(page, F.free)))
         await fail(page, step, 'after saving, "Free Resource" is ticked on the edit form');
     }
     if (fix.length) { // the PUBLIC page is the judge (TpT may take a moment to show the change)
@@ -970,7 +1016,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)

@@ -27,6 +27,8 @@ rc2=$?
 for f in tpt/UPLOADER-STATUS.json tpt/EDIT-FIELDS.json tpt/*/uploaded tpt/*/reuploaded tpt/*/reupload-failed; do
   [ -e "$f" ] && { git add -- "$f" || echo "git add $f FAILED (exit $?)"; }
 done
+# Failure screenshots live in the gitignored tpt/_publish/: force-add the small list so the cloud Manager can see them.
+. "$(dirname "$0")/tpt-add-shots.sh"; tpt_add_shots
 if ! git diff --cached --quiet; then
   CANON=https://github.com/brianlotzemusic-glitch/WaltyCal.git
   case "$(git remote get-url origin)" in *waltycal*) echo "origin was the old lowercase URL; switching to $CANON"; git remote set-url origin "$CANON";; esac

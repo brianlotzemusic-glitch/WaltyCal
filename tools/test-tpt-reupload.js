@@ -63,6 +63,32 @@ assert.strictEqual(cp.execSync("git status --porcelain", { cwd: ROOT }).toString
 console.log("ok CLI: 001 refused, 027 dry-run lists 6 files, real run refuses without EDIT-FIELDS.json, nothing written");
 fs.rmSync(tmp, { recursive: true });
 
+// Real EDIT-FIELDS.json (recorded 23 Oct from 027's edit form): #item-free exists but price/license/tax boxes do NOT
+// (hidden while Free Resource is ON). The 027 `fix: price, preview` marker must pass the prerequisite check.
+{
+  const real = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "EDIT-FIELDS.json"), "utf8"));
+  const ids = real.fields.map((f) => f.id);
+  assert(ids.includes("item-free") && !ids.includes("item-price") && !ids.includes("item-license-price"));
+  const item27 = path.join(ROOT, "tpt", "027-thanksgiving-color-by-note");
+  const p27 = T.prepareReupload(item27, F, real);
+  assert.deepStrictEqual(p27.problems, []);
+  assert(p27.fix.includes("price") && p27.fix.includes("preview") && p27.cfg.tax_code);
+  // without #item-free the fix price prerequisite must refuse
+  const noFree = { ...real, fields: real.fields.filter((f) => f.id !== "item-free") };
+  assert(T.prepareReupload(item27, F, noFree).problems.some((m) => /no Free Resource control/.test(m)));
+  console.log("ok real EDIT-FIELDS: 027 passes, refuses without #item-free");
+}
+// shared helpers exported for the fix
+assert.strictEqual(typeof T.pickListbox, "function"); assert.strictEqual(typeof T.freeIsOn, "function");
+// screenshot push list: only failure shots, <= 1.5 MB, force-added
+{
+  const sh = fs.readFileSync(path.join(ROOT, "tools", "tpt-add-shots.sh"), "utf8");
+  for (const g of ["*-failed*.png", "*-free*.png", "*-dropdown*.png", "*-fix-subject*.png", "*-fix-untick*.png", "git add -f", "1572864"]) assert(sh.includes(g), g);
+  assert(!/-filled|-submitted/.test(sh.replace(/#.*$/gm, "")));
+  for (const n of ["tpt-nightly.sh", "tpt-collect-diagnostics.sh"]) assert(fs.readFileSync(path.join(ROOT, "tools", n), "utf8").includes("tpt_add_shots"), n);
+  console.log("ok screenshot push list");
+}
+
 // QA verdict formats (22 Oct bug: 027 "## Verdict: APPROVE", 029 "**Verdict: APPROVE (...)**" were not recognised)
 {
   const t2 = fs.mkdtempSync(path.join(os.tmpdir(), "qa-"));
