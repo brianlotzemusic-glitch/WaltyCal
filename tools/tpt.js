@@ -48,11 +48,21 @@
 //                                     nightly step after publish-pending: processes every item with a `reupload`
 //                                     marker (max 3, not while tpt/PAUSED). If tpt/EDIT-FIELDS.json is missing it
 //                                     runs discover-edit instead and replaces nothing that night.
-//   Offline test: node tools/test-tpt-reupload.js
+//                                     A marker may also carry directive lines: `files: none` (replace no files) and
+//                                     `fix: price, preview` (owner-approved corrective case, 23 Oct 2026, "fix 027"):
+//                                     also set price + license price to tpt.json's values, un-tick Free, attach the
+//                                     preview PDF, then verify the PUBLIC page (price == tpt.json, isFree false,
+//                                     previewUrl present, title unchanged); any mismatch -> reupload-failed + screenshot.
+//                                     When EDIT-FIELDS.json has to be recorded first, the fix runs in the SAME night if the
+//                                     recorded edit form has every field the marker needs; otherwise the next night.
+//   After every publish the public page is read back and compared with tpt.json (tools/tpt-live.js); a mismatch goes to
+//   UPLOADER-STATUS.json `live_mismatch` and tpt/NNN/live-mismatch. Manager check for all items: python3 tools/tpt-verify-live.py
+//   Offline tests: node tools/test-tpt-reupload.js ; node tools/test-tpt-live.js
 //
 // When a publish step fails or an upload times out, a screenshot goes to tpt/_publish/ (gitignored)
 // along with the list of file inputs on the page.
 const fs = require("fs"), path = require("path");
+const { parseLive, compareLive } = require("./tpt-live.js");
 let chromium;
 try { ({ chromium } = require("playwright")); }
 catch (e) {
@@ -236,6 +246,12 @@ function checkItem(item, it, F) {
   if (!it.subjects?.length || it.subjects.length > 3) p.push("tpt.json: subjects needs 1-3 entries");
   if (!it.tags?.length || it.tags.length > 6) p.push("tpt.json: tags needs 1-6 entries");
   if ((it.formats || []).length > 3) p.push("tpt.json: at most 3 formats");
+  // A paid item must never go out free by accident (027, 22 Oct 2026: live page showed 0.00 / Free / no preview).
+  if (it.free !== undefined && typeof it.free !== "boolean") p.push(`tpt.json: free must be true or false (got ${JSON.stringify(it.free)})`);
+  if (it.free !== true) for (const k of ["price", "license_price"]) {
+    if (/^\d+(\.\d{2})?$/.test(String(it[k] ?? "")) && !(Number(it[k]) > 0)) p.push(`tpt.json: ${k} is ${JSON.stringify(it[k])} but the item is not marked "free": true; a paid item needs a price above 0 (or set "free": true)`);
+  }
+  if (!(it.files || {}).preview && it.no_preview !== true) p.push('tpt.json: files.preview is not set (every item needs its watermarked preview PDF; "no_preview": true only if the owner agreed)');
   if (it.free === true) { // free items only: paid items never reach these checks
     if (!F.free) p.push("tpt/FORM.json has no `free` selector (the Free Resource checkbox, #item-free per FORM-FIELDS.json): cannot publish a free item");
     for (const k of ["price", "license_price"]) if (Number(it[k]) !== 0) p.push(`tpt.json: free item needs ${k} "0.00" (got ${JSON.stringify(it[k])})`);
@@ -427,6 +443,35 @@ async function publish(item, dryRun) {
     const active = page.locator(F.make_active);
     if ((await active.getAttribute("aria-checked")) !== "true") await active.click();
 
+    // Read back what the form will submit: price boxes, Free toggle and the hidden preview key. A form that
+    // silently dropped a value would otherwise go live free / without a preview (027).
+    step = "read back the form";
+    {
+      const num = async (sel) => { const v = await page.locator(sel).first().inputValue().catch(() => ""); return v === "" ? null : Number(v); };
+      if (it.free === true) {
+        if (F.free && (await page.locator(F.free).count())) {
+          const t = (await page.locator(F.free).getAttribute("aria-checked")) === "true" || (await page.locator(F.free).isChecked().catch(() => false));
+          if (!t) fail("read-back: Free Resource is not ticked");
+        }
+      } else {
+        const t = F.free && (await page.locator(F.free).count())
+          && ((await page.locator(F.free).getAttribute("aria-checked")) === "true" || (await page.locator(F.free).isChecked().catch(() => false)));
+        if (t) fail('read-back: "Free Resource" is ticked on a paid item');
+        for (const k of ["price", "license_price"]) {
+          const v = await num(F[k]);
+          if (v === null || Math.abs(v - Number(it[k])) > 0.001) fail(`read-back: ${k} box shows ${v === null ? "nothing" : v}, tpt.json says ${it[k]}`);
+        }
+      }
+      if (files.preview) {
+        const key = await page.locator(F.files.preview.key).first().inputValue().catch(() => "");
+        if (!key) fail("read-back: the preview upload key is empty (the preview file is not attached)");
+      }
+      if (files.product) {
+        const key = await page.locator(F.files.product.key).first().inputValue().catch(() => "");
+        if (!key) fail("read-back: the product file key is empty");
+      }
+    }
+
     await snap(page, shots, `${slug}-filled`);
     if (dryRun) {
       console.log(problems.length ? "DRY RUN: problems to fix before publishing:\n- " + problems.join("\n- ") : "DRY RUN: every field filled with no problems.");
@@ -447,6 +492,26 @@ async function publish(item, dryRun) {
     await snap(page, shots, `${slug}-submitted`);
     fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} published live by tools/tpt.js\n${page.url()}\n`);
     console.log(`Published: ${it.title}\nTpT went to ${page.url()}\nWrote ${path.relative(ROOT, item)}/uploaded`);
+    // Verify the PUBLIC page against tpt.json (price, isFree, preview, pages). The item is already live, so a
+    // mismatch is recorded (UPLOADER-STATUS.json live_mismatch, `live-mismatch` file) rather than thrown.
+    const liveUrl = page.url(), id = (liveUrl.match(PRODUCT_URL_RE) || [])[1];
+    let verify = { ok: false, problems: ["could not read the public page"] };
+    for (let attempt = 0; attempt < 4; attempt++) {
+      try {
+        await page.goto(liveUrl, { waitUntil: "domcontentloaded" }); await page.waitForTimeout(3000);
+        const live = parseLive(await page.content(), id);
+        const problems = compareLive(it, live);
+        verify = { ok: problems.length === 0, problems, live };
+        if (verify.ok) break;
+      } catch (e) { verify = { ok: false, problems: ["could not read the public page: " + e.message.split("\n")[0]] }; }
+      await page.waitForTimeout(20000); // TpT may need a moment to show a new listing
+    }
+    if (!verify.ok) {
+      await snap(page, shots, `${slug}-live-mismatch`).catch(() => {});
+      fs.writeFileSync(path.join(item, "live-mismatch"), JSON.stringify({ at: new Date().toISOString(), url: liveUrl, problems: verify.problems, live: verify.live || null }, null, 2) + "\n");
+      console.error(`LIVE MISMATCH for ${slug}: ${verify.problems.join("; ")}`);
+    } else console.log(`Verified on the public page: price ${verify.live.price}, isFree ${verify.live.isFree}, preview ${verify.live.previewUrl ? "yes" : "no"}.`);
+    return { url: liveUrl, verify };
   } catch (e) {
     if (step === "submit" || step === "check login") throw e;
     await snap(page, shots, `${slug}-failed`).catch(() => {});
@@ -507,8 +572,9 @@ async function publishPending() {
   for (const item of items) {
     const slug = path.basename(item);
     try {
-      await publish(item, false);
+      const r = await publish(item, false);
       status.published.push({ item: slug, url: (fs.readFileSync(path.join(item, "uploaded"), "utf8").split("\n")[1] || "").trim() });
+      if (r && r.verify && !r.verify.ok) (status.live_mismatch = status.live_mismatch || []).push({ item: slug, url: r.url, problems: r.verify.problems });
     } catch (e) {
       const msg = e.message.split("\n").slice(0, 3).join(" ").slice(0, 400);
       status.failed.push({ item: slug, error: msg });
@@ -516,7 +582,7 @@ async function publishPending() {
       if (/not logged in|session expired|login failed/i.test(msg)) { status.needs_login = true; break; }
     }
   }
-  status.ok = !status.needs_login && status.failed.length === 0;
+  status.ok = !status.needs_login && status.failed.length === 0 && !(status.live_mismatch || []).length;
   write();
   console.log(`Published ${status.published.length}, failed ${status.failed.length}${status.needs_login ? " (TpT login expired: run node tools/tpt.js login)" : ""}.`);
   if (!status.ok) process.exitCode = 1;
@@ -553,7 +619,27 @@ function reuploadState(item) {
   if (done) { try { if (JSON.parse(done).marker_sha256 === markerHash) return { state: "done", markerHash, url, reason: "this reupload marker was already processed (see `reuploaded`); write a new marker to replace again" }; } catch (e) { /* unreadable: treat as not done */ } }
   const failed = readTrim(path.join(item, "reupload-failed"));
   if (failed) { try { if (JSON.parse(failed).marker_sha256 === markerHash) return { state: "failed-hold", markerHash, url, reason: "an earlier attempt for this marker failed (see `reupload-failed`); not retrying until a new marker is written or that file is deleted" }; } catch (e) { return { state: "failed-hold", markerHash, url, reason: "`reupload-failed` exists and is unreadable; not retrying" }; } }
-  return { state: "pending", markerHash, url, productId: url.match(PRODUCT_URL_RE)[1] };
+  return { state: "pending", markerHash, url, productId: url.match(PRODUCT_URL_RE)[1], directives: parseMarker(marker) };
+}
+
+// Marker directives (plain lines in the `reupload` file; everything else is free text for humans):
+//   files: none           replace no files (default: replace every file listed in tpt.json)
+//   fix: price, preview   OWNER-APPROVED CORRECTIVE CASE (23 Oct 2026, "fix 027"): also set the product's
+//                         price + license price to tpt.json's values and un-tick Free (`price`), and attach the
+//                         preview PDF (`preview`), then verify the public page. Nothing else may be fixed.
+const FIX_TOKENS = ["price", "preview"];
+function parseMarker(text) {
+  const out = { files: true, fix: [], problems: [] };
+  for (const line of String(text || "").split("\n")) {
+    let m = line.match(/^\s*files\s*:\s*(.*?)\s*$/i);
+    if (m) { if (/^none$/i.test(m[1])) out.files = false; else if (!/^(yes|all)?$/i.test(m[1])) out.problems.push(`marker: unknown \`files:\` value ${JSON.stringify(m[1])} (use \`files: none\` or leave it out)`); continue; }
+    m = line.match(/^\s*fix\s*:\s*(.*?)\s*$/i);
+    if (m) for (const t of m[1].split(/[\s,]+/).filter(Boolean)) {
+      if (!FIX_TOKENS.includes(t.toLowerCase())) out.problems.push(`marker: unknown fix ${JSON.stringify(t)} (allowed: ${FIX_TOKENS.join(", ")})`);
+      else if (!out.fix.includes(t.toLowerCase())) out.fix.push(t.toLowerCase());
+    }
+  }
+  return out;
 }
 
 function idOf(sel) { const m = String(sel || "").match(/#([\w-]+)\s*$/); return m ? m[1] : null; }
@@ -564,10 +650,18 @@ function prepareReupload(item, F, editFields) {
   const st = reuploadState(item), problems = [], files = [];
   if (st.state !== "pending") return { problems: [st.reason], files, state: st };
   let cfg; try { cfg = JSON.parse(fs.readFileSync(path.join(item, "tpt.json"), "utf8")); } catch (e) { return { problems: ["tpt.json unreadable: " + e.message], files, state: st }; }
+  const dir = st.directives, fix = dir.fix;
+  problems.push(...dir.problems);
   const listed = cfg.files || {};
-  if (!listed.product) problems.push("tpt.json: files.product is not set");
+  if (dir.files && !listed.product) problems.push("tpt.json: files.product is not set");
+  if (fix.includes("price")) {
+    for (const k of ["price", "license_price"]) if (!/^\d+(\.\d{2})?$/.test(String(cfg[k] ?? "")) || !(Number(cfg[k]) > 0)) problems.push(`fix price: tpt.json ${k} must be a price above 0 like "3.75" (got ${JSON.stringify(cfg[k])})`);
+    if (cfg.free === true) problems.push('fix price: tpt.json says "free": true; this fix only sets a paid price');
+  }
+  if (fix.includes("preview") && !listed.preview) problems.push("fix preview: tpt.json files.preview is not set");
   for (const slot of FILE_SLOTS) {
     if (!listed[slot]) continue;
+    if (!dir.files && !(fix.includes("preview") && slot === "preview")) continue; // files: none -> only what a fix needs
     const fp = path.join(item, listed[slot]);
     if (!fs.existsSync(fp)) { problems.push(`missing file ${fp}`); continue; }
     const bytes = fs.statSync(fp).size, spec = F.files[slot];
@@ -577,6 +671,7 @@ function prepareReupload(item, F, editFields) {
     files.push({ slot, file: listed[slot], path: fp, bytes, sha256: sha256File(fp) });
   }
   for (const k of Object.keys(listed)) if (!FILE_SLOTS.includes(k)) problems.push(`tpt.json: unknown file slot ${k}`);
+  if (!files.length && !fix.length) problems.push("marker asks for nothing: no files and no fix");
   if (editFields !== undefined) { // null/invalid = discover-edit has not run yet
     if (!editFields || !Array.isArray(editFields.fields) || !editFields.fields.length)
       problems.push("tpt/EDIT-FIELDS.json is missing or empty: the edit form is not recorded yet. The next nightly run records it (node tools/tpt.js discover-edit); reupload acts after that");
@@ -587,9 +682,13 @@ function prepareReupload(item, F, editFields) {
         const id = idOf(editSel(F, f.slot).input);
         if (!id || !ids.has(id)) problems.push(`edit form has no file box for ${f.slot} (${editSel(F, f.slot).input}); set edit.files.${f.slot} in tpt/FORM.json from tpt/EDIT-FIELDS.json`);
       }
+      if (fix.includes("price")) for (const [k, sel] of [["price", F.price], ["license_price", F.license_price], ["free", F.free]]) {
+        const id = idOf(sel);
+        if (!id || !ids.has(id)) problems.push(`fix price: edit form has no field for ${k} (${sel}); see tpt/EDIT-FIELDS.json`);
+      }
     }
   }
-  return { problems, files, state: st };
+  return { problems, files, state: st, fix, cfg };
 }
 
 function readEditFields() { try { return JSON.parse(fs.readFileSync(EDIT_FIELDS(), "utf8")); } catch (e) { return null; } }
@@ -609,11 +708,18 @@ async function reupload(item, dryRun) {
   const editFields = readEditFields();
   const plan = prepareReupload(item, F, dryRun ? undefined : editFields);
   if (plan.problems.length) throw new Error(`not replacing files for ${slug}:\n- ` + plan.problems.join("\n- "));
-  const { files, state } = plan;
+  const { files, state, fix, cfg } = plan;
+  const fixPrice = fix.includes("price");
   if (dryRun) {
     console.log(`DRY RUN (offline, TpT not opened): would replace ONLY these files on ${state.url}`);
     for (const f of files) console.log(`  ${f.slot.padEnd(8)} ${f.file}  ${f.bytes} bytes  sha256 ${f.sha256}`);
-    console.log("Would NOT change: title, price, description, tags, subjects, grades, listing status.");
+    if (fix.length) {
+      console.log(`Marker asks for the corrective fix: ${fix.join(", ")}`);
+      if (fixPrice) console.log(`  price: would set price ${cfg.price} and license price ${cfg.license_price} (tpt.json), un-tick "Free Resource" if ticked`);
+      if (fix.includes("preview")) console.log(`  preview: would attach ${cfg.files.preview}`);
+      console.log("  afterwards: public page must show price == tpt.json, isFree false, previewUrl present, title unchanged (description checked on the edit form); any mismatch -> reupload-failed + screenshot, no retry");
+    }
+    console.log(`Would NOT change: title, ${fixPrice ? "" : "price, "}description, tags, subjects, grades, listing status.`);
     console.log(`Would write ${path.relative(ROOT, item)}/reuploaded on success. tpt/EDIT-FIELDS.json: ${editFields ? "present" : "MISSING (a real run would stop; the nightly records it first)"}.`);
     return;
   }
@@ -656,6 +762,7 @@ async function reupload(item, dryRun) {
       return g;
     };
     const before = await readGuard();
+    const liveBefore = parseLive(await (async () => { const pg = await context.newPage(); try { await pg.goto(state.url, { waitUntil: "domcontentloaded" }); await pg.waitForTimeout(2000); return await pg.content(); } catch (e) { return ""; } finally { await pg.close(); } })(), state.productId);
     if (!before.title) await fail(page, step, `the edit page did not show the title box (${F.title}); wrong page or TpT changed`);
 
     const keys = {};
@@ -671,6 +778,26 @@ async function reupload(item, dryRun) {
       keys[f.slot] = await page.locator(spec.key).first().inputValue();
     }
 
+    if (fixPrice) {
+      // Un-tick Free first (TpT may disable the price boxes while it is ticked), then set both prices.
+      step = "fix price: un-tick Free Resource";
+      const box = page.locator(F.free);
+      if (!(await box.count())) await fail(page, step, `no "Free Resource" control ${F.free} on the edit page`);
+      const isOn = async () => (await box.first().getAttribute("aria-checked")) === "true" || (await box.first().isChecked().catch(() => false));
+      if (await isOn()) { await box.first().click(); await page.waitForTimeout(1000); }
+      if (await isOn()) await fail(page, step, `clicked ${F.free} but "Free Resource" still shows as ticked`);
+      step = "fix price: set price and license price";
+      for (const k of ["price", "license_price"]) {
+        const loc = page.locator(F[k]).first();
+        if (!(await page.locator(F[k]).count())) await fail(page, step, `no ${k} box ${F[k]} on the edit page`);
+        await loc.fill(String(cfg[k]));
+        const got = await loc.inputValue().catch(() => "");
+        if (Math.abs(Number(got) - Number(cfg[k])) > 0.001) await fail(page, step, `typed ${cfg[k]} into ${k} but the box shows ${JSON.stringify(got)}`);
+      }
+      if (await isOn()) await fail(page, step, '"Free Resource" got ticked again after setting the price');
+    }
+    if (fix.includes("preview") && !keys.preview) await fail(page, "fix preview", "the preview file was not uploaded (no key)");
+
     step = "save";
     const submit = page.locator((F.edit && F.edit.submit) || F.submit);
     if (!(await submit.count())) await fail(page, step, "no save button found");
@@ -684,7 +811,7 @@ async function reupload(item, dryRun) {
     if (!r2 || r2.status() >= 400) await fail(page, step, `product page answered ${r2 ? r2.status() : "nothing"} after saving`);
     await page.goto(editUrl, { waitUntil: "domcontentloaded" }); await page.waitForTimeout(3000);
     const after = await readGuard();
-    for (const k of Object.keys(before)) if (before[k] !== after[k]) await fail(page, step, `field "${k}" changed during the save (before ${JSON.stringify(before[k])}, after ${JSON.stringify(after[k])})`);
+    for (const k of Object.keys(before)) if (!(fixPrice && (k === "price" || k === "license_price")) && before[k] !== after[k]) await fail(page, step, `field "${k}" changed during the save (before ${JSON.stringify(before[k])}, after ${JSON.stringify(after[k])})`);
     const text = await page.locator("body").innerText().catch(() => "");
     let filled = 0;
     for (const f of files) {
@@ -694,10 +821,30 @@ async function reupload(item, dryRun) {
         await fail(page, step, `after saving, the edit page does not list the file name ${f.file} for ${f.slot}`);
     }
     if (filled !== files.length) await fail(page, step, `expected ${files.length} files on the product, found ${filled}`);
+    if (fixPrice) {
+      for (const k of ["price", "license_price"]) if (Math.abs(Number(after[k]) - Number(cfg[k])) > 0.001) await fail(page, step, `after saving, ${k} on the edit form is ${JSON.stringify(after[k])}, expected ${cfg[k]}`);
+      if (F.free && (await page.locator(F.free).count()) && ((await page.locator(F.free).first().getAttribute("aria-checked")) === "true" || (await page.locator(F.free).first().isChecked().catch(() => false))))
+        await fail(page, step, 'after saving, "Free Resource" is ticked on the edit form');
+    }
+    if (fix.length) { // the PUBLIC page is the judge (TpT may take a moment to show the change)
+      step = "verify the public page";
+      let problems = [], live;
+      for (let attempt = 0; attempt < 6; attempt++) {
+        await page.goto(state.url, { waitUntil: "domcontentloaded" }); await page.waitForTimeout(3000);
+        live = parseLive(await page.content(), state.productId);
+        problems = compareLive({ ...cfg, free: false, pages: undefined }, live).filter((m) => !(fix.every((x) => x !== "preview") && /^previewUrl/.test(m)));
+        if (!fix.includes("price")) problems = problems.filter((m) => !/^(price|isFree)/.test(m));
+        if (liveBefore.title && live.title && liveBefore.title !== live.title) problems.push(`title changed: before ${JSON.stringify(liveBefore.title)}, now ${JSON.stringify(live.title)}`);
+        if (!problems.length) break;
+        await page.waitForTimeout(20000);
+      }
+      if (problems.length) await fail(page, step, "public page does not match tpt.json after the fix: " + problems.join("; "));
+    }
 
     fs.writeFileSync(path.join(item, "reuploaded"), JSON.stringify({
       at: new Date().toISOString(), tool: "tools/tpt.js reupload", url: state.url, marker_sha256: state.markerHash,
       files: files.map((f) => ({ slot: f.slot, file: f.file, bytes: f.bytes, sha256: f.sha256 })),
+      fix, fix_verified: fix.length ? { price: cfg.price, license_price: cfg.license_price, preview: cfg.files.preview, verified_on_public_page: true } : undefined,
     }, null, 2) + "\n");
     console.log(`Replaced ${files.length} files on ${state.url}; wrote ${path.relative(ROOT, item)}/reuploaded`);
     return { url: state.url, files: files.length };
@@ -718,16 +865,25 @@ async function reuploadPending() {
   const done = (ok) => { res.ok = ok; recordReuploadStatus(res); console.log(`Reupload: replaced ${res.replaced.length}, failed ${res.failed.length}, waiting ${res.waiting.length}.`); if (!ok) process.exitCode = 1; };
   if (fs.existsSync(path.join(dir, "PAUSED"))) { res.skipped.push("tpt/PAUSED exists"); console.log("tpt/PAUSED exists: replacing nothing."); return done(true); }
   const marked = fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d)).filter((d) => fs.existsSync(path.join(d, "reupload"))).sort();
-  const pending = marked.filter((d) => reuploadState(d).state === "pending");
+  let pending = marked.filter((d) => reuploadState(d).state === "pending");
   for (const d of marked) if (!pending.includes(d)) { const s = reuploadState(d); if (s.state !== "done") res.skipped.push(`${path.basename(d)}: ${s.state}`); }
   res.waiting = pending.map((d) => path.basename(d));
   if (!pending.length) { console.log("No item waiting for a file replacement."); return done(true); }
   console.log(`Marked for reupload: ${res.waiting.join(", ")}`);
   if (!readEditFields()) { // first run: learn the edit form, change nothing
     res.needs_edit_fields = true;
-    try { await discoverEdit(pending[0]); res.discovered_edit = true; console.log("Recorded tpt/EDIT-FIELDS.json; files are replaced from the next run."); }
+    try { await discoverEdit(pending[0]); res.discovered_edit = true; }
     catch (e) { res.failed.push({ item: path.basename(pending[0]), error: "discover-edit: " + e.message.split("\n").slice(0, 2).join(" ").slice(0, 300) }); if (/not logged in|session expired/i.test(e.message)) res.needs_login = true; }
-    return done(res.discovered_edit);
+    if (!res.discovered_edit) return done(false);
+    // Same run, when safe: discover-edit is read-only, and prepareReupload() now checks every field the marker needs
+    // (file boxes, and for `fix: price` the price, license price and Free boxes) against the freshly recorded edit
+    // form. Items that pass go ahead tonight; the rest wait for the Manager (nothing is attempted blind).
+    const F0 = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8")), ef = readEditFields();
+    const ready = pending.filter((d) => !prepareReupload(d, F0, ef).problems.length);
+    for (const d of pending) if (!ready.includes(d)) res.skipped.push(`${path.basename(d)}: edit form check failed after discover-edit: ${prepareReupload(d, F0, ef).problems.join("; ").slice(0, 300)}`);
+    if (!ready.length) { console.log("Recorded tpt/EDIT-FIELDS.json; nothing is safe to replace tonight (see skipped in UPLOADER-STATUS.json)."); return done(true); }
+    console.log("Recorded tpt/EDIT-FIELDS.json; the edit form has every field the marker needs, so the replacement/fix runs now (same night).");
+    pending = ready;
   }
   for (const item of pending.slice(0, MAX_PER_RUN)) {
     const slug = path.basename(item);
@@ -781,7 +937,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)

@@ -1,1 +1,4 @@
 2026-10-22 reupload requested by Manager: rebuilt art approved by QA 22 Oct round 4; replace files only
+files: yes
+fix: price, preview
+2026-10-23 owner request 'fix 027' (live page shows price 0.00 / Free / no preview; tpt.json says 3.75 and a 4-page preview): also set price + license price 3.75, un-tick Free, attach thanksgiving-color-by-note-PREVIEW.pdf; verify on the public page; title/description unchanged

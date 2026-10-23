@@ -54,7 +54,7 @@ assert.notStrictEqual(r2.status, 0); assert(/no `reupload` marker/.test(r2.stder
 const r3 = run("reupload", "tpt/027-thanksgiving-color-by-note", "--dry-run");
 assert.strictEqual(r3.status, 0, r3.stderr);
 for (const f of ["thanksgiving-color-by-note.pdf", "thanksgiving-color-by-note-PREVIEW.pdf", "cover.png", "preview-1.png", "preview-2.png", "preview-3.png"]) assert(r3.stdout.includes(f), f);
-assert(/Would NOT change: title, price/.test(r3.stdout));
+assert(/Would NOT change: title, description/.test(r3.stdout)); // 027 marker carries `fix: price` (23 Oct): price is set, not left alone
 if (!fs.existsSync(path.join(ROOT, "tpt", "EDIT-FIELDS.json"))) { // real run must refuse before opening any browser
   const r4 = run("reupload", "tpt/027-thanksgiving-color-by-note");
   assert.notStrictEqual(r4.status, 0); assert(/EDIT-FIELDS\.json is missing/.test(r4.stderr), r4.stderr);
