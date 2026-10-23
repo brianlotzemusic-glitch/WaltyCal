@@ -60,3 +60,6 @@ After the fix: re-run gen.py --check, rebuild ZIP, regenerate images 1-4 (06 app
 
 ### Open questions
 - Lister: tick Etsy AI checkbox / "Designed by"? (unchanged). Do not publish before the Ads test ends 24 Oct.
+
+## Designer log, round 3 (23 Oct 2026)
+06 only: rear wing tip now one smooth rounded taper (tip 15 units, was a 12-unit cap beaded by the 0.08 in opening); crown nick came from the eye hole breaking through the thin wall, so the (already vanished) eye is removed and head + neck end share one convex dome; core fillet 16 -> 30 softens the shoulder. 100% crops of head, neck S, bill, wing slit and tip checked clean. gen.py --check passes, ZIP and images 1-4 rebuilt (3000x2250 opaque), other designs byte-identical. Self-grade 06 B+. Not published.

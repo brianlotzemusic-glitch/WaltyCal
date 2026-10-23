@@ -168,12 +168,12 @@ def d_heron_flight():
     legs = U([curve_taper([(660, 580), (780, 620), (930, 640)], 26, 12),
               curve_taper([(660, 592), (770, 650), (905, 690)], 26, 12)])
     wing = curve_taper([(515, 520), (545, 360), (645, 230), (805, 150), (945, 130)], 170, 14)
-    wing2 = curve_taper([(545, 560), (655, 460), (805, 400), (945, 390)], 90, 12)
+    wing2 = curve_taper([(545, 560), (655, 460), (805, 400), (945, 390)], 90, 15)
     far = curve_taper([(475, 540), (435, 400), (475, 270), (565, 180)], 90, 12)
     # fillet the neck / shoulder / far-wing joins with a closing (main wing added after, so the feather slit stays open)
-    core = U([body, neck, head, far]).buffer(16, quad_segs=16).buffer(-16, quad_segs=16)
+    crown = U([head, Point(250, 378).buffer(17)]).convex_hull   # one dome over head + neck end (no two-lobe nick)
+    core = U([body, neck, head, crown, far]).buffer(30, quad_segs=24).buffer(-30, quad_segs=24)
     solid += [core, bill, legs, wing, wing2]
-    holes.append(circ(227, 367, 11))
     return fit(U(solid).difference(U(holes)), 900)
 
 
