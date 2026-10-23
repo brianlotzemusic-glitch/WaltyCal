@@ -1,14 +1,15 @@
 {
-  "ran_at": "2026-10-23T13:54:39.617Z",
-  "published": [],
-  "failed": [
+  "ran_at": "2026-10-23T14:05:57.467Z",
+  "published": [
     {
       "item": "028-free-color-by-note-sampler",
-      "error": "publish stopped at step \"tax_code\" (nothing was submitted): locator.click: Timeout 30000ms exceeded. Screenshot: tpt/_publish/028-free-color-by-note-sampler-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalThumb1 name=- (hidden), #ItemDigitalThumb2 name=- (hidden), #ItemDigitalThumb3 name="
-    },
+      "url": "https://www.teacherspayteachers.com/Product/FREE-Color-by-Note-Sampler-Rhythm-Treble-Bass-Clef-Music-Worksheets-18053100"
+    }
+  ],
+  "failed": [
     {
       "item": "030-dmp1-units-1-6-bundle",
-      "error": "publish stopped at step \"subjects: Career and Technical Education\" (nothing was submitted): not submitted: subjects: \"Career and Technical Education\" is not an option. Typing it offered: (nothing) Screenshot: tpt/_publish/030-dmp1-units-1-6-bundle-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #Item"
+      "error": "publish stopped at step \"subjects: Career and Technical Education\" (nothing was submitted): not submitted: subjects: \"Career and Technical Education\" is not an option. Typed and offered: \"Career and Technical Education\" -> (nothing); \"Career and Technical\" -> (nothing); \"Career and\" -> (nothing); \"Career\" -> (nothing) (screenshot tpt/_publish/030-dmp1-units-1-6-bundle-subjects-*.png) Screenshot: t"
     }
   ],
   "needs_login": false,
@@ -18,12 +19,12 @@
     "030-dmp1-units-1-6-bundle"
   ],
   "reupload": {
-    "ran_at": "2026-10-23T13:56:22.182Z",
+    "ran_at": "2026-10-23T14:09:15.313Z",
     "replaced": [],
     "failed": [
       {
         "item": "027-thanksgiving-color-by-note",
-        "error": "not replacing files for 027-thanksgiving-color-by-note: - fix price: edit form has no field for price (#item-price); see tpt/EDIT-FIELDS.json - fix price: edit form has no field for license_price (#item-license-price); see tpt/EDIT-FIELDS.json"
+        "error": "reupload stopped at \"replace product (thanksgiving-color-by-note.pdf)\": TpT did not accept thanksgiving-color-by-note.pdf within 15 min (the upload key never changed) Screenshot: tpt/_publish/027-thanksgiving-color-by-note-reupload-failed.png. Not retrying this marker."
       }
     ],
     "waiting": [
@@ -35,5 +36,14 @@
     "discovered_edit": false,
     "ok": false
   },
+  "live_mismatch": [
+    {
+      "item": "028-free-color-by-note-sampler",
+      "url": "https://www.teacherspayteachers.com/Product/FREE-Color-by-Note-Sampler-Rhythm-Treble-Bass-Clef-Music-Worksheets-18053100",
+      "problems": [
+        "previewUrl: live page has no preview file (tpt.json declares one)"
+      ]
+    }
+  ],
   "ok": false
 }
