@@ -21,7 +21,7 @@ WHAT'S INCLUDED
 • PNG: transparent background, 1800 px on the longest side (6 in at 300 DPI)
 
 SIZE
-Default size is about 6 in on the longest side. Fine tips (bills, wing tips, reed tips) taper to about 0.07 in at 6 in, so we recommend 4 in or larger for cardstock and vinyl and 5 in or larger for laser-cut wood or acrylic.
+Default size is about 6 in on the longest side. Fine tips taper to about 0.08 in at 6 in; we recommend 5 in or larger for cardstock and vinyl and 6 in for laser-cut wood or acrylic.
 
 LICENSE
 Personal use, plus small-business use on up to 500 finished physical items per design. Please don't share or resell the digital files.

@@ -30,3 +30,6 @@ Measured on the 300 DPI PNGs by morphological opening: only the tips are under 0
 ## Open questions
 - Lister: does it tick Etsy's AI checkbox and "Designed by"? (unchanged)
 - No paid actions, no live Etsy edits; Ads test runs until 24 Oct.
+
+## Designer log, round 2 (23 Oct 2026)
+Applied all round-1 fixes: 05 flock redrawn (one gull-V bird, 7 birds, no merging, checked), 06 S-neck raised/filleted/slit ~0.10 in, tip floor 0.08 in (gen.py MIN_TIP), 01 stalks >= 0.10 in, 01/02 notches filleted, 04 tail tip pointed; copy updated in LISTING.md, listing.json, README; ZIP and images 1-4 rebuilt; gen.py --check passes (new tip-floor, stalk and flock-gap checks). Self-grade 05 B+/A-, 06 B+. Awaiting QA round 2. Not published.

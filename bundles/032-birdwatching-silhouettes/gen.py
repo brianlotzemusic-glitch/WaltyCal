@@ -37,8 +37,9 @@ FILES
   PNG/  transparent background, 1800 px on the longest side (6 in at 300 DPI)
 
 Each design is a single-layer shape with one connected cut path. Default
-size is about 6 inches on the longest side. Fine tips (bills, wing tips, reed
-tips) taper to about 0.07 in at 6 in; sizes below 4 in are not recommended.
+size is about 6 inches on the longest side. Fine tips taper to about 0.08 in
+at 6 in; we recommend 5 in or larger for cardstock and vinyl and 6 in for
+laser-cut wood or acrylic.
 
 LICENSE
   Personal use: unlimited.
@@ -75,8 +76,18 @@ def check():
         # thinnest wall: erode by 5 units must keep one part (tips may vanish; reported)
         good = (st["parts"] == 1 and st["valid"] and (st["holes"] == 0 or st["smallest_hole"] >= MIN_HOLE) and svg.count("<path") == 1
                 and len(pl) == 1 + st["holes"] and 5.0 < L <= 6.0 and max(im.size) == 1800 and im.mode == "RGBA" and im.getextrema()[3][0] == 0)
+        # firm minimum width: opening by 6.0 units (0.079 in at 6 in) must not remove anything (tips rounded >= 0.08 in)
+        lost = g.difference(g.buffer(-6.0, quad_segs=16).buffer(6.0, quad_segs=16)).area
+        good &= lost < 30
+        extra = f"tipfloor lost {lost:.0f}"
+        if name.startswith("01"):   # reed/cattail stalks >= 0.10 in (opening by 7.6 units keeps every stalk)
+            op = g.buffer(-7.6, quad_segs=16).buffer(7.6, quad_segs=16)
+            stalks_ok = all(s.buffer(-2).difference(op).area < 1 for s in birds.heron_stalks_fitted())
+            good &= stalks_ok; extra += f" stalks>=0.10in {stalks_ok}"
+        if name.startswith("05"):   # no two birds merge, none near the rim
+            gap, rim = birds.flock_gaps(); good &= gap > 40 and rim > 30; extra += f" bird gap {gap:.0f} rim {rim:.0f}"
         ok &= good
-        print("OK  " if good else "FAIL", name, st, f"dxf {L:.2f} in", im.size)
+        print("OK  " if good else "FAIL", name, st, f"dxf {L:.2f} in", im.size, extra)
     print("ALL CHECKS PASS" if ok else "CHECKS FAILED")
     return ok
 

@@ -95,10 +95,13 @@ def areal(g):
     return U([p for p in getattr(g, "geoms", []) if p.geom_type in ("Polygon", "MultiPolygon")])
 
 
-def finish(g, r=5.0, simplify=0.15):
+MIN_TIP = 6.3   # units; rounding radius => tips/slits no narrower than 2*6.3 = 12.6 units = 0.083 in at 6 in
+
+
+def finish(g, r=MIN_TIP, simplify=0.15):
     g = areal(make_valid(g))
-    g = g.buffer(r, quad_segs=16).buffer(-r, quad_segs=16)       # fill pinches
-    g = g.buffer(-r, quad_segs=16).buffer(r, quad_segs=16)       # drop slivers
+    g = g.buffer(r, quad_segs=16).buffer(-r, quad_segs=16)       # fill pinches / round slit ends (>= 0.08 in)
+    g = g.buffer(-r, quad_segs=16).buffer(r, quad_segs=16)       # round tips to >= 0.08 in, drop slivers
     g = areal(set_precision(areal(make_valid(g.simplify(simplify))), 0.05))
     polys = list(g.geoms) if g.geom_type == "MultiPolygon" else [g]
     polys = [p for p in polys if p.area > 1500]
