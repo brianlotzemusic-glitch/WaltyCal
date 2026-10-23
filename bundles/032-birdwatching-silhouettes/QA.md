@@ -33,3 +33,30 @@ Measured on the 300 DPI PNGs by morphological opening: only the tips are under 0
 
 ## Designer log, round 2 (23 Oct 2026)
 Applied all round-1 fixes: 05 flock redrawn (one gull-V bird, 7 birds, no merging, checked), 06 S-neck raised/filleted/slit ~0.10 in, tip floor 0.08 in (gen.py MIN_TIP), 01 stalks >= 0.10 in, 01/02 notches filleted, 04 tail tip pointed; copy updated in LISTING.md, listing.json, README; ZIP and images 1-4 rebuilt; gen.py --check passes (new tip-floor, stalk and flock-gap checks). Self-grade 05 B+/A-, 06 B+. Awaiting QA round 2. Not published.
+
+## QA round 2 (23 Oct 2026)
+**Verdict: REJECTED (one design, small fix).** 06 is below B because of two new artifacts. All else passes.
+
+### Must fix (06 only, then resubmit round 3)
+1. **06 lower (rear) wing tip has a round bead** (PNG ~x 1760-1790, y 855-880): a dot ~0.04 in wider than the tapering wing, joined by a visible neck. The 0.08 in tip rounding produced a ball on the tip instead of a rounded taper. Fix the tip so the wing ends in a single smooth taper/rounded end (no ball). Visible in all 4 listing images.
+2. **06 head crown has a nick** (PNG ~x 320-335, y 775): two lobes meet at a sharp notch on top of the head. Merge into one smooth dome (fillet or re-draw the crown). Also soften the sharp shoulder corner at about x 700, y 1050.
+After the fix: re-run gen.py --check, rebuild ZIP, regenerate images 1-4 (06 appears in all), crop-check 06 again at 100%.
+
+### Per-design grades (100% crops, white-flattened PNG, plus 4x on joins)
+- 01 B (heron believable, stalks now clear; tiny rounded nubs on the baseline at x 225/330/1730, y ~1690 are cosmetic; neck notches filleted)
+- 02 A- (swallow fillet and head notch smooth, no kinks)
+- 03 B+ (unchanged, no regression)
+- 04 B (tail now tapers to a rounded point; wren reads well; eye hole intact)
+- 05 B+ (7 smooth gull-V birds, no fork, no wiggle, all separate, reads as a flock; thin wings but fine at 5 in+)
+- 06 B- FAIL (S neck, filleted notch and ~0.10 in slit are good; bead and crown nick above)
+
+### Checked and passing
+- gen.py --check: ALL CHECKS PASS (1 part each; holes 01:1, 04:2, 05:7; no new files modified).
+- SVG: 6 valid XML, 1 path each, 6.000in square, subpaths closed (M count = Z count). DXF: 6 files, INSUNITS inches, closed LWPOLYLINEs, width 5.95 in, counts = holes+1 (05 has 8). PNG: 1800x1800 RGBA, transparent corners, clean edges.
+- ZIP: 22 entries (testzip OK), every file byte-identical to bundle/; matches LISTING.md.
+- Listing images 1-4: 3000x2250 RGB opaque, no text overlap, only included files shown. Image 1 is a flat preview showing the redrawn 05 and 06 (06's bead barely visible there).
+- Copy: the exact min-size sentence is in LISTING.md, listing.json and README (README still formats/sizes/licence only); description identical in LISTING.md and listing.json; mockup sentence present; disclosure line last; title 126 chars, 13 tags <= 20, price $4.00, taxonomy 12394.
+- No paid actions, no live Etsy edits.
+
+### Open questions
+- Lister: tick Etsy AI checkbox / "Designed by"? (unchanged). Do not publish before the Ads test ends 24 Oct.
