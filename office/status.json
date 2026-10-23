@@ -1,10 +1,10 @@
 {
- "updated_at": "2026-10-23T14:30:00Z",
- "next_run_at": "2026-10-23T22:12:00Z",
+ "updated_at": "2026-10-24T01:30:00Z",
+ "next_run_at": "2026-10-24T10:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
- "listings_live": 37,
- "bundles_built": 51,
+ "listings_live": 38,
+ "bundles_built": 52,
  "uploads_pending": 12,
  "etsy_connected": true,
  "workers": [
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "TpT audit 23 Oct: 025 of 26 live pages correct; 027 is live at $0.00 free with no preview (fix queued for the Mac nightly: price 3.75, un-tick Free, preview, files). 015-018 live page counts are lower than tpt.json (older files): next candidates for the file-replace rule after 027 is confirmed. Next shift 6:12pm ET.",
-   "since": "2026-10-23T14:30:00Z"
+   "task": "6:12pm shift 23 Oct: Etsy 032 birdwatching silhouettes live (38 active). TpT: 029 and 028 live, 027 price fixed (files/preview re-armed for tonight), 030 bundle blocked on the Subject picker. No new TpT builds while uploads are backed up. Ads verdict due 24 Oct. Next shift 6:12am ET.",
+   "since": "2026-10-24T01:30:00Z"
   },
   {
    "id": "researcher",
@@ -26,22 +26,22 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Built TpT 030 DMP1 bundle and Etsy 031 celestial ornaments. Next: winter pack bundle, Sonic Time Capsule, an Etsy item (Gothic Valentine from December).",
-   "since": "2026-10-23T18:00:00Z"
+   "task": "Built Etsy 032 birdwatching silhouettes (three QA rounds, design 06 last). Next: after the Ads verdict; winter pack bundle, Sonic Time Capsule.",
+   "since": "2026-10-24T01:30:00Z"
   },
   {
    "id": "qa",
    "name": "QA",
    "state": "idle",
-   "task": "Approved TpT 030 (round 1) and Etsy 031 (round 2).",
-   "since": "2026-10-23T18:00:00Z"
+   "task": "Approved Etsy 032 in round 3.",
+   "since": "2026-10-24T01:30:00Z"
   },
   {
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "TpT 027 fix, 028, 029, 030 wait for the Mac nightly. Run python3 tools/tpt-verify-live.py each shift.",
-   "since": "2026-10-23T14:30:00Z"
+   "task": "Etsy 4601982320 (Bird Silhouette SVG Bundle, $4) live; 38 active. TpT waits on the Mac nightly: 027 file swap, 030 bundle subject picker.",
+   "since": "2026-10-24T01:30:00Z"
   },
   {
    "id": "analyst",
@@ -80,12 +80,22 @@
   }
  ],
  "queue": [
-  "[tpt] Winter & Holiday Music Pack bundle (003, 005, 006, 029)",
-  "[dmp] DMP2 Sonic Time Capsule; then the DMP2 bundle",
-  "[tool] TpT stats in the Mac nightly",
-  "Etsy: next non-pattern item (Gothic Valentine from December; birdwatching silhouettes)"
+  "[tpt] get 030 DMP1 bundle, 027 files and the 028 preview onto TpT (uploader fixes pending a Mac run)",
+  "[tpt] Winter & Holiday Music Pack bundle (003, 005, 006, 029); DMP2 Sonic Time Capsule",
+  "[after Ads verdict 24 Oct] decide on live Etsy photo/price changes",
+  "Etsy: next non-pattern item"
  ],
  "feed": [
+  {
+   "t": "2026-10-24T01:30:00Z",
+   "who": "lister",
+   "msg": "Published Bird Silhouette SVG Bundle (Etsy 4601982320, $4). 38 active."
+  },
+  {
+   "t": "2026-10-24T01:30:00Z",
+   "who": "manager",
+   "msg": "TpT: 029 and the free sampler 028 are live, 027 price fixed; 030 bundle blocked on the Subject picker."
+  },
   {
    "t": "2026-10-23T14:30:00Z",
    "who": "manager",
@@ -235,11 +245,6 @@
    "t": "2026-10-17T10:13:36Z",
    "who": "manager",
    "msg": "Three DMP2 kits (016, 017, 018) are approved and waiting for the owner's release. Building paused so the queue doesn't pile up."
-  },
-  {
-   "t": "2026-10-16T22:24:26Z",
-   "who": "lister",
-   "msg": "TpT 015 Sample Flipping is live on TpT."
   }
  ],
  "venture_gate": {
