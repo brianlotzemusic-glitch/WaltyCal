@@ -1,9 +1,39 @@
 {
-  "ran_at": "2026-10-23T00:30:13.688Z",
+  "ran_at": "2026-10-23T13:54:39.617Z",
   "published": [],
-  "failed": [],
+  "failed": [
+    {
+      "item": "028-free-color-by-note-sampler",
+      "error": "publish stopped at step \"tax_code\" (nothing was submitted): locator.click: Timeout 30000ms exceeded. Screenshot: tpt/_publish/028-free-color-by-note-sampler-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalThumb1 name=- (hidden), #ItemDigitalThumb2 name=- (hidden), #ItemDigitalThumb3 name="
+    },
+    {
+      "item": "030-dmp1-units-1-6-bundle",
+      "error": "publish stopped at step \"subjects: Career and Technical Education\" (nothing was submitted): not submitted: subjects: \"Career and Technical Education\" is not an option. Typing it offered: (nothing) Screenshot: tpt/_publish/030-dmp1-units-1-6-bundle-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #Item"
+    }
+  ],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
-  "ok": true
+  "pending_before": [
+    "028-free-color-by-note-sampler",
+    "030-dmp1-units-1-6-bundle"
+  ],
+  "reupload": {
+    "ran_at": "2026-10-23T13:56:22.182Z",
+    "replaced": [],
+    "failed": [
+      {
+        "item": "027-thanksgiving-color-by-note",
+        "error": "not replacing files for 027-thanksgiving-color-by-note: - fix price: edit form has no field for price (#item-price); see tpt/EDIT-FIELDS.json - fix price: edit form has no field for license_price (#item-license-price); see tpt/EDIT-FIELDS.json"
+      }
+    ],
+    "waiting": [
+      "027-thanksgiving-color-by-note"
+    ],
+    "skipped": [],
+    "needs_login": false,
+    "needs_edit_fields": false,
+    "discovered_edit": false,
+    "ok": false
+  },
+  "ok": false
 }
