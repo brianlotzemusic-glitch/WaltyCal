@@ -1,0 +1,56 @@
+{
+  "price": "49.00",
+  "license_price": "49.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Career and Technical Education",
+    "Computer Science - Technology"
+  ],
+  "tags": [
+    "High School",
+    "Project Based Learning",
+    "Technology",
+    "Back to School"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 289,
+  "answer_key": "Included",
+  "zip_contents": [
+    "00 START HERE - Bundle Guide.pdf",
+    "Unit 1 - Beat From Nothing/beat-from-nothing.pdf",
+    "Unit 1 - Beat From Nothing/beat-from-nothing-intro-deck.pptx",
+    "Unit 1 - Beat From Nothing/beat-from-nothing-intro-deck.pdf",
+    "Unit 2 - Stems and Grooves/stems-and-grooves.pdf",
+    "Unit 2 - Stems and Grooves/stems-and-grooves-intro-deck.pptx",
+    "Unit 2 - Stems and Grooves/stems-and-grooves-intro-deck.pdf",
+    "Unit 3 - Chords by Ear/chords-by-ear.pdf",
+    "Unit 3 - Chords by Ear/chords-by-ear-intro-deck.pptx",
+    "Unit 3 - Chords by Ear/chords-by-ear-intro-deck.pdf",
+    "Unit 4 - Bass and Melody Writing/bass-melody-writing.pdf",
+    "Unit 4 - Bass and Melody Writing/bass-melody-writing-intro-deck.pptx",
+    "Unit 4 - Bass and Melody Writing/bass-melody-writing-intro-deck.pdf",
+    "Unit 5 - Song Form/song-form.pdf",
+    "Unit 5 - Song Form/song-form-intro-deck.pptx",
+    "Unit 5 - Song Form/song-form-intro-deck.pdf",
+    "Unit 6 - Spooky Tunes/spooky-tunes.pdf",
+    "Unit 6 - Spooky Tunes/spooky-tunes-intro-deck.pptx",
+    "Unit 6 - Spooky Tunes/spooky-tunes-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "dmp1-units-1-6-bundle.zip",
+    "preview": "dmp1-units-1-6-bundle-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
