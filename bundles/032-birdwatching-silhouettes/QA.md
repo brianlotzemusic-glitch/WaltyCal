@@ -63,3 +63,18 @@ After the fix: re-run gen.py --check, rebuild ZIP, regenerate images 1-4 (06 app
 
 ## Designer log, round 3 (23 Oct 2026)
 06 only: rear wing tip now one smooth rounded taper (tip 15 units, was a 12-unit cap beaded by the 0.08 in opening); crown nick came from the eye hole breaking through the thin wall, so the (already vanished) eye is removed and head + neck end share one convex dome; core fillet 16 -> 30 softens the shoulder. 100% crops of head, neck S, bill, wing slit and tip checked clean. gen.py --check passes, ZIP and images 1-4 rebuilt (3000x2250 opaque), other designs byte-identical. Self-grade 06 B+. Not published.
+
+## QA round 3 (23 Oct 2026)
+**Verdict: APPROVED.** Every design is B or better; no fixes required.
+
+- Other five designs unchanged: `git diff f51ce53 HEAD -- bundle` touches only the 06 SVG, DXF and PNG; 01-05 files are byte-identical to round 2.
+- 06 checked at 100% on the white-flattened PNG (head, neck S, bill, shoulder, wing slit, rear wing tip) and in the four listing images: the rear wing tip is now one smooth taper with no bead; the head is one smooth dome (no nick); the shoulder is a soft curve; the S neck, bill and about 0.10 in slit are clean. Without the eye it still reads as a heron in flight and looks attractive at listing size (a solid silhouette; the eye was already invisible at cutting scale). No new thin walls or slivers (it has no holes).
+- 06 is one closed path (1 M, 1 Z, evenodd), DXF one closed LWPOLYLINE with INSUNITS inches; PNG 1800x1800 RGBA transparent corners. gen.py --check: ALL CHECKS PASS (06 parts 1, holes 0, tip floor ok).
+- ZIP: 22 entries, testzip OK, byte-identical to bundle/ (diff -r), matches LISTING.md. Copy unchanged and consistent (min-size sentence in LISTING.md, listing.json, README).
+- Listing images 1-4: 3000x2250 RGB opaque, no text overlap; 06 is the new version in all four; image 1 is a flat preview.
+
+### Final grades
+01 B, 02 A-, 03 B+, 04 B, 05 B+, 06 B+ (was B-).
+
+### Open (unchanged)
+Lister: tick Etsy AI checkbox / "Designed by". Do not publish before the Ads test ends 24 Oct. No paid actions, no live Etsy edits.
