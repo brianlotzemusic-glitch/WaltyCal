@@ -12,7 +12,7 @@ Celestial Christmas Ornament SVG Bundle, Moon and Star Ornaments, Crescent Moon 
 **Description**
 Moons, stars and winter skies for the tree: six original celestial Christmas ornament cut files.
 
-The set has a crescent moon cradling a star with tiny stars cut out of it, a classic bauble with a crescent moon and a scatter of stars, a star wreath with a big star at its heart, a moon phases ornament with stars above and below, an eight-point starburst, and a round frame with a crescent moon, hanging stars and three pines on a snowy hill. Solid shapes keep every design easy to read, even small on the tree.
+The set has a crescent moon cradling a star with tiny stars cut out of it, a classic bauble with a crescent moon and a scatter of stars, a star-studded wreath with an eight-point star at its heart, a moon phases ornament with stars above and below, an eight-point starburst, and a round frame with a crescent moon, hanging stars and three pines on a snowy hill. Solid shapes keep every design easy to read, even small on the tree.
 
 Each design is a single-layer, single-path cut file with a hanging loop built in. Stars and moons are attached, so nothing falls out.
 

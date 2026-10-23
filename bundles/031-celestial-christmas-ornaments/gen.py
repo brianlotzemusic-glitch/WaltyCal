@@ -210,9 +210,11 @@ def hanger(cx, ytop, neck=30):
     """Hanging loop (0.25 in hole at 6 in) + bead, sitting on the frame top at ytop."""
     ry = ytop - neck - 40
     loop = ring(cx, ry, 31, 22)
-    stem = line([(cx, ry + 38), (cx, ytop + 8)], 22)
-    bead = circ(cx, ytop - neck * 0.45, 20)
-    return U([loop, stem, bead]), circ(cx, ry, 20)
+    stem = line([(cx, ry + 38), (cx, ytop + 2)], 22)
+    bead = circ(cx, ytop - neck * 0.45, 11)   # same width as the stem: no S-bump in the neck
+    g = U([loop, stem, bead])
+    g = g.buffer(14, quad_segs=16).buffer(-14, quad_segs=16)   # fillet the neck so it has no bumps
+    return g, circ(cx, ry, 20)
 
 
 def snow_ground(cx, gy, R, cy, amp=16, phase=0.0):
@@ -221,9 +223,14 @@ def snow_ground(cx, gy, R, cy, amp=16, phase=0.0):
     return circ(cx, cy, R - 4).intersection(poly(top + [(cx + R, cy + R + 10), (cx - R, cy + R + 10)]))
 
 
-def hung_star(x, y_top, y, r, w=24):
-    """Star hanging on a thread (>= 24 wide, cut-safe) from the frame at y_top."""
+def hung_star(x, y_top, y, r, w=30):
+    """Star hanging on a thread (30 wide) from the frame at y_top."""
     return U([line([(x, y_top), (x, y - r * 0.6)], w), star(x, y, r, r * 0.45)])
+
+
+def ring_y(cx, cy, R, x):
+    """Top of the ring's centre line at x (so threads start inside the ring body)."""
+    return cy - math.sqrt(R * R - (x - cx) ** 2)
 
 
 def sparkle(cx, cy, R, r=None, n=4, rot=-90):
@@ -281,18 +288,20 @@ def d2_star_moon_bauble():
 
 def d3_celestial_wreath():
     """A wreath ring with stars and four-point twinkles round the outside and
-    a big star in the middle whose five points run out as rays to the ring."""
+    an eight-point star at the heart, held to the ring by four short bridges
+    on the diagonals (between the star's points, so it reads as a wreath, not
+    a wheel)."""
     cx, cy, Rw, bw = 500, 560, 330, 36
-    h, hh = hanger(cx, cy - Rw - bw / 2 + 4, neck=26)
+    h, hh = hanger(cx, cy - Rw, neck=26)
     solid, holes = [ring(cx, cy, Rw, bw), h], [hh]
     n = 12
     for k in range(1, n):
         th = -90 + 360 / n * k
         x, y = polar(cx, cy, Rw + 62, th)
         solid.append(star(x, y, 70, 32, rot=th) if k % 2 else sparkle(x, y, 74, 20, rot=th))
-    for a in (-90, -18, 54, 126, 198):
-        solid.append(line([polar(cx, cy, 120, a), polar(cx, cy, Rw, a)], 28))
-    solid.append(star(cx, cy, 190, 84))
+    solid.append(star(cx, cy, Rw, 130, n=8, rot=-90))    # points run into the ring: no spokes
+    for k in range(8):                                    # solid, filleted tips where the points meet the ring
+        solid.append(circ(*polar(cx, cy, Rw - 14, -90 + 45 * k), 17))
     return compose(solid, holes)
 
 
@@ -334,13 +343,14 @@ def d6_moon_pines():
     solid, holes = [ring(*C, R, 34)], []
     h, hh = hanger(500, C[1] - R)
     solid.append(h); holes.append(hh)
-    solid.append(crescent(330, 330, 150, 64, -40, 0.8).intersection(circ(*C, R)))
-    solid.append(line([(300, 100), (300, 215)], 26))
+    solid.append(crescent(330, 335, 150, 64, -40, 0.8).intersection(circ(*C, R)))
+    solid.append(line([(255, ring_y(*C, R, 255)), (255, 245)], 30))
     solid.append(snow_ground(500, 820, R, C[1], amp=20))
     for x, hgt, w in ((300, 330, 200), (520, 460, 270), (720, 300, 190)):
         solid.append(pine(x, 835, hgt, w, tiers=4))
-    solid.append(hung_star(640, 90, 300, 58))
-    solid.append(hung_star(780, 170, 420, 44))
+    solid.append(rect(205, 826, 560, 846, 8).intersection(circ(*C, R - 4)))   # wider ground line under the left tree
+    solid.append(hung_star(640, ring_y(*C, R, 640), 300, 58))
+    solid.append(hung_star(780, ring_y(*C, R, 780), 420, 44))
     return compose(solid, holes)
 
 
