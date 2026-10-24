@@ -331,6 +331,86 @@ function releasedOverQA(item) {
   try { return /verified by Manager/i.test(fs.readFileSync(path.join(item, "release"), "utf8")); } catch (e) { return false; }
 }
 
+// ---- react-select helpers (030, 23 Oct 2026) ----
+// Everything the open menu offers, scrolled to the end (menus can be virtualised). Never types a filter.
+async function dumpMenu(page, input) {
+  const seen = [];
+  try {
+    await input.fill(""); await input.click();
+    const opts = page.getByRole("option");
+    if (!(await opts.count())) await page.keyboard.press("ArrowDown");
+    for (let i = 0; i < 60; i++) {
+      await page.waitForTimeout(250);
+      const before = seen.length;
+      for (const t of await opts.allInnerTexts()) { const x = t.trim().replace(/\s+/g, " "); if (x && !seen.includes(x)) seen.push(x); }
+      if (i > 2 && seen.length === before) break; // nothing new after a scroll
+      await opts.last().scrollIntoViewIfNeeded({ timeout: 1000 }).catch(() => {});
+      await page.mouse.wheel(0, 600).catch(() => {});
+    }
+  } catch (e) { /* diagnostics only */ }
+  return seen;
+}
+// 027 (edit page of live product 18040698, 23 Oct 2026): the Files area shows the EXISTING file as a card (name, size, "Last updated",
+// "See Revision History", an X at the top right) and TpT's hidden flag data[ItemsProperty][product_uploaded] is 1 with an empty key; there
+// is no "Select file" box for the product until that card is removed. Setting a file on the hidden input did nothing for 15 min.
+// The empty Preview box (preview_uploaded=0) needs no removal. So: if `<slot>_uploaded` is 1, click the card's X (and confirm, if a dialog
+// asks), then wait for the flag to drop / the card to go. Nothing is saved until the whole step list has passed, so a failed upload
+// afterwards leaves TpT's stored file untouched (UNVERIFIED: that the X only changes the unsaved form and does not delete server-side).
+// Returns { skipped: reason } | { ok: description } | { error }.
+async function removeExistingFile(page, slot) {
+  const flag = page.locator(`input[name="data[ItemsProperty][${slot}_uploaded]"]`);
+  const flagVal = async () => ((await flag.count()) ? await flag.first().inputValue().catch(() => "") : "");
+  if ((await flagVal()) !== "1") return { skipped: `${slot}_uploaded is ${JSON.stringify(await flagVal())}: no existing file to remove` };
+  const how = await page.evaluate((slotName) => {
+    document.querySelectorAll("[data-tpt-remove]").forEach((e) => e.removeAttribute("data-tpt-remove"));
+    const isCard = (e) => /Last updated/i.test(e.innerText || "");
+    const all = [...document.querySelectorAll("div, li, section, article")].filter(isCard);
+    // innermost cards only (no card inside it); the product card is the one with the revision-history link, else the first
+    const inner = all.filter((e) => !all.some((o) => o !== e && e.contains(o)));
+    const seed = slotName === "product" ? (inner.find((e) => /Revision History/i.test(e.innerText)) || inner[0]) : inner[0];
+    if (!seed) return { error: "no file card (text 'Last updated') found on the page" };
+    const notHistory = (e) => !/revision|history/i.test((e.innerText || "") + (e.getAttribute("href") || ""));
+    const controls = (root) => [...root.querySelectorAll('button, [role="button"], a, svg, [class*="close" i], [class*="remove" i], [class*="delete" i]')].filter(notHistory);
+    // the X may sit beside the "Last updated" line, not inside it: climb until the card holds a control (never past the form)
+    let card = seed;
+    while (!controls(card).length && card.parentElement && !card.parentElement.matches("form, main, body")) card = card.parentElement;
+    const clickable = controls(card);
+    const label = (e) => `${e.getAttribute("aria-label") || ""} ${e.getAttribute("title") || ""} ${e.getAttribute("data-testid") || ""} ${typeof e.className === "string" ? e.className : ""}`;
+    const best = clickable.find((e) => /remove|delete|close|clear/i.test(label(e))) || clickable[clickable.length - 1];
+    if (!best) return { error: "the file card has no clickable control (no X)" };
+    const target = best.closest('button, [role="button"], a') || best;
+    target.setAttribute("data-tpt-remove", "1");
+    return { ok: `card "${(card.innerText || "").replace(/\s+/g, " ").slice(0, 80)}" -> ${target.tagName.toLowerCase()} ${label(target).trim().slice(0, 60)}` };
+  }, slot);
+  if (how.error) return { error: how.error };
+  await page.locator("[data-tpt-remove]").first().click({ timeout: 10000 });
+  await page.waitForTimeout(1500);
+  const dialog = page.locator('[role="dialog"], [role="alertdialog"], [class*="modal" i]').filter({ has: page.locator("button") }).first();
+  if (await dialog.isVisible().catch(() => false)) {
+    const yes = dialog.getByRole("button", { name: /^(delete|remove|yes|confirm|ok|continue)/i }).first();
+    if (await yes.count()) await yes.click({ timeout: 10000 });
+    else return { error: "a dialog opened after the X but has no Delete/Remove/Yes button: " + (await dialog.innerText().catch(() => "")).replace(/\s+/g, " ").slice(0, 120) };
+  }
+  const t0 = Date.now();
+  while (Date.now() - t0 < 30000) {
+    const gone = (await page.locator("[data-tpt-remove]").count()) === 0;
+    if ((await flagVal()) !== "1" || gone) return { ok: how.ok };
+    await page.waitForTimeout(500);
+  }
+  return { error: `clicked the X (${how.ok}) but ${slot}_uploaded is still 1 and the card is still there after 30 s` };
+}
+
+// Close an open react-select menu WITHOUT risking the chips: Escape on an already-closed select can clear the value.
+async function closeMenu(page) {
+  if (await page.getByRole("option").count().catch(() => 0)) await page.keyboard.press("Escape");
+}
+// Text of the chips currently shown in the select's control, lower-cased; null when the control cannot be found.
+async function chipsOf(input) {
+  const control = input.locator('xpath=ancestor::*[contains(@class, "control")][1]');
+  if (!(await control.count())) return null;
+  return (await control.innerText()).split("\n").map((t) => t.trim().toLowerCase()).filter(Boolean);
+}
+
 async function publish(item, dryRun) {
   if (!item) throw new Error("usage: node tools/tpt.js publish tpt/NNN-slug [--dry-run]");
   item = path.resolve(item);
@@ -390,9 +470,32 @@ async function publish(item, dryRun) {
       await snap(page, shots, `${slug}-${slot}-timeout`).catch(() => {});
       fail(`upload of ${file} (${slot}) did not finish within ${minutes} min, even via the file picker (screenshot tpt/_publish/${slug}-${slot}-timeout.png)`);
     };
+    // Free item: tick TpT's "Free Resource" toggle (#item-free) and leave the price boxes alone. Done BEFORE the uploads:
+    // on 028 (free) TpT showed no Preview box once Free was ticked and the listing went live without its preview.
+    const tickFree = async () => {
+      step = "free resource checkbox";
+      const box = page.locator(F.free);
+      if (!(await box.count())) fail(`free: no "Free Resource" control matching ${F.free}; TpT's form changed, rerun discover`);
+      else {
+        const on = async () => (await box.getAttribute("aria-checked")) === "true" || (await box.isChecked().catch(() => false))
+          || (await page.locator('input[name="data[Item][free]"]').isChecked().catch(() => false));
+        if (!(await on())) { await box.click(); await page.waitForTimeout(1000); }
+        if (!(await on())) {
+          await snap(page, shots, `${slug}-free`).catch(() => {});
+          fail(`free: clicked ${F.free} but it does not show as ticked (screenshot tpt/_publish/${slug}-free.png)`);
+        }
+      }
+    };
+    if (it.free === true) await tickFree();
     const files = it.files || {};
     if (files.product) await upload("product", files.product, 15);
-    if (files.preview) await upload("preview", files.preview, 5);
+    let previewAbsent = false;
+    if (files.preview) {
+      if (it.free === true && !(await page.locator(F.files.preview.input).count())) {
+        previewAbsent = true; // 028: no Preview box on the form once Free Resource was ticked
+        console.warn(`WARNING: TpT shows no Preview upload box on this Free Resource form; publishing WITHOUT the preview (${files.preview}). The live check will report previewUrl.`);
+      } else await upload("preview", files.preview, 5);
+    }
     if (["thumb1", "thumb2", "thumb3", "thumb4"].some((k) => files[k])) {
       step = "choose 'Upload thumbnails now'";
       await page.locator(F.upload_thumbnails_now).check();
@@ -410,21 +513,8 @@ async function publish(item, dryRun) {
     }
     if (!(await ed.innerText()).includes((it.description || "").slice(0, 40))) fail("description did not appear in the editor");
 
-    if (it.free === true) {
-      // Free item: tick TpT's "Free Resource" toggle (#item-free) and leave the price boxes alone.
-      step = "free resource checkbox";
-      const box = page.locator(F.free);
-      if (!(await box.count())) fail(`free: no "Free Resource" control matching ${F.free}; TpT's form changed, rerun discover`);
-      else {
-        const on = async () => (await box.getAttribute("aria-checked")) === "true" || (await box.isChecked().catch(() => false))
-          || (await page.locator('input[name="data[Item][free]"]').isChecked().catch(() => false));
-        if (!(await on())) { await box.click(); await page.waitForTimeout(1000); }
-        if (!(await on())) {
-          await snap(page, shots, `${slug}-free`).catch(() => {});
-          fail(`free: clicked ${F.free} but it does not show as ticked (screenshot tpt/_publish/${slug}-free.png)`);
-        }
-      }
-    } else {
+    if (it.free === true) await tickFree(); // idempotent re-check: still ticked after the uploads and the description
+    else {
     step = "prices";
     await page.locator(F.price).fill(String(it.price ?? ""));
     await page.locator(F.license_price).fill(String(it.license_price ?? ""));
@@ -453,8 +543,7 @@ async function publish(item, dryRun) {
       for (const v of values || []) {
         step = `${name}: ${v}`;
         const input = page.locator(sel);
-        const control = input.locator('xpath=ancestor::*[contains(@class, "control")][1]');
-        const chosen = (await control.count()) ? (await control.innerText()).split("\n").map((t) => t.trim().toLowerCase()) : [];
+        const chosen = (await chipsOf(input)) || [];
         if (chosen.includes(v.toLowerCase())) continue;
         await input.click();
         let i = -1, texts = [];
@@ -496,12 +585,23 @@ async function publish(item, dryRun) {
           }
         }
         if (i < 0) {
-          await snap(page, shots, `${slug}-${name}-${v.replace(/[^A-Za-z0-9]+/g, "-").slice(0, 40)}`).catch(() => {}); // dropdown still open
-          await input.fill(""); await page.keyboard.press("Escape");
-          fail(`${name}: "${v}" is not an option. Typed and offered: ${log.join("; ")} (screenshot tpt/_publish/${slug}-${name}-*.png)`);
+          // Dropdown still open: screenshot + the COMPLETE option list (030: the 400-char status line cut it off after "Art | Art History | Col").
+          const slugv = v.replace(/[^A-Za-z0-9]+/g, "-").slice(0, 40);
+          await snap(page, shots, `${slug}-${name}-${slugv}`).catch(() => {});
+          const all = await dumpMenu(page, input);
+          try { fs.writeFileSync(path.join(shots, `${slug}-${name}-options.json`), JSON.stringify({ wanted: v, typed_log: log, options: all }, null, 2) + "\n"); } catch (e) { /* diagnostics only */ }
+          await input.fill(""); await closeMenu(page);
+          const typedNothing = log.filter((l) => l.startsWith('"')).every((l) => l.endsWith("-> (nothing)"));
+          fail(`${name}: "${v}" is not an option (${all.length} options in the menu${all.length ? ", e.g. " + all.slice(0, 6).join(" | ") : ""}; ${typedNothing ? "typing offered nothing" : "typed: " + log.slice(1).join("; ").slice(0, 120)}; full list in tpt/_publish/${slug}-${name}-options.json). ${log[0]}`);
           continue;
         }
-        await page.keyboard.press("Escape");
+        await closeMenu(page);
+        // Read back: the value must now show as a chip (a select that silently dropped it would fail the form later).
+        const now = await chipsOf(input);
+        if (now && !now.some((t) => matchOption([t], v) >= 0 || t === v.toLowerCase())) {
+          await snap(page, shots, `${slug}-${name}-dropped`).catch(() => {});
+          fail(`${name}: picked "${v}" but the field now shows: ${now.join(" | ") || "(empty)"}`);
+        }
       }
     };
     await pick("subjects", F.subjects, it.subjects);
@@ -539,7 +639,7 @@ async function publish(item, dryRun) {
           if (v === null || Math.abs(v - Number(it[k])) > 0.001) fail(`read-back: ${k} box shows ${v === null ? "nothing" : v}, tpt.json says ${it[k]}`);
         }
       }
-      if (files.preview) {
+      if (files.preview && !previewAbsent) {
         const key = await page.locator(F.files.preview.key).first().inputValue().catch(() => "");
         if (!key) fail("read-back: the preview upload key is empty (the preview file is not attached)");
       }
@@ -849,6 +949,10 @@ async function reupload(item, dryRun) {
     for (const f of files) {
       step = `replace ${f.slot} (${f.file})`;
       const spec = editSel(F, f.slot), input = page.locator(spec.input);
+      const rm = await removeExistingFile(page, f.slot);
+      console.log(`${f.slot}: existing file: ${rm.skipped || rm.ok || "ERROR " + rm.error}`);
+      await snap(page, shots, `${slug}-reupload-${f.slot}-after-remove`).catch(() => {});
+      if (rm.error) await fail(page, step, `could not remove the existing ${f.slot} file before uploading: ${rm.error}`);
       try { await input.waitFor({ state: "attached", timeout: 20000 }); } catch (e) { await fail(page, step, `no upload box ${spec.input} on the edit page`); }
       // 23 Oct 2026 (027): the product key never changed in 15 min with a plain setInputFiles. Two untested causes:
       // (a) the edit form ignores a programmatic file set (the NEW form did too for the product, run 5), (b) the key
@@ -868,7 +972,8 @@ async function reupload(item, dryRun) {
       page.on("response", onResp);
       const before0 = await keyProbe();
       const oldKey = before0.value;
-      const changed = async (ms) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { const k = await keyProbe().catch(() => null); if (k && k.found && k.value && k.value !== oldKey) return k; await page.waitForTimeout(1000); } return null; };
+      const changed = async (ms) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { const k = await keyProbe().catch(() => null); if (k && k.found && k.value && k.value !== oldKey) return k;
+        if (k && !k.found && (await page.locator("body").innerText().catch(() => "")).includes(path.basename(f.path))) return { found: true, name: "(file name on page)", value: path.basename(f.path) }; await page.waitForTimeout(1000); } return null; };
       console.log(`${f.slot}: edit-form key ${before0.found ? before0.name : "NOT FOUND"} (old value ${oldKey ? "set" : "empty"}); hidden: ${before0.hidden.join(", ") || "(none)"}`);
       await input.setInputFiles(f.path, { timeout: 30000 });
       let got = await changed(90000);
@@ -876,7 +981,9 @@ async function reupload(item, dryRun) {
         console.log(`${f.slot}: TpT did not take the file in 90 s; trying its "Select file" button`);
         try {
           const label = page.locator("label", { has: input }).first();
-          const [chooser] = await Promise.all([page.waitForEvent("filechooser", { timeout: 15000 }), label.click({ timeout: 15000 })]);
+          const btn = input.locator('xpath=ancestor::*[.//button[normalize-space()="Select file"]][1]').getByRole("button", { name: "Select file" }).first();
+          const clicker = (await label.count()) ? label : btn;
+          const [chooser] = await Promise.all([page.waitForEvent("filechooser", { timeout: 15000 }), clicker.click({ timeout: 15000 })]);
           await chooser.setFiles(f.path);
           got = await changed(Math.max(60000, minutes * 60000 - 90000));
         } catch (e) { seen.push("attempt 2 failed: " + e.message.split("\n")[0]); }
@@ -1070,7 +1177,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)

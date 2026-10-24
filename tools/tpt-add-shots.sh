@@ -4,7 +4,7 @@
 # Never the many *-filled / *-submitted pngs.
 tpt_add_shots() {
   local f sz
-  for f in tpt/_publish/*-failed*.png tpt/_publish/*-free*.png tpt/_publish/*-dropdown*.png tpt/_publish/*-fix-subject*.png tpt/_publish/*-fix-untick*.png; do
+  for f in tpt/_publish/*-failed*.png tpt/_publish/*-free*.png tpt/_publish/*-dropdown*.png tpt/_publish/*-fix-subject*.png tpt/_publish/*-fix-untick*.png tpt/_publish/*-subjects-*.png tpt/_publish/*-dropped*.png tpt/_publish/*-after-remove*.png tpt/_publish/*-options.json; do
     [ -f "$f" ] || continue
     sz=$(wc -c < "$f" | tr -d ' ')
     if [ "$sz" -gt 1572864 ]; then echo "skip $f (${sz} bytes > 1.5 MB)"; continue; fi
