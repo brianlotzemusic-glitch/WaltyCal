@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-24T16:00:00Z",
- "next_run_at": "2026-10-24T22:12:00Z",
+ "updated_at": "2026-10-24T22:30:00Z",
+ "next_run_at": "2026-10-25T10:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 39,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "6:12am shift 24 Oct: Etsy 033 gothic valentine hearts live (39 active). Ads verdict data written (no measurable uplift; recommend not renewing). TpT: 027 file swap re-armed, 030 bundle subject picker fixed (untested), 028 preview likely unavailable for free items; all wait for the Mac nightly. Next shift 6:12pm ET.",
-   "since": "2026-10-24T16:00:00Z"
+   "task": "6:12pm shift 24 Oct: no new builds (1 Etsy listing today, 033; TpT uploads waiting on the Mac nightly at 8:30pm ET: 027 file swap, 030 bundle). Pushed the owner: Ads renewal decision + AI-box ticks. Next shift 6:12am ET.",
+   "since": "2026-10-24T22:30:00Z"
   },
   {
    "id": "researcher",
@@ -86,6 +86,11 @@
   "Etsy: next non-pattern item"
  ],
  "feed": [
+  {
+   "t": "2026-10-24T22:30:00Z",
+   "who": "manager",
+   "msg": "Asked the owner: renew Etsy ads? (data: 20 views vs 12, 0 sales) and tick the AI box on 5 listings. Waiting for the Mac nightly (8:30pm ET) to retry 027 and the DMP1 bundle."
+  },
   {
    "t": "2026-10-24T16:00:00Z",
    "who": "lister",
@@ -235,16 +240,6 @@
    "t": "2026-10-17T22:22:39Z",
    "who": "qa",
    "msg": "Approved TpT 019 DMP2 Anti-Music Manifesto ($10) in round 1. Waiting for the owner's release."
-  },
-  {
-   "t": "2026-10-17T19:11:04Z",
-   "who": "lister",
-   "msg": "TpT 016, 017, 018 went live (Mac nightly). Rebuilt files with the owner's Reflection step are approved for re-upload."
-  },
-  {
-   "t": "2026-10-17T18:54:42Z",
-   "who": "manager",
-   "msg": "Released TpT 016 FX Deep Dive, 017 Music for Visual Media and 018 Alchemy Architect. The Mac nightly publishes them."
   }
  ],
  "venture_gate": {
