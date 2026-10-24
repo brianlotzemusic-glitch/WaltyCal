@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-24T00:36:14.675Z",
+  "marker_sha256": "87b927d9f19c2dbd64edebe26aa3c585fc4e8c26d63a3c5cf8b9a73ef23225f4",
+  "step": "replace product (thanksgiving-color-by-note.pdf)",
+  "error": "TpT did not accept thanksgiving-color-by-note.pdf within 15 min (the upload key never changed). Diagnostics: key element data[ItemDigital][product] value empty; hidden inputs: data[ItemDigital][product]=, data[ItemsProperty][product_uploaded]=1, data[ItemDigital][preview]=, data[ItemsProperty][preview_uploaded]=0, data[Upload][videopreview]=, data[Upload][custom_videopreview_uploaded]=0, data[ItemDigital][thumb1]=QR4DLaEguE1SOfGPLFIhgnF+ZQ2GHi2+p7H3WZ2R, data[ItemsProperty][thumb1_uploaded]=1, data[ItemDigital][thumb2]=bzkPBqxdBPdKxl+F+TwTgJK2QrmwEygr10GHBdFV, data[ItemsProperty][thumb2_uploaded]=1, data[ItemDigital][thumb3]=E3vJ7shNpqAYIF2il27LG1Bj8PwVWrXsvdlL3JEP, data[ItemsProperty][thumb3_uploaded]=1, data[ItemDigital][thumb4]=gz8yjfympNWNkzvZe/GE41RGJ8ffTjMieCdfeaKb, data[ItemsProperty][thumb4_uploaded]=1; non-GET responses: attempt 2 failed: page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"filechooser\"",
+  "files": [
+    {
+      "slot": "product",
+      "file": "thanksgiving-color-by-note.pdf",
+      "sha256": "d91a503f260addc9de0de8f4cb38cb2d24dffff51ce701862cc0b61abb38387f"
+    },
+    {
+      "slot": "preview",
+      "file": "thanksgiving-color-by-note-PREVIEW.pdf",
+      "sha256": "509c76fd7cc9b53f54878fb8ea8487614549ef1e6059c9e2980a81fc45ccb37c"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "sha256": "c0443ffadbfb9dc7d28175078df1bfb57d48aa3b79310374838d8c076b1f730f"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "sha256": "fe7d06c23b2dac0ea35e1e4f4a24192b230d49a252661762d3c03343f1e6fda8"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "sha256": "aa3e329aa598a72ac068566d68ac68af19471cea7f242e9f0d97850793de72f4"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "sha256": "ae48f968b2ba6c9b35319c18b69b1b46bdbff9552d8a31168f0ebc316b9aa0c1"
+    }
+  ],
+  "screenshot": "tpt/_publish/027-thanksgiving-color-by-note-reupload-failed.png"
+}

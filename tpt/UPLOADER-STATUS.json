@@ -1,30 +1,24 @@
 {
-  "ran_at": "2026-10-23T14:05:57.467Z",
-  "published": [
-    {
-      "item": "028-free-color-by-note-sampler",
-      "url": "https://www.teacherspayteachers.com/Product/FREE-Color-by-Note-Sampler-Rhythm-Treble-Bass-Clef-Music-Worksheets-18053100"
-    }
-  ],
+  "ran_at": "2026-10-24T00:30:02.900Z",
+  "published": [],
   "failed": [
     {
       "item": "030-dmp1-units-1-6-bundle",
-      "error": "publish stopped at step \"subjects: Career and Technical Education\" (nothing was submitted): not submitted: subjects: \"Career and Technical Education\" is not an option. Typed and offered: \"Career and Technical Education\" -> (nothing); \"Career and Technical\" -> (nothing); \"Career and\" -> (nothing); \"Career\" -> (nothing) (screenshot tpt/_publish/030-dmp1-units-1-6-bundle-subjects-*.png) Screenshot: t"
+      "error": "publish stopped at step \"subjects: Career and Technical Education\" (nothing was submitted): not submitted: subjects: \"Career and Technical Education\" is not an option. Typed and offered: already selected: music; \"Career and Technical Education\" -> (nothing); \"Career and Technical\" -> (nothing); \"Career and\" -> (nothing); \"Career\" -> (nothing); keys -> (nothing); list-all -> Art | Art History | Col"
     }
   ],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "028-free-color-by-note-sampler",
     "030-dmp1-units-1-6-bundle"
   ],
   "reupload": {
-    "ran_at": "2026-10-23T14:09:15.313Z",
+    "ran_at": "2026-10-24T00:33:16.137Z",
     "replaced": [],
     "failed": [
       {
         "item": "027-thanksgiving-color-by-note",
-        "error": "reupload stopped at \"replace product (thanksgiving-color-by-note.pdf)\": TpT did not accept thanksgiving-color-by-note.pdf within 15 min (the upload key never changed) Screenshot: tpt/_publish/027-thanksgiving-color-by-note-reupload-failed.png. Not retrying this marker."
+        "error": "reupload stopped at \"replace product (thanksgiving-color-by-note.pdf)\": TpT did not accept thanksgiving-color-by-note.pdf within 15 min (the upload key never changed). Diagnostics: key element data[ItemDigital][product] value empty; hidden inputs: data[ItemDigital][product]=, data[ItemsProperty][product_uploaded]=1, data[ItemDigital][preview]=, data[ItemsProperty][preview_uploaded]=0, data[Upload]"
       }
     ],
     "waiting": [
@@ -36,14 +30,5 @@
     "discovered_edit": false,
     "ok": false
   },
-  "live_mismatch": [
-    {
-      "item": "028-free-color-by-note-sampler",
-      "url": "https://www.teacherspayteachers.com/Product/FREE-Color-by-Note-Sampler-Rhythm-Treble-Bass-Clef-Music-Worksheets-18053100",
-      "problems": [
-        "previewUrl: live page has no preview file (tpt.json declares one)"
-      ]
-    }
-  ],
   "ok": false
 }
