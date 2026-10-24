@@ -62,6 +62,25 @@ def write_dxf(geom, path, vb):
     doc.saveas(path)
 
 
+EXPECT_HOLES = {"01": 3, "02": 4, "03": 4, "04": 2, "05": 1, "06": 3}   # round 2: 04 rivets dropped, 01 grooves redrawn
+
+
+def round2_checks(name, g):
+    """Round-2 QA rules: 01 grooves/slots >= 0.10 in (15 units at 900 units = 6 in), 05 even bow wall, hole counts."""
+    ok = (stats(g)["holes"] == EXPECT_HOLES[name[:2]])
+    if name.startswith("01"):
+        holes = U([Polygon(i) for p in (g.geoms if g.geom_type == "MultiPolygon" else [g]) for i in p.interiors])
+        thin = holes.difference(holes.buffer(-7.5, quad_segs=16).buffer(7.5, quad_segs=16)).area   # slot narrower than 15 units
+        ok &= thin < 150   # corners of the 7 slit ends account for about 70 units^2; a real thin slot would lose far more
+        print("   01 groove slots >= 0.10 in: narrow area", round(thin, 1))
+    if name.startswith("05"):
+        hole = Polygon([i for p in (g.geoms if g.geom_type == "MultiPolygon" else [g]) for i in p.interiors][0])
+        wall = min(g.exterior.distance(Point(c)) for c in list(hole.exterior.coords)[::7]) if g.geom_type == "Polygon" else 0
+        ok &= 30 < wall < 60      # wall about 0.25 in (37 units); no thin or fat side
+        print("   05 bow wall (units, 37 = 0.25 in):", round(wall, 1))
+    return ok
+
+
 def check():
     from PIL import Image
     ok = True
@@ -80,6 +99,7 @@ def check():
         lost = g.difference(g.buffer(-6.0, quad_segs=16).buffer(6.0, quad_segs=16)).area
         good &= lost < 30
         extra = f"tipfloor lost {lost:.0f}"
+        good &= round2_checks(name, g)
         ok &= good
         print("OK  " if good else "FAIL", name, st, f"dxf {L:.2f} in", im.size, extra)
     print("ALL CHECKS PASS" if ok else "CHECKS FAILED")

@@ -26,3 +26,9 @@
 
 ## Open questions
 - Lister: does it tick Etsy's AI checkbox and "Designed by"? (unchanged)
+
+## Round 2 fixes applied (24 Oct, Designer; awaiting re-QA)
+- 01: aortic arch (about 0.55 in base tapering), pulmonary trunk and slim vena cava stub of different sizes, two short branch stubs; coronary-style tapering/branching grooves (slots 0.12 in+). Self-grade B+.
+- 05: exactly symmetric heart bow with an even wall (about 0.29 in), shaft ends in one squared end, accidental nub removed. Self-grade B+.
+- 02 smooth V between the ears; 03 slimmer thorns/leaves; 04 rivet holes dropped; 06 smooth shoulders (mirrored outline).
+- gen.py --check ALL CHECKS PASS (hole counts now 01:3 02:4 03:4 04:2 05:1 06:3; added 01 slot width and 05 wall checks). SVG/DXF/PNG, ZIP (22 entries) and all 4 listing images (3000x2250 RGB) regenerated.
