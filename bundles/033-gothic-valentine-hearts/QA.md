@@ -32,3 +32,15 @@
 - 05: exactly symmetric heart bow with an even wall (about 0.29 in), shaft ends in one squared end, accidental nub removed. Self-grade B+.
 - 02 smooth V between the ears; 03 slimmer thorns/leaves; 04 rivet holes dropped; 06 smooth shoulders (mirrored outline).
 - gen.py --check ALL CHECKS PASS (hole counts now 01:3 02:4 03:4 04:2 05:1 06:3; added 01 slot width and 05 wall checks). SVG/DXF/PNG, ZIP (22 entries) and all 4 listing images (3000x2250 RGB) regenerated.
+
+## Round 2 QA (24 Oct 2026): APPROVED (all designs B or better)
+Grades (100% crops, white-flattened PNG): 01 B, 02 B, 03 B, 04 A-, 05 B+, 06 B+.
+- 01: now reads instantly as an anatomical heart (hooked aortic arch, tall pulmonary trunk with side stub, diagonal vena cava stub, branching tapering coronary grooves, apex kept). The small nub on top of the arch reads as a brachiocephalic branch stub, not a nipple or other symbol, at both 100% and the listing thumbnail size. Optional polish: shrink or drop the nub. Not a blocker.
+- 05: measured symmetric: inner cutout mirror IoU 0.998, whole bow 0.994 about the shaft axis (50 deg); wall 0.29 in (min and median) except the natural thickening at the cleft. No nub; shaft end is one clean squared end; teeth fine.
+- 02: V between the ears is clean. 03: thorns slimmer, heart better, but the thorn at the left (PNG ~x 190, y 470) is still a little leaf-like; optional polish. 04: rivet holes gone, no face effect. 06: shoulders smooth, symmetric.
+- No accidental symbols. 1 connected part each (PNG alpha label), SVG 1 path, 6.000in, valid XML. DXF: INSUNITS 1 (inches), closed LWPOLYLINEs = holes+1, ~5.95 in longest side. PNG 1800x1800 RGBA, transparent corners, only antialias semi-alpha edges.
+- Min feature: morphological opening with a 0.08 in disk loses no black pixels on any design; white losses are only image-border artifacts. 01 grooves >= 0.12 in per gen.py.
+- gen.py --check ALL CHECKS PASS. ZIP: 22 entries, file set and sample bytes identical to bundle/; matches LISTING.md. README: formats, sizes, software, licence only, includes the 0.08 in / 5 in / 6 in sentence.
+- Listing: title 138 chars, 13 tags max 20 chars, no IP phrases; disclosure line last, mockup sentence present, size sentence consistent in LISTING.md, listing.json and README; image 3 states 0.08 in+. Images 1-4 are 3000x2250 RGB, opaque, no text overlap; image 1 is a flat preview showing the new 01 and 05; 2-4 also show the new designs.
+- No paid actions, no live Etsy edits.
+- Open: lister ticks Etsy AI checkbox and "Designed by" (unchanged). Seasonal: list early Jan.
