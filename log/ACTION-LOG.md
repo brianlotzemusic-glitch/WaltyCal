@@ -378,3 +378,4 @@
 - 2026-10-24 Designer: built bundle 033 Gothic Valentine Hearts (6 code-drawn single-path cut files, SVG/DXF/PNG, $4, $0 AI spend, balance unchanged 1268 credits); image 1 flat real-file preview, 4 listing images 3000x2250 opaque, mockup + disclosure lines, min tip/slit 0.08 in stated in copy; self-grades 01 B-, 02 B+, 03 B, 04 A-, 05 B, 06 B; awaiting QA; list by early Jan; not published.
 - 2026-10-24 QA: bundle 033 gothic valentine hearts REJECTED round 1 (01 anatomical heart vessels C+, 05 key bow lopsided B-; polish on 02/03/04/06). See bundles/033-gothic-valentine-hearts/QA.md
 2026-10-24 Designer: bundle 033 fix round 2 (01 anatomical heart redrawn, 05 key bow symmetric, polish 02/03/04/06; ZIP + 4 listing images rebuilt; awaiting re-QA, not published)
+- 2026-10-24 QA 033 gothic-valentine-hearts round 2: APPROVED (01 B, 02 B, 03 B, 04 A-, 05 B+, 06 B+); QA.md appended; no paid actions, no live Etsy edits.
