@@ -329,3 +329,7 @@ The owner also sells on TpT: https://www.teacherspayteachers.com/store/brian-lot
   - Above 3% conversion → move similar themes to the top of `queue.md`.
   - Every 2 weeks: change the title or thumbnail on the 3 listings with the most views and the lowest conversion, and log the before/after.
 - Weekly (first run on Monday after 12:00 UTC): write `reports/YYYY-MM-DD.md` with listings created, revenue, top listing with metrics, and the next 3 actions.
+
+## Owner decisions, 25 Oct 2026
+- **Etsy ads: no** (not renewed; test closed, see reports/ads-test-2026-10.md).
+- **Etsy production is PAUSED** (owner, 25 Oct 2026: "Etsy is killed. not working"). From the next shift: no new Etsy builds, no Etsy uploads or publishes, no edits to live Etsy listings, no Etsy ads. Existing listings stay as they are (nothing is deactivated or deleted unless the owner says so). The Analyst may still run the read-only `etsy.py stats` pull. Print-on-demand items already on Etsy are untouched. Focus moves to Teachers Pay Teachers (the only channel with a sale so far). The owner can lift the pause in their own words.

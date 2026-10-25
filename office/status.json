@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-25T11:00:00Z",
+ "updated_at": "2026-10-25T14:30:00Z",
  "next_run_at": "2026-10-25T22:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "6:12am shift 25 Oct: fixed 030 (TpT has no Career and Technical Education subject; subjects now Music, Computer Science - Technology, Music Composition) and 027 (remove step now finds the icon X); both re-run at the Mac nightly 8:30pm ET. No builds this shift. Waiting on the owner: Ads renewal, AI-box ticks, whether to keep 2 Etsy listings/day. Next shift 6:12pm ET.",
-   "since": "2026-10-25T11:00:00Z"
+   "task": "Owner 25 Oct: Etsy ads no; Etsy production PAUSED (no builds, uploads or edits). Focus on TpT: Mac nightly retries 027 swap + 030 bundle at 8:30pm ET. Next shift 6:12pm ET.",
+   "since": "2026-10-25T14:30:00Z"
   },
   {
    "id": "researcher",
@@ -26,8 +26,8 @@
    "id": "designer",
    "name": "Designer",
    "state": "idle",
-   "task": "Built Etsy 033 gothic valentine hearts (two QA rounds). Next: winter pack bundle, Sonic Time Capsule once TpT uploads are caught up.",
-   "since": "2026-10-24T16:00:00Z"
+   "task": "Etsy work paused by the owner (25 Oct). TpT only.",
+   "since": "2026-10-25T14:30:00Z"
   },
   {
    "id": "qa",
@@ -40,8 +40,8 @@
    "id": "lister",
    "name": "Lister",
    "state": "idle",
-   "task": "Etsy 4602217868 (Gothic Valentine SVG Bundle, $4) live; 39 active. TpT: 027 swap and 030 bundle wait for the Mac nightly.",
-   "since": "2026-10-24T16:00:00Z"
+   "task": "Etsy work paused by the owner (25 Oct). TpT only.",
+   "since": "2026-10-25T14:30:00Z"
   },
   {
    "id": "analyst",
@@ -80,12 +80,17 @@
   }
  ],
  "queue": [
-  "[tpt] get 030 DMP1 bundle, 027 files and the 028 preview onto TpT (uploader fixes pending a Mac run)",
+  "[tpt] get 030 DMP1 bundle and 027 files onto TpT (Mac nightly)",
   "[tpt] Winter & Holiday Music Pack bundle (003, 005, 006, 029); DMP2 Sonic Time Capsule",
-  "[after Ads verdict 24 Oct] decide on live Etsy photo/price changes",
-  "Etsy: next non-pattern item"
+  "[tool] TpT stats in the Mac nightly",
+  "(Etsy production paused by the owner, 25 Oct)"
  ],
  "feed": [
+  {
+   "t": "2026-10-25T14:30:00Z",
+   "who": "manager",
+   "msg": "Owner paused Etsy production (no builds, uploads or edits) and declined ads. Existing listings stay. Focus: TpT."
+  },
   {
    "t": "2026-10-25T11:00:00Z",
    "who": "manager",
@@ -235,11 +240,6 @@
    "t": "2026-10-18T10:28:11Z",
    "who": "qa",
    "msg": "Approved TpT 020 DMP2 Found Sound ($10). Waiting for the owner's release."
-  },
-  {
-   "t": "2026-10-18T10:28:11Z",
-   "who": "lister",
-   "msg": "Published Printable Christmas Gift Tags, Woodland (Etsy 4597905719, $3.50). 28 live."
   }
  ],
  "venture_gate": {
