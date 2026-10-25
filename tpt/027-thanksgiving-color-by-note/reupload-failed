@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-25T16:37:17.106Z",
+  "marker_sha256": "93fb0573b4bd75ac196b046700f02e2c45e32202fa8b99c2cf50c3a8d72e478d",
+  "step": "replace product (thanksgiving-color-by-note.pdf)",
+  "error": "could not remove the existing product file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner); card text: Last updated: Oct 22, 2026 at 9:17 AM EST See Revision History",
+  "files": [
+    {
+      "slot": "product",
+      "file": "thanksgiving-color-by-note.pdf",
+      "sha256": "d91a503f260addc9de0de8f4cb38cb2d24dffff51ce701862cc0b61abb38387f"
+    },
+    {
+      "slot": "preview",
+      "file": "thanksgiving-color-by-note-PREVIEW.pdf",
+      "sha256": "509c76fd7cc9b53f54878fb8ea8487614549ef1e6059c9e2980a81fc45ccb37c"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "sha256": "c0443ffadbfb9dc7d28175078df1bfb57d48aa3b79310374838d8c076b1f730f"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "sha256": "fe7d06c23b2dac0ea35e1e4f4a24192b230d49a252661762d3c03343f1e6fda8"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "sha256": "aa3e329aa598a72ac068566d68ac68af19471cea7f242e9f0d97850793de72f4"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "sha256": "ae48f968b2ba6c9b35319c18b69b1b46bdbff9552d8a31168f0ebc316b9aa0c1"
+    }
+  ],
+  "screenshot": "tpt/_publish/027-thanksgiving-color-by-note-reupload-failed.png"
+}

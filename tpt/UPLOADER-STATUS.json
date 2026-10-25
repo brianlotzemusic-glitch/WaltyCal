@@ -1,10 +1,10 @@
 {
-  "ran_at": "2026-10-25T00:46:31.122Z",
+  "ran_at": "2026-10-25T16:35:49.244Z",
   "published": [],
   "failed": [
     {
       "item": "030-dmp1-units-1-6-bundle",
-      "error": "publish stopped at step \"subjects: Career and Technical Education\" (nothing was submitted): not submitted: subjects: \"Career and Technical Education\" is not an option (133 options in the menu, e.g. Art | Art History | Coloring Pages | Graphic Arts | Visual Arts | Other (Arts); typing offered nothing; full list in tpt/_publish/030-dmp1-units-1-6-bundle-subjects-options.json). already selected: musi"
+      "error": "publish stopped at step \"tags: High School\" (nothing was submitted): not submitted: tags: \"High School\" is not an option (156 options in the menu, e.g. Audience | Homeschool | Parents | Staff & Administrators | TPT Sellers | Language; typing offered nothing; full list in tpt/_publish/030-dmp1-units-1-6-bundle-tags-options.json). already selected: select up to six tags Screenshot: tpt/_publish/030-"
     }
   ],
   "needs_login": false,
@@ -13,12 +13,12 @@
     "030-dmp1-units-1-6-bundle"
   ],
   "reupload": {
-    "ran_at": "2026-10-25T01:20:41.757Z",
+    "ran_at": "2026-10-25T16:37:06.819Z",
     "replaced": [],
     "failed": [
       {
         "item": "027-thanksgiving-color-by-note",
-        "error": "reupload stopped at \"replace product (thanksgiving-color-by-note.pdf)\": could not remove the existing product file before uploading: clicked the X (card \"FallColorbyNoteRhythmTrebleBassClefWorksheetsAnswerKeys.pdf Last updated: Oct 22\" -> a FallColorbyNoteRhythmTrebleBassClefWorksheetsAnswerKeys.pdf) but product_uploaded is still 1 and the card is still there after 30 s Screenshot: tpt/_publish/02"
+        "error": "reupload stopped at \"replace product (thanksgiving-color-by-note.pdf)\": could not remove the existing product file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner); card text: Last updated: Oct 22, 2026 at 9:17 AM EST See Revision History Screenshot: tpt/_publish/027-thanksgiving-color-by-note-reupload-failed.png. Not ret"
       }
     ],
     "waiting": [
