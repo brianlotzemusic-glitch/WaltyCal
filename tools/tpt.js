@@ -292,6 +292,11 @@ function checkItem(item, it, F) {
   if (!it.tax_code) p.push("tpt.json: tax_code is not set");
   if (!it.grades?.length || (it.grades.length > 4 && !it.grades.includes("not-grade-specific"))) p.push("tpt.json: grades needs 1-4 slugs");
   if (!it.subjects?.length || it.subjects.length > 3) p.push("tpt.json: subjects needs 1-3 entries");
+  // Subject Area is a closed list (133 options, saved from the live dropdown in tpt/SUBJECT-OPTIONS.json); a name outside it fails here, offline (030, 25 Oct 2026: "Career and Technical Education" is not an option).
+  if (!fs.existsSync(path.join(item, "uploaded"))) try { // (already-uploaded kits like 008 are history: not re-checked)
+    const opts = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "SUBJECT-OPTIONS.json"), "utf8"));
+    if (Array.isArray(opts) && opts.length) for (const s of it.subjects || []) if (!opts.includes(s)) p.push(`tpt.json: subject "${s}" is not in tpt/SUBJECT-OPTIONS.json (the ${opts.length} options TpT's Subject Area dropdown offers); use the exact name of an option`);
+  } catch (e) { /* no saved list: the browser check on the Mac still applies */ }
   if (!it.tags?.length || it.tags.length > 6) p.push("tpt.json: tags needs 1-6 entries");
   if ((it.formats || []).length > 3) p.push("tpt.json: at most 3 formats");
   // A paid item must never go out free by accident (027, 22 Oct 2026: live page showed 0.00 / Free / no preview).
@@ -357,47 +362,87 @@ async function dumpMenu(page, input) {
 // asks), then wait for the flag to drop / the card to go. Nothing is saved until the whole step list has passed, so a failed upload
 // afterwards leaves TpT's stored file untouched (UNVERIFIED: that the X only changes the unsaved form and does not delete server-side).
 // Returns { skipped: reason } | { ok: description } | { error }.
-async function removeExistingFile(page, slot) {
+async function removeExistingFile(page, slot, opts = {}) {
   const flag = page.locator(`input[name="data[ItemsProperty][${slot}_uploaded]"]`);
   const flagVal = async () => ((await flag.count()) ? await flag.first().inputValue().catch(() => "") : "");
   if ((await flagVal()) !== "1") return { skipped: `${slot}_uploaded is ${JSON.stringify(await flagVal())}: no existing file to remove` };
-  const how = await page.evaluate((slotName) => {
+  const shot = async (tag) => { if (opts.shots && opts.slug) await snap(page, opts.shots, `${opts.slug}-${slot}-remove-${tag}`).catch(() => {}); };
+  // 25 Oct 2026 (027 Mac log + screenshot): the card's X is a bold icon-font glyph (not a <button>/<svg>/role=button), so the old
+  // control search found only the file-name link and clicked THAT (a download link): nothing happened, no dialog. Now: candidates are
+  // ranked (labelled remove/close/delete/trash/times > a lone x/×/✕ glyph > icon-ish or clickable leaf in the card's top-right corner >
+  // buttons) and an <a href> (the file name, revision history) is never a candidate unless it is labelled remove/delete.
+  const found = await page.evaluate((slotName) => {
     document.querySelectorAll("[data-tpt-remove]").forEach((e) => e.removeAttribute("data-tpt-remove"));
     const isCard = (e) => /Last updated/i.test(e.innerText || "");
     const all = [...document.querySelectorAll("div, li, section, article")].filter(isCard);
-    // innermost cards only (no card inside it); the product card is the one with the revision-history link, else the first
     const inner = all.filter((e) => !all.some((o) => o !== e && e.contains(o)));
     const seed = slotName === "product" ? (inner.find((e) => /Revision History/i.test(e.innerText)) || inner[0]) : inner[0];
     if (!seed) return { error: "no file card (text 'Last updated') found on the page" };
-    const notHistory = (e) => !/revision|history/i.test((e.innerText || "") + (e.getAttribute("href") || ""));
-    const controls = (root) => [...root.querySelectorAll('button, [role="button"], a, svg, [class*="close" i], [class*="remove" i], [class*="delete" i]')].filter(notHistory);
-    // the X may sit beside the "Last updated" line, not inside it: climb until the card holds a control (never past the form)
+    const cardCtl = (root) => [...root.querySelectorAll("*")].filter((e) => !/^(SCRIPT|STYLE|PATH|G)$/i.test(e.tagName));
+    const realLink = (e) => { const a = e.closest("a[href]"); return a && !/^(#|javascript:)/i.test(a.getAttribute("href") || "#"); };
+    const label = (e) => `${e.getAttribute("aria-label") || ""} ${e.getAttribute("title") || ""} ${e.getAttribute("data-testid") || ""} ${typeof e.className === "string" ? e.className : (e.className && e.className.baseVal) || ""} ${e.getAttribute("data-action") || ""}`;
+    const labelled = (e) => /remove|delete|close|clear|trash|times|dismiss|cancel/i.test(label(e)) && !/revision|history/i.test(e.innerText || "");
+    // climb until the card holds a labelled control or a lone-x glyph (never past the form)
+    const glyph = (e) => !e.children.length && /^[x×✕✖✗╳]$/i.test((e.textContent || "").trim());
     let card = seed;
-    while (!controls(card).length && card.parentElement && !card.parentElement.matches("form, main, body")) card = card.parentElement;
-    const clickable = controls(card);
-    const label = (e) => `${e.getAttribute("aria-label") || ""} ${e.getAttribute("title") || ""} ${e.getAttribute("data-testid") || ""} ${typeof e.className === "string" ? e.className : ""}`;
-    const best = clickable.find((e) => /remove|delete|close|clear/i.test(label(e))) || clickable[clickable.length - 1];
-    if (!best) return { error: "the file card has no clickable control (no X)" };
-    const target = best.closest('button, [role="button"], a') || best;
-    target.setAttribute("data-tpt-remove", "1");
-    return { ok: `card "${(card.innerText || "").replace(/\s+/g, " ").slice(0, 80)}" -> ${target.tagName.toLowerCase()} ${label(target).trim().slice(0, 60)}` };
+    while (!cardCtl(card).some((e) => labelled(e) || glyph(e) || e.matches("button, [role=button]")) && card.parentElement && !card.parentElement.matches("form, main, body")) card = card.parentElement;
+    const cr = card.getBoundingClientRect();
+    const visible = (e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
+    const corner = (e) => { const r = e.getBoundingClientRect(); return r.width <= 48 && r.height <= 48 && r.left > cr.left + cr.width * 0.6 && r.top < cr.top + Math.min(cr.height * 0.5, 80); };
+    const clickableLeaf = (e) => !e.children.length || [...e.children].every((c) => /^(svg|path|use|i)$/i.test(c.tagName));
+    const els = cardCtl(card).filter(visible);
+    const tiers = [
+      els.filter((e) => labelled(e) && (!realLink(e) || /remove|delete|trash/i.test(label(e)))),
+      els.filter((e) => glyph(e) && !realLink(e)),
+      els.filter((e) => corner(e) && !realLink(e) && clickableLeaf(e) && (/^(i|svg|span|button)$/i.test(e.tagName) || e.matches("[role=button], [onclick], [tabindex]") || getComputedStyle(e).cursor === "pointer")),
+      els.filter((e) => e.matches("button, [role=button]") && !realLink(e) && !/revision|history|select file|browse/i.test(e.innerText || "")),
+    ];
+    const picked = [];
+    for (const t of tiers) for (const e of t) {
+      const target = e.closest("button, [role=button]") || (e.tagName.toLowerCase() === "path" ? e.ownerSVGElement : e);
+      if (target && !picked.includes(target) && !picked.some((p) => p.contains(target) && p !== target && false)) picked.push(target);
+    }
+    if (!picked.length) return { error: "the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner); card text: " + (card.innerText || "").replace(/\s+/g, " ").slice(0, 80) };
+    const describe = [];
+    picked.slice(0, 4).forEach((e, i) => { e.setAttribute("data-tpt-remove", String(i + 1)); describe.push(`${e.tagName.toLowerCase()} ${label(e).replace(/\s+/g, " ").trim().slice(0, 60)}`); });
+    return { cardText: (card.innerText || "").replace(/\s+/g, " ").slice(0, 80), describe };
   }, slot);
-  if (how.error) return { error: how.error };
-  await page.locator("[data-tpt-remove]").first().click({ timeout: 10000 });
-  await page.waitForTimeout(1500);
-  const dialog = page.locator('[role="dialog"], [role="alertdialog"], [class*="modal" i]').filter({ has: page.locator("button") }).first();
-  if (await dialog.isVisible().catch(() => false)) {
-    const yes = dialog.getByRole("button", { name: /^(delete|remove|yes|confirm|ok|continue)/i }).first();
-    if (await yes.count()) await yes.click({ timeout: 10000 });
-    else return { error: "a dialog opened after the X but has no Delete/Remove/Yes button: " + (await dialog.innerText().catch(() => "")).replace(/\s+/g, " ").slice(0, 120) };
+  if (found.error) return { error: found.error };
+  const visibleButtons = () => page.evaluate(() => [...document.querySelectorAll('button, [role="button"], input[type="button"], input[type="submit"]')]
+    .filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0; })
+    .map((e) => (e.innerText || e.value || e.getAttribute("aria-label") || "").trim().replace(/\s+/g, " ")).filter(Boolean));
+  const confirmRe = /^(yes,? )?(delete|remove|confirm|yes|ok|continue|replace|proceed)\b/i;
+  const log = [];
+  await shot("before");
+  for (let i = 0; i < Math.min(found.describe.length, 3); i++) {
+    const before = await visibleButtons();
+    const target = page.locator(`[data-tpt-remove="${i + 1}"]`).first();
+    await target.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
+    await target.click({ timeout: 10000 });
+    log.push(`click ${i + 1} (${found.describe[i]})`);
+    await page.waitForTimeout(1500);
+    // a confirmation may be a dialog/modal or an inline "Are you sure?" row: any NEW visible button (or one in a dialog) that reads Delete/Remove/Yes/...
+    const dialog = page.locator('[role="dialog"], [role="alertdialog"], [class*="modal" i], [class*="popover" i], [class*="confirm" i]').filter({ has: page.locator("button, [role=button]") }).first();
+    const inDialog = await dialog.isVisible().catch(() => false);
+    const now = await visibleButtons();
+    const fresh = now.filter((t) => !before.includes(t));
+    log.push(`buttons seen after: ${now.slice(0, 12).join(" | ") || "(none)"}; new: ${fresh.join(" | ") || "(none)"}${inDialog ? "; a dialog is open" : ""}`);
+    if (inDialog || fresh.length) {
+      await shot(`confirm-${i + 1}`);
+      const scope = inDialog ? dialog : page;
+      const yes = scope.getByRole("button", { name: confirmRe }).last();
+      if (await yes.count()) { log.push(`confirm: clicked "${((await yes.innerText().catch(() => "")) || "").trim()}"`); await yes.click({ timeout: 10000 }); }
+      else if (inDialog) return { error: `a dialog opened after the X but has no Delete/Remove/Yes button (saw: ${now.join(" | ").slice(0, 160)})` };
+    }
+    const t0 = Date.now();
+    while (Date.now() - t0 < (i === 0 ? 15000 : 8000)) {
+      const gone = (await page.locator(`[data-tpt-remove="${i + 1}"]`).count()) === 0;
+      if ((await flagVal()) !== "1" || gone) { await shot("after"); return { ok: `card "${found.cardText}" -> ${log.join("; ")}` }; }
+      await page.waitForTimeout(500);
+    }
   }
-  const t0 = Date.now();
-  while (Date.now() - t0 < 30000) {
-    const gone = (await page.locator("[data-tpt-remove]").count()) === 0;
-    if ((await flagVal()) !== "1" || gone) return { ok: how.ok };
-    await page.waitForTimeout(500);
-  }
-  return { error: `clicked the X (${how.ok}) but ${slot}_uploaded is still 1 and the card is still there after 30 s` };
+  await shot("after");
+  return { error: `${log.join("; ")}; but ${slot}_uploaded is still 1 and the card is still there` };
 }
 
 // Close an open react-select menu WITHOUT risking the chips: Escape on an already-closed select can clear the value.
@@ -949,7 +994,7 @@ async function reupload(item, dryRun) {
     for (const f of files) {
       step = `replace ${f.slot} (${f.file})`;
       const spec = editSel(F, f.slot), input = page.locator(spec.input);
-      const rm = await removeExistingFile(page, f.slot);
+      const rm = await removeExistingFile(page, f.slot, { shots, slug });
       console.log(`${f.slot}: existing file: ${rm.skipped || rm.ok || "ERROR " + rm.error}`);
       await snap(page, shots, `${slug}-reupload-${f.slot}-after-remove`).catch(() => {});
       if (rm.error) await fail(page, step, `could not remove the existing ${f.slot} file before uploading: ${rm.error}`);

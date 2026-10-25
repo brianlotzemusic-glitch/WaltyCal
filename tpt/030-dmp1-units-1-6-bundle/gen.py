@@ -289,7 +289,7 @@ def tpt_json():
         "price": f"{PRICE}.00", "license_price": f"{PRICE}.00",
         "tax_code": "Other Digital Goods - No Physical Media",
         "grades": ["9th-grade", "10th-grade", "11th-grade", "12th-grade"],
-        "subjects": ["Music", "Career and Technical Education", "Computer Science - Technology"],
+        "subjects": ["Music", "Computer Science - Technology", "Music Composition"],
         "tags": ["High School", "Project Based Learning", "Technology", "Back to School"],
         "formats": ["PDF"],
         "pages": PDF_PAGES + SLIDES + 4,
@@ -435,6 +435,16 @@ def check():
     for f in tj["files"].values():
         if not os.path.exists(os.path.join(HERE, f)):
             errs.append(f"tpt.json file missing: {f}")
+    # Subject Area is a closed list of 133 options (tpt/SUBJECT-OPTIONS.json); "Career and Technical Education" is NOT one of them
+    try:
+        opts = json.load(open(os.path.join(TPT, "SUBJECT-OPTIONS.json")))
+        for s in tj.get("subjects", []):
+            if s not in opts:
+                errs.append(f"tpt.json subject {s!r} is not an option in tpt/SUBJECT-OPTIONS.json")
+    except FileNotFoundError:
+        pass
+    if tj.get("subjects", [None])[0] != "Music":
+        errs.append("tpt.json subjects must start with Music")
     if tj["price"] != f"{PRICE}.00":
         errs.append("tpt.json price differs from PRICE")
     # 7. the six kit folders are untouched in git

@@ -16,8 +16,32 @@ window.gone = () => { document.getElementById("card").remove(); document.querySe
 document.getElementById("x").onclick = () => { ${confirm ? `const d=document.createElement("div");d.setAttribute("role","dialog");d.innerHTML='<p>Delete this file?</p><button id="no">Cancel</button><button id="yes">Delete</button>';document.body.appendChild(d);document.getElementById("yes").onclick=()=>{d.remove();gone();};` : "gone();"} };
 </script>`;
 
+
+// 027 25 Oct 2026 fake: icon-font X (no button/svg/label), a real file-name link that must NOT be clicked, and a confirm modal.
+const card027 = (mode) => `<form>
+<input type="hidden" name="data[ItemsProperty][product_uploaded]" value="1">
+<div id="card" style="position:relative;width:600px;height:120px;border:1px solid #ccc"><a id="dl" href="/dl/Old.pdf" onclick="window.dlClicked=true;return false">Old.pdf</a>
+<span style="position:absolute;right:50px;top:10px">1.12 MB</span>
+${mode === "glyph" ? '<span id="x" style="position:absolute;right:10px;top:10px;cursor:pointer">\u2716</span>' : '<i id="x" class="fa" style="position:absolute;right:10px;top:10px;width:14px;height:14px;display:block;cursor:pointer"></i>'}
+<div>Last updated: Oct 22</div><a href="#rev">See Revision History</a></div></form>
+<script>
+window.gone = () => { document.getElementById("card").remove(); document.querySelector('[name="data[ItemsProperty][product_uploaded]"]').value = "0"; };
+document.getElementById("x").onclick = () => { const d=document.createElement("div");d.setAttribute("role","dialog");d.innerHTML='<p>Remove this file?</p><button id="no">Cancel</button><button id="yes">Yes, remove</button>';document.body.appendChild(d);document.getElementById("yes").onclick=()=>{d.remove();gone();};document.getElementById("no").onclick=()=>{window.cancelled=true;d.remove();}; };
+</script>`;
+async function t027(page) {
+  for (const mode of ["glyph", "icon"]) {
+    await page.setContent(card027(mode));
+    const r = await removeExistingFile(page, "product");
+    assert(r.ok && /Yes, remove/.test(r.ok), JSON.stringify(r));
+    assert(!(await page.evaluate(() => window.dlClicked)), "must not click the file-name link");
+    assert(!(await page.evaluate(() => window.cancelled)), "must not press Cancel");
+    assert.strictEqual(await page.locator("#card").count(), 0);
+    console.log(`ok 027 ${mode} X (icon font, file link beside it) -> modal confirmed with "Yes, remove"`);
+  }
+}
 (async () => {
   const b = await chromium.launch(), page = await b.newPage();
+  await t027(page);
   await page.setContent(card(false));
   let r = await removeExistingFile(page, "product");
   assert(r.ok && /Remove file/.test(r.ok), JSON.stringify(r));

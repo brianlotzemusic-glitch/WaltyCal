@@ -54,7 +54,7 @@ Designed with the help of digital and AI tools, and checked by hand.
 
 ## 4. Subjects, tags, formats
 
-Same as kit 008 (tpt/METADATA-GUIDE.md): Subjects Music; Career and Technical Education; Computer Science - Technology. Tags High School, Project Based Learning, Technology, Back to School (use what the Tag list offers; consider Halloween only if offered, since Unit 6 is the Halloween unit). Formats PDF (add PowerPoint or ZIP if offered). Resource types by hand: Unit Plans, Projects, PowerPoint Presentations.
+Same as kit 008 (tpt/METADATA-GUIDE.md): Subjects Music; Computer Science - Technology; Music Composition (all three are exact options in the Subject Area dropdown; "Career and Technical Education" is not an option there, so it is not used). Tags High School, Project Based Learning, Technology, Back to School (use what the Tag list offers; consider Halloween only if offered, since Unit 6 is the Halloween unit). Formats PDF (add PowerPoint or ZIP if offered). Resource types by hand: Unit Plans, Projects, PowerPoint Presentations.
 
 ## 5. Price (arithmetic)
 
