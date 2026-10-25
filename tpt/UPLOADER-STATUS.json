@@ -1,10 +1,10 @@
 {
-  "ran_at": "2026-10-24T00:30:02.900Z",
+  "ran_at": "2026-10-25T00:46:31.122Z",
   "published": [],
   "failed": [
     {
       "item": "030-dmp1-units-1-6-bundle",
-      "error": "publish stopped at step \"subjects: Career and Technical Education\" (nothing was submitted): not submitted: subjects: \"Career and Technical Education\" is not an option. Typed and offered: already selected: music; \"Career and Technical Education\" -> (nothing); \"Career and Technical\" -> (nothing); \"Career and\" -> (nothing); \"Career\" -> (nothing); keys -> (nothing); list-all -> Art | Art History | Col"
+      "error": "publish stopped at step \"subjects: Career and Technical Education\" (nothing was submitted): not submitted: subjects: \"Career and Technical Education\" is not an option (133 options in the menu, e.g. Art | Art History | Coloring Pages | Graphic Arts | Visual Arts | Other (Arts); typing offered nothing; full list in tpt/_publish/030-dmp1-units-1-6-bundle-subjects-options.json). already selected: musi"
     }
   ],
   "needs_login": false,
@@ -13,12 +13,12 @@
     "030-dmp1-units-1-6-bundle"
   ],
   "reupload": {
-    "ran_at": "2026-10-24T00:33:16.137Z",
+    "ran_at": "2026-10-25T01:20:41.757Z",
     "replaced": [],
     "failed": [
       {
         "item": "027-thanksgiving-color-by-note",
-        "error": "reupload stopped at \"replace product (thanksgiving-color-by-note.pdf)\": TpT did not accept thanksgiving-color-by-note.pdf within 15 min (the upload key never changed). Diagnostics: key element data[ItemDigital][product] value empty; hidden inputs: data[ItemDigital][product]=, data[ItemsProperty][product_uploaded]=1, data[ItemDigital][preview]=, data[ItemsProperty][preview_uploaded]=0, data[Upload]"
+        "error": "reupload stopped at \"replace product (thanksgiving-color-by-note.pdf)\": could not remove the existing product file before uploading: clicked the X (card \"FallColorbyNoteRhythmTrebleBassClefWorksheetsAnswerKeys.pdf Last updated: Oct 22\" -> a FallColorbyNoteRhythmTrebleBassClefWorksheetsAnswerKeys.pdf) but product_uploaded is still 1 and the card is still there after 30 s Screenshot: tpt/_publish/02"
       }
     ],
     "waiting": [
