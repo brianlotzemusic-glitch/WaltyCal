@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-24T22:30:00Z",
- "next_run_at": "2026-10-25T10:12:00Z",
+ "updated_at": "2026-10-25T11:00:00Z",
+ "next_run_at": "2026-10-25T22:12:00Z",
  "goal_usd": 70000,
  "revenue_usd": 0,
  "listings_live": 39,
@@ -12,8 +12,8 @@
    "id": "manager",
    "name": "Manager",
    "state": "idle",
-   "task": "6:12pm shift 24 Oct: no new builds (1 Etsy listing today, 033; TpT uploads waiting on the Mac nightly at 8:30pm ET: 027 file swap, 030 bundle). Pushed the owner: Ads renewal decision + AI-box ticks. Next shift 6:12am ET.",
-   "since": "2026-10-24T22:30:00Z"
+   "task": "6:12am shift 25 Oct: fixed 030 (TpT has no Career and Technical Education subject; subjects now Music, Computer Science - Technology, Music Composition) and 027 (remove step now finds the icon X); both re-run at the Mac nightly 8:30pm ET. No builds this shift. Waiting on the owner: Ads renewal, AI-box ticks, whether to keep 2 Etsy listings/day. Next shift 6:12pm ET.",
+   "since": "2026-10-25T11:00:00Z"
   },
   {
    "id": "researcher",
@@ -86,6 +86,11 @@
   "Etsy: next non-pattern item"
  ],
  "feed": [
+  {
+   "t": "2026-10-25T11:00:00Z",
+   "who": "manager",
+   "msg": "Fixed the DMP1 bundle subjects (TpT has no Career and Technical Education subject) and the 027 file-remove step; both retry at tonight's Mac nightly."
+  },
   {
    "t": "2026-10-24T22:30:00Z",
    "who": "manager",
@@ -235,11 +240,6 @@
    "t": "2026-10-18T10:28:11Z",
    "who": "lister",
    "msg": "Published Printable Christmas Gift Tags, Woodland (Etsy 4597905719, $3.50). 28 live."
-  },
-  {
-   "t": "2026-10-17T22:22:39Z",
-   "who": "qa",
-   "msg": "Approved TpT 019 DMP2 Anti-Music Manifesto ($10) in round 1. Waiting for the owner's release."
   }
  ],
  "venture_gate": {
