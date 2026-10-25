@@ -16,3 +16,6 @@ Spend, ad views, clicks, orders, revenue; per advertised item "Detailed Stats" >
 - **Manager's recommendation: do not renew the ads.** There is no measurable effect on views, favourites or sales. The cost is real and the shop has no sales to learn from. The factory does not touch ad settings; the owner decides.
 - Still needed from the owner (Seller Dashboard, web): actual spend, ad impressions/clicks/orders per advertised item, "Searches that led to this ad". These would show whether the views came from ads or from organic search.
 - The no-edit freeze on live Etsy listings ends 24 Oct. Pending decisions (Etsy photo rules, 22 Oct policy): older printable listings use staged room mockups as photo 1. Changing live photos needs the owner's go-ahead because Etsy's wording is not confirmed (the Researcher could not read Etsy's policy pages).
+
+## Owner decision, 25 Oct
+Ads: **no** (not renewed). Test closed.
