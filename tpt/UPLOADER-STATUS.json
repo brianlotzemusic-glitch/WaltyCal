@@ -1,34 +1,22 @@
 {
-  "ran_at": "2026-10-25T16:35:49.244Z",
+  "ran_at": "2026-10-26T00:30:04.051Z",
   "published": [],
-  "failed": [
-    {
-      "item": "030-dmp1-units-1-6-bundle",
-      "error": "publish stopped at step \"tags: High School\" (nothing was submitted): not submitted: tags: \"High School\" is not an option (156 options in the menu, e.g. Audience | Homeschool | Parents | Staff & Administrators | TPT Sellers | Language; typing offered nothing; full list in tpt/_publish/030-dmp1-units-1-6-bundle-tags-options.json). already selected: select up to six tags Screenshot: tpt/_publish/030-"
-    }
-  ],
+  "failed": [],
   "needs_login": false,
-  "paused": false,
-  "pending_before": [
-    "030-dmp1-units-1-6-bundle"
-  ],
+  "paused": true,
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-10-25T16:37:06.819Z",
+    "ran_at": "2026-10-26T00:30:04.229Z",
     "replaced": [],
-    "failed": [
-      {
-        "item": "027-thanksgiving-color-by-note",
-        "error": "reupload stopped at \"replace product (thanksgiving-color-by-note.pdf)\": could not remove the existing product file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner); card text: Last updated: Oct 22, 2026 at 9:17 AM EST See Revision History Screenshot: tpt/_publish/027-thanksgiving-color-by-note-reupload-failed.png. Not ret"
-      }
+    "failed": [],
+    "waiting": [],
+    "skipped": [
+      "tpt/PAUSED exists"
     ],
-    "waiting": [
-      "027-thanksgiving-color-by-note"
-    ],
-    "skipped": [],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": false
+    "ok": true
   },
-  "ok": false
+  "ok": true
 }
