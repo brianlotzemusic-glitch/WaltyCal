@@ -69,7 +69,7 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 - **Public schools buy these.** Winter and secular options alongside Christmas, Hanukkah and Kwanzaa ones; describe religious
   and cultural holidays accurately and respectfully, and keep facts checkable.
 - **Never copy another seller's product.** Take the format and subject only.
-- **Titles** ≤ 80 characters, plain search words first (holiday, format, clefs or grades). **Tags** 1–6 real TpT tags,
+- **Titles** ≤ 80 characters, plain search words first (holiday, format, clefs or grades). **Tags** 1–6 exact entries from `tpt/TAG-OPTIONS.json` (the uploader rejects anything else; the old guide's "High School" and "Technology" are not tags),
   **grades** 1–4, **subjects** 1–3 from `tpt/SUBJECT-OPTIONS.json`.
 - **Prices:** classroom $3–5 (sub plans and units up to $7); holiday Logic kits $7–9; free items $0 only when the queue says so.
 
@@ -95,7 +95,7 @@ Price 25–35% below the sum. Never change or re-upload the member listings.
 4. Tunes are public domain, with year and source noted. No brands, characters or copied material.
 5. Age and grade fit. Instructions a substitute could follow.
 6. Listing: title ≤ 80, description matches the product exactly (page count, what's included), disclosure line present, price
-   set, `tpt.json` valid (grades, subjects, tags, files exist).
+   set, `tpt.json` valid: files exist, grades 1–4, every subject is in `tpt/SUBJECT-OPTIONS.json` and every tag is in `tpt/TAG-OPTIONS.json`, spelled exactly.
 7. Logic kits: steps are real Logic Pro features, pacing adds up, the rubric total is right.
 
 ## Season rule

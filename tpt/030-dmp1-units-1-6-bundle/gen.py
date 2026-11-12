@@ -290,7 +290,7 @@ def tpt_json():
         "tax_code": "Other Digital Goods - No Physical Media",
         "grades": ["9th-grade", "10th-grade", "11th-grade", "12th-grade"],
         "subjects": ["Music", "Computer Science - Technology", "Music Composition"],
-        "tags": ["High School", "Project Based Learning", "Technology", "Back to School"],
+        "tags": ["Project-based Learning", "Projects", "Unit Plans", "Career and Technical Education"],  # exact entries of tpt/TAG-OPTIONS.json
         "formats": ["PDF"],
         "pages": PDF_PAGES + SLIDES + 4,
         "answer_key": "Included",

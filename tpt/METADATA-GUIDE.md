@@ -1,5 +1,8 @@
 # TpT metadata guide for DMP (Digital Music Production) products
 
+> **Correction, 12 Nov 2026.** The tag names in this guide are wrong for TpT's Tag box: "High School" and "Technology" are not tags, and "Project Based Learning" is spelled "Project-based Learning" there. The uploader rejects any tag that is not an exact option, which is why the DMP1 bundle never published. Use only exact entries from `tpt/TAG-OPTIONS.json` (for Logic kits: Project-based Learning, Projects, Unit Plans, Career and Technical Education, plus the season or holiday tag).
+
+
 Goal: high-school music production / music technology teachers find Hudson Beat DMP products. Written 12 Oct 2026. Search patterns come from TpT and other sites' public search pages (teachers search "music production", "beat making", "GarageBand project", "BandLab", "Ableton", "film score project", "music technology"); no seller text is copied.
 
 ## (a) Fields and best values
