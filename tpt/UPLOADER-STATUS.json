@@ -1,22 +1,45 @@
 {
-  "ran_at": "2026-11-11T01:39:52.209Z",
-  "published": [],
-  "failed": [],
+  "ran_at": "2026-11-12T19:34:48.784Z",
+  "published": [
+    {
+      "item": "031-carol-flip-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Holiday-Remix-in-Logic-Pro-Carol-Flip-Project-High-School-Music-Tech-18314750"
+    },
+    {
+      "item": "032-christmas-color-by-note",
+      "url": "https://www.teacherspayteachers.com/Product/Color-by-Note-Holiday-Music-Worksheets-Rhythm-Treble-Bass-Clef-Gr-2-6-18314772"
+    },
+    {
+      "item": "033-thanksgiving-music-sub-plan",
+      "url": "https://www.teacherspayteachers.com/Product/Fall-Music-Sub-Plan-K-5-3-No-Prep-Lessons-Rhythm-Reading-Lyric-Writing-18314799"
+    }
+  ],
+  "failed": [
+    {
+      "item": "030-dmp1-units-1-6-bundle",
+      "error": "publish stopped at step \"tags: High School\" (nothing was submitted): not submitted: tags: \"High School\" is not an option (156 options in the menu, e.g. Audience | Homeschool | Parents | Staff & Administrators | TPT Sellers | Language; typing offered nothing; full list in tpt/_publish/030-dmp1-units-1-6-bundle-tags-options.json). already selected: select up to six tags Screenshot: tpt/_publish/030-"
+    }
+  ],
   "needs_login": false,
-  "paused": true,
-  "pending_before": [],
+  "paused": false,
+  "pending_before": [
+    "030-dmp1-units-1-6-bundle",
+    "031-carol-flip-logic",
+    "032-christmas-color-by-note",
+    "033-thanksgiving-music-sub-plan"
+  ],
   "reupload": {
-    "ran_at": "2026-11-11T01:39:52.399Z",
+    "ran_at": "2026-11-12T19:40:05.823Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
     "skipped": [
-      "tpt/PAUSED exists"
+      "027-thanksgiving-color-by-note: failed-hold"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
     "ok": true
   },
-  "ok": true
+  "ok": false
 }
