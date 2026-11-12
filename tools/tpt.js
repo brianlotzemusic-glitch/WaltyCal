@@ -30,7 +30,7 @@
 //   Offline test: node tools/test-tpt-free.js
 //
 //   node tools/tpt.js publish-pending
-//                                     publish items the cloud Manager has released (a `release` file), at most 3
+//                                     publish items the cloud Manager has released (a `release` file), at most 6
 //                                     per run, unless tpt/PAUSED exists; writes tpt/UPLOADER-STATUS.json.
 //                                     Run nightly by tools/tpt-nightly.sh (see tpt/LOCAL-SETUP.md).
 //
@@ -751,7 +751,7 @@ async function publish(item, dryRun) {
 // tpt/PAUSED exists (the owner's or the Manager's stop switch). Publishes at most MAX_PER_RUN
 // items per night. Writes tpt/UPLOADER-STATUS.json, which tools/tpt-nightly.sh commits so the
 // Manager can check every run and tell the owner when they're needed.
-const MAX_PER_RUN = 3;
+const MAX_PER_RUN = 6; // owner, 12 Nov 2026: 4 products a day plus catch-up (was 3)
 function pendingItems() {
   const dir = path.join(ROOT, "tpt");
   return fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d))
