@@ -1,19 +1,19 @@
 {
-  "ran_at": "2026-11-12T19:56:09.597Z",
-  "published": [],
-  "failed": [
+  "ran_at": "2026-11-12T20:14:17.991Z",
+  "published": [
     {
       "item": "030-dmp1-units-1-6-bundle",
-      "error": "publish stopped at step \"tags: High School\" (nothing was submitted): not submitted: tags: \"High School\" is not an option (156 options in the menu, e.g. Audience | Homeschool | Parents | Staff & Administrators | TPT Sellers | Language; typing offered nothing; full list in tpt/_publish/030-dmp1-units-1-6-bundle-tags-options.json). already selected: select up to six tags Screenshot: tpt/_publish/030-"
+      "url": "https://www.teacherspayteachers.com/Product/Digital-Music-Production-Bundle-Logic-Pro-Units-1-6-High-School-Music-Tech-18315428"
     }
   ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
     "030-dmp1-units-1-6-bundle"
   ],
   "reupload": {
-    "ran_at": "2026-11-12T19:57:45.422Z",
+    "ran_at": "2026-11-12T20:15:39.075Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -25,5 +25,5 @@
     "discovered_edit": false,
     "ok": true
   },
-  "ok": false
+  "ok": true
 }

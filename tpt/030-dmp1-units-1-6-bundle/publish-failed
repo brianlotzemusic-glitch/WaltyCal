@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-12T19:57:45.200Z",
-  "release_sha256": "74c50dca1c89975ad654d07957e73f3014c360ceea26a6014f1858307e5737fa",
-  "count": 2,
-  "error": "publish stopped at step \"tags: High School\" (nothing was submitted): not submitted: tags: \"High School\" is not an option (156 options in the menu, e.g. Audience | Homeschool | Parents | Staff & Administrators | TPT Sellers | Language; typing offered nothing; full list in tpt/_publish/030-dmp1-units-1-6-bundle-tags-options.json). already selected: select up to six tags Screenshot: tpt/_publish/030-"
-}
