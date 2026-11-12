@@ -1,3 +1,5 @@
+> **ARCHIVED 12 Nov 2026.** The owner restarted the factory as TpT only. The live manual is `TPT-FACTORY.md`; the live queue is `tpt/QUEUE.md`. Nothing below is in force.
+
 # Shop factory — operating manual
 
 This branch (`shop-factory`) is the Etsy shop's workspace. The shop is **Duskwood Designs Co** (etsy.com/shop/DuskwoodDesignsCo); use that name in README-LICENSE files, listing images and copy. Shop profile text and branding live in `shop-profile/`. It has no history in common with `main`; never merge them.

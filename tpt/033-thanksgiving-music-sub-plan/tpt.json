@@ -1,0 +1,31 @@
+{
+  "price": "4.00",
+  "license_price": "4.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "kindergarten",
+    "2nd-grade",
+    "3rd-grade",
+    "5th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Thanksgiving",
+    "Autumn"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 18,
+  "answer_key": "Included",
+  "files": {
+    "product": "thanksgiving-music-sub-plan.pdf",
+    "preview": "thanksgiving-music-sub-plan-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

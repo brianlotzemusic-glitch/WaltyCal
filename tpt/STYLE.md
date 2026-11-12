@@ -83,7 +83,7 @@ Every resource includes:
    - **You may not**: share with other teachers, schools or districts (additional licences are on TpT), post publicly, resell, or edit into a new product.
    - **Questions**: through the store's Q&A tab on TpT. We never print an email address unless the owner gives one.
    - **Credits**: original art; Bravura © Steinberg Media Technologies GmbH (OFL 1.1); Oswald and Source Sans 3 (OFL 1.1); any other font or asset with its licence.
-   - The disclosure line: "Designed with the help of digital and AI tools, and checked by hand." It is required in the TpT description and is also printed here.
+   - The disclosure line: "Created with the help of digital and AI tools. Notation and answer keys are verified before release." (changed 12 Nov 2026: nobody checks by hand, so the line no longer says so.) It is required in the TpT description and is also printed here.
 
 ## 7. Files per item (`tpt/NNN-slug/`)
 

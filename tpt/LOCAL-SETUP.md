@@ -64,7 +64,7 @@ When the factory tells you items are ready:
 
 ## Nightly publishing (set up once; the factory runs it after that)
 After this one-time setup, approved TpT items go live by themselves every evening.
-- **The factory decides what goes live.** The Mac job publishes only items the cloud Manager has *released* (a `release` file), at most 3 a night.
+- **The factory decides what goes live.** The Mac job publishes only items the cloud Manager has *released* (a `release` file), at most 6 a night.
 - **Stop switch:** `tpt/PAUSED`. While that file exists, the job publishes nothing. The Manager creates it if something looks wrong, and you can too.
 - **When the factory needs you:** you get a push only when TpT's login has expired, the job hasn't run for 36 hours, or the Manager paused it.
 
