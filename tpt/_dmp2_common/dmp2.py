@@ -28,6 +28,9 @@ STORE = "Brian Lotze"      # copyright holder and TpT seller
 BRAND = "Hudson Beat"      # store line (owner, 4 Oct 2026)
 YEAR = 2026
 DISCLOSURE = "Designed with the help of digital and AI tools, and checked by hand."
+# ORIGINAL kits (K.ORIGINAL = True, from 12 Nov 2026) are Hudson Beat's own projects, not the owner's course sheets: no "changes to my
+# sheet" page, no owner-text wording, and the disclosure line below. main() swaps DISCLOSURE for it.
+DISCLOSURE_NEW = "Created with the help of digital and AI tools. Notation and answer keys are verified before release."
 COPY = f"© {YEAR} {STORE} · {BRAND} · For single-classroom use"
 TAX = "Other Digital Goods - No Physical Media"
 PROVEN_TAGS = {"Halloween", "Autumn", "Winter", "Thanksgiving"}          # tag texts TpT has accepted (items 001-013)
@@ -44,6 +47,11 @@ K = None   # the kit module, set by main()
 
 
 # ================================================================ small helpers
+def original():
+    """True for an original Hudson Beat project (not built from the owner's project sheet)."""
+    return bool(getattr(K, "ORIGINAL", False))
+
+
 def P(name):
     return os.path.join(K.HERE, name)
 
@@ -414,9 +422,12 @@ def pacing_page(n, watermark=False):
         rows.append(f"<tr><td style='white-space:nowrap'><b class='acc' style='font-family:Oswald;font-size:13pt'>CLASS {d['n']}</b></td>"
                     f"{own}<td style='font-size:{getattr(K, 'PACING_SIZE', 10.4)}pt;line-height:1.36'>{fill(d['do'] + (reflect_do() if last else ''))}</td>"
                     f"<td style='font-size:10.4pt'>{sl}</td><td style='font-size:10.4pt'>{pg}</td></tr>")
-    inner = (f'<p>{K.CLASSES} class periods, as on my project menu. The “My plan” column is my day-by-day pacing guide as I wrote it; the '
-             f'other columns show what to put on the screen and in students’ hands.</p>'
-             f'<table class="t"><tr><th style="width:11%">Class</th><th style="width:33%">My plan</th><th style="width:28%">Teacher moves</th>'
+    intro = (f'{K.CLASSES} class periods. The “Plan” column is the day-by-day pacing; the other columns show what to put on the screen '
+             f'and in students’ hands.' if original() else
+             f'{K.CLASSES} class periods, as on my project menu. The “My plan” column is my day-by-day pacing guide as I wrote it; the '
+             f'other columns show what to put on the screen and in students’ hands.')
+    inner = (f'<p>{intro}</p>'
+             f'<table class="t"><tr><th style="width:11%">Class</th><th style="width:33%">{"Plan" if original() else "My plan"}</th><th style="width:28%">Teacher moves</th>'
              f'<th style="width:14%">Deck</th><th>Student pages</th></tr>{"".join(rows)}</table>'
              f'{fill(K.PACING_EXTRA)}')
     return page(f"Pacing guide · {K.CLASSES} class periods", "PACING", "Teacher", inner, n, watermark, key="pacing")
@@ -433,11 +444,11 @@ def tn1_page(n):
 
 
 def tn2_page(n):
-    res = "".join(f"<tr><td>{a}</td><td>{fill(b)}</td></tr>" for a, b in K.RESOURCES)
+    res = "".join(f"<tr><td>{fill(a)}</td><td>{fill(b)}</td></tr>" for a, b in K.RESOURCES)
     z = getattr(K, "TN2_SIZE", 10.9 if reflect_on() else 11.6)
     inner = (f'<style>.tn2 p, .tn2 li {{ font-size: {z}pt; line-height: 1.4; margin-bottom: {z * 0.5:.1f}pt; }}</style>'
-             f'<div class="tn tn2">{H2("Suggested resources", True)}<table class="t" style="font-size:10.6pt"><tr><th style="width:44%">My list</th>'
-             f'<th>In this kit</th></tr>{res}</table>'
+             f'<div class="tn tn2">{H2("Suggested resources", True)}<table class="t" style="font-size:10.6pt"><tr><th style="width:44%">{"Resource" if original() else "My list"}</th>'
+             f'<th>{"How to use it" if original() else "In this kit"}</th></tr>{res}</table>'
              f'{H2("How to grade")}<ul>' + "".join(f"<li>{fill(g)}</li>" for g in K.GRADING) + '</ul>'
              + (f'<p style="margin:4pt 0 2pt"><i>{GRADING_TIPS_LABEL}</i></p><ul>'
                 + "".join(f"<li>{fill(g)}</li>" for g in K.GRADING_TIPS) + '</ul>' if getattr(K, "GRADING_TIPS", None) else '') +
@@ -519,7 +530,7 @@ def vocab_page(n, watermark=False):
         f'font-size:13pt;text-transform:uppercase;letter-spacing:.02em">{a}</b> — {b}</p>'
         f'<div class="fl" style="margin:9pt 0 9pt"><b>In my own words:</b><span></span></div>'
         f'<div class="fl" style="margin:0 0 4pt"><b>{K.VOCAB_PROMPT}</b><span></span></div></div>' for a, b in K.VOCAB)
-    inner = (f'<p style="font-size:11.4pt;margin:0 0 7pt">The {({3: "three", 4: "four", 5: "five", 6: "six", 7: "seven"}.get(len(K.VOCAB), str(len(K.VOCAB))))} words from your project sheet, with my definitions. Rewrite each in your '
+    inner = (f'<p style="font-size:11.4pt;margin:0 0 7pt">The {({3: "three", 4: "four", 5: "five", 6: "six", 7: "seven"}.get(len(K.VOCAB), str(len(K.VOCAB))))} words from your project sheet, with {"" if original() else "my "}definitions. Rewrite each in your '
              f'own words, then show where it happens in your own project.</p>{cells}')
     return page("Key vocabulary", "STUDENT", "Vocabulary", inner, n, watermark, name=True, key="vocab")
 
@@ -529,7 +540,7 @@ def present_page(n, watermark=False):
                  for i in (1, 2, 3))
     rows = "".join("<tr><td style='height:40pt'></td><td></td><td></td></tr>" for _ in range(4))
     inner = (f'<div class="box acc-b"><span class="k">From your project sheet, step {len(K.STEPS)}</span><p style="margin:0;font-size:11.4pt">'
-             f'{K.STEPS[-1]}</p></div>'
+             f'{fill(K.STEPS[-1])}</p></div>'
              f'{H2("My three feedback questions")}<p style="margin:0 0 6pt">Ask about things you really want to know, not yes-or-no questions.</p>{qs}'
              f'{H2("Classmates’ questions I answered (at least 2)")}'
              f'<table class="map"><tr><th style="width:24%">Classmate</th><th style="width:38%">Their question</th><th>My answer</th></tr>{rows}</table>'
@@ -573,6 +584,10 @@ def reflect_page(n, watermark=False):
 
 def reflect_tn():
     """Teacher note for teacher notes 2 (printed under the label 'Added by this kit')."""
+    if original():
+        return (f'{H2("Reflection")}<p>Every student reflects (page @REFLECT): {REFLECT_DEFINITION}. Students write it or talk it through '
+                f'with you; either way they answer the four prompts. Allow about 10 minutes after the presentations. Use it as evidence '
+                f'for the {getattr(K, "REFLECT_ROW", "reflection")} row of the rubric.</p>')
     return (f'{H2("Reflection · added by this kit")}<p>The rubric mentions reflection, but the project sheet has no reflection task, so this kit '
             f'adds one (page @REFLECT): {REFLECT_DEFINITION}. Students write it or talk it through with you; either way they answer '
             f'the four prompts. Allow about 10 minutes after the presentations. It adds no points and no rubric row; use it as evidence '
@@ -725,7 +740,7 @@ def build_deck(img):
             text(sl, 0, 4.3, 13.333, 1.1, title, 72, "Oswald", True, BLACK, align=PP_ALIGN.CENTER, caps=True)
             text(sl, 0, 5.5, 13.333, 0.6, body, 28, "Oswald", False, BLACK, align=PP_ALIGN.CENTER)
             box(sl, 0, 6.55, 13.333, 0.95, BLACK)
-            text(sl, 0, 6.68, 13.333, 0.6, f"Digital Music Production 2 · Class {cls} · {K.DECK_STRAP}", 20, "Oswald",
+            text(sl, 0, 6.68, 13.333, 0.6, f"{'Logic Pro project' if original() else 'Digital Music Production 2'} · Class {cls} · {K.DECK_STRAP}", 20, "Oswald",
                  False, WHITE, align=PP_ALIGN.CENTER, spacing=200, caps=True)
         else:
             chrome(sl, i, title, cls)
@@ -1016,7 +1031,7 @@ def files():
 def tpt_json():
     F = files()
     tj = {
-        "price": K.PRICE, "license_price": K.PRICE, "tax_code": TAX, "grades": K.GRADE_SLUGS, "subjects": ["Music"], "tags": K.TAGS,
+        "price": K.PRICE, "license_price": K.PRICE, "tax_code": TAX, "grades": K.GRADE_SLUGS, "subjects": list(getattr(K, "SUBJECTS", ["Music"])), "tags": K.TAGS,
         "formats": ["PDF"], "pages": len(K.PLAN) + len(K.SLIDES),
         "zip_contents": [os.path.basename(x) for x in (F["pdf"], F["deck"], F["deck_pdf"], *zip_extra())],
         "files": {"product": os.path.basename(F["zip"]), "preview": os.path.basename(F["preview"]), "thumb1": "cover.png",
@@ -1116,8 +1131,12 @@ def verify_data():
     for _, k, _, body, _ in K.SLIDES:
         if k == "pic" and body not in K.DRAWINGS:
             errs.append(f"deck picture '{body}' is not a drawing")
-    if len(K.PLAN) != len(set(K.PLAN)) or K.PLAN[0] != "cover" or K.PLAN[-1] != "terms" or "changes" not in K.PLAN:
-        errs.append("plan: cover first, terms last, a 'changes' page, no repeats")
+    if len(K.PLAN) != len(set(K.PLAN)) or K.PLAN[0] != "cover" or K.PLAN[-1] != "terms":
+        errs.append("plan: cover first, terms last, no repeats")
+    if original() and "changes" in K.PLAN:
+        errs.append("plan: an ORIGINAL kit has no 'changes' page (nothing was changed from an owner's sheet)")
+    if not original() and "changes" not in K.PLAN:
+        errs.append("plan: a 'changes' page is required (unless ORIGINAL = True)")
     for k in K.PLAN:
         if k not in K.PAGES and k not in STD_PAGES:
             errs.append(f"page '{k}' has no builder")
@@ -1154,6 +1173,12 @@ def verify_data():
         errs.append("answer_key: only the proven 'Included', or None")
     if not set(K.TAGS) <= PROVEN_TAGS or not 1 <= len(K.TAGS) <= 6:
         errs.append("tags: proven values only (UPLOAD.md lists candidate extras)")
+    if hasattr(K, "SUBJECTS"):
+        opts = json.load(open(os.path.join(TPT, "SUBJECT-OPTIONS.json"), encoding="utf8"))
+        if not 1 <= len(K.SUBJECTS) <= 3 or K.SUBJECTS[0] != "Music" or any(x not in opts for x in K.SUBJECTS):
+            errs.append("subjects: 1-3 from SUBJECT-OPTIONS.json, Music first")
+    if original() and DISCLOSURE != DISCLOSURE_NEW:
+        errs.append("ORIGINAL kits use the new disclosure line")
     return errs
 
 
@@ -1359,10 +1384,11 @@ def verify_files():
     rt = flat_[IX("rubric") - 1]
     if rt.count(f"/ {K.RUBRIC_TOTAL}") < 3 or f"/{K.RUBRIC_TOTAL}" not in rt:
         errs.append(f"rubric page: the owner's /{K.RUBRIC_TOTAL} total (student, teacher, final) missing")
-    ch = flat_[IX("changes") - 1]
-    for need in K.CHANGES_MUST_MENTION:
-        if need not in ch:
-            errs.append(f"'What changed' page must mention '{need}'")
+    if not original():
+        ch = flat_[IX("changes") - 1]
+        for need in K.CHANGES_MUST_MENTION:
+            if need not in ch:
+                errs.append(f"'What changed' page must mention '{need}'")
     if re.search(r"@[A-Z]{3,}", alltext):
         errs.append("an @PLACEHOLDER was printed unfilled")
     if reflect_on():
@@ -1371,9 +1397,10 @@ def verify_files():
             errs.append("reflect page: needs the owner's definition, 3-4 prompts and the written / oral choice")
         if "reflection" not in tn2t.lower() or "written or oral conversation" not in tn2t:
             errs.append("teacher notes 2: reflection note missing")
-        ch_ = re.sub(r"\s+", " ", flat_[IX("changes") - 1]).lower()
-        if not all(x in ch_ for x in ("mentions reflection", "no reflection task", "adds one", "written or oral")):
-            errs.append("'What changed' page must say the rubric mentions reflection, the project sheet has no reflection task, and this kit adds one")
+        if not original():
+            ch_ = re.sub(r"\s+", " ", flat_[IX("changes") - 1]).lower()
+            if not all(x in ch_ for x in ("mentions reflection", "no reflection task", "adds one", "written or oral")):
+                errs.append("'What changed' page must say the rubric mentions reflection, the project sheet has no reflection task, and this kit adds one")
         if "reflection" not in stext[[i for i, x in enumerate(K.SLIDES) if x[1] == "closer"][-1]].lower() or "Reflection:" not in notes[[i for i, x in enumerate(K.SLIDES) if x[1] == "closer"][-1]]:
             errs.append("deck wrap-up slide and its notes must mention the Reflection")
         if "Reflection (page" not in " ".join(flat_[IX("pacing") - 1:IX("pacing")]):
@@ -1382,7 +1409,9 @@ def verify_files():
         if claim in alltext.lower() or claim in alldeck.lower():
             errs.append(f"never claim '{claim}' (PDF, deck or speaker notes)")
     if any("rubric" not in g.lower() for g in K.GRADING):
-        errs.append("GRADING holds only lines about the owner's rubric; put the kit's own tips in GRADING_TIPS (printed under a label)")
+        errs.append("GRADING holds only lines about the rubric; put the kit's own tips in GRADING_TIPS (printed under a label)")
+    if original() and getattr(K, "GRADING_TIPS", None):
+        errs.append("ORIGINAL kits have no owner rubric to separate from: fold the grading tips into GRADING")
     if getattr(K, "GRADING_TIPS", None) and GRADING_TIPS_LABEL not in flat_[IX("tn2") - 1]:
         errs.append("teacher notes 2: the kit's grading tips must print under GRADING_TIPS_LABEL")
     ptxt = [pg.extract_text() for pg in PdfReader(F["preview"]).pages]
@@ -1469,8 +1498,10 @@ def check():
 
 
 def main(kit):
-    global K
+    global K, DISCLOSURE
     K = kit
+    if original():
+        DISCLOSURE = DISCLOSURE_NEW
     for nm, default in (("GRADE_SLUGS", list(GRADES[0])), ("GRADES_TEXT", GRADES[1])):   # default grades: 9th-12th
         if not hasattr(K, nm):
             setattr(K, nm, default)

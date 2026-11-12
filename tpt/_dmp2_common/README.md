@@ -72,3 +72,20 @@ text can push a page over; per-kit knobs: `TN2_SIZE` (teacher notes 2, default 1
   `UPLOAD.md`: title block and exact character count, SEO opening, disclosure line last; no `release` or `uploaded` file.
 
 Each kit adds its own checks in `verify_content()` (owner list counts, music arithmetic, songs named) and `verify_outputs()`.
+
+## ORIGINAL kits (`ORIGINAL = True`, first used by `tpt/031-carol-flip-logic/`)
+
+A Hudson Beat project that is not built from the owner's course sheets. Set `ORIGINAL = True` in the kit and:
+
+- there is **no `changes` page**: leave it out of `PLAN`, and `CHANGES`, `CHANGES_MUST_MENTION`, `KEPT`, `NEW_MATERIAL` are not needed
+  (`--check` rejects a `changes` page in an ORIGINAL kit and requires one otherwise);
+- `DISCLOSURE` becomes `DISCLOSURE_NEW` ("Created with the help of digital and AI tools. Notation and answer keys are verified before
+  release."): terms page, deck properties and the UPLOAD.md check;
+- wording that referred to the owner's sheet changes: the pacing column reads "Plan", the teacher-notes resource table reads "Resource /
+  How to use it", the vocabulary page says "definitions", the deck title strap says "Logic Pro project", and the Reflection teacher note
+  (`reflect_tn`) says the page is evidence for the rubric row named in the optional `REFLECT_ROW`;
+- `GRADING_TIPS` is not allowed (there is no owner rubric to separate from): fold the tips into `GRADING`, each line saying "rubric";
+- the owner-text print checks still run, so every list item you write for the project sheet, rubric and notes must be printed;
+- optional `SUBJECTS` (1-3 names from `tpt/SUBJECT-OPTIONS.json`, "Music" first) replaces the default `["Music"]` in tpt.json.
+
+Page placeholders (`@KEY`) now also work in `RESOURCES` names and in the last project step.
