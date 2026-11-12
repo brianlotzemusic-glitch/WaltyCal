@@ -1,19 +1,6 @@
 {
-  "ran_at": "2026-11-12T19:34:48.784Z",
-  "published": [
-    {
-      "item": "031-carol-flip-logic",
-      "url": "https://www.teacherspayteachers.com/Product/Holiday-Remix-in-Logic-Pro-Carol-Flip-Project-High-School-Music-Tech-18314750"
-    },
-    {
-      "item": "032-christmas-color-by-note",
-      "url": "https://www.teacherspayteachers.com/Product/Color-by-Note-Holiday-Music-Worksheets-Rhythm-Treble-Bass-Clef-Gr-2-6-18314772"
-    },
-    {
-      "item": "033-thanksgiving-music-sub-plan",
-      "url": "https://www.teacherspayteachers.com/Product/Fall-Music-Sub-Plan-K-5-3-No-Prep-Lessons-Rhythm-Reading-Lyric-Writing-18314799"
-    }
-  ],
+  "ran_at": "2026-11-12T19:56:09.597Z",
+  "published": [],
   "failed": [
     {
       "item": "030-dmp1-units-1-6-bundle",
@@ -23,13 +10,10 @@
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "030-dmp1-units-1-6-bundle",
-    "031-carol-flip-logic",
-    "032-christmas-color-by-note",
-    "033-thanksgiving-music-sub-plan"
+    "030-dmp1-units-1-6-bundle"
   ],
   "reupload": {
-    "ran_at": "2026-11-12T19:40:05.823Z",
+    "ran_at": "2026-11-12T19:57:45.422Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
