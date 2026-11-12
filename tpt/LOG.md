@@ -6,3 +6,4 @@
 - 2026-11-12: 031-carol-flip-logic (Holiday Logic kit, $9) built, QA approved after 1 fix round, released. Added ORIGINAL mode to dmp2.py.
 - 2026-11-12: 032-christmas-color-by-note (classroom, $4) built, QA approved after 1 fix round (tags), released.
 - 2026-11-12: 033-thanksgiving-music-sub-plan (classroom, $4) built, QA approved after 1 fix round (layout), released. Afternoon shift done: 031, 032, 033.
+- 2026-11-12: Owner chose to keep uploads on the Mac but make them hands-off. The Mac job now waits for the network after a wake, runs one at a time, adds a catch-up schedule (login + 6 times a day, on top of 8:30pm), opens no browser when nothing is pending, and holds an item after 2 failed publishes (publish-failed; rewrite release to re-arm). The Mac picks this up by itself on its next two runs.

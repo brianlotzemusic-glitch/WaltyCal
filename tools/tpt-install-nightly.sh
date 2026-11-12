@@ -8,6 +8,8 @@ REPO="$(cd "$(dirname "$0")/.." && pwd)"
 LABEL="com.hudsonbeat.tpt-nightly"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 launchctl bootout "gui/$(id -u)/$LABEL" 2>/dev/null || true
+# The catch-up job is added by tools/tpt-nightly.sh itself on its first run; `remove` takes both away.
+if [ "${1:-}" = "remove" ]; then launchctl bootout "gui/$(id -u)/com.hudsonbeat.tpt-catchup" 2>/dev/null || true; rm -f "$HOME/Library/LaunchAgents/com.hudsonbeat.tpt-catchup.plist"; fi
 if [ "${1:-}" = "remove" ]; then rm -f "$PLIST"; echo "Removed the nightly TpT job. (Its clone in ~/tpt-nightly, if any, can be deleted.)"; exit 0; fi
 HOUR="${1:-20}"; MIN="${2:-30}"
 # macOS privacy protection stops launchd jobs reading ~/Documents, ~/Desktop, ~/Downloads and iCloud

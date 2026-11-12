@@ -107,15 +107,23 @@ When fewer than 6 classroom items or fewer than 5 Logic kits are unchecked: one 
 ideas in the same one-line format (at most 6 web searches; more of what sells: color by note in new themes, Logic kits).
 
 ## The Mac uploader
-TpT has no API. `tools/tpt-nightly.sh` runs on the owner's Mac at 8:30pm Eastern: it pulls this branch, publishes every item
-that has `release` and no `uploaded` (up to 6 a night), and pushes `uploaded` markers and `tpt/UPLOADER-STATUS.json`.
+TpT has no API, so `tools/tpt-nightly.sh` on the owner's Mac does the uploading. The owner wants to do nothing (12 Nov 2026),
+so the job is forgiving: it runs at login, at 7:15, 9:45, 12:15, 15:15, 17:45, 20:30 and 22:15 Eastern, and after any wake
+that missed one of those times. Each run pulls this branch, publishes every item that has `release` and no `uploaded` (up to
+6 a run), and pushes the `uploaded` markers and `tpt/UPLOADER-STATUS.json`. A run with nothing to publish opens no browser.
+The status file's `ran_at` is pushed at most once in 20 hours when nothing else changed.
 The cloud never runs the uploader. `tpt/PAUSED` stops it; create that file only if the same failure hits 3 items.
-At the start of each shift read `tpt/UPLOADER-STATUS.json`:
-- `needs_login` true → push the owner: "TpT login expired. On your Mac run: source ~/.tpt-env && node tools/tpt.js login, then click Log in."
-- Items released more than 36 hours ago still have no `uploaded` and `ran_at` is older than 36 hours → push the owner: "The
-  nightly TpT upload hasn't run. Is the Mac on and awake at 8:30pm?"
-- An item in `failed` twice → one Sonnet agent reads the error (and any screenshot under `tpt/_publish/`) and fixes the item
-  or `tools/tpt.js`. This replaces one classroom build that shift.
+
+Uploads lag whenever the Mac is closed or off. That is expected: don't hold builds back for it and don't tell the owner.
+
+At the start of each shift read `tpt/UPLOADER-STATUS.json` and act only on these:
+- `needs_login` true → push the owner once: "TpT login expired. On your Mac run: source ~/.tpt-env && node tools/tpt.js login, then click Log in."
+- `held` lists an item (its publish failed twice; `tpt/NNN/publish-failed` has the error) → one Sonnet agent reads the error
+  and any screenshot under `tpt/_publish/`, fixes the item or `tools/tpt.js`, then rewrites that item's `release` file with
+  new text, which re-arms it for 2 more tries. This replaces one classroom build that shift. If the same item is held a
+  second time, leave it held and log it; don't try a third fix.
+- Items released more than 4 days ago still have no `uploaded`, and `ran_at` is more than 4 days old → push the owner once:
+  "TpT uploads have been waiting 4 days. They start again by themselves the next time your Mac is open and online."
 
 ## Rotation (keeps usage low)
 The dispatcher re-reads its whole conversation on every step. On the first shift of each month, after the builds, it starts

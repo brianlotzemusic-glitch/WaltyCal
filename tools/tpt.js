@@ -752,11 +752,21 @@ async function publish(item, dryRun) {
 // items per night. Writes tpt/UPLOADER-STATUS.json, which tools/tpt-nightly.sh commits so the
 // Manager can check every run and tell the owner when they're needed.
 const MAX_PER_RUN = 6; // owner, 12 Nov 2026: 4 products a day plus catch-up (was 3)
+// A publish that fails writes `publish-failed` (JSON: release_sha256, count, error, at). After
+// PUBLISH_TRIES failures for the same `release` file the item is HELD: it is not tried again until the
+// cloud rewrites `release` (any new text) after fixing the cause. The job now runs several times a day,
+// and this stops one broken item from being retried, with a browser window, on every run.
+const PUBLISH_TRIES = 2;
+function releaseSha(d) { try { return require("crypto").createHash("sha256").update(fs.readFileSync(path.join(d, "release"))).digest("hex"); } catch (e) { return null; } }
+function publishFails(d) {
+  try { const j = JSON.parse(fs.readFileSync(path.join(d, "publish-failed"), "utf8")); return j.release_sha256 === releaseSha(d) ? (j.count || 0) : 0; } catch (e) { return 0; }
+}
+function publishHeld(d) { return publishFails(d) >= PUBLISH_TRIES; }
 function pendingItems() {
   const dir = path.join(ROOT, "tpt");
   return fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d))
     .filter((d) => fs.existsSync(path.join(d, "tpt.json")) && fs.existsSync(path.join(d, "release"))
-      && (isApproved(d) || releasedOverQA(d)) && !fs.existsSync(path.join(d, "uploaded")))
+      && (isApproved(d) || releasedOverQA(d)) && !fs.existsSync(path.join(d, "uploaded")) && !publishHeld(d))
     .sort();
 }
 
@@ -785,7 +795,9 @@ async function publishPending() {
   status.pending_before = items.map((d) => path.basename(d));
   const skipped = releasedButSkipped();
   if (skipped.length) { status.warning = `released items NOT published: ${skipped.join("; ")}`; console.warn("WARNING: " + status.warning); }
-  const relNoUp = fs.readdirSync(path.join(ROOT, "tpt")).filter((n) => /^\d{3}-/.test(n) && fs.existsSync(path.join(ROOT, "tpt", n, "release")) && !fs.existsSync(path.join(ROOT, "tpt", n, "uploaded")));
+  const held = fs.readdirSync(path.join(ROOT, "tpt")).filter((n) => /^\d{3}-/.test(n) && !fs.existsSync(path.join(ROOT, "tpt", n, "uploaded")) && publishHeld(path.join(ROOT, "tpt", n)));
+  if (held.length) { status.held = held; console.log(`Held after ${PUBLISH_TRIES} failed tries (rewrite \`release\` to retry): ${held.join(", ")}`); }
+  const relNoUp = fs.readdirSync(path.join(ROOT, "tpt")).filter((n) => /^\d{3}-/.test(n) && fs.existsSync(path.join(ROOT, "tpt", n, "release")) && !fs.existsSync(path.join(ROOT, "tpt", n, "uploaded")) && !held.includes(n));
   if (!items.length && relNoUp.length) {
     status.warning = (status.warning ? status.warning + " | " : "") + `SANITY: 0 pending but release files without \`uploaded\` exist (${relNoUp.join(", ")}); check the repo is current and tools/tpt.js is up to date on this machine`;
     console.warn("WARNING: " + status.warning);
@@ -796,12 +808,15 @@ async function publishPending() {
     try {
       const r = await publish(item, false);
       status.published.push({ item: slug, url: (fs.readFileSync(path.join(item, "uploaded"), "utf8").split("\n")[1] || "").trim() });
+      try { fs.unlinkSync(path.join(item, "publish-failed")); } catch (e) { /* none */ }
       if (r && r.verify && !r.verify.ok) (status.live_mismatch = status.live_mismatch || []).push({ item: slug, url: r.url, problems: r.verify.problems });
     } catch (e) {
       const msg = e.message.split("\n").slice(0, 3).join(" ").slice(0, 400);
       status.failed.push({ item: slug, error: msg });
       console.error(`${slug}: ${msg}`);
       if (/not logged in|session expired|login failed/i.test(msg)) { status.needs_login = true; break; }
+      // Count the failure (a login problem above is not the item's fault and is not counted).
+      fs.writeFileSync(path.join(item, "publish-failed"), JSON.stringify({ at: new Date().toISOString(), release_sha256: releaseSha(item), count: publishFails(item) + 1, error: msg }, null, 2) + "\n");
     }
   }
   status.ok = !status.needs_login && status.failed.length === 0 && !(status.live_mismatch || []).length;
