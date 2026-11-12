@@ -4,3 +4,4 @@
 - 2026-11-12 18:26 UTC: dispatcher session ready.
 - 2026-11-12: Shift routine trig_014u9VV3zENDYyeP3Vu5HHuf (5:42am and 1:42pm ET) fires into dispatcher session_01PMk4civaSDTgEB9sBVMyMH (Sonnet). First shift: today 1:42pm ET.
 - 2026-11-12: 031-carol-flip-logic (Holiday Logic kit, $9) built, QA approved after 1 fix round, released. Added ORIGINAL mode to dmp2.py.
+- 2026-11-12: 032-christmas-color-by-note (classroom, $4) built, QA approved after 1 fix round (tags), released.

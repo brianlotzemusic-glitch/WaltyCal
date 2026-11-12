@@ -3,7 +3,7 @@
 Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released. `[next year]` = season missed.
 
 ## Classroom (3 a day)
-- [ ] Christmas Color by Note: rhythm, treble and bass clef, 3 levels, Christmas pictures, answer keys (grades 2–6; same format as 029; $4; Christmas)
+- [x] Christmas Color by Note: rhythm, treble and bass clef, 3 levels, Christmas pictures, answer keys (grades 2–6; same format as 029; $4; Christmas)
 - [ ] Thanksgiving Music Sub Plan: 3 no-prep lessons, turkey rhythm reading, gratitude lyric-writing page, listening response sheet (K–5; $4; Thanksgiving)
 - [ ] Nutcracker Listening Unit: story summary, 6 movement listening maps and response pages, instrument spotting, quiz with key; Tchaikovsky 1892 (grades 2–6; $6; December)
 - [ ] Hanukkah Color by Note: rhythm, treble and bass clef, menorah, dreidel and star pictures, answer keys (grades 2–6; $3.50; Hanukkah, early December)
