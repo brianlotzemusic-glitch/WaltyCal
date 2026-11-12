@@ -122,7 +122,7 @@ The dispatcher re-reads its whole conversation on every step. On the first shift
 its replacement: `create_session` (claude-code-remote; load with ToolSearch) with source_url
 https://github.com/brianlotzemusic-glitch/WaltyCal, source_revision `shop-factory`, model `claude-sonnet-5-5`, title
 "TpT factory (Mon YYYY)", and a prompt that only syncs, pushes one LOG line and replies "ready". When that line is on the
-branch, `create_trigger` with the same cron and prompt as the current shift routine (`get_trigger`) and
+branch, `create_trigger` with the same cron and prompt as the current shift routine (the enabled one named "TpT factory: shifts…" in `list_triggers`; read it with `get_trigger`) and
 `persistent_session_id` = the new session, then disable the old routine. Log it.
 
 ## Never
