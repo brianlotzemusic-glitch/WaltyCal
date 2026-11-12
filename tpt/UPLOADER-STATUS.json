@@ -1,19 +1,12 @@
 {
-  "ran_at": "2026-11-12T20:14:17.991Z",
-  "published": [
-    {
-      "item": "030-dmp1-units-1-6-bundle",
-      "url": "https://www.teacherspayteachers.com/Product/Digital-Music-Production-Bundle-Logic-Pro-Units-1-6-High-School-Music-Tech-18315428"
-    }
-  ],
+  "ran_at": "2026-11-12T22:50:56.106Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "030-dmp1-units-1-6-bundle"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-12T20:15:39.075Z",
+    "ran_at": "2026-11-12T22:50:56.256Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
