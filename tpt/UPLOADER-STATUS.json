@@ -1,12 +1,25 @@
 {
-  "ran_at": "2026-11-12T22:50:56.106Z",
-  "published": [],
-  "failed": [],
+  "ran_at": "2026-11-13T13:37:03.430Z",
+  "published": [
+    {
+      "item": "035-hanukkah-color-by-note",
+      "url": "https://www.teacherspayteachers.com/Product/Color-by-Note-Music-Worksheets-Menorah-Dreidel-Star-Rhythm-Treble-Bass-18324781"
+    }
+  ],
+  "failed": [
+    {
+      "item": "034-nutcracker-listening-unit",
+      "error": "publish stopped at step \"subjects: Performing Arts\" (nothing was submitted): not submitted: subjects: picked \"Performing Arts\" but the field now shows: select up to three subject areas Screenshot: tpt/_publish/034-nutcracker-listening-unit-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalT"
+    }
+  ],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "034-nutcracker-listening-unit",
+    "035-hanukkah-color-by-note"
+  ],
   "reupload": {
-    "ran_at": "2026-11-12T22:50:56.256Z",
+    "ran_at": "2026-11-13T13:39:12.449Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -18,5 +31,5 @@
     "discovered_edit": false,
     "ok": true
   },
-  "ok": true
+  "ok": false
 }
