@@ -8,3 +8,5 @@
 - 2026-11-12: 033-thanksgiving-music-sub-plan (classroom, $4) built, QA approved after 1 fix round (layout), released. Afternoon shift done: 031, 032, 033.
 - 2026-11-12: Owner chose to keep uploads on the Mac but make them hands-off. The Mac job now waits for the network after a wake, runs one at a time, adds a catch-up schedule (login + 6 times a day, on top of 8:30pm), opens no browser when nothing is pending, and holds an item after 2 failed publishes (publish-failed; rewrite release to re-arm). The Mac picks this up by itself on its next two runs.
 - 2026-11-12: 030 DMP1 bundle: found why it never published. Three of its four tags (High School, Project Based Learning, Technology) are not in TpT's Tag list, and the uploader refuses unknown values. Tags corrected, release rewritten (re-armed). TpT's full tag list saved as tpt/TAG-OPTIONS.json; builders and QA must use exact entries.
+- 2026-11-13: 034-nutcracker-listening-unit (classroom, $6) built, QA approved first pass, released.
+- 2026-11-13: 035-hanukkah-color-by-note (classroom, $3.50) built, QA approved first pass, released. Morning shift done: 034, 035.
