@@ -1,6 +1,6 @@
 {
-  "at": "2026-11-13T13:37:52.608Z",
+  "at": "2026-11-13T13:44:20.792Z",
   "release_sha256": "05deb5d1e593270e76e74e4fc444fdc7bc5e9c55ec57febb22ba15af237cc8d7",
-  "count": 1,
+  "count": 2,
   "error": "publish stopped at step \"subjects: Performing Arts\" (nothing was submitted): not submitted: subjects: picked \"Performing Arts\" but the field now shows: select up to three subject areas Screenshot: tpt/_publish/034-nutcracker-listening-unit-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalT"
 }
