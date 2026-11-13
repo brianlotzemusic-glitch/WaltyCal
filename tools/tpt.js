@@ -782,6 +782,26 @@ function releasedButSkipped() {
   return out;
 }
 
+// Duplicate guard (13 Nov 2026). The 12 Nov run published four products but its report never reached GitHub,
+// so the repo still listed them as waiting. If this machine ever loses its `uploaded` markers (a second clone,
+// a failed push, a reset), the next run would publish them AGAIN. Before each publish, look for the item's exact
+// title on the PUBLIC store page; if it is already live, write the marker instead of uploading.
+// TpT's page addresses carry the whole title: lowercase words joined by "-", "&" and quotes dropped.
+const STORE_URL = "https://www.teacherspayteachers.com/store/brian-lotze?order=Most-Recent";
+function slugNorm(s) { return String(s).toLowerCase().replace(/&/g, " ").replace(/'/g, "").replace(/[^a-z0-9]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, ""); }
+function liveUrlForTitle(title, html) {
+  const t = slugNorm(title), re = /href="(\/Product\/([^"?#]+?)-(\d+))"/g;
+  let m;
+  while ((m = re.exec(html))) { const slug = slugNorm(m[2]); if (slug === t || (slug.length >= 60 && t.startsWith(slug))) return "https://www.teacherspayteachers.com" + m[1]; }
+  return null;
+}
+async function fetchStoreHtml() {
+  try {
+    const r = await fetch(STORE_URL, { headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129 Safari/537.36" } });
+    return r.ok ? await r.text() : null;
+  } catch (e) { return null; } // unknown: carry on and publish as before
+}
+
 async function publishPending() {
   const status = { ran_at: new Date().toISOString(), published: [], failed: [], needs_login: false, paused: false, pending_before: [] };
   try { status.reupload = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "UPLOADER-STATUS.json"), "utf8")).reupload; } catch (e) { /* none yet */ }
@@ -803,9 +823,18 @@ async function publishPending() {
     console.warn("WARNING: " + status.warning);
   }
   console.log(items.length ? `Released and waiting: ${status.pending_before.join(", ")}` : "Nothing released to publish.");
+  const storeHtml = items.length ? await fetchStoreHtml() : null;
   for (const item of items) {
     const slug = path.basename(item);
     try {
+      let already = null;
+      if (storeHtml) { try { const t = loadItem(item).title; already = t && liveUrlForTitle(t, storeHtml); } catch (e) { /* the normal checks report it */ } }
+      if (already) {
+        fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} found already live on TpT by its title (not uploaded again)\n${already}\n`);
+        status.published.push({ item: slug, url: already, note: "already live; marker written, nothing uploaded" });
+        console.log(`${slug}: already live at ${already}; marked uploaded and NOT uploading it again.`);
+        continue;
+      }
       const r = await publish(item, false);
       status.published.push({ item: slug, url: (fs.readFileSync(path.join(item, "uploaded"), "utf8").split("\n")[1] || "").trim() });
       try { fs.unlinkSync(path.join(item, "publish-failed")); } catch (e) { /* none */ }
