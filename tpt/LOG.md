@@ -11,3 +11,4 @@
 - 2026-11-13: 034-nutcracker-listening-unit (classroom, $6) built, QA approved first pass, released.
 - 2026-11-13: 035-hanukkah-color-by-note (classroom, $3.50) built, QA approved first pass, released. Morning shift done: 034, 035.
 - 2026-11-13: The 12 Nov Mac run published 030-033 (all live on TpT, checked on the public store page) but its push to GitHub failed, so the repo still showed them waiting. Added tools/tpt-live-check.py (cloud reads the public store page; the dispatcher counts LIVE items as uploaded and never writes uploaded files) and a duplicate guard in tools/tpt.js (skips any title already on the store page). The Mac's cause for the failed push is not yet known (needs the tail of ~/Library/Logs/tpt-nightly.log).
+- 2026-11-13: 036-lofi-holiday-beat (Holiday Logic kit, $8) built, QA approved first pass, released. dmp2.py tag check now reads TAG-OPTIONS.json.

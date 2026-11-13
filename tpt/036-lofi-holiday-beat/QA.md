@@ -1,0 +1,17 @@
+# QA: 036 Lo-Fi Holiday Beat (independent review)
+
+## Checks run
+- `python3 gen.py --check` in 036: CHECK OK (27 pages, 15 slides, notes on every slide, preview 4 pages watermarked).
+- dmp2.py change: kit 014 `--check` passes. Kits 025, 026 and 031 fail only on "release exists / uploaded exists" (the pre-existing rule). The edit only widens the tag check to TAG-OPTIONS.json plus the old proven list.
+- Rendered all 27 PDF pages (60 dpi), all 15 deck slides (50 dpi), the 4 preview pages, cover and previews 1-3. Nothing clipped, overlapping or blank; cover reads at thumbnail size. Pages 10 and 11 (worked example) have spare white space at the bottom and small map labels, but they are legible. Not a rejection item.
+- Zip holds the three files named in UPLOAD.md; all are byte-identical to the folder copies. No audio. Deck .pptx has 15 slides, all with notes; deck PDF 15 pages.
+- Arithmetic recomputed: all bars add up (4/4 = 16 units; Tannenbaum 3/4 = 12 units; God Rest Ye bar 4 = 12+4). 28 bars x 3 s = 84 s at 80 BPM; sections 4+8+4+8+4 = 28. 16th = 187.5 ms; light swing 58% = +30 ms; triplet 67% = +62.5 ms. Length helper table correct at 70/75/80/85/90 BPM (checked 20/24/28 bars). Rubric 5 x 5 = /25. Pacing slides 1-6/7-9/10-11/12-15 match badges. Page counts in the description (1+10+15+1 = 27, 15 slides, 42 total) are right.
+- Tunes: Good King Wenceslas = "Tempus adest floridum", Piae Cantiones, 1582 (confirmed by search; Neale 1853 words not used). God Rest Ye Merry, Gentlemen = English traditional, early-1800s print is a safe (conservative) claim, no words used. O Tannenbaum = Zarnack 1820 setting is real, but the tune is older (earlier as the craftsmen's song "Es lebe hoch", before 1799); the wording "printed in Zarnack's songbook in 1820" is true and still public domain. I could not confirm the pitches of the Tannenbaum phrase from the search; the chart is plausible and matches the stated structure. Note-by-note melodies for Wenceslas and God Rest Ye match the tunes as I know them. No lyrics, all pre-1930. Source-line wording is hedged ("in print in the early 1800s").
+- Logic Pro names: Drummer / Session Players, Step Sequencer, Drum Machine Designer, Region inspector Quantize + Q-Swing, Scanner Vibrato, Tape Delay, Bitcrusher (Resolution, Downsampling, Mix), Channel EQ High Cut, Loop Browser (O), Mixer (X), Automation (A), Library (Y), File > Bounce > Project or Section (Cmd-B), ChromaGlow ("if your version has it"), Overdrive: all real. Page 8 carries a version note ("labels vary between versions"). Hedging is adequate.
+- tpt.json: tags (Winter, Christmas-Chanukah-Kwanzaa, Holiday, Project-based Learning, Projects) and subjects (Music, Computer Science - Technology, Music Composition) are exact entries; 4 grades (9th-12th); every file listed exists; price 8.00 within $7-9.
+- UPLOAD.md: title 72 chars, "Logic Pro" starts at char 12, disclosure line present in description and on terms page; description matches the product. Tiny wording nit: "(Good King Wenceslas, God Rest Ye Merry, Gentlemen and O Tannenbaum in 3/4)" is ambiguous because of the comma in the carol's title; optional fix.
+- Owner questions in UPLOAD.md (secular fourth tune, price) are not defects.
+
+**Verdict: APPROVED**
+
+No required fixes. Optional: (1) reword the three-carol list in the description to avoid the comma ambiguity; (2) enlarge the page 11 map labels if there is room.

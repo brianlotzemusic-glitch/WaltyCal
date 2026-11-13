@@ -46,7 +46,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 
 ## Holiday Logic kits (1 a day; high school; original Hudson Beat projects; see "Holiday Logic kits" in TPT-FACTORY.md)
 - [x] Carol Flip: remix a public-domain carol in any genre; melodies given as piano-roll note charts (Jingle Bells, Deck the Halls, Silent Night). First kit: add the ORIGINAL mode to dmp2.py ($9; winter)
-- [ ] Lo-Fi Holiday Beat: lo-fi hip-hop version of a public-domain carol; swing, tape and bitcrush effects, vinyl noise ($8; winter)
+- [x] Lo-Fi Holiday Beat: lo-fi hip-hop version of a public-domain carol; swing, tape and bitcrush effects, vinyl noise ($8; winter)
 - [ ] Trap Nutcracker: flip two Tchaikovsky themes (Sugar Plum Fairy, Trepak; 1892) with 808s and hi-hat rolls; note charts given ($9; December)
 - [ ] Winter Soundscape: design a snowstorm from scratch with Alchemy and automation, no melody required ($8; winter)
 - [ ] Holiday Commercial Jingle: 30-second jingle for an invented product, from a client brief, with voice-over ($8; winter)
