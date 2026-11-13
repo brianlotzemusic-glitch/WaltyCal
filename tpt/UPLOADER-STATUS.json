@@ -1,19 +1,12 @@
 {
-  "ran_at": "2026-11-13T13:43:20.890Z",
+  "ran_at": "2026-11-13T14:45:23.527Z",
   "published": [],
-  "failed": [
-    {
-      "item": "034-nutcracker-listening-unit",
-      "error": "publish stopped at step \"subjects: Performing Arts\" (nothing was submitted): not submitted: subjects: picked \"Performing Arts\" but the field now shows: select up to three subject areas Screenshot: tpt/_publish/034-nutcracker-listening-unit-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalT"
-    }
-  ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "034-nutcracker-listening-unit"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-13T13:44:20.939Z",
+    "ran_at": "2026-11-13T14:45:23.677Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -25,5 +18,8 @@
     "discovered_edit": false,
     "ok": true
   },
-  "ok": false
+  "held": [
+    "034-nutcracker-listening-unit"
+  ],
+  "ok": true
 }
