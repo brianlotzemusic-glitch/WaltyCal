@@ -6,7 +6,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Christmas Color by Note: rhythm, treble and bass clef, 3 levels, Christmas pictures, answer keys (grades 2–6; same format as 029; $4; Christmas)
 - [x] Thanksgiving Music Sub Plan: 3 no-prep lessons, turkey rhythm reading, gratitude lyric-writing page, listening response sheet (K–5; $4; Thanksgiving)
 - [x] Nutcracker Listening Unit: story summary, 6 movement listening maps and response pages, instrument spotting, quiz with key; Tchaikovsky 1892 (grades 2–6; $6; December)
-- [ ] Hanukkah Color by Note: rhythm, treble and bass clef, menorah, dreidel and star pictures, answer keys (grades 2–6; $3.50; Hanukkah, early December)
+- [x] Hanukkah Color by Note: rhythm, treble and bass clef, menorah, dreidel and star pictures, answer keys (grades 2–6; $3.50; Hanukkah, early December)
 - [ ] Beginning Band Rhythm Counting Worksheets: write in the counts, 20 pages from quarter notes to dotted rhythms and 6/8, answer keys (grades 5–8; $5; evergreen)
 - [ ] December Music Bell-Ringers: 20 no-prep daily warm-up pages, rhythm, note names, symbols, non-denominational, answer keys (grades 3–6; $4.50; December)
 - [ ] Winter Color by Music Symbol: colour by dynamics, tempo terms and symbols, 3 levels, answer keys (grades 2–5; $4; winter)
