@@ -1,0 +1,19 @@
+{
+  "price": "5.00",
+  "license_price": "5.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": ["5th-grade", "6th-grade", "7th-grade", "8th-grade"],
+  "subjects": ["Music", "Instrumental Music"],
+  "tags": ["Worksheets", "Student Practice", "Printables"],
+  "formats": ["PDF"],
+  "pages": 34,
+  "answer_key": "Included",
+  "files": {
+    "product": "band-rhythm-counting-worksheets.pdf",
+    "preview": "band-rhythm-counting-worksheets-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
