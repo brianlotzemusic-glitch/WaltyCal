@@ -1,0 +1,6 @@
+{
+  "at": "2026-11-13T20:26:46.279Z",
+  "release_sha256": "05deb5d1e593270e76e74e4fc444fdc7bc5e9c55ec57febb22ba15af237cc8d7",
+  "count": 1,
+  "error": "publish stopped at step \"tags: Student Practice\" (nothing was submitted): not submitted: tags: picked \"Student Practice\" but the field now shows: select up to six tags Screenshot: tpt/_publish/037-band-rhythm-counting-worksheets-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalThumb1 name="
+}

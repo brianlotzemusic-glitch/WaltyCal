@@ -1,12 +1,24 @@
 {
-  "ran_at": "2026-11-13T14:45:23.527Z",
+  "ran_at": "2026-11-13T20:24:34.658Z",
   "published": [],
-  "failed": [],
+  "failed": [
+    {
+      "item": "036-lofi-holiday-beat",
+      "error": "publish stopped at step \"tags: Holiday\" (nothing was submitted): not submitted: tags: picked \"Holiday\" but the field now shows: select up to six tags Screenshot: tpt/_publish/036-lofi-holiday-beat-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalThumb1 name=- (hidden), #ItemDigitalThumb2 n"
+    },
+    {
+      "item": "037-band-rhythm-counting-worksheets",
+      "error": "publish stopped at step \"tags: Student Practice\" (nothing was submitted): not submitted: tags: picked \"Student Practice\" but the field now shows: select up to six tags Screenshot: tpt/_publish/037-band-rhythm-counting-worksheets-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalThumb1 name="
+    }
+  ],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "036-lofi-holiday-beat",
+    "037-band-rhythm-counting-worksheets"
+  ],
   "reupload": {
-    "ran_at": "2026-11-13T14:45:23.677Z",
+    "ran_at": "2026-11-13T20:26:46.501Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -21,5 +33,5 @@
   "held": [
     "034-nutcracker-listening-unit"
   ],
-  "ok": true
+  "ok": false
 }
