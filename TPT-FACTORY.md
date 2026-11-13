@@ -116,13 +116,20 @@ The cloud never runs the uploader. `tpt/PAUSED` stops it; create that file only 
 
 Uploads lag whenever the Mac is closed or off. That is expected: don't hold builds back for it and don't tell the owner.
 
+**The Mac's report can go missing.** On 12 Nov all four released products went live but the Mac's push to GitHub failed, so the
+repo still said "waiting". So at the start of each shift run `python3 tools/tpt-live-check.py` (reads TpT's public store page,
+needs no login). Every item it prints as `LIVE` is on TpT: count it as uploaded for bundle conditions and counts. **Never write
+an `uploaded` file yourself**: the Mac owns those files, and one created in both places makes the Mac's next `git pull` fail.
+`tools/tpt.js` also checks the store page before each upload and skips anything already live, so a lost marker can't cause a
+duplicate listing.
+
 At the start of each shift read `tpt/UPLOADER-STATUS.json` and act only on these:
 - `needs_login` true → push the owner once: "TpT login expired. On your Mac run: source ~/.tpt-env && node tools/tpt.js login, then click Log in."
 - `held` lists an item (its publish failed twice; `tpt/NNN/publish-failed` has the error) → one Sonnet agent reads the error
   and any screenshot under `tpt/_publish/`, fixes the item or `tools/tpt.js`, then rewrites that item's `release` file with
   new text, which re-arms it for 2 more tries. This replaces one classroom build that shift. If the same item is held a
   second time, leave it held and log it; don't try a third fix.
-- Items released more than 4 days ago still have no `uploaded`, and `ran_at` is more than 4 days old → push the owner once:
+- An item released more than 4 days ago is still `WAITING` in the live check, and `ran_at` is more than 4 days old → push the owner once:
   "TpT uploads have been waiting 4 days. They start again by themselves the next time your Mac is open and online."
 
 ## Rotation (keeps usage low)
