@@ -1171,8 +1171,9 @@ def verify_data():
         errs.append("grades: METADATA-GUIDE prescribes 9th-12th (GRADE_SLUGS 9th..12th, GRADES_TEXT '9–12')")
     if K.ANSWER_KEY not in (None, "Included"):
         errs.append("answer_key: only the proven 'Included', or None")
-    if not set(K.TAGS) <= PROVEN_TAGS or not 1 <= len(K.TAGS) <= 6:
-        errs.append("tags: proven values only (UPLOAD.md lists candidate extras)")
+    tag_opts = set(json.load(open(os.path.join(TPT, "TAG-OPTIONS.json"), encoding="utf8"))["options"])
+    if not set(K.TAGS) <= (PROVEN_TAGS | tag_opts) or not 1 <= len(K.TAGS) <= 6:
+        errs.append("tags: 1-6 exact entries of tpt/TAG-OPTIONS.json")
     if hasattr(K, "SUBJECTS"):
         opts = json.load(open(os.path.join(TPT, "SUBJECT-OPTIONS.json"), encoding="utf8"))
         if not 1 <= len(K.SUBJECTS) <= 3 or K.SUBJECTS[0] != "Music" or any(x not in opts for x in K.SUBJECTS):

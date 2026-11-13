@@ -1,0 +1,40 @@
+{
+  "price": "8.00",
+  "license_price": "8.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Computer Science - Technology",
+    "Music Composition"
+  ],
+  "tags": [
+    "Winter",
+    "Christmas-Chanukah-Kwanzaa",
+    "Holiday",
+    "Project-based Learning",
+    "Projects"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 42,
+  "zip_contents": [
+    "lofi-holiday-beat.pdf",
+    "lofi-holiday-beat-intro-deck.pptx",
+    "lofi-holiday-beat-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "lofi-holiday-beat.zip",
+    "preview": "lofi-holiday-beat-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

@@ -7,7 +7,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Thanksgiving Music Sub Plan: 3 no-prep lessons, turkey rhythm reading, gratitude lyric-writing page, listening response sheet (K–5; $4; Thanksgiving)
 - [x] Nutcracker Listening Unit: story summary, 6 movement listening maps and response pages, instrument spotting, quiz with key; Tchaikovsky 1892 (grades 2–6; $6; December)
 - [x] Hanukkah Color by Note: rhythm, treble and bass clef, menorah, dreidel and star pictures, answer keys (grades 2–6; $3.50; Hanukkah, early December)
-- [ ] Beginning Band Rhythm Counting Worksheets: write in the counts, 20 pages from quarter notes to dotted rhythms and 6/8, answer keys (grades 5–8; $5; evergreen)
+- [x] Beginning Band Rhythm Counting Worksheets: write in the counts, 20 pages from quarter notes to dotted rhythms and 6/8, answer keys (grades 5–8; $5; evergreen)
 - [ ] December Music Bell-Ringers: 20 no-prep daily warm-up pages, rhythm, note names, symbols, non-denominational, answer keys (grades 3–6; $4.50; December)
 - [ ] Winter Color by Music Symbol: colour by dynamics, tempo terms and symbols, 3 levels, answer keys (grades 2–5; $4; winter)
 - [ ] Band and Orchestra Emergency Sub Plans: 5 no-instrument lessons a non-music sub can run, readings, worksheets, keys (grades 6–12; $7; evergreen)
@@ -46,7 +46,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 
 ## Holiday Logic kits (1 a day; high school; original Hudson Beat projects; see "Holiday Logic kits" in TPT-FACTORY.md)
 - [x] Carol Flip: remix a public-domain carol in any genre; melodies given as piano-roll note charts (Jingle Bells, Deck the Halls, Silent Night). First kit: add the ORIGINAL mode to dmp2.py ($9; winter)
-- [ ] Lo-Fi Holiday Beat: lo-fi hip-hop version of a public-domain carol; swing, tape and bitcrush effects, vinyl noise ($8; winter)
+- [x] Lo-Fi Holiday Beat: lo-fi hip-hop version of a public-domain carol; swing, tape and bitcrush effects, vinyl noise ($8; winter)
 - [ ] Trap Nutcracker: flip two Tchaikovsky themes (Sugar Plum Fairy, Trepak; 1892) with 808s and hi-hat rolls; note charts given ($9; December)
 - [ ] Winter Soundscape: design a snowstorm from scratch with Alchemy and automation, no melody required ($8; winter)
 - [ ] Holiday Commercial Jingle: 30-second jingle for an invented product, from a client brief, with voice-over ($8; winter)
