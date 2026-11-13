@@ -1,0 +1,36 @@
+{
+  "price": "6.00",
+  "license_price": "6.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "2nd-grade",
+    "3rd-grade",
+    "5th-grade",
+    "6th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Performing Arts"
+  ],
+  "tags": [
+    "Christmas-Chanukah-Kwanzaa",
+    "Winter",
+    "Unit Plans",
+    "Worksheets",
+    "Assessment",
+    "Lessons"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 17,
+  "answer_key": "Included",
+  "files": {
+    "product": "nutcracker-listening-unit.pdf",
+    "preview": "nutcracker-listening-unit-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
