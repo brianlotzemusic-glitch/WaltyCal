@@ -1,0 +1,141 @@
+<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:'Oswald';font-weight:300;font-style:normal;src:url('../../fonts/oswald-latin-300-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:500;font-style:normal;src:url('../../fonts/oswald-latin-500-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:700;font-style:normal;src:url('../../fonts/oswald-latin-700-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:normal;src:url('../../fonts/source-sans-3-latin-400-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:italic;src:url('../../fonts/source-sans-3-latin-400-italic.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:600;font-style:normal;src:url('../../fonts/source-sans-3-latin-600-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:700;font-style:normal;src:url('../../fonts/source-sans-3-latin-700-normal.woff2') format('woff2');}@font-face{font-family:'Bravura';font-weight:400;font-style:normal;src:url('../../fonts/bravura.woff2') format('woff2');}
+@page { size: 8.5in 11in; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+body { font-family: 'Source Sans 3', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; position: relative; overflow: hidden; page-break-after: always; break-after: page;
+        padding: 0.42in 0.5in 0.38in; display: flex; flex-direction: column; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+.h { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; letter-spacing: .01em; line-height: 1; }
+.l { font-family: 'Oswald'; font-weight: 300; }
+.top { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2.2pt solid #000; padding-bottom: 6pt; }
+.top .t { font-size: 25pt; }
+.top .t small { display: block; font-family: 'Oswald'; font-weight: 300; text-transform: none; font-size: 12pt; letter-spacing: 0; margin-top: 4pt; }
+.tag { text-align: right; }
+.tag .lv { display: inline-block; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 15pt; padding: 3pt 9pt 4pt; border-radius: 4pt; letter-spacing: .04em; }
+.tag .lv.ak { background: #2B7FB8; }
+.tag .ln { font-family: 'Oswald'; font-weight: 300; font-size: 11pt; margin-top: 3pt; }
+.name { display: flex; gap: 18pt; font-size: 12pt; margin: 9pt 0 5pt; }
+.name span { flex: 1; border-bottom: 1pt solid #000; height: 15pt; }
+.name span.d { flex: 0 0 1.6in; }
+.how { font-size: 11.5pt; margin: 2pt 0 5pt; }
+.how b { font-weight: 700; }
+.legend { display: flex; flex-wrap: wrap; gap: 4pt 6pt; margin: 2pt 0 4pt; }
+.lgc { display: flex; align-items: center; gap: 2pt; border: 1pt solid #000; border-radius: 5pt; padding: 1pt 7pt 1pt 2pt; }
+.lgt b { display: block; font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 8.5pt; letter-spacing: .02em; line-height: 1.1; }
+.lgt span { font-size: 8.5pt; line-height: 1.1; display: block; }
+.cnt { font-size: 9.5pt; font-style: italic; margin: 1pt 0 0; }
+.exs { flex: 1; display: flex; flex-direction: column; justify-content: space-around; padding: 4pt 0 2pt; }
+.foot { display: flex; justify-content: space-between; font-size: 8.5pt; color: #333; border-top: .8pt solid #000; padding-top: 3pt; }
+.wm { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-38deg); font-family: 'Oswald'; font-weight: 700;
+      font-size: 150pt; color: rgba(0,0,0,.13); letter-spacing: .06em; white-space: nowrap; pointer-events: none; z-index: 9; }
+.keyblock { margin-top: 6pt; }
+.keyblock .kt { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 12.5pt; border-bottom: 1pt solid #000; padding-bottom: 2pt; margin-bottom: 5pt; display: flex; justify-content: space-between; }
+.keyblock .kt span { font-weight: 300; text-transform: none; font-size: 10.5pt; }
+.cv { width: 100%; height: auto; }
+.keyblock svg { margin: 0 0 1pt; width: 91%; height: auto; }
+.doc h1 { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 30pt; margin: 0 0 4pt; line-height: 1; }
+.doc h2 { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 14pt; margin: 13pt 0 4pt; letter-spacing: .02em; }
+.doc h2 .acc { color: #2B7FB8; }
+.doc p, .doc li { font-size: 11pt; line-height: 1.38; margin: 0 0 5pt; }
+.doc ul { margin: 0 0 4pt; padding-left: 16pt; }
+.doc .rule { border-bottom: 2.2pt solid #000; margin-bottom: 8pt; padding-bottom: 6pt; }
+.doc table { border-collapse: collapse; width: 100%; font-size: 10pt; margin: 2pt 0 4pt; }
+.doc td, .doc th { border: 1pt solid #000; padding: 2pt 5pt; text-align: left; vertical-align: top; }
+.doc th { font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 9.5pt; background: #000; color: #fff; }
+.cols { display: flex; gap: 22pt; }
+.cols > div { flex: 1; }
+.small { font-size: 9pt !important; color: #333; }
+.refgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6pt; margin: 4pt 0 6pt; }
+.refcell { border: 1.3pt solid #000; border-radius: 6pt; text-align: center; padding: 4pt 2pt 4pt; }
+.refcell b { display: block; font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 9.5pt; }
+.refcell span { font-size: 9pt; display: block; line-height: 1.2; }
+.cover { align-items: center; justify-content: space-between; padding: 0.55in 0.6in 0.5in; }
+.store { font-family: 'Oswald'; font-weight: 500; font-size: 13pt; letter-spacing: .32em; text-transform: uppercase; }
+.ctitle { text-align: center; }
+.ctitle .a { font-family: 'Oswald'; font-weight: 700; font-size: 44pt; line-height: 1; letter-spacing: .02em; }
+.ctitle .b { font-family: 'Oswald'; font-weight: 700; white-space: nowrap; font-size: 58pt; line-height: .95; letter-spacing: .01em; }
+.ctitle .c { font-family: 'Oswald'; font-weight: 300; font-size: 17pt; margin-top: 8pt; }
+.cband { width: 100%; background: #000; color: #fff; text-align: center; font-family: 'Oswald'; font-weight: 500; font-size: 14pt;
+         letter-spacing: .08em; text-transform: uppercase; padding: 8pt 0 9pt; border-radius: 4pt; }
+.cband em { font-style: normal; color: #2B7FB8; }
+
+.sec { margin-top: 7pt; }
+.sh { display: flex; align-items: center; gap: 7pt; border-bottom: 1pt solid #000; padding-bottom: 2pt; margin-bottom: 4pt; }
+.sh .h { font-size: 14pt; letter-spacing: .03em; }
+.sh .h i { font-style: normal; color: #2B7FB8; margin-right: 3pt; }
+.sh .si { font-size: 10pt; font-style: italic; margin-left: auto; text-align: right; }
+.body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.symrow { display: flex; gap: 7pt; }
+.sc { flex: 1; border: 1.3pt solid #000; border-radius: 6pt; padding: 1pt 3pt 4pt; text-align: center; position: relative; }
+.sc .n { position: absolute; left: 5pt; top: 3pt; font-family: 'Oswald'; font-weight: 700; font-size: 11pt; }
+.sc svg { margin: 0 auto; width: 100%; height: auto; }
+.sc .ans { display: flex; align-items: center; justify-content: center; gap: 4pt; font-size: 9.5pt; margin-top: 1pt; }
+.sc .ans span { display: inline-block; width: 24pt; height: 16pt; border: 1pt solid #000; border-radius: 3pt; }
+.bank { display: flex; justify-content: space-between; gap: 6pt; margin-top: 6pt; background: #fff; border: 1.3pt dashed #000; border-radius: 6pt; padding: 4pt 8pt; }
+.bank .bk { font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 10.5pt; letter-spacing: .02em; white-space: nowrap; }
+.bank .bk b { display: inline-block; background: #000; color: #fff; border-radius: 3pt; width: 14pt; text-align: center; margin-right: 3pt; font-weight: 700; }
+.gaps { display: grid; grid-template-columns: 1fr 1fr; gap: 3pt 14pt; }
+.two .sec { margin-top: 3pt; }
+.two .nrs svg { width: 78%; height: auto; margin-left: 0; }
+.two .sc svg { width: 82%; }
+.two .gp { height: 74pt; }
+.two .name { margin: 6pt 0 2pt; }
+.nrs svg, .rhs svg { margin: 0 0 1pt; }
+.kday { margin-top: 5pt; }
+.kday .kt { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 12.5pt; border-bottom: 1pt solid #000; padding-bottom: 2pt; margin-bottom: 3pt; display: flex; justify-content: space-between; }
+.kday .kt span { font-weight: 300; text-transform: none; font-size: 10.5pt; }
+.nrk { display: flex; gap: 8pt; }
+.nrk .nr { flex: 1; min-width: 0; width: auto !important; }
+.nrk .nr:only-child { flex: none; width: 70% !important; }
+.kday .nr { width: 82%; height: auto; }
+.kday .ex { width: 88%; height: auto; }
+.kday .gps { display: flex; flex-wrap: wrap; gap: 0 10pt; }
+.kday .gp { width: 48%; height: auto; }
+.ksym { display: flex; gap: 5pt; margin: 3pt 0 2pt; }
+.ksym div { flex: 1; border: 1pt solid #000; border-radius: 4pt; padding: 1pt 3pt; display: flex; align-items: center; gap: 4pt; font-size: 8.5pt; line-height: 1.1; }
+.ksym svg { width: 38pt; height: auto; flex: none; }
+.ksym b { font-family: 'Oswald'; font-weight: 700; color: #2B7FB8; font-size: 11pt; }
+.glos { display: grid; grid-template-columns: 1fr 1fr; gap: 5pt 16pt; margin-top: 4pt; }
+.gl { display: flex; align-items: center; gap: 6pt; border-bottom: .8pt solid #bbb; padding-bottom: 3pt; }
+.gl svg { width: 70pt; height: auto; flex: none; border: 1pt solid #000; border-radius: 5pt; }
+.gl b { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 10.5pt; display: block; }
+.gl span { font-size: 9.5pt; line-height: 1.2; display: block; }
+.rstaff { margin: 2pt 0 4pt; }
+.mn { font-size: 10pt; margin: 0 0 2pt; }
+
+.cvr { width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; background: #fff; overflow: hidden; }
+.cvr .store { font-family: 'Oswald'; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; font-size: 22px; margin-top: 34px; }
+.cards { display: flex; gap: 16px; width: 904px; }
+.ccard { flex: 1; border: 3px solid #000; border-radius: 14px; text-align: center; padding: 10px 6px 12px; position: relative; background: #fff; }
+.ccard svg { margin: 14px auto 4px; width: 112px; height: 112px; }
+.ccard .cl { position: absolute; left: 9px; top: 7px; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 21px; width: 30px; height: 30px; line-height: 31px; border-radius: 50%; }
+.ccard .cn { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 25px; line-height: 1.05; }
+.ccard .cs { font-family: 'Oswald'; font-weight: 300; font-size: 17px; margin-top: 3px; }
+.cvr .hd { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; text-align: center; line-height: .95; }
+.cvr .sub { font-family: 'Oswald'; font-weight: 300; text-align: center; }
+.cvr .band { width: 100%; background: #000; color: #fff; text-align: center; font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 26px; padding: 16px 0 18px; }
+.cvr .band em { font-style: normal; color: #2B7FB8; }
+.dots { position: absolute; inset: 0; pointer-events: none; }
+html,body{margin:0;background:#fff}
+.sq { width: 1000px; height: 1000px; position: relative; overflow: hidden; background: #fff; display: flex; flex-direction: column; align-items: center; }
+.sq .store { font-family: 'Oswald'; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; font-size: 22px; margin-top: 34px; }
+.sq .hd { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; text-align: center; line-height: .95; }
+.sq .sub { font-family: 'Oswald'; font-weight: 300; text-align: center; }
+.sq .band { position: absolute; left: 0; right: 0; bottom: 0; background: #000; color: #fff; text-align: center; font-family: 'Oswald';
+            font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 26px; padding: 16px 0 18px; }
+.sq .band em { font-style: normal; color: #2B7FB8; }
+.shot { background: #fff; border: 2px solid #000; box-shadow: 8px 8px 0 #000; position: relative; overflow: hidden; }
+.shot img { display: block; width: 100%; }
+.lbl { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 22px; text-align: center; margin-top: 16px; }
+.lbl span { font-weight: 300; text-transform: none; display: block; font-size: 18px; }
+.dc { box-sizing: border-box; border: 2px solid #000; border-radius: 8px; padding: 6px 8px 6px; background: #fff; text-align: left; position: relative; }
+.dc .dn { font-family: 'Oswald'; font-weight: 700; font-size: 15px; color: #2B7FB8; letter-spacing: .06em; }
+.dc .dt { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 18px; line-height: 1.05; }
+.dc .df { font-family: 'Oswald'; font-weight: 300; font-size: 14px; line-height: 1.15; margin-top: 3px; }
+.sec4 { display: flex; gap: 14px; width: 904px; margin-top: 30px; }
+.sec4 > div { flex: 1; border: 2px solid #000; border-radius: 10px; padding: 8px 6px; text-align: center; background: #fff; }
+.sec4 svg { margin: 0 auto; }
+.sec4 b { display: block; font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 20px; margin-top: 2px; }
+.sec4 span { font-family: 'Oswald'; font-weight: 300; font-size: 16px; display: block; }
+</style></head><body><div class="sq"><div class="store">Hudson Beat</div><div class="hd" style="font-size:62px;margin-top:14px">20 days, step by step</div><div style="display:flex;flex-wrap:wrap;gap:16px;width:900px;margin-top:34px;justify-content:center"><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 1</div><div class="dt">Snowflake</div><div class="df">Treble lines; quarter notes and rests</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 2</div><div class="dt">Mittens</div><div class="df">Treble spaces; half notes</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 3</div><div class="dt">Hot Cocoa</div><div class="df">Treble lines and spaces; half rests</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 4</div><div class="dt">Ice Skates</div><div class="df">Low treble notes; whole notes and rests</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 5</div><div class="dt">Sled Run</div><div class="df">Middle treble notes; 3/4 time</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 6</div><div class="dt">Snow Globe</div><div class="df">Treble clef C4 to A5; 2/4 and 3/4 time</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 7</div><div class="dt">Warm Scarf</div><div class="df">Treble clef, all notes; eighth notes</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 8</div><div class="dt">Icicles</div><div class="df">Treble clef, all notes; eighth notes in 3/4</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 9</div><div class="dt">Snowball</div><div class="df">Bass lines; eighth rests</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 10</div><div class="dt">Warm Boots</div><div class="df">Bass spaces; dotted half notes in 3/4</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 11</div><div class="dt">Pine Trees</div><div class="df">Bass lines and spaces; dotted half notes in 4/4</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 12</div><div class="dt">Snow Day</div><div class="df">Bass clef, all notes; rhythm review</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 13</div><div class="dt">Fireside</div><div class="df">Treble and bass together; dotted quarter and eighth</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 14</div><div class="dt">Winter Stars</div><div class="df">Treble and bass; dotted quarter and eighth in 2/4</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 15</div><div class="dt">Skating Pond</div><div class="df">Treble and bass; rhythm review</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 16</div><div class="dt">Snow Fort</div><div class="df">Treble and bass; first steps in 6/8</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 17</div><div class="dt">Earmuffs</div><div class="df">Treble and bass; 6/8 with quarters and eighths</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 18</div><div class="dt">Snowy Owl</div><div class="df">Treble and bass; 4/4 and 6/8 mixed</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 19</div><div class="dt">Icy Window</div><div class="df">Treble and bass; every meter</div></div><div class="dc" style="width:168px;height:150px"><div class="dn">DAY 20</div><div class="dt">Winter Break</div><div class="df">Challenge: the whole set</div></div></div><div class="band">Treble <em>·</em> bass <em>·</em> rhythm <em>·</em> symbols</div></div></body></html>
