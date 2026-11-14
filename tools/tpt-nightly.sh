@@ -40,6 +40,16 @@ if [ -z "${TPT_REEXEC:-}" ] && [ -n "$OLD_HEAD" ] && ! git diff --quiet "$OLD_HE
   TPT_REEXEC=1 exec /bin/bash "$0" ${1+"$@"}
 fi
 
+# Tell the owner on the Mac itself when something needs them, at most once a day per problem. The cloud
+# can't see this Mac, and a lost GitHub login went unnoticed for a week (7-14 Nov 2026).
+notify() {  # $1 = key, $2 = message
+  [ "$(uname)" = "Darwin" ] || return 0
+  local stamp="$HOME/.tpt-notified-$1"
+  [ -n "$(find "$stamp" -mmin -1440 2>/dev/null)" ] && return 0
+  touch "$stamp"
+  osascript -e "display notification \"$2\" with title \"TpT uploader\"" >/dev/null 2>&1 || true
+}
+
 # The catch-up schedule: a second launchd job that runs this same script at login and through the day.
 # Added once; the 8:30pm job stays as it is. To remove it:
 #   launchctl bootout gui/$(id -u)/com.hudsonbeat.tpt-catchup; rm ~/Library/LaunchAgents/com.hudsonbeat.tpt-catchup.plist
@@ -121,8 +131,13 @@ if ! git diff --cached --quiet; then
     git pull --no-rebase origin shop-factory; echo "--- git pull exit $?"
     git push origin shop-factory; prc=$?; echo "--- git push (retry) exit $prc"
   fi
-  if [ "$prc" -ne 0 ]; then echo "!!!!!! PUSH FAILED (exit $prc): markers are committed locally but NOT on GitHub. Run: bash tools/tpt-collect-diagnostics.sh"; [ "$rc" -eq 0 ] && rc=$prc; fi
+  if [ "$prc" -ne 0 ]; then
+    echo "!!!!!! PUSH FAILED (exit $prc): markers are committed locally but NOT on GitHub. Run: bash tools/tpt-collect-diagnostics.sh"
+    notify push "Can't save upload results to GitHub (login missing). In Terminal run: gh auth login"
+    [ "$rc" -eq 0 ] && rc=$prc
+  fi
   git status -sb | head -3
 fi
+grep -q '"needs_login": true' tpt/UPLOADER-STATUS.json 2>/dev/null && notify login "TpT login expired. In Terminal run: source ~/.tpt-env && node tools/tpt.js login, then click Log in"
 echo "=== done (publish-pending/reupload-pending exit $rc)"
 exit $rc

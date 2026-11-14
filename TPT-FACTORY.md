@@ -129,8 +129,12 @@ At the start of each shift read `tpt/UPLOADER-STATUS.json` and act only on these
   and any screenshot under `tpt/_publish/`, fixes the item or `tools/tpt.js`, then rewrites that item's `release` file with
   new text, which re-arms it for 2 more tries. This replaces one classroom build that shift. If the same item is held a
   second time, leave it held and log it; don't try a third fix.
-- An item released more than 4 days ago is still `WAITING` in the live check, and `ran_at` is more than 4 days old → push the owner once:
-  "TpT uploads have been waiting 4 days. They start again by themselves the next time your Mac is open and online."
+- `ran_at` is more than 3 days old (the Mac hasn't reported in 3 days) → push the owner once. The usual cause is the Mac's GitHub
+  login: it can download but not upload, so its reports stay on the Mac (this happened 7–14 Nov 2026). Message: "The TpT uploader
+  hasn't reported in 3 days. If your Mac was on, its GitHub login probably expired: in Terminal run `gh auth login`, then
+  `gh auth setup-git`." If instead items are released more than 4 days ago and still `WAITING` in the live check while `ran_at`
+  is fresh, the uploads are failing: handle them under `held` above.
+- The Mac also shows its own notifications (login expired, can't push) at most once a day.
 
 ## Rotation (keeps usage low)
 The dispatcher re-reads its whole conversation on every step. On the first shift of each month, after the builds, it starts
