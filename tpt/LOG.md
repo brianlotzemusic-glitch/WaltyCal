@@ -14,3 +14,4 @@
 - 2026-11-13: 036-lofi-holiday-beat (Holiday Logic kit, $8) built, QA approved first pass, released. dmp2.py tag check now reads TAG-OPTIONS.json.
 - 2026-11-13: 037-band-rhythm-counting-worksheets (classroom, $5) built, QA approved first pass, released. Afternoon shift done: 036, 037. QA cosmetic notes: preview-1 watermark may look doubled, preview-3 bottom third empty.
 - 2026-11-14: 038-december-music-bell-ringers HELD (not released): QA rejected twice; remaining fix is preview-3.png, Day 17-20 card row clipped by the footer bar. Everything else passed. A future shift may re-open it with one targeted fix.
+- 2026-11-14: 039-winter-color-by-music-symbol (classroom, $4) built, QA approved first pass, released. Morning shift done: 039 released, 038 HELD.

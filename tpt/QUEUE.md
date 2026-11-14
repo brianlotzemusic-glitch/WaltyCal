@@ -9,7 +9,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Hanukkah Color by Note: rhythm, treble and bass clef, menorah, dreidel and star pictures, answer keys (grades 2–6; $3.50; Hanukkah, early December)
 - [x] Beginning Band Rhythm Counting Worksheets: write in the counts, 20 pages from quarter notes to dotted rhythms and 6/8, answer keys (grades 5–8; $5; evergreen)
 - [!] HELD (tpt/038-december-music-bell-ringers, QA rejected twice; preview-3.png Day 17-20 row clipped by footer) December Music Bell-Ringers: 20 no-prep daily warm-up pages, rhythm, note names, symbols, non-denominational, answer keys (grades 3–6; $4.50; December)
-- [ ] Winter Color by Music Symbol: colour by dynamics, tempo terms and symbols, 3 levels, answer keys (grades 2–5; $4; winter)
+- [x] Winter Color by Music Symbol: colour by dynamics, tempo terms and symbols, 3 levels, answer keys (grades 2–5; $4; winter)
 - [ ] Band and Orchestra Emergency Sub Plans: 5 no-instrument lessons a non-music sub can run, readings, worksheets, keys (grades 6–12; $7; evergreen)
 - [ ] Winter Music Escape Room: print-and-go, 5 puzzles on note names, rhythms and symbols, teacher guide, answer key (grades 3–6; $5.50; winter)
 - [ ] Holiday Boomwhacker and Bells Play-Alongs: colour-coded note charts for 5 public-domain carols (Jingle Bells 1857, Deck the Halls, Up on the Housetop 1864, Jolly Old Saint Nicholas, We Wish You a Merry Christmas) (grades 1–5; $4.50; Christmas)
