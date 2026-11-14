@@ -28,7 +28,9 @@ subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one a
    3. **QA agent** (a different agent), brief below.
    4. If QA rejects: one **fix agent** (fresh, gets only QA.md's required fixes and the folder), then QA again. If it is
       rejected a second time, leave it unreleased, log it as HELD and move on. No third round, no Opus.
-   5. If approved: write `tpt/NNN-slug/release` containing the date and "released". Tick the queue line. Add one LOG line.
+   5. If approved: run `python3 tools/tpt-validate.py tpt/NNN-slug`. It must print OK; if not, one fresh Sonnet agent fixes
+      `tpt.json` (and the `TAGS`/`SUBJECTS` lines in `gen.py`), then run it again. Only then write `tpt/NNN-slug/release`
+      containing the date and "released". Tick the queue line. Add one LOG line.
    6. Commit and push (message ends with the Co-Authored-By and Claude-Session lines your environment gives you).
       Push rejected as non-fast-forward: fetch, merge (no rebase), push. Never force-push.
 4. Reply in 3 lines: built, held, what's next. Nothing else.
@@ -69,7 +71,7 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 - **Public schools buy these.** Winter and secular options alongside Christmas, Hanukkah and Kwanzaa ones; describe religious
   and cultural holidays accurately and respectfully, and keep facts checkable.
 - **Never copy another seller's product.** Take the format and subject only.
-- **Titles** ≤ 80 characters, plain search words first (holiday, format, clefs or grades). **Tags** 1–6 exact entries from `tpt/TAG-OPTIONS.json` (the uploader rejects anything else; the old guide's "High School" and "Technology" are not tags),
+- **Titles** ≤ 80 characters, plain search words first (holiday, format, clefs or grades). **Headings are not choices.** TpT's Subject and Tag menus mix category headings in with the real entries, and picking a heading wipes the field and stops the upload (13 Nov 2026: subject "Performing Arts", tags "Holiday" and "Student Practice"). Safe subjects: Music, Instrumental Music, Music Composition, Computer Science - Technology. Safe tags that have published: Winter, Autumn, Thanksgiving, Halloween, Christmas-Chanukah-Kwanzaa, Worksheets, Printables, Activities, Unit Plans, Project-based Learning, Projects, Career and Technical Education. `tools/tpt-validate.py` rejects headings. **Tags** 1–6 exact entries from `tpt/TAG-OPTIONS.json` (the uploader rejects anything else; the old guide's "High School" and "Technology" are not tags),
   **grades** 1–4, **subjects** 1–3 from `tpt/SUBJECT-OPTIONS.json`.
 - **Prices:** classroom $3–5 (sub plans and units up to $7); holiday Logic kits $7–9; free items $0 only when the queue says so.
 

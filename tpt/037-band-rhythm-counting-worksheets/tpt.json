@@ -2,10 +2,23 @@
   "price": "5.00",
   "license_price": "5.00",
   "tax_code": "Other Digital Goods - No Physical Media",
-  "grades": ["5th-grade", "6th-grade", "7th-grade", "8th-grade"],
-  "subjects": ["Music", "Instrumental Music"],
-  "tags": ["Worksheets", "Student Practice", "Printables"],
-  "formats": ["PDF"],
+  "grades": [
+    "5th-grade",
+    "6th-grade",
+    "7th-grade",
+    "8th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Worksheets",
+    "Printables",
+    "Activities"
+  ],
+  "formats": [
+    "PDF"
+  ],
   "pages": 34,
   "answer_key": "Included",
   "files": {

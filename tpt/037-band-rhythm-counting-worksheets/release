@@ -1,1 +1,1 @@
-2026-11-13 released
+2026-11-14 re-released: heading values removed from subjects/tags (TpT cannot select a heading), validated with tools/tpt-validate.py

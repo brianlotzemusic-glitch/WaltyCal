@@ -970,8 +970,8 @@ def pdf_png(src, page_no, out, res=110):
                     os.path.join(BUILD, out)], check=True)
 
 
-TAGS = ["Christmas-Chanukah-Kwanzaa", "Winter", "Unit Plans", "Worksheets", "Assessment", "Lessons"]
-SUBJECTS = ["Music", "Performing Arts"]
+TAGS = ["Christmas-Chanukah-Kwanzaa", "Winter", "Unit Plans", "Worksheets"]  # entries only, never headings (tools/tpt-validate.py)
+SUBJECTS = ["Music"]  # "Performing Arts" is a heading TpT cannot select
 GRADES = ["2nd-grade", "3rd-grade", "5th-grade", "6th-grade"]
 
 
