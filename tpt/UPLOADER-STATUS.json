@@ -1,12 +1,19 @@
 {
-  "ran_at": "2026-11-14T01:33:39.510Z",
-  "published": [],
+  "ran_at": "2026-11-14T13:04:16.024Z",
+  "published": [
+    {
+      "item": "039-winter-color-by-music-symbol",
+      "url": "https://www.teacherspayteachers.com/Product/Color-by-Music-Symbol-Worksheets-Dynamics-Tempo-Terms-Symbols-Gr-2-5-18339001"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "039-winter-color-by-music-symbol"
+  ],
   "reupload": {
-    "ran_at": "2026-11-14T01:33:39.673Z",
+    "ran_at": "2026-11-14T13:05:47.908Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
