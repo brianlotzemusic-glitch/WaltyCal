@@ -1,0 +1,35 @@
+{
+  "price": "5.50",
+  "license_price": "5.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade",
+    "6th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Winter",
+    "Escape Rooms",
+    "Games",
+    "Activities",
+    "Printables",
+    "Critical Thinking and Problem Solving"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 16,
+  "answer_key": "Included",
+  "files": {
+    "product": "winter-music-escape-room.pdf",
+    "preview": "winter-music-escape-room-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
