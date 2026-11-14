@@ -1,12 +1,29 @@
 {
-  "ran_at": "2026-11-14T13:06:07.665Z",
-  "published": [],
+  "ran_at": "2026-11-14T15:23:40.908Z",
+  "published": [
+    {
+      "item": "034-nutcracker-listening-unit",
+      "url": "https://www.teacherspayteachers.com/Product/Nutcracker-Ballet-Music-Listening-Unit-Gr-2-6-Listening-Maps-Quiz-Key-18340304"
+    },
+    {
+      "item": "036-lofi-holiday-beat",
+      "url": "https://www.teacherspayteachers.com/Product/Lo-Fi-Beat-in-Logic-Pro-Holiday-Carol-Project-High-School-Music-Tech-18340317"
+    },
+    {
+      "item": "037-band-rhythm-counting-worksheets",
+      "url": "https://www.teacherspayteachers.com/Product/Beginning-Band-Rhythm-Counting-Worksheets-Write-in-the-Counts-44-to-68-18340327"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "034-nutcracker-listening-unit",
+    "036-lofi-holiday-beat",
+    "037-band-rhythm-counting-worksheets"
+  ],
   "reupload": {
-    "ran_at": "2026-11-14T13:06:08.505Z",
+    "ran_at": "2026-11-14T15:26:53.605Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -18,10 +35,5 @@
     "discovered_edit": false,
     "ok": true
   },
-  "held": [
-    "034-nutcracker-listening-unit",
-    "036-lofi-holiday-beat",
-    "037-band-rhythm-counting-worksheets"
-  ],
   "ok": true
 }
