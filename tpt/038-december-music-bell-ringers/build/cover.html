@@ -1,0 +1,141 @@
+<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:'Oswald';font-weight:300;font-style:normal;src:url('../../fonts/oswald-latin-300-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:500;font-style:normal;src:url('../../fonts/oswald-latin-500-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:700;font-style:normal;src:url('../../fonts/oswald-latin-700-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:normal;src:url('../../fonts/source-sans-3-latin-400-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:italic;src:url('../../fonts/source-sans-3-latin-400-italic.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:600;font-style:normal;src:url('../../fonts/source-sans-3-latin-600-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:700;font-style:normal;src:url('../../fonts/source-sans-3-latin-700-normal.woff2') format('woff2');}@font-face{font-family:'Bravura';font-weight:400;font-style:normal;src:url('../../fonts/bravura.woff2') format('woff2');}
+@page { size: 8.5in 11in; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+body { font-family: 'Source Sans 3', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; position: relative; overflow: hidden; page-break-after: always; break-after: page;
+        padding: 0.42in 0.5in 0.38in; display: flex; flex-direction: column; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+.h { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; letter-spacing: .01em; line-height: 1; }
+.l { font-family: 'Oswald'; font-weight: 300; }
+.top { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2.2pt solid #000; padding-bottom: 6pt; }
+.top .t { font-size: 25pt; }
+.top .t small { display: block; font-family: 'Oswald'; font-weight: 300; text-transform: none; font-size: 12pt; letter-spacing: 0; margin-top: 4pt; }
+.tag { text-align: right; }
+.tag .lv { display: inline-block; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 15pt; padding: 3pt 9pt 4pt; border-radius: 4pt; letter-spacing: .04em; }
+.tag .lv.ak { background: #2B7FB8; }
+.tag .ln { font-family: 'Oswald'; font-weight: 300; font-size: 11pt; margin-top: 3pt; }
+.name { display: flex; gap: 18pt; font-size: 12pt; margin: 9pt 0 5pt; }
+.name span { flex: 1; border-bottom: 1pt solid #000; height: 15pt; }
+.name span.d { flex: 0 0 1.6in; }
+.how { font-size: 11.5pt; margin: 2pt 0 5pt; }
+.how b { font-weight: 700; }
+.legend { display: flex; flex-wrap: wrap; gap: 4pt 6pt; margin: 2pt 0 4pt; }
+.lgc { display: flex; align-items: center; gap: 2pt; border: 1pt solid #000; border-radius: 5pt; padding: 1pt 7pt 1pt 2pt; }
+.lgt b { display: block; font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 8.5pt; letter-spacing: .02em; line-height: 1.1; }
+.lgt span { font-size: 8.5pt; line-height: 1.1; display: block; }
+.cnt { font-size: 9.5pt; font-style: italic; margin: 1pt 0 0; }
+.exs { flex: 1; display: flex; flex-direction: column; justify-content: space-around; padding: 4pt 0 2pt; }
+.foot { display: flex; justify-content: space-between; font-size: 8.5pt; color: #333; border-top: .8pt solid #000; padding-top: 3pt; }
+.wm { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-38deg); font-family: 'Oswald'; font-weight: 700;
+      font-size: 150pt; color: rgba(0,0,0,.13); letter-spacing: .06em; white-space: nowrap; pointer-events: none; z-index: 9; }
+.keyblock { margin-top: 6pt; }
+.keyblock .kt { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 12.5pt; border-bottom: 1pt solid #000; padding-bottom: 2pt; margin-bottom: 5pt; display: flex; justify-content: space-between; }
+.keyblock .kt span { font-weight: 300; text-transform: none; font-size: 10.5pt; }
+.cv { width: 100%; height: auto; }
+.keyblock svg { margin: 0 0 1pt; width: 91%; height: auto; }
+.doc h1 { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 30pt; margin: 0 0 4pt; line-height: 1; }
+.doc h2 { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 14pt; margin: 13pt 0 4pt; letter-spacing: .02em; }
+.doc h2 .acc { color: #2B7FB8; }
+.doc p, .doc li { font-size: 11pt; line-height: 1.38; margin: 0 0 5pt; }
+.doc ul { margin: 0 0 4pt; padding-left: 16pt; }
+.doc .rule { border-bottom: 2.2pt solid #000; margin-bottom: 8pt; padding-bottom: 6pt; }
+.doc table { border-collapse: collapse; width: 100%; font-size: 10pt; margin: 2pt 0 4pt; }
+.doc td, .doc th { border: 1pt solid #000; padding: 2pt 5pt; text-align: left; vertical-align: top; }
+.doc th { font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 9.5pt; background: #000; color: #fff; }
+.cols { display: flex; gap: 22pt; }
+.cols > div { flex: 1; }
+.small { font-size: 9pt !important; color: #333; }
+.refgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6pt; margin: 4pt 0 6pt; }
+.refcell { border: 1.3pt solid #000; border-radius: 6pt; text-align: center; padding: 4pt 2pt 4pt; }
+.refcell b { display: block; font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 9.5pt; }
+.refcell span { font-size: 9pt; display: block; line-height: 1.2; }
+.cover { align-items: center; justify-content: space-between; padding: 0.55in 0.6in 0.5in; }
+.store { font-family: 'Oswald'; font-weight: 500; font-size: 13pt; letter-spacing: .32em; text-transform: uppercase; }
+.ctitle { text-align: center; }
+.ctitle .a { font-family: 'Oswald'; font-weight: 700; font-size: 44pt; line-height: 1; letter-spacing: .02em; }
+.ctitle .b { font-family: 'Oswald'; font-weight: 700; white-space: nowrap; font-size: 58pt; line-height: .95; letter-spacing: .01em; }
+.ctitle .c { font-family: 'Oswald'; font-weight: 300; font-size: 17pt; margin-top: 8pt; }
+.cband { width: 100%; background: #000; color: #fff; text-align: center; font-family: 'Oswald'; font-weight: 500; font-size: 14pt;
+         letter-spacing: .08em; text-transform: uppercase; padding: 8pt 0 9pt; border-radius: 4pt; }
+.cband em { font-style: normal; color: #2B7FB8; }
+
+.sec { margin-top: 7pt; }
+.sh { display: flex; align-items: center; gap: 7pt; border-bottom: 1pt solid #000; padding-bottom: 2pt; margin-bottom: 4pt; }
+.sh .h { font-size: 14pt; letter-spacing: .03em; }
+.sh .h i { font-style: normal; color: #2B7FB8; margin-right: 3pt; }
+.sh .si { font-size: 10pt; font-style: italic; margin-left: auto; text-align: right; }
+.body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.symrow { display: flex; gap: 7pt; }
+.sc { flex: 1; border: 1.3pt solid #000; border-radius: 6pt; padding: 1pt 3pt 4pt; text-align: center; position: relative; }
+.sc .n { position: absolute; left: 5pt; top: 3pt; font-family: 'Oswald'; font-weight: 700; font-size: 11pt; }
+.sc svg { margin: 0 auto; width: 100%; height: auto; }
+.sc .ans { display: flex; align-items: center; justify-content: center; gap: 4pt; font-size: 9.5pt; margin-top: 1pt; }
+.sc .ans span { display: inline-block; width: 24pt; height: 16pt; border: 1pt solid #000; border-radius: 3pt; }
+.bank { display: flex; justify-content: space-between; gap: 6pt; margin-top: 6pt; background: #fff; border: 1.3pt dashed #000; border-radius: 6pt; padding: 4pt 8pt; }
+.bank .bk { font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 10.5pt; letter-spacing: .02em; white-space: nowrap; }
+.bank .bk b { display: inline-block; background: #000; color: #fff; border-radius: 3pt; width: 14pt; text-align: center; margin-right: 3pt; font-weight: 700; }
+.gaps { display: grid; grid-template-columns: 1fr 1fr; gap: 3pt 14pt; }
+.two .sec { margin-top: 3pt; }
+.two .nrs svg { width: 78%; height: auto; margin-left: 0; }
+.two .sc svg { width: 82%; }
+.two .gp { height: 74pt; }
+.two .name { margin: 6pt 0 2pt; }
+.nrs svg, .rhs svg { margin: 0 0 1pt; }
+.kday { margin-top: 5pt; }
+.kday .kt { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 12.5pt; border-bottom: 1pt solid #000; padding-bottom: 2pt; margin-bottom: 3pt; display: flex; justify-content: space-between; }
+.kday .kt span { font-weight: 300; text-transform: none; font-size: 10.5pt; }
+.nrk { display: flex; gap: 8pt; }
+.nrk .nr { flex: 1; min-width: 0; width: auto !important; }
+.nrk .nr:only-child { flex: none; width: 70% !important; }
+.kday .nr { width: 82%; height: auto; }
+.kday .ex { width: 88%; height: auto; }
+.kday .gps { display: flex; flex-wrap: wrap; gap: 0 10pt; }
+.kday .gp { width: 48%; height: auto; }
+.ksym { display: flex; gap: 5pt; margin: 3pt 0 2pt; }
+.ksym div { flex: 1; border: 1pt solid #000; border-radius: 4pt; padding: 1pt 3pt; display: flex; align-items: center; gap: 4pt; font-size: 8.5pt; line-height: 1.1; }
+.ksym svg { width: 38pt; height: auto; flex: none; }
+.ksym b { font-family: 'Oswald'; font-weight: 700; color: #2B7FB8; font-size: 11pt; }
+.glos { display: grid; grid-template-columns: 1fr 1fr; gap: 5pt 16pt; margin-top: 4pt; }
+.gl { display: flex; align-items: center; gap: 6pt; border-bottom: .8pt solid #bbb; padding-bottom: 3pt; }
+.gl svg { width: 70pt; height: auto; flex: none; border: 1pt solid #000; border-radius: 5pt; }
+.gl b { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 10.5pt; display: block; }
+.gl span { font-size: 9.5pt; line-height: 1.2; display: block; }
+.rstaff { margin: 2pt 0 4pt; }
+.mn { font-size: 10pt; margin: 0 0 2pt; }
+
+.cvr { width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; background: #fff; overflow: hidden; }
+.cvr .store { font-family: 'Oswald'; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; font-size: 22px; margin-top: 34px; }
+.cards { display: flex; gap: 16px; width: 904px; }
+.ccard { flex: 1; border: 3px solid #000; border-radius: 14px; text-align: center; padding: 10px 6px 12px; position: relative; background: #fff; }
+.ccard svg { margin: 14px auto 4px; width: 112px; height: 112px; }
+.ccard .cl { position: absolute; left: 9px; top: 7px; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 21px; width: 30px; height: 30px; line-height: 31px; border-radius: 50%; }
+.ccard .cn { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 25px; line-height: 1.05; }
+.ccard .cs { font-family: 'Oswald'; font-weight: 300; font-size: 17px; margin-top: 3px; }
+.cvr .hd { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; text-align: center; line-height: .95; }
+.cvr .sub { font-family: 'Oswald'; font-weight: 300; text-align: center; }
+.cvr .band { width: 100%; background: #000; color: #fff; text-align: center; font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 26px; padding: 16px 0 18px; }
+.cvr .band em { font-style: normal; color: #2B7FB8; }
+.dots { position: absolute; inset: 0; pointer-events: none; }
+html,body{margin:0;background:#fff}
+.sq { width: 1000px; height: 1000px; position: relative; overflow: hidden; background: #fff; display: flex; flex-direction: column; align-items: center; }
+.sq .store { font-family: 'Oswald'; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; font-size: 22px; margin-top: 34px; }
+.sq .hd { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; text-align: center; line-height: .95; }
+.sq .sub { font-family: 'Oswald'; font-weight: 300; text-align: center; }
+.sq .band { position: absolute; left: 0; right: 0; bottom: 0; background: #000; color: #fff; text-align: center; font-family: 'Oswald';
+            font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 26px; padding: 16px 0 18px; }
+.sq .band em { font-style: normal; color: #2B7FB8; }
+.shot { background: #fff; border: 2px solid #000; box-shadow: 8px 8px 0 #000; position: relative; overflow: hidden; }
+.shot img { display: block; width: 100%; }
+.lbl { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 22px; text-align: center; margin-top: 16px; }
+.lbl span { font-weight: 300; text-transform: none; display: block; font-size: 18px; }
+.dc { box-sizing: border-box; border: 2px solid #000; border-radius: 8px; padding: 6px 8px 6px; background: #fff; text-align: left; position: relative; }
+.dc .dn { font-family: 'Oswald'; font-weight: 700; font-size: 15px; color: #2B7FB8; letter-spacing: .06em; }
+.dc .dt { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 18px; line-height: 1.05; }
+.dc .df { font-family: 'Oswald'; font-weight: 300; font-size: 14px; line-height: 1.15; margin-top: 3px; }
+.sec4 { display: flex; gap: 14px; width: 904px; margin-top: 30px; }
+.sec4 > div { flex: 1; border: 2px solid #000; border-radius: 10px; padding: 8px 6px; text-align: center; background: #fff; }
+.sec4 svg { margin: 0 auto; }
+.sec4 b { display: block; font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 20px; margin-top: 2px; }
+.sec4 span { font-family: 'Oswald'; font-weight: 300; font-size: 16px; display: block; }
+</style></head><body><div class="cvr" style="height:1000px"><svg class="dots" viewBox="0 0 1000 1000" width="1000" height="1000"><circle cx="618" cy="315" r="3" fill="#2B7FB8" opacity=".55"/><circle cx="827" cy="326" r="4" fill="#2B7FB8" opacity=".55"/><circle cx="643" cy="367" r="3" fill="#2B7FB8" opacity=".55"/><circle cx="377" cy="357" r="6" fill="#2B7FB8" opacity=".55"/><circle cx="542" cy="259" r="3" fill="#2B7FB8" opacity=".55"/><circle cx="722" cy="205" r="4" fill="#2B7FB8" opacity=".55"/><circle cx="900" cy="323" r="4" fill="#2B7FB8" opacity=".55"/><circle cx="751" cy="94" r="6" fill="#2B7FB8" opacity=".55"/><circle cx="142" cy="71" r="3" fill="#2B7FB8" opacity=".55"/><circle cx="221" cy="141" r="4" fill="#2B7FB8" opacity=".55"/><circle cx="858" cy="165" r="4" fill="#2B7FB8" opacity=".55"/><circle cx="538" cy="294" r="4" fill="#2B7FB8" opacity=".55"/><circle cx="194" cy="390" r="4" fill="#2B7FB8" opacity=".55"/><circle cx="948" cy="365" r="5" fill="#2B7FB8" opacity=".55"/><circle cx="41" cy="207" r="4" fill="#2B7FB8" opacity=".55"/><circle cx="273" cy="180" r="3" fill="#2B7FB8" opacity=".55"/><circle cx="592" cy="304" r="3" fill="#2B7FB8" opacity=".55"/><circle cx="318" cy="340" r="6" fill="#2B7FB8" opacity=".55"/><circle cx="689" cy="131" r="6" fill="#2B7FB8" opacity=".55"/><circle cx="696" cy="89" r="3" fill="#2B7FB8" opacity=".55"/><circle cx="931" cy="188" r="6" fill="#2B7FB8" opacity=".55"/><circle cx="37" cy="330" r="5" fill="#2B7FB8" opacity=".55"/><circle cx="381" cy="348" r="6" fill="#2B7FB8" opacity=".55"/><circle cx="65" cy="130" r="4" fill="#2B7FB8" opacity=".55"/><circle cx="134" cy="151" r="6" fill="#2B7FB8" opacity=".55"/><circle cx="351" cy="187" r="5" fill="#2B7FB8" opacity=".55"/></svg><div class="store">Hudson Beat</div><div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;width:100%;padding-bottom:78px;position:relative"><div class="cards"><div class="ccard"><div class="cl">A</div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="84pt" height="84pt" style="display:block"><g transform="rotate(0 24 24)"><line x1="24" y1="24" x2="24" y2="4" stroke="#000" stroke-width="2.2" stroke-linecap="round"/><path d="M 24 11 L 19 6 M 24 11 L 29 6 M 24 17 L 20 13 M 24 17 L 28 13" stroke="#000" stroke-width="1.8" stroke-linecap="round" fill="none"/></g><g transform="rotate(60 24 24)"><line x1="24" y1="24" x2="24" y2="4" stroke="#000" stroke-width="2.2" stroke-linecap="round"/><path d="M 24 11 L 19 6 M 24 11 L 29 6 M 24 17 L 20 13 M 24 17 L 28 13" stroke="#000" stroke-width="1.8" stroke-linecap="round" fill="none"/></g><g transform="rotate(120 24 24)"><line x1="24" y1="24" x2="24" y2="4" stroke="#000" stroke-width="2.2" stroke-linecap="round"/><path d="M 24 11 L 19 6 M 24 11 L 29 6 M 24 17 L 20 13 M 24 17 L 28 13" stroke="#000" stroke-width="1.8" stroke-linecap="round" fill="none"/></g><g transform="rotate(180 24 24)"><line x1="24" y1="24" x2="24" y2="4" stroke="#000" stroke-width="2.2" stroke-linecap="round"/><path d="M 24 11 L 19 6 M 24 11 L 29 6 M 24 17 L 20 13 M 24 17 L 28 13" stroke="#000" stroke-width="1.8" stroke-linecap="round" fill="none"/></g><g transform="rotate(240 24 24)"><line x1="24" y1="24" x2="24" y2="4" stroke="#000" stroke-width="2.2" stroke-linecap="round"/><path d="M 24 11 L 19 6 M 24 11 L 29 6 M 24 17 L 20 13 M 24 17 L 28 13" stroke="#000" stroke-width="1.8" stroke-linecap="round" fill="none"/></g><g transform="rotate(300 24 24)"><line x1="24" y1="24" x2="24" y2="4" stroke="#000" stroke-width="2.2" stroke-linecap="round"/><path d="M 24 11 L 19 6 M 24 11 L 29 6 M 24 17 L 20 13 M 24 17 L 28 13" stroke="#000" stroke-width="1.8" stroke-linecap="round" fill="none"/></g><circle cx="24" cy="24" r="3.2" fill="#2B7FB8" stroke="#000" stroke-width="1.5"/></svg><div class="cn">Snowy Notes</div><div class="cs">Name the notes</div></div><div class="ccard"><div class="cl">B</div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="84pt" height="84pt" style="display:block"><path d="M 14 44 L 14 24 C 8 22 8 16 12 14 C 14 13 16 14 17 16 L 17 8 C 17 4 23 4 23 8 L 23 6 C 23 2 29 2 29 6 L 29 8 C 29 4 35 4 35 8 L 35 22 C 35 28 33 32 33 36 L 33 44 Z" fill="#fff" stroke="#000" stroke-width="2" stroke-linejoin="round" transform="translate(0 0) scale(1) " /><rect x="12" y="38" width="23" height="8" rx="2" fill="#2B7FB8" stroke="#000" stroke-width="2"/><path d="M 18 28 L 30 28 M 18 32 L 30 32" stroke="#2B7FB8" stroke-width="2" stroke-linecap="round"/></svg><div class="cn">Mitten Rhythm</div><div class="cs">Count the rhythm</div></div><div class="ccard"><div class="cl">C</div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="84pt" height="84pt" style="display:block"><path d="M 9 18 L 11 40 C 11 43 14 45 17 45 L 29 45 C 32 45 35 43 35 40 L 37 18 Z" fill="#fff" stroke="#000" stroke-width="2" stroke-linejoin="round"/><path d="M 36 22 C 46 20 46 36 34 36" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round"/><path d="M 9.6 24 L 36.4 24 L 35.8 31 L 10.2 31 Z" fill="#2B7FB8"/><path d="M 17 12 C 14 9 20 7 17 3 M 24 12 C 21 9 27 7 24 3 M 31 12 C 28 9 34 7 31 3" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round"/></svg><div class="cn">Cocoa Symbols</div><div class="cs">Match the symbols</div></div><div class="ccard"><div class="cl">D</div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="84pt" height="84pt" style="display:block"><path d="M 12 6 L 24 6 L 24 24 C 24 28 28 30 34 31 C 40 32 42 34 42 38 L 12 38 Z" fill="#fff" stroke="#000" stroke-width="2" stroke-linejoin="round"/><path d="M 12 38 L 42 38" stroke="#000" stroke-width="2"/><path d="M 8 43 L 41 43 C 45 43 46 40 44 38" fill="none" stroke="#2B7FB8" stroke-width="3" stroke-linecap="round"/><path d="M 14 43 L 14 38 M 36 43 L 36 38" stroke="#000" stroke-width="2"/><path d="M 12 12 L 24 12" stroke="#2B7FB8" stroke-width="2.4"/><path d="M 22 16 L 18 16 M 22 21 L 18 21 M 29 28 L 25 26" stroke="#000" stroke-width="1.6" stroke-linecap="round"/></svg><div class="cn">Skate Math</div><div class="cs">Find the missing beats</div></div></div><div style="width:880px"><svg class="nr" data-mode="key" data-row="1" data-clef="treble" data-s="7.0" data-yb="39.20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 76.0" width="880px" height="auto" style="display:block"><line x1="0" y1="39.20" x2="539" y2="39.20" stroke="#000" stroke-width="1.12"/><line x1="0" y1="32.20" x2="539" y2="32.20" stroke="#000" stroke-width="1.12"/><line x1="0" y1="25.20" x2="539" y2="25.20" stroke="#000" stroke-width="1.12"/><line x1="0" y1="18.20" x2="539" y2="18.20" stroke="#000" stroke-width="1.12"/><line x1="0" y1="11.20" x2="539" y2="11.20" stroke="#000" stroke-width="1.12"/><line x1="0.6" y1="11.20" x2="0.6" y2="39.20" stroke="#000" stroke-width="1.1"/><text x="6.00" y="32.20" font-family="Bravura" font-size="28.00" fill="#000">&#xE050;</text><g class="nt" data-pitch="E4" data-letter="E" data-y="39.20" data-x="78.00"><text x="73.87" y="39.20" font-family="Bravura" font-size="28.00" fill="#000">&#xE0A4;</text><line x1="81.68" y1="38.02" x2="81.68" y2="14.70" stroke="#000" stroke-width="0.91"/><text x="78.00" y="70.0" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="16" fill="#2B7FB8">E</text></g><g class="nt" data-pitch="G4" data-letter="G" data-y="32.20" data-x="139.71"><text x="135.58" y="32.20" font-family="Bravura" font-size="28.00" fill="#000">&#xE0A4;</text><line x1="143.39" y1="31.02" x2="143.39" y2="7.70" stroke="#000" stroke-width="0.91"/><text x="139.71" y="70.0" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="16" fill="#2B7FB8">G</text></g><g class="nt" data-pitch="B4" data-letter="B" data-y="25.20" data-x="201.43"><text x="197.30" y="25.20" font-family="Bravura" font-size="28.00" fill="#000">&#xE0A4;</text><line x1="197.75" y1="26.38" x2="197.75" y2="49.70" stroke="#000" stroke-width="0.91"/><text x="201.43" y="70.0" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="16" fill="#2B7FB8">B</text></g><g class="nt" data-pitch="D5" data-letter="D" data-y="18.20" data-x="263.14"><text x="259.01" y="18.20" font-family="Bravura" font-size="28.00" fill="#000">&#xE0A4;</text><line x1="259.47" y1="19.38" x2="259.47" y2="42.70" stroke="#000" stroke-width="0.91"/><text x="263.14" y="70.0" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="16" fill="#2B7FB8">D</text></g><g class="nt" data-pitch="F5" data-letter="F" data-y="11.20" data-x="324.86"><text x="320.73" y="11.20" font-family="Bravura" font-size="28.00" fill="#000">&#xE0A4;</text><line x1="321.18" y1="12.38" x2="321.18" y2="35.70" stroke="#000" stroke-width="0.91"/><text x="324.86" y="70.0" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="16" fill="#2B7FB8">F</text></g><g class="nt" data-pitch="A4" data-letter="A" data-y="28.70" data-x="386.57"><text x="382.44" y="28.70" font-family="Bravura" font-size="28.00" fill="#000">&#xE0A4;</text><line x1="390.25" y1="27.52" x2="390.25" y2="4.20" stroke="#000" stroke-width="0.91"/><text x="386.57" y="70.0" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="16" fill="#2B7FB8">A</text></g><g class="nt" data-pitch="C5" data-letter="C" data-y="21.70" data-x="448.29"><text x="444.16" y="21.70" font-family="Bravura" font-size="28.00" fill="#000">&#xE0A4;</text><line x1="444.61" y1="22.88" x2="444.61" y2="46.20" stroke="#000" stroke-width="0.91"/><text x="448.29" y="70.0" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="16" fill="#2B7FB8">C</text></g><g class="nt" data-pitch="E5" data-letter="E" data-y="14.70" data-x="510.00"><text x="505.87" y="14.70" font-family="Bravura" font-size="28.00" fill="#000">&#xE0A4;</text><line x1="506.32" y1="15.88" x2="506.32" y2="39.20" stroke="#000" stroke-width="0.91"/><text x="510.00" y="70.0" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="16" fill="#2B7FB8">E</text></g></svg></div><div><div class="hd" style="font-size:70px">December</div><div class="hd" style="font-size:106px;white-space:nowrap">Music Bell-Ringers</div><div class="sub" style="font-size:28px;margin-top:12px">20 no-prep daily warm-ups · rhythm, note names, symbols</div></div></div><div class="band" style="position:absolute;left:0;bottom:0">Grades 3–6 <em>·</em> 20 daily pages <em>·</em> answer keys</div></div></body></html>

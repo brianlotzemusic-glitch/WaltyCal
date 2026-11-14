@@ -1,0 +1,33 @@
+{
+  "price": "4.00",
+  "license_price": "4.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "2nd-grade",
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Winter",
+    "Worksheets",
+    "Printables",
+    "Activities"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 58,
+  "answer_key": "Included",
+  "files": {
+    "product": "winter-color-by-music-symbol.pdf",
+    "preview": "winter-color-by-music-symbol-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

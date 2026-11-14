@@ -1,0 +1,33 @@
+{
+  "price": "4.50",
+  "license_price": "4.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade",
+    "6th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Bell Ringers",
+    "Winter",
+    "Worksheets",
+    "Printables"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 35,
+  "answer_key": "Included",
+  "files": {
+    "product": "december-music-bell-ringers.pdf",
+    "preview": "december-music-bell-ringers-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
