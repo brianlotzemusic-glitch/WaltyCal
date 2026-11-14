@@ -1,12 +1,24 @@
 {
-  "ran_at": "2026-11-14T17:15:06.166Z",
-  "published": [],
+  "ran_at": "2026-11-14T20:15:05.932Z",
+  "published": [
+    {
+      "item": "040-trap-nutcracker-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Trap-Beat-in-Logic-Pro-Tchaikovsky-Flip-Project-High-School-Music-Tech-18343594"
+    },
+    {
+      "item": "042-winter-music-escape-room",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Escape-Room-Note-Names-Rhythms-Symbols-Print-and-Go-Gr-3-6-18343603"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "040-trap-nutcracker-logic",
+    "042-winter-music-escape-room"
+  ],
   "reupload": {
-    "ran_at": "2026-11-14T17:15:06.313Z",
+    "ran_at": "2026-11-14T20:17:09.102Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
