@@ -12,7 +12,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Winter Color by Music Symbol: colour by dynamics, tempo terms and symbols, 3 levels, answer keys (grades 2–5; $4; winter)
 - [!] HELD (tpt/041-band-orchestra-emergency-sub-plans, QA rejected twice; Lesson 4 matching p16 ambiguous vs key p26: swap key to M2 C / M4 A and reword item 2 or 4) Band and Orchestra Emergency Sub Plans: 5 no-instrument lessons a non-music sub can run, readings, worksheets, keys (grades 6–12; $7; evergreen)
 - [x] Winter Music Escape Room: print-and-go, 5 puzzles on note names, rhythms and symbols, teacher guide, answer key (grades 3–6; $5.50; winter)
-- [ ] Holiday Boomwhacker and Bells Play-Alongs: colour-coded note charts for 5 public-domain carols (Jingle Bells 1857, Deck the Halls, Up on the Housetop 1864, Jolly Old Saint Nicholas, We Wish You a Merry Christmas) (grades 1–5; $4.50; Christmas)
+- [x] Holiday Boomwhacker and Bells Play-Alongs: colour-coded note charts for 5 public-domain carols (Jingle Bells 1857, Deck the Halls, Up on the Housetop 1864, Jolly Old Saint Nicholas, We Wish You a Merry Christmas) (grades 1–5; $4.50; Christmas)
 - [ ] Winter Concert Reflection and Self-Assessment: student reflection pages, rubric, goal sheet, for band, choir and orchestra (grades 4–12; $3.50; December)
 - [x] Note Naming Speed Drills: one-minute drills for treble, bass and alto clef, 30 pages, answer keys, progress chart (grades 3–8; $4; evergreen)
 - [ ] Winter Rhythm Math: add and compare note values, snow-themed, 3 levels, answer keys (grades 2–5; $3.50; winter)

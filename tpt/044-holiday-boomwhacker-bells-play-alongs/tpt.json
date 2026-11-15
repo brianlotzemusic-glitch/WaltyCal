@@ -1,0 +1,35 @@
+{
+  "price": "4.50",
+  "license_price": "4.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "1st-grade",
+    "2nd-grade",
+    "3rd-grade",
+    "4th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Instrumental Music"
+  ],
+  "tags": [
+    "Christmas-Chanukah-Kwanzaa",
+    "Winter",
+    "Activities",
+    "Centers",
+    "Printables",
+    "Songs"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 20,
+  "files": {
+    "product": "color-coded-carol-play-alongs-tubes-bells.pdf",
+    "preview": "color-coded-carol-play-alongs-tubes-bells-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
