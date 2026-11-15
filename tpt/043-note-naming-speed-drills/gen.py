@@ -657,12 +657,20 @@ def preview_square_2(ws, key):
         f'<div class="band">Keys for all 30 drills <em>·</em> progress chart</div></div>')
 
 
+# preview card 5-7: exactly 1, 2, 3 ledger lines (below in treble/alto, above in bass for variety)
+CARD_LEDGER_STEPS = {5: {"treble": -2, "bass": 10, "alto": -2},
+                     6: {"treble": 12, "bass": -4, "alto": 12},
+                     7: {"treble": -6, "bass": 14, "alto": -6}}
+
+
 def preview_square_3(drills):
     cards = []
     for n in range(1, NDRILL + 1):
         staves = []
         for c in CLEFS:
             s, a = drills[(c, n)][0]
+            if n in CARD_LEDGER_STEPS:   # cards must show exactly what the title says
+                s, a = CARD_LEDGER_STEPS[n][c], None
             S = 4.0
             top = 3.7 * S
             h = top + 4 * S + 3.5 * S + 0.8 * S

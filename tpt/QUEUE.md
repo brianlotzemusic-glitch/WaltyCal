@@ -3,7 +3,7 @@
 Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released. `[next year]` = season missed.
 
 ## Fixes from the 15 Nov visual audit (do these FIRST, at most 3 per shift, in order; procedure in TPT-FACTORY.md 'A shift, step by step' step 2)
-- [ ] [fix] 043 (P1 ledger-line cards 5/6/7 in the PDF do not show what their titles say) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 043
+- [x] [fix] 043 (P1 ledger-line cards 5/6/7 in the PDF do not show what their titles say) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 043
 - [ ] [fix] 007 (P1 Composer example bar 2 = 3 beats but caption says 4; P2 cover overlap, YES/NO cards flush to border) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 007
 - [ ] [fix] 026 (P1 chord table numerals: II/III/VI hold minor chords, use ii/iii/vi) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 026
 - [ ] [fix] 002 (P1 (verify) preview banner '4 beats in 4/4' vs worksheet; P2 cover art touching card) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 002

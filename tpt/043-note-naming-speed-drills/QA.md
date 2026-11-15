@@ -12,3 +12,7 @@
 **Verdict: APPROVED**
 
 Required fixes: none.
+
+## Fix re-check 2026-11-15
+Audit P1 (preview-3 ledger-line cards 5/6/7 did not show what their titles said) fixed in gen.py (CARD_LEDGER_STEPS). Visual inspector re-checked preview-1..3, cover, PDF drill pages and all 4 preview-PDF pages at full size: the cards now show exactly 1, 2 and 3 ledger lines in every clef; nothing else changed. P3 blank band at the bottom of the preview images left as is.
+**Verdict: APPROVED**
