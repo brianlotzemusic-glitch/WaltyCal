@@ -582,7 +582,7 @@ def globe_art(width="100%"):
     o.append(snowflake(112, 160, 13, 2.2, ACCENT))
     o.append(snowflake(330, 150, 17, 2.4, ACCENT))
     o.append(snowflake(300, 220, 10, 2, ACCENT))
-    for (x, y) in [(150, 96), (205, 40), (236, 92), (322, 100), (126, 212), (188, 236), (252, 232), (116, 118), (342, 196)]  # (116,118): was (160,190), which sat on the treble clef:
+    for (x, y) in [(150, 96), (205, 40), (236, 92), (322, 100), (126, 212), (188, 236), (252, 232), (116, 118), (342, 196)]:  # (116,118): was (160,190), which sat on the treble clef
         o.append(f'<circle cx="{x}" cy="{y}" r="3.6" fill="#fff" stroke="#000" stroke-width="1.6"/>')
     # padlock on the base
     o.append(f'<path d="M196,318 v-14 a24,24 0 0 1 48,0 v14" fill="none" stroke="#000" stroke-width="8" stroke-linecap="round"/>')
