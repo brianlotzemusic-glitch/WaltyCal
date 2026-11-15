@@ -791,10 +791,10 @@ def d2_35(n, watermark=False, key=False):
                           f'{_letter_box(nbeats(p), key, 34, 26, 16)}<span style="font-size:10pt">beats</span></div>')
     bar_cells = []
     for i, p in enumerate(D2_BARS):
-        st, _ = rhythm_svg(p, 8, 30, 6, 30, syl=False)
+        st, st_r = rhythm_svg(p, 8, 30, 6, 30, syl=False)
         ok = nbeats(p) == 4
         bar_cells.append(f'<div style="display:flex;align-items:center;gap:6pt;border:1.3pt solid #000;border-radius:7pt;padding:2pt 8pt">'
-                         f'<b class="h" style="font-size:13pt">{i + 1}</b>{svg(178, 52, st)}<span style="flex:1"></span>'
+                         f'<b class="h" style="font-size:13pt">{i + 1}</b><svg xmlns="http://www.w3.org/2000/svg" width="158pt" height="46pt" viewBox="0 0 {max(178, st_r + 4):.1f} 52" style="display:block">{st}</svg><span style="flex:1"></span>'
                          f'<div style="text-align:center;font-size:11pt"><div style="white-space:nowrap">{circ("YES", key and ok)}{circ("NO", key and not ok)}</div>'
                          f'<div style="font-size:9.5pt;margin-top:3pt">beats: {_letter_box(nbeats(p), key, 26, 20, 13)}</div></div></div>')
     say = []
@@ -906,7 +906,7 @@ def d4_k2(n, watermark=False):
 def d4_35(n, watermark=False):
     bank = "".join(f'<div style="text-align:center">{svg(54, 46, _single(t, 27, 32, 7.4))}<div style="font-size:10pt"><b>{SYL[t]}</b><br>'
                    f'{BEATS[t]} beat{"s" if BEATS[t] > 1 else ""}</div></div>' for t in "qerhw")
-    ex, _ = rhythm_svg(D4_EXAMPLE_35, 8, 30, 7.4, 40, syl=True, syl_size=10.5)
+    ex, ex_r = rhythm_svg(D4_EXAMPLE_35, 8, 30, 7.4, 40, syl=True, syl_size=10.5)
     bars_ = []
     for i in range(4):
         bars_.append(f'<div style="display:flex;align-items:center;gap:8pt;margin:0 0 6pt"><b class="h" style="font-size:13pt;width:46pt">Bar {i + 1}</b>'
@@ -920,7 +920,7 @@ def d4_35(n, watermark=False):
     inner = (f'<div class="how">Compose 4 bars of rhythm in 4/4 time. Each bar needs exactly <b>4 beats</b>. Write the syllables under your notes, '
              f'then count the beats and write the total.</div>'
              f'<div class="box" style="display:flex;justify-content:space-around;padding:4pt 6pt">{bank}</div>'
-             f'<div class="part" style="margin-top:8pt">Example<small>2 bars, 4 beats each</small></div>{svg(320, 62, ex)}'
+             f'<div class="part" style="margin-top:8pt">Example<small>2 bars, 4 beats each</small></div>{svg(int(ex_r) + 10, 62, ex)}'
              f'<div style="display:flex;gap:16pt;margin:4pt 0 4pt">{fl("Title", "style=flex:1")}{fl("Composer", "style=flex:1")}</div>'
              f'{"".join(bars_)}'
              f'<div class="part" style="margin-top:6pt">Composer checklist</div>{checks}')
@@ -1120,7 +1120,7 @@ def hero_svg(width_css):
     strip = f'<g transform="translate(330 250)">{st}</g>'
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 330" width="{width_css}" style="display:block">'
             f'{clipboard_svg(60, 26, 230, 290)}{pencil_svg(286, 70, 210, 22)}'
-            f'<g transform="translate(350 132)">{dyn_svg("f", 20, 30, 20)}{dyn_svg("p", 100, 30, 20, ACCENT)}{dyn_svg("cresc", 190, 30, 18)}</g>'
+            f'<g transform="translate(350 168)">{dyn_svg("f", 20, 30, 20)}{dyn_svg("p", 100, 30, 20, ACCENT)}{dyn_svg("cresc", 190, 30, 18)}</g>'
             f'{strip}</svg>')
 
 

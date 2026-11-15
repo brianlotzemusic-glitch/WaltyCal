@@ -58,3 +58,7 @@ I checked every rhythm by hand from the renders, not only from the Designer's da
 - preview-2: the "GRADES 3-5" page overlaps the right edge of the K-2 page. This is cosmetic.
 
 **Verdict: APPROVED**
+
+## Fix re-check 2026-11-15
+Audit defects fixed in gen.py: P1 Composer example (rhythm SVG viewport clipped the last quarter rest and final barline, so bar 2 looked like 3 beats; music was already 4 beats), P2 cover pencil tip overlapping the blue 'p', P2/P3 page 11 section B YES/NO cards running into the right border and clipped final barlines on the 5-beat bars. Visual inspector re-checked cover, preview-1..3, all 25 PDF pages and all 4 preview-PDF pages at full size: all listed defects gone, nothing new. Note (not in audit, not changed): on pages 6, 9, 12, 13, 15, 18, 19 the bottom box sits flush against the footer rule.
+**Verdict: APPROVED**
