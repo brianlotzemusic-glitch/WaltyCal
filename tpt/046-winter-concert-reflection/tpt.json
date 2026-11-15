@@ -1,0 +1,37 @@
+{
+  "price": "3.50",
+  "license_price": "3.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "4th-grade",
+    "6th-grade",
+    "8th-grade",
+    "10th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Instrumental Music",
+    "Vocal Music"
+  ],
+  "tags": [
+    "Rubrics",
+    "Assessment",
+    "Reflective Journals for Teachers",
+    "Winter",
+    "Worksheets",
+    "Printables"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 14,
+  "answer_key": "Not Included",
+  "files": {
+    "product": "winter-concert-reflection.pdf",
+    "preview": "winter-concert-reflection-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

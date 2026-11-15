@@ -1,0 +1,67 @@
+<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:'Oswald';font-weight:300;font-style:normal;src:url('../../fonts/oswald-latin-300-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:500;font-style:normal;src:url('../../fonts/oswald-latin-500-normal.woff2') format('woff2');}@font-face{font-family:'Oswald';font-weight:700;font-style:normal;src:url('../../fonts/oswald-latin-700-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:normal;src:url('../../fonts/source-sans-3-latin-400-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:400;font-style:italic;src:url('../../fonts/source-sans-3-latin-400-italic.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:600;font-style:normal;src:url('../../fonts/source-sans-3-latin-600-normal.woff2') format('woff2');}@font-face{font-family:'Source Sans 3';font-weight:700;font-style:normal;src:url('../../fonts/source-sans-3-latin-700-normal.woff2') format('woff2');}
+@page { size: 8.5in 11in; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+body { font-family: 'Source Sans 3', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; position: relative; overflow: hidden; page-break-after: always; break-after: page;
+        padding: 0.42in 0.5in 0.38in; display: flex; flex-direction: column; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+.top { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2.2pt solid #000; padding-bottom: 6pt; }
+.top .t { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 25pt; line-height: 1; letter-spacing: .01em; }
+.top .t small { display: block; font-weight: 300; text-transform: none; font-size: 12pt; letter-spacing: 0; margin-top: 4pt; }
+.tag { text-align: right; }
+.tag .lv { display: inline-block; background: #000; color: #fff; font-family: 'Oswald'; font-weight: 700; font-size: 15pt; padding: 3pt 9pt 4pt; border-radius: 4pt; letter-spacing: .04em; text-transform: uppercase; }
+.tag .lv.ak { background: #2B7FB8; }
+.tag .ln { font-family: 'Oswald'; font-weight: 300; font-size: 11pt; margin-top: 3pt; }
+.name { display: flex; gap: 18pt; font-size: 12pt; margin: 9pt 0 6pt; align-items: flex-end; }
+.name span { flex: 1; border-bottom: 1pt solid #000; height: 16pt; padding-bottom: 1pt; }
+.name span.d { flex: 0 0 1.6in; }
+.how { font-size: 12pt; margin: 4pt 0 8pt; line-height: 1.3; }
+.foot { display: flex; justify-content: space-between; font-size: 8.5pt; color: #333; border-top: .8pt solid #000; padding-top: 3pt; margin-top: 8pt; }
+.wm { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-38deg); font-family: 'Oswald'; font-weight: 700;
+      font-size: 150pt; color: rgba(0,0,0,.13); letter-spacing: .06em; white-space: nowrap; pointer-events: none; z-index: 9; }
+.h2 { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 13pt; margin: 11pt 0 4pt; letter-spacing: .02em; line-height: 1.1; }
+.h2 .acc { color: #2B7FB8; }
+.doc p, .doc li { font-size: 10.5pt; line-height: 1.34; margin: 0 0 4pt; }
+.doc ul, .doc ol { margin: 0 0 4pt; padding-left: 16pt; }
+.small { font-size: 9pt !important; color: #333; }
+.cb { display: inline-block; width: 11pt; height: 11pt; border: 1.3pt solid #000; border-radius: 2pt; vertical-align: -2pt; margin-right: 5pt; flex: none; }
+.cbr { display: inline-flex; align-items: center; margin-right: 12pt; font-size: 10.5pt; }
+.cbr .cb { vertical-align: 0; }
+table.g { border-collapse: collapse; width: 100%; table-layout: fixed; }
+table.g td, table.g th { border: 1pt solid #000; padding: 3pt 5pt; text-align: left; vertical-align: top; font-size: 9.5pt; line-height: 1.25; }
+table.g th { font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; font-size: 9.5pt; background: #000; color: #fff; letter-spacing: .03em; }
+table.g td.c, table.g th.c { text-align: center; }
+table.g td.k { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 10.5pt; line-height: 1.1; }
+.box { border: 1.3pt solid #000; border-radius: 6pt; padding: 6pt 8pt; }
+.ln { border-bottom: .9pt solid #000; height: 23pt; }
+.stmt { display: flex; align-items: flex-start; font-size: 11.5pt; line-height: 1.25; margin: 0 0 6pt; }
+.big td { padding: 8pt 7pt !important; font-size: 11pt !important; }
+.big td.k { font-size: 12pt !important; }
+.rub td { padding: 5pt 6pt !important; font-size: 10.5pt !important; }
+.big td .stmt:last-child { margin-bottom: 0; }
+.lvbox { display: inline-block; width: 26pt; height: 22pt; border: 1.3pt solid #000; border-radius: 4pt; }
+.cover { align-items: center; padding: 0; }
+.cvr { width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; background: #fff; overflow: hidden; }
+.cvr .store { font-family: 'Oswald'; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; font-size: 22px; margin-top: 34px; }
+.cvr .hd { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; text-align: center; line-height: .95; }
+.cvr .sub { font-family: 'Oswald'; font-weight: 300; text-align: center; }
+.cvr .band { width: 100%; background: #000; color: #fff; text-align: center; font-family: 'Oswald'; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 26px; padding: 16px 0 18px; }
+.cvr .band em { font-style: normal; color: #2B7FB8; }
+html,body{margin:0;background:#fff}
+.sq { width: 1000px; height: 1000px; position: relative; overflow: hidden; background: #fff; display: flex; flex-direction: column; align-items: center; }
+.sq .store { font-family: 'Oswald'; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; font-size: 22px; margin-top: 34px; }
+.sq .hd { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; text-align: center; line-height: .95; }
+.sq .sub { font-family: 'Oswald'; font-weight: 300; text-align: center; }
+.sq .band { position: absolute; left: 0; right: 0; bottom: 0; background: #000; color: #fff; text-align: center; font-family: 'Oswald';
+            font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 26px; padding: 16px 0 18px; }
+.sq .band em { font-style: normal; color: #2B7FB8; }
+.shot { background: #fff; border: 2px solid #000; box-shadow: 8px 8px 0 #000; position: relative; overflow: hidden; }
+.shot img { display: block; width: 100%; }
+.lbl { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 22px; text-align: center; margin-top: 18px; }
+.lbl span { font-weight: 300; text-transform: none; display: block; font-size: 18px; }
+.dc { box-sizing: border-box; border: 2px solid #000; border-radius: 8px; padding: 9px 10px; background: #fff; text-align: left; width: 205px; height: 205px; }
+.dc .dn { font-family: 'Oswald'; font-weight: 700; font-size: 15px; color: #2B7FB8; letter-spacing: .06em; }
+.dc .dt { font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; font-size: 21px; line-height: 1.05; margin-top: 2px; }
+.dc .df { font-family: 'Oswald'; font-weight: 300; font-size: 19px; line-height: 1.2; margin-top: 8px; }
+</style></head><body><div class="sq"><div class="store">Hudson Beat</div><div class="hd" style="font-size:70px;margin-top:20px">Rubric and goal sheet</div><div class="sub" style="font-size:27px;margin-top:8px">Four levels, scores out of 24, then a SMART goal</div><div style="display:flex;gap:36px;margin-top:40px"><div style="width:455px"><div class="shot"><img src="pv3.png"></div><div class="lbl">4-level rubric</div></div><div style="width:455px"><div class="shot"><img src="pv4.png"></div><div class="lbl">Goal sheet</div></div></div><div class="band">Score bands <em>·</em> next steps <em>·</em> practice plan</div></div></body></html>
