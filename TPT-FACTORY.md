@@ -36,6 +36,8 @@ subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one a
    1. Take the top unchecked queue item that is in season (see "Season rule"). Its id is the highest `tpt/NNN-*` number + 1.
    2. **Builder agent**, brief below.
    3. **QA agent** (a different agent), brief below.
+   3b. **Visual inspector** (a third fresh Sonnet agent that did not build or QA it; brief "Visual inspector" below). It must reply
+      `OK` before release. `DEFECTS` counts as a QA rejection: same single fix round, then the inspector again, then HELD.
    4. If QA rejects: one **fix agent** (fresh, gets only QA.md's required fixes and the folder), then QA again. If it is
       rejected a second time, leave it unreleased, log it as HELD and move on. No third round, no Opus.
    5. If approved: run `python3 tools/tpt-validate.py tpt/NNN-slug`. It must print OK; if not, one fresh Sonnet agent fixes
@@ -65,6 +67,24 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 > yourself. Read `UPLOAD.md` and `tpt.json`. Write `QA.md`: findings, then one line `**Verdict: APPROVED**` or
 > `**Verdict: REJECTED**` followed by the numbered required fixes. Only reject for things a buyer would notice or that break
 > a rule. Don't fix anything yourself. Reply in at most 8 lines.
+
+### Visual inspector brief (copy, fill in the folder)
+> You inspect the artwork of TpT product `tpt/[NNN-slug]/`. You did not build it and you did not do its content QA: do NOT read
+> `QA.md` or `gen.py` first, because their claims would bias you.
+> 1. With the Read tool, look at EVERY image at full size, one at a time: `cover.png`, `preview-1.png`, `preview-2.png`,
+>    `preview-3.png`. For a new build also render the product PDF at 110 dpi (`pdftoppm -r 110 -png file.pdf /tmp/x`) and look at
+>    every page, and at all 4 pages of the `-PREVIEW.pdf`. Never judge from a thumbnail or a contact sheet.
+> 2. For each image write an INVENTORY line saying exactly what is on it: the title text as printed, every drawn object, and every
+>    piece of music notation (clef; each note and rest by type and staff position; stems; flags and beams; barlines; time
+>    signature). If you cannot describe it exactly, look again.
+> 3. Then list DEFECTS. Assume at least one exists and hunt for it. Check (a) notation: stems on the correct side of the head (right
+>    edge going up, left edge going down), stem direction (down for notes on or above the middle line, up below it), heads filled
+>    or open to match the note named, flags and beams, rests, bars that add up to the time signature wherever one is shown;
+>    (b) anything overlapping, touching or colliding (a dot on a clef, text on art); (c) clipped or cut-off text or art, text too
+>    small to read at thumbnail size, typos, claims that disagree with the product (page, puzzle or grade counts; check
+>    `UPLOAD.md` only now); (d) blank areas, broken images, artefacts; (e) anything a teacher would find odd or unprofessional.
+> 4. Reply `OK` only if every image has an inventory line and you found nothing. Otherwise reply `DEFECTS:` with the image, where on
+>    it (top-left, centre...) and what is wrong. At most 12 lines.
 
 ## Product rules
 - **Brand and look:** `tpt/STYLE.md`. Footer and terms page as written there.
@@ -103,7 +123,7 @@ Price 25–35% below the sum. Never change or re-upload the member listings.
 ## QA checklist
 1. `gen.py --check` passes, and every answer key recomputed by hand matches.
 2. Music notation is correct on every page (see "Music must be right").
-3. Nothing clipped, overlapping, unreadably small or blank; the preview is watermarked; the cover reads at thumbnail size.
+3. Nothing clipped, overlapping, unreadably small or blank; the preview is watermarked; the cover reads at thumbnail size. (The Visual inspector, step 3b, checks every image and page at full size; QA does not replace it.)
    **Look at the cover and every preview image again at FULL size** (2000 px; crop into any drawing), not only as a thumbnail.
    Any music notation in that artwork (a staff, notes, rests, clefs) gets the same checks as the pages: stems attached to the
    right edge of up-stem heads (left edge, going down, for down-stems), stems up below the middle line and down on or above it,
