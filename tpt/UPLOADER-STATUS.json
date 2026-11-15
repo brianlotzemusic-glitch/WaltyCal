@@ -1,24 +1,12 @@
 {
-  "ran_at": "2026-11-15T12:21:29.324Z",
-  "published": [
-    {
-      "item": "043-note-naming-speed-drills",
-      "url": "https://www.teacherspayteachers.com/Product/Note-Naming-Worksheets-Treble-Bass-Alto-Clef-Speed-Drills-Grades-3-8-18352419"
-    },
-    {
-      "item": "044-holiday-boomwhacker-bells-play-alongs",
-      "url": "https://www.teacherspayteachers.com/Product/Color-Coded-Play-Along-Charts-Tuned-Tubes-Bells-Xylophone-Carols-Gr-1-5-18352427"
-    }
-  ],
+  "ran_at": "2026-11-15T14:45:04.794Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "043-note-naming-speed-drills",
-    "044-holiday-boomwhacker-bells-play-alongs"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-15T12:24:09.988Z",
+    "ran_at": "2026-11-15T14:45:04.935Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
