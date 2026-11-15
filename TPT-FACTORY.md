@@ -22,6 +22,16 @@ subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one a
 
 1. `git fetch origin shop-factory && git checkout -B shop-factory origin/shop-factory`
 2. Uploader check (see "The Mac uploader"). One line in LOG if something is wrong.
+   Then **fixes first**: any `[fix]` line at the top of `tpt/QUEUE.md` is done before the day's builds and does not count toward
+   them. Procedure for a defect in a LIVE product (owner reports it, or QA/the live check finds it):
+   1. Fresh Sonnet agent: fix the cause in the item's `gen.py` (the source, never only the output), rebuild with `python3 gen.py`,
+      run `python3 gen.py --check`. Reply in 8 lines.
+   2. Fresh Sonnet QA agent: look at **every file the fix touched at full size** (cover at 2000 px, not a thumbnail), confirm the
+      defect is gone and nothing else changed, rewrite `QA.md` with `**Verdict: APPROVED**`.
+   3. Write `tpt/NNN-slug/reupload` (date and one-line reason). Your Mac's next run replaces the files in the live listing
+      (`tools/tpt.js reupload-pending`; title, price, description and tags are never touched) and writes `reuploaded`, or
+      `reupload-failed` with the reason. Next shift, read which; on `reupload-failed` treat it like a held upload.
+   4. Tick the `[fix]` line, add one LOG line, commit and push.
 3. For each product this shift owes:
    1. Take the top unchecked queue item that is in season (see "Season rule"). Its id is the highest `tpt/NNN-*` number + 1.
    2. **Builder agent**, brief below.
@@ -94,6 +104,11 @@ Price 25–35% below the sum. Never change or re-upload the member listings.
 1. `gen.py --check` passes, and every answer key recomputed by hand matches.
 2. Music notation is correct on every page (see "Music must be right").
 3. Nothing clipped, overlapping, unreadably small or blank; the preview is watermarked; the cover reads at thumbnail size.
+   **Look at the cover and every preview image again at FULL size** (2000 px; crop into any drawing), not only as a thumbnail.
+   Any music notation in that artwork (a staff, notes, rests, clefs) gets the same checks as the pages: stems attached to the
+   right edge of up-stem heads (left edge, going down, for down-stems), stems up below the middle line and down on or above it,
+   flags and beams correct, nothing overlapping the notation. (042's cover shipped on 14 Nov 2026 with stems floating one
+   note-width away from their heads: QA had looked at it only at thumbnail size and never checked its notes.)
 4. Tunes are public domain, with year and source noted. No brands, characters or copied material.
 5. Age and grade fit. Instructions a substitute could follow.
 6. Listing: title ≤ 80, description matches the product exactly (page count, what's included), disclosure line present, price

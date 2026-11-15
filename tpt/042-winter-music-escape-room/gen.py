@@ -347,6 +347,15 @@ def gl(cp, x, y, size, fill="#000"):
     return f'<text x="{x:.2f}" y="{y:.2f}" font-family="Bravura" font-size="{size:.2f}" fill="{fill}">&#x{cp:X};</text>'
 
 
+def stem_up(x, y, space=14.0, length=3.5, width=2.6):
+    """Up-stem for a black notehead drawn with gl(0xE0A4, x, y, 4 * space). gl() puts x at the LEFT edge of the head and the
+    head is 1.18 spaces wide, so the stem goes on its right edge, starting 0.168 space above the head's centre line
+    (Bravura's stem anchor) and rising `length` spaces. Used for the cover art; fixed 15 Nov 2026 after the cover
+    shipped with stems drawn one head-width too far right (floating, detached from both notes)."""
+    sx = x + 1.18 * space - width / 2
+    return f'<line x1="{sx:.2f}" y1="{y - 0.168 * space:.2f}" x2="{sx:.2f}" y2="{y - length * space:.2f}" stroke="#000" stroke-width="{width}"/>'
+
+
 NOTE_GLYPH = {"w": 0xE1D2, "h": 0xE1D3, "q": 0xE1D5, "e": 0xE1D7}
 REST_GLYPH = {"w": 0xE4E3, "h": 0xE4E4, "q": 0xE4E5, "e": 0xE4E6}
 HEAD_GLYPH_Q = 0xE0A4
@@ -563,16 +572,17 @@ def globe_art(width="100%"):
     for i in range(5):
         o.append(f'<line x1="132" y1="{118 + i * 14}" x2="308" y2="{118 + i * 14}" stroke="#000" stroke-width="2.2"/>')
     o.append(gl(0xE050, 140, 118 + 3 * 14, 56))
-    o.append(gl(0xE0A4, 222, 118 + 2 * 14, 56))
-    o.append('<line x1="253" y1="146" x2="253" y2="96" stroke="#000" stroke-width="2.6"/>')
+    # two quarter notes below the middle line, so both stems go up, on the right edge of each head
+    o.append(gl(0xE0A4, 222, 118 + 2.5 * 14, 56))
+    o.append(stem_up(222, 118 + 2.5 * 14))
     o.append(gl(0xE0A4, 262, 118 + 3.5 * 14, 56))
-    o.append('<line x1="293" y1="167" x2="293" y2="117" stroke="#000" stroke-width="2.6"/>')
+    o.append(stem_up(262, 118 + 3.5 * 14))
     o.append(snowflake(176, 70, 20, 2.4, ACCENT))
     o.append(snowflake(272, 56, 14, 2.2, ACCENT))
     o.append(snowflake(112, 160, 13, 2.2, ACCENT))
     o.append(snowflake(330, 150, 17, 2.4, ACCENT))
     o.append(snowflake(300, 220, 10, 2, ACCENT))
-    for (x, y) in [(150, 96), (205, 40), (236, 92), (322, 100), (126, 212), (188, 236), (252, 232), (160, 190), (342, 196)]:
+    for (x, y) in [(150, 96), (205, 40), (236, 92), (322, 100), (126, 212), (188, 236), (252, 232), (116, 118), (342, 196)]  # (116,118): was (160,190), which sat on the treble clef:
         o.append(f'<circle cx="{x}" cy="{y}" r="3.6" fill="#fff" stroke="#000" stroke-width="1.6"/>')
     # padlock on the base
     o.append(f'<path d="M196,318 v-14 a24,24 0 0 1 48,0 v14" fill="none" stroke="#000" stroke-width="8" stroke-linecap="round"/>')

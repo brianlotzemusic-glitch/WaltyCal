@@ -3,6 +3,7 @@
 Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released. `[next year]` = season missed.
 
 ## Classroom (3 a day)
+- [ ] [fix] 042 Winter Music Escape Room (LIVE): the cover art's two quarter notes were drawn wrong (stems floating a note-width to the right of the heads, one note on the middle line with its stem up, a snow dot on the clef). Source already fixed in tpt/042-winter-music-escape-room/gen.py (new stem_up() helper, notes moved below the middle line, dot moved). Do the 'Fixing a live product' steps: rebuild with python3 gen.py, gen.py --check, QA at full size on cover.png, the 4-page preview PDF and page 1 of the PDF (all contain the globe), then write the reupload marker. Owner reported it 15 Nov 2026.
 - [x] Christmas Color by Note: rhythm, treble and bass clef, 3 levels, Christmas pictures, answer keys (grades 2–6; same format as 029; $4; Christmas)
 - [x] Thanksgiving Music Sub Plan: 3 no-prep lessons, turkey rhythm reading, gratitude lyric-writing page, listening response sheet (K–5; $4; Thanksgiving)
 - [x] Nutcracker Listening Unit: story summary, 6 movement listening maps and response pages, instrument spotting, quiz with key; Tchaikovsky 1892 (grades 2–6; $6; December)
