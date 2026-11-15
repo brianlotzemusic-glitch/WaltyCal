@@ -2,6 +2,34 @@
 
 Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released. `[next year]` = season missed.
 
+## Fixes from the 15 Nov visual audit (do these FIRST, at most 3 per shift, in order; procedure in TPT-FACTORY.md 'A shift, step by step' step 2)
+- [ ] [fix] 043 (P1 ledger-line cards 5/6/7 in the PDF do not show what their titles say) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 043
+- [ ] [fix] 007 (P1 Composer example bar 2 = 3 beats but caption says 4; P2 cover overlap, YES/NO cards flush to border) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 007
+- [ ] [fix] 026 (P1 chord table numerals: II/III/VI hold minor chords, use ii/iii/vi) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 026
+- [ ] [fix] 002 (P1 (verify) preview banner '4 beats in 4/4' vs worksheet; P2 cover art touching card) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 002
+- [ ] [fix] 011 (P1 stray ninth '(8)' cell on the C major card) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 011
+- [ ] [fix] 012 (P1 same stray '(8)' cell; P2 cover kicker says 'Melody Writing' not 'Bass & Melody') — defects and tiers: tpt/AUDIT-2026-11-15.md, section 012
+- [ ] [fix] 014 (P1 (verify) rubric line 'Student + Teacher = / 25' vs the average) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 014
+- [ ] [fix] 034 (P1 caption says box 8 but the page has no boxes; P2 violin bow line, cut-off text) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 034
+- [ ] [fix] 042 (P1 cover stems/clef dot (source already fixed 15 Nov: rebuild); P2 two dots on the snow line) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 042
+- [ ] [fix] 027 (P2 doubled PREVIEW watermark: reference fix for the watermark family; apply the same patch to 028, 029, 032, 035, 037) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 027
+- [ ] [fix] 028 (P2 doubled watermark (use 027's patch); answer-key page mostly empty) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 028
+- [ ] [fix] 029 (P2 doubled watermark; snowman bottom ball cut by frame; black dots on tree tips) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 029
+- [ ] [fix] 039 (P2 snowman cut by frame (same drawing as 029); accent marks touch stems) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 039
+- [ ] [fix] 032 (P2 doubled watermark; star touches frame; stray ticks) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 032
+- [ ] [fix] 035 (P2 doubled watermark; dots fused to candles and lines) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 035
+- [ ] [fix] 037 (P2 doubled watermark; cover notation off-centre; rest touches count) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 037
+- [ ] [fix] 009 (P2 cover trees cut by hard edges; preview-2 slides cut by footer bar) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 009
+- [ ] [fix] 030 (P2 preview thumbnails cut by footer band, captions missing) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 030
+- [ ] [fix] 004 (P2 cover acorn touches card; answer-key sheet runs under the footer) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 004
+- [ ] [fix] 001 (P2 spider legs cut, stray dot on cauldron) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 001
+- [ ] [fix] 033 (P2 preview-2 K-2 sheet text cut off by the overlapping sheet) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 033
+- [ ] [fix] 005 (P2 cover snowflake touches clip; dashed line crosses the label) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 005
+- [ ] [fix] 003 (P2 cover snowflake arm touches the card) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 003
+- [ ] [fix] 017 (P2 preview-2 ruler missing bar 8 and hit numbers) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 017
+- [ ] [fix] 015 (P2 slide order 7,9,8 vs bar; cover text too small) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 015
+- [ ] [fix] 018 (P2 pacing callouts overlap the footer rule) — defects and tiers: tpt/AUDIT-2026-11-15.md, section 018
+
 ## Classroom (3 a day)
 - [x] [fix] 042 Winter Music Escape Room (LIVE): the cover art's two quarter notes were drawn wrong (stems floating a note-width to the right of the heads, one note on the middle line with its stem up, a snow dot on the clef). Source already fixed in tpt/042-winter-music-escape-room/gen.py (new stem_up() helper, notes moved below the middle line, dot moved). Do the 'Fixing a live product' steps: rebuild with python3 gen.py, gen.py --check, QA at full size on cover.png, the 4-page preview PDF and page 1 of the PDF (all contain the globe), then write the reupload marker. Owner reported it 15 Nov 2026.
 - [x] Christmas Color by Note: rhythm, treble and bass clef, 3 levels, Christmas pictures, answer keys (grades 2–6; same format as 029; $4; Christmas)
