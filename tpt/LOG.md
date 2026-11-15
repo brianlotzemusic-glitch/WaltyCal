@@ -20,3 +20,4 @@
 - 2026-11-14: 040-trap-nutcracker-logic (Holiday Logic kit, $9) built, QA approved after 1 fix round (deck slide typo), released. Sources: Ted Muller celesta part, classicalmidi Trepak MIDI; QA confirmed Sugar Plum bar-10 note is B.
 - 2026-11-14: 041-band-orchestra-emergency-sub-plans HELD (not released): QA rejected twice. Only remaining fix: Lesson 4 matching (page 16) ambiguous: item 4 echoes strategy A but key says C, item 2 also fits A; swap key to M2 C / M4 A and reword item 2 or 4, then rebuild/check. Everything else passed.
 - 2026-11-14: 042-winter-music-escape-room (classroom, $5.50) built, QA approved after 1 fix round (repeat sign), released. Afternoon shift: 040 kit released, 041 HELD, 042 released.
+- 2026-11-15: 043-note-naming-speed-drills (classroom, $4, evergreen) built, QA approved first pass, released. Taken ahead of two holiday items per the season rule.
