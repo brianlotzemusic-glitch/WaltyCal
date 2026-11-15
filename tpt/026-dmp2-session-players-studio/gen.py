@@ -106,7 +106,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine (/ 25)"
+RUBRIC_ROW_PITCH = 0.84  # opt-in tighter rows (dmp2.py default 0.9) so the closing line clears the footer rule
+RUBRIC_LINE_Y = 6.28
 # ---- Teacher Notes
 TN_REINFORCES = ("Teaches arrangement, harmonic thinking, and how to build a full production with limited manual input. Great for students "
                  "who struggle with playing instruments.")
@@ -875,7 +877,7 @@ def example2_page(n, wm=False):
 
 def chords_page(n, wm=False):
     keys = list(SCALES)
-    head = "<tr><th>Key</th>" + "".join(f"<th>{nm}</th>" for nm, _, _ in DEGREES) + "</tr>"
+    head = "<tr><th>Key</th>" + "".join(f"<th style='text-transform:none'>{nm}</th>" for nm, _, _ in DEGREES) + "</tr>"
     rows = "".join(f"<tr><td><b>{k}</b></td>" + "".join(f"<td>{chord(k, nm)}</td>" for nm, _, _ in DEGREES) + "</tr>" for k in keys)
     ph = "<tr><th>Progression</th><th>Feel</th>" + "".join(f"<th>{k}</th>" for k in keys) + "</tr>"
     pr = "".join(f"<tr><td style='white-space:nowrap'><b>{p}</b></td><td>{f}</td>"

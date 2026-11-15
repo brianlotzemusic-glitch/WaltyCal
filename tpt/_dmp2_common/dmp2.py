@@ -791,12 +791,12 @@ def build_deck(img):
                 text(sl, x + 0.6, y, 5.35, step - 0.08, it, 22, "Source Sans 3", False, BLACK)
         elif kind == "rubric":
             for k, ((c, _), short) in enumerate(zip(K.RUBRIC, K.RUBRIC_SHORT)):
-                y = 1.98 + k * 0.9
+                y = 1.98 + k * getattr(K, "RUBRIC_ROW_PITCH", 0.9)
                 box(sl, 0.6, y, 4.2, 0.78, BLACK, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
                 text(sl, 0.75, y, 3.9, 0.78, c, 19, "Oswald", True, WHITE, anchor=MSO_ANCHOR.MIDDLE, caps=True)
                 text(sl, 5.0, y, 6.7, 0.78, "5 = " + short, 18, "Source Sans 3", False, BLACK, anchor=MSO_ANCHOR.MIDDLE)
                 text(sl, 11.75, y, 0.98, 0.78, "/ 5", 24, "Oswald", True, ACC, align=PP_ALIGN.RIGHT, anchor=MSO_ANCHOR.MIDDLE)
-            text(sl, 0.6, 6.5, 12.13, 0.45, K.RUBRIC_SLIDE_LINE, 20, "Oswald", True, BLACK, align=PP_ALIGN.RIGHT, caps=True)
+            text(sl, 0.6, getattr(K, "RUBRIC_LINE_Y", 6.5), 12.13, 0.45, K.RUBRIC_SLIDE_LINE, 20, "Oswald", True, BLACK, align=PP_ALIGN.RIGHT, caps=True)
         elif kind == "steps":
             gap = 0.95 if len(items) <= 5 else 0.8
             for k, it in enumerate(items):
