@@ -49,7 +49,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Carol Flip: remix a public-domain carol in any genre; melodies given as piano-roll note charts (Jingle Bells, Deck the Halls, Silent Night). First kit: add the ORIGINAL mode to dmp2.py ($9; winter)
 - [x] Lo-Fi Holiday Beat: lo-fi hip-hop version of a public-domain carol; swing, tape and bitcrush effects, vinyl noise ($8; winter)
 - [x] Trap Nutcracker: flip two Tchaikovsky themes (Sugar Plum Fairy, Trepak; 1892) with 808s and hi-hat rolls; note charts given ($9; December)
-- [ ] Winter Soundscape: design a snowstorm from scratch with Alchemy and automation, no melody required ($8; winter)
+- [!] HELD (tpt/045-winter-soundscape-logic, QA approved but Visual inspector found defects after the fix round; see LOG 15 Nov) Winter Soundscape: design a snowstorm from scratch with Alchemy and automation, no melody required ($8; winter)
 - [ ] Holiday Commercial Jingle: 30-second jingle for an invented product, from a client brief, with voice-over ($8; winter)
 - [ ] 8-Bit Holiday: chiptune arrangement of a public-domain carol with square and triangle waves and arpeggios ($8; winter)
 - [ ] Sleigh Bell Groove: holiday percussion programming in Drum Machine Designer and Step Sequencer, straight versus swing ($7; winter)
