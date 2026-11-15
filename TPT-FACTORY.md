@@ -22,12 +22,16 @@ subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one a
 
 1. `git fetch origin shop-factory && git checkout -B shop-factory origin/shop-factory`
 2. Uploader check (see "The Mac uploader"). One line in LOG if something is wrong.
-   Then **fixes first**: any `[fix]` line at the top of `tpt/QUEUE.md` is done before the day's builds and does not count toward
-   them. Procedure for a defect in a LIVE product (owner reports it, or QA/the live check finds it):
-   1. Fresh Sonnet agent: fix the cause in the item's `gen.py` (the source, never only the output), rebuild with `python3 gen.py`,
-      run `python3 gen.py --check`. Reply in 8 lines.
-   2. Fresh Sonnet QA agent: look at **every file the fix touched at full size** (cover at 2000 px, not a thumbnail), confirm the
-      defect is gone and nothing else changed, rewrite `QA.md` with `**Verdict: APPROVED**`.
+   Then **fixes first**: take the `[fix]` lines at the top of `tpt/QUEUE.md`, at most 3 per shift, before the day's builds; they do not
+   count toward them. Procedure for a defect in a LIVE product (owner reports it, or QA/the live check finds it):
+   1. Fresh Sonnet agent. First read that item's section of `tpt/AUDIT-2026-11-15.md` (or the owner's report) and **look at each
+      listed defect yourself in the current files**; a defect you cannot see is a false alarm: say so and leave it. Fix the real
+      ones in the item's `gen.py` (the source, never only the output), rebuild with `python3 gen.py`, run `python3 gen.py --check`.
+      Fix P1 and P2 items; fix P3 ones only if cheap. A drawing flaw shared with other kits (same function copied around) is fixed
+      in each affected kit in the same run when it is listed. Reply in 8 lines: fixed, false alarms, not fixed and why.
+   2. Fresh Sonnet agent as **Visual inspector** (brief above, on that folder, covering every image and every PDF page the fix
+      touched, at full size). It must also confirm each defect listed for that item is gone and nothing new appeared. Only then
+      rewrite `QA.md` with `**Verdict: APPROVED**`; DEFECTS means one more fix round, then leave it and log it HELD.
    3. Write `tpt/NNN-slug/reupload` (date and one-line reason). Your Mac's next run replaces the files in the live listing
       (`tools/tpt.js reupload-pending`; title, price, description and tags are never touched) and writes `reuploaded`, or
       `reupload-failed` with the reason. Next shift, read which; on `reupload-failed` treat it like a held upload.
