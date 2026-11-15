@@ -1,22 +1,31 @@
 {
-  "ran_at": "2026-11-15T14:45:04.794Z",
+  "ran_at": "2026-11-15T20:15:07.044Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-15T14:45:04.935Z",
+    "ran_at": "2026-11-15T20:15:07.187Z",
     "replaced": [],
-    "failed": [],
-    "waiting": [],
+    "failed": [
+      {
+        "item": "007-music-sub-plans-k5",
+        "error": "reupload stopped at \"replace product (music-sub-plans-k5.pdf)\": could not remove the existing product file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner); card text: Last updated: Oct 11, 2026 at 9:07 AM EST See Revision History Screenshot: tpt/_publish/007-music-sub-plans-k5-reupload-failed.png. Not retrying this marke"
+      }
+    ],
+    "waiting": [
+      "007-music-sub-plans-k5",
+      "042-winter-music-escape-room",
+      "043-note-naming-speed-drills"
+    ],
     "skipped": [
       "027-thanksgiving-color-by-note: failed-hold"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": true
+    "ok": false
   },
   "ok": true
 }

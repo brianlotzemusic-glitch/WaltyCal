@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-15T20:15:18.527Z",
+  "marker_sha256": "e6eb0120242b935390ebfe116a24324cfa7ddf938a9e790e45b0d9eca5223bc6",
+  "step": "replace product (music-sub-plans-k5.pdf)",
+  "error": "could not remove the existing product file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner); card text: Last updated: Oct 11, 2026 at 9:07 AM EST See Revision History",
+  "files": [
+    {
+      "slot": "product",
+      "file": "music-sub-plans-k5.pdf",
+      "sha256": "ff294bd1646b10897a892bba991823a62e9376015950333634c20944abcb1e75"
+    },
+    {
+      "slot": "preview",
+      "file": "music-sub-plans-k5-PREVIEW.pdf",
+      "sha256": "6208b08600e6e86c3d56519225d14baef5825ab680e435813270a76e5b0a5ca6"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "sha256": "b3a549a5211c66f6319722640a5158efc321040d326d7e6f382fd44a25814f51"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "sha256": "97d078c2874992ad218424a5a32d6909216ec518a678c5b4658a2bfa5db92529"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "sha256": "2abc2e1049d6ad4abc72fc58afdd589bde0793e3ad0b2c31ddecc892d5ea8831"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "sha256": "d8572a3e0ed6e94f35c8b25c4f059db9f76554b8997be64fa983383fd6ded37f"
+    }
+  ],
+  "screenshot": "tpt/_publish/007-music-sub-plans-k5-reupload-failed.png"
+}
