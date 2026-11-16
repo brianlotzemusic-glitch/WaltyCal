@@ -10,3 +10,12 @@
 - Cosmetic, not blocking: preview-1.png watermark looks doubled/ghosted ("PPREVIEW"); preview-3.png has an empty bottom third; cover music block is left-heavy; preview-1 caption "Quarter and half notes" sits under worksheet 3 (half rests).
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+- Doubled "PREVIEW" watermark on preview-1/2 removed (second stamp drawn over page images already cut from the watermarked preview PDF).
+- Cover: the notation block now spans the full art width (it sat left of centre with the right third empty); count labels in answer keys moved down 2 pt so quarter rests no longer touch their counts (cover line 1 bar 2, and all keys).
+- P3: preview-3 cards made taller so the grid fills the image.
+- Rebuilt; `gen.py --check` and `tools/tpt-validate.py` pass.
+- Fresh Sonnet inspector: no real defects (single watermark, bars add up, no rest touching a count). Remarks left as is: first note near the 6/8 time signature in the downscaled preview-2 thumbnail only (the PDF page has a clear gap); quarter-rest-to-count gap tight but clear (about 5 px at 220 dpi).
+
+**Verdict: APPROVED**
