@@ -117,8 +117,8 @@ def symbol_art_svg(sym, cx, cy, k=1.0):
         return (_head(X(0), Y(2)).replace('rx="6.6" ry="4.9"', f'rx="{6.6 * k:.1f}" ry="{4.9 * k:.1f}"') + _ln(X(-6.2), Y(3), X(-6.2), Y(15), 1.9 * k)
                 + f'<circle cx="{X(0):.1f}" cy="{Y(-11):.1f}" r="{2.8 * k:.1f}" fill="#000"/>')
     if sym == "accent":
-        return (_head(X(0), Y(11)).replace('rx="6.6" ry="4.9"', f'rx="{6.6 * k:.1f}" ry="{4.9 * k:.1f}"') + _ln(X(6.2), Y(10), X(6.2), Y(-5), 1.9 * k)
-                + f'<polyline points="{X(-8):.1f},{Y(-15):.1f} {X(8):.1f},{Y(-11):.1f} {X(-8):.1f},{Y(-7):.1f}" fill="none" stroke="#000" '
+        return (_head(X(0), Y(11)).replace('rx="6.6" ry="4.9"', f'rx="{6.6 * k:.1f}" ry="{4.9 * k:.1f}"') + _ln(X(6.2), Y(10), X(6.2), Y(-2), 1.9 * k)
+                + f'<polyline points="{X(-8):.1f},{Y(-17):.1f} {X(8):.1f},{Y(-13):.1f} {X(-8):.1f},{Y(-9):.1f}" fill="none" stroke="#000" '
                 f'stroke-width="{2.2 * k:.1f}" stroke-linecap="round" stroke-linejoin="round"/>')
     if sym == "slur":
         out = ""
