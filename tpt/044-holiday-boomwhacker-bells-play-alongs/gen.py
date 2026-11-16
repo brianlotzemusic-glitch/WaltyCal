@@ -308,6 +308,19 @@ def strip_rows(bars, layout, meter, bar_nos, ys, h, tune_key, ver, letters=None,
             out.append(f'<g class="blk" data-tune="{tune_key}" data-ver="{ver}" data-bar="{bar_nos[bi]}" data-pitch="{n.pitch}" data-dur="{n.dur}" data-row="{row}" data-w="{bw - 2:.2f}">'
                        f'<rect x="{bx + 1:.2f}" y="{ys:.2f}" width="{bw - 2:.2f}" height="{h:.2f}" rx="3" fill="{NAME_HEX[nm]}" stroke="#000" stroke-width="1"/>'
                        f'<text x="{bx + bw / 2:.2f}" y="{ys + h / 2 + fs * 0.36:.2f}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="{fs:.1f}" fill="{TEXT_ON[nm]}">{lab}</text></g>')
+            if n.tie:   # a tied note: bridge to the next block so the strip shows "play once and hold"
+                if i + 1 < len(bar):
+                    nbx = x0 + PAD + float(starts[i + 1]) / blen * ux
+                    nb_ok = letters is None or bar[i + 1].pitch[0] in letters
+                elif bi + 1 < len(bars):
+                    nx0, nx1, nblen = layout[bi + 1]
+                    nbx = nx0 + PAD
+                    nb_ok = letters is None or bars[bi + 1][0].pitch[0] in letters
+                else:
+                    nb_ok = False
+                if nb_ok:
+                    xa, xb = bx + bw - 1, nbx + 1
+                    out.append(f'<rect x="{xa:.2f}" y="{ys + h / 2 - 1.6:.2f}" width="{max(xb - xa, 1):.2f}" height="3.2" fill="#000"/>')
     return "".join(out)
 
 
@@ -599,7 +612,7 @@ def cover_page():
     return (f'<section class="page cover"><div class="store">{BRAND}</div>'
             f'<div style="width:6.7in">{tubes_svg()}</div>'
             f'<div class="ctitle"><div class="a">COLOR-CODED PLAY-ALONGS</div><div class="b">TUBES &amp; BELLS</div>'
-            f'<div class="c">Note charts and play-along strips for 5 public-domain carols · easy and full versions · parts for 2–3 groups</div></div>'
+            f'<div class="c">Note charts and play-along strips for 5 public-domain carols · easy and full versions · parts for <span style="white-space:nowrap">2–3 groups</span></div></div>'
             f'<div class="cband">Grades 1–5 <em>·</em> 5 carols <em>·</em> {TOTAL_PAGES} pages</div></section>')
 
 
@@ -658,7 +671,7 @@ def key_page(wm=False):
             f'<div class="cols"><div><h2>How to read a strip</h2><ul>'
             f'<li>One colored block = one note. The block’s letter tells you which note.</li>'
             f'<li>Block length = note length: a wide block is a long note.</li>'
-            f'<li>Space with no block = silence. The small numbers are the beats.</li>'
+            f'<li>Space with no block = silence. The small numbers are the beats. A black bar joining two blocks is a tie: play it once and hold.</li>'
             f'<li>On the parts pages each row is one group: play only your own row.</li></ul></div>'
             f'<div><h2>Bells and xylophones</h2><ul>'
             f'<li>Put a color dot or tape on each bar: C red, D orange, E yellow, F green, G turquoise, A blue, B purple, high C red.</li>'
