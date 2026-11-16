@@ -156,8 +156,8 @@ RUBRIC_LINE_Y = 6.3
 TN_REINFORCES = ("Teaches sound design as a way of making music without a melody. Students learn that texture, movement and space, not only "
                  "notes, hold a listener’s attention, and they practice building layers, drawing automation, and using reverb, EQ and stereo "
                  "width in Logic Pro.")
-STRUGGLES = ["Every layer sounds like one grey blur: give each layer its own range of pitch (page @SPACE), cut the lows of every layer except "
-             "the rumble with Channel EQ, and spread the layers with pan.",
+STRUGGLES = ["Every layer sounds like one grey blur: give each layer its own range of pitch (page @SPACE), cut the lows of every layer with a "
+             "Channel EQ high-pass (the rumble’s is very low), and spread the layers with pan.",
              "The storm never builds because every layer plays from start to finish: use the layer map (page @LAYERS) so layers enter and "
              "leave on purpose, and compare it with the worked example (pages @EXAMPLE–@EXAMPLE2).",
              "The automation clicks or zig-zags: use fewer points and smooth curves (page @AUTO1), and move the control slowly. Wind rarely "
@@ -212,8 +212,8 @@ PACING_EXTRA = (
     '<div class="cols" style="margin-top:4pt;gap:14pt"><div class="box acc-b"><span class="k">The one thing to do on Class 1</span>'
     '<p style="margin:0;font-size:9.6pt">Make sure every student leaves with a scene, a tempo and a storm arc on the timeline planner (page @TIMELINE) '
     'whose bars add up to 60 to 90 seconds. If the sums are wrong now, the whole plan is wrong later: use seconds = bars × 240 ÷ BPM.</p></div>'
-    '<div class="box"><span class="k">If you only have three classes</span><p style="margin:0;font-size:9.6pt">Combine Classes 3 and 4: '
-    'build the layers and draw the automation on Class 2, then do space, mix, bouncing, presentations and reflection together in Class 3. Plan on a longer Class 3.</p></div></div>')
+    '<div class="box"><span class="k">If you only have three classes</span><p style="margin:0;font-size:9.6pt">Automate only two lanes (cutoff and volume) '
+    'and keep reverb and EQ to the basics, so Class 3 covers automation, space, mix and bouncing. Use the last ten minutes of Class 3 for short presentations, and set the reflection page as homework.</p></div></div>')
 PACING_SIZE = 9.6
 
 # ================================================================ the worked example: an invented 60-second storm at 120 BPM
@@ -643,7 +643,7 @@ DRAWING_PX = {"hero": 1900, "cycle": 2000, "arc": 2000, "curves": 2000, "freq": 
 SIDE = {"cycle": ["Choose a scene and a tempo", "Plan the storm arc on paper", "Build layers, then automate", "Space and mix last"],
         "arc": ["Four sections: hush, build, peak, fade", "The peak is the only loudest part", "Bars × 2 seconds at 120 BPM", "30 bars = 60 seconds"],
         "curves": ["Ramp: a build", "Swell: a gust", "Step: a sudden change", "Wave and Fade: breath and ending"],
-        "freq": ["Low layers sit at the left", "High layers sit at the right", "High-pass every layer; the rumble gets a very low one", "Layers that overlap hide each other"],
+        "freq": ["Low layers sit at the left", "High layers sit at the right", "High-pass every layer, rumble very low", "Layers that overlap hide each other"],
         "map": ["An invented 60-second storm", "Four sections: 4, 10, 8, 8 bars", "Eight layers, four automation lanes", "The peak has the most layers"]}
 
 
@@ -782,7 +782,7 @@ VOCAB_PROMPT = "Where it shows up in my soundscape:"
 TN1_EXTRA = (
     '<div class="box acc-b" style="margin-top:4pt"><span class="k">Where this kit helps with each struggle</span><ul style="margin:0">'
     '<li style="font-size:11.4pt;margin-bottom:3pt">A grey blur: the palette cards (pages @PALETTE1–@PALETTE2) and the frequency map (page @SPACE) give each layer its own range.</li>'
-    '<li style="font-size:11.4pt;margin-bottom:3pt">No build: the timeline planner (page @TIMELINE), the layer map (page @LAYERS) and slide 7 show layers entering and leaving.</li>'
+    '<li style="font-size:11.4pt;margin-bottom:3pt">No build: the timeline planner (page @TIMELINE), the layer map (page @LAYERS) and slide 10 show layers entering and leaving.</li>'
     '<li style="font-size:11.4pt;margin-bottom:3pt">Clicky automation: the five curve shapes (page @AUTO1) and the worked example (page @EXAMPLE2).</li>'
     '<li style="font-size:11.4pt;margin-bottom:0">A distorted peak or wash: the space page (page @SPACE) and slide 11.</li></ul></div>')
 TN1_SIZE = 11.8

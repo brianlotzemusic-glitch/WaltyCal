@@ -187,7 +187,7 @@ def staff_group(bars, sysno, first_bar_no, meter, s, show_ts, bar_nos, tune_key,
         L = F(meter[0] * 4, meter[1])
         offset = (L - T.bar_beats(bar)) if is_pick else F(0)
         if no:
-            out.append(f'<text x="{x0 + 2:.1f}" y="{yb - 4 * s - 0.9 * s - 2:.1f}" font-family="Oswald" font-weight="500" font-size="7" fill="#555">{no}</text>')
+            out.append(f'<text x="{x0 + 2:.1f}" y="{yb - 4 * s - 0.9 * s + 0.5:.1f}" font-family="Oswald" font-weight="500" font-size="7" fill="#555">{no}</text>')
         starts = note_starts(bar)
         runs = beam_groups(bar, offset)
         in_run = {i: r for r in runs for i in r}
