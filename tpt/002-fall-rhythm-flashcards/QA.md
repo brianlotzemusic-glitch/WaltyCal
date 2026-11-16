@@ -168,3 +168,7 @@ I re-rendered the rebuilt PDF (29 pages), the preview PDF (4 pages) and all four
 - preview-3 leaves empty space under the grid.
 
 **Verdict: APPROVED**
+
+## Fix re-check 2026-11-16
+Audit defects fixed in gen.py: P1 (verify) preview-2 banner claimed '4 beats in 4/4' but the Beat Count worksheet bars are 2, 3, 4, 3, 4, 2 (worksheet and key are right; banner reworded to 'Every answer worked out and checked'), P2 cover maple leaf and owl no longer touch the card, and the doubled PREVIEW watermark ('PPREVIEW') on the preview-1/2 thumbnails (extra overlay removed). Visual inspector re-checked cover, preview-1..3, all 29 PDF pages and 4 preview-PDF pages at full size: OK. Open nits (not changed): preview-2's answer-key thumbnail carries no watermark; page 28 'N BEATS' tags sit tight to the row border; preview-3 blank band (known P3).
+**Verdict: APPROVED**

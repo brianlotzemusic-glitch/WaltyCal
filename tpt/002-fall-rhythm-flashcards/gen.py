@@ -603,8 +603,8 @@ def hero_svg(width_css):
     leaves = "".join(art("leaf", cx - 15, 200, 30, 2.0, fill=A) for cx in centres)
     card = mini_card(100, 46, 400, 210, body + leaves, rot=-3, sw=3.4)
     back = mini_card(118, 30, 380, 210, "", rot=-9, sw=2.6)
-    deco = (art("maple", 12, 6, 96, 2.4, fill=A, rotate=-20) + art("leaf", 506, 4, 78, 2.4, fill=A, rotate=25)
-            + art("owl", 8, 214, 126, 2.6) + art("pumpkin", 466, 222, 124, 2.6, fill=A)
+    deco = (art("maple", 2, 0, 84, 2.4, fill=A, rotate=-20) + art("leaf", 506, 4, 78, 2.4, fill=A, rotate=25)
+            + art("owl", 0, 236, 108, 2.6) + art("pumpkin", 466, 222, 124, 2.6, fill=A)
             + art("acorn", 410, 290, 56, 2.2) + art("leaf", 150, 288, 56, 2.2, fill=A, rotate=-60))
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="{width_css}" style="display:block">'
             f'{back}{card}{deco}</svg>')
@@ -690,7 +690,7 @@ def preview_square_1(img):
     items = [(img[0], "Symbol cards", "standard + stick"), (img[1], "Pattern cards", "12 four-beat patterns"),
              (img[2], "Tracing", "trace, then draw")]
     shots = "".join(
-        f'<div style="width:300px"><div class="shot"><img src="{src}"><div class="swm" style="font-size:54px">PREVIEW</div></div>'
+        f'<div style="width:300px"><div class="shot"><img src="{src}"></div>'
         f'<div class="lbl">{a}<span>{b}</span></div></div>' for src, a, b in items)
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
@@ -702,14 +702,14 @@ def preview_square_1(img):
 
 def preview_square_2(ws, key):
     pair = "".join(
-        f'<div style="width:420px"><div class="shot"><img src="{src}"><div class="swm" style="font-size:80px">PREVIEW</div></div>'
+        f'<div style="width:420px"><div class="shot"><img src="{src}"></div>'
         f'<div class="lbl">{lab}</div></div>' for src, lab in ((ws, "Worksheet"), (key, "Answer key")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:72px;margin-top:20px">Beat-count practice</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Three worksheets, each with an answer key</div>'
         f'<div style="display:flex;gap:40px;margin-top:30px">{pair}</div>'
-        f'<div class="band">Every pattern checked: 4 beats in 4/4</div></div>')
+        f'<div class="band">Every answer worked out and checked</div></div>')
 
 
 def preview_square_3():
