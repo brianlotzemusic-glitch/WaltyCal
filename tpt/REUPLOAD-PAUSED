@@ -1,0 +1,1 @@
+Paused 2026-11-16: the replace-files step fails at the new product file (TpT edit form never registers it). Delete this file once tools/tpt.js is fixed. Publishing new products is NOT paused.

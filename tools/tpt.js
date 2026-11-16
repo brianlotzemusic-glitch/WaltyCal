@@ -1217,6 +1217,10 @@ async function reuploadPending() {
   const res = { ran_at: new Date().toISOString(), replaced: [], failed: [], waiting: [], skipped: [], needs_login: false, needs_edit_fields: false, discovered_edit: false };
   const done = (ok) => { res.ok = ok; recordReuploadStatus(res); console.log(`Reupload: replaced ${res.replaced.length}, failed ${res.failed.length}, waiting ${res.waiting.length}.`); if (!ok) process.exitCode = 1; };
   if (fs.existsSync(path.join(dir, "PAUSED"))) { res.skipped.push("tpt/PAUSED exists"); console.log("tpt/PAUSED exists: replacing nothing."); return done(true); }
+  // 16 Nov 2026: pauses ONLY the file replacement (publishing new products carries on). The replace step has failed on every try since
+  // October (TpT's edit form never registers the new product file), so with ~28 replacements queued the Mac would open Chrome for hours
+  // and fail each one. Delete tpt/REUPLOAD-PAUSED when the cause is fixed.
+  if (fs.existsSync(path.join(dir, "REUPLOAD-PAUSED"))) { res.skipped.push("tpt/REUPLOAD-PAUSED exists"); console.log("tpt/REUPLOAD-PAUSED exists: replacing nothing."); return done(true); }
   const marked = fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d)).filter((d) => fs.existsSync(path.join(d, "reupload"))).sort();
   let pending = marked.filter((d) => reuploadState(d).state === "pending");
   for (const d of marked) if (!pending.includes(d)) { const s = reuploadState(d); if (s.state !== "done") res.skipped.push(`${path.basename(d)}: ${s.state}`); }
