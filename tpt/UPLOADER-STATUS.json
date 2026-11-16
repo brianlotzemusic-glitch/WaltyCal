@@ -1,22 +1,15 @@
 {
-  "ran_at": "2026-11-16T19:51:13.220Z",
+  "ran_at": "2026-11-16T20:19:30.917Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-16T19:51:13.359Z",
+    "ran_at": "2026-11-16T20:19:31.062Z",
     "replaced": [],
-    "failed": [
-      {
-        "item": "043-note-naming-speed-drills",
-        "error": "reupload stopped at \"verify\": after saving, product (note-naming-speed-drills.pdf) shows no file on the edit page Screenshot: tpt/_publish/043-note-naming-speed-drills-reupload-failed.png. Not retrying this marker."
-      }
-    ],
-    "waiting": [
-      "043-note-naming-speed-drills"
-    ],
+    "failed": [],
+    "waiting": [],
     "skipped": [
       "001-halloween-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "003-winter-rhythm-bingo: paused (tpt/REUPLOAD-PAUSED allows only 043)",
@@ -72,12 +65,13 @@
       "037-band-rhythm-counting-worksheets: pending",
       "039-winter-color-by-music-symbol: pending",
       "040-trap-nutcracker-logic: pending",
-      "042-winter-music-escape-room: pending"
+      "042-winter-music-escape-room: pending",
+      "043-note-naming-speed-drills: failed-hold"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": false,
+    "ok": true,
     "canary": [
       "043"
     ]
