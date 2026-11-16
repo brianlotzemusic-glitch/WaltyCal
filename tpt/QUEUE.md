@@ -44,7 +44,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Holiday Boomwhacker and Bells Play-Alongs: colour-coded note charts for 5 public-domain carols (Jingle Bells 1857, Deck the Halls, Up on the Housetop 1864, Jolly Old Saint Nicholas, We Wish You a Merry Christmas) (grades 1–5; $4.50; Christmas)
 - [!] HELD (tpt/046-winter-concert-reflection, QA approved after 1 fix round but the Visual inspector then found defects; see LOG 15 Nov) Winter Concert Reflection and Self-Assessment: student reflection pages, rubric, goal sheet, for band, choir and orchestra (grades 4–12; $3.50; December)
 - [x] Note Naming Speed Drills: one-minute drills for treble, bass and alto clef, 30 pages, answer keys, progress chart (grades 3–8; $4; evergreen)
-- [ ] Winter Rhythm Math: add and compare note values, snow-themed, 3 levels, answer keys (grades 2–5; $3.50; winter)
+- [!] HELD (tpt/047-winter-rhythm-math, QA approved but the Visual inspector found defects twice; see LOG 16 Nov) Winter Rhythm Math: add and compare note values, snow-themed, 3 levels, answer keys (grades 2–5; $3.50; winter)
 - [ ] Solfege Snowball Melody Cards: sol-mi-la-do-re pentatonic patterns to read and sing, build-a-melody mats, original patterns (grades 2–4; $4; winter)
 - [ ] Roll and Compose, Winter: dice composing for rhythm and melody, 3 levels, staff paper, sharing rubric (grades 2–5; $4; winter)
 - [ ] Practice Log and Practice Bingo: weekly logs, 30-day tracker, 4 bingo boards, parent note, instrument-neutral (grades 4–8; $3; evergreen)
