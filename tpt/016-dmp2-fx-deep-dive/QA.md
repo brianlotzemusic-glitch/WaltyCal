@@ -8,3 +8,7 @@
 Required fixes: none.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Deck "How it's scored" line now reads "...average of your score and mine, out of 25" (no stray dot) and sits clear of the footer rule and the last rubric row (RUBRIC_LINE_Y 6.3, row pitch 0.84); deck, zip and previews rebuilt. The audit's preview-1 callout note was verified: the callout ends well above the page footer rule (false alarm, left alone). A fresh Sonnet inspector confirmed the deck slide and found no defects.
+**Verdict: APPROVED**
