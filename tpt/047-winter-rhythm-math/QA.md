@@ -30,3 +30,8 @@ Read independently and compared with the keys: A1-A5, B1-B5, C1-C5 (all 15 works
 **Verdict: APPROVED**
 
 Required fixes: none.
+
+## Fix round 16 Nov 2026
+Fixed in gen.py: snowman hat crown no longer clipped (p3); orphan line on p2 removed; internal "recomputed in code" wording removed from the PDF and UPLOAD.md; rests no longer described as Level C only (Level C is now "Dots, ties and 3/4"; p2 says rests appear in every level). After the inspector's last report (hard failures: none; nits only) two wording nits were fixed: preview-2 subtitle now "Every answer is shown with its working", credits no longer say "drawn in code". gen.py --check OK, tpt-validate OK. Remaining nits (short last lines in worksheet text, wrapped legend chips, blank space on p2/p22) left as is.
+
+**Verdict: APPROVED**

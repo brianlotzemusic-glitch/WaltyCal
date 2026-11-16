@@ -1016,7 +1016,7 @@ def terms_page():
             f'<h2>Questions?</h2><p>Please use the Q&amp;A tab on the {BRAND} by {STORE} store on Teachers Pay Teachers. '
             f'If something looks wrong, let me know there and I will fix it.</p>'
             f'<h2>Credits</h2><ul>'
-            f'<li>Worksheets, snow art (snowmen, mittens and snowflakes drawn in code) and answer keys: original work, {BRAND} by {STORE}.</li>'
+            f'<li>Worksheets, snow art (snowmen, mittens and snowflakes) and answer keys: original work, {BRAND} by {STORE}.</li>'
             f'<li>Music notation font: Bravura © Steinberg Media Technologies GmbH, SIL Open Font License 1.1.</li>'
             f'<li>Text fonts: Oswald (The Oswald Project Authors) and Source Sans 3 (Adobe), SIL Open Font License 1.1.</li></ul>'
             f'<h2>What is in this file</h2><p>Page 1 cover, page 2 teacher notes, page 3 student reference, pages {P_WS0}–{P_KEY0 - 1} the 15 worksheets, '
@@ -1101,7 +1101,7 @@ def preview_square_2(ws_img, key_img):
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:70px;margin-top:22px">Answer keys included</div>'
-        f'<div class="sub" style="font-size:27px;margin-top:8px">Every answer is shown with its beat sum</div>'
+        f'<div class="sub" style="font-size:27px;margin-top:8px">Every answer is shown with its working</div>'
         f'<div style="flex:1;display:flex;align-items:center;padding-bottom:70px"><div style="display:flex;gap:40px">{pair}</div></div>'
         f'<div class="band">A full key for every worksheet</div></div>')
 
