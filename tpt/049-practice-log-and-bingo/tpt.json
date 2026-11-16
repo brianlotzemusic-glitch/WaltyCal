@@ -1,0 +1,36 @@
+{
+  "price": "3.00",
+  "license_price": "3.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "4th-grade",
+    "5th-grade",
+    "6th-grade",
+    "7th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Instrumental Music",
+    "Vocal Music"
+  ],
+  "tags": [
+    "Games",
+    "Activities",
+    "Printables",
+    "Homework",
+    "Classroom Management",
+    "Study Skills"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 15,
+  "files": {
+    "product": "practice-log-and-bingo.pdf",
+    "preview": "practice-log-and-bingo-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

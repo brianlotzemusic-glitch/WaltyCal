@@ -47,7 +47,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [!] HELD (tpt/047-winter-rhythm-math, QA approved but the Visual inspector found defects twice; see LOG 16 Nov) Winter Rhythm Math: add and compare note values, snow-themed, 3 levels, answer keys (grades 2–5; $3.50; winter)
 - [ ] Solfege Snowball Melody Cards: sol-mi-la-do-re pentatonic patterns to read and sing, build-a-melody mats, original patterns (grades 2–4; $4; winter)
 - [ ] Roll and Compose, Winter: dice composing for rhythm and melody, 3 levels, staff paper, sharing rubric (grades 2–5; $4; winter)
-- [ ] Practice Log and Practice Bingo: weekly logs, 30-day tracker, 4 bingo boards, parent note, instrument-neutral (grades 4–8; $3; evergreen)
+- [x] Practice Log and Practice Bingo: weekly logs, 30-day tracker, 4 bingo boards, parent note, instrument-neutral (grades 4–8; $3; evergreen)
 - [ ] Holiday Music Word Puzzles: 6 word searches and 4 crosswords, instruments, symbols and winter music words, answer keys (grades 3–6; $3.50; December)
 - [ ] Winter Recorder Songbook, B-A-G: 8 tunes (public-domain and original), fingering charts, practice checklist (grades 3–5; $4; winter)
 - [ ] Holiday Rhythm "I Have, Who Has": two 24-card loop games, level 1 quarter/eighth, level 2 sixteenths, holiday art (grades 2–5; $3.50; December)
