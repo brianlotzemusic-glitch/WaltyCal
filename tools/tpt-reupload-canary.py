@@ -6,17 +6,11 @@ items through, so one item (the canary) tests a fix of tools/tpt.js on the Mac b
 
   python3 tools/tpt-reupload-canary.py status     one line per canary: PASSED / FAILED / WAITING, then a NEXT: line
   python3 tools/tpt-reupload-canary.py release    canary PASSED -> delete tpt/REUPLOAD-PAUSED (every waiting replacement proceeds)
-  python3 tools/tpt-reupload-canary.py convert [--dry-run]
-                                                  give up on the edit form: every waiting `reupload` item EXCEPT 001 gets a
-                                                  `republish` marker with the same text and loses its `reupload` marker; then
-                                                  tpt/REUPLOAD-PAUSED is deleted (001 keeps `reupload`: it has a sale, its URL must stay)
+There is deliberately NO fallback (owner, 16 Nov 2026): corrected files go onto the EXISTING listings or they do not go live.
   --root DIR                                      use DIR instead of the repo (tests)
-Exit status: status 0 always (the word tells), release 1 if the canary has not passed, convert 0.
+Exit status: status 0 always (the word tells), release 1 if the canary has not passed.
 """
 import glob, hashlib, json, os, sys
-
-NEVER_REPUBLISH = ("001",)
-
 
 def marker_hash(folder):
     try:
@@ -73,7 +67,7 @@ def main():
     if "--root" in args:
         root = args[args.index("--root") + 1]
     tpt = os.path.join(root, "tpt")
-    cmd = next((a for a in args if a in ("status", "release", "convert")), "status")
+    cmd = next((a for a in args if a in ("status", "release")), "status")
     allow, paused = pause_allow(tpt)
 
     if cmd == "status":
@@ -98,9 +92,8 @@ def main():
         if all(s == "PASSED" for s in states):
             print("NEXT: python3 tools/tpt-reupload-canary.py release   (deletes tpt/REUPLOAD-PAUSED)")
         elif any(s == "FAILED" for s in states):
-            print("NEXT: read the canary's reupload-failed + tpt/_publish/*-reupload-*-diag.json; fix tools/tpt.js ONCE and re-arm the "
-                  "canary (add a line to its `reupload` marker). If that was already the second fix: "
-                  "python3 tools/tpt-reupload-canary.py convert")
+            print("NEXT: see TPT-FACTORY.md 'The Mac uploader'. Fixes 1 and 2 are used (16 Nov): keep tpt/REUPLOAD-PAUSED, leave the "
+                  "replacements queued, and push the owner once (8am-8pm ET) with the step and cause from the diagnostics above")
         else:
             print("NEXT: wait for the Mac's next run")
         return 0
@@ -117,31 +110,7 @@ def main():
         print("deleted tpt/REUPLOAD-PAUSED: every waiting replacement proceeds on the Mac's next run")
         return 0
 
-    # convert
-    dry = "--dry-run" in args
-    changed = []
-    for f in sorted(glob.glob(os.path.join(tpt, "[0-9][0-9][0-9]-*"))):
-        name = os.path.basename(f)
-        if not os.path.exists(os.path.join(f, "reupload")) or name[:3] in NEVER_REPUBLISH:
-            continue
-        if item_state(f) == "PASSED":
-            continue  # already replaced: nothing to republish
-        if not os.path.exists(os.path.join(f, "uploaded")):
-            continue  # not live: the normal publish handles it
-        changed.append(name)
-        if not dry:
-            text = open(os.path.join(f, "reupload"), "rb").read()
-            if not os.path.exists(os.path.join(f, "republish")):
-                open(os.path.join(f, "republish"), "wb").write(text)
-            os.remove(os.path.join(f, "reupload"))
-    for n in changed:
-        print(("would convert " if dry else "converted ") + n + ": reupload -> republish")
-    if paused and not dry:
-        os.remove(os.path.join(tpt, "REUPLOAD-PAUSED"))
-        print("deleted tpt/REUPLOAD-PAUSED")
-    print(f"{len(changed)} item(s); 001 is never converted (it keeps `reupload`).")
-    return 0
-
+    return 0  # unreachable: cmd is status or release
 
 if __name__ == "__main__":
     sys.exit(main())

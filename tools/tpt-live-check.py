@@ -10,11 +10,6 @@ released-but-unmarked item by its title.
   python3 tools/tpt-live-check.py --html FILE  use a saved store page instead of fetching (tests)
 
 Output lines:  LIVE <NNN-slug> <url>   or   WAITING <NNN-slug>
-Items with a `republish` marker (new listing + old one deactivated, see TPT-FACTORY.md) add one line each, read from the markers:
-  REPUBLISHED <NNN-slug> <new url>            done; the old listing is inactive
-  TWO-LIVE <NNN-slug> old <url> new <url>     new listing up, the old one NOT yet deactivated (the Mac retries every run)
-  REPUBLISH-WAITING <NNN-slug>                the Mac has not done it yet (or `republish-failed` stage publish holds it)
-An item with `uploaded-previous` is live at its `uploaded` URL; never count the old URL as a second product.
 The cloud must NOT write `uploaded` files for LIVE items: the Mac owns those files, and a file created in both
 places makes the Mac's next `git pull` fail. Count LIVE as uploaded when deciding bundles and reports.
 """
@@ -63,25 +58,6 @@ def match(title, products):
     return None
 
 
-def republish_rows():
-    rows = []
-    for folder in sorted(glob.glob(os.path.join(ROOT, "tpt", "[0-9][0-9][0-9]-*"))):
-        if not os.path.exists(os.path.join(folder, "republish")):
-            continue
-        try:
-            rep = json.load(open(os.path.join(folder, "republished"), encoding="utf-8"))
-        except (OSError, ValueError):
-            rep = None
-        name = os.path.basename(folder)
-        if rep and rep.get("old_deactivated"):
-            rows.append({"item": name, "state": "REPUBLISHED", "new_url": rep.get("new_url"), "old_url": rep.get("old_url")})
-        elif rep:
-            rows.append({"item": name, "state": "TWO-LIVE", "new_url": rep.get("new_url"), "old_url": rep.get("old_url")})
-        else:
-            rows.append({"item": name, "state": "REPUBLISH-WAITING"})
-    return rows
-
-
 def main():
     args = sys.argv[1:]
     if "--html" in args:
@@ -99,21 +75,13 @@ def main():
         title = item_title(folder)
         url = match(title, products) if title else None
         rows.append({"item": os.path.basename(folder), "title": title, "live": bool(url), "url": url})
-    rep = republish_rows()
     if "--json" in args:
-        print(json.dumps({"store_products_seen": len(products), "items": rows, "republish": rep}, indent=1))
+        print(json.dumps({"store_products_seen": len(products), "items": rows}, indent=1))
     else:
         for r in rows:
             print(("LIVE    " + r["item"] + " " + r["url"]) if r["live"] else ("WAITING " + r["item"]))
         if not rows:
             print("nothing released is waiting")
-        for r in rep:
-            if r["state"] == "REPUBLISHED":
-                print(f"REPUBLISHED {r['item']} {r['new_url']}")
-            elif r["state"] == "TWO-LIVE":
-                print(f"TWO-LIVE {r['item']} old {r['old_url']} new {r['new_url']}")
-            else:
-                print(f"REPUBLISH-WAITING {r['item']}")
 
 
 if __name__ == "__main__":

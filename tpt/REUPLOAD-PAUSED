@@ -1,3 +1,3 @@
 Paused 2026-11-16: the replace-files step failed at the new product file (TpT edit form showed "Error during file upload" and dropped it).
-tools/tpt.js now retries and records diagnostics. Canary: only the item below may run. Rule: TPT-FACTORY.md "The Mac uploader" / python3 tools/tpt-reupload-canary.py status
+tools/tpt.js fix 2 (16 Nov): thumbnails. No fallback: files go onto the existing listings or not at all. Canary: only the item below may run. Rule: TPT-FACTORY.md "The Mac uploader" / python3 tools/tpt-reupload-canary.py status
 allow: 043

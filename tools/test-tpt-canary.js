@@ -17,7 +17,7 @@ fs.writeFileSync(pause, "Paused 2026-11-16.\nallow: 043\n");
 let o = run("status").stdout; assert(/^WAITING\s+canary 043-drills/m.test(o) && /wait for the Mac/.test(o), o);
 assert.strictEqual(run("release").status, 1); assert(fs.existsSync(pause));
 fs.writeFileSync(path.join(d043, "reupload-failed"), JSON.stringify({ marker_sha256: h(M), step: "replace product", error: "TpT did not accept" }));
-o = run("status").stdout; assert(/^FAILED\s+canary 043-drills \| replace product: TpT did not accept/m.test(o) && /convert/.test(o), o);
+o = run("status").stdout; assert(/^FAILED\s+canary 043-drills \| replace product: TpT did not accept/m.test(o) && /keep tpt\/REUPLOAD-PAUSED/.test(o) && /push the owner once/.test(o), o);
 // re-armed canary (new marker text) is WAITING again; then PASSED
 fs.writeFileSync(path.join(d043, "reupload"), M + "re-armed after fix 2\n");
 assert(/^WAITING/m.test(run("status").stdout));
@@ -27,15 +27,14 @@ assert.strictEqual(run("release").status, 0); assert(!fs.existsSync(pause));
 assert(/NOT-PAUSED/.test(run("status").stdout));
 console.log("ok status WAITING/FAILED/PASSED, release only after PASSED");
 
-// convert: every waiting reupload except 001 and already-replaced items becomes republish (same text); pause removed
+// no fallback (owner, 16 Nov 2026): there is no convert command; anything but status/release is just a status report
 fs.writeFileSync(pause, "Paused.\nallow: 043\n");
-fs.rmSync(path.join(d043, "reuploaded")); // pretend 043 failed for good
-o = run("convert", "--dry-run").stdout; assert(/would convert 042-escape/.test(o) && fs.existsSync(path.join(d042, "reupload")) && fs.existsSync(pause));
-o = run("convert").stdout;
-for (const d of [d042, d043, d002]) { assert(!fs.existsSync(path.join(d, "reupload")), d); assert(fs.existsSync(path.join(d, "republish")), d); }
-assert.strictEqual(fs.readFileSync(path.join(d042, "republish"), "utf8"), M);
-assert(fs.existsSync(path.join(d001, "reupload")) && !fs.existsSync(path.join(d001, "republish")), "001 is never converted");
-assert(fs.existsSync(path.join(d010, "reupload")) && !fs.existsSync(path.join(d010, "republish")), "a done replacement is not republished");
-assert(!fs.existsSync(pause));
-console.log("ok convert: all waiting except 001 and done ones -> republish (same text), pause deleted");
+o = run("convert");
+assert.strictEqual(o.status, 0); assert(/canary 043-drills/.test(o.stdout));
+for (const d of [d001, d042, d043, d002]) assert(!fs.existsSync(path.join(d, "republish")) && fs.existsSync(path.join(d, "reupload")), d);
+assert(fs.existsSync(pause));
+fs.rmSync(path.join(d043, "reuploaded"), { force: true });
+fs.writeFileSync(path.join(d043, "reupload-failed"), JSON.stringify({ marker_sha256: h(fs.readFileSync(path.join(d043, "reupload"))), step: "s", error: "e" }));
+assert(/keep tpt\/REUPLOAD-PAUSED/.test(run("status").stdout) && !/convert|republish/.test(run("status").stdout));
+console.log("ok no fallback: no convert, markers untouched, a second failure says keep the pause and tell the owner");
 fs.rmSync(tmp, { recursive: true });

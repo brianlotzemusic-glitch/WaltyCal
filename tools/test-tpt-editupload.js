@@ -92,5 +92,33 @@ inp.onchange = () => {
     assert(rm.ok, JSON.stringify(rm)); assert(await page.evaluate(() => window.previewRemoved));
     assert.strictEqual(await page.locator("#pcard").count(), 1, "product card must stay");
     console.log("ok preview removal picks the card next to the preview input, not the product card");
+
+    // thumbnails (043 canary, 16 Nov): TpT's real widget markup (from the thumb1 diag), hidden until "Upload thumbnails now";
+    // the .delete-btn is an empty div that only gets a size on hover. Removal must use it; a thumb upload must CHANGE the old key.
+    const thumbPage = `<input type="radio" name="g" id="ItemGenerateThumbnail0"><input type="radio" name="g" id="ItemGenerateThumbnail2"><input type="radio" name="g" id="later" checked>
+      <style>#thumbs{display:none} #thumbs.on{display:block} .delete-btn{width:0;height:0} #upload-thumb1:hover .delete-btn{width:14px;height:14px;background:#000}</style>
+      <div id="thumbs"><div id="upload-thumb1" class="upload-fls-el upload-finished" style="width:200px;height:120px"><label class="filling-wrap"><div class="cancel-btn" style="display:none">Cancel</div><div class="delete-btn"></div>
+      <div class="filling"><div class="title">Main Cover</div><div class="fileinfo"><a href="https://ecdn.example/x.jpg" target="_blank">cover.png</a></div><div class="last-updated">Last updated: Nov 15</div></div></label>
+      <div class="upload-error-message"></div><input type="file" id="ItemDigitalThumb1"><input type="hidden" name="data[ItemDigital][thumb1]" id="ItemDigitalThumb1" value="v3.OLD">
+      <input type="hidden" name="data[ItemsProperty][thumb1_uploaded]" value="1"></div></div>
+      <script>(() => {
+        document.getElementById("ItemGenerateThumbnail2").onchange = () => document.getElementById("thumbs").classList.add("on");
+        const box = document.getElementById("upload-thumb1"), k = box.querySelector('[name="data[ItemDigital][thumb1]"]');
+        box.querySelector(".delete-btn").onclick = (e) => { e.preventDefault(); window.thumbDeleted = true; box.querySelector(".filling").innerHTML = "Select file"; k.value = ""; box.querySelector('[name="data[ItemsProperty][thumb1_uploaded]"]').value = "0"; };
+        box.querySelector('input[type="file"]').onchange = (e) => { const n = e.target.files[0].name; box.querySelector(".filling").innerHTML = n + " 50%"; setTimeout(() => { box.querySelector(".filling").innerHTML = n + " (3 kB)"; k.value = "v3.NEW"; }, 500); };
+      })();</script>`;
+    await page.setContent(thumbPage);
+    await page.locator("#ItemGenerateThumbnail2").check();
+    const png = path.join(shots, "cover.png"); fs.writeFileSync(png, "png");
+    r = await T.uploadEditSlot(page, { slot: "thumb1", spec: { input: 'input[type="file"]#ItemDigitalThumb1', key: 'input[name="data[ItemDigital][thumb1]"]' }, filePath: png, slug: "t", shots, minutesPerTry: 0.1, resetWaitMs: 200 });
+    assert(r.ok, JSON.stringify(r.error || r)); assert.strictEqual(r.key, "v3.NEW"); assert(await page.evaluate(() => window.thumbDeleted), "used the .delete-btn");
+    assert(/delete-btn/.test(r.diag.remove.ok), JSON.stringify(r.diag.remove));
+    console.log("ok thumbnail: .delete-btn (shown on hover) removes the old cover, new key accepted");
+    // delete-btn does nothing: the thumbnail is uploaded in place, and only a CHANGED key counts
+    await page.setContent(thumbPage.replace('window.thumbDeleted = true; box.querySelector(".filling").innerHTML = "Select file"; k.value = ""; box.querySelector(\'[name="data[ItemsProperty][thumb1_uploaded]"]\').value = "0";', "window.thumbDeleted = true;"));
+    await page.locator("#ItemGenerateThumbnail2").check();
+    r = await T.uploadEditSlot(page, { slot: "thumb1", spec: { input: 'input[type="file"]#ItemDigitalThumb1', key: 'input[name="data[ItemDigital][thumb1]"]' }, filePath: png, slug: "t", shots, minutesPerTry: 0.1, resetWaitMs: 200 });
+    assert(r.ok && r.key === "v3.NEW" && r.diag.replaced_in_place, JSON.stringify(r.error || r.diag));
+    console.log("ok thumbnail whose card will not go: uploaded in place, accepted only because the key changed");
   } finally { await browser.close(); fs.rmSync(shots, { recursive: true }); }
 })().catch((e) => { console.error(e); process.exit(1); });

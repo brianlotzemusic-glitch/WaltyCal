@@ -1,8 +1,8 @@
 #!/bin/bash
 # TpT publish job on the owner's Mac, run by launchd (installed by tools/tpt-install-nightly.sh).
 # 1. pull shop-factory  2. publish items the cloud released (tools/tpt.js publish-pending)
-# 3. replace files (reupload-pending), republish fallback (republish-pending)
-# 4. commit + push the `uploaded`/`publish-failed`/`reuploaded`/`reupload-failed`/`republished`/`republish-failed` markers and
+# 3. replace files of live products (reupload-pending)
+# 4. commit + push the `uploaded`/`publish-failed`/`reuploaded`/`reupload-failed` markers and
 #    tpt/UPLOADER-STATUS.json so the cloud sees the result.
 # Log: ~/Library/Logs/tpt-nightly.log
 #
@@ -99,20 +99,13 @@ $AWAKE node tools/tpt.js reupload-pending
 rc2=$?
 [ "$rc" -eq 0 ] && rc=$rc2
 
-# 2c. Fallback (owner, 16 Nov 2026): items with a `republish` marker are published again as a NEW listing and the
-# OLD listing is deactivated (never deleted; never product 001). Max 3 a run; a pending deactivation is retried first.
-$AWAKE node tools/tpt.js republish-pending
-rc3=$?
-[ "$rc" -eq 0 ] && rc=$rc3
-
 # One path at a time: a single `git add` with a pathspec that matches nothing (e.g. no reupload-failed
 # markers) aborts the WHOLE add and stages nothing.
-for f in tpt/UPLOADER-STATUS.json tpt/EDIT-FIELDS.json tpt/*/uploaded tpt/*/publish-failed tpt/*/reuploaded tpt/*/reupload-failed \
-         tpt/*/uploaded-previous tpt/*/republished tpt/*/republish-failed; do
+for f in tpt/UPLOADER-STATUS.json tpt/EDIT-FIELDS.json tpt/*/uploaded tpt/*/publish-failed tpt/*/reuploaded tpt/*/reupload-failed; do
   [ -e "$f" ] && { git add -- "$f" || echo "git add $f FAILED (exit $?)"; }
 done
-# A `publish-failed` / `republish-failed` marker removed after a later success must leave git too.
-git ls-files 'tpt/*/publish-failed' 'tpt/*/republish-failed' | while IFS= read -r f; do [ -e "$f" ] || git rm -q --cached -- "$f"; done
+# A `publish-failed` marker removed after a later success must leave git too.
+git ls-files 'tpt/*/publish-failed' | while IFS= read -r f; do [ -e "$f" ] || git rm -q --cached -- "$f"; done
 # Edit-form upload diagnostics (network, TpT's answers, console errors, the upload box's HTML), written next to the screenshots.
 for f in tpt/_publish/*-reupload-*-diag.json; do
   [ -f "$f" ] || continue
@@ -152,5 +145,5 @@ if ! git diff --cached --quiet; then
   git status -sb | head -3
 fi
 grep -q '"needs_login": true' tpt/UPLOADER-STATUS.json 2>/dev/null && notify login "TpT login expired. In Terminal run: source ~/.tpt-env && node tools/tpt.js login, then click Log in"
-echo "=== done (publish-pending/reupload-pending/republish-pending exit $rc)"
+echo "=== done (publish-pending/reupload-pending exit $rc)"
 exit $rc

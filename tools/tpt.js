@@ -59,12 +59,6 @@
 //                                     (a canary). Edit-form uploads: 3 tries per file (the 3rd via TpT's Select-file chooser), success =
 //                                     key set AND the box idle; failures write tpt/_publish/<slug>-reupload-<slot>-diag.json (network,
 //                                     TpT's process_file/queue answers, console errors, the box's HTML). Offline: node tools/test-tpt-editupload.js
-//   node tools/tpt.js republish tpt/NNN-slug | republish-pending
-//                                     (owner, 16 Nov 2026) FALLBACK for items with a `republish` marker (never 001): publish the item
-//                                     again as a NEW listing, keep the old `uploaded` as `uploaded-previous`, write `republished`, then
-//                                     DEACTIVATE the old listing (untick Make Listing Active, only if its edit page shows the exact title;
-//                                     never delete). Old one not deactivated -> `republish-failed` (two listings live) and the next run
-//                                     retries only the deactivation. Max 3 a run. Offline: node tools/test-tpt-republish.js
 //   After every publish the public page is read back and compared with tpt.json (tools/tpt-live.js); a mismatch goes to
 //   UPLOADER-STATUS.json `live_mismatch` and tpt/NNN/live-mismatch. Manager check for all items: python3 tools/tpt-verify-live.py
 //   Offline tests: node tools/test-tpt-reupload.js ; node tools/test-tpt-live.js
@@ -377,6 +371,23 @@ async function removeExistingFile(page, slot, opts = {}) {
   const flagVal = async () => ((await flag.count()) ? await flag.first().inputValue().catch(() => "") : "");
   if ((await flagVal()) !== "1") return { skipped: `${slot}_uploaded is ${JSON.stringify(await flagVal())}: no existing file to remove` };
   const shot = async (tag) => { if (opts.shots && opts.slug) await snap(page, opts.shots, `${opts.slug}-${slot}-remove-${tag}`).catch(() => {}); };
+  // 16 Nov 2026 (043 thumb1 diag): TpT's thumbnail/preview widgets are <div id="upload-<slot>"> with an empty <div class="delete-btn">
+  // (an icon shown on hover) and a <div class="cancel-btn">Cancel</div> for uploads in flight. Use the delete-btn directly: hover the
+  // box so it shows, click it (forced: it may have no size until hovered), confirm a dialog if one opens, wait for the flag to drop.
+  const box = page.locator(`#upload-${slot}`).first();
+  if (/^thumb/.test(slot) && (await box.count()) && (await box.locator(".delete-btn").count())) { // product + preview: proven path below
+    await box.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
+    await box.hover({ timeout: 5000 }).catch(() => {});
+    await shot("before");
+    await box.locator(".delete-btn").first().click({ timeout: 10000, force: true }).catch(() => {});
+    await page.waitForTimeout(1500);
+    const dlg = page.locator('[role="dialog"], [role="alertdialog"]').filter({ has: page.locator("button") }).first();
+    if (await dlg.isVisible().catch(() => false)) { const yes = dlg.getByRole("button", { name: /^(yes,? )?(delete|remove|confirm|yes|ok|continue)\b/i }).last(); if (await yes.count()) await yes.click({ timeout: 10000 }); }
+    for (const t0 = Date.now(); Date.now() - t0 < 15000; await page.waitForTimeout(500)) {
+      if ((await flagVal()) !== "1") { await shot("after"); return { ok: `#upload-${slot} .delete-btn -> ${slot}_uploaded is now ${JSON.stringify(await flagVal())}` }; }
+    }
+    // not conclusive: fall through to the general search below
+  }
   // 25 Oct 2026 (027 Mac log + screenshot): the card's X is a bold icon-font glyph (not a <button>/<svg>/role=button), so the old
   // control search found only the file-name link and clicked THAT (a download link): nothing happened, no dialog. Now: candidates are
   // ranked (labelled remove/close/delete/trash/times > a lone x/×/✕ glyph > icon-ish or clickable leaf in the card's top-right corner >
@@ -503,13 +514,11 @@ async function chipsOf(input) {
   return (await control.innerText()).split("\n").map((t) => t.trim().toLowerCase()).filter(Boolean);
 }
 
-// opts.republish (only from republishOne): the item is live already and is being published AGAIN as a new listing on purpose,
-// so the `uploaded` marker does not stop it; on success `uploaded` is overwritten with the NEW listing (the caller saved the old one).
-async function publish(item, dryRun, opts = {}) {
+async function publish(item, dryRun) {
   if (!item) throw new Error("usage: node tools/tpt.js publish tpt/NNN-slug [--dry-run]");
   item = path.resolve(item);
   const F = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8"));
-  if (fs.existsSync(path.join(item, "uploaded")) && !opts.republish) throw new Error(`already uploaded: ${item}`);
+  if (fs.existsSync(path.join(item, "uploaded"))) throw new Error(`already uploaded: ${item}`);
   if (!isApproved(item) && !releasedOverQA(item)) throw new Error("QA.md last verdict is not APPROVE (and the release file does not say \"verified by Manager\")");
   const it = loadItem(item);
   const problems = checkItem(item, it, F);
@@ -853,9 +862,8 @@ async function fetchStoreHtml() {
 
 async function publishPending() {
   const status = { ran_at: new Date().toISOString(), published: [], failed: [], needs_login: false, paused: false, pending_before: [] };
-  try { const prev = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "UPLOADER-STATUS.json"), "utf8")); status.reupload = prev.reupload; status.republish = prev.republish; } catch (e) { /* none yet */ }
+  try { status.reupload = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "UPLOADER-STATUS.json"), "utf8")).reupload; } catch (e) { /* none yet */ }
   if (!status.reupload) delete status.reupload;
-  if (!status.republish) delete status.republish;
   const write = () => fs.writeFileSync(path.join(ROOT, "tpt", "UPLOADER-STATUS.json"), JSON.stringify(status, null, 2) + "\n");
   if (fs.existsSync(path.join(ROOT, "tpt", "PAUSED"))) {
     status.paused = true; status.ok = true; write();
@@ -1141,7 +1149,10 @@ async function uploadEditSlot(page, opts) {
   await snap(page, shots, `${slug}-reupload-${slot}-after-remove`).catch(() => {});
   diag.remove = rm;
   diag.widget.push({ when: "after remove", ...(await widgetState(page, spec.input, base)) });
-  if (rm.error) return failSlot(`could not remove the existing ${slot} file before uploading: ${rm.error}`);
+  // A thumbnail's input stays in its box next to the old card, and success requires the key to CHANGE from the old value, so a
+  // thumbnail whose card could not be removed is uploaded in place; the product/preview still stop (their box has no usable input then).
+  if (rm.error && !/^thumb/.test(slot)) return failSlot(`could not remove the existing ${slot} file before uploading: ${rm.error}`);
+  if (rm.error) { console.log(`${slot}: card not removed (${rm.error.slice(0, 120)}); uploading in place, the key must change`); diag.replaced_in_place = true; }
   try { await page.locator(spec.input).waitFor({ state: "attached", timeout: 20000 }); } catch (e) { return failSlot(`no upload box ${spec.input} on the edit page after removing the old file`); }
   const minutes = opts.minutesPerTry || (slot === "product" ? 6 : slot === "preview" ? 4 : 2); // PER attempt, 3 attempts
   const keyProbe = () => page.evaluate(([s, slot]) => {
@@ -1263,6 +1274,21 @@ async function reupload(item, dryRun) {
     const before = await readGuard();
     const liveBefore = parseLive(await (async () => { const pg = await context.newPage(); try { await pg.goto(state.url, { waitUntil: "domcontentloaded" }); await pg.waitForTimeout(2000); return await pg.content(); } catch (e) { return ""; } finally { await pg.close(); } })(), state.productId);
     if (!before.title) await fail(page, step, `the edit page did not show the title box (${F.title}); wrong page or TpT changed`);
+
+    // 16 Nov 2026 (043 canary, 19:40Z): product and preview were replaced, then thumb1 failed with "no X-like control". The edit form
+    // opens with "Upload thumbnails later" selected, which HIDES the four thumbnail boxes (#upload-thumb1..4: cover.png card with a
+    // .delete-btn and the file input are in the DOM but invisible). publish() ticks "Upload thumbnails now" before its thumbnails; do the same.
+    if (files.some((f) => /^thumb/.test(f.slot))) {
+      step = "choose 'Upload thumbnails now'";
+      const now = page.locator(F.upload_thumbnails_now);
+      if (!(await now.count())) await fail(page, step, `no "Upload thumbnails now" option (${F.upload_thumbnails_now}) on the edit page`);
+      await now.first().check({ timeout: 10000 }).catch(async () => { await now.first().click({ force: true }); });
+      await page.waitForTimeout(1500);
+      const shown = await page.locator(editSel(F, files.find((f) => /^thumb/.test(f.slot)).slot).input).first()
+        .evaluate((el) => { const box = el.closest('[id^="upload-thumb"]') || el.parentElement; const r = box.getBoundingClientRect(); return r.width > 0 && r.height > 0; }).catch(() => false);
+      console.log(`thumbnails: ticked "Upload thumbnails now"; thumbnail boxes ${shown ? "visible" : "STILL HIDDEN"}`);
+      if (!shown) await snap(page, shots, `${slug}-reupload-thumbs-hidden-failed`).catch(() => {});
+    }
 
     const keys = {};
     for (const f of files) {
@@ -1391,9 +1417,6 @@ async function reuploadPending() {
   if (pause.paused) { res.canary = pause.allow; console.log(`tpt/REUPLOAD-PAUSED allows only: ${pause.allow.join(", ")}`); }
   const marked = fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d)).filter((d) => fs.existsSync(path.join(d, "reupload"))).sort();
   let pending = marked.filter((d) => reuploadState(d).state === "pending");
-  // an item switched to the republish fallback is never also file-replaced
-  for (const d of pending) if (fs.existsSync(path.join(d, "republish"))) res.skipped.push(`${path.basename(d)}: has a \`republish\` marker (republish-pending handles it)`);
-  pending = pending.filter((d) => !fs.existsSync(path.join(d, "republish")));
   for (const d of pending) if (!pauseAllows(pause, d)) res.skipped.push(`${path.basename(d)}: paused (tpt/REUPLOAD-PAUSED allows only ${pause.allow.join(", ")})`);
   pending = pending.filter((d) => pauseAllows(pause, d));
   for (const d of marked) if (!pending.includes(d)) { const s = reuploadState(d); if (s.state !== "done") res.skipped.push(`${path.basename(d)}: ${s.state}`); }
@@ -1426,202 +1449,6 @@ async function reuploadPending() {
     }
   }
   done(!res.needs_login && res.failed.length === 0);
-}
-
-// ---- republish: the fallback when the edit form will not take a new file (owner, 16 Nov 2026) ------------------------------------
-// Markers in tpt/NNN-slug/:
-//   republish          written by the cloud (date + reason). Never honoured for product 001 (it has a sale; its URL stays).
-//   uploaded-previous  copy of the old `uploaded` (old listing URL on line 2), written before the new listing is published
-//   uploaded           overwritten by publish with the NEW listing
-//   republished        JSON { marker_sha256, old_url, new_url, old_deactivated, ... }: written the moment the new listing exists
-//   republish-failed   JSON { stage: "publish" | "deactivate", ... }. stage publish: held until a new `republish` text.
-//                      stage deactivate: TWO LISTINGS ARE LIVE; the next run retries only the deactivation (never publishes again).
-// The old listing is DEACTIVATED (Make Listing Active unticked), never deleted, and only after its edit page shows the item's exact title.
-const REPUBLISH_NEVER = ["001"];
-const REPUBLISH_MAX_PER_RUN = 3;
-function normTitle(t) { return String(t || "").replace(/&amp;/g, "&").replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, " ").trim(); }
-function titleMatches(onPage, wanted) { return !!normTitle(wanted) && normTitle(onPage) === normTitle(wanted); }
-function readJson(fp) { const t = readTrim(fp); if (t === null) return null; try { return JSON.parse(t); } catch (e) { return { unreadable: true }; } }
-// One of: no-marker | refused | not-approved | no-url | done | deactivate-pending | failed-hold | pending. Pure file reads.
-function republishState(item) {
-  const marker = readTrim(path.join(item, "republish"));
-  if (marker === null || !marker.trim()) return { state: "no-marker", reason: "no `republish` marker" };
-  const markerHash = crypto.createHash("sha256").update(marker).digest("hex");
-  if (REPUBLISH_NEVER.includes(path.basename(item).slice(0, 3))) return { state: "refused", markerHash, reason: "product 001 is never republished (it has a sale; its URL must stay). Use `reupload` for it" };
-  const rep = readJson(path.join(item, "republished"));
-  if (rep && rep.unreadable) return { state: "failed-hold", markerHash, reason: "`republished` is unreadable; a person must check TpT" };
-  if (rep && rep.marker_sha256 === markerHash) {
-    if (rep.old_deactivated) return { state: "done", markerHash, rep, reason: "republished and the old listing deactivated" };
-    return { state: "deactivate-pending", markerHash, rep, oldUrl: rep.old_url, newUrl: rep.new_url, reason: "new listing is live; the OLD one is still active: retry the deactivation" };
-  }
-  const failed = readJson(path.join(item, "republish-failed"));
-  if (failed && (failed.unreadable || (failed.marker_sha256 === markerHash && failed.stage !== "deactivate"))) return { state: "failed-hold", markerHash, reason: "an earlier republish of this marker failed (see `republish-failed`); write a new `republish` text to retry" };
-  if (!isApproved(item) && !releasedOverQA(item)) return { state: "not-approved", markerHash, reason: "QA.md has no APPROVE verdict" };
-  const up = readTrim(path.join(item, "uploaded")), url = up ? (up.split("\n")[1] || "").trim() : "";
-  if (!up || !PRODUCT_URL_RE.test(url)) return { state: "no-url", markerHash, reason: "no live listing in `uploaded` (publish it normally instead)" };
-  return { state: "pending", markerHash, oldUrl: url };
-}
-function liveUrlsForTitle(title, html) {
-  const t = slugNorm(title), re = /href="(\/Product\/([^"?#]+?)-(\d+))"/g, out = [];
-  let m;
-  while ((m = re.exec(html || ""))) { const slug = slugNorm(m[2]); const u = "https://www.teacherspayteachers.com" + m[1]; if ((slug === t || (slug.length >= 60 && t.startsWith(slug))) && !out.includes(u)) out.push(u); }
-  return out;
-}
-const idOfUrl = (u) => (String(u || "").match(PRODUCT_URL_RE) || [])[1] || null;
-// Another listing with this title that is NOT the old one: a new listing already exists (e.g. a marker got lost). Pure.
-function otherListing(title, html, oldUrl) { return liveUrlsForTitle(title, html).find((u) => idOfUrl(u) !== idOfUrl(oldUrl)) || null; }
-
-// Untick "Make Listing Active" on the OLD listing. Refuses unless its edit page shows the item's exact title.
-async function deactivateListing(oldUrl, title, slug) {
-  const id = idOfUrl(oldUrl);
-  if (!id) throw new Error(`deactivate: ${JSON.stringify(oldUrl)} is not a TpT product URL`);
-  const F = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8")), ef = readEditFields() || {};
-  const editUrl = (ef.edit_url_template || "https://www.teacherspayteachers.com/itemsDigital/editNext/{id}").replace("{id}", id);
-  const shots = path.join(ROOT, "tpt", "_publish");
-  const { context, page } = await openBrowser();
-  try {
-    await ensureLoggedIn(page);
-    return await deactivateOnPage(page, { editUrl, id, title, F, shots, slug, oldUrl });
-  } finally { await context.close(); }
-}
-// The browser part of deactivateListing, on an already logged-in page (offline test: tools/test-tpt-republish.js with a fake page).
-async function deactivateOnPage(page, { editUrl, id, title, F, shots, slug, oldUrl, settleMs = 5000 }) {
-  try {
-    const open = async () => {
-      await page.goto(editUrl, { waitUntil: "domcontentloaded" });
-      if (/\/login/i.test(page.url())) throw new Error("deactivate: TpT sent us to the login page (not logged in)");
-      await page.locator(F.title).waitFor({ state: "visible", timeout: 30000 });
-      await page.waitForTimeout(Math.min(2000, settleMs));
-      if (!page.url().includes(id)) throw new Error(`deactivate: the edit page went to ${page.url()}, not product ${id}`);
-    };
-    const isActive = async () => {
-      const b = page.locator(F.make_active).first();
-      if (await b.count()) { const a = await b.getAttribute("aria-checked"); if (a === "true" || a === "false") return a === "true"; }
-      const c = page.locator('input[name="data[Item][status_user]"][type="checkbox"]').first();
-      if (await c.count()) return await c.isChecked();
-      return null;
-    };
-    await open();
-    const onPage = await page.locator(F.title).first().inputValue();
-    if (!titleMatches(onPage, title)) {
-      await snap(page, shots, `${slug}-republish-failed`).catch(() => {});
-      throw new Error(`deactivate REFUSED: the edit page of ${oldUrl} shows the title ${JSON.stringify(onPage)}, not this item's ${JSON.stringify(title)}`);
-    }
-    let active = await isActive();
-    if (active === null) throw new Error(`deactivate: no "Make Listing Active" control (${F.make_active}) on the edit page`);
-    if (!active) return { ok: true, note: "already inactive" };
-    await page.locator(F.make_active).first().click();
-    await page.waitForTimeout(1000);
-    if (await isActive()) throw new Error('deactivate: clicked "Make Listing Active" but it still shows as ticked');
-    await snap(page, shots, `${slug}-republish-deactivate-unticked`).catch(() => {});
-    let submit = page.locator((F.edit && F.edit.submit) || F.submit);
-    if (!(await submit.count())) submit = page.getByRole("button", { name: /^\s*submit\s*$/i });
-    if (!(await submit.count())) throw new Error("deactivate: no Submit button on the edit page");
-    await submit.first().click();
-    await page.waitForLoadState("domcontentloaded", { timeout: 120000 }).catch(() => {});
-    await page.waitForTimeout(settleMs);
-    await open(); // verify on a fresh load
-    if (!titleMatches(await page.locator(F.title).first().inputValue(), title)) throw new Error("deactivate: after saving, the title on the edit page changed");
-    active = await isActive();
-    if (active !== false) { await snap(page, shots, `${slug}-republish-failed`).catch(() => {}); throw new Error(`deactivate: after saving, "Make Listing Active" is ${active === null ? "missing" : "still ticked"} on ${editUrl}`); }
-    return { ok: true };
-  } catch (e) {
-    await snap(page, shots, `${slug}-republish-failed`).catch(() => {});
-    throw e;
-  }
-}
-
-// One item through the state machine. Returns { item, action, ... } or throws (with .recorded when the marker files say why).
-// deps (tests only): { publish, deactivate, storeHtml } replace the browser steps.
-async function republishOne(item, deps = {}) {
-  item = path.resolve(item);
-  const slug = path.basename(item), st = republishState(item);
-  const doPublish = deps.publish || ((d) => publish(d, false, { republish: true }));
-  const doDeactivate = deps.deactivate || deactivateListing;
-  const W = (name, obj) => fs.writeFileSync(path.join(item, name), JSON.stringify(obj, null, 2) + "\n");
-  if (st.state !== "pending" && st.state !== "deactivate-pending") return { item: slug, action: "none", state: st.state, reason: st.reason };
-  const title = loadItem(item).title;
-  let rep = st.rep;
-  if (st.state === "pending") {
-    const storeHtml = deps.storeHtml !== undefined ? deps.storeHtml : await fetchStoreHtml();
-    const prevText = fs.readFileSync(path.join(item, "uploaded"), "utf8");
-    const existing = storeHtml ? otherListing(title, storeHtml, st.oldUrl) : null;
-    fs.writeFileSync(path.join(item, "uploaded-previous"), prevText);
-    let newUrl;
-    if (existing) { // never a third copy: a listing with this title other than the old one is live already, adopt it
-      fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} republish: found a second live listing with this title, adopted it (nothing uploaded)\n${existing}\n`);
-      newUrl = existing;
-    } else {
-      try { await doPublish(item); }
-      catch (e) {
-        if (!fs.existsSync(path.join(item, "uploaded")) || fs.readFileSync(path.join(item, "uploaded"), "utf8") !== prevText) fs.writeFileSync(path.join(item, "uploaded"), prevText);
-        fs.rmSync(path.join(item, "uploaded-previous"), { force: true });
-        const unsure = /after Submit|it may have been created/i.test(e.message);
-        W("republish-failed", { at: new Date().toISOString(), marker_sha256: st.markerHash, stage: "publish", old_url: st.oldUrl,
-          error: e.message.split("\n").slice(0, 3).join(" ").slice(0, 600),
-          note: unsure ? "Submit was clicked but TpT did not confirm: a new listing MAY exist. Check My Products before writing a new `republish` text." : "nothing was published; the old listing is untouched" });
-        throw Object.assign(new Error(`${slug}: republish (publish step) failed: ${e.message.split("\n")[0]}`), { recorded: true, login: /not logged in|session expired|login failed/i.test(e.message) });
-      }
-      newUrl = (fs.readFileSync(path.join(item, "uploaded"), "utf8").split("\n")[1] || "").trim();
-    }
-    if (!PRODUCT_URL_RE.test(newUrl) || idOfUrl(newUrl) === idOfUrl(st.oldUrl)) {
-      W("republish-failed", { at: new Date().toISOString(), marker_sha256: st.markerHash, stage: "publish", old_url: st.oldUrl, new_url: newUrl, error: "the new listing URL is missing or equals the old one; a person must check My Products" });
-      throw Object.assign(new Error(`${slug}: republish produced no distinct new listing URL (${newUrl})`), { recorded: true });
-    }
-    rep = { at: new Date().toISOString(), tool: "tools/tpt.js republish", marker_sha256: st.markerHash, old_url: st.oldUrl, new_url: newUrl, adopted_existing: !!existing, old_deactivated: false };
-    W("republished", rep);
-    fs.rmSync(path.join(item, "republish-failed"), { force: true });
-  }
-  try {
-    const r = await doDeactivate(rep.old_url, title, slug);
-    rep = { ...rep, old_deactivated: true, deactivated_at: new Date().toISOString(), deactivate_note: (r && r.note) || undefined };
-    W("republished", rep);
-    fs.rmSync(path.join(item, "republish-failed"), { force: true });
-    return { item: slug, action: st.state === "pending" ? "republished" : "deactivated", old_url: rep.old_url, new_url: rep.new_url };
-  } catch (e) {
-    const prev = readJson(path.join(item, "republish-failed"));
-    W("republish-failed", { at: new Date().toISOString(), marker_sha256: st.markerHash, stage: "deactivate", old_url: rep.old_url, new_url: rep.new_url,
-      tries: ((prev && prev.stage === "deactivate" && prev.tries) || 0) + 1, two_listings_live: true,
-      error: e.message.split("\n").slice(0, 2).join(" ").slice(0, 600),
-      note: "TWO LISTINGS ARE LIVE (old and new). The next run retries ONLY the deactivation of the old one; nothing is published again." });
-    throw Object.assign(new Error(`${slug}: new listing ${rep.new_url} is live but the OLD one (${rep.old_url}) could not be deactivated: ${e.message.split("\n")[0]}`), { recorded: true, login: /not logged in|session expired|login failed/i.test(e.message) });
-  }
-}
-
-async function republishPending(deps = {}) {
-  const dir = deps.dir || path.join(ROOT, "tpt"); // deps.dir: tests only
-  const res = { ran_at: new Date().toISOString(), republished: [], deactivated: [], failed: [], two_listings_live: [], waiting: [], skipped: [], needs_login: false };
-  const done = (ok) => {
-    res.ok = ok;
-    const fp = path.join(dir, "UPLOADER-STATUS.json"); let cur = {}; try { cur = JSON.parse(fs.readFileSync(fp, "utf8")); } catch (e) { /* new */ }
-    cur.republish = res; fs.writeFileSync(fp, JSON.stringify(cur, null, 2) + "\n");
-    console.log(`Republish: new listings ${res.republished.length}, old ones deactivated ${res.deactivated.length}, failed ${res.failed.length}${res.two_listings_live.length ? `, TWO LISTINGS LIVE: ${res.two_listings_live.join(", ")}` : ""}.`);
-    if (!ok) process.exitCode = 1;
-    return res;
-  };
-  if (fs.existsSync(path.join(dir, "PAUSED"))) { res.skipped.push("tpt/PAUSED exists"); console.log("tpt/PAUSED exists: republishing nothing."); return done(true); }
-  const marked = fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d)).filter((d) => fs.existsSync(path.join(d, "republish"))).sort();
-  // deactivation retries first (two listings live is the worst state), then new republishes
-  const todo = [];
-  for (const d of marked) { const s = republishState(d); if (s.state === "deactivate-pending") todo.push(d); }
-  for (const d of marked) { const s = republishState(d); if (s.state === "pending") todo.push(d); else if (!["deactivate-pending", "done"].includes(s.state)) res.skipped.push(`${path.basename(d)}: ${s.state}: ${s.reason}`); }
-  res.waiting = todo.map((d) => path.basename(d));
-  if (!todo.length) { console.log("No item waiting for a republish."); return done(true); }
-  for (const item of todo.slice(0, REPUBLISH_MAX_PER_RUN)) {
-    const slug = path.basename(item);
-    try {
-      const r = await republishOne(item, deps);
-      if (r.action === "republished") res.republished.push(r); else if (r.action === "deactivated") res.deactivated.push(r);
-      res.waiting = res.waiting.filter((x) => x !== slug);
-    } catch (e) {
-      const msg = e.message.split("\n").slice(0, 2).join(" ").slice(0, 400);
-      res.failed.push({ item: slug, error: msg }); console.error(msg);
-      if (republishState(item).state === "deactivate-pending") res.two_listings_live.push(slug);
-      if (e.login || /not logged in|session expired/i.test(msg)) { res.needs_login = true; break; }
-    }
-  }
-  for (const d of marked) if (republishState(d).state === "deactivate-pending" && !res.two_listings_live.includes(path.basename(d))) res.two_listings_live.push(path.basename(d));
-  return done(!res.needs_login && !res.failed.length);
 }
 
 // Read-only: records the edit form's structure for a live product. Saves nothing on TpT.
@@ -1663,7 +1490,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { uploadEditSlot, deactivateOnPage, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, republishState, republishOne, republishPending, titleMatches, normTitle, liveUrlsForTitle, otherListing, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)
@@ -1671,8 +1498,6 @@ if (require.main === module)
   : cmd === "publish-pending" ? publishPending()
   : cmd === "reupload" ? reupload(arg, dryRun)
   : cmd === "reupload-pending" ? reuploadPending()
-  : cmd === "republish" ? (arg ? republishOne(arg).then((r) => console.log(JSON.stringify(r))) : Promise.reject(new Error("usage: republish tpt/NNN-slug")))
-  : cmd === "republish-pending" ? republishPending()
   : cmd === "discover-edit" ? discoverEdit(arg && !arg.startsWith("--") ? arg : null)
-  : Promise.reject(new Error("usage: login | discover | publish <tpt/NNN-slug> [--dry-run] | publish-pending | discover-edit [item] | reupload <tpt/NNN-slug> [--dry-run] | reupload-pending | republish <tpt/NNN-slug> | republish-pending")))
+  : Promise.reject(new Error("usage: login | discover | publish <tpt/NNN-slug> [--dry-run] | publish-pending | discover-edit [item] | reupload <tpt/NNN-slug> [--dry-run] | reupload-pending")))
   .catch((e) => { console.error(e.message); process.exit(1); });
