@@ -8,3 +8,7 @@
 Required fixes: none.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Audit items: (1) pacing page: the two callout boxes touched the footer rule, so the pacing table text is set at 9.8 pt (PACING_SIZE) and both callouts now end well above the rule; (2) preview-2 footer bar said "...ENVELOPE · LFO" but no LFO slide was shown, so the tile set is now slides 1, 2, 7, 8, 9, 10 (title, hook, oscillator, filter, envelope, modulation/LFO); (3) deck "How it's scored" line now reads "...average of your score and mine, out of 25" (no stray dot) and sits clear of the footer rule (RUBRIC_LINE_Y 6.3, row pitch 0.84). Rebuilt; `gen.py --check` and tpt-validate pass. A fresh Sonnet inspector confirmed all three and found only cosmetic remarks (cover whitespace, thumbnail-size text).
+**Verdict: APPROVED**
