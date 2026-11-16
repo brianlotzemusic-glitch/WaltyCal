@@ -352,7 +352,7 @@ def exercise_svg(ex, mode, scale_class="ex", accent_counts=True, w=SVG_W, pxw=No
             if mode == "ws":
                 out.append(f'<rect x="{cx - BOX_W / 2:.2f}" y="{Y0 + 15:.1f}" width="{BOX_W}" height="{BOX_H}" rx="3" fill="#fff" stroke="#000" stroke-width="1"/>')
             else:
-                out.append(f'<text x="{cx:.2f}" y="{Y0 + 22.5:.1f}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="15" fill="{ACCENT if accent_counts else "#000"}">{escape(t.count)}</text>')
+                out.append(f'<text x="{cx:.2f}" y="{Y0 + 24.5:.1f}" text-anchor="middle" font-family="Oswald" font-weight="700" font-size="15" fill="{ACCENT if accent_counts else "#000"}">{escape(t.count)}</text>')
             out.append("</g>")
         for r in runs:
             if len(r) > 1:
@@ -722,6 +722,7 @@ def cover_square():
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;width:100%;padding:0 0 80px">'
+        f'<style>.cv{{width:100%;height:auto}}</style>'
         f'<div style="width:900px">{a}<div style="height:10px"></div>{b}<div style="height:10px"></div>{c}</div>'
         f'<div><div class="hd" style="font-size:64px">Beginning Band</div>'
         f'<div class="hd" style="font-size:108px">Rhythm Counting</div>'
@@ -732,7 +733,7 @@ def cover_square():
 def preview_square_1(img):
     labs = ["Quarter and half notes", "Eighth rests", "6/8 time"]
     shots = "".join(
-        f'<div style="width:296px"><div class="shot"><img src="{img[i]}"><div class="swm" style="font-size:54px">PREVIEW</div></div>'
+        f'<div style="width:296px"><div class="shot"><img src="{img[i]}"></div>'
         f'<div class="lbl">{labs[i]}</div></div>' for i in range(3))
     units = "".join(f'<div><b style="font-weight:700">{u}</b> \u00b7 {UNIT_TOPIC[u]}</div>' for u in UNIT_TOPIC)
     return sq_doc(
@@ -746,7 +747,7 @@ def preview_square_1(img):
 
 def preview_square_2(ws, key):
     pair = "".join(
-        f'<div style="width:420px"><div class="shot"><img src="{src}"><div class="swm" style="font-size:80px">PREVIEW</div></div>'
+        f'<div style="width:420px"><div class="shot"><img src="{src}"></div>'
         f'<div class="lbl">{lab}</div></div>' for src, lab in ((ws, "Worksheet"), (key, "Answer key")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
@@ -762,12 +763,12 @@ def preview_square_3(all_exs):
         ex = all_exs[pi][0]
         one = Ex(0, 1, ex.meter, [ex.measures[0]])
         svg = exercise_svg(one, "key", scale_class="mini", w=250, pxw=190)
-        cards.append(f'<div class="card" style="width:200px"><div class="ct">{pi + 1}. {escape(PAGES[pi][0])}</div>'
-                     f'<div style="margin-top:3px">{svg}</div></div>')
+        cards.append(f'<div class="card" style="width:200px;padding-bottom:22px"><div class="ct">{pi + 1}. {escape(PAGES[pi][0])}</div>'
+                     f'<div style="margin-top:14px">{svg}</div></div>')
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:64px;margin-top:14px">20 worksheets, step by step</div>'
-        f'<div style="display:flex;flex-wrap:wrap;gap:14px 14px;width:850px;margin-top:26px;justify-content:center">{"".join(cards)}</div>'
+        f'<div style="display:flex;flex-wrap:wrap;gap:20px 14px;width:850px;margin-top:34px;justify-content:center">{"".join(cards)}</div>'
         f'<div class="band">Quarter notes <em>·</em> eighths <em>·</em> dotted rhythms <em>·</em> 6/8</div></div>')
 
 
