@@ -47,3 +47,11 @@ session should know (a fix that applies to other kits).
   row) so the image is filled; check all three previews.
 - **Doubled PREVIEW watermark (027, 028, 029, 032, 035, 037):** find why the stamp is drawn twice (offset) in the preview pages of 027
   first, fix it, and apply the same patch to the other kits in your list.
+
+## State at launch (16 Nov 2026, 12:45pm ET)
+Already done by the daily shift: 043, 007, 002, 011, 012, 042 (replacements queued; the Mac's replace-files step was repaired in
+`tools/tpt.js` and four were re-armed). 026 is HELD: its P1 fixes are in `gen.py`, spacing fixes remain (read the 026 line in `tpt/LOG.md`).
+**045, 046, 047 are NEW products that were HELD** (QA approved, the Visual inspector found defects after the fix round was spent; read
+their lines with `grep -n "04[567]" tpt/LOG.md`). For those three: fix what the log lists, have a fresh inspector confirm, and when it
+reports OK and `tools/tpt-validate.py` prints OK, write `tpt/NNN-slug/release` (date and "released") instead of a `reupload` marker.
+Everything else is a LIVE product, so it gets a `reupload` marker.
