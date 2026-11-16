@@ -1,34 +1,114 @@
 {
-  "ran_at": "2026-11-16T17:15:12.540Z",
-  "published": [],
+  "ran_at": "2026-11-16T19:36:14.159Z",
+  "published": [
+    {
+      "item": "046-winter-concert-reflection",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Performance-Reflection-and-Self-Assessment-Rubric-Band-Choir-Orchestra-18375787"
+    },
+    {
+      "item": "047-winter-rhythm-math",
+      "url": "https://www.teacherspayteachers.com/Product/Rhythm-Math-Worksheets-Add-Compare-Note-Values-Music-Gr-2-5-18375809"
+    },
+    {
+      "item": "049-practice-log-and-bingo",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Practice-Log-Practice-Bingo-Band-Orchestra-Choir-Piano-Guitar-Gr-4-8-18375834"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "046-winter-concert-reflection",
+    "047-winter-rhythm-math",
+    "049-practice-log-and-bingo"
+  ],
   "reupload": {
-    "ran_at": "2026-11-16T17:15:12.701Z",
+    "ran_at": "2026-11-16T19:40:21.104Z",
     "replaced": [],
     "failed": [
       {
-        "item": "007-music-sub-plans-k5",
-        "error": "reupload stopped at \"replace product (music-sub-plans-k5.pdf)\": TpT did not accept music-sub-plans-k5.pdf within 15 min (the upload key never changed). Diagnostics: key element data[ItemDigital][product] value empty; hidden inputs: data[ItemDigital][product]=, data[ItemsProperty][product_uploaded]=0, data[ItemDigital][preview]=, data[ItemsProperty][preview_uploaded]=1, data[Upload][videopreview]=,"
+        "item": "043-note-naming-speed-drills",
+        "error": "reupload stopped at \"replace thumb1 (cover.png)\": could not remove the existing thumb1 file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner, no menu/replace control); card text:  Cancel Main Cover cover.png (22.58 kB) Last updated: Nov 15, 2026 at 8:22 AM ES Screenshot: tpt/_publish/043-note-naming-speed-drills-reupload-f"
       }
     ],
     "waiting": [
-      "007-music-sub-plans-k5",
-      "011-dmp1-chords-by-ear",
-      "012-dmp1-bass-melody-writing",
-      "027-thanksgiving-color-by-note",
-      "042-winter-music-escape-room",
       "043-note-naming-speed-drills"
     ],
     "skipped": [
-      "002-fall-rhythm-flashcards: failed-hold"
+      "001-halloween-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "003-winter-rhythm-bingo: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "004-thanksgiving-rhythm-match: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "005-winter-concert-planner: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "008-dmp1-beat-from-nothing: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "009-dmp1-spooky-tunes: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "011-dmp1-chords-by-ear: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "012-dmp1-bass-melody-writing: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "015-dmp2-sample-flipping: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "016-dmp2-fx-deep-dive: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "017-dmp2-music-for-visual-media: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "018-dmp2-alchemy-architect: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "026-dmp2-session-players-studio: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "027-thanksgiving-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "028-free-color-by-note-sampler: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "029-winter-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "030-dmp1-units-1-6-bundle: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "031-carol-flip-logic: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "032-christmas-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "033-thanksgiving-music-sub-plan: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "035-hanukkah-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "036-lofi-holiday-beat: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "037-band-rhythm-counting-worksheets: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "039-winter-color-by-music-symbol: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "040-trap-nutcracker-logic: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "042-winter-music-escape-room: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "001-halloween-color-by-note: pending",
+      "002-fall-rhythm-flashcards: failed-hold",
+      "003-winter-rhythm-bingo: pending",
+      "004-thanksgiving-rhythm-match: pending",
+      "005-winter-concert-planner: pending",
+      "007-music-sub-plans-k5: failed-hold",
+      "008-dmp1-beat-from-nothing: pending",
+      "009-dmp1-spooky-tunes: pending",
+      "011-dmp1-chords-by-ear: pending",
+      "012-dmp1-bass-melody-writing: pending",
+      "014-dmp2-billboard-top-10: no-url",
+      "015-dmp2-sample-flipping: pending",
+      "016-dmp2-fx-deep-dive: pending",
+      "017-dmp2-music-for-visual-media: pending",
+      "018-dmp2-alchemy-architect: pending",
+      "026-dmp2-session-players-studio: pending",
+      "027-thanksgiving-color-by-note: pending",
+      "028-free-color-by-note-sampler: pending",
+      "029-winter-color-by-note: pending",
+      "030-dmp1-units-1-6-bundle: pending",
+      "031-carol-flip-logic: pending",
+      "032-christmas-color-by-note: pending",
+      "033-thanksgiving-music-sub-plan: pending",
+      "035-hanukkah-color-by-note: pending",
+      "036-lofi-holiday-beat: pending",
+      "037-band-rhythm-counting-worksheets: pending",
+      "039-winter-color-by-music-symbol: pending",
+      "040-trap-nutcracker-logic: pending",
+      "042-winter-music-escape-room: pending"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": false
+    "ok": false,
+    "canary": [
+      "043"
+    ]
   },
-  "ok": true
+  "ok": true,
+  "republish": {
+    "ran_at": "2026-11-16T19:41:27.591Z",
+    "republished": [],
+    "deactivated": [],
+    "failed": [],
+    "two_listings_live": [],
+    "waiting": [],
+    "skipped": [],
+    "needs_login": false,
+    "ok": true
+  }
 }
