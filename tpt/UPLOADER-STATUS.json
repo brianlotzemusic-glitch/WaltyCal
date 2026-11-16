@@ -1,21 +1,20 @@
 {
-  "ran_at": "2026-11-16T12:15:50.882Z",
+  "ran_at": "2026-11-16T17:15:12.540Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-16T12:15:51.049Z",
+    "ran_at": "2026-11-16T17:15:12.701Z",
     "replaced": [],
     "failed": [
       {
-        "item": "002-fall-rhythm-flashcards",
-        "error": "reupload stopped at \"replace preview (fall-rhythm-flashcards-PREVIEW.pdf)\": could not remove the existing preview file before uploading: click 1 (div select-and-remove-file-section); buttons seen after: Search | Cart menu | 0 notifications | Seller Dropdown | Buyer Dropdown | Buyer Dropdown Button | Grade | Resource type | Seasonal | ELA | Math | Science; new: (none); click 2 (div remove-file-sect"
+        "item": "007-music-sub-plans-k5",
+        "error": "reupload stopped at \"replace product (music-sub-plans-k5.pdf)\": TpT did not accept music-sub-plans-k5.pdf within 15 min (the upload key never changed). Diagnostics: key element data[ItemDigital][product] value empty; hidden inputs: data[ItemDigital][product]=, data[ItemsProperty][product_uploaded]=0, data[ItemDigital][preview]=, data[ItemsProperty][preview_uploaded]=1, data[Upload][videopreview]=,"
       }
     ],
     "waiting": [
-      "002-fall-rhythm-flashcards",
       "007-music-sub-plans-k5",
       "011-dmp1-chords-by-ear",
       "012-dmp1-bass-melody-writing",
@@ -23,7 +22,9 @@
       "042-winter-music-escape-room",
       "043-note-naming-speed-drills"
     ],
-    "skipped": [],
+    "skipped": [
+      "002-fall-rhythm-flashcards: failed-hold"
+    ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,

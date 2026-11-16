@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-16T17:26:04.473Z",
+  "marker_sha256": "b093cccdb46c31a8fc4e8d1545530f4f7c0fbb3a50694e65eb6363dc3ae442a0",
+  "step": "replace product (music-sub-plans-k5.pdf)",
+  "error": "TpT did not accept music-sub-plans-k5.pdf within 15 min (the upload key never changed). Diagnostics: key element data[ItemDigital][product] value empty; hidden inputs: data[ItemDigital][product]=, data[ItemsProperty][product_uploaded]=0, data[ItemDigital][preview]=, data[ItemsProperty][preview_uploaded]=1, data[Upload][videopreview]=, data[Upload][custom_videopreview_uploaded]=0, data[ItemDigital][thumb1]=v3.+bSN29cUoTFrzcUbB74MHGg4/L6IT9cU0Jshm, data[ItemsProperty][thumb1_uploaded]=1, data[ItemDigital][thumb2]=v3.SzeK8M50Brz1Zzll2rr+eW6dSa+l1Ag+xY2ui, data[ItemsProperty][thumb2_uploaded]=1, data[ItemDigital][thumb3]=v3.fDKdR4iYU/BcwTT1Nmrz9us4i5hkIWfp0PTAt, data[ItemsProperty][thumb3_uploaded]=1, data[ItemDigital][thumb4]=v3.2KsUJF7tQ+8tjpxAFsQ4p5mV896zmleUdt+Ps, data[ItemsProperty][thumb4_uploaded]=1; non-GET responses: PUT 200 https://s3.amazonaws.com/live.digital.upload/8082-22795631-2026-11-16/product/cfd2f3ac53de | POST 200 https://s3.amazonaws.com/live.digital.upload/8082-22795631-2026-11-16/product/cfd2f3ac53de | POST 204 https://bat.bing.com/p/insights/c/o | POST 200 https://www.teacherspayteachers.com/uploads/process_file | POST 200 https://www.teacherspayteachers.com/queue/results | POST 200 https://www.teacherspayteachers.com/queue/results | POST 200 https://www.teacherspayteachers.com/queue/results | attempt 2 failed: page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"filechooser\"",
+  "files": [
+    {
+      "slot": "product",
+      "file": "music-sub-plans-k5.pdf",
+      "sha256": "ff294bd1646b10897a892bba991823a62e9376015950333634c20944abcb1e75"
+    },
+    {
+      "slot": "preview",
+      "file": "music-sub-plans-k5-PREVIEW.pdf",
+      "sha256": "6208b08600e6e86c3d56519225d14baef5825ab680e435813270a76e5b0a5ca6"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "sha256": "b3a549a5211c66f6319722640a5158efc321040d326d7e6f382fd44a25814f51"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "sha256": "97d078c2874992ad218424a5a32d6909216ec518a678c5b4658a2bfa5db92529"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "sha256": "2abc2e1049d6ad4abc72fc58afdd589bde0793e3ad0b2c31ddecc892d5ea8831"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "sha256": "d8572a3e0ed6e94f35c8b25c4f059db9f76554b8997be64fa983383fd6ded37f"
+    }
+  ],
+  "screenshot": "tpt/_publish/007-music-sub-plans-k5-reupload-failed.png"
+}
