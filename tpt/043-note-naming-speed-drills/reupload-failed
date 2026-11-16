@@ -1,8 +1,8 @@
 {
-  "at": "2026-11-16T19:41:27.389Z",
-  "marker_sha256": "9bbec1914fe38e41871fde11a30f350159ca8ceab5be18d49647365719714958",
-  "step": "replace thumb1 (cover.png)",
-  "error": "could not remove the existing thumb1 file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner, no menu/replace control); card text:  Cancel Main Cover cover.png (22.58 kB) Last updated: Nov 15, 2026 at 8:22 AM ES",
+  "at": "2026-11-16T19:53:01.863Z",
+  "marker_sha256": "458bfb5c862466d6f11588b4556d068d2f835ab23f9d9432e88df4bc67b726d0",
+  "step": "verify",
+  "error": "after saving, product (note-naming-speed-drills.pdf) shows no file on the edit page",
   "files": [
     {
       "slot": "product",
@@ -35,26 +35,5 @@
       "sha256": "efa82ac0ab20361a7013c9119b2ca5a2d6ae2a4878cecafafe8eb1b8aa79a900"
     }
   ],
-  "screenshot": "tpt/_publish/043-note-naming-speed-drills-reupload-failed.png",
-  "diagnostics": {
-    "diag_file": "tpt/_publish/043-note-naming-speed-drills-reupload-thumb1-diag.json",
-    "attempts": [],
-    "widget_last": [
-      {
-        "when": "after remove",
-        "inputFound": true,
-        "inputVisible": false,
-        "boxFound": true,
-        "text": "Cancel Main Cover cover.png (22.58 kB) Last updated: Nov 15, 2026 at 8:22 AM EST",
-        "html": "<div id=\"upload-thumb1\" class=\"upload-fls-el flex-i-1 upload-finished\"> <label class=\"filling-wrap\" title=\"\"> <div class=\"border\"></div> <div class=\"cancel-btn\">Cancel</div> <div class=\"delete-btn\"></div> <div class=\"filling\"> <div class=\"label\"> <div class=\"title\"> Main Cover </div> <div class=\"fileinfo\"><a href=\"https://ecdn.teacherspayteachers.com/thumbitem/Note-Naming-Worksheets-Treble-Bass-Alto-Clef-Speed-Drills-Grades-3-8-18352419-1794745364/original-18352419-1.jpg\" title=\"cover.png\" target=\"_blank\">cover.png</a></div> <div class=\"filesize\">(22.58 kB)</div> <div class=\"progress-bar-wrap-percent-and-bar-preview\"> <div class=\"progress-bar-wrap-percent-and-bar-preview-wrap\"> <div class=\"progress-bar-wrap progress-bar-wrap-v3\"> <div class=\"progress-bar\" style=\"width: 100%;\"></div> </div> <div class=\"progress-bar-label\"></div> </div> </div> </div> <div class=\"last-updated\"> <div class=\"title\">Last updated:</div> <div class=\"datetime\">Nov 15, 2026 at 8:22 AM EST</div> </div> </div> </label> <div class=\"upload-error-message\"></div> <input type=\"file\" name=\"\" id=\"ItemDigitalThumb1\" style=\"\"> <input type=\"hidden\" name=\"data[ItemDigital][thumb1]\" class=\"upload-key\" id=\"ItemDigitalThumb1\" value=\"v3.TK7GvSWzmrlaIKoMXH578txmGZgFMPnQzIs3lUhC+aEQ35D9itVcBNZNRd4Da+BhfwzKhueNy3E586/t1jScUcqBhA3MR90iOBgurYH4N3gn+Ik62PLUhA2/v7uxTHcLV9X5CXczcHK68SWQ/wgzn7J7qCUz4ikdAoq818M+rqE+cOu1sIB6x9Uj/bPiN2sSpssvQa9i2oK/oFVq8lKkjyRNqcB+m6I4zwDHcwwq9qz9bySfgvEim0JzAG3aDu852foBe4/HurzyiCHDuh1nSdeEvqk/JNbHS3smG+TQhQf/ioNkRwZorUL13Sq250DzSpn2Vig/srR8aMKnm0pGJp6ujj6UWTS9stHdbuvJdx9rOf6D\" data-status=\"uploaded\" style=\"\"> <input type=\"hidden\" name=\"data[ItemsProperty][thumb1_uploaded]\" value=\"1\" class=\"file-uploaded\" id=\"ItemsPropertyThumb1Uploaded\" style=\"\"></div>",
-        "error": false,
-        "processing": false,
-        "percent": null
-      }
-    ],
-    "tpt_upload_answers": [],
-    "non_get": [],
-    "request_failures": [],
-    "console_errors": []
-  }
+  "screenshot": "tpt/_publish/043-note-naming-speed-drills-reupload-failed.png"
 }

@@ -1,34 +1,17 @@
 {
-  "ran_at": "2026-11-16T19:36:14.159Z",
-  "published": [
-    {
-      "item": "046-winter-concert-reflection",
-      "url": "https://www.teacherspayteachers.com/Product/Music-Performance-Reflection-and-Self-Assessment-Rubric-Band-Choir-Orchestra-18375787"
-    },
-    {
-      "item": "047-winter-rhythm-math",
-      "url": "https://www.teacherspayteachers.com/Product/Rhythm-Math-Worksheets-Add-Compare-Note-Values-Music-Gr-2-5-18375809"
-    },
-    {
-      "item": "049-practice-log-and-bingo",
-      "url": "https://www.teacherspayteachers.com/Product/Music-Practice-Log-Practice-Bingo-Band-Orchestra-Choir-Piano-Guitar-Gr-4-8-18375834"
-    }
-  ],
+  "ran_at": "2026-11-16T19:51:13.220Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "046-winter-concert-reflection",
-    "047-winter-rhythm-math",
-    "049-practice-log-and-bingo"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-16T19:40:21.104Z",
+    "ran_at": "2026-11-16T19:51:13.359Z",
     "replaced": [],
     "failed": [
       {
         "item": "043-note-naming-speed-drills",
-        "error": "reupload stopped at \"replace thumb1 (cover.png)\": could not remove the existing thumb1 file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner, no menu/replace control); card text:  Cancel Main Cover cover.png (22.58 kB) Last updated: Nov 15, 2026 at 8:22 AM ES Screenshot: tpt/_publish/043-note-naming-speed-drills-reupload-f"
+        "error": "reupload stopped at \"verify\": after saving, product (note-naming-speed-drills.pdf) shows no file on the edit page Screenshot: tpt/_publish/043-note-naming-speed-drills-reupload-failed.png. Not retrying this marker."
       }
     ],
     "waiting": [
@@ -99,16 +82,5 @@
       "043"
     ]
   },
-  "ok": true,
-  "republish": {
-    "ran_at": "2026-11-16T19:41:27.591Z",
-    "republished": [],
-    "deactivated": [],
-    "failed": [],
-    "two_listings_live": [],
-    "waiting": [],
-    "skipped": [],
-    "needs_login": false,
-    "ok": true
-  }
+  "ok": true
 }
