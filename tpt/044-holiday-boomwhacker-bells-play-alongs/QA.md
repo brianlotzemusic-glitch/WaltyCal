@@ -23,3 +23,8 @@ Required fixes: none.
 
 ## Fix round 16 Nov 2026 (HELD, no reupload queued)
 P3 blank band fixed in gen.py: previews 1-2 now use two large page mocks, preview-3 a one-column card list (also fixed "15 pages" vs 20 and straight quotes). Inspector round 2 confirmed no blank band, no collisions, page counts right. Still listed (not queued, rounds spent): measure numbers above the staves on PDF p3/preview-1 look clipped at the top; Jingle Bells Easy checklist wraps mid-item; preview-2 title tight to the edges; preview-3 Joy to the World card cramped (6 bars in one strip).
+
+## Fix round 16 Nov 2026 (final, new inspector brief)
+Further fixes: bar-number labels above the staves no longer clipped; the Joy to the World tie (bar 7 to 8, in both transcriptions) is now shown on the colour strip as a black bar between the two C+ blocks, with a line on the Color Key page ("a black bar joining two blocks is a tie: play it once and hold"); cover line "2–3 groups" no longer breaks. Fresh inspector with the BLOCKING/NOTES brief (4 images, 20 pages, 4 preview pages): no BLOCKING item. NOTES: blank bands on easy pages, tight row spacing on the Joy parts page.
+
+**Verdict: APPROVED**
