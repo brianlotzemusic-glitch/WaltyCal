@@ -1,0 +1,35 @@
+{
+  "price": "4.00",
+  "license_price": "4.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "2nd-grade",
+    "3rd-grade",
+    "4th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Vocal Music",
+    "Music Composition"
+  ],
+  "tags": [
+    "Winter",
+    "Task Cards",
+    "Printables",
+    "Activities",
+    "Centers"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 19,
+  "answer_key": "Included",
+  "files": {
+    "product": "solfege-snowball-melody-cards.pdf",
+    "preview": "solfege-snowball-melody-cards-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
