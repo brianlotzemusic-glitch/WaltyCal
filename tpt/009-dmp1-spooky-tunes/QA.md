@@ -93,3 +93,8 @@ None of these blocks release: all content decisions from the owner are implement
 
 **Verdict: APPROVED**
 
+
+## Fix round 16 Nov 2026
+Audit P2/P3 items: (1) cover: tree art was clipped by hard edges at left/right/top, so the woods SVG now takes a viewBox pad (cover only) and the whole forest sits inside the frame; (2) preview-2: the 3x2 slide grid ran under the black footer ("TOTAL / 25" sliced), so slides are narrower (350 px) and the grid ends well above the band; (3) preview-1/PDF pacing page: "Days 3–4" wrapped, so the first column of the "Student pages by day" table is now no-wrap. PDF and zip rebuilt.
+A fresh Sonnet visual inspector confirmed all three fixes and found nothing new (remaining remarks were the deliberate page-fan overlap on preview-1 and thumbnail-size text).
+**Verdict: APPROVED**
