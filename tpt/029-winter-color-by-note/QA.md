@@ -82,3 +82,12 @@ Remove the snow dot on the gingerbread door; trim the eave bump; point the bow l
 
 ## Open owner questions (do not block)
 1. Logo beside HUDSON BEAT. 2. Owner to flip through some keys so "checked by hand" stays true. 3. Bundle with 027/001 later.
+
+## Fix round 16 Nov 2026
+- Doubled "PREVIEW" watermark on preview-1/2 removed (same root cause as 027: second stamp drawn over page images already cut from the watermarked preview PDF).
+- Snowman (Level A/B/C worksheets, keys, previews): figure shrunk and moved so the bottom ball is complete inside the frame and the hat clears the top; third button moved off the ball outline.
+- Holiday Tree: edge snow dots moved off the lowest branch tips. Mittens: scaled/shifted in so the thumbs clear the frame edges.
+- P3: preview-1 page row moved down. Rebuilt; `gen.py --check` and `tools/tpt-validate.py` pass.
+- Fresh Sonnet inspectors (two rounds) confirmed single watermark, snowman/tree/mittens clear. Round-2 remark about cardinal staves touching the branch line was checked in a native-resolution crop: false alarm (staves about 20 px clear).
+
+**Verdict: APPROVED**
