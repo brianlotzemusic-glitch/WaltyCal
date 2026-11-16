@@ -93,3 +93,7 @@ Description line "checked by computer" could be softened; deck slides 2-5, 8, 20
 All three required round 1 fixes are done, disclosed and correct.
 
 **Verdict: APPROVED**
+
+## Fix re-check 2026-11-16
+Audit P1 fixed in gen.py: the stray ninth '(8)' cell on the C major card (p23) removed (card now C D E F G A B C). Visual inspector re-checked cover, preview-1..3, all 35 PDF pages, 4 preview-PDF pages and 21 deck slides at full size: defect gone, nothing new; counts agree with UPLOAD.md. Cosmetic (pre-existing, not changed): blank band of 15-20% above the footer on several pages.
+**Verdict: APPROVED**

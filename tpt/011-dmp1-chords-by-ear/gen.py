@@ -1478,10 +1478,9 @@ def remember_box(key="C major"):
 
 def card_page(n, key, watermark=False):
     sc = key_scale(key)
-    extra = "(8)" if key == "C major" else None
     inner = (f'<h2 class="s" style="font-size:20pt;margin:2pt 0 0">{key.split()[0]} {key.split()[1].title()} — Reference Card</h2>'
              f'<p class="l" style="font-size:12pt;margin-bottom:4pt">The Building Blocks · Unit {UNIT} · Keep this open while you work</p>'
-             f'{H2("Scale")}<p style="font-size:12pt;margin:0"><b>{CARD_SCALE_TEXT[key]}</b></p>{scale_cells(sc, 8, extra)}'
+             f'{H2("Scale")}<p style="font-size:12pt;margin:0"><b>{CARD_SCALE_TEXT[key]}</b></p>{scale_cells(sc, 8)}'
              f'{H2("Chords in this Key")}{card_table(key)}{remember_box(key)}'
              f'<p class="small" style="margin-top:6pt">No sharps or flats in this key: every chord is white keys only. '
              f'{"A minor uses the same seven notes: it is the relative minor." if key == "C major" else "C major uses the same seven notes: it is the relative major."}</p>')

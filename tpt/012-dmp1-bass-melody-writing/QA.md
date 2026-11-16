@@ -94,3 +94,7 @@ Re-ran `gen.py --check`: CHECK OK. Compared the fix commit (ef9ed8b) with round 
 No new defects found.
 
 **Verdict: APPROVED**
+
+## Fix re-check 2026-11-16
+Audit P1/P2 fixed in gen.py: the stray ninth '(8)' cell on the C major card (p17) removed; cover kicker now 'Basslines & Melodies in Logic Pro' (was 'Melody Writing in Logic Pro'). Visual inspector re-checked cover, preview-1..3, all 30 PDF pages, 4 preview-PDF pages and 22 deck slides at full size: both defects gone, nothing new; counts agree with UPLOAD.md (30 + 22 = 52).
+**Verdict: APPROVED**

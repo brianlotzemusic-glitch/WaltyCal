@@ -943,7 +943,7 @@ def H2(s, first=False):
     return f'<h2 class="s"{st}>{s}<span class="acc"> ·</span></h2>'
 
 
-COVER_A = "Melody Writing in Logic Pro"
+COVER_A = "Basslines & Melodies in Logic Pro"
 COVER_B = "Bass & Melody"
 COVER_C = f"DMP1 · Unit {UNIT} · basslines that follow the roots · melodies you can hum"
 COVER_BAND = f"Grades 9–12 · {DAYS_N} days · {len(PLAN)} pages + {DECK_SLIDES}-slide deck"
@@ -957,7 +957,7 @@ def cover_page():
     band = COVER_BAND.replace(" · ", " <em>·</em> ")
     return (f'<section class="page cover" data-key="cover"><div class="store">{BRAND}</div>'
             f'<div style="width:7.2in">{hero_svg()}</div>'
-            f'<div class="ctitle"><div class="a" style="font-size:{s["a"]}pt">{COVER_A}</div><div class="b" style="font-size:{s["b"]}pt">{escape(COVER_B)}</div>'
+            f'<div class="ctitle"><div class="a" style="font-size:{s["a"]}pt">{escape(COVER_A)}</div><div class="b" style="font-size:{s["b"]}pt">{escape(COVER_B)}</div>'
             f'<div class="c" style="font-size:{s["c"]}pt">{COVER_C}</div></div>'
             f'<div class="cband">{band}</div></section>')
 
@@ -1364,11 +1364,10 @@ def remember_box(key="C major"):
 
 def card_page(n, key, watermark=False):
     sc = key_scale(key)
-    extra = "(8)" if key == "C major" else None
     t = tonic(key)
     inner = (f'<h2 class="s" style="font-size:20pt;margin:2pt 0 0">{key.split()[0]} {key.split()[1].title()} — Reference Card</h2>'
              f'<p class="l" style="font-size:12pt;margin-bottom:4pt">The Building Blocks · Unit {UNIT} · Keep this open while you work</p>'
-             f'{H2("Scale")}<p style="font-size:12pt;margin:0"><b>{CARD_SCALE_TEXT[key]}</b></p>{scale_cells(sc, 8, extra)}'
+             f'{H2("Scale")}<p style="font-size:12pt;margin:0"><b>{CARD_SCALE_TEXT[key]}</b></p>{scale_cells(sc, 8)}'
              f'{H2("Chords in this Key")}{card_table(key)}{remember_box(key)}'
              f'<div class="cols" style="gap:12pt;margin-top:8pt"><div class="box"><span class="k">For your melody</span><p style="margin:0">Every note '
              f'of the scale above is a safe note. Start or end on <b>{t}</b>, the root of the key.</p></div>'
@@ -1904,7 +1903,7 @@ SQ_BAND = f"Grades 9–12 · {DAYS_N} days · {len(PLAN)} pages + {DECK_SLIDES} 
 def cover_square():
     s = SQ_COVER
     return sq(f'<div style="width:860px">{hero_svg()}</div>'
-              f'<div><div class="hd" style="font-size:{s["a"]}px">{COVER_A}</div>'
+              f'<div><div class="hd" style="font-size:{s["a"]}px">{escape(COVER_A)}</div>'
               f'<div class="hd" style="font-size:{s["b"]}px;margin-top:4px">{escape(COVER_B)}</div>'
               f'<div class="sub" style="font-size:{s["c"]}px;margin-top:10px">{SQ_SUB}</div></div>',
               SQ_BAND.replace(" · ", " <em>·</em> "))
