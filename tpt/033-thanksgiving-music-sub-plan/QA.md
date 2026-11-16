@@ -21,3 +21,7 @@ Reviewed independently against the TPT-FACTORY.md QA checklist, after the round 
 - Page 3: the sentence "...that you may play in class." leaves "class." alone on a line (carried over from round 1).
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Audit P2 confirmed and fixed in gen.py: preview-2 sheets narrowed and placed side by side so the 3-5 sheet no longer covers the K-2 sheet's right-hand text. Fresh inspector: both sheets fully visible, no clipping, nothing new.
+**Verdict: APPROVED**

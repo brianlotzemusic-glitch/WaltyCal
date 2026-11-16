@@ -750,8 +750,8 @@ def hero_svg(width_css):
     link = (f'<path d="M300,140 C300,160 330,170 350,190" fill="none" stroke="{A}" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 10"/>'
             f'<circle cx="300" cy="138" r="7" fill="{A}" stroke="#000" stroke-width="1.6"/><circle cx="352" cy="192" r="7" fill="{A}" stroke="#000" stroke-width="1.6"/>')
     deco = (art("turkey", 8, 150, 150, 2.6, fill=A) + art("maple", 30, 10, 88, 2.4, fill=A, rotate=-14)
-            + art("pie", 480, 12, 108, 2.4, fill=A) + art("acorn", 520, 130, 62, 2.2, rotate=12)
-            + art("leaf", 470, 278, 70, 2.2, fill=A, rotate=30) + art("corn", 176, 280, 70, 2.2, rotate=-20))
+            + art("pie", 480, 12, 108, 2.4, fill=A) + art("acorn", 540, 118, 52, 2.2, rotate=12)
+            + art("leaf", 478, 292, 66, 2.2, fill=A, rotate=30) + art("corn", 176, 280, 70, 2.2, rotate=-20))
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="{width_css}" style="display:block">'
             f'{wc}{rc}{link}{deco}</svg>')
 
@@ -860,10 +860,10 @@ def preview_square_1(img):
 
 def preview_square_2(a, b):
     pair = "".join(
-        f'<div style="position:absolute;left:{x}px;top:{y}px;width:540px"><div class="shot"><img src="{src}">'
-        f'<div class="swm" style="font-size:110px">PREVIEW</div></div>'
+        f'<div style="position:absolute;left:{x}px;top:{y}px;width:440px"><div class="shot"><img src="{src}">'
+        f'<div class="swm" style="font-size:90px">PREVIEW</div></div>'
         f'<div class="lbl" style="position:absolute;{side}:-2px;top:-44px;margin:0">{lab}</div></div>'
-        for src, lab, x, y, side in ((a, "Worksheet", 50, 250, "left"), (b, "Answer key", 410, 330, "right")))
+        for src, lab, x, y, side in ((a, "Worksheet", 50, 270, "left"), (b, "Answer key", 510, 270, "right")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:72px;margin-top:20px">Worksheets + keys</div>'
