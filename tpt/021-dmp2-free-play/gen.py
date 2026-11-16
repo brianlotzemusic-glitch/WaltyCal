@@ -44,6 +44,7 @@ ZIP_DIR = "Free Play - Hudson Beat"
 ZIP_DATE = (2026, 10, 18, 12, 0, 0)
 TYPE = "Open-Ended Project"
 PROJ_LINE = "Digital Music Production | <i>Open-Ended Project</i> | 7 class periods"
+LIVE = True                 # already live on TpT (uploaded/release files belong to the Manager)
 DECK_STRAP = "Make whatever you want in Logic Pro"
 BANNED_EXTRA = []
 
@@ -108,7 +109,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.4
+RUBRIC_ROW_PITCH = 0.86
 # ---- Teacher Notes
 TN_REINFORCES = ("This is a diagnostic project as much as a creative one. It lets you see where each student is — their comfort with Logic, "
                  "their creative instincts, and their ability to manage time independently. It also establishes the proposal and Padlet "
@@ -252,7 +255,7 @@ WAVE = [.9, .5, .3, .2, .6, .95, .4, .25, .2, .5, .85, .35]
 
 
 def hero_body():
-    W, H = 1100, 560
+    W, H = 1140, 560
     out = []
     for i, h in enumerate(WAVE):
         x = 40 + i * 28
@@ -260,7 +263,7 @@ def hero_body():
         out.append(f'<line x1="{x}" y1="{280 - hh / 2:.1f}" x2="{x}" y2="{280 + hh / 2:.1f}" stroke="#000" stroke-width="14" stroke-linecap="round"/>')
     out.append(f'<circle cx="560" cy="280" r="130" fill="{ACCENT}" stroke="#000" stroke-width="6"/>')
     out.append('<polygon points="520,215 520,345 615,280" fill="#fff"/>')
-    gx, gy, cell, gap = 735, 130, 100, 20
+    gx, gy, cell, gap = 765, 110, 100, 20
     hot = {(0, 1), (1, 0), (1, 2), (2, 1), (2, 2)}
     for r in range(3):
         for c in range(3):
@@ -508,7 +511,7 @@ SQ_HEADS = {1: ("Ready to teach Monday", 76, "Teacher notes, pacing, student pag
             2: ("Intro deck included", 76, f"{len(SLIDES)} editable slides (.pptx + PDF) with speaker notes on every slide", 28),
             3: ("Everything inside", 72, "Proposal planner, worked example, work plan, idea starters", 28)}
 SQ_BANDS = {1: "Explore <em>·</em> propose <em>·</em> build <em>·</em> mix <em>·</em> present",
-            2: "Hook <em>·</em> production cycle <em>·</em> proposal <em>·</em> mix time",
+            2: "Hook <em>·</em> production cycle <em>·</em> proposal <em>·</em> worked example",
             3: f"{len(PLAN)} pages <em>·</em> US Letter PDF <em>·</em> no audio included"}
 
 SONG_NOTE = ("No audio, video, songs or examples are included. Students make every sound in their tracks themselves, so everything in "

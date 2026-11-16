@@ -48,6 +48,7 @@ ZIP_DIR = "Genre Exploration - Hudson Beat"
 ZIP_DATE = (2026, 10, 19, 12, 0, 0)
 TYPE = "Structured Project"
 PROJ_LINE = "Digital Music Production | <i>Structured Project</i> | 7 class periods"
+LIVE = True                 # already live on TpT (uploaded/release files belong to the Manager)
 DECK_STRAP = "Make a track in a genre you do not know"
 BANNED_EXTRA = []
 
@@ -113,7 +114,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.4
+RUBRIC_ROW_PITCH = 0.86
 # ---- Teacher Notes
 TN_REINFORCES = ("Builds analytical listening, research skills, and genre awareness. Forces students out of their default sound palette.")
 STRUGGLES = ["Students pick genres too close to what they already make.",
@@ -396,7 +399,7 @@ SLIDES = [
      "Class 1, the first minute. No audio is included in this deck. Open with my overview: step outside your comfort zone. Pick a "
      "musical genre you are unfamiliar with, research what defines it, and produce a track that captures its signature sound. Say that "
      "the project pushes students to listen deeper, experiment with new sounds, and grow as producers."),
-    (1, "listen", "Think: a genre you would skip", "Think, then share|Teacher: no audio is needed. Ask the questions aloud and take "
+    (1, "listen", "Think: a genre you would skip", "Outside your comfort zone · Think, then share|Teacher: no audio is needed. Ask the questions aloud and take "
      "a few answers.|Which genre would you never choose to listen to?|What do you think it sounds like, and how do you know?|"
      "What would you need to find out to make it?",
      "Ask the three questions aloud and take a few answers. Nothing is played from a speaker and no one else's music is used. The point "

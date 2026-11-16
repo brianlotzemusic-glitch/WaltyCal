@@ -334,7 +334,7 @@ def icon_body(i):
         return (f'<path d="M50 34 C36 34 34 44 42 50 C32 54 30 70 40 78 C46 84 54 84 60 78 C70 70 68 54 58 50 C66 44 64 34 50 34 Z" fill="{TINT2}" stroke="#000" stroke-width="2.6" stroke-linejoin="round"/>'
                 f'<path d="M50 34 L50 12" {S}/><circle cx="50" cy="9" r="4.5" fill="#fff" stroke="#000" stroke-width="2.4"/>'
                 f'<path d="M44 64 Q50 60 56 64 M46 72 L54 72" {S}/><path d="M50 40 L50 76" stroke="{A}" stroke-width="1.6" fill="none"/>'
-                f'<path d="M20 90 L84 22" {S} stroke-width="2"/>')
+                f'<path d="M80 90 L92 26" {S} stroke-width="2"/>')
     if i == "harp":
         return (f'<path d="M30 88 L30 30 C30 14 56 10 70 22 C76 28 76 36 70 42 L44 86 Z" fill="{TINT2}" stroke="#000" stroke-width="2.6" stroke-linejoin="round"/>'
                 f'<path d="M30 88 L50 88 M30 80 L46 80" {S}/>'
@@ -460,9 +460,9 @@ def map_reeds():
         o.append(f'<circle cx="{x + 15}" cy="48" r="4.6" fill="#000"/>')
         o.append(text(x + 38, 52, "short", 10, 500))
         o.append(f'<ellipse cx="{x + 27}" cy="48" rx="25" ry="12" fill="none" stroke="#000" stroke-width="1.2"/>')
-        o.append(f'<path d="M{x + 7} 88 Q{x + 17} 76 {x + 27} 88 T{x + 47} 88" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>')
-        o.append(text(x + 27, 108, "smooth", 10, 500))
-        o.append(f'<ellipse cx="{x + 27}" cy="89" rx="25" ry="15" fill="none" stroke="#000" stroke-width="1.2"/>')
+        o.append(f'<path d="M{x + 7} 82 Q{x + 17} 72 {x + 27} 82 T{x + 47} 82" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>')
+        o.append(text(x + 27, 111, "smooth", 10, 500))
+        o.append(f'<ellipse cx="{x + 27}" cy="82" rx="25" ry="13" fill="none" stroke="#000" stroke-width="1.2"/>')
     return svg(MW, 124, "".join(o))
 
 
@@ -495,7 +495,7 @@ def map_sugar():
     o.append(f'<path d="M{x0} {y1} L{x1} {y1} M{x0} {y0} L{x0} {y1}" stroke="#000" stroke-width="2"/>')
     for k in range(8):
         o.append(text(x0 + (k + .5) * (x1 - x0) / 8, 162, str(k + 1), 10, 500, fill="#555"))
-    for sx, sy in ((90, 22), (440, 28)):
+    for sx, sy in ():
         o.append(f'<path d="M{sx} {sy - 8} L{sx + 2.4} {sy - 2.4} L{sx + 8} {sy} L{sx + 2.4} {sy + 2.4} L{sx} {sy + 8} L{sx - 2.4} {sy + 2.4} L{sx - 8} {sy} L{sx - 2.4} {sy - 2.4} Z" fill="{ACCENT}"/>')
     return svg(MW, 168, "".join(o))
 
@@ -510,6 +510,10 @@ MAP_TASK = {
     "sugar": ("Tune shape", "Draw the tune as a line: up when the notes go higher, down when lower. Put an <b>S</b> by the sparkly sound and an <b>L</b> by a low sound."),
 }
 MAP_CUE = "Teacher: say “next” about every 15 seconds (stop at box 8, or start over if the music is longer)."
+MAP_CUE_BY = {
+    "trepak": "Teacher: say “next” as the dance speeds up: first the start gauge, then the middle one, then the end.",
+    "sugar": "Teacher: say “next” about every 15 seconds (stop at column 8, or start over if the music is longer).",
+}
 
 
 def mood_row(words):
@@ -529,7 +533,7 @@ def move_page(k, n, watermark=False):
              f'<div style="display:flex;gap:2pt">{icons}</div></div>'
              f'<div class="part">Listening map<span class="acc"> ·</span><small>{mtask}</small></div>'
              f'<div style="margin:0 auto">{MAPS[k]()}</div>'
-             f'<div class="small" style="margin:2pt 0 0;text-align:center">{MAP_CUE}</div>'
+             f'<div class="small" style="margin:2pt 0 0;text-align:center">{MAP_CUE_BY.get(k, MAP_CUE)}</div>'
              f'<div class="part" style="margin-top:7pt">Circle what you hear</div>'
              f'<div style="font-size:11.5pt;margin-bottom:3pt"><b>Tempo</b> &nbsp;{tempo}</div>'
              f'<div style="font-size:11.5pt;margin-bottom:3pt"><b>Dynamics</b> &nbsp;{dyn}</div>'
@@ -625,7 +629,7 @@ def gallery_page(n, watermark=False):
              f'<div class="box" style="margin-top:10pt;font-size:10.5pt"><b>Did you know?</b> Tchaikovsky heard the celesta in Paris and brought one to Russia for The Nutcracker. '
              f'Most listeners had never heard it before 1892. It is played with a keyboard, but a hammer strikes a metal bar inside, so it sounds like a tiny bell.</div>'
              f'<div class="part">Draw it</div><div class="small" style="margin-bottom:4pt">Pick your favorite instrument above. Draw it in the box and write one word that describes its sound.</div>'
-             f'<div class="box" style="flex:1;min-height:110pt"></div>')
+             f'<div class="box" style="flex:1;min-height:100pt;margin-bottom:12pt"></div>')
     return page("The orchestra instruments you will hear", "LOOK", "Instrument gallery", inner, n, watermark, title="Instrument Gallery")
 
 
@@ -800,6 +804,9 @@ def nutcracker_svg(cx=300, base=400, sc=1.0):
     o.append(f'<rect x="-98" y="-210" width="22" height="82" rx="10" fill="{A}" stroke="#000" stroke-width="3" transform="rotate(8 -87 -210)"/>')
     o.append('<path d="M-100 -300 L-100 -118" stroke="#000" stroke-width="5" stroke-linecap="round"/><path d="M-112 -180 L-88 -180" stroke="#000" stroke-width="5" stroke-linecap="round"/>')
     o.append('<path d="M-100 -300 L-96 -312 L-104 -312 Z" fill="#000"/>')
+    o.append('<circle cx="-92" cy="-124" r="13" fill="#fff" stroke="#000" stroke-width="3"/><path d="M-100 -136 L-100 -112" stroke="#000" stroke-width="5" stroke-linecap="round"/>')
+    o.append(f'<rect x="76" y="-210" width="22" height="82" rx="10" fill="{A}" stroke="#000" stroke-width="3" transform="rotate(-8 87 -210)"/>')
+    o.append('<circle cx="92" cy="-122" r="13" fill="#fff" stroke="#000" stroke-width="3"/>')
     # head with big jaw
     o.append('<rect x="-40" y="-296" width="80" height="68" rx="20" fill="#fff" stroke="#000" stroke-width="3.4"/>')
     o.append('<path d="M-27 -244 Q0 -226 27 -244 L27 -228 L-27 -228 Z" fill="#fff" stroke="#000" stroke-width="2.4"/><path d="M-12 -243 L-12 -228 M0 -241 L0 -228 M12 -243 L12 -228" stroke="#000" stroke-width="2"/>')
@@ -914,9 +921,9 @@ def preview_square_1(img):
 
 def preview_square_2(a, b):
     pair = "".join(
-        f'<div style="position:absolute;left:{x}px;top:{y}px;width:470px">{shot(src, 470, 100)}'
+        f'<div style="position:absolute;left:{x}px;top:{y}px;width:430px">{shot(src, 430, 100)}'
         f'<div class="lbl" style="position:absolute;{side}:-2px;top:-44px;margin:0">{lab}</div></div>'
-        for src, lab, x, y, side in ((a, "Listening page", 50, 250, "left"), (b, "Answer key", 476, 300, "right")))
+        for src, lab, x, y, side in ((a, "Listening page", 40, 250, "left"), (b, "Answer key", 530, 300, "right")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:72px;margin-top:20px">Map it, hear it, check it</div>'

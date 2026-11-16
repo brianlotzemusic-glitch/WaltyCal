@@ -46,6 +46,7 @@ ZIP_DIR = "Pattern Prodigy - Hudson Beat"
 ZIP_DATE = (2026, 10, 20, 12, 0, 0)
 TYPE = "Structured Project"
 PROJ_LINE = "Digital Music Production | <i>Structured Project</i> | 7 class periods"
+LIVE = True                 # already live on TpT (uploaded/release files belong to the Manager)
 DECK_STRAP = "Program a groove that evolves"
 BANNED_EXTRA = []
 
@@ -108,7 +109,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.4
+RUBRIC_ROW_PITCH = 0.86
 # ---- Teacher Notes
 TN_REINFORCES = "Introduces the Step Sequencer workflow. Builds rhythm programming, automation, and arrangement skills."
 STRUGGLES = ["Students only use the Step Sequencer for drums. Demo melodic patterns early.",
