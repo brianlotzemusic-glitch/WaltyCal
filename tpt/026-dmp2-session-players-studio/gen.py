@@ -26,6 +26,28 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "_dmp2_common"))
 import dmp2 as D  # noqa: E402
 
+# 026 fix: the shared reflection page ran its teacher box into the footer rule; shorten the answer lines in this kit only.
+_reflect_orig = D.reflect_page
+def _reflect_tight(n, watermark=False):
+    return _reflect_orig(n, watermark).replace('<div class="box" style="margin-top:2pt">', '<div class="box" style="margin-top:2pt;margin-bottom:12pt">')
+D.reflect_page = _reflect_tight
+D.STD_PAGES["reflect"] = _reflect_tight
+
+# 026 fix: the closing slide's reflection box sat ~0.1 in above the footer rule; lift it before the deck PDF is made.
+_deck_pdf_orig = D.deck_pdf
+def _deck_pdf_lifted():
+    from pptx import Presentation
+    from pptx.util import Inches
+    p = os.path.join(HERE, f"{SLUG}-intro-deck.pptx")
+    prs = Presentation(p)
+    sl = prs.slides[len(prs.slides) - 1]
+    for sh in sl.shapes:
+        if Inches(5.8) <= sh.top < Inches(7.0) and sh.left < Inches(7.0):
+            sh.top = sh.top - Inches(0.2)
+    prs.save(p)
+    _deck_pdf_orig()
+D.deck_pdf = _deck_pdf_lifted
+
 SLUG = "session-players-studio"
 TITLE = "Session Player’s Studio"
 ACCENT = "#1F7A8C"          # this product's single accent: studio teal (025 orchid, 023 horizon orange, 024 magenta)
@@ -420,9 +442,9 @@ def settings_body(W=1600, name="settings pic", cs=24):
                     out.append(f'<circle cx="{cx:.1f}" cy="{y + rh / 2:.1f}" r="15" fill="{ACCENT if d_ < v else "#fff"}" stroke="#000" stroke-width="3"/>')
     hh = 84 + 3 * (rh + rg)
     cap = "Complexity from 1 (simple) to 5 (busy), by section: an invented example"
-    out.append(D.t_(W / 2, hh + 14, cap, cs + 2, 500))
+    out.append(D.t_(W / 2, hh + 24, cap, cs + 2, 500))
     D.lab(name + " cap", cap, cs + 2, W - 20)
-    return "".join(out), W, hh + 30
+    return "".join(out), W, hh + 38
 
 
 def arc_body(W=1600, name="arc pic", fs=26, cs=22):
@@ -534,8 +556,8 @@ SLIDES = [
      "Class 1, the first minute. No audio is included in this deck. Open with my overview: build a band without the band. Use Logic’s "
      "Session Players, Drummer, Bass Player, and Keyboard Player, to create a realistic live-style arrangement. Customize their style, "
      "groove, and complexity, then add your own melody on top."),
-    (1, "listen", "Think: what does a band do?", "Think, then share|Teacher: describe a band playing the same slow song twice, first quietly and simply, then "
-     "loud and busy. No audio is needed.|What did the drummer change?|What stayed the same?|Who wrote the melody?",
+    (1, "listen", "Think: what does a band do?", "Think, then share|Teacher: describe one band playing a slow song twice, quiet and simple, then "
+     "loud and busy. No audio.|What did the drummer change?|What stayed the same?|Who wrote the melody?",
      "Ask the three questions aloud and take a few answers. Nothing is played from a speaker; describe one band and one song in two "
      "ways and let students imagine them. This sets up my goal that students adjust style, groove and complexity to create a realistic "
      "performance, and my teacher note that this project suits students who are less confident playing but have strong arrangement ideas."),
