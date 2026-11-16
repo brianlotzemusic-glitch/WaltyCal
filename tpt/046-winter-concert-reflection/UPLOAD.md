@@ -42,7 +42,7 @@ The teacher guide explains scoring with a worked example, differentiation for gr
 • No songs, lyrics or copyrighted characters
 • Answer Key: Not Included (the rubric and worked example cover scoring)
 
-Created with the help of digital and AI tools. Notation and answer keys are verified before release.
+Created with the help of digital and AI tools.
 ```
 
 ## 3. Grades
