@@ -110,7 +110,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.3
+RUBRIC_ROW_PITCH = 0.84
 # ---- Teacher Notes
 TN_REINFORCES = ("Introduces sound synthesis fundamentals. Students learn that every sound in electronic music was designed by someone, "
                  "and they can be that person.")
@@ -164,6 +166,7 @@ PACING = [
      "do": "Slides 17–18: presentation day and the close. Every student presents and answers 2 of each classmate’s questions.",
      "slides": (17, 18), "pages": ["present"], "deck": "Presentations with Padlet Q&A"},
 ]
+PACING_SIZE = 9.8
 PACING_EXTRA = (
     '<div class="cols" style="margin-top:4pt;gap:14pt"><div class="box acc-b"><span class="k">The one rule for Class 1</span>'
     '<p style="margin:0;font-size:9.6pt">From my common struggles: start with the Simple view before opening Advanced. Let students play '
@@ -531,7 +534,7 @@ SLIDES = [
 ]
 SHOTS1 = [("pacing", "Pacing guide", "7 class periods, slide by slide"), ("example", "Worked example", "three patches on paper"),
           ("rubric", "Rubric / 25", "student + teacher average")]
-SHOTS2 = [1, 2, 7, 8, 9, 13]
+SHOTS2 = [1, 2, 7, 8, 9, 10]
 SHOTS3 = [("setup", "Setup"), ("synthguide", "Synth guide"), ("example", "Worked example"), ("proj1", "Project sheet"),
           ("proj2", "Steps"), ("patch1", "Patch card"), ("trackplan", "Track plan"), ("changes", "What changed")]
 

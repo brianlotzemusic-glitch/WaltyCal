@@ -9,3 +9,7 @@
 Required fixes: none.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Audit P2: preview-2 "Bars and seconds" 100 BPM ruler numbered only bars 1-7; the rule that skipped bars not ending inside the 18 s window is changed to number every bar that starts inside it, so bars 1-8 are numbered like the 120 BPM ruler (also in the sync guide). Deck "How it's scored" line now reads "...average of your score and mine, out of 25" (no stray dot) and sits clear of the footer rule (RUBRIC_LINE_Y 6.3, row pitch 0.84). Rebuilt; `gen.py --check` and tpt-validate pass. A fresh Sonnet inspector confirmed both fixes and found no defects.
+**Verdict: APPROVED**

@@ -105,7 +105,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.3
+RUBRIC_ROW_PITCH = 0.84
 # ---- Teacher Notes
 TN_REINFORCES = ("Builds Quick Sampler proficiency, drum programming, and creative transformation skills. Natural entry point for "
                  "discussing sampling ethics and copyright.")
@@ -213,11 +215,11 @@ def sec(x):
 
 
 # ================================================================ drawings (original, code-drawn: black + accent only)
-def wave_body(W=1600, h=190, name="wave", numbers=True):
+def wave_body(W=1600, h=190, name="wave", numbers=True, tx=1.0):
     """A made-up waveform cut into 8 slices: one burst per slice, slice lines in the accent, start times under the slices."""
     out, n = [], 160
     bw = (W - 4) / n
-    top = 46 if numbers else 6
+    top = round(46 * tx) if numbers else 6
     mid = top + h / 2
     for i in range(n):
         f = (i + .5) / n * NSLICE
@@ -234,28 +236,30 @@ def wave_body(W=1600, h=190, name="wave", numbers=True):
     for k in range(NSLICE):
         x = 2 + k * sw
         if numbers:
-            out.append(f'<rect x="{x + sw / 2 - 24:.1f}" y="4" width="48" height="36" rx="9" fill="{ACCENT}"/>')
-            out.append(D.t_(x + sw / 2, 31, str(k + 1), 28, 700, fill_="#fff"))
-            D.lab(name, str(k + 1), 28, 40)
-        out.append(D.t_(x + 8, top + h + 34, sec(k * SLICE_SECS), 24, 500, anchor="start"))
-        D.lab(f"{name} times", sec(k * SLICE_SECS), 24, sw - 12)
-    return "".join(out), W, top + h + 44
+            bw_, bh_ = round(48 * tx), round(36 * tx)
+            out.append(f'<rect x="{x + sw / 2 - bw_ / 2:.1f}" y="4" width="{bw_}" height="{bh_}" rx="9" fill="{ACCENT}"/>')
+            out.append(D.t_(x + sw / 2, 4 + bh_ * .85, str(k + 1), round(28 * tx), 700, fill_="#fff"))
+            D.lab(name, str(k + 1), round(28 * tx), bw_ - 8)
+        out.append(D.t_(x + 8, top + h + 34 * tx, sec(k * SLICE_SECS), round(24 * tx), 500, anchor="start"))
+        D.lab(f"{name} times", sec(k * SLICE_SECS), round(24 * tx), sw - 12)
+    return "".join(out), W, top + h + 44 * tx
 
 
-def flip_body(W=1600, name="flip", bh=96):
+def flip_body(W=1600, name="flip", bh=96, tx=1.0):
     """Row 1: the original slices in order. Row 2: the flip, 8 slots of 2 beats (reversed = accent, pitched = grey) with bar numbers."""
     out = []
     sw = (W - 4) / NSLICE
-    out.append(D.t_(2, 26, "ORIGINAL ORDER", 24, 500, anchor="start"))
-    D.lab(name, "ORIGINAL ORDER", 24, 400)
+    fs = round(24 * tx)
+    out.append(D.t_(2, 26 * tx, "ORIGINAL ORDER", fs, 500, anchor="start"))
+    D.lab(name, "ORIGINAL ORDER", fs, 400 * tx)
     for k in range(NSLICE):
         x = 2 + k * sw
-        out.append(f'<rect x="{x + 3:.1f}" y="38" width="{sw - 6:.1f}" height="{bh * .62:.0f}" rx="8" fill="#9a9a9a"/>')
-        out.append(D.t_(x + sw / 2, 38 + bh * .62 * .72, str(k + 1), 34, 700, fill_="#fff"))
+        out.append(f'<rect x="{x + 3:.1f}" y="{38 * tx:.0f}" width="{sw - 6:.1f}" height="{bh * .62:.0f}" rx="8" fill="#9a9a9a"/>')
+        out.append(D.t_(x + sw / 2, 38 * tx + bh * .62 * .72, str(k + 1), 34, 700, fill_="#fff"))
         D.lab(name, str(k + 1), 34, sw - 20)
-    y2 = 38 + bh * .62 + 40
-    out.append(D.t_(2, y2 - 10, "THE FLIP", 24, 500, anchor="start", fill_=ACCENT))
-    D.lab(name, "THE FLIP", 24, 400)
+    y2 = 38 * tx + bh * .62 + 40 * tx + (24 if tx > 1 else 0)
+    out.append(D.t_(2, y2 - 12 * tx, "THE FLIP", fs, 500, anchor="start", fill_=ACCENT))
+    D.lab(name, "THE FLIP", fs, 400 * tx)
     for k, (sl, tr) in enumerate(FLIP):
         x = 2 + k * sw
         fill_ = ACCENT if tr == "rev" else ("#4a4a4a" if tr else "#000")
@@ -272,9 +276,9 @@ def flip_body(W=1600, name="flip", bh=96):
     for b in range(4):
         x0, x1 = 2 + b * 2 * sw, 2 + (b + 1) * 2 * sw
         out.append(f'<line x1="{x0 + 3:.1f}" y1="{yb}" x2="{x1 - 3:.1f}" y2="{yb}" stroke="#000" stroke-width="3"/>')
-        out.append(D.t_((x0 + x1) / 2, yb + 30, f"bar {b + 1}  ·  {sec(b * bar_secs())}", 24, 500))
-        D.lab(f"{name} bars", f"bar {b + 1}  ·  {sec(b * bar_secs())}", 24, 2 * sw - 16)
-    return "".join(out), W, yb + 40
+        out.append(D.t_((x0 + x1) / 2, yb + 30 * tx, f"bar {b + 1}  ·  {sec(b * bar_secs())}", fs, 500))
+        D.lab(f"{name} bars", f"bar {b + 1}  ·  {sec(b * bar_secs())}", fs, 2 * sw - 16)
+    return "".join(out), W, yb + 40 * tx
 
 
 def drums_drawing(cw=30, ch=34, name="drums"):
@@ -282,7 +286,7 @@ def drums_drawing(cw=30, ch=34, name="drums"):
 
 
 def hero_body():
-    return D.stack([wave_body(1600, 170, "hero wave"), flip_body(1600, "hero flip", 110),
+    return D.stack([wave_body(1600, 170, "hero wave", tx=1.5), flip_body(1600, "hero flip", 110, tx=1.5),
                     D.grid_body("hero grid", [DRUM], [f"Self-made drums · {TEMPO} BPM"], DRUM_LANES, cw=58, ch=50, gut=230, ls=30)], 44)
 
 
@@ -382,7 +386,7 @@ SLIDES = [
 ]
 SHOTS1 = [("pacing", "Pacing guide", "7 class periods, slide by slide"), ("chops", "Chop map", "slice, then plan the flip"),
           ("rubric", "Rubric / 25", "student + teacher average")]
-SHOTS2 = [1, 2, 7, 9, 8, 15]
+SHOTS2 = [1, 2, 7, 8, 9, 15]
 SHOTS3 = [("setup", "Cleared sample set"), ("ethics", "Sampling ethics"), ("example", "Worked example"), ("proj1", "Project sheet"),
           ("proj2", "Steps"), ("pick", "Sample log"), ("drums", "Drum plan"), ("changes", "What changed")]
 

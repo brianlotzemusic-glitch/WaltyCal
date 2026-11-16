@@ -118,7 +118,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.3
+RUBRIC_ROW_PITCH = 0.84
 # ---- Teacher Notes
 TN_REINFORCES = ("This connects music production to real-world application in film, TV, games, and advertising. Builds synchronization "
                  "skills, emotional storytelling through music, and arrangement for narrative purposes.")
@@ -323,7 +325,7 @@ def grid_body2(W=1500, name="grid"):
                 tb = t + b * beat_len(bpm)
                 if tb < span_s:
                     out.append(f'<line x1="{X(tb):.1f}" y1="{ytop + 55}" x2="{X(tb):.1f}" y2="{ytop + 90}" stroke="#000" stroke-width="1.4" opacity=".55"/>')
-            if t + bl <= span_s + 1e-9 and bl * (x1 - x0) / span_s > 70:
+            if t < span_s - 1.0 and bl * (x1 - x0) / span_s > 70:
                 out.append(D.t_(X(t) + 12, ytop + 38, str(k + 1), 30, 700, anchor="start"))
             k += 1
             t = k * bl

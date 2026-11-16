@@ -105,7 +105,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25            # checked in Drive: "Grading Rubric /25", Student / Teacher / Final "/ 25"
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]    # the owner's own level-5 descriptors, for the deck
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_ROW_PITCH = 0.86
+RUBRIC_LINE_Y = 6.3
 # ---- Teacher Notes
 TN_REINFORCES = ("This builds directly on song form, drum programming, and arrangement skills. The emulation approach forces precision with "
                  "tempo, form, and instrumentation while still requiring creative production choices. It teaches students to listen "
@@ -671,6 +673,9 @@ def verify_outputs(flat, stext, notes):
     if "Bieber" in alldeck:
         errs.append("deck must not name songs")
     txt = " ".join(flat)
+    # two-column pages interleave in -layout text; also match against reading-order text
+    import subprocess as _sp, re as _re
+    txt += " " + _re.sub(r"\s+", " ", _sp.run(["pdftotext", D.P(f"{SLUG}.pdf"), "-"], capture_output=True, text=True).stdout)
     for need in ("No songs, audio, video, lyrics or chart data are included", "not affiliated with or endorsed by Billboard",
                  "original practice map, not a real song", "Your Name – Billboard Top 10", "Final Grade = Average of Student + Teacher"):
         if need not in txt:
