@@ -32,6 +32,21 @@ def _reflect_tight(n, watermark=False):
 D.reflect_page = _reflect_tight
 D.STD_PAGES["reflect"] = _reflect_tight
 
+# fix: the closing slide's reflection box sat ~0.1 in above the footer rule; lift it before the deck PDF is made.
+_deck_pdf_orig = D.deck_pdf
+def _deck_pdf_lifted():
+    from pptx import Presentation
+    from pptx.util import Inches
+    p = os.path.join(HERE, "winter-soundscape-intro-deck.pptx")
+    prs = Presentation(p)
+    sl = prs.slides[len(prs.slides) - 1]
+    for sh in sl.shapes:
+        if Inches(5.8) <= sh.top < Inches(7.0) and sh.left < Inches(7.0):
+            sh.top = sh.top - Inches(0.2)
+    prs.save(p)
+    _deck_pdf_orig()
+D.deck_pdf = _deck_pdf_lifted
+
 ORIGINAL = True
 SLUG = "winter-soundscape"
 TITLE = "Winter Soundscape"
@@ -118,12 +133,12 @@ RUBRIC = [
     ("Automation", ["No automation", "One parameter automated, with very few points",
                     "Three parameters automated; the changes can be heard",
                     "Four parameters (cutoff, volume, pan, reverb send) with smooth, planned curves",
-                    "Four or more lanes that match the plan and make the storm move, with no clicks or jumps"]),
+                    "Five or more lanes that match the plan, with the biggest change at the peak and no clicks or jumps"]),
     ("Storm Arc & Timing", ["No clear arc, or the length is outside 60 to 90 seconds",
                             "The length is in range, but the storm barely changes",
                             "A build, a peak and a fade can be heard; the timings roughly match the plan",
                             "A clear build, peak and fade; the bars and seconds add up to the plan",
-                            "A convincing arc whose build, peak and fade are timed exactly to the plan"]),
+                            "A convincing arc: a gradual build, a peak that lands on its planned bar and a fade timed exactly to the plan"]),
     ("Space & Mix", ["Layers cover each other; no reverb or EQ", "Some reverb or EQ, but the mix is muddy or too loud",
                      "Reverb and EQ used; most layers can be heard; the peak does not clip",
                      "Each layer has a place: EQ, pan, width and reverb; no clipping",
@@ -197,8 +212,8 @@ PACING_EXTRA = (
     '<div class="cols" style="margin-top:4pt;gap:14pt"><div class="box acc-b"><span class="k">The one thing to do on Class 1</span>'
     '<p style="margin:0;font-size:9.6pt">Make sure every student leaves with a scene, a tempo and a storm arc on the timeline planner (page @TIMELINE) '
     'whose bars add up to 60 to 90 seconds. If the sums are wrong now, the whole plan is wrong later: use seconds = bars × 240 ÷ BPM.</p></div>'
-    '<div class="box"><span class="k">If you only have three classes</span><p style="margin:0;font-size:9.6pt">Merge Classes 2 and 3: '
-    'build the layers and draw the automation on Class 2, then add space and mix on Class 3 and use Class 4 for bouncing, presentations and reflection.</p></div></div>')
+    '<div class="box"><span class="k">If you only have three classes</span><p style="margin:0;font-size:9.6pt">Combine Classes 3 and 4: '
+    'build the layers and draw the automation on Class 2, then do space, mix, bouncing, presentations and reflection together in Class 3. Plan on a longer Class 3.</p></div></div>')
 PACING_SIZE = 9.6
 
 # ================================================================ the worked example: an invented 60-second storm at 120 BPM
@@ -309,7 +324,7 @@ PALETTE = [
     ("Shimmer", "A glassy halo that makes the peak feel wide and open.",
      "The pad, or a copy of it, an octave higher, with a long, bright reverb and the high-pass filter at about 1.5 kHz. "
      "Play it only through the peak.",
-     "2–12 kHz", "Raise the reverb send and the volume together over the build."),
+     "2–12 kHz", "Raise reverb send and volume together as the peak begins; lower both in the fade."),
 ]
 
 # ---- the recipes: instrument, title, [(label, text)] (settings in words; menu paths are avoided where unsure)
@@ -325,8 +340,8 @@ RECIPES = [
       ("Filter", "A low-pass filter with a gentle slope and the cutoff around 2 kHz, to take the edge off."),
       ("Play", "Hold one low note and its fifth for the whole piece. No melody, and no change of note, is needed.")]),
     ("Quick Sampler", "The ice crackle",
-     [("Sound", "Record a very short sound yourself (a fingernail on a desk, a pen click, crumpled paper) or use one from a loop that you "
-                "have the right to use. Nothing is supplied with this kit."),
+     [("Sound", "Record a very short sound yourself (a fingernail on a desk, a pen click, crumpled paper). "
+                "Nothing is supplied with this kit."),
       ("Shape", "Shorten the end of the sample, raise the pitch, and add a high-pass filter so only the highest part remains."),
       ("Play", "Play short, soft notes with different velocities and gaps, or draw them with the mouse. Irregular is better than steady."),
       ("Space", "Pan the track and send it to a reverb. Automate the pan over the build (page @AUTO2).")]),
@@ -422,7 +437,7 @@ def cards_body(items, cap, W=1600, name="cards", fs=30, cs=22):
 
 
 def cycle_body(W=1600, name="cycle pic", fs=30, cs=22):
-    return cards_body([("Scene", "brief + sounds"), ("Layers", "wind, ice, pads"), ("Arc", "build · peak · fade"),
+    return cards_body([("Scene", "brief + sounds"), ("Arc", "build · peak · fade"), ("Layers", "wind, ice, pads"),
                        ("Automate", "cutoff, volume, pan"), ("Space", "reverb · EQ · width")],
                       "Then mix, bounce, present and reflect", W, name, fs, cs)
 
@@ -628,7 +643,7 @@ DRAWING_PX = {"hero": 1900, "cycle": 2000, "arc": 2000, "curves": 2000, "freq": 
 SIDE = {"cycle": ["Choose a scene and a tempo", "Plan the storm arc on paper", "Build layers, then automate", "Space and mix last"],
         "arc": ["Four sections: hush, build, peak, fade", "The peak is the only loudest part", "Bars × 2 seconds at 120 BPM", "30 bars = 60 seconds"],
         "curves": ["Ramp: a build", "Swell: a gust", "Step: a sudden change", "Wave and Fade: breath and ending"],
-        "freq": ["Low layers sit at the left", "High layers sit at the right", "High-pass everything but the rumble", "Layers that overlap hide each other"],
+        "freq": ["Low layers sit at the left", "High layers sit at the right", "High-pass every layer; the rumble gets a very low one", "Layers that overlap hide each other"],
         "map": ["An invented 60-second storm", "Four sections: 4, 10, 8, 8 bars", "Eight layers, four automation lanes", "The peak has the most layers"]}
 
 
@@ -663,7 +678,7 @@ SLIDES = [
      "Quick Sampler and Retro Synth. Class 3: automate, then add space and mix. Class 4: bounce, hand in, present and reflect. Hand out the "
      "project sheet, the scene brief and the timeline planner now."),
     (1, "pic", "Five steps, then finish", "cycle",
-     "Class 1. The five steps in order: scene, layers, arc, automate and space. After that students mix, bounce, present and reflect. Point to "
+     "Class 1. The five steps in order: scene, arc, layers, automate and space. After that students mix, bounce, present and reflect. Point to "
      "each box and say roughly when it happens: the scene and arc today, the layers on Class 2, automation and space on Class 3. The picture "
      "and its short labels are drawn for this kit."),
     (1, "pic", "The storm arc", "arc",
@@ -687,7 +702,7 @@ SLIDES = [
      "Class 3. An invented soundscape described on paper, nothing here is audio: a mountain hut in a storm at 120 BPM. Thirty bars at 2 seconds "
      "a bar is 60 seconds, in four sections of 4, 10, 8 and 8 bars. Eight layers join and leave, and the peak has the most. Four automation "
      "lanes keep the sound moving. Students plan their own on the layer map and the automation plan."),
-    (3, "bullets", "Space, width and mix", "Reverb: wetter when calm, drier at the peak|EQ: high-pass every layer but the rumble|Pan the "
+    (3, "bullets", "Space, width and mix", "Reverb: wetter when calm, drier at the peak|EQ: high-pass every layer, the rumble very low|Pan the "
      "ice, keep the rumble in the centre|Check it quietly, then at normal level",
      f"Class 3. Space in four ideas. Reverb makes a sound seem far away: use more in the hush and fade and less at the peak. Channel EQ's "
      f"high-pass filter clears the lows. Pan the ice and widen the pad, but keep the rumble in the centre so it stays strong on any speaker. "
@@ -744,7 +759,7 @@ LOGIC_REF = [("New project and tracks", "File › New…, then add a Software In
               "into seconds: seconds = bars × 240 ÷ BPM (page " + str(pg("timeline")) + "). The playhead position in the control bar can also be shown as time."),
              ("Alchemy", "Click the instrument slot on a channel strip and choose Alchemy. Browse the Library (Y) for noise, wind or pad sounds as a "
               "starting point, then change the source, the filter and the effects (recipes on page " + str(pg("alchemy")) + ")."),
-             ("Quick Sampler", "Choose Quick Sampler as the instrument and record a short sound yourself, or drag in a sound you have the right to use. "
+             ("Quick Sampler", "Choose Quick Sampler as the instrument and record a short sound yourself, or use a short sound you recorded. "
               "Shorten it, raise its pitch, add its filter and play it from the keyboard or draw notes in the Piano Roll."),
              ("Retro Synth and Step FX", "Retro Synth makes simple low tones (a sine for the rumble). The Step FX plug-in, if your version has it, "
               "can make a pad stutter or sweep its filter in steps. If you are unsure, skip it."),
@@ -767,7 +782,7 @@ VOCAB_PROMPT = "Where it shows up in my soundscape:"
 TN1_EXTRA = (
     '<div class="box acc-b" style="margin-top:4pt"><span class="k">Where this kit helps with each struggle</span><ul style="margin:0">'
     '<li style="font-size:11.4pt;margin-bottom:3pt">A grey blur: the palette cards (pages @PALETTE1–@PALETTE2) and the frequency map (page @SPACE) give each layer its own range.</li>'
-    '<li style="font-size:11.4pt;margin-bottom:3pt">No build: the timeline planner (page @TIMELINE), the layer map (page @LAYERS) and slide 6 show layers entering and leaving.</li>'
+    '<li style="font-size:11.4pt;margin-bottom:3pt">No build: the timeline planner (page @TIMELINE), the layer map (page @LAYERS) and slide 7 show layers entering and leaving.</li>'
     '<li style="font-size:11.4pt;margin-bottom:3pt">Clicky automation: the five curve shapes (page @AUTO1) and the worked example (page @EXAMPLE2).</li>'
     '<li style="font-size:11.4pt;margin-bottom:0">A distorted peak or wash: the space page (page @SPACE) and slide 11.</li></ul></div>')
 TN1_SIZE = 11.8
@@ -964,9 +979,9 @@ def brief_page(n, wm=False):
              f'<li style="font-size:10pt">No melody, no drums, and no recordings you did not make or have the right to use.</li></ul></div>'
              f'<div class="box"><span class="k">Listen first, with your eyes closed</span><p style="margin:0;font-size:10pt;line-height:1.35">'
              f'Think of the worst weather you have been out in. What was the first sound? What happened to it as it got closer? What did you hear '
-             f'underneath it? What stopped it from being silent at the end? Write one sound for each question in the margin.</p></div></div>'
+             f'underneath it? What stopped it from being silent at the end? Write one sound for each question on the lines below.</p></div></div>'
              f'<span class="k" style="margin-top:6pt">Sounds I heard in my head (one per question)</span>'
-             f'<div class="ln2" style="height:22pt"></div><div class="ln2" style="height:22pt"></div>')
+             f'<div class="ln2" style="height:20pt"></div><div class="ln2" style="height:20pt"></div><div class="ln2" style="height:20pt"></div><div class="ln2" style="height:20pt"></div>')
     return D.page("Scene brief", "STUDENT", "Class 1", inner, n, wm, name=True, key="brief")
 
 
@@ -994,7 +1009,7 @@ def palette2_page(n, wm=False):
              f'at the peak, and the sparse ones that show how quiet the hush is. Some layers should come and go: a layer that plays all the time cannot '
              f'make the storm build. Tick the cards you will use and write the track name you give each.</p>'
              + "".join(pal_card(i + 5, p, mb=6) for i, p in enumerate(PALETTE[4:]))
-             + f'<div class="box" style="padding:4pt 10pt;margin-bottom:14pt"><span class="k">My layers from the palette (tick, then name the track)</span><div class="cols" style="gap:12pt">'
+             + f'<div class="box" style="padding:4pt 10pt;margin-bottom:10pt"><span class="k">My layers from the palette (tick, then name the track)</span><div class="cols" style="gap:12pt">'
              f'<div>' + "".join(D.chk(f"<b>{p[0]}</b> = <span style='display:inline-block;width:1.4in;border-bottom:1pt solid #000'>&nbsp;</span>", 11, "font-size:9.6pt;margin-bottom:1pt") for p in PALETTE[:4]) +
              f'</div><div>' + "".join(D.chk(f"<b>{p[0]}</b> = <span style='display:inline-block;width:1.4in;border-bottom:1pt solid #000'>&nbsp;</span>", 11, "font-size:9.6pt;margin-bottom:1pt") for p in PALETTE[4:]) +
              f'</div></div></div>')
@@ -1083,7 +1098,7 @@ def space_page(n, wm=False):
              f'A low-pass cutoff that opens makes a sound seem to come closer. Use its LFO for slow breathing, and automate the cutoff for the big build.</p></div></div></div>'
              f'<div class="box" style="margin-top:5pt;padding:4pt 10pt"><span class="k">Check before I bounce</span>'
              + "".join(D.chk(c, 10.5, "font-size:9.6pt;margin-bottom:1.5pt") for c in [
-                 "Every layer except the rumble has a high-pass, set at or below the bottom of its zone.",
+                 "Every layer has a high-pass at or below the bottom of its zone (the rumble’s is very low, 25 Hz).",
                  "The rumble is in the centre. The ice and the pad are spread; the loudest moment does not clip.",
                  "I listened quietly first, then at a normal level, and the layers are all still audible."]) + '</div>')
     return D.page("Reverb, EQ and stereo width", "STUDENT", "Class 3", inner, n, wm, name=False, key="space")
@@ -1108,7 +1123,8 @@ def timeline_page(n, wm=False):
              + "".join(f"<th>{b} bars</th>" for b in LEN_BARS) +
              f'</tr>{hr}</table><p class="small" style="margin:1pt 0 0">Shaded and bold: 60 to 90 seconds.</p></div>'
              f'<div class="box acc-b" style="flex:0 0 2.1in;padding:4pt 9pt"><span class="k">Moments I plan</span><p style="margin:0;font-size:9pt;line-height:1.3">'
-             f'Write the bar where each new layer enters, and the bar where the peak begins. Time = (bar − 1) × seconds per bar.</p></div></div>')
+             f'Write the bar where each new layer enters, and the bar where the peak begins. Time = (bar − 1) × seconds per bar.</p>'
+             + '<div class="ln2" style="height:19pt"></div>' * 4 + '</div></div>')
     return D.page("Storm arc and timeline planner", "STUDENT", "Class 1", inner, n, wm, name=True, key="timeline")
 
 
@@ -1152,10 +1168,10 @@ def autoplan_page(n, wm=False):
     inner = (f'<p style="margin:0 0 3pt;font-size:10.2pt;line-height:1.36">Step 3: plan four automation lanes. Choose a layer and a parameter for each (cutoff, volume, pan and reverb send are the four to use), '
              f'draw the curve you want across the bars with the shapes on page {D.IX("auto1")}, and write the lowest and highest value. Then draw it in Logic. The numbers above each lane are bars.</p>'
              f'{blocks}'
-             f'<div class="box acc-b" style="padding:4pt 10pt"><span class="k">Check my lanes</span>'
+             f'<div class="box acc-b" style="padding:4pt 10pt;margin-top:6pt"><span class="k">Check my lanes</span>'
              + "".join(D.chk(c, 10.5, "font-size:9.6pt;margin-bottom:1.5pt") for c in [
                  "Each lane has at least three points and changes by a lot, not a little.",
-                 "The curves start low, reach their highest or lowest value at the peak and return in the fade.",
+                 "Each curve moves clearly: its biggest change happens around the peak, and it settles in the fade.",
                  "I have a lane for cutoff, volume, pan and reverb send."]) + '</div>')
     return D.page("Automation plan", "STUDENT", "Class 3", inner, n, wm, name=True, key="autoplan")
 
@@ -1165,7 +1181,7 @@ def example_page(n, wm=False):
                    f"<td style='white-space:nowrap'>{mmss(bar_time(a))}–{mmss(b * EX_BAR_S)}</td><td>{EX_JOBS[nm]}</td></tr>" for nm, a, b in EX_SECTIONS)
     mom = "".join(f"<tr><td style='width:14%'>bar {b}</td><td style='width:12%'>{mmss(bar_time(b))}</td><td>{t}</td></tr>" for b, t in EX_MOMENTS)
     inner = (f'<p style="margin:0 0 3pt;font-size:10pt">An <b>invented plan on paper</b>: a snowstorm at 120 BPM. {EX_NOTE} Page 1 of 2: the plan, the arc and the numbers.</p>'
-             f'<div class="cols" style="gap:10pt"><div class="box"><span class="k">1 · A weak plan</span><p style="margin:0;font-size:10pt">{EX_WEAK}</p>'
+             f'<div class="cols" style="gap:10pt"><div class="box" style="align-self:flex-start"><span class="k">1 · A weak plan</span><p style="margin:0;font-size:10pt">{EX_WEAK}</p>'
              f'<p style="margin:2pt 0 0;font-size:9pt">It names no scene, no tempo, no sections and no automation.</p></div>'
              f'<div class="box acc-b"><span class="k">2 · A clear plan</span><p style="margin:0;font-size:8.6pt;line-height:1.28">{EX_STRONG}</p></div></div>'
              f'{D.H2("3 · The storm arc: 30 bars, four sections")}'
@@ -1237,7 +1253,7 @@ def reflect_page(n, wm=False):
              f'<div style="flex:1">{D.chk("<b>Written.</b> I will write my answers on this page.", 13, "font-size:11.4pt;margin:0")}</div>'
              f'<div style="flex:1">{D.chk("<b>Oral.</b> I will talk my answers through with my teacher. My teacher fills in the box at the bottom.", 13, "font-size:11.4pt;margin:0")}</div></div>'
              f'{pr}'
-             f'<div class="box" style="margin:2pt 0 9pt"><span class="k">Oral reflection · teacher</span><div class="fl" style="margin:0"><b>Date:</b>'
+             f'<div class="box" style="margin:2pt 0 15pt"><span class="k">Oral reflection · teacher</span><div class="fl" style="margin:0"><b>Date:</b>'
              f'<span style="flex:0 0 1.4in"></span><b>Prompts covered (1-4):</b><span></span></div>'
              f'<div class="fl" style="margin:6pt 0 0"><b>Key points I heard:</b><span></span></div></div>')
     return D.page("Reflection · how did it go?", "STUDENT", "After presenting", inner, n, wm, name=True, key="reflect")
