@@ -17,3 +17,12 @@ Reviewer did not build this. git pull done on shop-factory; `gen.py --check` pri
 Required fixes: none.
 
 **Verdict: APPROVED**
+
+
+## Fix round 16 Nov 2026
+
+Cover: pad grid re-centred on the waveform/button axis with even gaps. Preview-2 bar no longer claims 'mix time' (now 'worked example', which is shown). Deck scored-line fix as 019.
+
+Rebuilt; `gen.py --check` and `tools/tpt-validate.py` pass. A fresh Visual inspector (new BLOCKING/NOTES brief) found no BLOCKING item. NOTES accepted: fanned preview-1 pages, heading accent dot, blank band under thumbnail captions, 1/255 tint on deck hero art. (022: one inspector claimed deck slide 18 held Found Sound text; checked against the PDF text, it is genre-specific, so a false alarm.)
+
+**Verdict: APPROVED**
