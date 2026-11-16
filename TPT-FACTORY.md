@@ -89,8 +89,12 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 >    (b) anything overlapping, touching or colliding (a dot on a clef, text on art); (c) clipped or cut-off text or art, text too
 >    small to read at thumbnail size, typos, claims that disagree with the product (page, puzzle or grade counts; check
 >    `UPLOAD.md` only now); (d) blank areas, broken images, artefacts; (e) anything a teacher would find odd or unprofessional.
-> 4. Reply `OK` only if every image has an inventory line and you found nothing. Otherwise reply `DEFECTS:` with the image, where on
->    it (top-left, centre...) and what is wrong. At most 12 lines.
+> 4. Sort what you find. **BLOCKING** = wrong music or content, misleading or contradictory text, a wrong claim, clipped, cut-off or
+>    overlapping art or text, anything unreadable, an artefact a buyer would notice. **NOTES** = polish only (spacing under about
+>    10 px, blank areas, alignment, style preferences, anything you would merely do differently). Reply `OK` if there is no BLOCKING
+>    item and every image has an inventory line, listing any NOTES after it; NOTES never block a release or a replacement. If there is
+>    a BLOCKING item reply `DEFECTS:` with the image, where on it (top-left, centre...) and what is wrong. At most 12 lines.
+>    Judge each image on its own: do not invent a new defect to justify the review, and do not repeat a NOTE that was already accepted.
 
 ## Product rules
 - **Brand and look:** `tpt/STYLE.md`. Footer and terms page as written there.
