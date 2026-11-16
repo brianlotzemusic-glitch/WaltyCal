@@ -20,3 +20,12 @@ Open owner questions (do not block): whether the Groups of Words list has change
 Required fixes: none.
 
 **Verdict: APPROVED**
+
+
+## Fix round 16 Nov 2026
+
+Preview-2 black box (deck slide 2): heading added, Teacher line shortened to one line, clear of the bottom edge. Deck scored-line fix as 019.
+
+Rebuilt; `gen.py --check` and `tools/tpt-validate.py` pass. A fresh Visual inspector (new BLOCKING/NOTES brief) found no BLOCKING item. NOTES accepted: fanned preview-1 pages, heading accent dot, blank band under thumbnail captions, 1/255 tint on deck hero art. (022: one inspector claimed deck slide 18 held Found Sound text; checked against the PDF text, it is genre-specific, so a false alarm.)
+
+**Verdict: APPROVED**
