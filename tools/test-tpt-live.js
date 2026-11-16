@@ -52,24 +52,31 @@ for (const [n, price] of [["029-winter-color-by-note", "3.75"], ["030-dmp1-units
 }
 console.log("ok all items pass checkItem; 028 free, 029 3.75, 030 49.00 with preview files");
 
-// 4. marker directives + reupload fix planning
-const m = T.parseMarker(fs.readFileSync(path.join(I27, "reupload"), "utf8"));
+// 4. marker directives + reupload fix planning. Uses a COPY of 027 carrying its 23 Oct `fix: price, preview` marker:
+// the real 027 marker is rewritten by other sessions (16 Nov: a plain file fix), so the test must not depend on it.
+const FIX27 = "2026-10-23 fix 027 (owner approved)\nfix: price, preview\n";
+const I27real = I27;
+const I27c = fs.mkdtempSync(path.join(os.tmpdir(), "fix27-"));
+fs.cpSync(I27real, I27c, { recursive: true, filter: (s) => !/build|__pycache__/.test(s) });
+for (const f of ["reuploaded", "reupload-failed"]) fs.rmSync(path.join(I27c, f), { force: true });
+fs.writeFileSync(path.join(I27c, "reupload"), FIX27);
+const m = T.parseMarker(FIX27);
 assert.deepStrictEqual([m.files, m.fix, m.problems], [true, ["price", "preview"], []]);
 assert.deepStrictEqual(T.parseMarker("2026 old marker\n").fix, []);
 assert(T.parseMarker("fix: price, colour\n").problems.length === 1);
 assert.strictEqual(T.parseMarker("files: none\nfix: preview").files, false);
-const st = T.reuploadState(I27);
+const st = T.reuploadState(I27c);
 assert.strictEqual(st.state, "pending"); assert.deepStrictEqual(st.directives.fix, ["price", "preview"]);
 const ids = ["ItemDigitalProduct", "ItemDigitalPreview", "ItemDigitalThumb1", "ItemDigitalThumb2", "ItemDigitalThumb3", "ItemDigitalThumb4", "item-price", "item-license-price", "item-free"];
 const ef = { fields: ids.map((id) => ({ id })), edit_url_template: "https://x/{id}" };
-let pl = T.prepareReupload(I27, F, ef);
+let pl = T.prepareReupload(I27c, F, ef);
 assert.deepStrictEqual(pl.problems, []); assert.strictEqual(pl.files.length, 6); assert.deepStrictEqual(pl.fix, ["price", "preview"]);
 // same-night gate: an edit form without the Free Resource toggle is NOT ready (price boxes are conditional) for the fix
-const noFree = T.prepareReupload(I27, F, { ...ef, fields: ef.fields.filter((f) => f.id !== "item-free") });
+const noFree = T.prepareReupload(I27c, F, { ...ef, fields: ef.fields.filter((f) => f.id !== "item-free") });
 assert(noFree.problems.some((p) => /fix price: edit form has no Free Resource control/.test(p)));
 // price 0 in tpt.json can never be "fixed" into the product
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "fix-"));
-fs.cpSync(I27, tmp, { recursive: true, filter: (s) => !/build|__pycache__/.test(s) });
+fs.cpSync(I27c, tmp, { recursive: true, filter: (s) => !/build|__pycache__/.test(s) });
 fs.writeFileSync(path.join(tmp, "tpt.json"), JSON.stringify({ ...cfg27, price: "0.00", license_price: "0.00" }));
 assert(T.prepareReupload(tmp, F, ef).problems.some((p) => /fix price: tpt.json price must be a price above 0/.test(p)));
 fs.writeFileSync(path.join(tmp, "tpt.json"), JSON.stringify(cfg27));
@@ -82,10 +89,11 @@ console.log("ok marker directives, fix planning, same-night gate");
 
 // 5. CLI dry-run of the real 027 marker is offline and writes nothing
 const before = cp.execSync("git status --porcelain", { cwd: ROOT }).toString();
-const r = cp.spawnSync("node", [path.join(ROOT, "tools", "tpt.js"), "reupload", "tpt/027-thanksgiving-color-by-note", "--dry-run"], { encoding: "utf8" });
+const r = cp.spawnSync("node", [path.join(ROOT, "tools", "tpt.js"), "reupload", I27c, "--dry-run"], { encoding: "utf8" });
 assert.strictEqual(r.status, 0, r.stderr);
 assert(/price 3\.75, license price 3\.75, tax code/.test(r.stdout) && /un-tick/.test(r.stdout) && /PREVIEW\.pdf/.test(r.stdout), r.stdout);
 assert.strictEqual(cp.execSync("git status --porcelain", { cwd: ROOT }).toString(), before);
+fs.rmSync(I27c, { recursive: true });
 console.log("ok CLI dry-run lists the price/preview fix");
 
 // 6. Manager script against the saved copy (offline) exits 1 on the broken page, 0 on a fixed one

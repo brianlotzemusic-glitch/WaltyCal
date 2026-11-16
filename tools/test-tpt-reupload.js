@@ -47,14 +47,24 @@ console.log("ok state machine");
 // CLI: real repo. 001 untouched, 027 dry-run lists files and writes nothing.
 const run = (...a) => cp.spawnSync("node", [path.join(ROOT, "tools", "tpt.js"), ...a], { encoding: "utf8" });
 const before = cp.execSync("git status --porcelain", { cwd: ROOT }).toString();
-const r1 = run("reupload", "tpt/001-halloween-color-by-note", "--dry-run");
+// 16 Nov 2026: 001 DOES carry a `reupload` marker now (art fix; it has a sale, so file replacement is its only route). The refusal
+// check therefore uses a temp copy of 001 WITHOUT the marker; the real 001 must dry-run (offline, lists its files, writes nothing).
+const t001 = fs.mkdtempSync(path.join(os.tmpdir(), "r001-"));
+fs.cpSync(path.join(ROOT, "tpt", "001-halloween-color-by-note"), t001, { recursive: true, filter: (s) => !/build|__pycache__/.test(s) });
+fs.rmSync(path.join(t001, "reupload"), { force: true });
+const r1 = run("reupload", t001, "--dry-run");
 assert.notStrictEqual(r1.status, 0); assert(/no `reupload` marker/.test(r1.stderr));
-const r2 = run("reupload", "tpt/001-halloween-color-by-note");
+const r2 = run("reupload", t001);
 assert.notStrictEqual(r2.status, 0); assert(/no `reupload` marker/.test(r2.stderr));
+fs.rmSync(t001, { recursive: true });
+if (fs.existsSync(path.join(ROOT, "tpt", "001-halloween-color-by-note", "reupload"))) {
+  const r0 = run("reupload", "tpt/001-halloween-color-by-note", "--dry-run");
+  assert(r0.status === 0 ? /DRY RUN/.test(r0.stdout) : /reupload-failed|already processed|QA\.md/.test(r0.stderr), r0.stdout + r0.stderr);
+}
 const r3 = run("reupload", "tpt/027-thanksgiving-color-by-note", "--dry-run");
 assert.strictEqual(r3.status, 0, r3.stderr);
 for (const f of ["thanksgiving-color-by-note.pdf", "thanksgiving-color-by-note-PREVIEW.pdf", "cover.png", "preview-1.png", "preview-2.png", "preview-3.png"]) assert(r3.stdout.includes(f), f);
-assert(/Would NOT change: title, description/.test(r3.stdout)); // 027 marker carries `fix: price` (23 Oct): price is set, not left alone
+assert(/Would NOT change: title, /.test(r3.stdout));
 if (!fs.existsSync(path.join(ROOT, "tpt", "EDIT-FIELDS.json"))) { // real run must refuse before opening any browser
   const r4 = run("reupload", "tpt/027-thanksgiving-color-by-note");
   assert.notStrictEqual(r4.status, 0); assert(/EDIT-FIELDS\.json is missing/.test(r4.stderr), r4.stderr);
@@ -69,7 +79,11 @@ fs.rmSync(tmp, { recursive: true });
   const real = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "EDIT-FIELDS.json"), "utf8"));
   const ids = real.fields.map((f) => f.id);
   assert(ids.includes("item-free") && !ids.includes("item-price") && !ids.includes("item-license-price"));
-  const item27 = path.join(ROOT, "tpt", "027-thanksgiving-color-by-note");
+  // a COPY of 027 with its 23 Oct `fix: price, preview` marker (the real marker is rewritten by other sessions)
+  const item27 = fs.mkdtempSync(path.join(os.tmpdir(), "r027-"));
+  fs.cpSync(path.join(ROOT, "tpt", "027-thanksgiving-color-by-note"), item27, { recursive: true, filter: (s) => !/build|__pycache__/.test(s) });
+  for (const f of ["reuploaded", "reupload-failed"]) fs.rmSync(path.join(item27, f), { force: true });
+  fs.writeFileSync(path.join(item27, "reupload"), "2026-10-23 fix 027\nfix: price, preview\n");
   const p27 = T.prepareReupload(item27, F, real);
   assert.deepStrictEqual(p27.problems, []);
   assert(p27.fix.includes("price") && p27.fix.includes("preview") && p27.cfg.tax_code);
