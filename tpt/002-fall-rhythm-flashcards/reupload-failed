@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-16T12:46:19.219Z",
+  "marker_sha256": "d148481817007817c80c4754cdf4c71e2a3b4cb44f5da5a7e234ade48fb06837",
+  "step": "replace preview (fall-rhythm-flashcards-PREVIEW.pdf)",
+  "error": "could not remove the existing preview file before uploading: click 1 (div select-and-remove-file-section); buttons seen after: Search | Cart menu | 0 notifications | Seller Dropdown | Buyer Dropdown | Buyer Dropdown Button | Grade | Resource type | Seasonal | ELA | Math | Science; new: (none); click 2 (div remove-file-section); buttons seen after: Search | Cart menu | 0 notifications | Seller Dropdown | Buyer Dropdown | Buyer Dropdown Button | Grade | Resource type | Seasonal | ELA | Math | Science; new: (none); click 3 (span delete-btn); buttons seen after: Search | Cart menu | 0 notifications | Seller Dropdown | Buyer Dropdown | Buyer Dropdown Button | Grade | Resource type | Seasonal | ELA | Math | Science; new: (none); but preview_uploaded is still 1 and the card is still there",
+  "files": [
+    {
+      "slot": "product",
+      "file": "fall-rhythm-flashcards.pdf",
+      "sha256": "e9a4a57d6dbcbd8ff8112f6bdf7f5867253e095f62fe3279ad2881e1f6c9f9c1"
+    },
+    {
+      "slot": "preview",
+      "file": "fall-rhythm-flashcards-PREVIEW.pdf",
+      "sha256": "ddd103e6e9129863536ba398cd03e0a244004412290779801dd2d0314369405f"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "sha256": "cd63cf1c821c838ecb962d03db9f7503f8333edced5e474de3fc2b9e03ca6790"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "sha256": "99656399df946de6d72ba95776aa4ee891cf52f22ac5943bd9e331cddebb522c"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "sha256": "16fce7b02885602662be5db4a6c04d9fc3570e305ebafe12922b003b48c4efe9"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "sha256": "ab65e4eb3f3bbfaffb15fef7a6564695479f1f5665f3606c359025b371878005"
+    }
+  ],
+  "screenshot": "tpt/_publish/002-fall-rhythm-flashcards-reupload-failed.png"
+}

@@ -1,25 +1,33 @@
 {
-  "ran_at": "2026-11-16T03:15:05.219Z",
+  "ran_at": "2026-11-16T12:15:50.882Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-16T03:15:05.370Z",
+    "ran_at": "2026-11-16T12:15:51.049Z",
     "replaced": [],
-    "failed": [],
-    "waiting": [],
-    "skipped": [
-      "007-music-sub-plans-k5: failed-hold",
-      "027-thanksgiving-color-by-note: failed-hold",
-      "042-winter-music-escape-room: failed-hold",
-      "043-note-naming-speed-drills: failed-hold"
+    "failed": [
+      {
+        "item": "002-fall-rhythm-flashcards",
+        "error": "reupload stopped at \"replace preview (fall-rhythm-flashcards-PREVIEW.pdf)\": could not remove the existing preview file before uploading: click 1 (div select-and-remove-file-section); buttons seen after: Search | Cart menu | 0 notifications | Seller Dropdown | Buyer Dropdown | Buyer Dropdown Button | Grade | Resource type | Seasonal | ELA | Math | Science; new: (none); click 2 (div remove-file-sect"
+      }
     ],
+    "waiting": [
+      "002-fall-rhythm-flashcards",
+      "007-music-sub-plans-k5",
+      "011-dmp1-chords-by-ear",
+      "012-dmp1-bass-melody-writing",
+      "027-thanksgiving-color-by-note",
+      "042-winter-music-escape-room",
+      "043-note-naming-speed-drills"
+    ],
+    "skipped": [],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": true
+    "ok": false
   },
   "ok": true
 }
