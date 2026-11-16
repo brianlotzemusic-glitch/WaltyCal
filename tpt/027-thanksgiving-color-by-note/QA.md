@@ -162,3 +162,11 @@ Bar met: every picture B or better, turkey A-, cover B+.
 ## Open questions for owner
 1. The live listing (uploaded 22 Oct 13:17) carries the old THANKSGIVING-headed files; replacing the live PDF and thumbnails with this build needs the uploader (not run here).
 2. Optional: rename PDF file to fall-color-by-note.pdf (not done; not required).
+
+## Fix round 16 Nov 2026
+- Doubled "PREVIEW" watermark on preview-1/2 fixed at the root: the square-preview builder cropped pages from the already-watermarked preview PDF and then drew a second `.swm` stamp over each `.shot` image. Removed the extra overlay (preview-3, which uses unstamped art, keeps its single stamp).
+- P3: preview-1 page row moved down to reduce the empty band above the footer.
+- Rebuilt with `python3 gen.py`; `gen.py --check` and `tools/tpt-validate.py` pass. PDFs unchanged in content.
+- Fresh Sonnet inspector (second pass): OK, single clean watermark on every page in preview-1, -2, -3. (First pass's "doubled" call on the pumpkin page was a false alarm; confirmed single in a native-resolution crop.)
+
+**Verdict: APPROVED**

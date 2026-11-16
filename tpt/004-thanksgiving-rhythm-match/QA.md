@@ -57,3 +57,7 @@ QA reviewed this item on 9 Oct 2026, independently of the Designer. I rendered a
 - A few shrunken word boxes (sheet 2 "Fall", "crunch-y") could be slightly larger for grade 1.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Audit P2s confirmed and fixed in gen.py: cover acorn moved clear of card D (and the pie, brown leaf nudged away); preview-2 sheets resized so the answer key ends above the footer bar and the last row is complete. Fresh inspector: both defects gone, notation and bars correct, nothing new (remaining notes: design-level only).
+**Verdict: APPROVED**

@@ -20,3 +20,10 @@ Open owner questions (do not block): own chord cheat sheet (not in Projects (New
 Required fixes: none.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Changed in gen.py (kit-local): p24 Reflection teacher box lifted clear of the footer rule; deck slide 2 teacher line shortened to one line (clear of the box edge); slide 10 caption given more space under the grid; slide 19 reflection box lifted 0.2 in clear of the footer. Earlier fixes kept (lowercase ii/iii/vi numerals, slide 17 line).
+Fresh Sonnet inspector, full size: confirmed p24, slides 2/10/19 clear, preview-3 and PREVIEW.pdf p3 read I ii iii IV V vi. Remaining notes were minor and pre-existing (cover arrows are decorative, slide 19 balance); not changed.
+`gen.py --check` shows only the "release/uploaded exist" notes (live product); tpt-validate OK.
+
+**Verdict: APPROVED**
