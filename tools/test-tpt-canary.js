@@ -16,6 +16,10 @@ assert(/PAUSED-ALL/.test(run("status").stdout));
 fs.writeFileSync(pause, "Paused 2026-11-16.\nallow: 043\n");
 let o = run("status").stdout; assert(/^WAITING\s+canary 043-drills/m.test(o) && /wait for the Mac/.test(o), o);
 assert.strictEqual(run("release").status, 1); assert(fs.existsSync(pause));
+fs.writeFileSync(path.join(d043, "reupload-unverified"), JSON.stringify({ marker_sha256: h(M), at: "2026-11-16T20:00:00Z" }));
+o = run("status").stdout; assert(/^UNVERIFIED\s+canary 043-drills/m.test(o) && /never resubmits/.test(o), o);
+assert.strictEqual(run("release").status, 1, "unverified is not passed");
+fs.rmSync(path.join(d043, "reupload-unverified"));
 fs.writeFileSync(path.join(d043, "reupload-failed"), JSON.stringify({ marker_sha256: h(M), step: "replace product", error: "TpT did not accept" }));
 o = run("status").stdout; assert(/^FAILED\s+canary 043-drills \| replace product: TpT did not accept/m.test(o) && /keep tpt\/REUPLOAD-PAUSED/.test(o) && /push the owner once/.test(o), o);
 // re-armed canary (new marker text) is WAITING again; then PASSED

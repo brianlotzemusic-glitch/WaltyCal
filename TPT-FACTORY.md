@@ -190,17 +190,24 @@ upload, please try again" and cleared the key): `tools/tpt.js` retries up to 3 t
 try through TpT's own Select-file chooser) and waits until the box stops saying Processing. With it the 043 canary got past the
 product and preview for the first time. Fix 2 (same day): the edit form opens with "Upload thumbnails later" selected, which hides
 the four thumbnail boxes; the replacement now ticks "Upload thumbnails now" first (as publishing does) and removes a thumbnail with
-its own delete button. Every failure writes `tpt/_publish/NNN-slug-reupload-<slot>-diag.json` (requests, TpT's upload answers,
-console errors, the box's HTML); `reupload-failed` carries the same in short under `diagnostics`.
+its own delete button. Fix 3 (same evening; canary run 2 uploaded everything, clicked Submit, then failed its check): two bugs of
+ours. It left the page ~5 s after Submit, which can cut TpT's save off, and it checked a hidden field that is always empty on a
+freshly opened edit page. Now it waits up to 2 min for TpT to answer the save (and records that answer), then checks the FILE
+CARDS: PDF size, and "Last updated" moved forward. If TpT answered the save but the cards still show the old files, the Mac writes
+`reupload-unverified` and looks again by itself at least 70 min and 3 h after the save, never resubmitting. A match then
+writes `reuploaded`; still old after 3 h writes `reupload-failed`. One failed or unverified item no longer stops the others; only
+3 failures in a row end a run. Every failure writes `tpt/_publish/NNN-slug-reupload-<slot>-diag.json` (requests, TpT's upload
+answers, console errors, the box's HTML); `reupload-failed` carries the same in short under `diagnostics`, plus the save answer.
 `tpt/REUPLOAD-PAUSED` stops every replacement; a line `allow: 043` in it lets only the listed items through (the canary).
 **Canary rule, every shift while that file exists:** run `python3 tools/tpt-reupload-canary.py status` and act on its word:
 - `PASSED` (the canary shows `reuploaded`): run `python3 tools/tpt-reupload-canary.py release` (deletes tpt/REUPLOAD-PAUSED), commit
   and push. All waiting replacements proceed on the Mac's next runs (they stop at the first failure).
-- `FAILED` (the canary shows `reupload-failed`): fix 1 and fix 2 above were both tried, so this is "still fails after the second
-  fix": keep tpt/REUPLOAD-PAUSED in place, leave every replacement queued, and push the owner ONCE (8am-8pm ET): "Replacing files on
-  live TpT products still fails: <step and one-line cause from the canary's `reupload-failed` diagnostics>. Nothing was replaced;
-  the replacements stay queued." Log it and stop working on it. (Before fix 2 the rule was: read the new diagnostics and fix once
-  more; that fix has now been used.)
+- `UNVERIFIED` (the canary shows `reupload-unverified`): the Mac submitted and is waiting to see the new files. Do nothing: it looks
+  again by itself. Never write a new marker for it meanwhile (that would resubmit).
+- `FAILED` (the canary shows `reupload-failed`): keep tpt/REUPLOAD-PAUSED in place, leave every replacement queued, and push the owner
+  ONCE (8am-8pm ET): "Replacing files on live TpT products still fails: <step and one-line cause from the canary's `reupload-failed`
+  diagnostics>. Nothing was replaced; the replacements stay queued." Then hand the diagnostics to the uploader engineer (tools/tpt.js
+  only, offline tests, re-arm the canary with a new marker line). Never build a fallback.
 - `WAITING`: nothing; the Mac hasn't tried yet. `PAUSED-ALL` (no allow line): a person paused everything; leave it.
 
 ## Rotation (keeps usage low)

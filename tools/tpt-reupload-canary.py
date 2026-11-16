@@ -4,7 +4,7 @@
 tpt/REUPLOAD-PAUSED pauses every `reupload` (file replacement on a live product). A line `allow: 043` lets only the listed
 items through, so one item (the canary) tests a fix of tools/tpt.js on the Mac before the ~28 waiting replacements run.
 
-  python3 tools/tpt-reupload-canary.py status     one line per canary: PASSED / FAILED / WAITING, then a NEXT: line
+  python3 tools/tpt-reupload-canary.py status     one line per canary: PASSED / FAILED / UNVERIFIED / WAITING, then a NEXT: line
   python3 tools/tpt-reupload-canary.py release    canary PASSED -> delete tpt/REUPLOAD-PAUSED (every waiting replacement proceeds)
 There is deliberately NO fallback (owner, 16 Nov 2026): corrected files go onto the EXISTING listings or they do not go live.
   --root DIR                                      use DIR instead of the repo (tests)
@@ -27,7 +27,8 @@ def read_json(path):
 
 
 def item_state(folder):
-    """PASSED | FAILED | WAITING | NO-MARKER for the folder's CURRENT reupload marker."""
+    """PASSED | FAILED | UNVERIFIED | WAITING | NO-MARKER for the folder's CURRENT reupload marker.
+    UNVERIFIED: the Mac submitted the new files but the edit page did not show them yet; it looks again by itself (70 min, 3 h)."""
     h = marker_hash(folder)
     if not h:
         done = read_json(os.path.join(folder, "reuploaded"))
@@ -35,6 +36,9 @@ def item_state(folder):
     done = read_json(os.path.join(folder, "reuploaded"))
     if done and done.get("marker_sha256") == h:
         return "PASSED"
+    unv = read_json(os.path.join(folder, "reupload-unverified"))
+    if unv and unv.get("marker_sha256") == h:
+        return "UNVERIFIED"
     failed = read_json(os.path.join(folder, "reupload-failed"))
     if failed and failed.get("marker_sha256") == h:
         return "FAILED"
@@ -94,6 +98,8 @@ def main():
         elif any(s == "FAILED" for s in states):
             print("NEXT: see TPT-FACTORY.md 'The Mac uploader'. Fixes 1 and 2 are used (16 Nov): keep tpt/REUPLOAD-PAUSED, leave the "
                   "replacements queued, and push the owner once (8am-8pm ET) with the step and cause from the diagnostics above")
+        elif any(s == "UNVERIFIED" for s in states):
+            print("NEXT: wait: the Mac submitted and looks again by itself (>= 70 min and >= 3 h after the save); it never resubmits")
         else:
             print("NEXT: wait for the Mac's next run")
         return 0

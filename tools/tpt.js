@@ -941,6 +941,8 @@ function reuploadState(item) {
   if (!isApproved(item)) return { state: "not-approved", markerHash, url, reason: "QA.md has no '**Verdict: APPROVED**' line" };
   const done = readTrim(path.join(item, "reuploaded"));
   if (done) { try { if (JSON.parse(done).marker_sha256 === markerHash) return { state: "done", markerHash, url, reason: "this reupload marker was already processed (see `reuploaded`); write a new marker to replace again" }; } catch (e) { /* unreadable: treat as not done */ } }
+  const unv = readTrim(path.join(item, "reupload-unverified"));
+  if (unv) { try { const u = JSON.parse(unv); if (u.marker_sha256 === markerHash) return { state: "unverified", markerHash, url, rec: u, reason: "submitted; waiting to see the new files on the edit page (never resubmitted)" }; } catch (e) { return { state: "failed-hold", markerHash, url, reason: "`reupload-unverified` is unreadable; a person must check the product on TpT" }; } }
   const failed = readTrim(path.join(item, "reupload-failed"));
   if (failed) { try { if (JSON.parse(failed).marker_sha256 === markerHash) return { state: "failed-hold", markerHash, url, reason: "an earlier attempt for this marker failed (see `reupload-failed`); not retrying until a new marker is written or that file is deleted" }; } catch (e) { return { state: "failed-hold", markerHash, url, reason: "`reupload-failed` exists and is unreadable; not retrying" }; } }
   return { state: "pending", markerHash, url, productId: url.match(PRODUCT_URL_RE)[1], directives: parseMarker(marker) };
@@ -1131,6 +1133,82 @@ async function resetWidget(page, inputSel, fileName) {
   return `clicked ${clicked}`;
 }
 
+// ---- save + verify (16 Nov 2026, canary 043 run 2) -----------------------------------------------------------------------------------
+// 043 uploaded every file and clicked Submit; the check then failed and the edit page still showed the OLD files. Two bugs of ours:
+// (a) after Submit the code waited ~5 s and navigated away, which can cut TpT's save off (publish() waits up to 120 s for the page to
+// leave the form); (b) it verified by the hidden upload key, which is ALWAYS empty for stored files on a fresh edit page. Now: wait for
+// the save like publish() does and record TpT's answer; verify by the FILE CARDS (size for PDFs; "Last updated" moved forward for
+// any file, since TpT shows thumbnails at a converted size). If the cards still show the old files right after a save that TpT
+// answered, write `reupload-unverified`; later runs look again (>= 70 min, then >= 3 h) and NEVER resubmit meanwhile.
+const UNVERIFIED_CHECKS_MIN = [70, 180];
+function parseCard(text) {
+  const t = String(text || "").replace(/\s+/g, " ");
+  const name = (t.match(/([\w\-.()]+\.(?:pdf|png|jpe?g|gif|zip|pptx?|docx?))/i) || [])[1];
+  const sz = t.match(/([\d.,]+)\s*(kB|KB|MB|bytes)\b/);
+  const sizeKb = sz ? Number(sz[1].replace(/,/g, "")) * (/MB/.test(sz[2]) ? 1024 : /bytes/.test(sz[2]) ? 1 / 1024 : 1) : null;
+  const u = t.match(/Last updated:?\s*([A-Z][a-z]{2,8} \d{1,2}, \d{4}) at (\d{1,2}:\d{2}) ?([AP]M)\s*(EST|EDT|PST|PDT|CST|CDT|MST|MDT|UTC|GMT)?/);
+  let updated = null;
+  if (u) {
+    const off = { EST: "-0500", EDT: "-0400", CST: "-0600", CDT: "-0500", MST: "-0700", MDT: "-0600", PST: "-0800", PDT: "-0700", UTC: "+0000", GMT: "+0000" }[u[4] || "EST"];
+    const ms = Date.parse(`${u[1]} ${u[2]} ${u[3]} GMT${off}`);
+    updated = Number.isFinite(ms) ? ms : null;
+  }
+  return { name: name || null, sizeKb, updated, text: t.trim().slice(0, 200) };
+}
+// "match" (the new file is on the card) | "old" (still the old file) | "unknown". Pure.
+function cardVerdict(oldCard, newCard, file, slot) {
+  const o = parseCard(oldCard), n = parseCard(newCard), wantKb = file.bytes / 1024;
+  const sizeOk = n.sizeKb !== null && Math.abs(n.sizeKb - wantKb) <= Math.max(0.6, wantKb * 0.005);
+  if (sizeOk && !/^thumb/.test(slot)) return "match"; // TpT shows thumbnails at a converted size: only the date counts for them
+  if (n.updated && o.updated && n.updated > o.updated) return "match";
+  if (n.updated && !o.updated && file.savedAt && n.updated >= file.savedAt - 2 * 3600e3) return "match";
+  if (o.text && n.sizeKb === o.sizeKb && n.updated === o.updated) return "old";
+  return "unknown";
+}
+// Text of each slot's file card on the edit page (the box around the slot's file input).
+async function readCards(page, F, slots) {
+  const out = {};
+  for (const slot of slots) out[slot] = (await widgetState(page, editSel(F, slot).input, "")).text || "";
+  return out;
+}
+// Click Submit and wait for TpT to answer, like publish(): the page leaves the edit URL, or TpT's save request (a non-GET page
+// navigation) answers, or a success message shows. Records the request and messages. Returns { ok, how, status, messages, network }.
+async function submitAndWait(page, submit, editUrl, opts = {}) {
+  const cap = startCapture(page), limit = opts.timeoutMs || 120000;
+  const t0 = Date.now();
+  const navResp = page.waitForResponse((r) => r.request().method() !== "GET" && r.request().isNavigationRequest(), { timeout: limit }).catch(() => null);
+  const left = page.waitForURL((u) => u.toString().split("#")[0] !== editUrl.split("#")[0], { timeout: limit }).then(() => true, () => false);
+  // click() waits for the navigation it starts and throws after its timeout; a slow save is exactly what we want to wait out, so a
+  // timeout AFTER the click was done is not an error (the loop below keeps waiting up to `limit`).
+  try { await submit.first().click({ noWaitAfter: true, timeout: 15000 }); }
+  catch (e) { if (!/click action done|navigation/i.test(e.message)) { cap.stop(); throw e; } }
+  const okRe = /(successfully|has been (saved|updated)|changes (were |have been )?saved|product (was |has been )?updated)/i;
+  const errRe = /(error|failed|is required|please (correct|fix)|could not)/i;
+  const readMsgs = () => page.locator('[role="alert"], [aria-live="assertive"], [class*="flash" i], [class*="alert" i], [class*="success" i], [class*="error-message" i]')
+    .allInnerTexts().then((a) => a.map((x) => x.replace(/\s+/g, " ").trim()).filter(Boolean).slice(0, 12), () => []);
+  let how = null, status = null, messages = [];
+  let navDone = null, leftDone = false;
+  navResp.then((r) => { navDone = r; });
+  left.then((v) => { leftDone = v; });
+  while (Date.now() - t0 < limit && !how) {
+    await page.waitForTimeout(500);
+    if (navDone) { status = navDone.status(); await page.waitForLoadState("domcontentloaded", { timeout: 60000 }).catch(() => {}); how = `TpT answered the save (${navDone.request().method()} ${status})`; break; }
+    if (leftDone) { how = `the page left the edit form (${page.url().replace(/\?.*/, "")})`; break; }
+    // the edit form may save with a background request instead of a page load: a 2xx/3xx answer to a non-GET request to TpT's
+    // product endpoints (not graphql/analytics) counts as the save answer once the page has been quiet for 3 s
+    const xhr = cap.log.requests.filter((x) => /<- (POST|PUT|PATCH) [23]\d\d https:\/\/(www\.)?(teacherspayteachers\.com|tpt\.test)\/(itemsDigital|items|My-Products|product)/i.test(x));
+    if (xhr.length && Date.now() - t0 > 3000) { await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {}); status = Number((xhr[xhr.length - 1].match(/ ([23]\d\d) /) || [])[1]) || null; how = `TpT answered the save (${xhr[xhr.length - 1].replace(/^\S+ <- /, "").slice(0, 120)})`; break; }
+    messages = await readMsgs();
+    if (messages.some((m) => okRe.test(m))) { how = "TpT showed a success message"; break; }
+  }
+  await page.waitForTimeout(opts.settleMs ?? 3000);
+  messages = await readMsgs();
+  const network = cap.stop();
+  const bad = (status !== null && status >= 400) || messages.some((m) => errRe.test(m) && !okRe.test(m));
+  return { ok: !!how && !bad, how: how || `no answer from TpT within ${Math.round(limit / 1000)} s`, status, messages,
+    network: { requests: network.requests.slice(-30), bodies: network.bodies.slice(-6), failed: network.failed.slice(-10), console: network.console.slice(-15) } };
+}
+
 // One file slot on the EDIT form: remove the old card, upload, retry on TpT's own error. Returns { ok, key, diag } or
 // { error, diagnostics } (the caller records it). opts: { slot, spec: {input, key}, filePath, slug, shots, minutesPerTry, resetWaitMs }.
 async function uploadEditSlot(page, opts) {
@@ -1290,6 +1368,7 @@ async function reupload(item, dryRun) {
       if (!shown) await snap(page, shots, `${slug}-reupload-thumbs-hidden-failed`).catch(() => {});
     }
 
+    const oldCards = await readCards(page, F, files.map((f) => f.slot)); // compared with the cards after the save
     const keys = {};
     for (const f of files) {
       step = `replace ${f.slot} (${f.file})`;
@@ -1343,28 +1422,38 @@ async function reupload(item, dryRun) {
     if (fix.includes("preview") && !keys.preview) await fail(page, "fix preview", "the preview file was not uploaded (no key)");
 
     step = "save";
-    const submit = page.locator((F.edit && F.edit.submit) || F.submit);
+    let submit = page.locator((F.edit && F.edit.submit) || F.submit);
+    if (!(await submit.count())) submit = page.getByRole("button", { name: /^\s*submit\s*$/i });
     if (!(await submit.count())) await fail(page, step, "no save button found");
     saved = true; // from here on TpT may have changed
-    await submit.first().click();
-    await page.waitForLoadState("domcontentloaded", { timeout: 120000 }).catch(() => {});
-    await page.waitForTimeout(5000);
+    const savedAt = Date.now();
+    const sv = await submitAndWait(page, submit, editUrl);
+    console.log(`save: ${sv.how}; messages: ${sv.messages.join(" | ").slice(0, 200) || "(none)"}`);
+    await snap(page, shots, `${slug}-reupload-after-submit`).catch(() => {});
+    const saveDiag = { save: { how: sv.how, status: sv.status, messages: sv.messages, ...sv.network } };
+    if (!sv.ok) await fail(page, step, `after Submit: ${sv.how}; TpT says: ${sv.messages.join(" | ").slice(0, 300) || "(nothing)"} (Submit WAS clicked: check the product on TpT)`, saveDiag);
 
     step = "verify";
     const r2 = await page.goto(state.url, { waitUntil: "domcontentloaded" });
-    if (!r2 || r2.status() >= 400) await fail(page, step, `product page answered ${r2 ? r2.status() : "nothing"} after saving`);
+    if (!r2 || r2.status() >= 400) await fail(page, step, `product page answered ${r2 ? r2.status() : "nothing"} after saving`, saveDiag);
     await page.goto(editUrl, { waitUntil: "domcontentloaded" }); await page.waitForTimeout(3000);
     const after = await readGuard();
-    for (const k of Object.keys(before)) if (!(fixPrice && (k === "price" || k === "license_price")) && before[k] !== after[k]) await fail(page, step, `field "${k}" changed during the save (before ${JSON.stringify(before[k])}, after ${JSON.stringify(after[k])})`);
-    const text = await page.locator("body").innerText().catch(() => "");
-    let filled = 0;
-    for (const f of files) {
-      const spec = editSel(F, f.slot), v = await page.locator(spec.key).first().inputValue().catch(() => "");
-      if (v) filled++; else await fail(page, step, `after saving, ${f.slot} (${f.file}) shows no file on the edit page`);
-      if ((f.slot === "product" || f.slot === "preview") && !text.includes(path.basename(f.file)) && !v.includes(path.basename(f.file)))
-        await fail(page, step, `after saving, the edit page does not list the file name ${f.file} for ${f.slot}`);
+    for (const k of Object.keys(before)) if (!(fixPrice && (k === "price" || k === "license_price")) && before[k] !== after[k]) await fail(page, step, `field "${k}" changed during the save (before ${JSON.stringify(before[k])}, after ${JSON.stringify(after[k])})`, saveDiag);
+    // Verify by the FILE CARDS, not the hidden key (empty for stored files on a fresh page).
+    const newCards = await readCards(page, F, files.map((f) => f.slot));
+    const verdicts = files.map((f) => ({ slot: f.slot, file: f.file, verdict: cardVerdict(oldCards[f.slot], newCards[f.slot], { ...f, savedAt }, f.slot), before: oldCards[f.slot].slice(0, 160), after: newCards[f.slot].slice(0, 160) }));
+    console.log("verify: " + verdicts.map((v) => `${v.slot} ${v.verdict}`).join(", "));
+    if (verdicts.some((v) => v.verdict !== "match")) {
+      // TpT answered the save but the cards do not show the new files yet ("allow up to one hour"). Look again later; never resubmit.
+      await snap(page, shots, `${slug}-reupload-unverified`).catch(() => {});
+      fs.writeFileSync(path.join(item, "reupload-unverified"), JSON.stringify({
+        at: new Date(savedAt).toISOString(), marker_sha256: state.markerHash, url: state.url, edit_url: editUrl, checks: [{ at: new Date().toISOString(), verdicts }],
+        files: files.map((f) => ({ slot: f.slot, file: f.file, bytes: f.bytes, sha256: f.sha256 })), old_cards: oldCards, ...saveDiag,
+        note: `Submitted; the edit page still showed old files right after. The Mac looks again at >= ${UNVERIFIED_CHECKS_MIN.join(" and >= ")} min after the save; it is NOT resubmitted meanwhile.`,
+      }, null, 2) + "\n");
+      console.log(`${slug}: saved, not visible yet: wrote reupload-unverified (looked at again after ${UNVERIFIED_CHECKS_MIN.join(" and ")} min)`);
+      return { url: state.url, files: files.length, unverified: true };
     }
-    if (filled !== files.length) await fail(page, step, `expected ${files.length} files on the product, found ${filled}`);
     if (fixPrice) {
       for (const k of ["price", "license_price"]) if (Math.abs(Number(after[k]) - Number(cfg[k])) > 0.001) await fail(page, step, `after saving, ${k} on the edit form is ${JSON.stringify(after[k])}, expected ${cfg[k]}`);
       if (F.free && (await page.locator(F.free).count()) && (await freeIsOn(page, F.free)))
@@ -1389,6 +1478,7 @@ async function reupload(item, dryRun) {
       at: new Date().toISOString(), tool: "tools/tpt.js reupload", url: state.url, marker_sha256: state.markerHash,
       files: files.map((f) => ({ slot: f.slot, file: f.file, bytes: f.bytes, sha256: f.sha256 })),
       fix, fix_verified: fix.length ? { price: cfg.price, license_price: cfg.license_price, preview: cfg.files.preview, verified_on_public_page: true } : undefined,
+      verified_by: "file cards on the edit page", verdicts, save: saveDiag.save.how,
     }, null, 2) + "\n");
     console.log(`Replaced ${files.length} files on ${state.url}; wrote ${path.relative(ROOT, item)}/reuploaded`);
     return { url: state.url, files: files.length };
@@ -1401,6 +1491,60 @@ async function reupload(item, dryRun) {
   } finally {
     await context.close();
   }
+}
+
+// When a `reupload-unverified` record is due for a look: { due, final }. Pure. Looks at >= 70 min and >= 180 min after the save;
+// the look at >= 180 min is final (still old -> reupload-failed).
+function unverifiedDue(rec, now = Date.now()) {
+  const age = (now - Date.parse(rec.at)) / 60000;
+  const looked = (rec.checks || []).slice(1).map((c) => (Date.parse(c.at) - Date.parse(rec.at)) / 60000); // checks[0] = right after the save
+  const last = UNVERIFIED_CHECKS_MIN[UNVERIFIED_CHECKS_MIN.length - 1];
+  if (age >= last) return { due: true, final: true };
+  const next = UNVERIFIED_CHECKS_MIN.find((m) => !looked.some((l) => l >= m));
+  return { due: next !== undefined && age >= next, final: false };
+}
+// Read-only look at a submitted-but-unverified product: open its edit page, compare the file cards with the old ones. Never submits.
+// Returns "verified" | "waiting" | "failed". deps.readCardsNow (tests only) replaces the browser.
+async function checkUnverified(item, deps = {}) {
+  item = path.resolve(item);
+  const slug = path.basename(item), st = reuploadState(item), shots = path.join(ROOT, "tpt", "_publish");
+  if (st.state !== "unverified") return "skip";
+  const rec = st.rec, when = unverifiedDue(rec, deps.now);
+  if (!when.due) return "waiting";
+  let cards, shot = null;
+  if (deps.readCardsNow) cards = await deps.readCardsNow(rec);
+  else {
+    const F = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8"));
+    const { context, page } = await openBrowser();
+    try {
+      await ensureLoggedIn(page);
+      await page.goto(rec.edit_url, { waitUntil: "domcontentloaded" }); await page.waitForTimeout(4000);
+      if (/\/login/i.test(page.url())) throw new Error("not logged in (TpT sent us to the login page)");
+      cards = await readCards(page, F, rec.files.map((f) => f.slot));
+      shot = `tpt/_publish/${slug}-reupload-recheck.png`; await snap(page, shots, `${slug}-reupload-recheck`).catch(() => {});
+    } finally { await context.close(); }
+  }
+  const savedAt = Date.parse(rec.at);
+  const verdicts = rec.files.map((f) => ({ slot: f.slot, file: f.file, verdict: cardVerdict(rec.old_cards[f.slot] || "", cards[f.slot] || "", { ...f, savedAt }, f.slot), after: (cards[f.slot] || "").slice(0, 160) }));
+  rec.checks = [...(rec.checks || []), { at: new Date(deps.now || Date.now()).toISOString(), verdicts, screenshot: shot }];
+  if (verdicts.every((v) => v.verdict === "match")) {
+    fs.writeFileSync(path.join(item, "reuploaded"), JSON.stringify({ at: new Date().toISOString(), tool: "tools/tpt.js reupload (verified later)", url: rec.url, marker_sha256: rec.marker_sha256,
+      saved_at: rec.at, files: rec.files, verified_by: "file cards on the edit page", verdicts, checks: rec.checks.length }, null, 2) + "\n");
+    fs.rmSync(path.join(item, "reupload-unverified"), { force: true });
+    console.log(`${slug}: the new files now show on the edit page: wrote reuploaded`);
+    return "verified";
+  }
+  if (when.final) {
+    fs.writeFileSync(path.join(item, "reupload-failed"), JSON.stringify({ at: new Date().toISOString(), marker_sha256: rec.marker_sha256, step: "verify (later)",
+      error: `submitted at ${rec.at}, but ${Math.round((Date.now() - savedAt) / 60000)} min later the edit page still shows: ${verdicts.filter((v) => v.verdict !== "match").map((v) => `${v.slot} ${v.verdict} (${v.after.slice(0, 80)})`).join("; ")}`,
+      files: rec.files, screenshot: shot, diagnostics: { save: rec.save, checks: rec.checks } }, null, 2) + "\n");
+    fs.rmSync(path.join(item, "reupload-unverified"), { force: true });
+    console.log(`${slug}: still the old files ${UNVERIFIED_CHECKS_MIN[UNVERIFIED_CHECKS_MIN.length - 1]}+ min after the save: wrote reupload-failed`);
+    return "failed";
+  }
+  fs.writeFileSync(path.join(item, "reupload-unverified"), JSON.stringify(rec, null, 2) + "\n");
+  console.log(`${slug}: not visible yet; will look again at ${UNVERIFIED_CHECKS_MIN[UNVERIFIED_CHECKS_MIN.length - 1]} min`);
+  return "waiting";
 }
 
 async function reuploadPending() {
@@ -1420,8 +1564,21 @@ async function reuploadPending() {
   for (const d of pending) if (!pauseAllows(pause, d)) res.skipped.push(`${path.basename(d)}: paused (tpt/REUPLOAD-PAUSED allows only ${pause.allow.join(", ")})`);
   pending = pending.filter((d) => pauseAllows(pause, d));
   for (const d of marked) if (!pending.includes(d)) { const s = reuploadState(d); if (s.state !== "done") res.skipped.push(`${path.basename(d)}: ${s.state}`); }
+  // Submitted-but-unverified items first: a read-only look when due, never a resubmit.
+  res.unverified = [];
+  for (const d of marked.filter((x) => reuploadState(x).state === "unverified" && pauseAllows(pause, x))) {
+    try {
+      const r = await checkUnverified(d);
+      if (r === "verified") res.replaced.push({ item: path.basename(d), note: "verified on a later run" });
+      else if (r === "failed") res.failed.push({ item: path.basename(d), error: "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)" });
+      else res.unverified.push(path.basename(d));
+    } catch (e) {
+      const msg = e.message.split("\n")[0].slice(0, 300); res.unverified.push(path.basename(d)); console.error(`${path.basename(d)}: recheck: ${msg}`);
+      if (/not logged in|session expired/i.test(msg)) { res.needs_login = true; return done(false); }
+    }
+  }
   res.waiting = pending.map((d) => path.basename(d));
-  if (!pending.length) { console.log("No item waiting for a file replacement."); return done(true); }
+  if (!pending.length) { console.log("No item waiting for a file replacement."); return done(!res.failed.length); }
   console.log(`Marked for reupload: ${res.waiting.join(", ")}`);
   if (!readEditFields()) { // first run: learn the edit form, change nothing
     res.needs_edit_fields = true;
@@ -1438,14 +1595,20 @@ async function reuploadPending() {
     console.log("Recorded tpt/EDIT-FIELDS.json; the edit form has every field the marker needs, so the replacement/fix runs now (same night).");
     pending = ready;
   }
+  // One failed or unverified item no longer stops the others (16 Nov 2026). Only a login problem, or 3 failures IN A ROW (a site-wide
+  // change: no point opening Chrome for the rest), ends the run early.
+  let inARow = 0;
   for (const item of pending.slice(0, MAX_PER_RUN)) {
     const slug = path.basename(item);
-    try { const r = await reupload(item, false); res.replaced.push({ item: slug, url: r.url, files: r.files }); res.waiting = res.waiting.filter((x) => x !== slug); }
-    catch (e) {
+    try {
+      const r = await reupload(item, false);
+      if (r.unverified) res.unverified.push(slug); else res.replaced.push({ item: slug, url: r.url, files: r.files });
+      res.waiting = res.waiting.filter((x) => x !== slug); inARow = 0;
+    } catch (e) {
       const msg = e.message.split("\n").slice(0, 3).join(" ").slice(0, 400);
       res.failed.push({ item: slug, error: msg }); console.error(`${slug}: ${msg}`);
       if (/not logged in|session expired/i.test(msg)) { res.needs_login = true; break; }
-      if (e.recorded || /stopped at/.test(msg)) break; // a TpT-side mismatch: stop the whole step, do not push on to other items
+      if (++inARow >= 3) { console.error("3 replacements failed in a row: stopping this run"); break; }
     }
   }
   done(!res.needs_login && res.failed.length === 0);
@@ -1490,7 +1653,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)

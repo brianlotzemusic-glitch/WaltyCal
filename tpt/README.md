@@ -34,4 +34,5 @@ come from the code blocks under `## 1.` and `## 2.` in `UPLOAD.md`. Everything e
   (+ `tpt/_publish/NNN-slug-reupload-<slot>-diag.json`). `tpt/REUPLOAD-PAUSED` pauses this; `allow: 043` in it lets only 043 run.
   `python3 tools/tpt-reupload-canary.py status | release` (rules in TPT-FACTORY.md "The Mac uploader"). There is no fallback:
   corrected files go onto the existing listing or not at all.
-- Offline tests: `node tools/test-tpt-editupload.js`, `node tools/test-tpt-reupload.js`, `node tools/test-tpt-canary.js`.
+- Offline tests: `node tools/test-tpt-editupload.js`, `node tools/test-tpt-verify.js`, `node tools/test-tpt-reupload.js`, `node tools/test-tpt-canary.js`.
+- `reupload-unverified`: the Mac submitted but the edit page did not show the new files yet; it looks again by itself (70 min, 3 h), never resubmits.
