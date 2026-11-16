@@ -19,3 +19,8 @@ Minor, not blocking: 4th grade is not ticked although the product is 2-6 (TpT's 
 Audit defects fixed in gen.py and confirmed by the inspector: Trepak cue now matches its gauges; violin bow moved beside the body; preview-2 pages no longer overlap; both cover arms end in a mitt; Reed Flutes labels no longer struck through; Sugar Plum map no longer pre-marked; Draw-it box clear of footer.
 Inspector round 2 still reported: PDF p14 "Score" line and p16 star row touch the footer rule; p8/p9 last writing line close to the footer rule; p6 dashed path touches boxes 6-7; preview-2 sub-headline "Every listening page ... have an answer key" overstates (maps say answers vary).
 Not queued: rounds spent.
+
+## Fix round 16 Nov 2026 (final, new inspector brief)
+Further fixes: quiz Score line and Review star row cleared from the footer rule; preview-2 subtitle now "The story check, spotting chart and quiz all have an answer key". Fresh inspector (BLOCKING/NOTES brief), all images, 17 pages, 4 preview pages: no BLOCKING item. NOTES only (dotted path touches box 6 / snowflakes on p6-7; thin/thick rules are rasterisation).
+
+**Verdict: APPROVED**

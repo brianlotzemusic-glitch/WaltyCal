@@ -666,7 +666,7 @@ def quiz_page(n, watermark=False):
              f'<div class="box" style="font-size:9.8pt;margin-bottom:5pt;padding:4pt 8pt">{bank}</div>{qa}'
              f'<div class="part">B · Circle the best answer</div>{qb}'
              f'<div class="part" style="margin-top:2pt">C · True or false<small>Circle one.</small></div>{qc}'
-             f'<div style="margin-top:auto;display:flex;justify-content:flex-end;font-family:Oswald;font-weight:700;font-size:15pt">Score: <span class="wl" style="width:44pt"></span> / {QUIZ_TOTAL}</div>')
+             f'<div style="margin-top:auto;margin-bottom:10pt;display:flex;justify-content:flex-end;font-family:Oswald;font-weight:700;font-size:15pt">Score: <span class="wl" style="width:44pt"></span> / {QUIZ_TOTAL}</div>')
     return page(f"{QUIZ_TOTAL} questions · 20 minutes", "QUIZ", f"{QUIZ_TOTAL} points", inner, n, watermark, name=True,
                 right=f"Answer key on page {IX['key']}", title="Nutcracker Quiz")
 
@@ -717,7 +717,7 @@ def review_page(n, watermark=False):
              f'<div class="box" style="height:210pt"></div>'
              f'<div class="part">Write to a friend<small>Tell a friend about this ballet. Use at least 3 words from the listening toolkit ({pg("toolkit")}).</small></div>'
              f'<div class="lines" style="min-height:90pt"></div>'
-             f'<div style="margin-top:8pt;font-size:11.5pt;display:flex;gap:6pt;align-items:center"><b>Stars for my listening:</b> '
+             f'<div style="margin-top:8pt;margin-bottom:12pt;font-size:11.5pt;display:flex;gap:6pt;align-items:center"><b>Stars for my listening:</b> '
              + "".join(f'<svg width="17pt" height="17pt" viewBox="0 0 20 20"><path d="M10 1 L12.5 7.3 L19 7.7 L14 12 L15.7 18.5 L10 15 L4.3 18.5 L6 12 L1 7.7 L7.5 7.3 Z" fill="#fff" stroke="#000" stroke-width="1.3" stroke-linejoin="round"/></svg>' for _ in range(5))
              + '</div>')
     return page("Your turn to be the critic", "REVIEW", "My Nutcracker review", inner, n, watermark, name=True, title="My Nutcracker Review")
@@ -927,7 +927,7 @@ def preview_square_2(a, b):
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:72px;margin-top:20px">Map it, hear it, check it</div>'
-        f'<div class="sub" style="font-size:27px;margin-top:8px">Every listening page and the full quiz have an answer key</div>'
+        f'<div class="sub" style="font-size:27px;margin-top:8px">The story check, spotting chart and quiz all have an answer key</div>'
         f'{pair}'
         f'<div class="band">Listening maps <em>·</em> quiz <em>·</em> answer key</div></div>')
 
