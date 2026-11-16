@@ -212,19 +212,25 @@ def pine(cx, top, base, hw, tiers=3):
 
 
 def snowman():
+    # figure is drawn at its original size, then shrunk so the bottom ball and hat sit clear of the frame (QA 16 Nov)
+    K = 0.9
+    def fit(g):
+        return affinity.translate(affinity.scale(g, K, K, origin=(270, 0)), 0, 19)
     layers = [L(FRAME, "blue"), L(circle(84, 96, 44), "yellow"), L(hill(436, 10), "white")]
-    layers += [L(circle(270, 432, 92), "white"), L(circle(270, 326, 80), "white"), L(circle(270, 190, 66), "white")]
+    fig = [L(circle(270, 432, 92), "white"), L(circle(270, 326, 80), "white"), L(circle(270, 190, 66), "white")]
     # scarf: a band wrapped round the neck (curving with the body) plus a dangling tail
     band = P("M196 228 C226 256 314 256 344 228 L350 268 C318 298 222 298 190 268 Z")
     tail = rot(rrect(298, 256, 354, 358, 14), -6, (326, 256))
-    layers.append(L(soft(unary_union([band, tail]), 4), "red"))
-    layers.append(L(rrect(214, 4, 326, 126, 10), "black"))
-    layers.append(L(rrect(214, 70, 326, 126, 8), "red"))
+    fig.append(L(soft(unary_union([band, tail]), 4), "red"))
+    fig.append(L(rrect(214, 4, 326, 126, 10), "black"))
+    fig.append(L(rrect(214, 70, 326, 126, 8), "red"))
     ink = [stem("M194 314 C158 310 126 290 98 250", 7), stem("M136 292 C128 280 126 270 130 258", 5), stem("M116 270 C106 270 98 268 90 260", 5),
            stem("M346 314 C382 310 414 290 442 250", 7), stem("M404 292 C412 280 414 270 410 258", 5), stem("M424 270 C434 270 442 268 450 260", 5),
            dot(250, 176, 6.5), dot(290, 176, 6.5),
            soft(Polygon([(266, 192), (266, 208), (330, 202)]), 3)]
-    ink += [dot(258, y, 6.5) for y in (330, 372, 414)]
+    ink += [dot(258, y, 6.5) for y in (330, 372, 446)]
+    layers += [L(fit(l["geom"]), l["color"]) for l in fig]
+    ink = [fit(g) for g in ink]
     ink += flakes([(44, 200), (150, 160), (170, 400), (50, 370), (490, 120), (480, 250), (420, 390), (500, 410), (440, 50), (140, 40)])
     return layers, ink
 
@@ -241,10 +247,10 @@ def mitten_parts():
 
 
 def place_mitten(g, side):
-    cx = 158 if side < 0 else 382
+    cx = 162 if side < 0 else 378
     if side < 0:
         g = affinity.scale(g, -1, 1, origin=(0, 0))
-    g = affinity.scale(g, 1.22, 1.22, origin=(0, 0))
+    g = affinity.scale(g, 1.16, 1.16, origin=(0, 0))
     g = mv(g, 0, 400)
     g = rot(g, 6 * side, (0, 400))
     return mv(g, cx, 0)
@@ -306,7 +312,7 @@ def xmas_tree():
     layers.append(L(star_shape(270, 60, 58, 29), "yellow"))
     for (x, y, c) in ((176, 392, "red"), (364, 392, "yellow"), (196, 300, "yellow"), (344, 300, "red")):
         layers.append(L(circle(x, y, 30), c))
-    ink = flakes([(60, 90), (120, 200), (50, 300), (480, 80), (430, 190), (490, 300), (90, 400), (460, 410)])
+    ink = flakes([(60, 90), (120, 200), (50, 300), (480, 80), (430, 190), (490, 300), (60, 380), (480, 380)])
     return layers, ink
 
 

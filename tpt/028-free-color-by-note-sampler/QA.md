@@ -30,3 +30,12 @@ QA date: 22 Oct 2026. Independent review of the built files (not released).
 
 ## Open owner questions (do not block)
 Free checkbox in the uploader (above); 027 product URL for page 5 once live (then rebuild and re-upload); logo beside HUDSON BEAT; eyeball the three keys.
+
+## Fix round 16 Nov 2026
+- Doubled "PREVIEW" watermark on preview-1/2 removed (square builder drew a second stamp over page images already cut from the watermarked preview PDF).
+- Answer-key page (PDF page 4, shown in preview-2): keys now a 2+1 centered grid at 3.3 in, instead of three small left-aligned pictures; Level C basket no longer touches the footer rule.
+- P3: preview-3 tiles enlarged (2+1 layout) so the image is filled; preview-1 row moved down.
+- Rebuilt; `gen.py --check` and `tools/tpt-validate.py` pass.
+- Fresh Sonnet inspector: single clean watermark on all previews (native crops), no overlap/clipping, keys consistent. Remaining remark: cosmetic spacing on preview-1 and blank lower part of the real "See the full set" page (genuine content, left as is).
+
+**Verdict: APPROVED**

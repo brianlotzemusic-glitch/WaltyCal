@@ -415,11 +415,11 @@ def preview_pages(sheets):
 
 
 EXTRA_CSS = """
-.kgrid { display: flex; flex-direction: column; gap: 10pt; margin-top: 4pt; flex: 1; }
-.kp { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.kgrid { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-content: flex-start; gap: 18pt 0.3in; margin-top: 8pt; flex: 1; }
+.kp { display: flex; flex-direction: column; align-items: center; }
 .kh { font-size: 11pt; margin-bottom: 3pt; } .kh span { color: #333; font-size: 9pt; }
-.kpic { flex: 1; display: flex; justify-content: flex-start; min-height: 0; }
-.kpic svg { height: 2.6in; width: auto; }
+.kpic { display: flex; justify-content: center; }
+.kpic svg { height: 3.3in; width: 3.3in; }
 """
 CSS += EXTRA_CSS
 
@@ -460,19 +460,19 @@ def cover_square(sheets):
 
 def preview_square_1(img):
     shots = "".join(
-        f'<div style="width:296px"><div class="shot"><img src="{img[k]}"><div class="swm" style="font-size:54px">PREVIEW</div></div>'
+        f'<div style="width:296px"><div class="shot"><img src="{img[k]}"></div>'
         f'<div class="lbl">Level {k}<span>{LEVELS[k]["name"]} · gr. {LEVELS[k]["grades"]}</span></div></div>' for k in "ABC")
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:78px;margin-top:20px">3 levels, 3 worksheets</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Try rhythm, treble and bass clef coloring with your class, free</div>'
-        f'<div style="display:flex;gap:26px;margin-top:60px">{shots}</div>'
+        f'<div style="display:flex;gap:26px;margin-top:120px">{shots}</div>'
         f'<div class="band">Free download <em>·</em> answer keys included</div></div>')
 
 
 def preview_square_2(ws, key):
     pair = "".join(
-        f'<div style="width:420px"><div class="shot"><img src="{src}"><div class="swm" style="font-size:80px">PREVIEW</div></div>'
+        f'<div style="width:420px"><div class="shot"><img src="{src}"></div>'
         f'<div class="lbl">{lab}</div></div>' for src, lab in ((ws, "See the full set"), (key, "Answer keys")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
@@ -484,13 +484,13 @@ def preview_square_2(ws, key):
 
 def preview_square_3(sheets):
     cells = "".join(
-        f'<div style="width:236px"><div style="border:2px solid #000">{picture_svg(s, answer=True, stroke=2.0, frame=False)}</div>'
-        f'<div class="lbl" style="font-size:15px;margin-top:4px">Level {s.level}: {escape(s.title)}</div></div>'
+        f'<div style="width:310px"><div style="border:2px solid #000">{picture_svg(s, answer=True, stroke=2.0, frame=False)}</div>'
+        f'<div class="lbl" style="font-size:20px;margin-top:4px">Level {s.level}: {escape(s.title)}</div></div>'
         for s in sheets)
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:60px;margin-top:12px">Your free pictures</div>'
-        f'<div style="position:relative;display:flex;flex-wrap:wrap;gap:8px 22px;width:800px;margin-top:40px;justify-content:center">{cells}'
+        f'<div style="position:relative;display:flex;flex-wrap:wrap;gap:10px 26px;width:700px;margin-top:36px;justify-content:center">{cells}'
         f'<div class="swm" style="font-size:150px">PREVIEW</div></div>'
         f'<div class="band">Follow the store <em>·</em> new sets all season</div></div>')
 

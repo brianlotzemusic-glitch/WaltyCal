@@ -14,3 +14,11 @@ Reviewed independently (not the builder).
 - Minor, no action required: preview-1.png has some empty white space under the three page mockups; the teacher-notes footnote text is small (about 6 pt) but it is not student-facing.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+- Snowman (cover, preview-1, preview-3, Level A/B/C pages and keys; same drawing as 029): figure scaled 95% and moved so the bottom ball is complete inside the frame and the hat clears the top; scarf tail widened so the middle ball's outline no longer peeks past it; fourth button moved off the ball outline.
+- Level C igloo (and every accent note): the accent ">" moved up and the stem shortened so the mark no longer touches the stem tip.
+- P3: preview-1 page row moved down. Rebuilt; `gen.py --check` and `tools/tpt-validate.py` pass.
+- Fresh Sonnet inspector (two rounds): OK in round 2 (scarf, bottom ball, hat, accents, single watermark confirmed in native crops).
+
+**Verdict: APPROVED**

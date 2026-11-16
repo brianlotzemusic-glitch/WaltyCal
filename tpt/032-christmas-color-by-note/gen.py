@@ -500,19 +500,19 @@ def cover_square(sheets):
 
 def preview_square_1(img):
     shots = "".join(
-        f'<div style="width:296px"><div class="shot"><img src="{img[k]}"><div class="swm" style="font-size:54px">PREVIEW</div></div>'
+        f'<div style="width:296px"><div class="shot"><img src="{img[k]}"></div>'
         f'<div class="lbl">Level {k}<span>{LEVELS[k]["name"]} · gr. {LEVELS[k]["grades"]}</span></div></div>' for k in "ABC")
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:78px;margin-top:20px">3 levels, same pictures</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Differentiate in one lesson: everyone colors the same picture at their own level</div>'
-        f'<div style="display:flex;gap:26px;margin-top:60px">{shots}</div>'
+        f'<div style="display:flex;gap:26px;margin-top:120px">{shots}</div>'
         f'<div class="band">9 Christmas pictures <em>·</em> 27 worksheets</div></div>')
 
 
 def preview_square_2(ws, key):
     pair = "".join(
-        f'<div style="width:420px"><div class="shot"><img src="{src}"><div class="swm" style="font-size:80px">PREVIEW</div></div>'
+        f'<div style="width:420px"><div class="shot"><img src="{src}"></div>'
         f'<div class="lbl">{lab}</div></div>' for src, lab in ((ws, "Worksheet"), (key, "Answer key")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'

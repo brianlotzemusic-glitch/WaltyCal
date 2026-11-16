@@ -213,18 +213,24 @@ def flakes(pts, r=9):
 
 # 1 ------------------------------------------------------------------ snowman
 def snowman():
-    layers = [L(FRAME, "blue"), L(hill(440, 10), "white")]
+    # figure shrunk 5% so the bottom ball and hat sit clear of the frame (QA 16 Nov)
+    def fit(g):
+        return affinity.translate(affinity.scale(g, .95, .95, origin=(270, 0)), 0, 7)
+    base = [L(FRAME, "blue"), L(hill(440, 10), "white")]
+    layers = []
     layers.append(L(circle(270, 410, 100), "white"))
     layers.append(L(circle(270, 300, 90), "white"))
     layers.append(L(circle(270, 168, 76), "white"))
     hat = unary_union([rrect(218, 14, 322, 100, 10), rrect(190, 86, 350, 112, 8)])
     layers.append(L(hat, "purple"))
-    scarf = unary_union([rrect(184, 226, 356, 270, 18), rrect(312, 258, 356, 350, 14)])
+    scarf = unary_union([rrect(184, 226, 356, 270, 18), rrect(312, 258, 370, 350, 14)])
     layers.append(L(scarf, "red"))
     ink = [circle(248, 148, 6.5), circle(292, 148, 6.5), Polygon([(270, 160), (320, 170), (270, 178)]),
-           circle(270, 304, 6), circle(270, 340, 6), circle(270, 394, 6), circle(270, 436, 6)]
+           circle(270, 304, 6), circle(270, 338, 6), circle(270, 370, 6), circle(270, 442, 6)]
     ink += [S("M184 290 L96 226", 6), S("M120 240 L108 194", 4.5), S("M150 260 L138 216", 4.5),
             S("M356 290 L444 226", 6), S("M420 240 L432 194", 4.5)]
+    layers = base + [L(fit(l["geom"]), l["color"]) for l in layers]
+    ink = [fit(g) for g in ink]
     ink += flakes([(70, 90), (460, 70), (60, 360), (484, 330), (140, 40)], 12)
     return layers, ink
 

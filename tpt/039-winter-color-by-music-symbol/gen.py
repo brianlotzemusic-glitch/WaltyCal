@@ -491,7 +491,7 @@ def preview_square_1(img):
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:78px;margin-top:20px">3 levels, same pictures</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Differentiate in one lesson: everyone colors the same picture at their own level</div>'
-        f'<div style="display:flex;gap:26px;margin-top:60px">{shots}</div>'
+        f'<div style="display:flex;gap:26px;margin-top:120px">{shots}</div>'
         f'<div class="band">9 winter pictures <em>·</em> 27 worksheets</div></div>')
 
 
