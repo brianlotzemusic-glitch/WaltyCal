@@ -46,6 +46,7 @@ ZIP_DIR = "Anti-Music Manifesto - Hudson Beat"
 ZIP_DATE = (2026, 10, 17, 12, 0, 0)
 TYPE = "Open-Ended Project"
 PROJ_LINE = "Digital Music Production | <i>Open-Ended Project</i> | 7 class periods"
+LIVE = True                 # already live on TpT (uploaded/release files belong to the Manager)
 DECK_STRAP = "Break the rules on purpose in Logic Pro"
 BANNED_EXTRA = []
 
@@ -108,7 +109,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.4
+RUBRIC_ROW_PITCH = 0.86
 # ---- Teacher Notes
 TN_REINFORCES = ("Pushes creative boundaries and critical thinking about what music is. Requires students to articulate artistic intent, "
                  "which strengthens their ability to talk about creative work.")
