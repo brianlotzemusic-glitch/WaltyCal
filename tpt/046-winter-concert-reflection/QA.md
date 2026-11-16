@@ -10,3 +10,8 @@
 - Minor, not blocking: the rubric total row's first cell is labelled "Band"; preview-3 cards have empty lower space.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Fixed in gen.py: rubric total-score row now labelled "Level" (was "Band" over level names); credits/disclosure line no longer claims notation or answer keys are verified (page, UPLOAD.md and check updated); Class Summary rows "Class total per area" / "Average level per area" now shade the TOTAL and BAND cells and the area headers use full names; p7 legend moved clear of the footer. Fresh inspector (all images, 14 pages, 4 preview pages): no real defects, only trivial nits. gen.py --check OK, tpt-validate OK.
+
+**Verdict: APPROVED**

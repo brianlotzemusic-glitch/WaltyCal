@@ -423,7 +423,7 @@ def build_worksheets():
     return ws
 
 
-LEVELS = {"A": ("Level A", "Add beats", "Grades 2–3"), "B": ("Level B", "Compare and fill in", "Grades 3–4"), "C": ("Level C", "Dots, ties and rests", "Grades 4–5")}
+LEVELS = {"A": ("Level A", "Add beats", "Grades 2–3"), "B": ("Level B", "Compare and fill in", "Grades 3–4"), "C": ("Level C", "Dots, ties and 3/4", "Grades 4–5")}
 
 # ------------------------------------------------------------------ drawing
 def g(cp, x, y, size, fill="#000"):
@@ -541,7 +541,7 @@ def snowman_icon(cx, cy, size, accent=ACCENT):
     """Small card icon: two white balls with a thick outline, a solid hat, a scarf stripe, a nose and two eyes. Big simple shapes."""
     k = size / 28.0
     t = lambda v: v * k
-    x, top = cx, cy - 16 * k
+    x, top = cx, cy - 14.6 * k
     sw = 1.3 * k
     o = [f'<g stroke="#000" stroke-width="{sw:.2f}" stroke-linejoin="round" stroke-linecap="round">']
     o.append(f'<circle cx="{x:.2f}" cy="{top + t(22.5):.2f}" r="{t(8):.2f}" fill="#fff"/>')
@@ -954,11 +954,11 @@ def teacher_page(wss):
             f'<h2>Level guide</h2><table class="lv"><colgroup><col style="width:19%"><col style="width:35%"><col style="width:26%"><col style="width:20%"></colgroup>'
             f'<tr><th>Level</th><th>Skill</th><th>Grades</th><th>Pages</th></tr>{level_rows(wss)}</table>'
             f'<p class="small">Level A adds beats. Level B compares totals with &gt;, &lt; and =, and finds missing beats in 4/4 and 2/4. '
-            f'Level C adds dotted notes, ties, rests and 3/4. 6/8 is not included. Page 3 is a student reference. Pages {P_KEY0}–{P_KEY0 + 2} are the answer keys.</p>'
+            f'Rests appear in every level. Level C adds dotted notes, ties and 3/4. 6/8 is not included. Page 3 is a student reference. Pages {P_KEY0}–{P_KEY0 + 2} are the answer keys.</p>'
             f'<h2>What students practice</h2><p>Adding whole numbers and halves, comparing quantities with &gt;, &lt; and =, finding a missing addend, '
-            f'and reading note and rest values. No standards codes are listed here: please match the skills to your own curriculum.</p>'
-            f'<h2>Good to know</h2><p class="small">Every sum, comparison and missing-beat answer was recomputed in code from the drawn notes. '
-            f'Each item has exactly one answer. No songs, lyrics or copyrighted characters are used.</p>'
+            f'and reading note and rest values. No standards codes are listed: match the skills to your own curriculum.</p>'
+            f'<h2>Good to know</h2><p class="small">Each item has exactly one answer, and every answer is printed in the answer key. '
+            f'Each worksheet footer names its key page. No songs, lyrics or copyrighted characters are used.</p>'
             f'</div></div>'
             f'<h2>Using the sheets in 3 steps</h2><div class="steps">'
             f'<div class="step"><span class="n">1</span><b>Get ready</b><p>Print the worksheet single-sided. Students can keep the page 3 reference beside them.</p></div>'
@@ -997,7 +997,7 @@ def ref_page():
             f'<h2>Missing beats</h2><p>A measure is full when its beats add up to the top number of the time signature: 4 beats in 4/4, '
             f'3 beats in 3/4 and 2 beats in 2/4. To find the missing beats, add what you can see and subtract the total from the top number.</p>'
             f'<div style="display:flex;gap:18pt;align-items:center;margin-top:6pt">'
-            f'<svg width="130pt" height="82pt" viewBox="0 0 130 82">{snowman(48, 78, 22)}{snowflake(105, 20, 14, ACCENT, 1.6)}{snowflake(110, 58, 8, "#000", 1.3)}</svg>'
+            f'<svg width="130pt" height="82pt" viewBox="0 0 130 82">{snowman(48, 80, 16)}{snowflake(105, 20, 14, ACCENT, 1.6)}{snowflake(110, 58, 8, "#000", 1.3)}</svg>'
             f'<p style="margin:0">Snow tip: build the answer one beat at a time, like stacking snowballs. 1 beat, then 2 beats, then 3, until the row is finished.</p></div>'
             f'<div style="flex:1"></div>{foot(COPY, "Page 3")}</section>')
 
@@ -1175,13 +1175,13 @@ WHAT'S INCLUDED ({TOTAL_PAGES} pages, PDF, US Letter)
 • Student reference: note and rest values, comparison symbols, missing beats (1 page)
 • Level A, add the beats: 5 worksheets for grades 2-3 (5 pages). Quarter, half and whole notes, pairs of eighth notes, rests, and "full, too short or too long" measures in 4/4 and 2/4.
 • Level B, compare and fill in: 5 worksheets for grades 3-4 (5 pages). Compare totals with >, < and =, find the missing beats, and pick the note that fills the gap.
-• Level C, dots, ties and rests: 5 worksheets for grades 4-5 (5 pages). Dotted half and dotted quarter notes, ties, beats of silence, 3/4 time and a compare challenge.
+• Level C, dots, ties and 3/4: 5 worksheets for grades 4-5 (5 pages). Dotted half and dotted quarter notes, ties, beats of silence, 3/4 time and a compare challenge.
 • Answer keys for all 15 worksheets, one page per level (3 pages)
 • Terms of use and credits (1 page)
 Total: {TOTAL_PAGES} pages.
 
 HOW TO USE
-Students add the beats of each row, compare two rows, or work out how many beats are missing from a measure. Rhythms sit on one line of a five-line staff with a percussion clef, so the focus stays on counting. Each worksheet has 8 items, and every item has exactly one answer. Every sum and comparison was recomputed in code from the drawn notes. Good for warm-ups, homework, centers, sub plans and exit tickets. 6/8 is not included.
+Students add the beats of each row, compare two rows, or work out how many beats are missing from a measure. Rhythms sit on one line of a five-line staff with a percussion clef, so the focus stays on counting. Each worksheet has 8 items, and every item has exactly one answer. Every worksheet has a full answer key. Good for warm-ups, homework, centers, sub plans and exit tickets. 6/8 is not included.
 
 • Grades 2–5 (choose the level that fits)
 • Prints well in black and white; the answer keys use one accent color

@@ -36,7 +36,7 @@ STORE = "Brian Lotze"
 BRAND = "Hudson Beat"
 YEAR = 2026
 ACCENT = "#2B7FB8"   # icy blue
-DISCLOSURE = "Created with the help of digital and AI tools. Notation and answer keys are verified before release."
+DISCLOSURE = "Created with the help of digital and AI tools."
 LISTING_TITLE = "Music Performance Reflection and Self-Assessment Rubric | Band Choir Orchestra"
 PRICE = "3.50"
 TAGS = ["Rubrics", "Assessment", "Reflective Journals for Teachers", "Winter", "Worksheets", "Printables"]
@@ -513,10 +513,10 @@ def self_page(ei):
              f'<div style="margin:0 0 7pt;font-size:10.5pt"><b>{conv}</b></div>'
              f'<table class="g big" data-ens="{ens}"><colgroup><col style="width:17%"><col><col style="width:12%"><col style="width:12%"></colgroup>'
              f'<tr><th>Skill</th><th>I can say...</th><th class="c">Ticks (0–{STMT_PER_AREA})</th><th class="c">Level (1–{len(LEVELS)})</th></tr>{"".join(rows)}</table>'
-             f'<div style="display:flex;align-items:center;gap:10pt;margin-top:10pt;border:1.3pt solid #000;border-radius:6pt;padding:6pt 10pt">'
+             f'<div style="display:flex;align-items:center;gap:10pt;margin-top:7pt;border:1.3pt solid #000;border-radius:6pt;padding:4pt 10pt">'
              f'<div style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:14pt;white-space:nowrap">My total</div>'
              f'<span class="lvbox" style="width:44pt;height:32pt"></span><div style="font-size:11.5pt;white-space:nowrap">out of {MAX_TOTAL} (add the {len(AREAS)} levels)</div></div>'
-             f'<div class="small" style="margin-top:6pt">Bands: ' + " · ".join(f"{a}–{b} {n}" for a, b, n in BANDS) + '</div>')
+             f'<div class="small" style="margin-top:3pt;margin-bottom:8pt">Bands: ' + " · ".join(f"{a}–{b} {n}" for a, b, n in BANDS) + '</div>')
     return page("self", ei, inner)
 
 
@@ -530,7 +530,7 @@ def rubric_page():
              f'<tr><th>Skill</th>{head}</tr>{rows}</table>'
              f'<div class="h2" style="margin-top:16pt">Total score</div>'
              f'<table class="g" data-bands="1"><tr><th class="c">Total</th>{"".join(f"<th class=c>{a}–{b}</th>" for a, b, _ in BANDS)}</tr>'
-             f'<tr><td class="c"><b>Band</b></td>{"".join(f"<td class=c>{n}</td>" for _, _, n in BANDS)}</tr></table>'
+             f'<tr><td class="c"><b>Level</b></td>{"".join(f"<td class=c>{n}</td>" for _, _, n in BANDS)}</tr></table>'
              f'<div class="small" style="margin-top:6pt">Level 1 in all {len(AREAS)} areas = {MIN_TOTAL}. Level {len(LEVELS)} in all {len(AREAS)} areas = {MAX_TOTAL}.</div>'
              f'<div style="display:flex;gap:12pt;margin-top:14pt;align-items:center;font-size:12pt"><div class="box" style="flex:1;padding:10pt"><b>Teacher total:</b> ______ / {MAX_TOTAL}</div>'
              f'<div class="box" style="flex:1;padding:10pt"><b>Student total:</b> ______ / {MAX_TOTAL}</div></div>')
@@ -584,10 +584,10 @@ def goal_page():
 
 
 def tally_page():
-    heads = "".join(f'<th class="c" style="font-size:8pt;padding:3pt 1pt">{a.split(" ")[0] if a != "Concert Etiquette" else "Etiquette"}</th>' for a in AREAS)
+    heads = "".join(f'<th class="c" style="font-size:7pt;padding:3pt 1pt;letter-spacing:0">{a}</th>' for a in AREAS)
     rows = "".join(f'<tr data-row="1"><td class="c" style="height:16.5pt">{i + 1}</td><td></td>{"<td></td>" * len(AREAS)}<td></td><td></td></tr>' for i in range(TALLY_ROWS))
-    tot = f'<tr><td colspan="2"><b>Class total per area</b></td>{"<td></td>" * len(AREAS)}<td></td><td></td></tr>'
-    avg = f'<tr><td colspan="2"><b>Average level per area (total ÷ students)</b></td>{"<td></td>" * len(AREAS)}<td></td><td></td></tr>'
+    tot = f'<tr><td colspan="2"><b>Class total per area</b></td>{"<td></td>" * len(AREAS)}<td style="background:#d9d9d9"></td><td style="background:#d9d9d9"></td></tr>'
+    avg = f'<tr><td colspan="2"><b>Average level per area (total ÷ students)</b></td>{"<td></td>" * len(AREAS)}<td style="background:#d9d9d9"></td><td style="background:#d9d9d9"></td></tr>'
     cols = ('<col style="width:5%"><col style="width:23%">' + f'<col style="width:9.2%">' * len(AREAS) + '<col style="width:9%"><col style="width:7.8%">')
     brows = "".join(f'<tr data-band="1"><td class="c">{a}–{b}</td><td>{n}</td><td></td><td></td></tr>' for a, b, n in BANDS)
     inner = (header("Class Summary", f"Record each student's level (1–{len(LEVELS)}) in the six areas.", "Teacher", f"Page {pg('tally')}", True) +

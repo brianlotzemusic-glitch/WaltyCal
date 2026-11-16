@@ -31,7 +31,7 @@ WHAT'S INCLUDED (ZIP: 28-page PDF = 1 cover + 9 teacher + 17 student + 1 terms p
 • Student pages: a scene brief with three scenes and a scene card, eight sound-palette cards (what each layer does, how to make it in words, and its frequency zone), Alchemy, Quick Sampler and Retro Synth recipes, a two-page automation guide with curve diagrams, a reverb, EQ and stereo width page with a frequency map, a storm-arc and timeline planner with a length helper, a layer map, an automation plan, the 3-page project sheet (overview, goals, vocabulary, requirements, steps, tips, submission checklist), the /25 rubric, a vocabulary page, a feedback planner and a reflection page (17 pages)
 • Teacher-presented intro deck, 15 slides with speaker notes on every slide: a think-and-share hook, what the project is, the storm arc, building the layers, a frequency map, automation curves, a worked-example map, space and mix, what to turn in and the rubric
 
-THE FOUR CLASS PERIODS (works in 2 to 4)
+THE FOUR CLASS PERIODS (works in 3 or 4 classes)
 • Class 1: hook; choose a scene; plan the storm arc and its timings; start the first layers
 • Class 2: build the layers in Alchemy, Quick Sampler and Retro Synth
 • Class 3: automate four parameters; add reverb, EQ and stereo width; mix
@@ -55,7 +55,7 @@ GOOD TO KNOW
 
 Logic Pro is a product of Apple Inc., named only to describe compatibility. This resource is not affiliated with Apple.
 
-Created with the help of digital and AI tools. Notation and answer keys are verified before release.
+Created with the help of digital and AI tools.
 ```
 
 ## 3. Grades

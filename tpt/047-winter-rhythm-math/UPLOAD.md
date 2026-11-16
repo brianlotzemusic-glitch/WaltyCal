@@ -25,13 +25,13 @@ WHAT'S INCLUDED (22 pages, PDF, US Letter)
 • Student reference: note and rest values, comparison symbols, missing beats (1 page)
 • Level A, add the beats: 5 worksheets for grades 2-3 (5 pages). Quarter, half and whole notes, pairs of eighth notes, rests, and "full, too short or too long" measures in 4/4 and 2/4.
 • Level B, compare and fill in: 5 worksheets for grades 3-4 (5 pages). Compare totals with >, < and =, find the missing beats, and pick the note that fills the gap.
-• Level C, dots, ties and rests: 5 worksheets for grades 4-5 (5 pages). Dotted half and dotted quarter notes, ties, beats of silence, 3/4 time and a compare challenge.
+• Level C, dots, ties and 3/4: 5 worksheets for grades 4-5 (5 pages). Dotted half and dotted quarter notes, ties, beats of silence, 3/4 time and a compare challenge.
 • Answer keys for all 15 worksheets, one page per level (3 pages)
 • Terms of use and credits (1 page)
 Total: 22 pages.
 
 HOW TO USE
-Students add the beats of each row, compare two rows, or work out how many beats are missing from a measure. Rhythms sit on one line of a five-line staff with a percussion clef, so the focus stays on counting. Each worksheet has 8 items, and every item has exactly one answer. Every sum and comparison was recomputed in code from the drawn notes. Good for warm-ups, homework, centers, sub plans and exit tickets. 6/8 is not included.
+Students add the beats of each row, compare two rows, or work out how many beats are missing from a measure. Rhythms sit on one line of a five-line staff with a percussion clef, so the focus stays on counting. Each worksheet has 8 items, and every item has exactly one answer. Every worksheet has a full answer key. Good for warm-ups, homework, centers, sub plans and exit tickets. 6/8 is not included.
 
 • Grades 2–5 (choose the level that fits)
 • Prints well in black and white; the answer keys use one accent color
