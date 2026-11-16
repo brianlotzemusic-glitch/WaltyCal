@@ -1243,13 +1243,13 @@ def cover_square():
 def preview_square_1(img):
     items = [(img[0], "Pacing + plans", "4 days, minute by minute"), (img[1], "Project sheet", "goals, requirements, steps"),
              (img[2], "Rubric", "5 categories, / 25")]
-    shots = "".join(f'<div style="width:290px"><div class="shot"><img src="{s}"><div class="swm" style="font-size:64px">PREVIEW</div></div>'
+    shots = "".join(f'<div style="width:306px"><div class="shot"><img src="{s}"><div class="swm" style="font-size:66px">PREVIEW</div></div>'
                     f'<div class="lbl">{a}<span>{b}</span></div></div>' for s, a, b in items)
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:74px;margin-top:20px">Ready to teach Monday</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Teacher notes, day plans, student pages and the rubric in one PDF</div>'
-        f'<div style="display:flex;gap:28px;margin-top:56px;align-items:flex-start">{shots}</div>'
+        f'<div style="display:flex;gap:18px;margin-top:64px;align-items:flex-start">{shots}</div>'
         f'<div class="band">No loops <em>·</em> no pre-made grooves <em>·</em> built from nothing</div></div>')
 
 

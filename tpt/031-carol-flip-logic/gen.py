@@ -114,7 +114,10 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+LIVE = True   # already on TpT; its release/uploaded markers are the uploader's
+RUBRIC_ROW_PITCH = 0.86
+RUBRIC_LINE_Y = 6.3
 
 TN_REINFORCES = ("Teaches how a genre is built. Students learn that tempo, drums, bass, chords and sounds, not only the notes of a melody, "
                  "make a style, and they practice entering and editing notes in Logic Pro’s Piano Roll.")
@@ -966,12 +969,12 @@ def flip_page(n, wm=False):
 
 def arrange_page(n, wm=False):
     nb = 40
-    head = "<tr><th style='width:1.1in'>Layer</th>" + "".join(f"<th>{i + 1}</th>" for i in range(nb)) + "</tr>"
+    head = "<colgroup><col style='width:1.1in'>" + "<col>" * nb + "</colgroup><tr><th style='width:1.1in'>Layer</th>" + "".join(f"<th>{i + 1}</th>" for i in range(nb)) + "</tr>"
     body = "".join("<tr><td class='l' style='height:25pt'></td>" + "".join(f"<td class='{'b' if i % 8 == 0 else ''}'></td>" for i in range(nb))
                    + "</tr>" for _ in range(8))
     help_rows = [(80, 20, 25, 30), (96, 24, 30, 36), (112, 28, 35, 42), (128, 32, 40, 48), (144, 36, 45, 54)]
     hr = "".join(f"<tr><td><b>{b}</b></td><td>{240 / b:.4g} s</td><td>{x}</td><td>{y}</td><td>{z}</td></tr>" for b, x, y, z in help_rows)
-    inner = (f'{CSS_SG}<style>table.sg th {{ font-size: 4.6pt; }} table.sg td.l {{ width: 1.1in; }}</style>'
+    inner = (f'{CSS_SG}<style>table.sg {{ table-layout: fixed; }} table.sg th {{ font-size: 4.6pt; }} table.sg td.l {{ width: 1.1in; }}</style>'
              f'<p style="margin:0 0 4pt;font-size:10.4pt">Step 5: arrange. Give your remix a form: an intro, melody sections and an outro. Shade the bars where each '
              f'layer plays, write the layer’s name at the left, and mark where each section starts (every thick line is 8 bars). 60 to 90 seconds only.</p>'
              f'<table class="sg">{head}{body}</table>'

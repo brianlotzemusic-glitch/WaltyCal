@@ -11,3 +11,9 @@
 
 Required fixes:
 (none)
+
+## Fix round 16 Nov 2026
+Arrangement plan: all 40 bar columns equal width (fixed table layout). Deck scored line reworded and raised.
+A fresh visual inspector re-read every image and the changed deck/PDF pages and confirmed the fixes with no new defects.
+
+**Verdict: APPROVED**

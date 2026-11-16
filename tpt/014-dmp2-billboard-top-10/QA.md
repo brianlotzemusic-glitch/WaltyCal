@@ -12,3 +12,9 @@ Reviewed the diff of 3ea10fc and the full kit. Live files in uploaded/ and relea
 No required fixes.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Deck 'How it's scored' line now reads '...out of 25' (no stray dot) and sits clear of the footer rule. The audit's rubric-page P1 was a false alarm: the real page says 'Final Grade = Average of Student + Teacher = ___ / 25'.
+A fresh visual inspector re-read every image and the changed deck/PDF pages and confirmed the fixes with no new defects.
+
+**Verdict: APPROVED**

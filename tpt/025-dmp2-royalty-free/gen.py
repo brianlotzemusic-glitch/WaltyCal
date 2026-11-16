@@ -51,6 +51,7 @@ ZIP_DIR = "Royalty Free - Hudson Beat"
 ZIP_DATE = (2026, 10, 20, 12, 0, 0)
 TYPE = "Structured Project"
 PROJ_LINE = "Digital Music Production | <i>Structured Project</i> | 7 class periods"
+LIVE = True                 # already live on TpT (uploaded/release files belong to the Manager)
 DECK_STRAP = "Music with a job to do"
 BANNED_EXTRA = []
 
@@ -114,7 +115,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.4
+RUBRIC_ROW_PITCH = 0.86
 # ---- Teacher Notes
 TN_REINFORCES = ("Teaches functional composition — making music for a purpose beyond personal expression. Students learn to work from a "
                  "creative brief.")
@@ -505,8 +508,7 @@ SLIDES = [
      "Class 1, the first minute. No audio is included in this deck. Open with my overview: you are composing music for the real world. "
      "Create a 1-minute piece of royalty-free music that could score a video for the school district, anything from sports "
      "highlights to facilities tours, guided by 3 descriptive words you choose from a provided list."),
-    (1, "listen", "Think: music with a job", "Think, then share|Teacher: describe a 30-second video of a school sports highlight, first with no music and then "
-     "with music. No audio is needed.|What does the music need to do for that video?|What changes if a calm piece plays under it instead?|"
+    (1, "listen", "Think: music with a job", "Music with a job · Think, then share|Teacher: describe a 30-second sports highlight video, first without music, then with it.|What does the music need to do for that video?|What changes if a calm piece plays under it instead?|"
      "Who must give permission to use a song?",
      "Ask the three questions aloud and take a few answers. Nothing is played from a speaker; describe a short video and let students "
      "imagine two kinds of music under it. No one else's music is included in this kit. This sets up my teacher note that students love "

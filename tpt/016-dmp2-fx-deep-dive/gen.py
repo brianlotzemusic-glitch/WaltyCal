@@ -114,7 +114,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.3
+RUBRIC_ROW_PITCH = 0.84
 # ---- Teacher Notes
 TN_REINFORCES = ("This is the primary mixing skills project. It shifts focus entirely to post-production. The EQ Cheatsheet PDF and "
                  "Plug-in Links doc are key companion resources.")

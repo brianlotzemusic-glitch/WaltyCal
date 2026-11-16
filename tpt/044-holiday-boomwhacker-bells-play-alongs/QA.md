@@ -20,3 +20,6 @@ Dates unchanged and correct (Pierpont 1857, Nos Galan 1794, Hanby 1864, Mason 18
 **Verdict: APPROVED**
 
 Required fixes: none.
+
+## Fix round 16 Nov 2026 (HELD, no reupload queued)
+P3 blank band fixed in gen.py: previews 1-2 now use two large page mocks, preview-3 a one-column card list (also fixed "15 pages" vs 20 and straight quotes). Inspector round 2 confirmed no blank band, no collisions, page counts right. Still listed (not queued, rounds spent): measure numbers above the staves on PDF p3/preview-1 look clipped at the top; Jingle Bells Easy checklist wraps mid-item; preview-2 title tight to the edges; preview-3 Joy to the World card cramped (6 bars in one strip).

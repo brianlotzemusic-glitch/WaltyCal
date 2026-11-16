@@ -231,12 +231,12 @@ def shot(img, w, wmsize=60):
 
 
 def preview_1(covers):
-    cells = "".join(f'<div style="width:270px"><div class="shot" style="box-shadow:6px 6px 0 #000"><img src="{c}"></div>'
+    cells = "".join(f'<div style="width:236px"><div class="shot" style="box-shadow:6px 6px 0 #000"><img src="{c}"></div>'
                     f'<div class="lbl" style="font-size:19px;margin-top:10px">Unit {k[0]}<span>{k[5]} days</span></div></div>' for c, k in zip(covers, KITS))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div><div class="hd" style="font-size:74px;margin-top:20px">Six units in one download</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Each unit is a PDF plus a teacher-presented intro deck</div>'
-        f'<div style="display:grid;grid-template-columns:repeat(3,270px);gap:30px 36px;margin-top:46px">{cells}</div>'
+        f'<div style="display:grid;grid-template-columns:repeat(3,236px);gap:22px 52px;margin-top:30px">{cells}</div>'
         f'<div class="band">{PDF_PAGES} pages <em>·</em> {SLIDES} slides <em>·</em> {DAYS} class periods</div></div>')
 
 
@@ -250,11 +250,11 @@ def preview_2(a, b):
 
 
 def preview_3(imgs):
-    cells = "".join(f'<div style="width:270px">{shot(i, 270, 44)}<div class="lbl" style="font-size:19px;margin-top:10px">{lab}</div></div>' for i, lab in imgs)
+    cells = "".join(f'<div style="width:222px">{shot(i, 222, 36)}<div class="lbl" style="font-size:18px;margin-top:8px">{lab}</div></div>' for i, lab in imgs)
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div><div class="hd" style="font-size:70px;margin-top:20px">What is inside each unit</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Day plans, student pages, rubrics and answer keys from the six units</div>'
-        f'<div style="display:grid;grid-template-columns:repeat(3,270px);gap:26px 36px;margin-top:44px">{cells}</div>'
+        f'<div style="display:grid;grid-template-columns:repeat(3,222px);gap:18px 50px;margin-top:28px">{cells}</div>'
         f'<div class="band">Teacher notes <em>·</em> student pages <em>·</em> rubrics <em>·</em> keys</div></div>')
 
 
@@ -338,7 +338,7 @@ def build():
         pass
     pdf_png(GUIDE, 2, "g2", 100)
     pdf_png(GUIDE, 3, "g3", 100)
-    shots = [(2, 1, "Unit 2 · Transitions"), (6, 1, "Unit 6 · Bus guide"), (3, 2, "Unit 3 · Reference card"),
+    shots = [(2, 1, "Unit 2 · Transitions"), (6, 1, "Unit 6 · Project sheet"), (3, 2, "Unit 3 · Reference card"),
              (1, 0, "Unit 1 · Pacing"), (4, 3, "Unit 4 · Rubric"), (5, 1, "Unit 5 · Song sheet")]
     imgs = []
     for u, pg, lab in shots:

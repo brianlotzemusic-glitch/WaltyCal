@@ -220,7 +220,7 @@ def cauldron():
         L(blob([(122, 254), (186, 254), (190, 305), (156, 330), (124, 305)]), "green"),
         L(blob([(326, 254), (390, 254), (388, 300), (358, 318), (330, 300)]), "green"),
     ]
-    ink = [circle(160, 186, 7), circle(298, 160, 6), circle(250, 70, 5)]
+    ink = [circle(160, 186, 7), circle(298, 160, 6)]
     return layers, ink
 
 
@@ -256,9 +256,9 @@ def spider():
         web_layers.append(L(sector(0, 0, 95, 175, a0, a0 + 30), "gray"))
         web_layers.append(L(sector(0, 0, 175, 255, a0, a0 + 30), "gray"))
     layers = [L(FRAME, "purple")] + web_layers + [
-        L(ellipse(100, 436, 94, 58), "orange"),
-        L(ellipse(100, 436, 36, 58), "orange"),
-        L(circle(340, 350, 88), "black"),
+        L(ellipse(90, 430, 80, 50), "orange"),
+        L(ellipse(90, 430, 30, 50), "orange"),
+        L(circle(340, 325, 88), "black"),
         L(circle(340, 196, 84), "black"),
         L(circle(303, 180, 31), "white"),
         L(circle(377, 180, 31), "white"),
@@ -266,15 +266,15 @@ def spider():
     legs = []
     for side in (-1, 1):
         for th in (-40, -10, 20, 50):
-            c = (340, 350)
+            c = (340, 325)
 
             def at(r, a):
                 return (c[0] + side * r * math.cos(math.radians(a)), c[1] + r * math.sin(math.radians(a)))
-            p0, p1, p2 = at(70, th), at(135, th - 12), at(185, th + 12)
+            p0, p1, p2 = at(70, th), at(120, th - 12), at(160, th + 12)
             legs.append(thick([p0, p1, p2], 9, smooth=False))
     ink = legs + [LineString([(340, -5), (340, 116)]).buffer(1.2),
                   thick([(328, 226), (340, 232), (352, 226)], 4),
-                  Polygon([(100, 382), (95, 362), (107, 360), (107, 384)])]
+                  Polygon([(90, 382), (85, 362), (97, 360), (97, 384)])]
     return layers, ink
 
 

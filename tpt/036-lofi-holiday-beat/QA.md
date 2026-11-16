@@ -15,3 +15,9 @@
 **Verdict: APPROVED**
 
 No required fixes. Optional: (1) reword the three-carol list in the description to avoid the comma ambiguity; (2) enlarge the page 11 map labels if there is room.
+
+## Fix round 16 Nov 2026
+Straight or swung slide: swing dots kept inside their beats (no bar-line crossings). Deck scored line reworded and raised.
+A fresh visual inspector re-read every image and the changed deck/PDF pages and confirmed the fixes with no new defects.
+
+**Verdict: APPROVED**

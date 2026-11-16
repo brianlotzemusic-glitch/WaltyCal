@@ -36,3 +36,7 @@ QA reviewed this item on 10 Oct 2026, independently of the Designer. I rendered 
 3. Add a second tag.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Audit P2s confirmed and fixed in gen.py: cover snowflake moved clear of the clipboard clip; preview-2 "CUT ON THE DASHED LINES" label moved off the vertical cut line; preview-2 sheets resized side by side (letter no longer covered, thank-you sheet clear of the footer bar). Fresh inspector: OK on all four images.
+**Verdict: APPROVED**

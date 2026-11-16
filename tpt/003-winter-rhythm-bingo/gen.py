@@ -561,7 +561,7 @@ def hero_svg(width_css):
             f'fill="#fff" stroke="#000" stroke-width="3"/>{grid}{marks}</g>')
     deco = (art("snowflake", 18, 14, 92, 2.6, fill=A, line=A, rotate=10) + art("mitten", 40, 150, 104, 2.6, fill=A, rotate=-14)
             + art("snowflake", 492, 10, 70, 2.4, rotate=-8) + art("sled", 456, 210, 136, 2.6, fill=A)
-            + art("hat", 476, 92, 96, 2.4, fill="#fff", rotate=12) + art("snowflake", 120, 280, 54, 2.0, fill=A, line=A)
+            + art("hat", 476, 92, 96, 2.4, fill="#fff", rotate=12) + art("snowflake", 96, 296, 50, 2.0, fill=A, line=A)
             + art("mug", 16, 262, 84, 2.2))
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="{width_css}" style="display:block">'
             f'{card}{deco}</svg>')
