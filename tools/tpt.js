@@ -385,7 +385,14 @@ async function removeExistingFile(page, slot, opts = {}) {
     // climb until the card holds a labelled control or a lone-x glyph (never past the form)
     const glyph = (e) => !e.children.length && /^[x×✕✖✗╳]$/i.test((e.textContent || "").trim());
     let card = seed;
-    while (!cardCtl(card).some((e) => labelled(e) || glyph(e) || e.matches("button, [role=button]")) && card.parentElement && !card.parentElement.matches("form, main, body")) card = card.parentElement;
+    // 16 Nov 2026 (007/027/042/043 reupload-failed + screenshots): the X IS on the page (top-right of the card, a bold x glyph) but the
+    // "Last updated ... See Revision History" text lives in a small inner block whose only button-like child is the Revision History
+    // control, so the old climb stopped there (card text had no file name) and the X, a sibling further up, was never searched.
+    // Now the climb ignores revision/history controls, and must also reach the file-name link / an x-like control.
+    const ctlOk = (e) => labelled(e) || glyph(e) || (e.matches("button, [role=button]") && !/revision|history/i.test(e.innerText || ""));
+    while (!cardCtl(card).some(ctlOk) && card.parentElement && !card.parentElement.matches("form, main, body")) card = card.parentElement;
+    // never swallow a second card (e.g. the Preview card): step back down if the card holds several "Last updated" blocks
+    if (inner.filter((o) => card.contains(o)).length > 1 && card !== seed) { let c = seed; while (c.parentElement && c.parentElement !== card && inner.filter((o) => c.parentElement.contains(o)).length === 1) c = c.parentElement; card = c; }
     const cr = card.getBoundingClientRect();
     const visible = (e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
     const corner = (e) => { const r = e.getBoundingClientRect(); return r.width <= 48 && r.height <= 48 && r.left > cr.left + cr.width * 0.6 && r.top < cr.top + Math.min(cr.height * 0.5, 80); };
@@ -402,12 +409,28 @@ async function removeExistingFile(page, slot, opts = {}) {
       const target = e.closest("button, [role=button]") || (e.tagName.toLowerCase() === "path" ? e.ownerSVGElement : e);
       if (target && !picked.includes(target) && !picked.some((p) => p.contains(target) && p !== target && false)) picked.push(target);
     }
-    if (!picked.length) return { error: "the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner); card text: " + (card.innerText || "").replace(/\s+/g, " ").slice(0, 80) };
+    if (!picked.length) {
+      // fallback tiers: overflow menu / replace-style control / file input on the card or its parent, then widen to the parent block
+      const wide = card.parentElement && !card.parentElement.matches("form, main, body") && inner.filter((o) => card.parentElement.contains(o)).length === 1 ? card.parentElement : card;
+      const alt = cardCtl(wide).filter(visible).filter((e) => !realLink(e) || /remove|delete|trash|replace/i.test(label(e)))
+        .filter((e) => /remove|delete|trash|replace|update|new version|upload|more|menu|kebab|ellipsis|options|actions|\u22EE|\u2026/i.test(`${label(e)} ${(e.innerText || "").slice(0, 40)}`) && !/revision|history/i.test(e.innerText || ""));
+      alt.slice(0, 3).forEach((e, i) => { const t = e.closest("button, [role=button]") || e; if (!picked.includes(t)) picked.push(t); });
+    }
+    if (!picked.length) {
+      const trim = (n) => (n || "").replace(/\s+/g, " ").trim().slice(0, 60);
+      const diag = {
+        cardHtml: card.outerHTML.replace(/\s+/g, " ").slice(0, 4000),
+        parentHtml: card.parentElement ? card.parentElement.outerHTML.replace(/\s+/g, " ").slice(0, 4000) : "",
+        controls: [...card.parentElement.querySelectorAll("button, a, [role=button], input, svg, i, [onclick], [tabindex]")].slice(0, 40)
+          .map((e) => `${e.tagName.toLowerCase()} text=${trim(e.innerText || e.value)} aria=${trim(e.getAttribute("aria-label"))} title=${trim(e.getAttribute("title"))} testid=${trim(e.getAttribute("data-testid"))} class=${trim(typeof e.className === "string" ? e.className : e.className && e.className.baseVal)}`),
+      };
+      return { error: "the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner, no menu/replace control); card text: " + (card.innerText || "").replace(/\s+/g, " ").slice(0, 80), diag };
+    }
     const describe = [];
     picked.slice(0, 4).forEach((e, i) => { e.setAttribute("data-tpt-remove", String(i + 1)); describe.push(`${e.tagName.toLowerCase()} ${label(e).replace(/\s+/g, " ").trim().slice(0, 60)}`); });
     return { cardText: (card.innerText || "").replace(/\s+/g, " ").slice(0, 80), describe };
   }, slot);
-  if (found.error) return { error: found.error };
+  if (found.error) { await shot("nocontrol"); return { error: found.error, diag: found.diag }; }
   const visibleButtons = () => page.evaluate(() => [...document.querySelectorAll('button, [role="button"], input[type="button"], input[type="submit"]')]
     .filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0; })
     .map((e) => (e.innerText || e.value || e.getAttribute("aria-label") || "").trim().replace(/\s+/g, " ")).filter(Boolean));
@@ -993,9 +1016,10 @@ async function reupload(item, dryRun) {
     return;
   }
 
-  const fail = async (page, step, msg) => { // record, screenshot, never retry this marker
+  const fail = async (page, step, msg, diag) => { // record, screenshot, never retry this marker
     await snap(page, shots, `${slug}-reupload-failed`).catch(() => {});
     const rec = { at: new Date().toISOString(), marker_sha256: state.markerHash, step, error: msg, files: files.map((f) => ({ slot: f.slot, file: f.file, sha256: f.sha256 })), screenshot: `tpt/_publish/${slug}-reupload-failed.png` };
+    if (diag) rec.diagnostics = diag;
     fs.writeFileSync(path.join(item, "reupload-failed"), JSON.stringify(rec, null, 2) + "\n");
     throw Object.assign(new Error(`reupload stopped at "${step}": ${msg}\nScreenshot: ${rec.screenshot}. Not retrying this marker.`), { recorded: true });
   };
@@ -1041,7 +1065,7 @@ async function reupload(item, dryRun) {
       const rm = await removeExistingFile(page, f.slot, { shots, slug });
       console.log(`${f.slot}: existing file: ${rm.skipped || rm.ok || "ERROR " + rm.error}`);
       await snap(page, shots, `${slug}-reupload-${f.slot}-after-remove`).catch(() => {});
-      if (rm.error) await fail(page, step, `could not remove the existing ${f.slot} file before uploading: ${rm.error}`);
+      if (rm.error) await fail(page, step, `could not remove the existing ${f.slot} file before uploading: ${rm.error}`, rm.diag);
       try { await input.waitFor({ state: "attached", timeout: 20000 }); } catch (e) { await fail(page, step, `no upload box ${spec.input} on the edit page`); }
       // 23 Oct 2026 (027): the product key never changed in 15 min with a plain setInputFiles. Two untested causes:
       // (a) the edit form ignores a programmatic file set (the NEW form did too for the product, run 5), (b) the key
