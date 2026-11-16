@@ -150,3 +150,7 @@ I re-rendered the rebuilt PDF (40 pages, contact sheet at 50 dpi). I looked at b
 - Carried over from round 1: the preview shows the full caller's checklist and all 36 patterns. That is acceptable for bingo.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Audit P2 confirmed and fixed in gen.py: the cover's bottom-left blue snowflake moved clear of the bingo card's corner. Fresh inspector: OK on all four images, no doubled watermark.
+**Verdict: APPROVED**
