@@ -500,7 +500,7 @@ def cover_square(sheets):
 
 def preview_square_1(img):
     shots = "".join(
-        f'<div style="width:296px"><div class="shot"><img src="{img[k]}"><div class="swm" style="font-size:54px">PREVIEW</div></div>'
+        f'<div style="width:296px"><div class="shot"><img src="{img[k]}"></div>'
         f'<div class="lbl">Level {k}<span>{LEVELS[k]["name"]} · gr. {LEVELS[k]["grades"]}</span></div></div>' for k in "ABC")
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
@@ -512,7 +512,7 @@ def preview_square_1(img):
 
 def preview_square_2(ws, key):
     pair = "".join(
-        f'<div style="width:420px"><div class="shot"><img src="{src}"><div class="swm" style="font-size:80px">PREVIEW</div></div>'
+        f'<div style="width:420px"><div class="shot"><img src="{src}"></div>'
         f'<div class="lbl">{lab}</div></div>' for src, lab in ((ws, "Worksheet"), (key, "Answer key")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'

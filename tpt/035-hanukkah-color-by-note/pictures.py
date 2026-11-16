@@ -254,9 +254,9 @@ def menorah_scene(night=False):
             ink.append(flame(x, 204, 42, 26))
     if night:
         layers.append(L(circle(86, 82, 48), "yellow"))
-        ink += twinkle([(180, 50), (250, 90), (400, 50), (470, 100), (500, 190), (40, 200), (130, 160)])
+        ink += twinkle([(180, 50), (250, 90), (400, 50), (470, 100), (504, 140), (36, 140), (150, 120)])
     else:
-        ink += twinkle([(60, 60), (150, 100), (400, 60), (480, 110), (500, 200), (40, 200), (110, 150), (270, 60)])
+        ink += twinkle([(60, 60), (150, 100), (400, 60), (480, 110), (504, 140), (36, 140), (90, 110), (270, 60)])
     return layers, ink
 
 
@@ -333,7 +333,7 @@ def three_dreidels():
         p, i = dreidel_parts(cx, top, 152, 60, 84, 112, cols, tilt=tilt, handle=40)
         layers += p
         ink += i
-    ink += twinkle([(40, 60), (200, 40), (350, 40), (500, 60), (190, 240), (360, 250), (30, 460), (510, 470)])
+    ink += twinkle([(40, 60), (200, 40), (350, 40), (500, 60), (30, 460), (510, 470)])
     return layers, ink
 
 
@@ -353,7 +353,7 @@ def window():
         ink.append(box(x - 6, top, x + 6, 396))
         ink.append(flame(x, top - 2, 28, 16))
     ink.append(box(256, 380, 284, 396))
-    ink += twinkle([(40, 40), (500, 40), (40, 330), (500, 330), (270, 30), (150, 70), (390, 70)])
+    ink += twinkle([(40, 40), (500, 40), (40, 330), (500, 330)])
     return layers, ink
 
 
@@ -367,7 +367,7 @@ def star_garland():
         layers.append(L(hexagram(x, y, R), c))
         ink.append(S(f"M{x} {xs_y[x]} L{x} {y - R + 2}", 3.2))
         ink.append(circle(x, xs_y[x], 5))
-    ink += twinkle([(40, 300), (500, 300), (190, 380), (350, 410), (40, 400), (500, 400)])
+    ink += twinkle([(40, 200), (500, 200), (190, 380), (350, 410), (40, 400), (500, 400)])
     return layers, ink
 
 
