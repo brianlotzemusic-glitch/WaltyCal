@@ -23,6 +23,14 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "_dmp2_common"))
 import dmp2 as D  # noqa: E402
+D.DISCLOSURE_NEW = "Created with the help of digital and AI tools."   # fix: this kit has no notation or answer keys to verify
+
+# fix: the shared reflection page ran its teacher box into the footer rule; add bottom clearance in this kit only.
+_reflect_orig = D.reflect_page
+def _reflect_tight(n, watermark=False):
+    return _reflect_orig(n, watermark).replace('<div class="box" style="margin-top:2pt">', '<div class="box" style="margin-top:2pt;margin-bottom:12pt">')
+D.reflect_page = _reflect_tight
+D.STD_PAGES["reflect"] = _reflect_tight
 
 ORIGINAL = True
 SLUG = "winter-soundscape"
@@ -105,8 +113,8 @@ RUBRIC = [
     ("Layers & Sound Design", ["Fewer than three layers, or every layer is the same sound",
                                "Three or four layers; they sound alike or have no clear job",
                                "Five layers with different jobs; Alchemy used for one of them",
-                               "Six or more layers with clear jobs; Alchemy used for at least two",
-                               "Six or more distinct layers, each with its own job, zone and texture, built by the student"]),
+                               "Six layers with clear jobs; Alchemy used for at least two",
+                               "Seven or more distinct layers, each with its own job, zone and texture, all built by the student"]),
     ("Automation", ["No automation", "One parameter automated, with very few points",
                     "Three parameters automated; the changes can be heard",
                     "Four parameters (cutoff, volume, pan, reverb send) with smooth, planned curves",
@@ -126,7 +134,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_ROW_PITCH = 0.84
+RUBRIC_LINE_Y = 6.3
 
 TN_REINFORCES = ("Teaches sound design as a way of making music without a melody. Students learn that texture, movement and space, not only "
                  "notes, hold a listener’s attention, and they practice building layers, drawing automation, and using reverb, EQ and stereo "
@@ -291,7 +301,7 @@ PALETTE = [
      "3–12 kHz", "Automate pan so the ticks sweep from left to right."),
     ("Whiteout hiss", "A wall of bright noise that only appears when the storm is at its worst.",
      "White noise in Alchemy or Retro Synth through a high-pass filter near 3 kHz. A long attack so it swells in rather than starting.",
-     "4–16 kHz", "Fade it up over the last two bars of the build; remove it all at once at the start of the fade."),
+     "4–16 kHz", "Bring it in at the start of the peak, swelling up over its first bar; remove it all at once at the start of the fade."),
     ("Glass chimes", "A few soft, high sounds that show how quiet the hush is.",
      "A bell or pluck sound in Alchemy, played by hand in a handful of random notes from one scale, short and soft, "
      "with a long reverb. Leave them out at the peak. They are not a melody: no tune, no pattern.",
@@ -380,9 +390,9 @@ def hero_body():
         out.append(f'<rect x="{50 + i * bw + 1:.1f}" y="{y0 - h:.1f}" width="{max(2, bw - 2):.1f}" height="{2 * h:.1f}" rx="2" fill="{col}"/>')
     out.append(f'<line x1="50" y1="{y0}" x2="{W - 50}" y2="{y0}" stroke="#000" stroke-width="2"/>')
     ty = y0 + hh + 34
-    for nm, a, b in (("BUILD", .0, .42), ("PEAK", .42, .66), ("FADE", .66, 1.0)):
+    for nm, a, b in (("HUSH", .0, .12), ("BUILD", .12, .42), ("PEAK", .42, .66), ("FADE", .66, 1.0)):
         x0, x1 = 50 + a * (W - 100), 50 + b * (W - 100)
-        out.append(f'<line x1="{x0 + 6:.1f}" y1="{ty - 22}" x2="{x1 - 6:.1f}" y2="{ty - 22}" stroke="{ACCENT if nm == "PEAK" else "#000"}" stroke-width="5" stroke-linecap="round"/>')
+        out.append(f'<line x1="{x0 + 10:.1f}" y1="{ty - 22}" x2="{x1 - 10:.1f}" y2="{ty - 22}" stroke="{ACCENT if nm == "PEAK" else "#000"}" stroke-width="5" stroke-linecap="round"/>')
         out.append(D.t_((x0 + x1) / 2, ty + 20, nm, 36, 700, fill_=ACCENT if nm == "PEAK" else "#000"))
         D.lab("hero", nm, 36, x1 - x0 - 16)
     return "".join(out), W, ty + 34
@@ -563,12 +573,16 @@ def freq_body(W=1600, name="freq pic", fs=22, ts=19):
         xh = freq_x(hp, gx, pw)
         out.append(f'<line x1="{xh:.1f}" y1="{y + 3}" x2="{xh:.1f}" y2="{y + rh - 3}" stroke="#000" stroke-width="4"/>')
         out.append(f'<polygon points="{xh:.1f},{y + rh - 3} {xh - 7:.1f},{y + rh - 14} {xh + 7:.1f},{y + rh - 14}" fill="#000"/>')
-    cap = "Each bar is the range a layer needs. The black tick is the Channel EQ high-pass: below it, cut"
+    cap = "Each bar is the range a layer needs; the colours only tell the rows apart."
+    cap3 = "The black arrow marks the Channel EQ high-pass: everything below it is cut."
     ey = top + len(rows) * rh + 28 + ts + 14
     out.append(D.t_(gx + pw / 2, ey, "Frequency in Hz, a log scale: each step to the right is ten times higher", ts, 500))
     D.lab(name + " cap", "Frequency in Hz, a log scale: each step to the right is ten times higher", ts, pw)
     out.append(D.t_(gx + pw / 2, ey + ts + 12, cap, ts, 500))
     D.lab(name + " cap2", cap, ts, pw)
+    out.append(D.t_(gx + pw / 2, ey + 2 * (ts + 12), cap3, ts, 500))
+    D.lab(name + " cap3", cap3, ts, pw)
+    ey += ts + 12
     return "".join(out), W, ey + ts + 24
 
 
@@ -608,7 +622,7 @@ def arc_blank(W=1100, name="arc blank"):
 
 
 DRAWINGS = {"hero": hero_body, "cycle": lambda: cycle_body(1600), "arc": lambda: arc_body(1600, "arc deck"),
-            "curves": lambda: curves_body(1600, "curves deck"), "freq": lambda: freq_body(1600, "freq deck"),
+            "curves": lambda: curves_body(1600, "curves deck"), "freq": lambda: freq_body(1600, "freq deck", 27, 25),
             "map": lambda: map_body(1600, "map pic")}
 DRAWING_PX = {"hero": 1900, "cycle": 2000, "arc": 2000, "curves": 2000, "freq": 2000, "map": 2000}
 SIDE = {"cycle": ["Choose a scene and a tempo", "Plan the storm arc on paper", "Build layers, then automate", "Space and mix last"],
@@ -877,7 +891,7 @@ def overview_page(n, wm=False):
              f'{D.H2("Goals", True)}<ul>' + "".join(f"<li style='font-size:12.6pt;line-height:1.5'>{g}</li>" for g in GOALS) + '</ul>'
              f'{D.H2("At a glance")}<table class="t" style="font-size:11.4pt">'
              f'<tr><td><b>Grades</b></td><td>{GRADES_TEXT}, music technology, music production or sound design</td></tr>'
-             f'<tr><td><b>Length</b></td><td>{CLASSES} class periods (2 to 4 works: see page {D.IX("pacing")}): choose and plan, build the layers, automate and mix, present and reflect</td></tr>'
+             f'<tr><td><b>Length</b></td><td>{CLASSES} class periods (3 or 4 classes work: see page {D.IX("pacing")}): choose and plan, build the layers, automate and mix, present and reflect</td></tr>'
              f'<tr><td><b>Software</b></td><td>Logic Pro: Alchemy, Quick Sampler, Retro Synth, Auto Filter, automation lanes, ChromaVerb or Space Designer, Channel EQ, bounce</td></tr>'
              f'<tr><td><b>You supply</b></td><td>Macs with Logic Pro, headphones, a place to hand in files and a class board or paper for feedback</td></tr>'
              f'<tr><td><b>Assessment</b></td><td>Rubric, 5 categories scored 1–5, /{RUBRIC_TOTAL}; final grade = average of the student’s and the '
@@ -956,11 +970,11 @@ def brief_page(n, wm=False):
     return D.page("Scene brief", "STUDENT", "Class 1", inner, n, wm, name=True, key="brief")
 
 
-def pal_card(i, p, fs=12.6):
+def pal_card(i, p, fs=12.6, mb=9):
     nm, job, make, aut = p[0], p[1], p[2], p[4]
     lo, hi, _hp = freq_of(nm)[1:]
     zone = zone_text(lo, hi)
-    return (f'<div class="box" style="margin-bottom:9pt;padding:8pt 12pt"><div style="display:flex;justify-content:space-between;align-items:baseline">'
+    return (f'<div class="box" style="margin-bottom:{mb}pt;padding:8pt 12pt"><div style="display:flex;justify-content:space-between;align-items:baseline">'
             f'<span class="k" style="font-size:13pt;margin:0;color:#000">{i} · {nm}</span><span class="k" style="margin:0">Zone {zone}</span></div>'
             f'<p style="margin:2pt 0 1.5pt;font-size:{fs}pt;line-height:1.3"><b>Its job.</b> {job}</p>'
             f'<p style="margin:0 0 1.5pt;font-size:{fs}pt;line-height:1.3"><b>Make it.</b> {D.fill(make) if "@" in make else make}</p>'
@@ -979,10 +993,10 @@ def palette2_page(n, wm=False):
     inner = (f'<p style="margin:0 0 4pt;font-size:10.6pt;line-height:1.36">Cards 5 to 8 are the details: the bright, high sounds that appear '
              f'at the peak, and the sparse ones that show how quiet the hush is. Some layers should come and go: a layer that plays all the time cannot '
              f'make the storm build. Tick the cards you will use and write the track name you give each.</p>'
-             + "".join(pal_card(i + 5, p) for i, p in enumerate(PALETTE[4:]))
-             + f'<div class="box" style="padding:4pt 10pt;margin-bottom:7pt"><span class="k">My layers from the palette (tick, then name the track)</span><div class="cols" style="gap:12pt">'
-             f'<div>' + "".join(D.chk(f"<b>{p[0]}</b> = <span style='display:inline-block;width:1.1in;border-bottom:1pt solid #000'>&nbsp;</span>", 11, "font-size:9.6pt;margin-bottom:1pt") for p in PALETTE[:4]) +
-             f'</div><div>' + "".join(D.chk(f"<b>{p[0]}</b> = <span style='display:inline-block;width:1.1in;border-bottom:1pt solid #000'>&nbsp;</span>", 11, "font-size:9.6pt;margin-bottom:1pt") for p in PALETTE[4:]) +
+             + "".join(pal_card(i + 5, p, mb=6) for i, p in enumerate(PALETTE[4:]))
+             + f'<div class="box" style="padding:4pt 10pt;margin-bottom:14pt"><span class="k">My layers from the palette (tick, then name the track)</span><div class="cols" style="gap:12pt">'
+             f'<div>' + "".join(D.chk(f"<b>{p[0]}</b> = <span style='display:inline-block;width:1.4in;border-bottom:1pt solid #000'>&nbsp;</span>", 11, "font-size:9.6pt;margin-bottom:1pt") for p in PALETTE[:4]) +
+             f'</div><div>' + "".join(D.chk(f"<b>{p[0]}</b> = <span style='display:inline-block;width:1.4in;border-bottom:1pt solid #000'>&nbsp;</span>", 11, "font-size:9.6pt;margin-bottom:1pt") for p in PALETTE[4:]) +
              f'</div></div></div>')
     return D.page("Sound palette · 2 of 2", "STUDENT", "Class 1", inner, n, wm, name=False, key="palette2")
 
@@ -1080,7 +1094,7 @@ def timeline_page(n, wm=False):
     hr = "".join(f"<tr><td><b>{b}</b></td><td>{240 / b:.2f} s</td>" + "".join(
         f"<td{' style=\"font-weight:700;background:#ececec\"' if 60 <= length_s(bars, b) <= 90 else ''}>{length_s(bars, b):.1f} s</td>" for bars in LEN_BARS)
         + "</tr>" for b in LEN_BPMS)
-    inner = (f'<p style="margin:0 0 4pt;font-size:10.2pt;line-height:1.36">Step 2: plan the arc. Choose a tempo (60 to 120 BPM) and decide how many bars each section lasts. '
+    inner = (f'<p style="margin:0 0 4pt;font-size:10.2pt;line-height:1.36">Step 1: plan the arc. Choose a tempo (60 to 120 BPM) and decide how many bars each section lasts. '
              f'One bar of 4/4 lasts <b>240 ÷ BPM</b> seconds, so seconds = bars × 240 ÷ BPM. The sections’ bars must add up to a total of 60 to 90 seconds. '
              f'Compare your plan with the worked example (page {D.IX("example")}).</p>'
              f'<div class="fl" style="margin:0 0 4pt"><b>My tempo (BPM):</b><span style="flex:0 0 0.8in"></span><b>One bar lasts 240 ÷ tempo =</b><span style="flex:0 0 0.8in"></span><b>seconds</b></div>'
@@ -1107,18 +1121,18 @@ def layers_page(n, wm=False):
     body = "".join("<tr><td class='l' style='height:25pt'></td>" + "".join(f"<td class='{'b' if i % 2 == 0 else ''}'></td>" for i in range(ARR_COLS))
                    + "</tr>" for _ in range(9))
     inner = (f'{CSS_SG}<style>table.sg th {{ font-size: 6.4pt; }} table.sg td.l {{ width: 1.1in; }}</style>'
-             f'<p style="margin:0 0 4pt;font-size:10.4pt">Step 3: the layer map. Each column is 2 bars (the number is its first bar). Write each layer’s name at the left, shade the columns where it plays '
+             f'<p style="margin:0 0 4pt;font-size:10.4pt">Step 2: the layer map. Each column is 2 bars (the number is its first bar). Write each layer’s name at the left, shade the columns where it plays '
              f'and draw a heavy line where each section starts (every thick line is 4 bars). A storm builds when layers enter, so not every layer should play the whole time.</p>'
              f'<table class="sg">{cg}{head}{body}</table>'
              f'<div class="cols" style="gap:10pt;margin-top:6pt"><div class="box acc-b"><span class="k">My sections</span>'
-             f'<div class="fl" style="margin:3pt 0 0"><b>Hush:</b><span style="flex:0 0 0.6in"></span><b>bars</b><span></span></div>'
-             f'<div class="fl"><b>Build:</b><span style="flex:0 0 0.6in"></span><b>bars</b><span></span></div>'
-             f'<div class="fl"><b>Peak:</b><span style="flex:0 0 0.6in"></span><b>bars</b><span></span></div>'
-             f'<div class="fl" style="margin-bottom:0"><b>Fade:</b><span style="flex:0 0 0.6in"></span><b>bars</b><span></span></div></div>'
+             f'<div class="fl" style="margin:5pt 0 0"><b>Hush:</b><span style="flex:0 0 0.6in"></span><b>bars</b><span></span></div>'
+             f'<div class="fl" style="margin:5pt 0 0"><b>Build:</b><span style="flex:0 0 0.6in"></span><b>bars</b><span></span></div>'
+             f'<div class="fl" style="margin:5pt 0 0"><b>Peak:</b><span style="flex:0 0 0.6in"></span><b>bars</b><span></span></div>'
+             f'<div class="fl" style="margin:5pt 0 0"><b>Fade:</b><span style="flex:0 0 0.6in"></span><b>bars</b><span></span></div></div>'
              f'<div class="box"><span class="k">Count my layers</span>'
-             f'<div class="fl" style="margin:3pt 0 0"><b>Layers in the hush:</b><span></span></div>'
-             f'<div class="fl"><b>Layers at the peak:</b><span></span></div>'
-             f'<div class="fl" style="margin-bottom:0"><b>Layers in the last 4 bars:</b><span></span></div>'
+             f'<div class="fl" style="margin:5pt 0 0"><b>Layers in the hush:</b><span></span></div>'
+             f'<div class="fl" style="margin:5pt 0 0"><b>Layers at the peak:</b><span></span></div>'
+             f'<div class="fl" style="margin:5pt 0 0"><b>Layers in the last 4 bars:</b><span></span></div>'
              f'<p class="small" style="margin:3pt 0 0">The peak should have the most layers.</p></div></div>'
              f'<div class="box" style="margin-top:6pt"><span class="k">Checks before I bounce</span>'
              + "".join(D.chk(c, 11, "font-size:10pt;margin-bottom:2pt") for c in [
@@ -1135,7 +1149,7 @@ def autoplan_page(n, wm=False):
         blocks += (f'<div style="margin-bottom:3pt"><div class="fl" style="margin:0 0 1pt"><b>Lane {i + 1}.</b> <b>Layer:</b><span></span><b>Parameter:</b><span></span>'
                    f'<b>From:</b><span style="flex:0 0 0.55in"></span><b>to:</b><span style="flex:0 0 0.55in"></span></div>'
                    f'{D.body_svg(lane_blank(1100, 48, 4, f"lane page {i}", 170, first=True))}</div>')
-    inner = (f'<p style="margin:0 0 3pt;font-size:10.2pt;line-height:1.36">Step 4: plan four automation lanes. Choose a layer and a parameter for each (cutoff, volume, pan and reverb send are the four to use), '
+    inner = (f'<p style="margin:0 0 3pt;font-size:10.2pt;line-height:1.36">Step 3: plan four automation lanes. Choose a layer and a parameter for each (cutoff, volume, pan and reverb send are the four to use), '
              f'draw the curve you want across the bars with the shapes on page {D.IX("auto1")}, and write the lowest and highest value. Then draw it in Logic. The numbers above each lane are bars.</p>'
              f'{blocks}'
              f'<div class="box acc-b" style="padding:4pt 10pt"><span class="k">Check my lanes</span>'
@@ -1160,7 +1174,7 @@ def example_page(n, wm=False):
              f'<table class="t" style="font-size:8.8pt;line-height:1.2"><tr><th>Section</th><th>Bars</th><th>Length</th><th>Time</th><th>What the listener hears</th></tr>{secs}</table>'
              f'<div class="cols" style="gap:10pt;margin-top:3pt"><div><span class="k" style="font-size:9.4pt">5 · Moments</span>'
              f'<table class="t" style="font-size:8.6pt;line-height:1.18;margin-top:2pt">{mom}</table></div>'
-             f'<div class="box acc-b" style="padding:4pt 9pt"><span class="k">6 · Checking the numbers</span><p style="margin:0;font-size:8.8pt;line-height:1.3">'
+             f'<div class="box acc-b" style="padding:4pt 9pt;align-self:flex-start"><span class="k">6 · Checking the numbers</span><p style="margin:0;font-size:8.8pt;line-height:1.3">'
              f'One bar of 4/4 at {EX_BPM} BPM lasts 240 ÷ {EX_BPM} = {EX_BAR_S:g} seconds, so {EX_BARS} bars = {EX_BARS * EX_BAR_S:g} seconds, inside 60 to 90. '
              f'The sections are {" + ".join(str(b - a + 1) for _, a, b in EX_SECTIONS)} bars = {EX_BARS}. '
              f'Time at a bar = (bar − 1) × {EX_BAR_S:g}, so bar 15 starts at {mmss(bar_time(15))}.</p></div></div>')
@@ -1394,7 +1408,7 @@ def verify_outputs(flat, stext, notes):
         errs.append("deck slide 1 notes must say 'No audio'")
     for need in ("No audio, recordings, loops, lyrics, artists or albums", "invented plan on paper", "no melody", "Alchemy", "Quick Sampler",
                  "Retro Synth", "ChromaVerb", "Space Designer", "Channel EQ", "Auto Filter", "Step FX", "No student work is included",
-                 "Created with the help of digital and AI tools. Notation and answer keys are verified before release."):
+                 "Created with the help of digital and AI tools."):
         if need.lower() not in txt.lower():
             errs.append(f"PDF must say: '{need}'")
     if "What changed" in txt or "Kept as I wrote it" in txt or "my project menu" in txt or "my Digital Music Production" in txt:
@@ -1502,7 +1516,7 @@ def write_upload():
             f"reflection page ({n_student} pages)\n"
             f"• Teacher-presented intro deck, {ns} slides with speaker notes on every slide: a think-and-share hook, what the project is, the storm arc, "
             f"building the layers, a frequency map, automation curves, a worked-example map, space and mix, what to turn in and the rubric\n\n"
-            f"THE FOUR CLASS PERIODS (works in 2 to 4)\n"
+            f"THE FOUR CLASS PERIODS (works in 3 or 4 classes)\n"
             f"• Class 1: hook; choose a scene; plan the storm arc and its timings; start the first layers\n"
             f"• Class 2: build the layers in Alchemy, Quick Sampler and Retro Synth\n"
             f"• Class 3: automate four parameters; add reverb, EQ and stereo width; mix\n"
