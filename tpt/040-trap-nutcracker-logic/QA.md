@@ -11,3 +11,9 @@
 - None that a buyer would notice or that break a rule. (Minor, not blocking: slide 5 has some empty space between the flow graphic and bullets.)
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Hi-hat rolls slide: last dots clear of the grid frame. Deck scored line reworded and raised.
+A fresh visual inspector re-read every image and the changed deck/PDF pages and confirmed the fixes with no new defects.
+
+**Verdict: APPROVED**
