@@ -10,3 +10,12 @@
 - Minor, not blocking: preview footers show full-product page numbers and "answer key on page N" references to pages not in the preview.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+- Doubled "PREVIEW" watermark on preview-1/2 removed (second stamp drawn over page images already cut from the watermarked preview PDF).
+- Cover: snow dots moved off the first and last candle flame bases (Menorah, day and night versions).
+- Snow dots moved off art edges: Three Dreidels (dots beside the middle dreidel's band removed), Menorah in the Window (dots on the arch outline removed), Star Garland (dots at the lower star tips moved up).
+- Rebuilt; `gen.py --check` and `tools/tpt-validate.py` pass.
+- Fresh Sonnet inspector: OK (native crops of cover and pictures 1, 5, 6, 7, 9 show all dots free; single watermark).
+
+**Verdict: APPROVED**
