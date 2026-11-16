@@ -35,6 +35,8 @@ subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one a
    3. Write `tpt/NNN-slug/reupload` (date and one-line reason). Your Mac's next run replaces the files in the live listing
       (`tools/tpt.js reupload-pending`; title, price, description and tags are never touched) and writes `reuploaded`, or
       `reupload-failed` with the reason. Next shift, read which; on `reupload-failed` treat it like a held upload.
+      While `tpt/REUPLOAD-PAUSED` exists the marker waits (see "The Mac uploader": canary rule). For product 001 only `reupload`
+      is ever allowed; for the others the canary rule may turn the marker into `republish` (a new listing, old one deactivated).
    4. Tick the `[fix]` line, add one LOG line, commit and push.
 3. For each product this shift owes:
    1. Take the top unchecked queue item that is in season (see "Season rule"). Its id is the highest `tpt/NNN-*` number + 1.
@@ -176,6 +178,35 @@ At the start of each shift read `tpt/UPLOADER-STATUS.json` and act only on these
   `gh auth setup-git`." If instead items are released more than 4 days ago and still `WAITING` in the live check while `ran_at`
   is fresh, the uploads are failing: handle them under `held` above.
 - The Mac also shows its own notifications (login expired, can't push) at most once a day.
+
+**Replacing files of live products (`reupload`) and the fallback (`republish`).** Since October the edit form has not taken a new
+product file. 16 Nov evidence (007): the file reaches S3 and TpT processes it, then TpT's box shows "99% ... Error during file
+upload, please try again" and clears the key. `tools/tpt.js` now retries up to 3 times per file (Cancel, upload again, the third
+try through TpT's own Select-file chooser), waits until the box stops saying Processing, and on failure writes
+`tpt/_publish/NNN-slug-reupload-<slot>-diag.json` (requests, TpT's upload answers, console errors, the box's HTML; the
+`diagnostics` field of `reupload-failed` has the same in short). `tpt/REUPLOAD-PAUSED` stops every replacement; a line
+`allow: 043` in it lets only the listed items through (the canary). **Canary rule, every shift while that file exists:** run
+`python3 tools/tpt-reupload-canary.py status` and act on its word:
+- `PASSED`: run `python3 tools/tpt-reupload-canary.py release` (deletes the pause file), commit and push. All waiting replacements
+  run on the Mac's next runs (they stop at the first failure, so a new problem costs one item, not 28).
+- `FAILED`, first time: one agent reads the canary's `reupload-failed` (the `diagnostics` field) and the diag file, fixes
+  `tools/tpt.js` once, runs the offline tests (`node tools/test-tpt-editupload.js`, `node tools/test-tpt-reupload.js`), and re-arms the
+  canary by adding one dated line to its `reupload` marker. Note "canary fix 2 tried" in LOG.md.
+- `FAILED` again after that fix (LOG.md says fix 2 was tried): give up on the edit form. Run
+  `python3 tools/tpt-reupload-canary.py convert`: every waiting item except 001 gets a `republish` marker (same text) instead of
+  `reupload`, and the pause file is deleted. Commit and push. 001 keeps `reupload` (it has a sale; its URL must never change).
+- `WAITING`: nothing; the Mac hasn't tried yet.
+- `PAUSED-ALL` (no allow line): a person paused everything; leave it.
+
+**`republish`** (`node tools/tpt.js republish-pending`, after reupload-pending, max 3 a run; never product 001): the Mac publishes
+the item again as a NEW listing (the proven new-product form), saves the old `uploaded` as `uploaded-previous`, writes the new
+`uploaded` and `republished` (JSON: old_url, new_url, old_deactivated), then opens the OLD listing's edit page, checks its title is
+exactly the item's title (refuses otherwise), unticks "Make Listing Active", saves and checks. It never deletes a listing.
+`republish-failed` with `"stage": "publish"`: nothing new went live (or, if the note says MAY exist, check My Products); write a
+new `republish` text after fixing. With `"stage": "deactivate"`: **two listings are live**; the Mac retries only the
+deactivation every run and never publishes a third copy. If it still fails after 3 tries (`tries` in the file), push the owner
+once: "On TpT, open <old_url>, Edit, untick Make Listing Active, Submit." `UPLOADER-STATUS.json` `republish.two_listings_live` lists
+such items. The old listing's reviews and sales stay on the old (inactive) page.
 
 ## Rotation (keeps usage low)
 The dispatcher re-reads its whole conversation on every step. On the first shift of each month, after the builds, it starts

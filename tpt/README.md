@@ -27,3 +27,13 @@ come from the code blocks under `## 1.` and `## 2.` in `UPLOAD.md`. Everything e
 | `formats`, `custom_categories` | no | exact option text; up to 3 formats |
 | `pages`, `answer_key`, `teaching_duration` | no | `58`, `"Included"` (option text) |
 | `files` | `product` required | slots `product`, `preview`, `thumb1` (main cover) … `thumb4`; paths relative to the item folder |
+
+## Replacing files, the canary and `republish`
+
+- `reupload` (cloud writes it) -> the Mac replaces the files of the live listing -> `reuploaded` or `reupload-failed`
+  (+ `tpt/_publish/NNN-slug-reupload-<slot>-diag.json`). `tpt/REUPLOAD-PAUSED` pauses this; `allow: 043` in it lets only 043 run.
+  `python3 tools/tpt-reupload-canary.py status | release | convert` (rules in TPT-FACTORY.md "The Mac uploader").
+- `republish` (cloud writes it; never for 001) -> the Mac publishes a NEW listing, keeps the old marker as `uploaded-previous`,
+  writes `uploaded` + `republished`, then deactivates the old listing (title must match; never deleted). `republish-failed`
+  `stage: deactivate` = two listings live, retried every run.
+- Offline tests: `node tools/test-tpt-editupload.js`, `node tools/test-tpt-republish.js`, `node tools/test-tpt-canary.js`.
