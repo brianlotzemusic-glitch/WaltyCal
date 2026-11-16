@@ -1,26 +1,26 @@
 {
-  "ran_at": "2026-11-15T22:45:05.925Z",
+  "ran_at": "2026-11-16T01:30:05.983Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-15T22:45:06.080Z",
+    "ran_at": "2026-11-16T01:30:06.132Z",
     "replaced": [],
     "failed": [
       {
-        "item": "042-winter-music-escape-room",
-        "error": "reupload stopped at \"replace product (winter-music-escape-room.pdf)\": could not remove the existing product file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner); card text: Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History Screenshot: tpt/_publish/042-winter-music-escape-room-reupload-failed.png. Not retryin"
+        "item": "043-note-naming-speed-drills",
+        "error": "reupload stopped at \"replace product (note-naming-speed-drills.pdf)\": could not remove the existing product file before uploading: the file card has no X-like control (no labelled remove/close, no x glyph, no icon in its top-right corner); card text: Last updated: Nov 15, 2026 at 7:22 AM EST See Revision History Screenshot: tpt/_publish/043-note-naming-speed-drills-reupload-failed.png. Not retryin"
       }
     ],
     "waiting": [
-      "042-winter-music-escape-room",
       "043-note-naming-speed-drills"
     ],
     "skipped": [
       "007-music-sub-plans-k5: failed-hold",
-      "027-thanksgiving-color-by-note: failed-hold"
+      "027-thanksgiving-color-by-note: failed-hold",
+      "042-winter-music-escape-room: failed-hold"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
