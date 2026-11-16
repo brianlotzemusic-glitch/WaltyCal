@@ -20,3 +20,8 @@ Required fixes: none.
 ## Fix round 16 Nov 2026 (HELD, not released)
 Two fix rounds spent. Fixed: frequency caption and arrows explained, cover waveform now Hush/Build/Peak/Fade, credits line, "3 or 4 classes", step numbering, rubric Layers/Automation/Storm Arc cells differentiated, whiteout-hiss and shimmer cards consistent with the worked example, ice-crackle loop wording, brief page lines, spacing on p13/p19/p27, deck slide 8 caption and slide 13 line, deck order Scene-Arc-Layers-Automate-Space.
 Still listed by the last inspector (real): deck slide 8 bottom-left bullet "High-pass every layer; the rumble gets a very low one" wraps into the footer rule (also preview-2 tile); p6 "slide 7 shows layers entering and leaving" should cite slide 10; p5 three-class merge advice overloads Class 3; p6 "every layer except the rumble" contradicts the rumble high-pass (25 Hz) elsewhere. Nits: worked example has 4 lanes but rubric 5 needs five; p13 intro says cards 5-8 appear at the peak but chimes do not.
+
+## Fix round 16 Nov 2026 (final, new inspector brief)
+Further fixes after the earlier rounds: deck slide 8 bullet shortened (no longer runs into the footer rule); teacher-notes slide reference now slide 10; three-class advice made realistic (two automation lanes, short presentations, reflection as homework); rumble high-pass wording made consistent (every layer, rumble very low). Fresh inspector with the BLOCKING/NOTES brief (cover, previews, 28 pages, 15 slides, 4 preview pages): no BLOCKING item. NOTES: three-class box relaxes the four-parameter requirement; ice pan values 50-80 do not widen on the last swing; small chart text on slides 8 and 10; blank band on slide 9.
+
+**Verdict: APPROVED**
