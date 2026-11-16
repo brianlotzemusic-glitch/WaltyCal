@@ -122,7 +122,10 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+LIVE = True   # already on TpT; its release/uploaded markers are the uploader's
+RUBRIC_ROW_PITCH = 0.86
+RUBRIC_LINE_Y = 6.3
 
 TN_REINFORCES = ("Teaches how a style is built from small choices. Students learn that a slow tempo, swing, softened and crushed sounds "
                  "and a layer of noise, not only the notes, make a beat sound lo-fi, and they practice entering notes and chords in Logic "
@@ -528,8 +531,8 @@ def swing_body(W=1100, name="swing pic", bpm=EX_BPM):
             out.append(f'<line x1="{gut + s * cw:.1f}" y1="{y + 4}" x2="{gut + s * cw:.1f}" y2="{y + rh - 4}" stroke="#7a7a7a" stroke-width="1.4"/>')
         for s in range(16):
             off = swing_offset(ratio) if s % 2 == 1 else 0
-            x = gut + (s + off) * cw + cw / 2
-            out.append(f'<circle cx="{x:.1f}" cy="{cy:.1f}" r="11" fill="{ACCENT if s % 2 == 1 else "#000"}"/>')
+            x = gut + (s + off + 0.3) * cw   # 0.3 step in: the latest swung dot stays inside its beat, clear of the bar line
+            out.append(f'<circle cx="{x:.1f}" cy="{cy:.1f}" r="9" fill="{ACCENT if s % 2 == 1 else "#000"}"/>')
     out.append(f'<rect x="{gut}" y="{head + 4}" width="{16 * cw:.1f}" height="{3 * rh - 8}" fill="none" stroke="#000" stroke-width="2.4"/>')
     ms1, ms2 = swing_ms(SWING[1][1], bpm), swing_ms(SWING[2][1], bpm)
     cap = f"At {bpm} BPM a 16th note lasts {60000 / bpm / 4:g} ms: light swing is {ms1:g} ms late, triplet swing {ms2:g} ms late"

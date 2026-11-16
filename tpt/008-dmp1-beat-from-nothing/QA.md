@@ -49,3 +49,7 @@ QA reviewed this item on 11 Oct 2026, independently of the Designer. I read the 
 4. Optional: slide 8's note says "Day 1 close or Day 2 launch" while the Day 2 plan teaches the grid at launch; one sentence in the Day 2 plan pointing to slide 8 would tie them together. Restore the owner's layering-rules line if wanted.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Audit P3 (blank band on previews) partly addressed in gen.py: preview-1 thumbnails enlarged (290 to 306 px) and re-spaced; preview-3 is already a full two-row grid. Remaining gradient space below the three pages on preview-1 would need a redesign. Checked by the fixer only (layout nudge, no content change); no separate inspector round.
+**Verdict: APPROVED**

@@ -123,7 +123,10 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+LIVE = True   # already on TpT; its release/uploaded markers are the uploader's
+RUBRIC_ROW_PITCH = 0.86
+RUBRIC_LINE_Y = 6.3
 
 TN_REINFORCES = ("Teaches how a style is built from small choices. Students learn that a half-time snare, an 808, rolling hi-hats and a "
                  "flipped melody, not only the notes, make a beat sound like trap, and they practice entering notes and chords in Logic "
@@ -576,7 +579,7 @@ def hats_body(W=1100, name="hats pic", bpm=EX_BPM):
         total = 4 * per
         for k in range(total):
             x = gut + (k / per) * cw + cw / per / 2
-            rad = 11 if r < 2 else 4 + 7 * k / (total - 1)
+            rad = (11, 9.5)[r] if r < 2 else 4 + 5 * k / (total - 1)   # last dots stay clear of the frame
             out.append(f'<circle cx="{x:.1f}" cy="{cy:.1f}" r="{rad:.1f}" fill="{"#000" if k % per == 0 else ACCENT}"/>')
     out.append(f'<rect x="{gut}" y="{head + 4}" width="{4 * cw:.1f}" height="{3 * rh - 8}" fill="none" stroke="#000" stroke-width="2.4"/>')
     g = [hat_gap_ms(per, bpm) for _, _, per in HATS]

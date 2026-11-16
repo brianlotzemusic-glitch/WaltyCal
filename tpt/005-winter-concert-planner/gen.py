@@ -152,7 +152,7 @@ body { font-family: 'Source Sans 3', sans-serif; -webkit-print-color-adjust: exa
 .phead:before, .phead:after { content: ""; flex: 1; border-top: 1.4pt solid #000; }
 .phead span { font-family: 'Oswald'; font-weight: 700; font-size: 16pt; letter-spacing: .28em; text-transform: uppercase; }
 .cut { border-top: 1pt dashed #666; position: relative; margin: 0 -0.2in; }
-.cut span { position: absolute; left: 50%; top: -7pt; transform: translateX(-50%); background: #fff; padding: 0 6pt; font-size: 8pt;
+.cut span { position: absolute; z-index: 5; white-space: nowrap; left: 50%; top: -7pt; transform: translateX(-50%); background: #fff; padding: 0 6pt; font-size: 8pt;
             color: #666; font-family: 'Oswald'; font-weight: 300; letter-spacing: .1em; text-transform: uppercase; }
 .letter p { font-size: 12pt; line-height: 1.5; margin: 0 0 13pt; }
 .cover { align-items: center; justify-content: space-between; padding: 0.55in 0.6in 0.5in; }
@@ -675,7 +675,7 @@ def thanks_page(k, n, watermark=False):
     vline = '<div style="border-left:1pt dashed #666"></div>'
     inner = (f'<div style="flex:1;display:flex;flex-direction:column">'
              f'<div style="flex:1;display:flex">{cards[0]}{vline}{cards[1]}</div>'
-             f'<div class="cut"><span>cut on the dashed lines</span></div>'
+             f'<div class="cut"><span style="left:25%">cut on the dashed lines</span></div>'
              f'<div style="flex:1;display:flex">{cards[2]}{vline}{cards[3]}</div></div>')
     return handout(inner, n, watermark)
 
@@ -755,7 +755,7 @@ def hero_svg(width_css):
     prog = f'<g transform="translate(196 22) rotate(-4 110 160)">{mock_program()}</g>'
     clip = f'<g transform="translate(410 70) rotate(6 75 107)">{mock_clipboard()}</g>'
     deco = (art("stand", 36, 96, 150, 2.6, fill=A) + art("snowflake", 26, 8, 80, 2.4, line=A, rotate=8)
-            + art("snowflake", 140, 22, 40, 1.8, rotate=-10) + art("snowflake", 494, 4, 58, 2.0, rotate=12)
+            + art("snowflake", 140, 22, 40, 1.8, rotate=-10) + art("snowflake", 528, 0, 48, 2.0, rotate=12)
             + art("mug", 14, 270, 78, 2.2) + art("drum", 120, 268, 80, 2.2, fill=A)
             + art("mitten", 520, 282, 72, 2.2, fill=A, rotate=14) + art("snowflake", 448, 300, 44, 1.8, line=A))
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="{width_css}" style="display:block">'
@@ -844,10 +844,10 @@ def preview_square_1(img):
 
 def preview_square_2(a, b):
     pair = "".join(
-        f'<div style="position:absolute;left:{x}px;top:{y}px;width:520px"><div class="shot"><img src="{src}">'
-        f'<div class="swm" style="font-size:110px">PREVIEW</div></div>'
+        f'<div style="position:absolute;left:{x}px;top:{y}px;width:440px"><div class="shot"><img src="{src}">'
+        f'<div class="swm" style="font-size:90px">PREVIEW</div></div>'
         f'<div class="lbl" style="position:absolute;{side}:-2px;top:-44px;margin:0">{lab}</div></div>'
-        for src, lab, x, y, side in ((a, "Parent letter", 56, 250, "left"), (b, "Thank-you notes", 424, 330, "right")))
+        for src, lab, x, y, side in ((a, "Parent letter", 40, 270, "left"), (b, "Thank-you notes", 510, 270, "right")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:72px;margin-top:20px">Families &amp; helpers</div>'
