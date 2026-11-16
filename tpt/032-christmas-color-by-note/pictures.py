@@ -247,7 +247,7 @@ def tree():
     layers = [L(FRAME, "blue"), L(hill(440, 10), "white")]
     layers += [L(tier_shape(270, 232, 446, 214, 6, drop=0), "green"), L(tier_shape(270, 152, 330, 150, 5), "green"),
                L(tier_shape(270, 84, 232, 100, 4), "green")]
-    layers.append(L(star_shape(270, 52, 54, 27), "yellow"))
+    layers.append(L(star_shape(270, 62, 50, 25), "yellow"))
     for (x, y, c) in ((160, 400, "red"), (380, 400, "yellow"), (222, 286, "yellow"), (322, 286, "red"), (270, 200, "red")):
         layers.append(L(circle(x, y, 30), c))
     layers.append(L(rrect(30, 380, 116, 470, 6), "yellow"))
@@ -267,7 +267,7 @@ def stocking():
     heel = soft(unary_union([ellipse(222, 352, 60, 60)]).intersection(leg), 4)
     toe = soft(ellipse(450, 424, 66, 56, -35).intersection(leg), 4)
     layers += [L(heel, "yellow"), L(toe, "yellow")]
-    ink = [stem("M300 100 L300 80", 4)]
+    ink = []
     ink += flakes([(70, 170), (90, 300), (60, 420), (460, 170), (480, 300), (80, 470)], 3.4)
     return layers, ink
 
@@ -400,7 +400,7 @@ def santa_hat():
     layers.append(L(leaf_at(288, 382, 150, 72, -10), "green"))
     for x in (250, 300):
         layers.append(L(circle(x, 382, 33), "red"))
-    ink = [stem("M96 380 L96 392", 3)]
+    ink = []
     ink += flakes([(40, 220), (60, 300), (500, 100), (500, 300), (200, 50), (330, 40), (60, 470), (480, 470)])
     return layers, ink
 

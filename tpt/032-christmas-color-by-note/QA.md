@@ -13,3 +13,12 @@ Reviewed independently (reviewer did not build it).
 **Verdict: APPROVED**
 
 Required fixes: none.
+
+## Fix round 16 Nov 2026
+- Doubled "PREVIEW" watermark on preview-1/2 removed (second stamp drawn over page images already cut from the watermarked preview PDF).
+- Cover (Christmas Tree): star lowered and sized so its top tip no longer touches the frame line (the tree picture on every level and key follows).
+- Stray thick vertical ticks removed from the Stocking cuff (Level A preview-1, preview-3 picture 2) and the Holiday Hat brim (preview-3 picture 9).
+- P3: preview-1 page row moved down. Rebuilt; `gen.py --check` and `tools/tpt-validate.py` pass.
+- Fresh Sonnet inspector: OK (cover, all previews, stocking and hat worksheets; single watermark).
+
+**Verdict: APPROVED**
