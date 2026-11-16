@@ -606,7 +606,7 @@ def cover_page():
 # ------------------------------------------------------------------ guide, key, own, terms
 def guide_page(wm=False):
     rows = "".join(
-        f'<tr><td><b>{escape(t["title"])}</b></td><td>{escape(t["comp"])}, {t["year"]}</td><td>{t["meter"][0]}/{t["meter"][1]}</td>'
+        f'<tr><td><b>{escape(t["title"])}</b></td><td>{re.sub(r"&#x27;(.+?)&#x27;", "\u2018\\1\u2019", escape(t["comp"]))}, {t["year"]}</td><td>{t["meter"][0]}/{t["meter"][1]}</td>'
         f'<td>{" ".join(T.used_letters(t["bars"]))}</td><td>{t["tempo"][0]}–{t["tempo"][1]}</td>'
         f'<td>{tune_page_no(i, "easy")}–{tune_page_no(i, "parts")}</td></tr>' for i, t in enumerate(T.TUNES))
     wmh = '<div class="wm">PREVIEW</div>' if wm else ""
@@ -778,27 +778,28 @@ def cover_square():
 
 
 def preview_square_1(img):
-    labs = [("Color key", "tubes, bells, staff"), ("Easy version", "grades 1–2"), ("Full version", "grades 3–5")]
+    labs = [("Color key", "tubes, bells, staff"), ("Full version", "grades 3–5")]
+    srcs = [img[0], img[2]]
     shots = "".join(
-        f'<div style="width:290px"><div class="shot"><img src="{img[i]}"></div>'
-        f'<div class="lbl">{labs[i][0]}<span>{labs[i][1]}</span></div></div>' for i in range(3))
+        f'<div style="width:440px"><div class="shot"><img src="{srcs[i]}"></div>'
+        f'<div class="lbl">{labs[i][0]}<span>{labs[i][1]}</span></div></div>' for i in range(2))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:72px;margin-top:20px">Colors on the staff</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Colored notes and play-along blocks, side by side</div>'
-        f'<div style="display:flex;gap:34px;margin-top:40px">{shots}</div>'
+        f'<div style="display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;width:100%;padding-bottom:66px;box-sizing:border-box"><div style="display:flex;gap:40px">{shots}</div></div>'
         f'<div class="band">Easy · full · group parts</div></div>')
 
 
 def preview_square_2(img_a, img_b):
     pair = "".join(
-        f'<div style="width:400px"><div class="shot"><img src="{src}"></div><div class="lbl">{lab}</div></div>'
+        f'<div style="width:440px"><div class="shot"><img src="{src}"></div><div class="lbl">{lab}</div></div>'
         for src, lab in ((img_a, "Easy: first part of the carol"), (img_b, "Parts for 3 groups")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:70px;margin-top:20px">Split the class in 2–3 groups</div>'
         f'<div class="sub" style="font-size:27px;margin-top:8px">Each group plays only its own colors</div>'
-        f'<div style="display:flex;gap:50px;margin-top:34px">{pair}</div>'
+        f'<div style="display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;width:100%;padding-bottom:66px;box-sizing:border-box"><div style="display:flex;gap:40px">{pair}</div></div>'
         f'<div class="band">Every carol has a parts page</div></div>')
 
 
@@ -806,15 +807,15 @@ def preview_square_3():
     cards = []
     for ti, t in enumerate(T.TUNES):
         bars = t["bars"]
-        idxs = list(range(0, 2 if t["meter"][0] == 4 else (4 if t["meter"][0] == 2 else 3)))
-        svg = system_svg(t, "card", 0, idxs, bars, 6.0, 22, with_staff=False, ruler=False, px=410)
-        cards.append(f'<div class="card" style="width:430px"><div class="ct">{escape(t["title"])}</div>'
-                     f'<div class="cm">{escape(t["comp"])}, {t["year"]} · {t["meter"][0]}/{t["meter"][1]}</div>'
-                     f'<div style="width:410px">{svg}</div></div>')
+        idxs = list(range(0, 3 if t["meter"][0] == 4 else (6 if t["meter"][0] == 2 else 4)))
+        svg = system_svg(t, "card", 0, idxs, bars, 6.0, 24, with_staff=False, ruler=False, px=860)
+        cards.append(f'<div class="card" style="width:900px"><div class="ct">{escape(t["title"])}</div>'
+                     f'<div class="cm">{re.sub(r"&#x27;(.+?)&#x27;", "\u2018\\1\u2019", escape(t["comp"]))}, {t["year"]} · {t["meter"][0]}/{t["meter"][1]}</div>'
+                     f'<div style="width:860px">{svg}</div></div>')
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
-        f'<div class="hd" style="font-size:70px;margin-top:20px">5 carols, 15 pages</div>'
-        f'<div style="display:flex;flex-wrap:wrap;gap:16px 18px;width:900px;margin-top:26px;justify-content:center">{"".join(cards)}</div>'
+        f'<div class="hd" style="font-size:70px;margin-top:20px">5 carols, 20 pages</div>'
+        f'<div style="display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;width:100%;padding-bottom:66px;box-sizing:border-box"><div style="display:flex;flex-wrap:wrap;gap:12px;width:900px;justify-content:center">{"".join(cards)}</div></div>'
         f'<div class="band">Grades 1–5 <em>·</em> {TOTAL_PAGES} pages</div></div>')
 
 
