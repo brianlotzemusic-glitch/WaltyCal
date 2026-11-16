@@ -619,8 +619,10 @@ def t_(x, y, s, size, weight=700, family="Oswald", anchor="middle", fill="#000",
             f'fill="{fill}" {extra}>{escape(s)}</text>')
 
 
-def svgwrap(vw, vh, body, width="100%"):
-    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {vw} {vh}" width="{width}" style="display:block">{body}</svg>'
+def svgwrap(vw, vh, body, width="100%", pad=(0, 0)):
+    px, py = pad
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{-px} {-py} {vw + 2 * px} {vh + py}" width="{width}" '
+            f'style="display:block">{body}</svg>')
 
 
 # ---------------------------------------------------------------- drawings (original, code-drawn: black + accent only)
@@ -635,7 +637,7 @@ def _branch(out, rng, x, y, ang, ln, wd, depth):
         _branch(out, rng, x1, y1, ang + spread + rng.uniform(-0.08, 0.08), ln * rng.uniform(0.66, 0.8), max(wd * 0.66, 0.9), depth - 1)
 
 
-def woods_svg(vw=800, vh=420, width="100%", seed=11, trees=None, moon=(0.6, 0.34, 0.2)):
+def woods_svg(vw=800, vh=420, width="100%", seed=11, trees=None, moon=(0.6, 0.34, 0.2), pad=(0, 0)):
     """Hero art: bare trees under an orange moon; the ground line is a sound wave with fading delay echoes."""
     rng = random.Random(seed)
     base = vh - 58
@@ -663,7 +665,7 @@ def woods_svg(vw=800, vh=420, width="100%", seed=11, trees=None, moon=(0.6, 0.34
         pts = [f"{x0 + i / 160 * bw:.1f},{base - amp * math.exp(-3.2 * i / 160) * min(1, i / 160 * 14) * math.sin(2 * math.pi * 11 * i / 160):.1f}"
                for i in range(161)]
         out.append(f'<polyline points="{" ".join(pts)}" fill="none" stroke="{col}" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>')
-    return svgwrap(vw, vh, "".join(out), width)
+    return svgwrap(vw, vh, "".join(out), width, pad)
 
 
 def bus_svg(width="100%"):
@@ -970,12 +972,12 @@ def pacing_page(n, watermark=False):
              f'{IX["day12"]}–{IX["day56"]}.</p>'
              f'<table class="t"><tr><th style="width:14%">Day</th><th style="width:38%">Focus and goal</th><th style="width:30%">Minute blocks</th><th>Show / use</th></tr>{rows}</table>'
              f'{H2("Student pages by day")}<table class="t">'
-             f'<tr><td><b>Day 1</b></td><td>Day 1 post (p. {IX["post"]}), How to Bus (pp. {IX["bus1"]}–{IX["bus2"]})</td></tr>'
-             f'<tr><td><b>Day 2</b></td><td>How to Bus Part 2 (p. {IX["bus3"]}), Minor Key Map and reference card (optional, pp. {IX["keys"]}–{IX["keyref"]}), '
+             f'<tr><td style="white-space:nowrap"><b>Day 1</b></td><td>Day 1 post (p. {IX["post"]}), How to Bus (pp. {IX["bus1"]}–{IX["bus2"]})</td></tr>'
+             f'<tr><td style="white-space:nowrap"><b>Day 2</b></td><td>How to Bus Part 2 (p. {IX["bus3"]}), Minor Key Map and reference card (optional, pp. {IX["keys"]}–{IX["keyref"]}), '
              f'cue sheet (p. {IX["cue"]}), project sheet (pp. {IX["proj1"]}–{IX["proj3"]})</td></tr>'
-             f'<tr><td><b>Days 3–4</b></td><td>Project sheet steps 4–5, troubleshooting (p. {IX["bus4"]}), vocabulary (p. {IX["vocab"]})</td></tr>'
-             f'<tr><td><b>Day 5</b></td><td>Tips and reflection (p. {IX["proj4"]}), submission checklist (p. {IX["checklist"]})</td></tr>'
-             f'<tr><td><b>Day 6</b></td><td>Rubric for self-score and teacher score (p. {IX["rubric"]})</td></tr></table>')
+             f'<tr><td style="white-space:nowrap"><b>Days 3–4</b></td><td>Project sheet steps 4–5, troubleshooting (p. {IX["bus4"]}), vocabulary (p. {IX["vocab"]})</td></tr>'
+             f'<tr><td style="white-space:nowrap"><b>Day 5</b></td><td>Tips and reflection (p. {IX["proj4"]}), submission checklist (p. {IX["checklist"]})</td></tr>'
+             f'<tr><td style="white-space:nowrap"><b>Day 6</b></td><td>Rubric for self-score and teacher score (p. {IX["rubric"]})</td></tr></table>')
     return page("Pacing guide · 6 days (1 learning / 3 work / 2 finish + present)", "PACING", "Teacher", inner, n, watermark)
 
 
@@ -1597,7 +1599,7 @@ def sq(inner, band):
 
 
 def cover_square():
-    return sq(f'<div style="width:960px">{woods_svg()}</div>'
+    return sq(f'<div style="width:1000px">{woods_svg(pad=(230, 50))}</div>'
               f'<div><div class="hd" style="font-size:56px">Scoring to Picture in Logic Pro</div>'
               f'<div class="hd" style="font-size:150px;margin-top:6px">Spooky Tunes</div>'
               f'<div class="sub" style="font-size:30px;margin-top:12px">6-day unit · reverb &amp; delay buses · sound design · intro slides</div></div>',
@@ -1622,7 +1624,7 @@ def preview_square_2(slides):
                     for s in slides)
     return sq(f'<div><div class="hd" style="font-size:76px">Intro deck included</div>'
               f'<div class="sub" style="font-size:28px;margin-top:8px">{DECK_SLIDES} editable slides (.pptx + PDF) with speaker notes on every slide</div></div>'
-              f'<div style="display:grid;grid-template-columns:420px 420px;gap:26px 34px">{cells}</div>',
+              f'<div style="display:grid;grid-template-columns:350px 350px;gap:22px 34px">{cells}</div>',
               'Hook <em>·</em> listen <em>·</em> worked example <em>·</em> steps <em>·</em> rubric')
 
 
