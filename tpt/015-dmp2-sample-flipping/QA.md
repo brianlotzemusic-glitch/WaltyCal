@@ -12,3 +12,8 @@ Reviewed the diff of 3ea10fc and the full kit. Live files in uploaded/ and relea
 No required fixes.
 
 **Verdict: APPROVED**
+
+## Fix round 16 Nov 2026
+Audit P2 items: (1) preview-2 slide tiles now run slice, three modes, flip (slides 7, 8, 9) to match the footer bar; (2) cover art: beat numbers and chop times were ~10 px, so the hero waveform and flip rows are drawn with 1.5x labels and "THE FLIP" now has clear space under the ORIGINAL ORDER row; (3) deck "How it's scored" line is now "...average of your score and mine, out of 25" (no stray dot) and sits clear of the footer rule (RUBRIC_LINE_Y 6.3, row pitch 0.84). PDF, deck, zip and previews rebuilt; `gen.py --check` and tpt-validate pass.
+A fresh Sonnet visual inspector confirmed each fix and found nothing new beyond cosmetic remarks (decorative heading dot, thumbnail-size text).
+**Verdict: APPROVED**
