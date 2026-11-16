@@ -46,7 +46,8 @@ ZIP_DIR = "Found Sound - Hudson Beat"
 ZIP_DATE = (2026, 10, 18, 12, 0, 0)
 TYPE = "Open-Ended Project"
 PROJ_LINE = "Digital Music Production | <i>Open-Ended Project</i> | 7 class periods"
-DECK_STRAP = "Turn everyday sounds into instruments in Logic Pro"
+LIVE = True                 # already live on TpT (uploaded/release files belong to the Manager)
+DECK_STRAP = "Turn everyday sounds into instruments"
 BANNED_EXTRA = []
 
 # ================================================================ the owner's words
@@ -111,7 +112,9 @@ RUBRIC = [
 ]
 RUBRIC_TOTAL = 25
 RUBRIC_SHORT = [ds[4] for _, ds in RUBRIC]
-RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine · / 25"
+RUBRIC_SLIDE_LINE = "Scored 1–5 · final grade = average of your score and mine, out of 25"
+RUBRIC_LINE_Y = 6.4
+RUBRIC_ROW_PITCH = 0.86
 # ---- Teacher Notes
 TN_REINFORCES = ("Builds recording skills, Quick Sampler proficiency, and sound design thinking. Teaches students that music can come "
                  "from anywhere, not just preset libraries.")
