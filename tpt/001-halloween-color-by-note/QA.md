@@ -57,3 +57,7 @@ QA reviewed this on 4 Oct 2026, independently of the Designer. No item files wer
 1. Consider raising `B_SPACE` from 5.4 pt to about 6.5 pt where regions allow, so grade 2 readers find the B and C staffs easier. Re-run the placement check afterwards.
 2. Page 58 says extra licences are available "at a discount". Remove "at a discount" unless the owner sets a multi-licence discount on TpT.
 3. Owner: the description and page 58 say the keys were "checked by hand". Please flip through a few keys before upload so that claim stays true.
+
+## Fix round 16 Nov 2026
+Audit P2/P3 confirmed and fixed in pictures.py/gen.py: Spider legs shortened and body raised so all legs sit inside the frame, pumpkin shrunk clear of the legs; Cauldron stray rim dot removed; preview-3 title given more space above row 1. Fresh inspector: spider inside frame and clear of pumpkin, no stray dot, title spacing fine, nothing new from these changes.
+**Verdict: APPROVED**

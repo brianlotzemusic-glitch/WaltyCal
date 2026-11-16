@@ -1039,10 +1039,10 @@ def preview_square_1(img):
 
 def preview_square_2(a, b):
     pair = "".join(
-        f'<div style="position:absolute;left:{x}px;top:{y}px;width:470px"><div class="shot"><img src="{src}">'
-        f'<div class="swm" style="font-size:100px">PREVIEW</div></div>'
+        f'<div style="position:absolute;left:{x}px;top:{y}px;width:440px"><div class="shot"><img src="{src}">'
+        f'<div class="swm" style="font-size:90px">PREVIEW</div></div>'
         f'<div class="lbl" style="position:absolute;{side}:-2px;top:-44px;margin:0">{lab}</div></div>'
-        for src, lab, x, y, side in ((a, "Grades K–2", 50, 250, "left"), (b, "Grades 3–5", 476, 300, "right")))
+        for src, lab, x, y, side in ((a, "Grades K–2", 50, 270, "left"), (b, "Grades 3–5", 510, 270, "right")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:72px;margin-top:20px">Write a gratitude chant</div>'

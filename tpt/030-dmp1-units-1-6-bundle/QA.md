@@ -22,3 +22,7 @@ All six have an `uploaded` file with a TpT URL: 008 (12 Oct, confirmed by owner)
 
 ## Open owner questions (do not block)
 - Native TpT Bundle of Resources later (tools/tpt.js cannot drive it yet). Optional: logo file for the store line.
+
+## Fix round 16 Nov 2026
+Audit P2: preview-3 bottom-row thumbnails were cut off by the footer band with no captions; preview-1 bottom row lacked the "N days" line. Thumbnails in preview-1 and preview-3 are now smaller and re-flowed so every row, with its caption, sits clear of the band. Also re-captioned the Unit 6 page "Project sheet" (it is not the bus guide). A fresh Sonnet inspector confirmed the captions and the clearance in both previews and found no new layout defects; its remaining remarks (doubled PREVIEW stamp, unreadable thumbnail text, no answer-key page among the six samples) are the watermark family / existing design and are left alone.
+**Verdict: APPROVED**

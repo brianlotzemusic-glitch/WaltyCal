@@ -526,7 +526,7 @@ def preview_square_3(sheets):
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
         f'<div class="hd" style="font-size:60px;margin-top:12px">9 original pictures</div>'
-        f'<div style="position:relative;display:flex;flex-wrap:wrap;gap:8px 22px;width:800px;margin-top:12px;justify-content:center">{cells}'
+        f'<div style="position:relative;display:flex;flex-wrap:wrap;gap:8px 22px;width:800px;margin-top:30px;justify-content:center">{cells}'
         f'<div class="swm" style="font-size:150px">PREVIEW</div></div>'
         f'<div class="band">Kid-friendly <em>·</em> not scary <em>·</em> grades 1–5</div></div>')
 
