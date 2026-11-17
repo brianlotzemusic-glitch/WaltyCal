@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (40.15 kB) Last updated: Oct 20, 2026 at 6:47 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T17:15:59.052Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "royalty-free.zip",
+          "verdict": "old",
+          "after": "RoyaltyFreeinLogicProComposetoaCreativeBriefHighSchool.zip Last updated: Oct 20, 2026 at 6:47 PM EST See Revision History 1.01 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "royalty-free-PREVIEW.pdf",
+          "verdict": "old",
+          "after": "Preview demoRoyaltyFreeinLogicProComposetoaCreativeBriefHighSchool18023950.pdf (118.39 kB) Last updated: Oct 20, 2026 at 6:47 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (26.4 kB) Last updated: Oct 20, 2026 at 6:47 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (41.73 kB) Last updated: Oct 20, 2026 at 6:47 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (41.53 kB) Last updated: Oct 20, 2026 at 6:47 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (40.15 kB) Last updated: Oct 20, 2026 at 6:47 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/025-dmp2-royalty-free-reupload-recheck.png"
     }
   ],
   "files": [

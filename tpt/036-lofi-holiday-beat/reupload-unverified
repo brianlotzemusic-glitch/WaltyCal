@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (45.11 kB) Last updated: Nov 14, 2026 at 11:25 AM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T17:17:27.836Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "lofi-holiday-beat.zip",
+          "verdict": "old",
+          "after": "LoFiBeatinLogicProHolidayCarolProjectHighSchoolMusicTech.zip Last updated: Nov 14, 2026 at 10:25 AM EST See Revision History 1.21 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "lofi-holiday-beat-PREVIEW.pdf",
+          "verdict": "match",
+          "after": "Preview demoLoFiBeatinLogicProHolidayCarolProjectHighSchoolMusicTech18340317.pdf (88.9 kB) Last updated: Nov 14, 2026 at 10:25 AM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (31.04 kB) Last updated: Nov 14, 2026 at 11:25 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (42.2 kB) Last updated: Nov 14, 2026 at 11:25 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (42.17 kB) Last updated: Nov 14, 2026 at 11:25 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (45.11 kB) Last updated: Nov 14, 2026 at 11:25 AM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/036-lofi-holiday-beat-reupload-recheck.png"
     }
   ],
   "files": [

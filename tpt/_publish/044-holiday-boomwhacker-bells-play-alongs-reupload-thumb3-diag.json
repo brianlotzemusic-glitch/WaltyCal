@@ -1,0 +1,138 @@
+{
+  "slot": "thumb3",
+  "file": "preview-2.png",
+  "attempts": [
+    {
+      "attempt": 1,
+      "how": "setInputFiles",
+      "started": "2026-11-17T17:25:56.384Z",
+      "result": "no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty)",
+      "reset": "clicked div \"Cancel\""
+    },
+    {
+      "attempt": 2,
+      "how": "setInputFiles",
+      "started": "2026-11-17T17:28:21.976Z",
+      "result": "no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty)",
+      "reset": "clicked div \"Cancel\""
+    },
+    {
+      "attempt": 3,
+      "how": "TpT's Select-file button + file chooser",
+      "started": "2026-11-17T17:30:47.633Z",
+      "result": "could not set the file: page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"filechooser\""
+    }
+  ],
+  "widget": [
+    {
+      "when": "after remove",
+      "inputFound": true,
+      "inputVisible": false,
+      "boxFound": true,
+      "text": "Thumbnail (Optional) Select file or drag and drop Up to 4 MB",
+      "html": "<div id=\"upload-thumb3\" class=\"upload-fls-el flex-i-1\"> <label class=\"filling-wrap\" title=\"\" for=\"ItemDigitalThumb3\"> <div class=\"border\"></div> <div class=\"cancel-btn\">Cancel</div> <div class=\"delete-btn\"></div> <div class=\"filling\"> <div class=\"label\"> <div class=\"title\"> Thumbnail (Optional) </div> <div class=\"fileinfo\">Select file or drag and drop</div> <div class=\"filesize\">Up to 4 MB</div> <div class=\"progress-bar-wrap-percent-and-bar-preview\"> <div class=\"progress-bar-wrap-percent-and-bar-preview-wrap\"> <div class=\"progress-bar-wrap progress-bar-wrap-v3\"> <div class=\"progress-bar\" style=\"width: 0%;\"></div> </div> <div class=\"progress-bar-label\"></div> </div> </div> </div> <div class=\"last-updated\"> <div class=\"title\">Last updated:</div> <div class=\"datetime\">Nov 15, 2026 at 8:24 AM EST</div> </div> </div> </label> <div class=\"upload-error-message\"></div> <input type=\"file\" name=\"\" id=\"ItemDigitalThumb3\" style=\"\"> <input type=\"hidden\" name=\"data[ItemDigital][thumb3]\" class=\"upload-key\" id=\"ItemDigitalThumb3\" value=\"\" data-status=\"\" style=\"\"> <input type=\"hidden\" name=\"data[ItemsProperty][thumb3_uploaded]\" value=\"0\" class=\"file-uploaded\" id=\"ItemsPropertyThumb3Uploaded\" style=\"\"></div>",
+      "error": false,
+      "processing": false,
+      "percent": null
+    },
+    {
+      "when": "attempt 1 end",
+      "inputFound": true,
+      "inputVisible": false,
+      "boxFound": true,
+      "text": "Cancel Thumbnail (Optional) preview-2.png (372.46 kB)",
+      "html": "<div id=\"upload-thumb3\" class=\"upload-fls-el flex-i-1 uploading\"> <label class=\"filling-wrap\" title=\"\"> <div class=\"border\"></div> <div class=\"cancel-btn\">Cancel</div> <div class=\"delete-btn\"></div> <div class=\"filling\"> <div class=\"label\"> <div class=\"title\"> Thumbnail (Optional) </div> <div class=\"fileinfo\">preview-2.png</div> <div class=\"filesize\">(372.46 kB)</div> <div class=\"progress-bar-wrap-percent-and-bar-preview\"> <div class=\"progress-bar-wrap-percent-and-bar-preview-wrap\"> <div class=\"progress-bar-wrap progress-bar-wrap-v3\"> <div class=\"progress-bar\" style=\"width: 0%;\"></div> </div> <div class=\"progress-bar-label\"></div> </div> </div> </div> <div class=\"last-updated\"> <div class=\"title\">Last updated:</div> <div class=\"datetime\">Nov 15, 2026 at 8:24 AM EST</div> </div> </div> </label> <div class=\"upload-error-message\"></div> <input type=\"file\" name=\"\" id=\"ItemDigitalThumb3\" style=\"\" data-gtm-form-interact-field-id=\"5\"> <input type=\"hidden\" name=\"data[ItemDigital][thumb3]\" class=\"upload-key\" id=\"ItemDigitalThumb3\" value=\"\" data-status=\"uploading\" style=\"\"> <input type=\"hidden\" name=\"data[ItemsProperty][thumb3_uploaded]\" value=\"0\" class=\"file-uploaded\" id=\"ItemsPropertyThumb3Uploaded\" style=\"\"></div>",
+      "error": false,
+      "processing": false,
+      "percent": null,
+      "key": "data[ItemDigital][thumb3]=empty"
+    },
+    {
+      "when": "after reset 1",
+      "inputFound": true,
+      "inputVisible": false,
+      "boxFound": true,
+      "text": "",
+      "html": "<div id=\"upload-thumb3\" class=\"upload-fls-el flex-i-1 processing\"> <label class=\"filling-wrap\" title=\"\" for=\"ItemDigitalThumb3\"> <div class=\"border\"></div> <div class=\"cancel-btn\">Cancel</div> <div class=\"delete-btn\"></div> <div class=\"filling\"> <div class=\"label\"> <div class=\"title\"> Thumbnail (Optional) </div> <div class=\"fileinfo\">Select file or drag and drop</div> <div class=\"filesize\">Up to 4 MB</div> <div class=\"progress-bar-wrap-percent-and-bar-preview\"> <div class=\"progress-bar-wrap-percent-and-bar-preview-wrap\"> <div class=\"progress-bar-wrap progress-bar-wrap-v3\"> <div class=\"progress-bar\" style=\"width: 0%;\"></div> </div> <div class=\"progress-bar-label\"></div> </div> </div> </div> <div class=\"last-updated\"> <div class=\"title\">Last updated:</div> <div class=\"datetime\">Nov 15, 2026 at 8:24 AM EST</div> </div> </div> </label> <div class=\"upload-error-message\"></div> <input type=\"file\" name=\"\" id=\"ItemDigitalThumb3\" style=\"\" data-gtm-form-interact-field-id=\"5\"> <input type=\"hidden\" name=\"data[ItemDigital][thumb3]\" class=\"upload-key\" id=\"ItemDigitalThumb3\" value=\"\" data-status=\"\" style=\"\"> <input type=\"hidden\" name=\"data[ItemsProperty][thumb3_uploaded]\" value=\"0\" class=\"file-uploaded\" id=\"ItemsPropertyThumb3Uploaded\" style=\"\"></div>",
+      "error": false,
+      "processing": false,
+      "percent": null
+    },
+    {
+      "when": "attempt 2 end",
+      "inputFound": true,
+      "inputVisible": false,
+      "boxFound": true,
+      "text": "Cancel Thumbnail (Optional) preview-2.png (372.46 kB)",
+      "html": "<div id=\"upload-thumb3\" class=\"upload-fls-el flex-i-1 uploading\"> <label class=\"filling-wrap\" title=\"\"> <div class=\"border\"></div> <div class=\"cancel-btn\">Cancel</div> <div class=\"delete-btn\"></div> <div class=\"filling\"> <div class=\"label\"> <div class=\"title\"> Thumbnail (Optional) </div> <div class=\"fileinfo\">preview-2.png</div> <div class=\"filesize\">(372.46 kB)</div> <div class=\"progress-bar-wrap-percent-and-bar-preview\"> <div class=\"progress-bar-wrap-percent-and-bar-preview-wrap\"> <div class=\"progress-bar-wrap progress-bar-wrap-v3\"> <div class=\"progress-bar\" style=\"width: 0%;\"></div> </div> <div class=\"progress-bar-label\"></div> </div> </div> </div> <div class=\"last-updated\"> <div class=\"title\">Last updated:</div> <div class=\"datetime\">Nov 15, 2026 at 8:24 AM EST</div> </div> </div> </label> <div class=\"upload-error-message\"></div> <input type=\"file\" name=\"\" id=\"ItemDigitalThumb3\" style=\"\" data-gtm-form-interact-field-id=\"5\"> <input type=\"hidden\" name=\"data[ItemDigital][thumb3]\" class=\"upload-key\" id=\"ItemDigitalThumb3\" value=\"\" data-status=\"uploading\" style=\"\"> <input type=\"hidden\" name=\"data[ItemsProperty][thumb3_uploaded]\" value=\"0\" class=\"file-uploaded\" id=\"ItemsPropertyThumb3Uploaded\" style=\"\"></div>",
+      "error": false,
+      "processing": false,
+      "percent": null,
+      "key": "data[ItemDigital][thumb3]=empty"
+    },
+    {
+      "when": "after reset 2",
+      "inputFound": true,
+      "inputVisible": false,
+      "boxFound": true,
+      "text": "Thumbnail (Optional) Select file or drag and drop Up to 4 MB",
+      "html": "<div id=\"upload-thumb3\" class=\"upload-fls-el flex-i-1\"> <label class=\"filling-wrap\" title=\"\" for=\"ItemDigitalThumb3\"> <div class=\"border\"></div> <div class=\"cancel-btn\">Cancel</div> <div class=\"delete-btn\"></div> <div class=\"filling\"> <div class=\"label\"> <div class=\"title\"> Thumbnail (Optional) </div> <div class=\"fileinfo\">Select file or drag and drop</div> <div class=\"filesize\">Up to 4 MB</div> <div class=\"progress-bar-wrap-percent-and-bar-preview\"> <div class=\"progress-bar-wrap-percent-and-bar-preview-wrap\"> <div class=\"progress-bar-wrap progress-bar-wrap-v3\"> <div class=\"progress-bar\" style=\"width: 0%;\"></div> </div> <div class=\"progress-bar-label\"></div> </div> </div> </div> <div class=\"last-updated\"> <div class=\"title\">Last updated:</div> <div class=\"datetime\">Nov 15, 2026 at 8:24 AM EST</div> </div> </div> </label> <div class=\"upload-error-message\"></div> <input type=\"file\" name=\"\" id=\"ItemDigitalThumb3\" style=\"\" data-gtm-form-interact-field-id=\"5\"> <input type=\"hidden\" name=\"data[ItemDigital][thumb3]\" class=\"upload-key\" id=\"ItemDigitalThumb3\" value=\"\" data-status=\"\" style=\"\"> <input type=\"hidden\" name=\"data[ItemsProperty][thumb3_uploaded]\" value=\"0\" class=\"file-uploaded\" id=\"ItemsPropertyThumb3Uploaded\" style=\"\"></div>",
+      "error": false,
+      "processing": false,
+      "percent": null
+    },
+    {
+      "when": "attempt 3 set failed",
+      "inputFound": true,
+      "inputVisible": false,
+      "boxFound": true,
+      "text": "Thumbnail (Optional) Select file or drag and drop Up to 4 MB",
+      "html": "<div id=\"upload-thumb3\" class=\"upload-fls-el flex-i-1\"> <label class=\"filling-wrap\" title=\"\" for=\"ItemDigitalThumb3\"> <div class=\"border\"></div> <div class=\"cancel-btn\">Cancel</div> <div class=\"delete-btn\"></div> <div class=\"filling\"> <div class=\"label\"> <div class=\"title\"> Thumbnail (Optional) </div> <div class=\"fileinfo\">Select file or drag and drop</div> <div class=\"filesize\">Up to 4 MB</div> <div class=\"progress-bar-wrap-percent-and-bar-preview\"> <div class=\"progress-bar-wrap-percent-and-bar-preview-wrap\"> <div class=\"progress-bar-wrap progress-bar-wrap-v3\"> <div class=\"progress-bar\" style=\"width: 0%;\"></div> </div> <div class=\"progress-bar-label\"></div> </div> </div> </div> <div class=\"last-updated\"> <div class=\"title\">Last updated:</div> <div class=\"datetime\">Nov 15, 2026 at 8:24 AM EST</div> </div> </div> </label> <div class=\"upload-error-message\"></div> <input type=\"file\" name=\"\" id=\"ItemDigitalThumb3\" style=\"\" data-gtm-form-interact-field-id=\"5\"> <input type=\"hidden\" name=\"data[ItemDigital][thumb3]\" class=\"upload-key\" id=\"ItemDigitalThumb3\" value=\"\" data-status=\"\" style=\"\"> <input type=\"hidden\" name=\"data[ItemsProperty][thumb3_uploaded]\" value=\"0\" class=\"file-uploaded\" id=\"ItemsPropertyThumb3Uploaded\" style=\"\"></div>",
+      "error": false,
+      "processing": false,
+      "percent": null
+    }
+  ],
+  "remove": {
+    "ok": "#upload-thumb3 .delete-btn -> thumb3_uploaded is now \"0\""
+  },
+  "network": {
+    "requests": [
+      "+0.2s -> POST https://bat.bing.com/p/insights/c/f",
+      "+0.3s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+2.1s -> POST https://www.teacherspayteachers.com/uploads/upload_file body file_type=thumb3&file_name=preview-2.png&size=381403&lastModified=1794876473529&item_id=18352427&path=",
+      "+2.3s <- POST 200 https://www.teacherspayteachers.com/uploads/upload_file",
+      "+9.3s -> POST https://bat.bing.com/p/insights/c/f",
+      "+9.4s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+70.3s -> POST https://bat.bing.com/p/insights/c/f",
+      "+70.5s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+123.2s -> POST https://www.facebook.com/tr/",
+      "+123.2s <- POST 200 https://www.facebook.com/tr/",
+      "+131.4s -> POST https://bat.bing.com/p/insights/c/f",
+      "+131.4s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+147.7s -> POST https://www.teacherspayteachers.com/uploads/upload_file body file_type=thumb3&file_name=preview-2.png&size=381403&lastModified=1794876473529&item_id=18352427&path=",
+      "+147.9s <- POST 200 https://www.teacherspayteachers.com/uploads/upload_file",
+      "+148.1s -> POST https://s3.amazonaws.com/live.digital.upload/cf18-22795631-2026-11-17/thumbnail/a391e945b45117c74dde888f8e983f93_734645111.png?…",
+      "+148.3s <- POST 200 https://s3.amazonaws.com/live.digital.upload/cf18-22795631-2026-11-17/thumbnail/a391e945b45117c74dde888f8e983f93_734645111.png?…",
+      "+192.5s -> POST https://bat.bing.com/p/insights/c/f",
+      "+192.6s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+253.7s -> POST https://bat.bing.com/p/insights/c/f",
+      "+253.9s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+268.8s -> POST https://www.facebook.com/tr/",
+      "+268.9s <- POST 200 https://www.facebook.com/tr/",
+      "+269.6s -> DELETE https://s3.amazonaws.com/live.digital.upload/cf18-22795631-2026-11-17/thumbnail/a391e945b45117c74dde888f8e983f93_734645111.png?…",
+      "+269.7s <- DELETE 204 https://s3.amazonaws.com/live.digital.upload/cf18-22795631-2026-11-17/thumbnail/a391e945b45117c74dde888f8e983f93_734645111.png?…",
+      "+282.9s -> POST https://bat.bing.com/p/insights/c/f",
+      "+282.9s <- POST 204 https://bat.bing.com/p/insights/c/f"
+    ],
+    "failed": [],
+    "bodies": [
+      "+2.3s POST 200 https://www.teacherspayteachers.com/uploads/upload_file => {\"key\":\"v3.9JZ++fudAFLdMXSU9vxkUaNve7tpFvZXEOBQWMxUqT1+7MC1sP+dIKmpZ2S3Fxwpm6fIQiNfvIP0xglkSPRdtK5Fy786XOpOoesIy+PLgQYeNgmfEK6actch\\/giYnCDvKFvPG\\/ziHdRS0NaMycN8aa1pK68AI89MKuFfKDuZbxEXzPeIlUicvctNudLf0XYQWwDYEuZR9E1Zcz1XMToiVuWkiuQozjMnkEdCnnRAG8gKufSre4V7BtK2HpkhDw59+ffeJ9BIkLjSIXkOKuxVYgWhGHgaXKWi3jd7bDxSoIsKJeYbof1BjvXnD1otsXITf\\/IjVKMMP3VqLYRny1JvVi1in9FwfkykodXBGiyAEa6qVdx5IGM1QhOHNYsDoEnAkoErwldBOZCDP\\/g6fIv3B8cIv1CFy6uBpHjp86QgzbYRAgONLlOc\",\"bucket\":\"live.digital.upload\",\"path\":\"cf18-22795631-2026-11-17\\/thumbnail\\/f9a64aa78dd9ff02a72b783926174cfc_742894137.png\"}",
+      "+147.9s POST 200 https://www.teacherspayteachers.com/uploads/upload_file => {\"key\":\"v3.SGcxkzlr8CugrDTSrUxvVmmYe8d45vdGhlPjcD6ucLn0fRQf3IHEShxTH3jvUhmeUydgff98Y+oJMUy4aMTELkJpJbIihoKLbYUMwLfqefI0XwcFO7iW6f3TsxOSuGIzDYToC3J3pwk\\/f6iRLOob8jCm1Y\\/NMW4ryiaCUDRLosOW6ylmbSPMOV9xEC8TDlubwkoQTdPbCTXRfNiYzelNHSzQbovaloR7HaasJJNbbE42WUGCTKRNCnZgG3yOb50efCa6XzG4ENazPMpGCJSUXTVr6oD86B6Z\\/j6rLW8+AvQDh6AWcAsClyz9IfD0O+Q3AT40inYYwrzYS5Ktjh3BGspFoxmLkPpT8C+mg747UdteScZBi7Sw0PuD5ClNGXOnOvAeH5jWhsa6rmFzyYmVoOlZrnXSH29CpbLMTtOC5T4WIcInGomM\",\"bucket\":\"live.digital.upload\",\"path\":\"cf18-22795631-2026-11-17\\/thumbnail\\/a391e945b45117c74dde888f8e983f93_734645111.png\"}"
+    ],
+    "console": [
+      "+2.4s error: Failed to load resource: the server responded with a status of 502 ()",
+      "+148.2s pageerror: User aborted the upload"
+    ]
+  }
+}

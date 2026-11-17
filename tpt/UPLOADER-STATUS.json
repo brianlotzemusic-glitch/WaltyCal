@@ -1,19 +1,40 @@
 {
-  "ran_at": "2026-11-17T14:45:06.260Z",
+  "ran_at": "2026-11-17T17:15:09.157Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T14:45:06.414Z",
+    "ran_at": "2026-11-17T17:15:09.306Z",
     "replaced": [],
-    "failed": [],
+    "failed": [
+      {
+        "item": "020-dmp2-found-sound",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "021-dmp2-free-play",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "022-dmp2-genre-exploration",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "023-dmp2-infinite-horizon",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "024-dmp2-pattern-prodigy",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "044-holiday-boomwhacker-bells-play-alongs",
+        "error": "reupload stopped at \"replace thumb3 (preview-2.png)\": TpT did not accept preview-2.png after 3 tries (#1 setInputFiles: no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty) | #2 setInputFiles: no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty) | #3 TpT's Select-file button + file chooser: could not set the file: page.wai"
+      }
+    ],
     "waiting": [
-      "037-band-rhythm-counting-worksheets",
-      "039-winter-color-by-music-symbol",
-      "040-trap-nutcracker-logic",
-      "042-winter-music-escape-room",
       "044-holiday-boomwhacker-bells-play-alongs"
     ],
     "skipped": [
@@ -40,21 +61,22 @@
       "027-thanksgiving-color-by-note: unverified",
       "028-free-color-by-note-sampler: unverified",
       "029-winter-color-by-note: unverified",
-      "030-dmp1-units-1-6-bundle: unverified"
+      "030-dmp1-units-1-6-bundle: unverified",
+      "031-carol-flip-logic: unverified",
+      "032-christmas-color-by-note: unverified",
+      "033-thanksgiving-music-sub-plan: unverified",
+      "034-nutcracker-listening-unit: unverified",
+      "035-hanukkah-color-by-note: unverified",
+      "036-lofi-holiday-beat: unverified"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": true,
+    "ok": false,
     "canary": [
       "043"
     ],
     "unverified": [
-      "020-dmp2-found-sound",
-      "021-dmp2-free-play",
-      "022-dmp2-genre-exploration",
-      "023-dmp2-infinite-horizon",
-      "024-dmp2-pattern-prodigy",
       "025-dmp2-royalty-free",
       "026-dmp2-session-players-studio",
       "027-thanksgiving-color-by-note",
@@ -66,7 +88,11 @@
       "033-thanksgiving-music-sub-plan",
       "034-nutcracker-listening-unit",
       "035-hanukkah-color-by-note",
-      "036-lofi-holiday-beat"
+      "036-lofi-holiday-beat",
+      "037-band-rhythm-counting-worksheets",
+      "039-winter-color-by-music-symbol",
+      "040-trap-nutcracker-logic",
+      "042-winter-music-escape-room"
     ]
   },
   "ok": true

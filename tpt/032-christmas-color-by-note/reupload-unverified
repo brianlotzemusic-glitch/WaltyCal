@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (55.99 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T17:16:55.539Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "christmas-color-by-note.pdf",
+          "verdict": "match",
+          "after": "ColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr26.pdf Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History 1.76 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "christmas-color-by-note-PREVIEW.pdf",
+          "verdict": "match",
+          "after": "Preview demoColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr2618314772.pdf (190.79 kB) Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (27.8 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (33.23 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (39.71 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (55.99 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/032-christmas-color-by-note-reupload-recheck.png"
     }
   ],
   "files": [

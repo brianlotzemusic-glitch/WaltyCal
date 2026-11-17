@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (42.54 kB) Last updated: Nov 12, 2026 at 4:15 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T17:16:39.103Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "dmp1-units-1-6-bundle.zip",
+          "verdict": "old",
+          "after": "DigitalMusicProductionBundleLogicProUnits16HighSchoolMusicTech.zip Last updated: Nov 12, 2026 at 3:15 PM EST See Revision History 6.26 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "dmp1-units-1-6-bundle-PREVIEW.pdf",
+          "verdict": "old",
+          "after": "Preview demoDigitalMusicProductionBundleLogicProUnits16HighSchoolMusicTech18315428.pdf (169.05 kB) Last updated: Nov 12, 2026 at 3:15 PM EST See Revision Histor"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (32.18 kB) Last updated: Nov 12, 2026 at 4:15 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (45.45 kB) Last updated: Nov 12, 2026 at 4:15 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (30.06 kB) Last updated: Nov 12, 2026 at 4:15 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (42.54 kB) Last updated: Nov 12, 2026 at 4:15 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/030-dmp1-units-1-6-bundle-reupload-recheck.png"
     }
   ],
   "files": [

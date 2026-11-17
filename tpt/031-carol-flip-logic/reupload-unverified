@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (43.65 kB) Last updated: Nov 12, 2026 at 3:37 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T17:16:47.021Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "carol-flip.zip",
+          "verdict": "match",
+          "after": "HolidayRemixinLogicProCarolFlipProjectHighSchoolMusicTech.zip Last updated: Nov 12, 2026 at 2:37 PM EST See Revision History 1.09 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "carol-flip-PREVIEW.pdf",
+          "verdict": "match",
+          "after": "Preview demoHolidayRemixinLogicProCarolFlipProjectHighSchoolMusicTech18314750.pdf (73.6 kB) Last updated: Nov 12, 2026 at 2:37 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (26.23 kB) Last updated: Nov 12, 2026 at 3:37 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (41.31 kB) Last updated: Nov 12, 2026 at 3:37 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (40.6 kB) Last updated: Nov 12, 2026 at 3:37 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (43.65 kB) Last updated: Nov 12, 2026 at 3:37 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/031-carol-flip-logic-reupload-recheck.png"
     }
   ],
   "files": [

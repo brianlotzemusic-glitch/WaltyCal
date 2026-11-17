@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (36.44 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T17:17:11.572Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "nutcracker-listening-unit.pdf",
+          "verdict": "match",
+          "after": "NutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey.pdf Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History 447.06 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "nutcracker-listening-unit-PREVIEW.pdf",
+          "verdict": "match",
+          "after": "Preview demoNutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey18340304.pdf (88.5 kB) Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (21.18 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (31.06 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (37.29 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (36.44 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/034-nutcracker-listening-unit-reupload-recheck.png"
     }
   ],
   "files": [

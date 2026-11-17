@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (27.34 kB) Last updated: Oct 23, 2026 at 10:06 AM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T17:16:22.639Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "free-color-by-note-sampler.pdf",
+          "verdict": "old",
+          "after": "FREEColorbyNoteSamplerRhythmTrebleBassClefMusicWorksheets.pdf Last updated: Oct 23, 2026 at 10:06 AM EST See Revision History 198.89 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "free-color-by-note-sampler-PREVIEW.pdf",
+          "verdict": "old",
+          "after": "Cancel Preview Select file or drag and drop Drop files here Up to 30 MB Last updated: See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (28.47 kB) Last updated: Oct 23, 2026 at 10:06 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (33.53 kB) Last updated: Oct 23, 2026 at 10:06 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (34.75 kB) Last updated: Oct 23, 2026 at 10:06 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (27.34 kB) Last updated: Oct 23, 2026 at 10:06 AM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/028-free-color-by-note-sampler-reupload-recheck.png"
     }
   ],
   "files": [

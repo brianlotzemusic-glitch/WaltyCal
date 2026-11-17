@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (36.04 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T17:17:03.772Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "thanksgiving-music-sub-plan.pdf",
+          "verdict": "match",
+          "after": "FallMusicSubPlanK53NoPrepLessonsRhythmReadingLyricWriting.pdf Last updated: Nov 12, 2026 at 2:40 PM EST See Revision History 283.44 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "thanksgiving-music-sub-plan-PREVIEW.pdf",
+          "verdict": "match",
+          "after": "Preview demoFallMusicSubPlanK53NoPrepLessonsRhythmReadingLyricWriting18314799.pdf (102.7 kB) Last updated: Nov 12, 2026 at 2:39 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (24.91 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (32.86 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (35.92 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (36.04 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/033-thanksgiving-music-sub-plan-reupload-recheck.png"
     }
   ],
   "files": [
