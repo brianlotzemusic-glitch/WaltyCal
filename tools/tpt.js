@@ -1155,6 +1155,12 @@ function parseCard(text) {
   }
   return { name: name || null, sizeKb, updated, text: t.trim().slice(0, 200) };
 }
+// TpT already holds this product/preview PDF: its card shows exactly the file's size (kB, 2 decimals). Never for thumbnails. Pure.
+function sameFileOnTpt(slot, card, bytes) {
+  if (!/^(product|preview)$/.test(slot)) return false;
+  const c = parseCard(card);
+  return c.sizeKb !== null && Math.abs(c.sizeKb - bytes / 1024) <= 0.006;
+}
 // "match" (the new file is on the card) | "old" (still the old file) | "unknown". Pure.
 function cardVerdict(oldCard, newCard, file, slot) {
   const o = parseCard(oldCard), n = parseCard(newCard), wantKb = file.bytes / 1024;
@@ -1382,7 +1388,9 @@ async function reupload(item, dryRun) {
     // 16 Nov 2026 (043 canary, 19:40Z): product and preview were replaced, then thumb1 failed with "no X-like control". The edit form
     // opens with "Upload thumbnails later" selected, which HIDES the four thumbnail boxes (#upload-thumb1..4: cover.png card with a
     // .delete-btn and the file input are in the DOM but invisible). publish() ticks "Upload thumbnails now" before its thumbnails; do the same.
-    if (files.some((f) => /^thumb/.test(f.slot))) {
+    // Ticks "Upload thumbnails now" (16 Nov: the edit form opens with "Upload thumbnails later", which HIDES the thumbnail boxes).
+    const thumbsNow = async () => {
+      if (!files.some((f) => /^thumb/.test(f.slot))) return;
       step = "choose 'Upload thumbnails now'";
       const now = page.locator(F.upload_thumbnails_now);
       if (!(await now.count())) await fail(page, step, `no "Upload thumbnails now" option (${F.upload_thumbnails_now}) on the edit page`);
@@ -1392,17 +1400,36 @@ async function reupload(item, dryRun) {
         .evaluate((el) => { const box = el.closest('[id^="upload-thumb"]') || el.parentElement; const r = box.getBoundingClientRect(); return r.width > 0 && r.height > 0; }).catch(() => false);
       console.log(`thumbnails: ticked "Upload thumbnails now"; thumbnail boxes ${shown ? "visible" : "STILL HIDDEN"}`);
       if (!shown) await snap(page, shots, `${slug}-reupload-thumbs-hidden-failed`).catch(() => {});
-    }
-
+    };
+    await thumbsNow();
     const oldCards = await readCards(page, F, files.map((f) => f.slot)); // compared with the cards after the save
+    // 17 Nov 2026: a product/preview PDF whose card on TpT already shows exactly the new file's size (TpT shows kB with 2 decimals,
+    // i.e. to ~10 bytes) is the same file: it is not uploaded again (e.g. items where only the thumbnails changed). Thumbnails are
+    // never skipped: TpT shows them at a converted size.
+    const skipped = files.filter((f) => sameFileOnTpt(f.slot, oldCards[f.slot], f.bytes));
+    for (const f of skipped) console.log(`${f.slot}: TpT already has ${f.file} (${(f.bytes / 1024).toFixed(2)} kB, same size): not uploading it again`);
+    const toUpload = files.filter((f) => !skipped.includes(f));
     const keys = {};
-    for (const f of files) {
-      step = `replace ${f.slot} (${f.file})`;
-      const spec = editSel(F, f.slot);
-      const up = await uploadEditSlot(page, { slot: f.slot, spec, filePath: f.path, slug, shots }).catch((e) => ({ error: "unexpected error in the upload step: " + e.message.split("\n")[0] }));
-      if (up.error) await fail(page, step, up.error, up.diagnostics);
-      const got = up;
-      keys[f.slot] = got.key;
+    // 17 Nov 2026 (044): a thumbnail upload can hang for good (TpT's S3 answered 502; the widget sat in "Cancel ..." with no key, and its
+    // Cancel left a stale upload that aborted the next try: "User aborted the upload"). Nothing is saved until Submit, so on a slot that
+    // fails, the edit page is loaded FRESH and every file is done again, once.
+    for (let round = 1; round <= 2; round++) {
+      let failed = null;
+      for (const f of toUpload) {
+        step = `replace ${f.slot} (${f.file})`;
+        const spec = editSel(F, f.slot);
+        const up = await uploadEditSlot(page, { slot: f.slot, spec, filePath: f.path, slug, shots }).catch((e) => ({ error: "unexpected error in the upload step: " + e.message.split("\n")[0] }));
+        if (up.error) { failed = { step, up }; break; }
+        keys[f.slot] = up.key;
+      }
+      if (!failed) break;
+      if (round === 2) await fail(page, failed.step, `${failed.up.error} (second try, on a freshly loaded edit page)`, failed.up.diagnostics);
+      console.log(`${failed.step}: ${failed.up.error.slice(0, 200)}; loading the edit page fresh (nothing was saved) and doing every file again`);
+      await snap(page, shots, `${slug}-reupload-round1-failed`).catch(() => {});
+      await page.goto(editUrl, { waitUntil: "domcontentloaded" });
+      await page.locator(F.title).waitFor({ state: "visible", timeout: 30000 }).catch(() => {});
+      await page.waitForTimeout(3000);
+      await thumbsNow();
     }
 
     if (fixPrice) {
@@ -1445,7 +1472,7 @@ async function reupload(item, dryRun) {
       if (taxErr) { await snap(page, shots, `${slug}-fix-dropdown`).catch(() => {}); await fail(page, step, taxErr); }
       if (await freeIsOn(page, F.free)) await fail(page, step, '"Free Resource" got ticked again after setting the price');
     }
-    if (fix.includes("preview") && !keys.preview) await fail(page, "fix preview", "the preview file was not uploaded (no key)");
+    if (fix.includes("preview") && !keys.preview && !skipped.some((f) => f.slot === "preview")) await fail(page, "fix preview", "the preview file was not uploaded (no key)");
 
     step = "save";
     let submit = page.locator((F.edit && F.edit.submit) || F.submit);
@@ -1502,7 +1529,7 @@ async function reupload(item, dryRun) {
 
     fs.writeFileSync(path.join(item, "reuploaded"), JSON.stringify({
       at: new Date().toISOString(), tool: "tools/tpt.js reupload", url: state.url, marker_sha256: state.markerHash,
-      files: files.map((f) => ({ slot: f.slot, file: f.file, bytes: f.bytes, sha256: f.sha256 })),
+      files: files.map((f) => ({ slot: f.slot, file: f.file, bytes: f.bytes, sha256: f.sha256, ...(skipped.includes(f) ? { not_uploaded: "TpT already had a file of exactly this size" } : {}) })),
       fix, fix_verified: fix.length ? { price: cfg.price, license_price: cfg.license_price, preview: cfg.files.preview, verified_on_public_page: true } : undefined,
       verified_by: "file cards on the edit page", verdicts, save: saveDiag.save.how,
     }, null, 2) + "\n");
@@ -1576,6 +1603,9 @@ async function checkUnverified(item, deps = {}) {
   return "waiting";
 }
 
+// 17 Nov 2026: gentler runs. One S3 502 was seen during a burst; there is no proof of throttling, but each replacement is ~10
+// uploads, so at most 3 items a run with a 60 s pause between them (the job runs 7 times a day).
+const REUPLOAD_MAX_PER_RUN = 3, REUPLOAD_GAP_S = 60;
 async function reuploadPending() {
   const dir = path.join(ROOT, "tpt");
   const res = { ran_at: new Date().toISOString(), replaced: [], failed: [], waiting: [], skipped: [], needs_login: false, needs_edit_fields: false, discovered_edit: false };
@@ -1626,9 +1656,10 @@ async function reuploadPending() {
   }
   // One failed or unverified item no longer stops the others (16 Nov 2026). Only a login problem, or 3 failures IN A ROW (a site-wide
   // change: no point opening Chrome for the rest), ends the run early.
-  let inARow = 0;
-  for (const item of pending.slice(0, MAX_PER_RUN)) {
+  let inARow = 0, n = 0;
+  for (const item of pending.slice(0, REUPLOAD_MAX_PER_RUN)) {
     const slug = path.basename(item);
+    if (n++) { console.log(`waiting ${REUPLOAD_GAP_S} s before the next replacement`); await new Promise((ok) => setTimeout(ok, REUPLOAD_GAP_S * 1000)); }
     try {
       const r = await reupload(item, false);
       if (r.unverified) res.unverified.push(slug); else res.replaced.push({ item: slug, url: r.url, files: r.files });
@@ -1682,7 +1713,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)

@@ -234,7 +234,11 @@ Fix 5 (17 Nov): Submit first sends the thumbnails to TpT's converter (answered 2
 post (answered 302). The wait took that first 200 as the save and left the page, aborting 17 saves (020-036 stayed `reupload-unverified`
 with the old files). Now only the real form post counts: 302 = saved; 200 = TpT showed the form again = `reupload-failed`.
 An unverified item is never left forever: the look at >= 3 h writes `reupload-failed`. To retry any failed item, append one dated
-line to its `reupload` marker; the Mac does at most 6 replacements a run.
+line to its `reupload` marker.
+Fix 6 (17 Nov): a thumbnail upload can hang for good (TpT's file store answered 502 and the box sat in "Cancel ..." with no key);
+a slot that fails now makes the Mac load the edit page fresh and do every file again, once, before giving up (nothing is saved
+until Submit). A product/preview PDF that TpT already holds at exactly the same size is not uploaded again (items where only the
+thumbnails changed). At most 3 replacements a run, 60 s apart.
 `tpt/REUPLOAD-PAUSED` stops every replacement; a line `allow: 043` in it lets only the listed items through (the canary).
 **Canary rule, every shift while that file exists:** run `python3 tools/tpt-reupload-canary.py status` and act on its word:
 - `PASSED` (the canary shows `reuploaded`): run `python3 tools/tpt-reupload-canary.py release` (deletes tpt/REUPLOAD-PAUSED), commit
