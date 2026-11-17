@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (41.06 kB) Last updated: Oct 19, 2026 at 12:25 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T14:25:23.678Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "genre-exploration.zip",
+          "verdict": "old",
+          "after": "GenreExplorationinLogicProProductionResearchProjectHighSchool.zip Last updated: Oct 19, 2026 at 12:25 PM EST See Revision History 1012.05 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "genre-exploration-PREVIEW.pdf",
+          "verdict": "old",
+          "after": "Preview demoGenreExplorationinLogicProProductionResearchProjectHighSchool18007480.pdf (112.45 kB) Last updated: Oct 19, 2026 at 12:25 PM EST See Revision Histor"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (29.09 kB) Last updated: Oct 19, 2026 at 12:25 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (43.34 kB) Last updated: Oct 19, 2026 at 12:25 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (42.16 kB) Last updated: Oct 19, 2026 at 12:25 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (41.06 kB) Last updated: Oct 19, 2026 at 12:25 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/022-dmp2-genre-exploration-reupload-recheck.png"
     }
   ],
   "files": [

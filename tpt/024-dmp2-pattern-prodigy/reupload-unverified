@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (41.57 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T14:25:40.402Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "pattern-prodigy.zip",
+          "verdict": "old",
+          "after": "PatternProdigyinLogicProStepSequencerBeatProjectHighSchool.zip Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History 1.15 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "pattern-prodigy-PREVIEW.pdf",
+          "verdict": "old",
+          "after": "Preview demoPatternProdigyinLogicProStepSequencerBeatProjectHighSchool18023936.pdf (127.27 kB) Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (29.26 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (42.8 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (43.19 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (41.57 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/024-dmp2-pattern-prodigy-reupload-recheck.png"
     }
   ],
   "files": [
