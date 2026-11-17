@@ -23,6 +23,13 @@ const ROOT = path.dirname(__dirname);
   assert.strictEqual(T.cardVerdict(TH_OLD, "Cancel Main Cover cover.png (24.10 kB) Last updated: Nov 16, 2026 at 3:55 PM EST", { bytes: 101942 }, "thumb1"), "match", "thumbnail: converted size, newer date");
   assert.strictEqual(T.cardVerdict(TH_OLD, "Cancel Main Cover cover.png (99.55 kB) Last updated: Nov 15, 2026 at 8:22 AM EST", { bytes: 101942 }, "thumb1"), "unknown", "a thumbnail is never matched by size alone");
   console.log("ok file cards: size for PDFs, 'Last updated' for every slot; the old card reads as old");
+  // thumbnails-only replacements (17 Nov): a PDF TpT already holds (same size to the 10 bytes TpT shows) is not uploaded again
+  assert(T.sameFileOnTpt("product", NEW, 311678)); assert(!T.sameFileOnTpt("product", OLD, 311678));
+  assert(!T.sameFileOnTpt("product", NEW, 311678 + 20), "20 bytes more is a different file");
+  assert(T.sameFileOnTpt("preview", "Preview demoX.pdf (59.78 kB) Last updated: Nov 16, 2026 at 8:53 PM EST", 61214));
+  assert(!T.sameFileOnTpt("thumb1", "cover.png (99.55 kB)", 101942), "never for thumbnails");
+  assert(!T.sameFileOnTpt("product", "Processing...", 311678));
+  console.log("ok same-size PDFs on TpT are not uploaded again; thumbnails always are");
 
   // ---- deferred schedule
   const at = "2026-11-16T20:00:00Z", t = (m) => Date.parse(at) + m * 60000;
