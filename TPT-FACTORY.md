@@ -81,7 +81,9 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 > `tpt/README.md`). Notation, text, grids, puzzles, charts, answer keys and the colour-by-note pictures are drawn in code. Decorative hero
 > art on covers, previews and page headers comes from the art library `tpt/_art/library/` (house-style line art, index and rules in
 > `tpt/_art/README.md`; first look in `tpt/_art/next/INDEX.md`: a daily art session pre-makes `hero.png` and `spot-*.png` for the next queue
-> items in `tpt/_art/next/<slug>/`, use those; else pick the closest library subject; never crop or redraw it, and never generate images). If nothing fits, draw simple
+> items in `tpt/_art/next/<slug>/`, use those; else pick the closest library subject; never crop or redraw it, and never generate images). COPY the art you use into the product folder as `art/hero.png` (never reference `tpt/_art`
+> from gen.py), delete its `tpt/_art/next/<slug>/` folder and INDEX line, and append `YYYY-MM-DD | NNN | file` to `tpt/_art/USAGE.md`. Use only art that fits
+> the product: no filler. If nothing fits, draw simple
 > art in code and say "needs art: <subject>" in your reply. Missing Python module: pip install it.
 > Drawing rules (the inspector blocks releases on these): every drawn symbol (dice, hills, snowballs, banners, beams) sits inside
 > its box with padding at least as wide as its stroke, so nothing is clipped by a viewBox or an image edge; check the four edges

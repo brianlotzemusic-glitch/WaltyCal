@@ -7,6 +7,7 @@ each). Shift sessions have no Higgsfield connector: builders only USE these file
 (say so in the builder reply: "needs art: <subject>").
 
 ## Use
+This library was a one-time batch (owner: no library of what-ifs). It only shrinks: builders log each use in `USAGE.md`; files unused by 1 Dec 2026 are listed for deletion.
 - Hero art on `cover.png`, the PDF cover and preview images: place a library PNG in the hero area of the cover layout in
   `tpt/STYLE.md` (about 55-60% of the height). In `gen.py`: `<img src="../_art/library/snowman-conductor.png">` (HTML to Chromium) or
   PIL `Image.open(...)` and `alpha_composite`. Keep padding around it; scale proportionally; never crop it.
