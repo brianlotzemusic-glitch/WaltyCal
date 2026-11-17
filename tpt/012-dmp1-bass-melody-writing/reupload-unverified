@@ -1,0 +1,145 @@
+{
+  "at": "2026-11-17T03:18:21.577Z",
+  "marker_sha256": "4ee1cff6a2bf0daad508f4ba9207f79ca8fdda08e9a31e89378fedb29a909964",
+  "url": "https://www.teacherspayteachers.com/Product/Melody-Writing-in-Logic-Pro-Basslines-Scales-High-School-Music-Technology-17961588",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/17961588",
+  "checks": [
+    {
+      "at": "2026-11-17T03:18:29.656Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "bass-melody-writing.zip",
+          "verdict": "old",
+          "before": "MelodyWritinginLogicProBasslinesScalesHighSchoolMusicTechnology.zip Last updated: Oct 15, 2026 at 10:57 AM EST See Revision History 967.6 kB",
+          "after": "MelodyWritinginLogicProBasslinesScalesHighSchoolMusicTechnology.zip Last updated: Oct 15, 2026 at 10:57 AM EST See Revision History 967.6 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "bass-melody-writing-PREVIEW.pdf",
+          "verdict": "old",
+          "before": "Preview demoMelodyWritinginLogicProBasslinesScalesHighSchoolMusicTechnology17961588.pdf (90.82 kB) Last updated: Oct 15, 2026 at 10:57 AM EST See Revision Histo",
+          "after": "Preview demoMelodyWritinginLogicProBasslinesScalesHighSchoolMusicTechnology17961588.pdf (90.82 kB) Last updated: Oct 15, 2026 at 10:57 AM EST See Revision Histo"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (35.21 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+          "after": "Cancel Main Cover cover.png (35.21 kB) Last updated: Oct 15, 2026 at 10:57 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (43.57 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (43.57 kB) Last updated: Oct 15, 2026 at 10:57 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (43.7 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (43.7 kB) Last updated: Oct 15, 2026 at 10:57 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (41.96 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (41.96 kB) Last updated: Oct 15, 2026 at 10:57 AM EST"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "bass-melody-writing.zip",
+      "bytes": 960545,
+      "sha256": "78fa0140cfff935c49239a9f1d44461364b050001d9bea6afd99b27b58a89941"
+    },
+    {
+      "slot": "preview",
+      "file": "bass-melody-writing-PREVIEW.pdf",
+      "bytes": 67735,
+      "sha256": "c3dca8415fa150f434b8a73898e98b829f642326c846a408f7552f184ef13c96"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 183181,
+      "sha256": "6f2b68fa2eb8818ac6d254997b05d9efdfc2d597dd0f9ca90dfdf16b94121f14"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 620038,
+      "sha256": "c1cba98e325275014d471961f4215ffc59cbaa2eca674c60ab5ee16c967b202f"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 468439,
+      "sha256": "4f6d0015275c5eee7da08f5aa9f03177d80b7e0205cc75efddb6464299881c18"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 583736,
+      "sha256": "038077c8cb42109f3631fc455508df056e36a32765d65a7887bfd6bca5f9e2a1"
+    }
+  ],
+  "old_cards": {
+    "product": "MelodyWritinginLogicProBasslinesScalesHighSchoolMusicTechnology.zip Last updated: Oct 15, 2026 at 10:57 AM EST See Revision History 967.6 kB",
+    "preview": "Preview demoMelodyWritinginLogicProBasslinesScalesHighSchoolMusicTechnology17961588.pdf (90.82 kB) Last updated: Oct 15, 2026 at 10:57 AM EST See Revision History",
+    "thumb1": "Main Cover cover.png (35.21 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (43.57 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (43.7 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (41.96 kB) Last updated: Oct 15, 2026 at 10:57 AM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.1s <- POST 200 https://www.facebook.com/tr/",
+      "+0.1s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=9d56df717b5dfddbe653d383740aa6e2",
+      "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=9d56df717b5dfddbe653d383740aa6e2",
+      "+1.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=9d56df717b5dfddbe653d383740aa6e2",
+      "+2.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+3.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=9d56df717b5dfddbe653d383740aa6e2",
+      "+3.2s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+    ],
+    "bodies": [
+      "+0.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+3.2s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.1s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}
