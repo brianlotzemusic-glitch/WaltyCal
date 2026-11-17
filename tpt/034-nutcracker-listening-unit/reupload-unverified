@@ -1,0 +1,145 @@
+{
+  "at": "2026-11-17T14:52:20.282Z",
+  "marker_sha256": "6b375c90078d5c55ba019024ec77008a19fe48f22c2f3bdfc213a097079982e0",
+  "url": "https://www.teacherspayteachers.com/Product/Nutcracker-Ballet-Music-Listening-Unit-Gr-2-6-Listening-Maps-Quiz-Key-18340304",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/18340304",
+  "checks": [
+    {
+      "at": "2026-11-17T14:52:28.887Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "nutcracker-listening-unit.pdf",
+          "verdict": "match",
+          "before": "NutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey.pdf Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History 447.06 kB",
+          "after": "NutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey.pdf Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History 447.06 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "nutcracker-listening-unit-PREVIEW.pdf",
+          "verdict": "match",
+          "before": "Preview demoNutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey18340304.pdf (88.5 kB) Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History",
+          "after": "Preview demoNutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey18340304.pdf (88.5 kB) Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (21.18 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+          "after": "Cancel Main Cover cover.png (21.18 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (31.06 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (31.06 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (37.29 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (37.29 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (36.44 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (36.44 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "nutcracker-listening-unit.pdf",
+      "bytes": 459358,
+      "sha256": "ccc9de77db63aeaf542eb048ec293e8215ffadc5d2dc5bb338b4e2779da05181"
+    },
+    {
+      "slot": "preview",
+      "file": "nutcracker-listening-unit-PREVIEW.pdf",
+      "bytes": 90529,
+      "sha256": "990b76994146d5a8217256d2306281a9aecb356c53b1b19579996e139df511f3"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 121463,
+      "sha256": "e98c28592a75498b42138bcf39cb9dbec032d06f48ec51f91a2dbd7feda0c0aa"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 406931,
+      "sha256": "ff5f5abc4e51bc2a61cc82cddfb3f5c7d8c92af2439fc52959098be53c0d48eb"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 490485,
+      "sha256": "9d794e2cf041b4dfc2ffd956427cfa4adea211a53fc834c2d8aaf14e5a70a177"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 481054,
+      "sha256": "55e9a043bf6eae8a0ae82b1fcf8631cb0cf2ff592b7161cc6791d44d6a282364"
+    }
+  ],
+  "old_cards": {
+    "product": "NutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey.pdf Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History 447.06 kB",
+    "preview": "Preview demoNutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey18340304.pdf (88.5 kB) Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History",
+    "thumb1": "Main Cover cover.png (21.18 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (31.06 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (37.29 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (36.44 kB) Last updated: Nov 14, 2026 at 11:24 AM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.1s <- POST 200 https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=d5baec65ee4b9873ba17f389eb6f32e2",
+      "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=d5baec65ee4b9873ba17f389eb6f32e2",
+      "+1.2s -> POST https://bat.bing.com/p/insights/c/i",
+      "+1.2s <- POST 204 https://bat.bing.com/p/insights/c/i",
+      "+1.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=d5baec65ee4b9873ba17f389eb6f32e2",
+      "+2.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+3.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=d5baec65ee4b9873ba17f389eb6f32e2"
+    ],
+    "bodies": [
+      "+0.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.2s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}

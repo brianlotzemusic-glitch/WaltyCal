@@ -1,0 +1,147 @@
+{
+  "at": "2026-11-17T14:50:29.912Z",
+  "marker_sha256": "bd565d0ba9b4488ab8a0733a5ce551b6376b68368dfcc3cb9ed2c891307da619",
+  "url": "https://www.teacherspayteachers.com/Product/Fall-Music-Sub-Plan-K-5-3-No-Prep-Lessons-Rhythm-Reading-Lyric-Writing-18314799",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/18314799",
+  "checks": [
+    {
+      "at": "2026-11-17T14:50:38.288Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "thanksgiving-music-sub-plan.pdf",
+          "verdict": "match",
+          "before": "FallMusicSubPlanK53NoPrepLessonsRhythmReadingLyricWriting.pdf Last updated: Nov 12, 2026 at 2:40 PM EST See Revision History 283.44 kB",
+          "after": "FallMusicSubPlanK53NoPrepLessonsRhythmReadingLyricWriting.pdf Last updated: Nov 12, 2026 at 2:40 PM EST See Revision History 283.44 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "thanksgiving-music-sub-plan-PREVIEW.pdf",
+          "verdict": "match",
+          "before": "Preview demoFallMusicSubPlanK53NoPrepLessonsRhythmReadingLyricWriting18314799.pdf (102.7 kB) Last updated: Nov 12, 2026 at 2:39 PM EST See Revision History",
+          "after": "Preview demoFallMusicSubPlanK53NoPrepLessonsRhythmReadingLyricWriting18314799.pdf (102.7 kB) Last updated: Nov 12, 2026 at 2:39 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (24.91 kB) Last updated: Nov 12, 2026 at 3:39 PM EST",
+          "after": "Cancel Main Cover cover.png (24.91 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (32.86 kB) Last updated: Nov 12, 2026 at 3:39 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (32.86 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (35.92 kB) Last updated: Nov 12, 2026 at 3:39 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (35.92 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (36.04 kB) Last updated: Nov 12, 2026 at 3:39 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (36.04 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "thanksgiving-music-sub-plan.pdf",
+      "bytes": 290244,
+      "sha256": "f7ff9482f3cd4ff4b1c5f101d45631bc7c6d5832c34713e2801d4ec9d1c3bbf6"
+    },
+    {
+      "slot": "preview",
+      "file": "thanksgiving-music-sub-plan-PREVIEW.pdf",
+      "bytes": 105162,
+      "sha256": "e70bf90669291cbc86650a79efcbaebb31b18b02c364e302cee70848e5662af0"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 183077,
+      "sha256": "61bf338ceb2d6363d097978b9b230e64b46f1f87568bbf8f68892783e4d43963"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 397618,
+      "sha256": "022974d56b84ee2cf241ee8ca42899cba78687e3fee4db9ddfee9fc0602eb77c"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 366797,
+      "sha256": "1104acfebe37012c0f91e4116bd4de318e3e80def1f521f7c72226b606c2bf12"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 382094,
+      "sha256": "06a9379f6a866dcb5f671709fa58b1389ccbb197a0338425ae235ab4975498b8"
+    }
+  ],
+  "old_cards": {
+    "product": "FallMusicSubPlanK53NoPrepLessonsRhythmReadingLyricWriting.pdf Last updated: Nov 12, 2026 at 2:40 PM EST See Revision History 283.44 kB",
+    "preview": "Preview demoFallMusicSubPlanK53NoPrepLessonsRhythmReadingLyricWriting18314799.pdf (102.7 kB) Last updated: Nov 12, 2026 at 2:39 PM EST See Revision History",
+    "thumb1": "Main Cover cover.png (24.91 kB) Last updated: Nov 12, 2026 at 3:39 PM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (32.86 kB) Last updated: Nov 12, 2026 at 3:39 PM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (35.92 kB) Last updated: Nov 12, 2026 at 3:39 PM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (36.04 kB) Last updated: Nov 12, 2026 at 3:39 PM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.1s <- POST 200 https://www.facebook.com/tr/",
+      "+0.1s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=8dd1e2f6271c0de2f710b7bae8189bcd",
+      "+0.4s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=8dd1e2f6271c0de2f710b7bae8189bcd",
+      "+1.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.1s -> POST https://bat.bing.com/p/insights/c/i",
+      "+2.2s <- POST 204 https://bat.bing.com/p/insights/c/i",
+      "+2.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=8dd1e2f6271c0de2f710b7bae8189bcd",
+      "+2.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+3.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=8dd1e2f6271c0de2f710b7bae8189bcd",
+      "+3.6s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+    ],
+    "bodies": [
+      "+0.4s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+3.6s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.1s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}

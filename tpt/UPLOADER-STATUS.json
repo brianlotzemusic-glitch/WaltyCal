@@ -1,21 +1,15 @@
 {
-  "ran_at": "2026-11-17T14:24:56.286Z",
+  "ran_at": "2026-11-17T14:45:06.260Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T14:24:56.441Z",
+    "ran_at": "2026-11-17T14:45:06.414Z",
     "replaced": [],
     "failed": [],
     "waiting": [
-      "031-carol-flip-logic",
-      "032-christmas-color-by-note",
-      "033-thanksgiving-music-sub-plan",
-      "034-nutcracker-listening-unit",
-      "035-hanukkah-color-by-note",
-      "036-lofi-holiday-beat",
       "037-band-rhythm-counting-worksheets",
       "039-winter-color-by-music-symbol",
       "040-trap-nutcracker-logic",
@@ -40,7 +34,13 @@
       "021-dmp2-free-play: unverified",
       "022-dmp2-genre-exploration: unverified",
       "023-dmp2-infinite-horizon: unverified",
-      "024-dmp2-pattern-prodigy: unverified"
+      "024-dmp2-pattern-prodigy: unverified",
+      "025-dmp2-royalty-free: unverified",
+      "026-dmp2-session-players-studio: unverified",
+      "027-thanksgiving-color-by-note: unverified",
+      "028-free-color-by-note-sampler: unverified",
+      "029-winter-color-by-note: unverified",
+      "030-dmp1-units-1-6-bundle: unverified"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
@@ -60,7 +60,13 @@
       "027-thanksgiving-color-by-note",
       "028-free-color-by-note-sampler",
       "029-winter-color-by-note",
-      "030-dmp1-units-1-6-bundle"
+      "030-dmp1-units-1-6-bundle",
+      "031-carol-flip-logic",
+      "032-christmas-color-by-note",
+      "033-thanksgiving-music-sub-plan",
+      "034-nutcracker-listening-unit",
+      "035-hanukkah-color-by-note",
+      "036-lofi-holiday-beat"
     ]
   },
   "ok": true

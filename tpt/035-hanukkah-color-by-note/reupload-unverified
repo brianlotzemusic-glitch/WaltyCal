@@ -1,0 +1,145 @@
+{
+  "at": "2026-11-17T14:54:14.772Z",
+  "marker_sha256": "62c1c3186d04301525fb641dfbb1d2d4a7b5bbb27ab5270893ee220a8b445e81",
+  "url": "https://www.teacherspayteachers.com/Product/Color-by-Note-Music-Worksheets-Menorah-Dreidel-Star-Rhythm-Treble-Bass-18324781",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/18324781",
+  "checks": [
+    {
+      "at": "2026-11-17T14:54:22.771Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "hanukkah-color-by-note.pdf",
+          "verdict": "old",
+          "before": "ColorbyNoteMusicWorksheetsMenorahDreidelStarRhythmTrebleBass.pdf Last updated: Nov 13, 2026 at 8:39 AM EST See Revision History 1.24 MB",
+          "after": "ColorbyNoteMusicWorksheetsMenorahDreidelStarRhythmTrebleBass.pdf Last updated: Nov 13, 2026 at 8:39 AM EST See Revision History 1.24 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "hanukkah-color-by-note-PREVIEW.pdf",
+          "verdict": "old",
+          "before": "Preview demoColorbyNoteMusicWorksheetsMenorahDreidelStarRhythmTrebleBass18324781.pdf (107.16 kB) Last updated: Nov 13, 2026 at 8:39 AM EST See Revision History",
+          "after": "Preview demoColorbyNoteMusicWorksheetsMenorahDreidelStarRhythmTrebleBass18324781.pdf (107.16 kB) Last updated: Nov 13, 2026 at 8:39 AM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (26.74 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+          "after": "Cancel Main Cover cover.png (26.74 kB) Last updated: Nov 13, 2026 at 9:39 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (32.61 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (32.61 kB) Last updated: Nov 13, 2026 at 9:39 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (35.76 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (35.76 kB) Last updated: Nov 13, 2026 at 9:39 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (55.38 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (55.38 kB) Last updated: Nov 13, 2026 at 9:39 AM EST"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "hanukkah-color-by-note.pdf",
+      "bytes": 1281954,
+      "sha256": "82c84c410cb0c77b711540e3e7d4e54312328de21ff1808b570bb71a56de1232"
+    },
+    {
+      "slot": "preview",
+      "file": "hanukkah-color-by-note-PREVIEW.pdf",
+      "bytes": 110894,
+      "sha256": "e32a5ebb0e54c00a332918c7f9268b8e9305aa51e381d51b163198099106960e"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 112322,
+      "sha256": "d21a587ecef1290b860281f531057bc9c5b6287fd01eba32a2595a84c91fd608"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 250641,
+      "sha256": "f4471f1b659c31ede9ecd5c82831fdcdc4718df2ebe6512335832c6fab9e81e9"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 310486,
+      "sha256": "d3d6f7ea922d1f46f64e4c570fba44dcd0151311e33d8e0cae24474b7327269a"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 304661,
+      "sha256": "5d918bd55633b817afdcafaf6ddd5e80960ebd8efe09f70fe16e7bcc634eb4ac"
+    }
+  ],
+  "old_cards": {
+    "product": "ColorbyNoteMusicWorksheetsMenorahDreidelStarRhythmTrebleBass.pdf Last updated: Nov 13, 2026 at 8:39 AM EST See Revision History 1.24 MB",
+    "preview": "Preview demoColorbyNoteMusicWorksheetsMenorahDreidelStarRhythmTrebleBass18324781.pdf (107.16 kB) Last updated: Nov 13, 2026 at 8:39 AM EST See Revision History",
+    "thumb1": "Main Cover cover.png (26.74 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (32.61 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (35.76 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (55.38 kB) Last updated: Nov 13, 2026 at 9:39 AM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.1s <- POST 200 https://www.facebook.com/tr/",
+      "+0.1s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=836f3df05b82347c44c814a111e5e9b3",
+      "+0.2s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=836f3df05b82347c44c814a111e5e9b3",
+      "+1.1s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.9s -> POST https://www.teacherspayteachers.com/queue/results?… body job=836f3df05b82347c44c814a111e5e9b3",
+      "+2.1s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.9s -> POST https://www.teacherspayteachers.com/queue/results?… body job=836f3df05b82347c44c814a111e5e9b3",
+      "+3.1s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+    ],
+    "bodies": [
+      "+0.2s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.1s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.1s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+3.1s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.1s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}
