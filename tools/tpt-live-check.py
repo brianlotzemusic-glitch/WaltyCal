@@ -16,7 +16,8 @@ places makes the Mac's next `git pull` fail. Count LIVE as uploaded when decidin
 import glob, json, os, re, sys, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STORE = "https://www.teacherspayteachers.com/store/brian-lotze?order=Most-Recent"
+# 17 Nov 2026: the store was renamed (brian-lotze -> hudson-beat; the old address answers 404). All pages are read.
+STORE = "https://www.teacherspayteachers.com/store/hudson-beat?order=Most-Recent"
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129 Safari/537.36"
 
 
@@ -63,8 +64,20 @@ def main():
     if "--html" in args:
         html = open(args[args.index("--html") + 1], encoding="utf-8", errors="ignore").read()
     else:
-        req = urllib.request.Request(STORE, headers={"User-Agent": UA})
-        html = urllib.request.urlopen(req, timeout=40).read().decode("utf-8", "ignore")
+        html, seen = "", set()
+        for p in range(1, 11):
+            req = urllib.request.Request(STORE if p == 1 else f"{STORE}&page={p}", headers={"User-Agent": UA})
+            try:
+                page = urllib.request.urlopen(req, timeout=40).read().decode("utf-8", "ignore")
+            except Exception:
+                if p == 1:
+                    raise
+                break
+            ids = set(re.findall(r'href="/Product/[^"?#]+?-(\d+)"', page))
+            if not ids - seen:
+                break
+            seen |= ids
+            html += page
     products = store_products(html)
     if not products:
         sys.exit("could not read any products from the store page (layout changed or request blocked)")

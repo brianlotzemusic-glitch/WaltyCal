@@ -101,13 +101,13 @@ rc2=$?
 
 # One path at a time: a single `git add` with a pathspec that matches nothing (e.g. no reupload-failed
 # markers) aborts the WHOLE add and stages nothing.
-for f in tpt/UPLOADER-STATUS.json tpt/EDIT-FIELDS.json tpt/*/uploaded tpt/*/publish-failed tpt/*/reuploaded tpt/*/reupload-failed tpt/*/reupload-unverified; do
+for f in tpt/UPLOADER-STATUS.json tpt/EDIT-FIELDS.json tpt/*/uploaded tpt/*/publish-failed tpt/*/reuploaded tpt/*/reupload-failed tpt/*/reupload-unverified tpt/*/live-url tpt/*/live-url-lookup; do
   [ -e "$f" ] && { git add -- "$f" || echo "git add $f FAILED (exit $?)"; }
 done
 # A `publish-failed` / `reupload-unverified` marker removed later (success, or the final look) must leave git too.
 git ls-files 'tpt/*/publish-failed' 'tpt/*/reupload-unverified' | while IFS= read -r f; do [ -e "$f" ] || git rm -q --cached -- "$f"; done
 # Edit-form upload diagnostics (network, TpT's answers, console errors, the upload box's HTML), written next to the screenshots.
-for f in tpt/_publish/*-reupload-*-diag.json tpt/_publish/*-reupload-after-submit.png tpt/_publish/*-reupload-unverified.png tpt/_publish/*-reupload-recheck.png; do
+for f in tpt/_publish/*-reupload-*-diag.json tpt/_publish/*-my-products-links.json tpt/_publish/*-reupload-after-submit.png tpt/_publish/*-reupload-unverified.png tpt/_publish/*-reupload-recheck.png; do
   [ -f "$f" ] || continue
   [ "$(wc -c < "$f" | tr -d ' ')" -le 1572864 ] && { git add -f -- "$f" || echo "git add -f $f FAILED"; }
 done

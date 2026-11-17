@@ -845,7 +845,9 @@ function releasedButSkipped() {
 // a failed push, a reset), the next run would publish them AGAIN. Before each publish, look for the item's exact
 // title on the PUBLIC store page; if it is already live, write the marker instead of uploading.
 // TpT's page addresses carry the whole title: lowercase words joined by "-", "&" and quotes dropped.
-const STORE_URL = "https://www.teacherspayteachers.com/store/brian-lotze?order=Most-Recent";
+// 17 Nov 2026: the store was renamed (brian-lotze -> hudson-beat; the old address answers 404), which silently switched this guard
+// off. All pages are read now, and a store page with no product links counts as "unknown" (logged), never as "not live".
+const STORE_URL = "https://www.teacherspayteachers.com/store/hudson-beat?order=Most-Recent";
 function slugNorm(s) { return String(s).toLowerCase().replace(/&/g, " ").replace(/'/g, "").replace(/[^a-z0-9]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, ""); }
 function liveUrlForTitle(title, html) {
   const t = slugNorm(title), re = /href="(\/Product\/([^"?#]+?)-(\d+))"/g;
@@ -854,10 +856,20 @@ function liveUrlForTitle(title, html) {
   return null;
 }
 async function fetchStoreHtml() {
+  const ua = { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129 Safari/537.36" };
+  const ids = new Set(); let all = "";
   try {
-    const r = await fetch(STORE_URL, { headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129 Safari/537.36" } });
-    return r.ok ? await r.text() : null;
-  } catch (e) { return null; } // unknown: carry on and publish as before
+    for (let p = 1; p <= 10; p++) {
+      const r = await fetch(p === 1 ? STORE_URL : `${STORE_URL}&page=${p}`, { headers: ua });
+      if (!r.ok) { if (p === 1) { console.warn(`store page ${STORE_URL} answered ${r.status}: duplicate guard off for this run`); return null; } break; }
+      const html = await r.text(), before = ids.size;
+      for (const m of html.matchAll(/href="\/Product\/[^"?#]+?-(\d+)"/g)) ids.add(m[1]);
+      if (ids.size === before) break; // a page with nothing new: past the last page
+      all += html;
+    }
+  } catch (e) { return all || null; } // unknown: carry on and publish as before
+  if (!ids.size) { console.warn("the store page shows no products (renamed again?): duplicate guard off for this run"); return null; }
+  return all;
 }
 
 async function publishPending() {
@@ -935,9 +947,12 @@ function reuploadState(item) {
   if (marker === null || !marker.trim()) return { state: "no-marker", reason: "no `reupload` marker (the Manager writes it after QA approves the rebuild)" };
   const markerHash = crypto.createHash("sha256").update(marker).digest("hex");
   const up = readTrim(path.join(item, "uploaded"));
-  const url = up ? (up.split("\n")[1] || "").trim() : "";
+  let url = up ? (up.split("\n")[1] || "").trim() : "";
+  // 014 (17 Nov 2026): `uploaded` says "owner confirmed live ... (URL not yet recorded)". The Mac then looks the listing up on the
+  // logged-in My Products page by its exact title and writes the URL into `live-url` (line 1); `uploaded` is never rewritten.
+  if (up && !PRODUCT_URL_RE.test(url)) { const lu = (readTrim(path.join(item, "live-url")) || "").split("\n")[0].trim(); if (PRODUCT_URL_RE.test(lu)) url = lu; }
   if (!up) return { state: "no-url", markerHash, reason: "no `uploaded` file: the product is not live, nothing to replace (publish it instead)" };
-  if (!PRODUCT_URL_RE.test(url)) return { state: "no-url", markerHash, reason: `\`uploaded\` line 2 is not a TpT product URL: ${JSON.stringify(url)}` };
+  if (!PRODUCT_URL_RE.test(url)) return { state: "no-url", markerHash, lookup: true, reason: `\`uploaded\` line 2 is not a TpT product URL (${JSON.stringify(url)}) and there is no \`live-url\`: the Mac looks it up on My Products by title` };
   if (!isApproved(item)) return { state: "not-approved", markerHash, url, reason: "QA.md has no '**Verdict: APPROVED**' line" };
   const done = readTrim(path.join(item, "reuploaded"));
   if (done) { try { if (JSON.parse(done).marker_sha256 === markerHash) return { state: "done", markerHash, url, reason: "this reupload marker was already processed (see `reuploaded`); write a new marker to replace again" }; } catch (e) { /* unreadable: treat as not done */ } }
@@ -1549,6 +1564,49 @@ async function reupload(item, dryRun) {
   }
 }
 
+// ---- live URL lookup for an item whose `uploaded` has no URL (014, 17 Nov 2026) ---------------------------------------------------
+// Read-only: open the logged-in My Products list (all pages), match the item's EXACT title against the product links (by the
+// title slug in /Product/<slug>-<id>, or by the link text), write `live-url` (URL, then how it was found). At most once in 20 h per
+// item (`live-url-lookup` records each try). The links seen go to tpt/_publish/<slug>-my-products-links.json.
+function matchMyProducts(title, links) {
+  const t = slugNorm(title), nt = normTitle(title);
+  for (const l of links) {
+    const m = String(l.href || "").match(/\/Product\/([^"?#\/]+?)-(\d{6,})(?:[?#]|$)/);
+    if (m && (slugNorm(m[1]) === t || (slugNorm(m[1]).length >= 60 && t.startsWith(slugNorm(m[1]))))) return `https://www.teacherspayteachers.com/Product/${m[1]}-${m[2]}`;
+  }
+  for (const l of links) {
+    if (normTitle(l.text) !== nt) continue;
+    const id = (String(l.href || "").match(/(?:Product\/[^"?#]*-|editNext\/|\/)(\d{6,})(?:[?#\/]|$)/) || [])[1];
+    if (id) return `https://www.teacherspayteachers.com/Product/${slugNorm(title).split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join("-")}-${id}`;
+  }
+  return null;
+}
+function normTitle(t) { return String(t || "").replace(/&amp;/g, "&").replace(/[‘’]/g, "'").replace(/\s+/g, " ").trim(); }
+async function lookupLiveUrl(item) {
+  const slug = path.basename(item), title = loadItem(item).title, out = path.join(ROOT, "tpt", "_publish", `${slug}-my-products-links.json`);
+  const { context, page } = await openBrowser();
+  const links = [];
+  try {
+    await ensureLoggedIn(page);
+    for (let p = 1; p <= 10; p++) {
+      await page.goto(p === 1 ? MY_PRODUCTS_URL : `${MY_PRODUCTS_URL}?page=${p}`, { waitUntil: "domcontentloaded" });
+      await page.waitForTimeout(3000);
+      const got = await page.evaluate(() => [...document.querySelectorAll("a[href]")].map((a) => ({ href: a.getAttribute("href"), text: (a.innerText || "").replace(/\s+/g, " ").trim().slice(0, 160) }))
+        .filter((l) => /\/Product\/|editNext|\/items/i.test(l.href)));
+      const before = links.length;
+      for (const l of got) if (!links.some((x) => x.href === l.href)) links.push(l);
+      if (links.length === before) break;
+    }
+  } finally {
+    try { fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, JSON.stringify({ at: new Date().toISOString(), title, links: links.slice(0, 400) }, null, 2) + "\n"); } catch (e) { /* diagnostics only */ }
+    await context.close();
+  }
+  const url = matchMyProducts(title, links);
+  fs.writeFileSync(path.join(item, "live-url-lookup"), JSON.stringify({ at: new Date().toISOString(), title, found: url, links_seen: links.length, links_file: path.relative(ROOT, out) }, null, 2) + "\n");
+  if (url) fs.writeFileSync(path.join(item, "live-url"), `${url}\nfound on the logged-in My Products list by its exact title, ${new Date().toISOString()} (tools/tpt.js)\n`);
+  return url;
+}
+
 // When a `reupload-unverified` record is due for a look: { due, final }. Pure. Looks at >= 70 min and >= 180 min after the save;
 // the look at >= 180 min is final (still old -> reupload-failed).
 function unverifiedDue(rec, now = Date.now()) {
@@ -1623,6 +1681,13 @@ async function reuploadPending() {
   for (const d of pending) if (!pauseAllows(pause, d)) res.skipped.push(`${path.basename(d)}: paused (tpt/REUPLOAD-PAUSED allows only ${pause.allow.join(", ")})`);
   pending = pending.filter((d) => pauseAllows(pause, d));
   for (const d of marked) if (!pending.includes(d)) { const s = reuploadState(d); if (s.state !== "done") res.skipped.push(`${path.basename(d)}: ${s.state}`); }
+  // Items live on TpT whose `uploaded` has no URL (014): look the URL up on My Products, at most once in 20 h each, read-only.
+  for (const d of marked.filter((x) => reuploadState(x).lookup && pauseAllows(pause, x))) {
+    let last = null; try { last = JSON.parse(fs.readFileSync(path.join(d, "live-url-lookup"), "utf8")); } catch (e) { /* never tried */ }
+    if (last && Date.now() - Date.parse(last.at) < 20 * 3600e3) continue;
+    try { const u = await lookupLiveUrl(d); console.log(`${path.basename(d)}: live URL ${u ? "found: " + u : "NOT found on My Products by its title"}`); if (u && reuploadState(d).state === "pending") pending.push(d); }
+    catch (e) { console.error(`${path.basename(d)}: live URL lookup: ${e.message.split("\n")[0]}`); if (/not logged in|session expired/i.test(e.message)) { res.needs_login = true; return done(false); } }
+  }
   // Submitted-but-unverified items first: a read-only look when due, never a resubmit.
   res.unverified = [];
   for (const d of marked.filter((x) => reuploadState(x).state === "unverified" && pauseAllows(pause, x))) {
@@ -1713,7 +1778,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 if (require.main === module)

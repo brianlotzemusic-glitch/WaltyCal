@@ -239,6 +239,9 @@ Fix 6 (17 Nov): a thumbnail upload can hang for good (TpT's file store answered 
 a slot that fails now makes the Mac load the edit page fresh and do every file again, once, before giving up (nothing is saved
 until Submit). A product/preview PDF that TpT already holds at exactly the same size is not uploaded again (items where only the
 thumbnails changed). At most 3 replacements a run, 60 s apart.
+17 Nov: the store was renamed to /store/hudson-beat (the old address is 404); the duplicate guard and `tools/tpt-live-check.py`
+now read every page of the new address. An item whose `uploaded` has no URL (014) is looked up by the Mac on My Products by its
+exact title (read-only, once a day) and recorded in `live-url`; the Mac-owned `uploaded` is never rewritten.
 `tpt/REUPLOAD-PAUSED` stops every replacement; a line `allow: 043` in it lets only the listed items through (the canary).
 **Canary rule, every shift while that file exists:** run `python3 tools/tpt-reupload-canary.py status` and act on its word:
 - `PASSED` (the canary shows `reuploaded`): run `python3 tools/tpt-reupload-canary.py release` (deletes tpt/REUPLOAD-PAUSED), commit

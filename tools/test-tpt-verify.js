@@ -31,6 +31,29 @@ const ROOT = path.dirname(__dirname);
   assert(!T.sameFileOnTpt("product", "Processing...", 311678));
   console.log("ok same-size PDFs on TpT are not uploaded again; thumbnails always are");
 
+  // 014 (17 Nov): `uploaded` has no URL. My Products lookup by exact title; reuploadState uses `live-url`; `uploaded` untouched.
+  {
+    const title = "Song Form in Logic Pro | Billboard Top 10 Remake | High School Music Technology";
+    const links = [{ href: "/Product/Song-Structure-in-Logic-Pro-Pop-Song-Form-Unit-High-School-Music-Technology-17953536", text: "Song Structure in Logic Pro" },
+      { href: "/Product/Song-Form-in-Logic-Pro-Billboard-Top-10-Remake-High-School-Music-Technology-17999999", text: "x" }];
+    assert.strictEqual(T.matchMyProducts(title, links), "https://www.teacherspayteachers.com/Product/Song-Form-in-Logic-Pro-Billboard-Top-10-Remake-High-School-Music-Technology-17999999");
+    assert.strictEqual(T.matchMyProducts(title, links.slice(0, 1)), null, "a similar title is not a match");
+    const byText = T.matchMyProducts(title, [{ href: "/itemsDigital/editNext/18000111", text: title }]);
+    assert(/^https:\/\/www\.teacherspayteachers\.com\/Product\/Song-Form-In-Logic-Pro-Billboard-Top-10-Remake-High-School-Music-Technology-18000111$/.test(byText), byText);
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "lu-")), d = path.join(tmp, "014-x"); fs.mkdirSync(d);
+    fs.writeFileSync(path.join(d, "QA.md"), "**Verdict: APPROVED**\n"); fs.writeFileSync(path.join(d, "reupload"), "fix\n");
+    fs.writeFileSync(path.join(d, "uploaded"), "2026-10-15T23:14:24Z owner confirmed live on TpT\n(URL not yet recorded)\n");
+    let st = T.reuploadState(d); assert.strictEqual(st.state, "no-url"); assert.strictEqual(st.lookup, true);
+    fs.writeFileSync(path.join(d, "live-url"), "https://www.teacherspayteachers.com/Product/Song-Form-17999999\nfound on My Products\n");
+    st = T.reuploadState(d); assert.strictEqual(st.state, "pending"); assert.strictEqual(st.productId, "17999999");
+    assert(/URL not yet recorded/.test(fs.readFileSync(path.join(d, "uploaded"), "utf8")));
+    fs.rmSync(tmp, { recursive: true });
+    // store guard: all pages (store renamed to hudson-beat)
+    const html = '<a href="/Product/Song-Form-in-Logic-Pro-Billboard-Top-10-Remake-High-School-Music-Technology-17999999">';
+    assert.strictEqual(T.liveUrlForTitle(title, html), "https://www.teacherspayteachers.com/Product/Song-Form-in-Logic-Pro-Billboard-Top-10-Remake-High-School-Music-Technology-17999999");
+    console.log("ok 014: My Products lookup by exact title -> live-url -> replacement can proceed; `uploaded` never rewritten");
+  }
+
   // ---- deferred schedule
   const at = "2026-11-16T20:00:00Z", t = (m) => Date.parse(at) + m * 60000;
   const rec = { at, checks: [{ at }] };
