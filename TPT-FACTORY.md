@@ -38,14 +38,30 @@ subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one a
       While `tpt/REUPLOAD-PAUSED` exists the marker waits (see "The Mac uploader": canary rule). There is no fallback: the
       corrected files go onto the EXISTING listing or they do not go live (owner, 16 Nov 2026).
    4. Tick the `[fix]` line, add one LOG line, commit and push.
+2b. **Held rescue** (owner decision 17 Nov 2026: a HELD product is never left to rot; 8 builds in a row ended held and earned nothing).
+   After the fixes and before the day's builds, rescue up to **2** held products per shift (they do not count toward the day's builds):
+   the lowest-numbered `[!] HELD` queue lines whose folder has no `release` marker and that have not been shelved (see 4 below).
+   1. Fresh Sonnet **rescue agent**. Gives it the queue line, the LOG line (it lists the inspector's BLOCKING items) and `QA.md`.
+      It **looks at each listed defect itself** in the current files (a defect it cannot see is a false alarm: say so), fixes the real
+      ones in `gen.py` (the source), fixes the same drawing flaw in any other kit that copied the function, rebuilds with
+      `python3 gen.py`, runs `python3 gen.py --check`. NOTES-class items are skipped unless trivial. Reply in 8 lines.
+   2. Fresh Sonnet **Visual inspector** on every image and every PDF page the fix touched, at full size; it also confirms each listed
+      BLOCKING defect is gone. If the fix changed content (counts, step numbers, wording, answers), a fresh **QA agent** re-checks
+      those pages too.
+   3. Inspector `OK` (and QA approved where it applied) → `tpt-validate.py` → write `release` → tick the queue line `[x]` → one LOG
+      line → commit and push. Inspector `DEFECTS` → one more fix round by a fresh agent, then the inspector again.
+   4. Still BLOCKING after that → leave it HELD, write the remaining BLOCKING items into its queue line, and note "rescue 1"; a second
+      failed rescue on a later shift turns the line into `[!] SHELVED` (no more attempts) with one LOG line the owner will see.
 3. For each product this shift owes:
    1. Take the top unchecked queue item that is in season (see "Season rule"). Its id is the highest `tpt/NNN-*` number + 1.
    2. **Builder agent**, brief below.
    3. **QA agent** (a different agent), brief below.
    3b. **Visual inspector** (a third fresh Sonnet agent that did not build or QA it; brief "Visual inspector" below). It must reply
-      `OK` before release. `DEFECTS` counts as a QA rejection: same single fix round, then the inspector again, then HELD.
+      `OK` before release. `DEFECTS` (BLOCKING items only) counts as a QA rejection: same single fix round, then the inspector again,
+      then HELD. When it is HELD, write the remaining BLOCKING items into its queue line; step 2b rescues it on a later shift.
    4. If QA rejects: one **fix agent** (fresh, gets only QA.md's required fixes and the folder), then QA again. If it is
-      rejected a second time, leave it unreleased, log it as HELD and move on. No third round, no Opus.
+      rejected a second time, leave it unreleased, log it as HELD (with the required fixes in the queue line) and move on;
+      step 2b picks it up on a later shift. No third round in the same shift, no Opus.
    5. If approved: run `python3 tools/tpt-validate.py tpt/NNN-slug`. It must print OK; if not, one fresh Sonnet agent fixes
       `tpt.json` (and the `TAGS`/`SUBJECTS` lines in `gen.py`), then run it again. Only then write `tpt/NNN-slug/release`
       containing the date and "released". Tick the queue line. Add one LOG line.
@@ -63,6 +79,10 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 > Deliver in the folder: `gen.py` (builds everything; `--check` verifies every answer and the layout), the product PDF, a
 > 4-page watermarked preview PDF, `cover.png` (2000×2000), `preview-1..3.png`, `UPLOAD.md` and `tpt.json` (formats in
 > `tpt/README.md`). Everything is drawn in code: no AI image tools, no downloaded art. Missing Python module: pip install it.
+> Drawing rules (the inspector blocks releases on these): every drawn symbol (dice, hills, snowballs, banners, beams) sits inside
+> its box with padding at least as wide as its stroke, so nothing is clipped by a viewBox or an image edge; check the four edges
+> of `cover.png` and each preview for art touching them. In grids and crosswords put clue numbers small in the top-left corner and
+> the letter centred, never on top of each other. A numbered list of steps must match the steps on the project sheet.
 > Run `gen.py` and `gen.py --check` until clean, then look once at low-resolution renders (60–100 dpi) of every page.
 > Don't commit. Don't touch other folders, except that a Logic kit may extend `tpt/_dmp2_common/dmp2.py`.
 > Reply in at most 8 lines: what you made, page count, price, open questions.
@@ -83,18 +103,22 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 > 2. For each image write an INVENTORY line saying exactly what is on it: the title text as printed, every drawn object, and every
 >    piece of music notation (clef; each note and rest by type and staff position; stems; flags and beams; barlines; time
 >    signature). If you cannot describe it exactly, look again.
-> 3. Then list DEFECTS. Assume at least one exists and hunt for it. Check (a) notation: stems on the correct side of the head (right
+> 3. Then list DEFECTS. Look carefully; if there are none, say so, and never invent one. Check (a) notation: stems on the correct side of the head (right
 >    edge going up, left edge going down), stem direction (down for notes on or above the middle line, up below it), heads filled
 >    or open to match the note named, flags and beams, rests, bars that add up to the time signature wherever one is shown;
 >    (b) anything overlapping, touching or colliding (a dot on a clef, text on art); (c) clipped or cut-off text or art, text too
 >    small to read at thumbnail size, typos, claims that disagree with the product (page, puzzle or grade counts; check
 >    `UPLOAD.md` only now); (d) blank areas, broken images, artefacts; (e) anything a teacher would find odd or unprofessional.
-> 4. Sort what you find. **BLOCKING** = wrong music or content, misleading or contradictory text, a wrong claim, clipped, cut-off or
->    overlapping art or text, anything unreadable, an artefact a buyer would notice. **NOTES** = polish only (spacing under about
->    10 px, blank areas, alignment, style preferences, anything you would merely do differently). Reply `OK` if there is no BLOCKING
->    item and every image has an inventory line, listing any NOTES after it; NOTES never block a release or a replacement. If there is
->    a BLOCKING item reply `DEFECTS:` with the image, where on it (top-left, centre...) and what is wrong. At most 12 lines.
->    Judge each image on its own: do not invent a new defect to justify the review, and do not repeat a NOTE that was already accepted.
+> 4. Sort what you find. **BLOCKING** = wrong music or content; misleading or contradictory text (a step, page or count that
+>    disagrees with the rest); art or text CLIPPED or CUT OFF by an image edge or by its own box (a die, hill, beam, banner or label
+>    with a flat cut edge); text printed over or touching other text or art so that it can be misread (a clue number over a letter,
+>    a label on a note); anything unreadable; an artefact a buyer would notice at thumbnail size on a cover or preview image.
+>    **NOTES** = everything else, and NOTES never block a release, a replacement or a rescue, and are never put in a "to fix" list:
+>    spacing that is tight but not touching (about 6 px or more of gap at 2000 px), art off-centre by less than about 30 px,
+>    blank bands or a half-empty page, alignment, a word hyphenated across a line, a redundant title, style preferences, anything
+>    you would merely do differently. Reply `OK` if there is no BLOCKING item and every image has an inventory line, listing any
+>    NOTES after it. If there is a BLOCKING item reply `DEFECTS:` with the image or page, where on it (top-left, centre...) and what
+>    is wrong, nothing else. At most 12 lines. Judge each image on its own: do not repeat a NOTE that was already accepted.
 
 ## Product rules
 - **Brand and look:** `tpt/STYLE.md`. Footer and terms page as written there.
