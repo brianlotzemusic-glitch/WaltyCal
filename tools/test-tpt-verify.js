@@ -117,6 +117,34 @@ const ROOT = path.dirname(__dirname);
     console.log("ok save: the spinner SVG beside Submit (canary 3 crash) no longer throws; the background save is waited for");
     await page.waitForTimeout(500);
 
+    // 17 Nov (020-036 stuck): TpT's real Submit sequence. First the thumbnails go to /converter/convert_thumbs (a form post into an
+    // iframe, 200), then /queue/results is polled ({"status":0}) for a few seconds, THEN the real form posts (302). A hidden template
+    // "We cannot generate images from your file" is always in the page. The old wait stopped at the first 200 and left mid-save.
+    const tptLike = (finalStatus) => async (route) => {
+      const r = route.request(), u = r.url();
+      if (r.method() === "POST" && /convert_thumbs/.test(u)) return route.fulfill({ status: 200, contentType: "text/html", body: "<p>queued</p>" });
+      if (r.method() === "POST" && /queue\/results/.test(u)) return route.fulfill({ status: 200, contentType: "application/json", body: '{"status":0,"data":[]}' });
+      if (r.method() === "POST") { saves++; return finalStatus === 302 ? route.fulfill({ status: 302, headers: { location: "https://tpt.test/My-Products" } })
+        : route.fulfill({ status: 200, contentType: "text/html", body: '<div class="alert alert-error">Please correct the errors below</div><form></form>' }); }
+      if (/My-Products/.test(u)) return route.fulfill({ status: 200, contentType: "text/html", body: "<p>My products</p>" });
+      return route.fulfill({ status: 200, contentType: "text/html", body: `<div class="error-message" style="display:none">We cannot generate images from your file. Please upload a different file or your own thumbnail images.</div>
+        <iframe name="conv" style="display:none"></iframe><form id="conv" method="post" action="/converter/convert_thumbs" target="conv"><input name="t" value="1"></form>
+        <form id="ItemAddForm" method="post" action="/itemsDigital/editNext/18352419"><input name="a" value="1"></form>
+        <button id="s" onclick="document.getElementById('conv').submit(); let n = 0; const t = setInterval(() => { fetch('/queue/results', {method: 'POST', body: 'job=1'}); if (++n === 6) { clearInterval(t); document.getElementById('ItemAddForm').submit(); } }, 1000)">Submit</button>` });
+    };
+    await page.unroute("https://tpt.test/**"); saves = 0;
+    await page.route("https://tpt.test/**", tptLike(302));
+    t0 = Date.now(); await page.goto(EDIT); r = await T.submitAndWait(page, page.locator("#s"), EDIT, { timeoutMs: 30000, settleMs: 200 });
+    assert(r.ok && saves === 1 && /302/.test(r.how) && Date.now() - t0 > 5500, JSON.stringify({ how: r.how, ok: r.ok, saves }));
+    assert(!r.messages.some((m) => /cannot generate/.test(m)), "hidden templates are not messages");
+    console.log(`ok save: waits through convert_thumbs (200) + queue polling for TpT's real form post (${r.how})`);
+    await page.unroute("https://tpt.test/**"); saves = 0;
+    await page.route("https://tpt.test/**", tptLike(200));
+    await page.goto(EDIT); r = await T.submitAndWait(page, page.locator("#s"), EDIT, { timeoutMs: 30000, settleMs: 200 });
+    assert(!r.ok && saves === 1 && /not saved/.test(r.how), JSON.stringify({ how: r.how, ok: r.ok }));
+    console.log("ok save: the form coming back with 200 (no redirect) is NOT a save");
+    await page.waitForTimeout(500);
+
     // ---- readCards on TpT's real markup shape: the card text is read from the box around each slot's input
     const F = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8"));
     await page.unroute("https://tpt.test/**");

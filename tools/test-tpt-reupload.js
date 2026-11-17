@@ -61,7 +61,11 @@ if (fs.existsSync(path.join(ROOT, "tpt", "001-halloween-color-by-note", "reuploa
   const r0 = run("reupload", "tpt/001-halloween-color-by-note", "--dry-run");
   assert(r0.status === 0 ? /DRY RUN/.test(r0.stdout) : /reupload-failed|already processed|QA\.md/.test(r0.stderr), r0.stdout + r0.stderr);
 }
-const r3 = run("reupload", "tpt/027-thanksgiving-color-by-note", "--dry-run");
+// a COPY of 027 without the Mac's result markers (the real folder's state changes with every Mac run)
+const t027 = fs.mkdtempSync(path.join(os.tmpdir(), "c027-"));
+fs.cpSync(path.join(ROOT, "tpt", "027-thanksgiving-color-by-note"), t027, { recursive: true, filter: (s) => !/build|__pycache__/.test(s) });
+for (const f of ["reuploaded", "reupload-failed", "reupload-unverified"]) fs.rmSync(path.join(t027, f), { force: true });
+const r3 = run("reupload", t027, "--dry-run");
 assert.strictEqual(r3.status, 0, r3.stderr);
 for (const f of ["thanksgiving-color-by-note.pdf", "thanksgiving-color-by-note-PREVIEW.pdf", "cover.png", "preview-1.png", "preview-2.png", "preview-3.png"]) assert(r3.stdout.includes(f), f);
 assert(/Would NOT change: title, /.test(r3.stdout));

@@ -1174,23 +1174,31 @@ async function readCards(page, F, slots) {
 // Click Submit and wait for TpT to answer, like publish(): the page leaves the edit URL, or TpT's save request (a non-GET page
 // navigation) answers, or a success message shows. Records the request and messages. Returns { ok, how, status, messages, network }.
 async function submitAndWait(page, submit, editUrl, opts = {}) {
-  const cap = startCapture(page), limit = opts.timeoutMs || 120000;
+  const cap = startCapture(page), limit = opts.timeoutMs || 240000; // thumbnail conversion runs before the real save
   const t0 = Date.now();
-  const navResp = page.waitForResponse((r) => r.request().method() !== "GET" && r.request().isNavigationRequest(), { timeout: limit }).catch(() => null);
+  // 17 Nov 2026 (020-036 stuck "unverified"): Submit first POSTs the thumbnails to /converter/convert_thumbs (a navigation request,
+  // answered 200), polls /queue/results ({"status":0} = still converting), and only THEN posts the real form, which answers 302. The
+  // old wait took that first 200 as "the save answered" and navigated away ~3 s later, aborting TpT's real save. Now only the MAIN
+  // frame's form post to the product (not converter/queue/analytics) counts: 3xx = saved; 2xx = TpT showed the form again = refused.
+  const isSave = (r) => { try { const q = r.request(); return q.method() !== "GET" && q.isNavigationRequest() && r.frame() === page.mainFrame() && !/\/(converter|queue|uploads)\//i.test(r.url()) && /\/(itemsDigital|items|My-Products|product)/i.test(r.url()); } catch (e) { return false; } };
+  const navResp = page.waitForResponse(isSave, { timeout: limit }).catch(() => null);
   const left = page.waitForURL((u) => u.toString().split("#")[0] !== editUrl.split("#")[0], { timeout: limit }).then(() => true, () => false);
   // click() waits for the navigation it starts and throws after its timeout; a slow save is exactly what we want to wait out, so a
   // timeout AFTER the click was done is not an error (the loop below keeps waiting up to `limit`).
   try { await submit.first().click({ noWaitAfter: true, timeout: 15000 }); }
   catch (e) { if (!/click action done|navigation/i.test(e.message)) { cap.stop(); throw e; } }
   const okRe = /(successfully|has been (saved|updated)|changes (were |have been )?saved|product (was |has been )?updated)/i;
-  const errRe = /(error|failed|is required|please (correct|fix)|could not)/i;
+  const errRe = /(error|failed|is required|please (correct|fix)|could not|cannot|can't)/i;
   // 17 Nov 2026 (canary 3): an SVG matched by these class selectors (the spinner beside Submit) has NO innerText, so allInnerTexts()
   // gave null and x.replace threw "Cannot read properties of undefined (reading 'replace')" in the middle of the save; the browser
   // then closed and very likely cut the save off. SVGs are excluded, a missing text reads as "", and the whole read can never throw.
-  const readMsgs = () => page.locator(':is([role="alert"], [aria-live="assertive"], [class*="flash" i], [class*="alert" i], [class*="success" i], [class*="error-message" i]):not(svg, svg *)')
-    .allInnerTexts().then((a) => a.map((x) => String(x == null ? "" : x).replace(/\s+/g, " ").trim()).filter(Boolean).slice(0, 12)).catch(() => []);
+  // only VISIBLE messages: TpT keeps hidden templates in the page (e.g. "We cannot generate images from your file", which showed up in
+  // every 17 Nov record although nothing was shown)
+  const readMsgs = () => page.locator(':is([role="alert"], [aria-live="assertive"], [class*="flash" i], [class*="alert" i], [class*="success" i], [class*="error-message" i], [class*="error" i]):not(svg, svg *)')
+    .evaluateAll((els) => els.filter((e) => { const r = e.getBoundingClientRect(), cs = getComputedStyle(e); return r.width > 0 && r.height > 0 && cs.visibility !== "hidden" && cs.display !== "none"; })
+      .map((e) => String(e.innerText == null ? "" : e.innerText).replace(/\s+/g, " ").trim()).filter(Boolean).filter((t, i, a) => a.indexOf(t) === i).slice(0, 12)).catch(() => []);
   let how = null, status = null, messages = [];
-  let navDone = null, leftDone = false;
+  let navDone = null, leftDone = false, refused = false;
   navResp.then((r) => { navDone = r; });
   left.then((v) => { leftDone = v; });
   const loopErrors = [];
@@ -1198,11 +1206,16 @@ async function submitAndWait(page, submit, editUrl, opts = {}) {
     // ANY unexpected error in here is logged (with its stack) and the wait goes on: the save is in flight and must not be cut off.
     try {
     await page.waitForTimeout(500);
-    if (navDone) { status = navDone.status(); await page.waitForLoadState("domcontentloaded", { timeout: 60000 }).catch(() => {}); how = `TpT answered the save (${navDone.request().method()} ${status})`; break; }
+    if (navDone) {
+      status = navDone.status(); await page.waitForLoadState("domcontentloaded", { timeout: 60000 }).catch(() => {});
+      how = `TpT answered the save (${navDone.request().method()} ${status} ${navDone.url().replace(/\?.*/, "").slice(0, 100)})`;
+      if (status >= 200 && status < 300) refused = true; // the form came back instead of a redirect: TpT did not save it
+      break;
+    }
     if (leftDone) { how = `the page left the edit form (${page.url().replace(/\?.*/, "")})`; break; }
     // the edit form may save with a background request instead of a page load: a 2xx/3xx answer to a non-GET request to TpT's
     // product endpoints (not graphql/analytics) counts as the save answer once the page has been quiet for 3 s
-    const xhr = cap.log.requests.filter((x) => /<- (POST|PUT|PATCH) [23]\d\d https:\/\/(www\.)?(teacherspayteachers\.com|tpt\.test)\/(itemsDigital|items|My-Products|product)/i.test(x));
+    const xhr = cap.log.requests.filter((x) => /<- (POST|PUT|PATCH) [23]\d\d https:\/\/(www\.)?(teacherspayteachers\.com|tpt\.test)\/(itemsDigital|items|My-Products|product)/i.test(x) && !/\/(converter|queue|uploads)\//i.test(x));
     if (xhr.length && Date.now() - t0 > 3000) { await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {}); status = Number((xhr[xhr.length - 1].match(/ ([23]\d\d) /) || [])[1]) || null; how = `TpT answered the save (${xhr[xhr.length - 1].replace(/^\S+ <- /, "").slice(0, 120)})`; break; }
     messages = await readMsgs();
     if (messages.some((m) => okRe.test(m))) { how = "TpT showed a success message"; break; }
@@ -1217,8 +1230,8 @@ async function submitAndWait(page, submit, editUrl, opts = {}) {
   await page.waitForTimeout(opts.settleMs ?? 3000).catch(() => {});
   messages = await readMsgs();
   const network = cap.stop();
-  const bad = (status !== null && status >= 400) || messages.some((m) => errRe.test(m) && !okRe.test(m));
-  return { ok: !!how && !bad, how: how || `no answer from TpT within ${Math.round(limit / 1000)} s`, status, messages, loop_errors: loopErrors,
+  const bad = refused || (status !== null && status >= 400) || messages.some((m) => errRe.test(m) && !okRe.test(m));
+  return { ok: !!how && !bad, how: (how || `no answer from TpT within ${Math.round(limit / 1000)} s`) + (refused ? " = TpT showed the form again (not saved)" : ""), status, messages, loop_errors: loopErrors,
     network: { requests: network.requests.slice(-30), bodies: network.bodies.slice(-6), failed: network.failed.slice(-10), console: network.console.slice(-15) } };
 }
 

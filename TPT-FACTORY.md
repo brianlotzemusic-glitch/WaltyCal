@@ -222,6 +222,11 @@ CARDS: PDF size, and "Last updated" moved forward. If TpT answered the save but 
 writes `reuploaded`; still old after 3 h writes `reupload-failed`. One failed or unverified item no longer stops the others; only
 3 failures in a row end a run. Every failure writes `tpt/_publish/NNN-slug-reupload-<slot>-diag.json` (requests, TpT's upload
 answers, console errors, the box's HTML); `reupload-failed` carries the same in short under `diagnostics`, plus the save answer.
+Fix 5 (17 Nov): Submit first sends the thumbnails to TpT's converter (answered 200) and polls a queue; only then does the real form
+post (answered 302). The wait took that first 200 as the save and left the page, aborting 17 saves (020-036 stayed `reupload-unverified`
+with the old files). Now only the real form post counts: 302 = saved; 200 = TpT showed the form again = `reupload-failed`.
+An unverified item is never left forever: the look at >= 3 h writes `reupload-failed`. To retry any failed item, append one dated
+line to its `reupload` marker; the Mac does at most 6 replacements a run.
 `tpt/REUPLOAD-PAUSED` stops every replacement; a line `allow: 043` in it lets only the listed items through (the canary).
 **Canary rule, every shift while that file exists:** run `python3 tools/tpt-reupload-canary.py status` and act on its word:
 - `PASSED` (the canary shows `reuploaded`): run `python3 tools/tpt-reupload-canary.py release` (deletes tpt/REUPLOAD-PAUSED), commit
