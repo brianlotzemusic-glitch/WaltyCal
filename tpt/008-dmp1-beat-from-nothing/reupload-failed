@@ -1,0 +1,183 @@
+{
+  "at": "2026-11-17T12:15:29.735Z",
+  "marker_sha256": "52bddcde9af1696f8bdc130af6bbc6536b1b3c3dbca61942c4ce66ca867845ef",
+  "step": "verify (later)",
+  "error": "submitted at 2026-11-17T02:27:51.869Z, but 588 min later the edit page still shows: product old (BeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech.zip Last updated: ); preview old (Preview demoBeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech1792102); thumb1 old (Cancel Main Cover cover.png (32.03 kB) Last updated: Oct 11, 2026 at 8:31 PM EST); thumb2 old (Cancel Thumbnail (Optional) preview1.png (32.83 kB) Last updated: Oct 11, 2026 a); thumb3 old (Cancel Thumbnail (Optional) preview2.png (33.56 kB) Last updated: Oct 11, 2026 a); thumb4 old (Cancel Thumbnail (Optional) preview3.png (38.95 kB) Last updated: Oct 11, 2026 a)",
+  "files": [
+    {
+      "slot": "product",
+      "file": "beat-from-nothing.zip",
+      "bytes": 766939,
+      "sha256": "5e28f8495dc3c27a671b5e1515d73aa3a5d16365dd9c1f3c668ee84da7d64eec"
+    },
+    {
+      "slot": "preview",
+      "file": "beat-from-nothing-PREVIEW.pdf",
+      "bytes": 67270,
+      "sha256": "601a38850298ddcc8e20552dd08643f3d2b981e204a31e02cf351a9d5b0a6d69"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 184872,
+      "sha256": "239b45b7ac945c821ab6e386abc638b48a1bfc61f131dab1768e5a2e30d3f875"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 469657,
+      "sha256": "a0903e2f996e6221d79f692e9b8e969717e8b392e8ea0efb63c94a9cb7641b77"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 337714,
+      "sha256": "d30d3b2f7724c1d1155bb18fb2cd39cb18b6b3fe58f3f4761487b7148a43fdcc"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 475949,
+      "sha256": "451d9192b3cac7e01a76c6326cda6b908a1a19592ee741a061044a9ba3664638"
+    }
+  ],
+  "screenshot": "tpt/_publish/008-dmp1-beat-from-nothing-reupload-recheck.png",
+  "diagnostics": {
+    "save": {
+      "how": "TpT answered the save (POST 200)",
+      "status": 200,
+      "messages": [
+        "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+        "go to My Easel Listings",
+        "Learn more",
+        "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+      ],
+      "loop_errors": [],
+      "requests": [
+        "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+        "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+        "+0.1s -> POST https://www.facebook.com/tr/",
+        "+0.2s <- POST 200 https://www.facebook.com/tr/",
+        "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+        "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=20e033f40cda01e70f91b1c829bcd06f",
+        "+0.2s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+        "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+1.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=20e033f40cda01e70f91b1c829bcd06f",
+        "+1.1s -> POST https://bat.bing.com/p/insights/c/b",
+        "+1.2s <- POST 204 https://bat.bing.com/p/insights/c/b",
+        "+1.2s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+2.0s -> POST https://www.teacherspayteachers.com/queue/results?… body job=20e033f40cda01e70f91b1c829bcd06f",
+        "+2.1s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+2.9s -> POST https://www.teacherspayteachers.com/queue/results?… body job=20e033f40cda01e70f91b1c829bcd06f",
+        "+3.0s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+      ],
+      "bodies": [
+        "+0.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+1.2s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+2.1s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+3.0s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+      ],
+      "failed": [
+        "+0.2s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+      ],
+      "console": []
+    },
+    "checks": [
+      {
+        "at": "2026-11-17T02:28:00.166Z",
+        "verdicts": [
+          {
+            "slot": "product",
+            "file": "beat-from-nothing.zip",
+            "verdict": "old",
+            "before": "BeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech.zip Last updated: Oct 11, 2026 at 8:31 PM EST See Revision History 769.12 kB",
+            "after": "BeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech.zip Last updated: Oct 11, 2026 at 8:31 PM EST See Revision History 769.12 kB"
+          },
+          {
+            "slot": "preview",
+            "file": "beat-from-nothing-PREVIEW.pdf",
+            "verdict": "old",
+            "before": "Preview demoBeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech17921029.pdf (80.86 kB) Last updated: Oct 11, 2026 at 8:31 PM EST See Revision History",
+            "after": "Preview demoBeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech17921029.pdf (80.86 kB) Last updated: Oct 11, 2026 at 8:31 PM EST See Revision History"
+          },
+          {
+            "slot": "thumb1",
+            "file": "cover.png",
+            "verdict": "old",
+            "before": "Main Cover cover.png (32.03 kB) Last updated: Oct 11, 2026 at 8:31 PM EST",
+            "after": "Cancel Main Cover cover.png (32.03 kB) Last updated: Oct 11, 2026 at 8:31 PM EST"
+          },
+          {
+            "slot": "thumb2",
+            "file": "preview-1.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview1.png (32.83 kB) Last updated: Oct 11, 2026 at 8:31 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview1.png (32.83 kB) Last updated: Oct 11, 2026 at 8:31 PM EST"
+          },
+          {
+            "slot": "thumb3",
+            "file": "preview-2.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview2.png (33.56 kB) Last updated: Oct 11, 2026 at 8:31 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview2.png (33.56 kB) Last updated: Oct 11, 2026 at 8:31 PM EST"
+          },
+          {
+            "slot": "thumb4",
+            "file": "preview-3.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview3.png (38.95 kB) Last updated: Oct 11, 2026 at 8:31 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview3.png (38.95 kB) Last updated: Oct 11, 2026 at 8:31 PM EST"
+          }
+        ]
+      },
+      {
+        "at": "2026-11-17T12:15:29.735Z",
+        "verdicts": [
+          {
+            "slot": "product",
+            "file": "beat-from-nothing.zip",
+            "verdict": "old",
+            "after": "BeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech.zip Last updated: Oct 11, 2026 at 8:31 PM EST See Revision History 769.12 kB"
+          },
+          {
+            "slot": "preview",
+            "file": "beat-from-nothing-PREVIEW.pdf",
+            "verdict": "old",
+            "after": "Preview demoBeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech17921029.pdf (80.86 kB) Last updated: Oct 11, 2026 at 8:31 PM EST See Revision History"
+          },
+          {
+            "slot": "thumb1",
+            "file": "cover.png",
+            "verdict": "old",
+            "after": "Cancel Main Cover cover.png (32.03 kB) Last updated: Oct 11, 2026 at 8:31 PM EST"
+          },
+          {
+            "slot": "thumb2",
+            "file": "preview-1.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview1.png (32.83 kB) Last updated: Oct 11, 2026 at 8:31 PM EST"
+          },
+          {
+            "slot": "thumb3",
+            "file": "preview-2.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview2.png (33.56 kB) Last updated: Oct 11, 2026 at 8:31 PM EST"
+          },
+          {
+            "slot": "thumb4",
+            "file": "preview-3.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview3.png (38.95 kB) Last updated: Oct 11, 2026 at 8:31 PM EST"
+          }
+        ],
+        "screenshot": "tpt/_publish/008-dmp1-beat-from-nothing-reupload-recheck.png"
+      }
+    ]
+  }
+}

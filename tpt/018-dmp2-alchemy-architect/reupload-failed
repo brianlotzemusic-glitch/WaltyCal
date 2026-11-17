@@ -1,0 +1,186 @@
+{
+  "at": "2026-11-17T12:21:04.806Z",
+  "marker_sha256": "3e2d5b0171382a2b67fea3321daca153149430daca2883206d8ce5baf9de75a5",
+  "step": "verify (later)",
+  "error": "submitted at 2026-11-17T03:25:12.165Z, but 536 min later the edit page still shows: product old (AlchemySynthinLogicProSoundDesignSynthesisProjectHighSchoolMusic.zip Last update); preview old (Preview demoAlchemySynthinLogicProSoundDesignSynthesisProjectHighSchoolMusic1798); thumb1 old (Cancel Main Cover cover.png (27.51 kB) Last updated: Oct 17, 2026 at 2:59 PM EST); thumb2 old (Cancel Thumbnail (Optional) preview1.png (41.56 kB) Last updated: Oct 17, 2026 a); thumb3 old (Cancel Thumbnail (Optional) preview2.png (39.19 kB) Last updated: Oct 17, 2026 a); thumb4 old (Cancel Thumbnail (Optional) preview3.png (40.65 kB) Last updated: Oct 17, 2026 a)",
+  "files": [
+    {
+      "slot": "product",
+      "file": "alchemy-architect.zip",
+      "bytes": 1162957,
+      "sha256": "4885fbcfdc652044af9c637281cc170e21b14df617eb3f5fc0ecebd21b8671a9"
+    },
+    {
+      "slot": "preview",
+      "file": "alchemy-architect-PREVIEW.pdf",
+      "bytes": 65810,
+      "sha256": "cffa51609aa94294f9036f76fefcd6ed70563021fa31c09a57a0ad59cfdfbea9"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 160241,
+      "sha256": "dce1cb8f9cf592636fef4aa2e8d91e149a7e307b19e5072d90004cc657a9f5f8"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 686454,
+      "sha256": "65d84b8b791f5561b58a34f9de721fd9c7d7d4e8f446284968c88270ac73f85f"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 451399,
+      "sha256": "bfe27fd1e04ade2e9dbe11db3aee45c8be0e90ae9611e7872bab4042c4253288"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 617495,
+      "sha256": "31566cfbd1ddae8e222a1d447a4730a7a643981a18c15497398b8390c08b266a"
+    }
+  ],
+  "screenshot": "tpt/_publish/018-dmp2-alchemy-architect-reupload-recheck.png",
+  "diagnostics": {
+    "save": {
+      "how": "TpT answered the save (POST 200)",
+      "status": 200,
+      "messages": [
+        "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+        "go to My Easel Listings",
+        "Learn more",
+        "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+      ],
+      "loop_errors": [],
+      "requests": [
+        "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+        "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+        "+0.1s -> POST https://www.facebook.com/tr/",
+        "+0.1s <- POST 200 https://www.facebook.com/tr/",
+        "+0.2s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+        "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+        "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=ead7d99b809f2d2dc4d699b28b4261fa",
+        "+0.4s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+1.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=ead7d99b809f2d2dc4d699b28b4261fa",
+        "+1.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+2.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=ead7d99b809f2d2dc4d699b28b4261fa",
+        "+2.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+3.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=ead7d99b809f2d2dc4d699b28b4261fa",
+        "+3.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+      ],
+      "bodies": [
+        "+0.4s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+1.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+2.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+3.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+      ],
+      "failed": [
+        "+0.1s GET https://googleads.g.doubleclick.net/pagead/viewthroughconversion/970729717/?…: net::ERR_CONNECTION_REFUSED",
+        "+0.1s GET https://googleads.g.doubleclick.net/pagead/viewthroughconversion/970729717/?…: net::ERR_CONNECTION_REFUSED",
+        "+0.2s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+      ],
+      "console": [
+        "+0.1s error: Failed to load resource: net::ERR_CONNECTION_REFUSED",
+        "+0.1s error: Failed to load resource: net::ERR_CONNECTION_REFUSED"
+      ]
+    },
+    "checks": [
+      {
+        "at": "2026-11-17T03:25:20.142Z",
+        "verdicts": [
+          {
+            "slot": "product",
+            "file": "alchemy-architect.zip",
+            "verdict": "old",
+            "before": "AlchemySynthinLogicProSoundDesignSynthesisProjectHighSchoolMusic.zip Last updated: Oct 17, 2026 at 2:59 PM EST See Revision History 1.12 MB",
+            "after": "AlchemySynthinLogicProSoundDesignSynthesisProjectHighSchoolMusic.zip Last updated: Oct 17, 2026 at 2:59 PM EST See Revision History 1.12 MB"
+          },
+          {
+            "slot": "preview",
+            "file": "alchemy-architect-PREVIEW.pdf",
+            "verdict": "old",
+            "before": "Preview demoAlchemySynthinLogicProSoundDesignSynthesisProjectHighSchoolMusic17987375.pdf (78.64 kB) Last updated: Oct 17, 2026 at 2:59 PM EST See Revision Histo",
+            "after": "Preview demoAlchemySynthinLogicProSoundDesignSynthesisProjectHighSchoolMusic17987375.pdf (78.64 kB) Last updated: Oct 17, 2026 at 2:59 PM EST See Revision Histo"
+          },
+          {
+            "slot": "thumb1",
+            "file": "cover.png",
+            "verdict": "old",
+            "before": "Main Cover cover.png (27.51 kB) Last updated: Oct 17, 2026 at 2:59 PM EST",
+            "after": "Cancel Main Cover cover.png (27.51 kB) Last updated: Oct 17, 2026 at 2:59 PM EST"
+          },
+          {
+            "slot": "thumb2",
+            "file": "preview-1.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview1.png (41.56 kB) Last updated: Oct 17, 2026 at 2:59 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview1.png (41.56 kB) Last updated: Oct 17, 2026 at 2:59 PM EST"
+          },
+          {
+            "slot": "thumb3",
+            "file": "preview-2.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview2.png (39.19 kB) Last updated: Oct 17, 2026 at 2:59 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview2.png (39.19 kB) Last updated: Oct 17, 2026 at 2:59 PM EST"
+          },
+          {
+            "slot": "thumb4",
+            "file": "preview-3.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview3.png (40.65 kB) Last updated: Oct 17, 2026 at 2:59 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview3.png (40.65 kB) Last updated: Oct 17, 2026 at 2:59 PM EST"
+          }
+        ]
+      },
+      {
+        "at": "2026-11-17T12:21:04.806Z",
+        "verdicts": [
+          {
+            "slot": "product",
+            "file": "alchemy-architect.zip",
+            "verdict": "old",
+            "after": "AlchemySynthinLogicProSoundDesignSynthesisProjectHighSchoolMusic.zip Last updated: Oct 17, 2026 at 2:59 PM EST See Revision History 1.12 MB"
+          },
+          {
+            "slot": "preview",
+            "file": "alchemy-architect-PREVIEW.pdf",
+            "verdict": "old",
+            "after": "Preview demoAlchemySynthinLogicProSoundDesignSynthesisProjectHighSchoolMusic17987375.pdf (78.64 kB) Last updated: Oct 17, 2026 at 2:59 PM EST See Revision Histo"
+          },
+          {
+            "slot": "thumb1",
+            "file": "cover.png",
+            "verdict": "old",
+            "after": "Cancel Main Cover cover.png (27.51 kB) Last updated: Oct 17, 2026 at 2:59 PM EST"
+          },
+          {
+            "slot": "thumb2",
+            "file": "preview-1.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview1.png (41.56 kB) Last updated: Oct 17, 2026 at 2:59 PM EST"
+          },
+          {
+            "slot": "thumb3",
+            "file": "preview-2.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview2.png (39.19 kB) Last updated: Oct 17, 2026 at 2:59 PM EST"
+          },
+          {
+            "slot": "thumb4",
+            "file": "preview-3.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview3.png (40.65 kB) Last updated: Oct 17, 2026 at 2:59 PM EST"
+          }
+        ],
+        "screenshot": "tpt/_publish/018-dmp2-alchemy-architect-reupload-recheck.png"
+      }
+    ]
+  }
+}

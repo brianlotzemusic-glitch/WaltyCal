@@ -1,21 +1,57 @@
 {
-  "ran_at": "2026-11-17T03:15:05.407Z",
+  "ran_at": "2026-11-17T12:15:09.661Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T03:15:05.555Z",
+    "ran_at": "2026-11-17T12:15:09.809Z",
     "replaced": [],
-    "failed": [],
+    "failed": [
+      {
+        "item": "005-winter-concert-planner",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "008-dmp1-beat-from-nothing",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "009-dmp1-spooky-tunes",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "011-dmp1-chords-by-ear",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "012-dmp1-bass-melody-writing",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "015-dmp2-sample-flipping",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "016-dmp2-fx-deep-dive",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "017-dmp2-music-for-visual-media",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "018-dmp2-alchemy-architect",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "019-dmp2-anti-music-manifesto",
+        "error": "reupload stopped at \"replace product (anti-music-manifesto.zip)\": TpT did not accept anti-music-manifesto.zip after 3 tries (#1 setInputFiles: no result in 6 min (box: anti-music-manifesto.zip 836.68 kB Cancel; key empty) | #2 setInputFiles: no result in 6 min (box: anti-music-manifesto.zip 836.68 kB Cancel; key empty) | #3 TpT's Select-file button + file chooser: could not set the file: page.wait"
+      }
+    ],
     "waiting": [
       "019-dmp2-anti-music-manifesto",
-      "020-dmp2-found-sound",
-      "021-dmp2-free-play",
-      "022-dmp2-genre-exploration",
-      "023-dmp2-infinite-horizon",
-      "024-dmp2-pattern-prodigy",
       "025-dmp2-royalty-free",
       "026-dmp2-session-players-studio",
       "027-thanksgiving-color-by-note",
@@ -40,25 +76,27 @@
       "007-music-sub-plans-k5: failed-hold",
       "008-dmp1-beat-from-nothing: unverified",
       "009-dmp1-spooky-tunes: unverified",
-      "014-dmp2-billboard-top-10: no-url"
+      "011-dmp1-chords-by-ear: unverified",
+      "012-dmp1-bass-melody-writing: unverified",
+      "014-dmp2-billboard-top-10: no-url",
+      "015-dmp2-sample-flipping: unverified",
+      "016-dmp2-fx-deep-dive: unverified",
+      "017-dmp2-music-for-visual-media: unverified",
+      "018-dmp2-alchemy-architect: unverified"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": true,
+    "ok": false,
     "canary": [
       "043"
     ],
     "unverified": [
-      "005-winter-concert-planner",
-      "008-dmp1-beat-from-nothing",
-      "009-dmp1-spooky-tunes",
-      "011-dmp1-chords-by-ear",
-      "012-dmp1-bass-melody-writing",
-      "015-dmp2-sample-flipping",
-      "016-dmp2-fx-deep-dive",
-      "017-dmp2-music-for-visual-media",
-      "018-dmp2-alchemy-architect"
+      "020-dmp2-found-sound",
+      "021-dmp2-free-play",
+      "022-dmp2-genre-exploration",
+      "023-dmp2-infinite-horizon",
+      "024-dmp2-pattern-prodigy"
     ]
   },
   "ok": true

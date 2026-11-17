@@ -1,0 +1,145 @@
+{
+  "at": "2026-11-17T12:41:32.356Z",
+  "marker_sha256": "22e39006ef6fd4a27ce08673fe1e469581f12b4573c51513f02df66590ac9557",
+  "url": "https://www.teacherspayteachers.com/Product/Free-Play-Project-in-Logic-Pro-Open-Ended-Music-Production-High-School-18000854",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/18000854",
+  "checks": [
+    {
+      "at": "2026-11-17T12:41:40.383Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "free-play.zip",
+          "verdict": "old",
+          "before": "FreePlayProjectinLogicProOpenEndedMusicProductionHighSchool.zip Last updated: Oct 18, 2026 at 8:31 PM EST See Revision History 824.29 kB",
+          "after": "FreePlayProjectinLogicProOpenEndedMusicProductionHighSchool.zip Last updated: Oct 18, 2026 at 8:31 PM EST See Revision History 824.29 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "free-play-PREVIEW.pdf",
+          "verdict": "old",
+          "before": "Preview demoFreePlayProjectinLogicProOpenEndedMusicProductionHighSchool18000854.pdf (117.55 kB) Last updated: Oct 18, 2026 at 8:31 PM EST See Revision History",
+          "after": "Preview demoFreePlayProjectinLogicProOpenEndedMusicProductionHighSchool18000854.pdf (117.55 kB) Last updated: Oct 18, 2026 at 8:31 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (23.32 kB) Last updated: Oct 18, 2026 at 8:31 PM EST",
+          "after": "Cancel Main Cover cover.png (23.32 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Oct 18, 2026 at 8:31 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (40.22 kB) Last updated: Oct 18, 2026 at 8:31 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (40.22 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (39.7 kB) Last updated: Oct 18, 2026 at 8:31 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (39.7 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "free-play.zip",
+      "bytes": 808407,
+      "sha256": "d7184c4eb555ef128261ab8dc00247edd37f8de79ca649431897267eb27b0f39"
+    },
+    {
+      "slot": "preview",
+      "file": "free-play-PREVIEW.pdf",
+      "bytes": 106142,
+      "sha256": "c50b1925170afd0a8a8bc2ea6b47c79bff0a849c5b7ed527ccd53e125c99fe9a"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 132063,
+      "sha256": "bd1477ad6009f7795edc23a003d898f684159e28f85c8b9587ead5d567097637"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 713027,
+      "sha256": "a94fdefe67d2df5512a3bdc0b88011e71a04426da91da2201360d2057495b26e"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 439787,
+      "sha256": "58c0b44ca799fe55b859d83f7ca992ce5e0afc80867d7394248abe2bf2f7d245"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 616531,
+      "sha256": "765bd84c52787cb8e0d2ef617769b8e6612f873d15fb47f7a5ed9187535e52a1"
+    }
+  ],
+  "old_cards": {
+    "product": "FreePlayProjectinLogicProOpenEndedMusicProductionHighSchool.zip Last updated: Oct 18, 2026 at 8:31 PM EST See Revision History 824.29 kB",
+    "preview": "Preview demoFreePlayProjectinLogicProOpenEndedMusicProductionHighSchool18000854.pdf (117.55 kB) Last updated: Oct 18, 2026 at 8:31 PM EST See Revision History",
+    "thumb1": "Main Cover cover.png (23.32 kB) Last updated: Oct 18, 2026 at 8:31 PM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Oct 18, 2026 at 8:31 PM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (40.22 kB) Last updated: Oct 18, 2026 at 8:31 PM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (39.7 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=4d9034fbb240d12fcc176b67ea9d61c3",
+      "+0.2s <- POST 200 https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=4d9034fbb240d12fcc176b67ea9d61c3",
+      "+1.2s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.0s -> POST https://www.teacherspayteachers.com/queue/results?… body job=4d9034fbb240d12fcc176b67ea9d61c3",
+      "+2.1s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+3.0s -> POST https://www.teacherspayteachers.com/queue/results?… body job=4d9034fbb240d12fcc176b67ea9d61c3",
+      "+3.1s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+    ],
+    "bodies": [
+      "+0.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.2s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.1s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+3.1s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.2s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}

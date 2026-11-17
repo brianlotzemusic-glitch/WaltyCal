@@ -1,0 +1,186 @@
+{
+  "at": "2026-11-17T12:19:56.712Z",
+  "marker_sha256": "4deac6662691008b18de5feda9d74c7127f94a26013d3988cd44c086cea4f081",
+  "step": "verify (later)",
+  "error": "submitted at 2026-11-17T03:16:38.606Z, but 543 min later the edit page still shows: product old (ChordProgressionsinLogicProRomanNumeralsHighSchoolMusicTechnology.zip Last updat); preview old (Preview demoChordProgressionsinLogicProRomanNumeralsHighSchoolMusicTechnology179); thumb1 old (Cancel Main Cover cover.png (32.48 kB) Last updated: Oct 14, 2026 at 4:30 PM EST); thumb2 old (Cancel Thumbnail (Optional) preview1.png (38.74 kB) Last updated: Oct 14, 2026 a); thumb3 old (Cancel Thumbnail (Optional) preview2.png (44.57 kB) Last updated: Oct 14, 2026 a); thumb4 old (Cancel Thumbnail (Optional) preview3.png (41.04 kB) Last updated: Oct 14, 2026 a)",
+  "files": [
+    {
+      "slot": "product",
+      "file": "chords-by-ear.zip",
+      "bytes": 938228,
+      "sha256": "5be709c760e6fb75931c2e5809abae9263a56c2971e55e35aa75db955006636d"
+    },
+    {
+      "slot": "preview",
+      "file": "chords-by-ear-PREVIEW.pdf",
+      "bytes": 62478,
+      "sha256": "67860b3820ab82dd2abe8eeddcaa465c633eee8d8d2bb3db64afc4d87fea21dc"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 157536,
+      "sha256": "44b55099f6ebf3bed838ac4a1594627145303c5af439e04b14c40e9cf116dfbd"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 538977,
+      "sha256": "5548e4e223f894bb7ca3727b9f32dea1eb0bb92f4cac2f3016f945ca96a846d6"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 448111,
+      "sha256": "e00a55589af64e157b90c51d72e325cb95635b364669756fb34051405a7a07f7"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 551840,
+      "sha256": "4b7a322a93b606f963edc0bd5d577b5d27f74525df756109701b2c0944643f3b"
+    }
+  ],
+  "screenshot": "tpt/_publish/011-dmp1-chords-by-ear-reupload-recheck.png",
+  "diagnostics": {
+    "save": {
+      "how": "TpT answered the save (POST 200)",
+      "status": 200,
+      "messages": [
+        "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+        "go to My Easel Listings",
+        "Learn more",
+        "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+      ],
+      "loop_errors": [],
+      "requests": [
+        "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+        "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+        "+0.1s -> POST https://www.facebook.com/tr/",
+        "+0.1s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+        "+0.2s <- POST 200 https://www.facebook.com/tr/",
+        "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+        "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=53b78fbb1651ea35c86a46e6db466eb2",
+        "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+1.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=53b78fbb1651ea35c86a46e6db466eb2",
+        "+1.2s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+2.0s -> POST https://www.teacherspayteachers.com/queue/results?… body job=53b78fbb1651ea35c86a46e6db466eb2",
+        "+2.2s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+3.0s -> POST https://www.teacherspayteachers.com/queue/results?… body job=53b78fbb1651ea35c86a46e6db466eb2",
+        "+3.4s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+      ],
+      "bodies": [
+        "+0.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+1.2s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+2.2s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+3.4s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+      ],
+      "failed": [
+        "+0.1s GET https://googleads.g.doubleclick.net/pagead/viewthroughconversion/970729717/?…: net::ERR_CONNECTION_REFUSED",
+        "+0.1s GET https://googleads.g.doubleclick.net/pagead/viewthroughconversion/970729717/?…: net::ERR_CONNECTION_REFUSED",
+        "+0.1s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+      ],
+      "console": [
+        "+0.1s error: Failed to load resource: net::ERR_CONNECTION_REFUSED",
+        "+0.1s error: Failed to load resource: net::ERR_CONNECTION_REFUSED"
+      ]
+    },
+    "checks": [
+      {
+        "at": "2026-11-17T03:16:46.744Z",
+        "verdicts": [
+          {
+            "slot": "product",
+            "file": "chords-by-ear.zip",
+            "verdict": "old",
+            "before": "ChordProgressionsinLogicProRomanNumeralsHighSchoolMusicTechnology.zip Last updated: Oct 14, 2026 at 4:30 PM EST See Revision History 943.88 kB",
+            "after": "ChordProgressionsinLogicProRomanNumeralsHighSchoolMusicTechnology.zip Last updated: Oct 14, 2026 at 4:30 PM EST See Revision History 943.88 kB"
+          },
+          {
+            "slot": "preview",
+            "file": "chords-by-ear-PREVIEW.pdf",
+            "verdict": "old",
+            "before": "Preview demoChordProgressionsinLogicProRomanNumeralsHighSchoolMusicTechnology17953543.pdf (76.6 kB) Last updated: Oct 14, 2026 at 4:30 PM EST See Revision Histo",
+            "after": "Preview demoChordProgressionsinLogicProRomanNumeralsHighSchoolMusicTechnology17953543.pdf (76.6 kB) Last updated: Oct 14, 2026 at 4:30 PM EST See Revision Histo"
+          },
+          {
+            "slot": "thumb1",
+            "file": "cover.png",
+            "verdict": "old",
+            "before": "Main Cover cover.png (32.48 kB) Last updated: Oct 14, 2026 at 4:30 PM EST",
+            "after": "Cancel Main Cover cover.png (32.48 kB) Last updated: Oct 14, 2026 at 4:30 PM EST"
+          },
+          {
+            "slot": "thumb2",
+            "file": "preview-1.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview1.png (38.74 kB) Last updated: Oct 14, 2026 at 4:30 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview1.png (38.74 kB) Last updated: Oct 14, 2026 at 4:30 PM EST"
+          },
+          {
+            "slot": "thumb3",
+            "file": "preview-2.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview2.png (44.57 kB) Last updated: Oct 14, 2026 at 4:30 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview2.png (44.57 kB) Last updated: Oct 14, 2026 at 4:30 PM EST"
+          },
+          {
+            "slot": "thumb4",
+            "file": "preview-3.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview3.png (41.04 kB) Last updated: Oct 14, 2026 at 4:30 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview3.png (41.04 kB) Last updated: Oct 14, 2026 at 4:30 PM EST"
+          }
+        ]
+      },
+      {
+        "at": "2026-11-17T12:19:56.712Z",
+        "verdicts": [
+          {
+            "slot": "product",
+            "file": "chords-by-ear.zip",
+            "verdict": "old",
+            "after": "ChordProgressionsinLogicProRomanNumeralsHighSchoolMusicTechnology.zip Last updated: Oct 14, 2026 at 4:30 PM EST See Revision History 943.88 kB"
+          },
+          {
+            "slot": "preview",
+            "file": "chords-by-ear-PREVIEW.pdf",
+            "verdict": "old",
+            "after": "Preview demoChordProgressionsinLogicProRomanNumeralsHighSchoolMusicTechnology17953543.pdf (76.6 kB) Last updated: Oct 14, 2026 at 4:30 PM EST See Revision Histo"
+          },
+          {
+            "slot": "thumb1",
+            "file": "cover.png",
+            "verdict": "old",
+            "after": "Cancel Main Cover cover.png (32.48 kB) Last updated: Oct 14, 2026 at 4:30 PM EST"
+          },
+          {
+            "slot": "thumb2",
+            "file": "preview-1.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview1.png (38.74 kB) Last updated: Oct 14, 2026 at 4:30 PM EST"
+          },
+          {
+            "slot": "thumb3",
+            "file": "preview-2.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview2.png (44.57 kB) Last updated: Oct 14, 2026 at 4:30 PM EST"
+          },
+          {
+            "slot": "thumb4",
+            "file": "preview-3.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview3.png (41.04 kB) Last updated: Oct 14, 2026 at 4:30 PM EST"
+          }
+        ],
+        "screenshot": "tpt/_publish/011-dmp1-chords-by-ear-reupload-recheck.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "at": "2026-11-17T12:46:54.265Z",
+  "marker_sha256": "3cacc83736b7934b093c0065bde8c61af6c6213633dc9cc32034b076b9ae0709",
+  "url": "https://www.teacherspayteachers.com/Product/Pattern-Prodigy-in-Logic-Pro-Step-Sequencer-Beat-Project-High-School-18023936",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/18023936",
+  "checks": [
+    {
+      "at": "2026-11-17T12:47:02.388Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "pattern-prodigy.zip",
+          "verdict": "old",
+          "before": "PatternProdigyinLogicProStepSequencerBeatProjectHighSchool.zip Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History 1.15 MB",
+          "after": "PatternProdigyinLogicProStepSequencerBeatProjectHighSchool.zip Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History 1.15 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "pattern-prodigy-PREVIEW.pdf",
+          "verdict": "old",
+          "before": "Preview demoPatternProdigyinLogicProStepSequencerBeatProjectHighSchool18023936.pdf (127.27 kB) Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History",
+          "after": "Preview demoPatternProdigyinLogicProStepSequencerBeatProjectHighSchool18023936.pdf (127.27 kB) Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (29.26 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+          "after": "Cancel Main Cover cover.png (29.26 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (42.8 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (42.8 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (43.19 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (43.19 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (41.57 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (41.57 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "pattern-prodigy.zip",
+      "bytes": 1183350,
+      "sha256": "ee9f70b39eaf3bf090f0bc5f4e89370b0f938c20f835654aa928f07a46666cbb"
+    },
+    {
+      "slot": "preview",
+      "file": "pattern-prodigy-PREVIEW.pdf",
+      "bytes": 115775,
+      "sha256": "c03e6154d4b06c4d900e01065c9873d88b0e2395a970d439cd366c3b5a14856c"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 162302,
+      "sha256": "2f730566f7e2072012fd7e07498902bafb82d874cbdf946a6d5e2a2395ef91df"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 695768,
+      "sha256": "1592e4a56c6ad679b0939b92b874d1249cc3f33f666b1736386e94051d6b4ae6"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 471061,
+      "sha256": "19cdeda40705c8ed6614014c402fdd7fd425ec20351dbd7dee1117847281c8bf"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 595332,
+      "sha256": "1235532704ff8b0d3be7eba0044bd6cfbd12a4ba64f7741f2da9648a2865ad13"
+    }
+  ],
+  "old_cards": {
+    "product": "PatternProdigyinLogicProStepSequencerBeatProjectHighSchool.zip Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History 1.15 MB",
+    "preview": "Preview demoPatternProdigyinLogicProStepSequencerBeatProjectHighSchool18023936.pdf (127.27 kB) Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History",
+    "thumb1": "Main Cover cover.png (29.26 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (42.8 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (43.19 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (41.57 kB) Last updated: Oct 20, 2026 at 6:46 PM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.3s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=29bb603c88c84b47451d683798ef82b9",
+      "+0.4s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=29bb603c88c84b47451d683798ef82b9",
+      "+1.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=29bb603c88c84b47451d683798ef82b9",
+      "+2.4s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+3.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=29bb603c88c84b47451d683798ef82b9",
+      "+3.4s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+    ],
+    "bodies": [
+      "+0.4s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.4s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+3.4s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.2s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}

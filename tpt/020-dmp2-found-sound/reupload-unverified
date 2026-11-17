@@ -1,0 +1,147 @@
+{
+  "at": "2026-11-17T12:39:51.168Z",
+  "marker_sha256": "c31c7292f97d29ab65f6d1d87c291fa0956037f710abda06d3c665a52ce1ea87",
+  "url": "https://www.teacherspayteachers.com/Product/Found-Sound-in-Logic-Pro-Quick-Sampler-Sound-Design-Project-High-School-17995322",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/17995322",
+  "checks": [
+    {
+      "at": "2026-11-17T12:39:59.525Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "found-sound.zip",
+          "verdict": "old",
+          "before": "FoundSoundinLogicProQuickSamplerSoundDesignProjectHighSchool.zip Last updated: Oct 18, 2026 at 10:25 AM EST See Revision History 732.1 kB",
+          "after": "FoundSoundinLogicProQuickSamplerSoundDesignProjectHighSchool.zip Last updated: Oct 18, 2026 at 10:25 AM EST See Revision History 732.1 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "found-sound-PREVIEW.pdf",
+          "verdict": "old",
+          "before": "Preview demoFoundSoundinLogicProQuickSamplerSoundDesignProjectHighSchool17995322.pdf (87.05 kB) Last updated: Oct 18, 2026 at 10:25 AM EST See Revision History",
+          "after": "Preview demoFoundSoundinLogicProQuickSamplerSoundDesignProjectHighSchool17995322.pdf (87.05 kB) Last updated: Oct 18, 2026 at 10:25 AM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (24.16 kB) Last updated: Oct 18, 2026 at 10:25 AM EST",
+          "after": "Cancel Main Cover cover.png (24.16 kB) Last updated: Oct 18, 2026 at 10:25 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (42.04 kB) Last updated: Oct 18, 2026 at 10:25 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (42.04 kB) Last updated: Oct 18, 2026 at 10:25 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (40.41 kB) Last updated: Oct 18, 2026 at 10:25 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (40.41 kB) Last updated: Oct 18, 2026 at 10:25 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (40.39 kB) Last updated: Oct 18, 2026 at 10:25 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (40.39 kB) Last updated: Oct 18, 2026 at 10:25 AM EST"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "found-sound.zip",
+      "bytes": 727146,
+      "sha256": "681afdc6549b1561acfd997acd06431d2942b99800624fd17ece19771c36aef8"
+    },
+    {
+      "slot": "preview",
+      "file": "found-sound-PREVIEW.pdf",
+      "bytes": 74560,
+      "sha256": "251f6bdceed49d54b5985bcd550d6d90aa891d3b33efb86f5693bc76f2045496"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 128874,
+      "sha256": "9f58822da0403996ce55556d4c9ccc95b509abb8b797111e7d0b86a8d0b8abfd"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 686799,
+      "sha256": "598f5e04f357c56384aab9b5789be3863ec17a09301c766c1275cf3854e111e2"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 443888,
+      "sha256": "99feaa736880943c8fc054386ec29edffd58f4928defe2e13a949e9dc9286501"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 602393,
+      "sha256": "cab0c2373085c4fecc9f37163d460f4964f5c7769233b2a6691521bae999f549"
+    }
+  ],
+  "old_cards": {
+    "product": "FoundSoundinLogicProQuickSamplerSoundDesignProjectHighSchool.zip Last updated: Oct 18, 2026 at 10:25 AM EST See Revision History 732.1 kB",
+    "preview": "Preview demoFoundSoundinLogicProQuickSamplerSoundDesignProjectHighSchool17995322.pdf (87.05 kB) Last updated: Oct 18, 2026 at 10:25 AM EST See Revision History",
+    "thumb1": "Main Cover cover.png (24.16 kB) Last updated: Oct 18, 2026 at 10:25 AM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (42.04 kB) Last updated: Oct 18, 2026 at 10:25 AM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (40.41 kB) Last updated: Oct 18, 2026 at 10:25 AM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (40.39 kB) Last updated: Oct 18, 2026 at 10:25 AM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://analytics.google.com/g/collect?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=74c1d4d793c2399b04580ded166d81ea",
+      "+0.2s <- POST 204 https://analytics.google.com/g/collect?…",
+      "+0.2s <- POST 200 https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=74c1d4d793c2399b04580ded166d81ea",
+      "+1.2s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.0s -> POST https://www.teacherspayteachers.com/queue/results?… body job=74c1d4d793c2399b04580ded166d81ea",
+      "+2.1s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.9s -> POST https://www.teacherspayteachers.com/queue/results?… body job=74c1d4d793c2399b04580ded166d81ea",
+      "+3.1s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+    ],
+    "bodies": [
+      "+0.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.2s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.1s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+3.1s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.2s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}
