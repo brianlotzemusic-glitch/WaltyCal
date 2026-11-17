@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (39.7 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T14:25:15.469Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "free-play.zip",
+          "verdict": "old",
+          "after": "FreePlayProjectinLogicProOpenEndedMusicProductionHighSchool.zip Last updated: Oct 18, 2026 at 8:31 PM EST See Revision History 824.29 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "free-play-PREVIEW.pdf",
+          "verdict": "old",
+          "after": "Preview demoFreePlayProjectinLogicProOpenEndedMusicProductionHighSchool18000854.pdf (117.55 kB) Last updated: Oct 18, 2026 at 8:31 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (23.32 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (40.22 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (39.7 kB) Last updated: Oct 18, 2026 at 8:31 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/021-dmp2-free-play-reupload-recheck.png"
     }
   ],
   "files": [

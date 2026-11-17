@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (41.04 kB) Last updated: Oct 19, 2026 at 8:31 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T14:25:31.763Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "infinite-horizon.zip",
+          "verdict": "old",
+          "after": "InfiniteHorizoninLogicProAmbientSoundscapeProjectHighSchool.zip Last updated: Oct 19, 2026 at 8:31 PM EST See Revision History 1 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "infinite-horizon-PREVIEW.pdf",
+          "verdict": "old",
+          "after": "Preview demoInfiniteHorizoninLogicProAmbientSoundscapeProjectHighSchool18012547.pdf (88.76 kB) Last updated: Oct 19, 2026 at 8:31 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (23.99 kB) Last updated: Oct 19, 2026 at 8:31 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (43.03 kB) Last updated: Oct 19, 2026 at 8:31 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (41.61 kB) Last updated: Oct 19, 2026 at 8:31 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (41.04 kB) Last updated: Oct 19, 2026 at 8:31 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/023-dmp2-infinite-horizon-reupload-recheck.png"
     }
   ],
   "files": [

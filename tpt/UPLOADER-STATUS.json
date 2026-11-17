@@ -1,63 +1,15 @@
 {
-  "ran_at": "2026-11-17T12:15:09.661Z",
+  "ran_at": "2026-11-17T14:24:56.286Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T12:15:09.809Z",
+    "ran_at": "2026-11-17T14:24:56.441Z",
     "replaced": [],
-    "failed": [
-      {
-        "item": "005-winter-concert-planner",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "008-dmp1-beat-from-nothing",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "009-dmp1-spooky-tunes",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "011-dmp1-chords-by-ear",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "012-dmp1-bass-melody-writing",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "015-dmp2-sample-flipping",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "016-dmp2-fx-deep-dive",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "017-dmp2-music-for-visual-media",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "018-dmp2-alchemy-architect",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "019-dmp2-anti-music-manifesto",
-        "error": "reupload stopped at \"replace product (anti-music-manifesto.zip)\": TpT did not accept anti-music-manifesto.zip after 3 tries (#1 setInputFiles: no result in 6 min (box: anti-music-manifesto.zip 836.68 kB Cancel; key empty) | #2 setInputFiles: no result in 6 min (box: anti-music-manifesto.zip 836.68 kB Cancel; key empty) | #3 TpT's Select-file button + file chooser: could not set the file: page.wait"
-      }
-    ],
+    "failed": [],
     "waiting": [
-      "019-dmp2-anti-music-manifesto",
-      "025-dmp2-royalty-free",
-      "026-dmp2-session-players-studio",
-      "027-thanksgiving-color-by-note",
-      "028-free-color-by-note-sampler",
-      "029-winter-color-by-note",
-      "030-dmp1-units-1-6-bundle",
       "031-carol-flip-logic",
       "032-christmas-color-by-note",
       "033-thanksgiving-music-sub-plan",
@@ -72,22 +24,28 @@
     ],
     "skipped": [
       "002-fall-rhythm-flashcards: failed-hold",
-      "005-winter-concert-planner: unverified",
+      "005-winter-concert-planner: failed-hold",
       "007-music-sub-plans-k5: failed-hold",
-      "008-dmp1-beat-from-nothing: unverified",
-      "009-dmp1-spooky-tunes: unverified",
-      "011-dmp1-chords-by-ear: unverified",
-      "012-dmp1-bass-melody-writing: unverified",
+      "008-dmp1-beat-from-nothing: failed-hold",
+      "009-dmp1-spooky-tunes: failed-hold",
+      "011-dmp1-chords-by-ear: failed-hold",
+      "012-dmp1-bass-melody-writing: failed-hold",
       "014-dmp2-billboard-top-10: no-url",
-      "015-dmp2-sample-flipping: unverified",
-      "016-dmp2-fx-deep-dive: unverified",
-      "017-dmp2-music-for-visual-media: unverified",
-      "018-dmp2-alchemy-architect: unverified"
+      "015-dmp2-sample-flipping: failed-hold",
+      "016-dmp2-fx-deep-dive: failed-hold",
+      "017-dmp2-music-for-visual-media: failed-hold",
+      "018-dmp2-alchemy-architect: failed-hold",
+      "019-dmp2-anti-music-manifesto: failed-hold",
+      "020-dmp2-found-sound: unverified",
+      "021-dmp2-free-play: unverified",
+      "022-dmp2-genre-exploration: unverified",
+      "023-dmp2-infinite-horizon: unverified",
+      "024-dmp2-pattern-prodigy: unverified"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": false,
+    "ok": true,
     "canary": [
       "043"
     ],
@@ -96,7 +54,13 @@
       "021-dmp2-free-play",
       "022-dmp2-genre-exploration",
       "023-dmp2-infinite-horizon",
-      "024-dmp2-pattern-prodigy"
+      "024-dmp2-pattern-prodigy",
+      "025-dmp2-royalty-free",
+      "026-dmp2-session-players-studio",
+      "027-thanksgiving-color-by-note",
+      "028-free-color-by-note-sampler",
+      "029-winter-color-by-note",
+      "030-dmp1-units-1-6-bundle"
     ]
   },
   "ok": true
