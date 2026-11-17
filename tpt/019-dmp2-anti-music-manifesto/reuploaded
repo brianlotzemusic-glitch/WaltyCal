@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T22:53:13.240Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Anti-Music-in-Logic-Pro-Experimental-Music-Manifesto-Project-High-School-17991267",
+  "marker_sha256": "8b7fa6574df657b4bf073af6b0ba1cf72bfa61937de0d1841f7a0605b1d4d2a4",
+  "files": [
+    {
+      "slot": "product",
+      "file": "anti-music-manifesto.zip",
+      "bytes": 856760,
+      "sha256": "36d1d8ed6365e50f0dca5a2587b0e3f8ea7a135458c41e51e54a5f8d27acecbd"
+    },
+    {
+      "slot": "preview",
+      "file": "anti-music-manifesto-PREVIEW.pdf",
+      "bytes": 71549,
+      "sha256": "29467dade77fb1c3b4f56c6337c8bef80af8bc7489831fa0f08f0008c5870de3"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 179879,
+      "sha256": "452ab74481a664f92734e319aa95ccd4e79704257424b434909b8c4838037977"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 700798,
+      "sha256": "faf51ea2cf53de04932c3a0a751883fea2452dbfaf037024c3877fab52ca6d6f"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 451758,
+      "sha256": "1e77d033705dacea2f6a4dfae15dc0de8a989b7f197961795090abcae612f526"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 552711,
+      "sha256": "0cb830f67e6c587d2de8fd04a373a9b90bf415db68c0a8533c4849eab90459df"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "anti-music-manifesto.zip",
+      "verdict": "match",
+      "before": "AntiMusicinLogicProExperimentalMusicManifestoProjectHighSchool.zip Last updated: Oct 17, 2026 at 10:01 PM EST See Revision History 859.24 kB",
+      "after": "antimusicmanifesto.zip Last updated: Nov 17, 2026 at 5:53 PM EST See Revision History 836.68 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "anti-music-manifesto-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoAntiMusicinLogicProExperimentalMusicManifestoProjectHighSchool17991267.pdf (84.44 kB) Last updated: Oct 17, 2026 at 10:01 PM EST See Revision Histor",
+      "after": "Preview antimusicmanifestoPREVIEW.pdf (69.87 kB) Last updated: Nov 17, 2026 at 5:53 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (27.84 kB) Last updated: Oct 17, 2026 at 10:01 PM EST",
+      "after": "Cancel Main Cover cover.png (27.84 kB) Last updated: Nov 17, 2026 at 6:53 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Oct 17, 2026 at 10:01 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Nov 17, 2026 at 6:53 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (40.13 kB) Last updated: Oct 17, 2026 at 10:01 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (40 kB) Last updated: Nov 17, 2026 at 6:53 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (39.48 kB) Last updated: Oct 17, 2026 at 10:01 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (39.48 kB) Last updated: Nov 17, 2026 at 6:53 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/17991267)"
+}

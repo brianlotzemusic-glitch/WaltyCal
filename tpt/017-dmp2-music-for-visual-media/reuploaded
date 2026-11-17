@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T22:47:06.133Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Film-Scoring-in-Logic-Pro-Music-for-Visual-Media-Project-High-School-Music-17987355",
+  "marker_sha256": "4046b11076a0e0976ef9ae4f5718743206e9d2941e79a4f56a8d61818e7a858c",
+  "files": [
+    {
+      "slot": "product",
+      "file": "music-for-visual-media.zip",
+      "bytes": 829466,
+      "sha256": "2a2a0c54119cf914e3ba34b4f0bac60150720437756711906c38ce3dc5492a4e"
+    },
+    {
+      "slot": "preview",
+      "file": "music-for-visual-media-PREVIEW.pdf",
+      "bytes": 62891,
+      "sha256": "d271bd357745942a8f02b9d7ececfeda3b9b89523d768a8a02c718e90d1dfb5c"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 158134,
+      "sha256": "d792826bca4100bfcb632d099757243f6adf36f732fd3f6e425300b740548bf3"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 586534,
+      "sha256": "cffa064c49aebe5a6006643fa96e9996b06e518b13fdc45dc918f55bcb0d5e61"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 444167,
+      "sha256": "3235844e71547a8924b84ac6996b74544ad57c426dff9faca359f1bdc40b137a"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 620398,
+      "sha256": "ca02b2a38d6877ec9c3900b5c1e94f4cb1c7c369a2440632f4c67a605e3119fd"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "music-for-visual-media.zip",
+      "verdict": "match",
+      "before": "FilmScoringinLogicProMusicforVisualMediaProjectHighSchoolMusic.zip Last updated: Oct 17, 2026 at 2:58 PM EST See Revision History 807.31 kB",
+      "after": "musicforvisualmedia.zip Last updated: Nov 17, 2026 at 5:46 PM EST See Revision History 810.03 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "music-for-visual-media-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoFilmScoringinLogicProMusicforVisualMediaProjectHighSchoolMusic17987355.pdf (71.68 kB) Last updated: Oct 17, 2026 at 2:58 PM EST See Revision History",
+      "after": "Preview musicforvisualmediaPREVIEW.pdf (61.42 kB) Last updated: Nov 17, 2026 at 5:46 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (26.25 kB) Last updated: Oct 17, 2026 at 2:58 PM EST",
+      "after": "Cancel Main Cover cover.png (26.24 kB) Last updated: Nov 17, 2026 at 6:46 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (40.16 kB) Last updated: Oct 17, 2026 at 2:58 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (39.95 kB) Last updated: Nov 17, 2026 at 6:46 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (41.56 kB) Last updated: Oct 17, 2026 at 2:58 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (41.42 kB) Last updated: Nov 17, 2026 at 6:46 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (40.21 kB) Last updated: Oct 17, 2026 at 2:58 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (40.27 kB) Last updated: Nov 17, 2026 at 6:46 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/17987355)"
+}
