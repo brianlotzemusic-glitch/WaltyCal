@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T02:20:12.088Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Halloween-Color-by-Note-Rhythm-Treble-Bass-Clef-Worksheets-with-Answer-Keys-17837169",
+  "marker_sha256": "6693165d13391b3be3319cfc658353c00d9420d96b8645b71cb1f044ae83eaf4",
+  "files": [
+    {
+      "slot": "product",
+      "file": "halloween-color-by-note.pdf",
+      "bytes": 1141409,
+      "sha256": "ba72a4adeecf94e0d16124737276e6a80238ca6ef7f1376e063192b01a299927"
+    },
+    {
+      "slot": "preview",
+      "file": "halloween-color-by-note-PREVIEW.pdf",
+      "bytes": 121021,
+      "sha256": "82724bc21e40b513bffc2b2d16c07bc101432232f8af84016a432bba52dad75e"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 180808,
+      "sha256": "b60434897a12903f6b20a826f87c77b4d25ce2c5424e4d9ebadf1cc13c6a14a3"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 330736,
+      "sha256": "46336e60a3e3679d095252cbeb67970cd66babf359772e79297dade9b6f134e9"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 376903,
+      "sha256": "8c6acbf53f09ba757b4b1dd0c5e2588d88bf1c626894d81d26da52620f43699d"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 376015,
+      "sha256": "6f1a5bcd1e34a59c0a97592033cc252fd531f0329347ae9d466da7a163135ac5"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "halloween-color-by-note.pdf",
+      "verdict": "match",
+      "before": "HalloweenColorbyNoteRhythmTrebleBassClefWorksheetswithAnswerKeys.pdf Last updated: Oct 4, 2026 at 3:48 PM EST See Revision History 1.07 MB",
+      "after": "halloweencolorbynote.pdf Last updated: Oct 4, 2026 at 3:48 PM EST See Revision History 1.09 MB"
+    },
+    {
+      "slot": "preview",
+      "file": "halloween-color-by-note-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoHalloweenColorbyNoteRhythmTrebleBassClefWorksheetswithAnswerKeys17837169.pdf (121.25 kB) Last updated: Oct 4, 2026 at 3:48 PM EST See Revision Histo",
+      "after": "Preview halloweencolorbynotePREVIEW.pdf (118.18 kB) Last updated: Nov 16, 2026 at 9:20 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (31.02 kB) Last updated: Oct 4, 2026 at 3:48 PM EST",
+      "after": "Cancel Main Cover cover.png (30.82 kB) Last updated: Nov 16, 2026 at 10:20 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (34.96 kB) Last updated: Oct 4, 2026 at 3:48 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (34.19 kB) Last updated: Nov 16, 2026 at 10:20 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (38.43 kB) Last updated: Oct 4, 2026 at 3:48 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (37.9 kB) Last updated: Nov 16, 2026 at 10:20 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (53.02 kB) Last updated: Oct 4, 2026 at 3:48 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (51.99 kB) Last updated: Nov 16, 2026 at 10:20 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302)"
+}

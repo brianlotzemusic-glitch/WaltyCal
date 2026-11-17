@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T02:24:23.793Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Thanksgiving-Rhythm-Match-Echo-Cards-Ta-Ti-Ti-Rest-Half-Note-Grades-1-3-17900859",
+  "marker_sha256": "990154776071bb5c5d074c472514a8a40060dcefcc5460340f8f5ce2e4d4037f",
+  "files": [
+    {
+      "slot": "product",
+      "file": "thanksgiving-rhythm-match.pdf",
+      "bytes": 743952,
+      "sha256": "ab9da8973e386c8937d0147313c566fa32be98864980533615cd20909f1dca07"
+    },
+    {
+      "slot": "preview",
+      "file": "thanksgiving-rhythm-match-PREVIEW.pdf",
+      "bytes": 219011,
+      "sha256": "82aa67c7bc8478c515798562b2fda5bc874466d3a07909f1ade81b4f49276681"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 242622,
+      "sha256": "7fc91773035366f4ab9fe65a3ccbc5623cb5a183c33ba41f2eb7667eb28722c5"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 319860,
+      "sha256": "f4f7f538fc4a63fe207d907e73028dffab865daf9f1e5e1a48d582f75de6aa9c"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 323772,
+      "sha256": "98be1b03ae9cca22b14a5d2750a801be3ae1a03f0c87a243295ec4b754b5a1d5"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 179635,
+      "sha256": "e7d77d8c72aa9abd3b0f590fd95174fb63e9720553c3f4a0b9e2db269bbd4ee8"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "thanksgiving-rhythm-match.pdf",
+      "verdict": "match",
+      "before": "ThanksgivingRhythmMatchEchoCardsTaTiTiRestHalfNoteGrades13.pdf Last updated: Oct 9, 2026 at 10:19 PM EST See Revision History 751.01 kB",
+      "after": "thanksgivingrhythmmatch.pdf Last updated: Oct 9, 2026 at 10:19 PM EST See Revision History 726.52 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "thanksgiving-rhythm-match-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoThanksgivingRhythmMatchEchoCardsTaTiTiRestHalfNoteGrades1317900859.pdf (226.63 kB) Last updated: Oct 9, 2026 at 10:19 PM EST See Revision History",
+      "after": "Preview thanksgivingrhythmmatchPREVIEW.pdf (213.88 kB) Last updated: Nov 16, 2026 at 9:24 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (30.97 kB) Last updated: Oct 9, 2026 at 10:19 PM EST",
+      "after": "Cancel Main Cover cover.png (30.99 kB) Last updated: Nov 16, 2026 at 10:24 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (33.37 kB) Last updated: Oct 9, 2026 at 10:19 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (33.37 kB) Last updated: Nov 16, 2026 at 10:24 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (38.35 kB) Last updated: Oct 9, 2026 at 10:19 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (35.26 kB) Last updated: Nov 16, 2026 at 10:24 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (26.43 kB) Last updated: Oct 9, 2026 at 10:19 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (26.43 kB) Last updated: Nov 16, 2026 at 10:24 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302)"
+}

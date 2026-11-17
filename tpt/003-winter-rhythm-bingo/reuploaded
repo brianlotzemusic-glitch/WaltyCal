@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T02:22:14.349Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Winter-Rhythm-Bingo-30-Unique-Cards-Sixteenths-Dotted-Rhythms-Grades-3-6-17886793",
+  "marker_sha256": "a54a9a38b2e4491cc7caaf03c7b8aad919aca3853ad37f7d5802b7fa89e59d95",
+  "files": [
+    {
+      "slot": "product",
+      "file": "winter-rhythm-bingo.pdf",
+      "bytes": 745748,
+      "sha256": "c328686b2da31d7e00fa03d07579c7c870380640ec5b696808b650f7db92aed1"
+    },
+    {
+      "slot": "preview",
+      "file": "winter-rhythm-bingo-PREVIEW.pdf",
+      "bytes": 111544,
+      "sha256": "0b2c94b1ce0ab8bb5b37ae01da7d17cfcaf9f5522bac273a11692b2b9233ce7b"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 286055,
+      "sha256": "b6f6a9bef721db003d4c16b08a8a2c39c0cf306a2dbc7142784c6a4bda2b12a9"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 297541,
+      "sha256": "41abfdcadd199c05e62190054dab5bd6eb3b8465dff22f86a45f2539e2be334c"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 282188,
+      "sha256": "20c48c4d2d7773d77cfb36a6989f674b20f75d54b65f306f24ad10880f00cb04"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 182969,
+      "sha256": "b411ad213af3eaad5513d7d3cfeafe6183df95b5715a3d6191d71fb2aee586cf"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "winter-rhythm-bingo.pdf",
+      "verdict": "match",
+      "before": "WinterRhythmBingo30UniqueCardsSixteenthsDottedRhythmsGrades36.pdf Last updated: Oct 8, 2026 at 3:42 PM EST See Revision History 727.91 kB",
+      "after": "winterrhythmbingo.pdf Last updated: Oct 8, 2026 at 3:42 PM EST See Revision History 728.27 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "winter-rhythm-bingo-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoWinterRhythmBingo30UniqueCardsSixteenthsDottedRhythmsGrades3617886793.pdf (118.96 kB) Last updated: Oct 8, 2026 at 3:42 PM EST See Revision History",
+      "after": "Preview winterrhythmbingoPREVIEW.pdf (108.93 kB) Last updated: Nov 16, 2026 at 9:22 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (34.59 kB) Last updated: Oct 8, 2026 at 3:42 PM EST",
+      "after": "Cancel Main Cover cover.png (34.07 kB) Last updated: Nov 16, 2026 at 10:22 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (30.88 kB) Last updated: Oct 8, 2026 at 3:42 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (30.11 kB) Last updated: Nov 16, 2026 at 10:22 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (35.67 kB) Last updated: Oct 8, 2026 at 3:42 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (35.23 kB) Last updated: Nov 16, 2026 at 10:22 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (42.25 kB) Last updated: Oct 8, 2026 at 3:42 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (41.63 kB) Last updated: Nov 16, 2026 at 10:22 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302)"
+}
