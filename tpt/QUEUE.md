@@ -48,7 +48,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [!] HELD (tpt/050-solfege-snowball-melody-cards, QA approved after 1 fix round but the Visual inspector found defects; see LOG 16 Nov) Solfege Snowball Melody Cards: sol-mi-la-do-re pentatonic patterns to read and sing, build-a-melody mats, original patterns (grades 2–4; $4; winter)
 - [!] HELD (tpt/051-roll-and-compose-winter, QA approved after 1 fix round but the Visual inspector found clipped dice art; see LOG 17 Nov) Roll and Compose, Winter: dice composing for rhythm and melody, 3 levels, staff paper, sharing rubric (grades 2–5; $4; winter)
 - [x] Practice Log and Practice Bingo: weekly logs, 30-day tracker, 4 bingo boards, parent note, instrument-neutral (grades 4–8; $3; evergreen)
-- [ ] Holiday Music Word Puzzles: 6 word searches and 4 crosswords, instruments, symbols and winter music words, answer keys (grades 3–6; $3.50; December)
+- [!] HELD (tpt/052-holiday-music-word-puzzles, QA approved after 1 fix round but the Visual inspector found crossword key defects; see LOG 17 Nov) Holiday Music Word Puzzles: 6 word searches and 4 crosswords, instruments, symbols and winter music words, answer keys (grades 3–6; $3.50; December)
 - [ ] Winter Recorder Songbook, B-A-G: 8 tunes (public-domain and original), fingering charts, practice checklist (grades 3–5; $4; winter)
 - [ ] Holiday Rhythm "I Have, Who Has": two 24-card loop games, level 1 quarter/eighth, level 2 sixteenths, holiday art (grades 2–5; $3.50; December)
 - [ ] Concert Etiquette Lesson and Posters: mini-lesson, 6 posters, audience and performer checklists, exit ticket (grades 3–8; $4; evergreen)
