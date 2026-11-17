@@ -46,6 +46,7 @@ Render at 1000 × 1000 CSS px with deviceScaleFactor 2. The layout is the owner'
  └───────────────────────────────────────┘
 ```
 
+- Hero art may be a library illustration (`tpt/_art/library/`: house line art, one icy-blue accent, transparent PNG); index and rules in `tpt/_art/README.md`.
 - No border round the square and no photos or mock-up props. White background.
 - **Store line** "HUDSON BEAT" at the top of every cover and preview image. If the owner sends the logo file, it goes next to "HUDSON BEAT" in the same top position; never redraw it.
 - The bottom band holds the grade range and the one or two strongest counts. Keep it to one line.

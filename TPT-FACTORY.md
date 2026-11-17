@@ -78,7 +78,13 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 > `tpt/025-dmp2-royalty-free` + `tpt/_dmp2_common/README.md`.
 > Deliver in the folder: `gen.py` (builds everything; `--check` verifies every answer and the layout), the product PDF, a
 > 4-page watermarked preview PDF, `cover.png` (2000×2000), `preview-1..3.png`, `UPLOAD.md` and `tpt.json` (formats in
-> `tpt/README.md`). Everything is drawn in code: no AI image tools, no downloaded art. Missing Python module: pip install it.
+> `tpt/README.md`). Notation, text, grids, puzzles, charts, answer keys and the colour-by-note pictures are drawn in code. Decorative hero
+> art on covers, previews and page headers comes from the art library `tpt/_art/library/` (house-style line art, index and rules in
+> `tpt/_art/README.md`; first look in `tpt/_art/next/INDEX.md`: a daily art session pre-makes `hero.png` and `spot-*.png` for the next queue
+> items in `tpt/_art/next/<slug>/`, use those; else pick the closest library subject; never crop or redraw it, and never generate images). COPY the art you use into the product folder as `art/hero.png` (never reference `tpt/_art`
+> from gen.py), delete its `tpt/_art/next/<slug>/` folder and INDEX line, and append `YYYY-MM-DD | NNN | file` to `tpt/_art/USAGE.md`. Use only art that fits
+> the product: no filler. If nothing fits, draw simple
+> art in code and say "needs art: <subject>" in your reply. Missing Python module: pip install it.
 > Drawing rules (the inspector blocks releases on these): every drawn symbol (dice, hills, snowballs, banners, beams) sits inside
 > its box with padding at least as wide as its stroke, so nothing is clipped by a viewBox or an image edge; check the four edges
 > of `cover.png` and each preview for art touching them. In grids and crosswords put clue numbers small in the top-left corner and
@@ -134,6 +140,8 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
   Bells": the 1916 melody only, no English lyrics.
 - **Public schools buy these.** Winter and secular options alongside Christmas, Hanukkah and Kwanzaa ones; describe religious
   and cultural holidays accurately and respectfully, and keep facts checkable.
+- **AI art (owner, 17 Nov 2026):** the Higgsfield library `tpt/_art/library/` is the hero art for new products (rules: `tpt/_art/README.md`).
+  No AI art for notation, text, grids, answer-key pictures or colour-by-note regions. The listing's disclosure line already covers it.
 - **Never copy another seller's product.** Take the format and subject only.
 - **Titles** ≤ 80 characters, plain search words first (holiday, format, clefs or grades). **Headings are not choices.** TpT's Subject and Tag menus mix category headings in with the real entries, and picking a heading wipes the field and stops the upload (13 Nov 2026: subject "Performing Arts", tags "Holiday" and "Student Practice"). Safe subjects: Music, Instrumental Music, Music Composition, Computer Science - Technology. Safe tags that have published: Winter, Autumn, Thanksgiving, Halloween, Christmas-Chanukah-Kwanzaa, Worksheets, Printables, Activities, Unit Plans, Project-based Learning, Projects, Career and Technical Education. `tools/tpt-validate.py` rejects headings. **Tags** 1–6 exact entries from `tpt/TAG-OPTIONS.json` (the uploader rejects anything else; the old guide's "High School" and "Technology" are not tags),
   **grades** 1–4, **subjects** 1–3 from `tpt/SUBJECT-OPTIONS.json`.

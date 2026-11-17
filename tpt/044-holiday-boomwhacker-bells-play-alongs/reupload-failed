@@ -1,0 +1,125 @@
+{
+  "at": "2026-11-17T17:31:02.865Z",
+  "marker_sha256": "97782a9db604773672003e6626aa4d3c8052367cdc9d74dd14b08e3a6e770c34",
+  "step": "replace thumb3 (preview-2.png)",
+  "error": "TpT did not accept preview-2.png after 3 tries (#1 setInputFiles: no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty) | #2 setInputFiles: no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty) | #3 TpT's Select-file button + file chooser: could not set the file: page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"filechooser\"). Key data[ItemDigital][thumb3] empty; hidden inputs: data[ItemDigital][product]=v3.ju36ALwFYMUzb/m80/Z45ugJCkwiPGnWOfIx3, data[ItemsProperty][product_uploaded]=1, data[ItemDigital][preview]=v3.f+UG3ulKDZ6fhBwGyyBI7RZnRcshjdB88gfsj, data[ItemsProperty][preview_uploaded]=1, data[Upload][videopreview]=, data[Upload][custom_videopreview_uploaded]=0, data[ItemDigital][thumb1]=v3.0a5GLNAsYzmxjCueWlo+ZXCOr12/Xl6LifvRw, data[ItemsProperty][thumb1_uploaded]=1, data[ItemDigital][thumb2]=v3.4fGGQn1e3vLSCFzJWrzYCjj5kfytJNRBcf2CJ, data[ItemsProperty][thumb2_uploaded]=1, data[ItemDigital][thumb3]=, data[ItemsProperty][thumb3_uploaded]=0, data[ItemDigital][thumb4]=v3.qb5SycMORCyNfdowsye41YrfIgp62sCd8QjlL, data[ItemsProperty][thumb4_uploaded]=1. Full diagnostics: tpt/_publish/044-holiday-boomwhacker-bells-play-alongs-reupload-thumb3-diag.json",
+  "files": [
+    {
+      "slot": "product",
+      "file": "color-coded-carol-play-alongs-tubes-bells.pdf",
+      "sha256": "96723a1789a6b5164dbac278fc77069d7202e8b9481ad0d147df83fc6dd36a60"
+    },
+    {
+      "slot": "preview",
+      "file": "color-coded-carol-play-alongs-tubes-bells-PREVIEW.pdf",
+      "sha256": "a748e8eb1cbb6eb2af1a38150b652c656c8b707770bb2b973701e39c2b231122"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "sha256": "7bcf3f0e7739fcc8ebaaf1b3990f14ab7bc18cea8e37df4086a8b0ee9d001f9c"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "sha256": "957812c3a4d614b9e7fee703d214436ef202bfcee404d2601b15d81164ab1e51"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "sha256": "b6aafbc3e51ca9cee0fb9f62ed903f93c9ba754afc83e7b6c1a7080dd76bae2f"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "sha256": "6ddaf7632d6291fa628bd7f3180e6220286c43925c9f8950b6f56cc39417de5f"
+    }
+  ],
+  "screenshot": "tpt/_publish/044-holiday-boomwhacker-bells-play-alongs-reupload-failed.png",
+  "diagnostics": {
+    "diag_file": "tpt/_publish/044-holiday-boomwhacker-bells-play-alongs-reupload-thumb3-diag.json",
+    "attempts": [
+      {
+        "attempt": 1,
+        "how": "setInputFiles",
+        "started": "2026-11-17T17:25:56.384Z",
+        "result": "no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty)",
+        "reset": "clicked div \"Cancel\""
+      },
+      {
+        "attempt": 2,
+        "how": "setInputFiles",
+        "started": "2026-11-17T17:28:21.976Z",
+        "result": "no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty)",
+        "reset": "clicked div \"Cancel\""
+      },
+      {
+        "attempt": 3,
+        "how": "TpT's Select-file button + file chooser",
+        "started": "2026-11-17T17:30:47.633Z",
+        "result": "could not set the file: page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"filechooser\""
+      }
+    ],
+    "widget_last": [
+      {
+        "when": "after reset 2",
+        "inputFound": true,
+        "inputVisible": false,
+        "boxFound": true,
+        "text": "Thumbnail (Optional) Select file or drag and drop Up to 4 MB",
+        "html": "<div id=\"upload-thumb3\" class=\"upload-fls-el flex-i-1\"> <label class=\"filling-wrap\" title=\"\" for=\"ItemDigitalThumb3\"> <div class=\"border\"></div> <div class=\"cancel-btn\">Cancel</div> <div class=\"delete-btn\"></div> <div class=\"filling\"> <div class=\"label\"> <div class=\"title\"> Thumbnail (Optional) </div> <div class=\"fileinfo\">Select file or drag and drop</div> <div class=\"filesize\">Up to 4 MB</div> <div class=\"progress-bar-wrap-percent-and-bar-preview\"> <div class=\"progress-bar-wrap-percent-and-bar-preview-wrap\"> <div class=\"progress-bar-wrap progress-bar-wrap-v3\"> <div class=\"progress-bar\" style=\"width: 0%;\"></div> </div> <div class=\"progress-bar-label\"></div> </div> </div> </div> <div class=\"last-updated\"> <div class=\"title\">Last updated:</div> <div class=\"datetime\">Nov 15, 2026 at 8:24 AM EST</div> </div> </div> </label> <div class=\"upload-error-message\"></div> <input type=\"file\" name=\"\" id=\"ItemDigitalThumb3\" style=\"\" data-gtm-form-interact-field-id=\"5\"> <input type=\"hidden\" name=\"data[ItemDigital][thumb3]\" class=\"upload-key\" id=\"ItemDigitalThumb3\" value=\"\" data-status=\"\" style=\"\"> <input type=\"hidden\" name=\"data[ItemsProperty][thumb3_uploaded]\" value=\"0\" class=\"file-uploaded\" id=\"ItemsPropertyThumb3Uploaded\" style=\"\"></div>",
+        "error": false,
+        "processing": false,
+        "percent": null
+      },
+      {
+        "when": "attempt 3 set failed",
+        "inputFound": true,
+        "inputVisible": false,
+        "boxFound": true,
+        "text": "Thumbnail (Optional) Select file or drag and drop Up to 4 MB",
+        "html": "<div id=\"upload-thumb3\" class=\"upload-fls-el flex-i-1\"> <label class=\"filling-wrap\" title=\"\" for=\"ItemDigitalThumb3\"> <div class=\"border\"></div> <div class=\"cancel-btn\">Cancel</div> <div class=\"delete-btn\"></div> <div class=\"filling\"> <div class=\"label\"> <div class=\"title\"> Thumbnail (Optional) </div> <div class=\"fileinfo\">Select file or drag and drop</div> <div class=\"filesize\">Up to 4 MB</div> <div class=\"progress-bar-wrap-percent-and-bar-preview\"> <div class=\"progress-bar-wrap-percent-and-bar-preview-wrap\"> <div class=\"progress-bar-wrap progress-bar-wrap-v3\"> <div class=\"progress-bar\" style=\"width: 0%;\"></div> </div> <div class=\"progress-bar-label\"></div> </div> </div> </div> <div class=\"last-updated\"> <div class=\"title\">Last updated:</div> <div class=\"datetime\">Nov 15, 2026 at 8:24 AM EST</div> </div> </div> </label> <div class=\"upload-error-message\"></div> <input type=\"file\" name=\"\" id=\"ItemDigitalThumb3\" style=\"\" data-gtm-form-interact-field-id=\"5\"> <input type=\"hidden\" name=\"data[ItemDigital][thumb3]\" class=\"upload-key\" id=\"ItemDigitalThumb3\" value=\"\" data-status=\"\" style=\"\"> <input type=\"hidden\" name=\"data[ItemsProperty][thumb3_uploaded]\" value=\"0\" class=\"file-uploaded\" id=\"ItemsPropertyThumb3Uploaded\" style=\"\"></div>",
+        "error": false,
+        "processing": false,
+        "percent": null
+      }
+    ],
+    "tpt_upload_answers": [
+      "+2.3s POST 200 https://www.teacherspayteachers.com/uploads/upload_file => {\"key\":\"v3.9JZ++fudAFLdMXSU9vxkUaNve7tpFvZXEOBQWMxUqT1+7MC1sP+dIKmpZ2S3Fxwpm6fIQiNfvIP0xglkSPRdtK5Fy786XOpOoesIy+PLgQYeNgmfEK6actch\\/giYnCDvKFvPG\\/ziHdRS0NaMycN8aa1pK68AI89MKuFfKDuZbxEXzPeIlUicvctNudLf0XYQWwDYEuZR9E1Zcz1XMToiVuWkiuQozjMnkEdCnnRAG8gKufSre4V7BtK2HpkhDw59+ffeJ9BIkLjSIXkOKuxVYgWhGHgaXKWi3jd7bDxSoIsKJeYbof1BjvXnD1otsXITf\\/IjVKMMP3VqLYRny1JvVi1in9FwfkykodXBGiyAEa6qVdx5IGM1QhOHNYsDoEnAkoErwldBOZCDP\\/g6fIv3B8cIv1CFy6uBpHjp86QgzbYRAgONLlOc\",\"bucket\":\"live.digital.upload\",\"path\":\"cf18-22795631-2026-11-17\\/thumbnail\\/f9a64aa78dd9ff02a72b783926174cfc_742894137.png\"}",
+      "+147.9s POST 200 https://www.teacherspayteachers.com/uploads/upload_file => {\"key\":\"v3.SGcxkzlr8CugrDTSrUxvVmmYe8d45vdGhlPjcD6ucLn0fRQf3IHEShxTH3jvUhmeUydgff98Y+oJMUy4aMTELkJpJbIihoKLbYUMwLfqefI0XwcFO7iW6f3TsxOSuGIzDYToC3J3pwk\\/f6iRLOob8jCm1Y\\/NMW4ryiaCUDRLosOW6ylmbSPMOV9xEC8TDlubwkoQTdPbCTXRfNiYzelNHSzQbovaloR7HaasJJNbbE42WUGCTKRNCnZgG3yOb50efCa6XzG4ENazPMpGCJSUXTVr6oD86B6Z\\/j6rLW8+AvQDh6AWcAsClyz9IfD0O+Q3AT40inYYwrzYS5Ktjh3BGspFoxmLkPpT8C+mg747UdteScZBi7Sw0PuD5ClNGXOnOvAeH5jWhsa6rmFzyYmVoOlZrnXSH29CpbLMTtOC5T4WIcInGomM\",\"bucket\":\"live.digital.upload\",\"path\":\"cf18-22795631-2026-11-17\\/thumbnail\\/a391e945b45117c74dde888f8e983f93_734645111.png\"}"
+    ],
+    "non_get": [
+      "+0.2s -> POST https://bat.bing.com/p/insights/c/f",
+      "+0.3s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+2.1s -> POST https://www.teacherspayteachers.com/uploads/upload_file body file_type=thumb3&file_name=preview-2.png&size=381403&lastModified=1794876473529&item_id=18352427&path=",
+      "+2.3s <- POST 200 https://www.teacherspayteachers.com/uploads/upload_file",
+      "+9.3s -> POST https://bat.bing.com/p/insights/c/f",
+      "+9.4s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+70.3s -> POST https://bat.bing.com/p/insights/c/f",
+      "+70.5s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+123.2s -> POST https://www.facebook.com/tr/",
+      "+123.2s <- POST 200 https://www.facebook.com/tr/",
+      "+131.4s -> POST https://bat.bing.com/p/insights/c/f",
+      "+131.4s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+147.7s -> POST https://www.teacherspayteachers.com/uploads/upload_file body file_type=thumb3&file_name=preview-2.png&size=381403&lastModified=1794876473529&item_id=18352427&path=",
+      "+147.9s <- POST 200 https://www.teacherspayteachers.com/uploads/upload_file",
+      "+148.1s -> POST https://s3.amazonaws.com/live.digital.upload/cf18-22795631-2026-11-17/thumbnail/a391e945b45117c74dde888f8e983f93_734645111.png?…",
+      "+148.3s <- POST 200 https://s3.amazonaws.com/live.digital.upload/cf18-22795631-2026-11-17/thumbnail/a391e945b45117c74dde888f8e983f93_734645111.png?…",
+      "+192.5s -> POST https://bat.bing.com/p/insights/c/f",
+      "+192.6s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+253.7s -> POST https://bat.bing.com/p/insights/c/f",
+      "+253.9s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+268.8s -> POST https://www.facebook.com/tr/",
+      "+268.9s <- POST 200 https://www.facebook.com/tr/",
+      "+269.6s -> DELETE https://s3.amazonaws.com/live.digital.upload/cf18-22795631-2026-11-17/thumbnail/a391e945b45117c74dde888f8e983f93_734645111.png?…",
+      "+269.7s <- DELETE 204 https://s3.amazonaws.com/live.digital.upload/cf18-22795631-2026-11-17/thumbnail/a391e945b45117c74dde888f8e983f93_734645111.png?…",
+      "+282.9s -> POST https://bat.bing.com/p/insights/c/f",
+      "+282.9s <- POST 204 https://bat.bing.com/p/insights/c/f"
+    ],
+    "request_failures": [],
+    "console_errors": [
+      "+2.4s error: Failed to load resource: the server responded with a status of 502 ()",
+      "+148.2s pageerror: User aborted the upload"
+    ]
+  }
+}

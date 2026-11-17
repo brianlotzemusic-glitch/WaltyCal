@@ -1,0 +1,187 @@
+{
+  "at": "2026-11-17T17:19:04.250Z",
+  "marker_sha256": "99b1a9e5b617e631f4a5375b5edd138f89e9c5e280143c8efdb9c501e6f643a0",
+  "url": "https://www.teacherspayteachers.com/Product/Beginning-Band-Rhythm-Counting-Worksheets-Write-in-the-Counts-44-to-68-18340327",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/18340327",
+  "checks": [
+    {
+      "at": "2026-11-17T17:19:12.344Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "band-rhythm-counting-worksheets.pdf",
+          "verdict": "match",
+          "before": "BeginningBandRhythmCountingWorksheetsWriteintheCounts44to68.pdf Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History 370.11 kB",
+          "after": "BeginningBandRhythmCountingWorksheetsWriteintheCounts44to68.pdf Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History 370.11 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "band-rhythm-counting-worksheets-PREVIEW.pdf",
+          "verdict": "match",
+          "before": "Preview demoBeginningBandRhythmCountingWorksheetsWriteintheCounts44to6818340327.pdf (72.93 kB) Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History",
+          "after": "Preview demoBeginningBandRhythmCountingWorksheetsWriteintheCounts44to6818340327.pdf (72.93 kB) Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (21.61 kB) Last updated: Nov 14, 2026 at 11:26 AM EST",
+          "after": "Cancel Main Cover cover.png (21.61 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (38.64 kB) Last updated: Nov 14, 2026 at 11:26 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (38.64 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (36.98 kB) Last updated: Nov 14, 2026 at 11:26 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (36.98 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (37.89 kB) Last updated: Nov 14, 2026 at 11:26 AM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (37.89 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        }
+      ]
+    },
+    {
+      "at": "2026-11-17T18:39:58.788Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "band-rhythm-counting-worksheets.pdf",
+          "verdict": "match",
+          "after": "BeginningBandRhythmCountingWorksheetsWriteintheCounts44to68.pdf Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History 370.11 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "band-rhythm-counting-worksheets-PREVIEW.pdf",
+          "verdict": "match",
+          "after": "Preview demoBeginningBandRhythmCountingWorksheetsWriteintheCounts44to6818340327.pdf (72.93 kB) Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (21.61 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (38.64 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (36.98 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (37.89 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/037-band-rhythm-counting-worksheets-reupload-recheck.png"
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "band-rhythm-counting-worksheets.pdf",
+      "bytes": 378981,
+      "sha256": "d9a8ab18863dd72298f769ecaeee9dbb044296edf5266a56d4b3eb7143a9ade6"
+    },
+    {
+      "slot": "preview",
+      "file": "band-rhythm-counting-worksheets-PREVIEW.pdf",
+      "bytes": 74682,
+      "sha256": "9d723609ea97afabc4fe02dcd3f6ab10b54df1f1af153541791329572a403449"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 134369,
+      "sha256": "9367cf79c3a17c6696e7f1e92566da52ac1d8a868755924570f31793e15d3677"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 282465,
+      "sha256": "f8141769fe59489fe051efd3ace63bb3942d5598d38351a6f7116f5478c2824f"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 323658,
+      "sha256": "ad792504b17073f49a1a9cbb818c8003ab2674a344db84d407f44e436eab88ce"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 192889,
+      "sha256": "dc3e1bbee3625e6ccb0368ce8eaea0852a773c145fa0f163ae6641337500eacc"
+    }
+  ],
+  "old_cards": {
+    "product": "BeginningBandRhythmCountingWorksheetsWriteintheCounts44to68.pdf Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History 370.11 kB",
+    "preview": "Preview demoBeginningBandRhythmCountingWorksheetsWriteintheCounts44to6818340327.pdf (72.93 kB) Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History",
+    "thumb1": "Main Cover cover.png (21.61 kB) Last updated: Nov 14, 2026 at 11:26 AM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (38.64 kB) Last updated: Nov 14, 2026 at 11:26 AM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (36.98 kB) Last updated: Nov 14, 2026 at 11:26 AM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (37.89 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=58dc23837ea479baa61db106cabfab3b",
+      "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=58dc23837ea479baa61db106cabfab3b",
+      "+1.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=58dc23837ea479baa61db106cabfab3b",
+      "+2.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+3.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=58dc23837ea479baa61db106cabfab3b",
+      "+3.4s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+    ],
+    "bodies": [
+      "+0.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+3.4s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.2s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}

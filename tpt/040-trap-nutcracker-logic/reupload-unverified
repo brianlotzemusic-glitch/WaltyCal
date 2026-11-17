@@ -1,0 +1,191 @@
+{
+  "at": "2026-11-17T17:22:33.983Z",
+  "marker_sha256": "269b66d3a69435c44f87437fc8d01a602c88c25f0a2cbbcdf817361d207b80cd",
+  "url": "https://www.teacherspayteachers.com/Product/Trap-Beat-in-Logic-Pro-Tchaikovsky-Flip-Project-High-School-Music-Tech-18343594",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/18343594",
+  "checks": [
+    {
+      "at": "2026-11-17T17:22:42.125Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "trap-nutcracker.zip",
+          "verdict": "old",
+          "before": "TrapBeatinLogicProTchaikovskyFlipProjectHighSchoolMusicTech.zip Last updated: Nov 14, 2026 at 3:16 PM EST See Revision History 1.33 MB",
+          "after": "TrapBeatinLogicProTchaikovskyFlipProjectHighSchoolMusicTech.zip Last updated: Nov 14, 2026 at 3:16 PM EST See Revision History 1.33 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "trap-nutcracker-PREVIEW.pdf",
+          "verdict": "old",
+          "before": "Preview demoTrapBeatinLogicProTchaikovskyFlipProjectHighSchoolMusicTech18343594.pdf (110.5 kB) Last updated: Nov 14, 2026 at 3:16 PM EST See Revision History",
+          "after": "Preview demoTrapBeatinLogicProTchaikovskyFlipProjectHighSchoolMusicTech18343594.pdf (110.5 kB) Last updated: Nov 14, 2026 at 3:16 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (30.19 kB) Last updated: Nov 14, 2026 at 4:16 PM EST",
+          "after": "Cancel Main Cover cover.png (30.19 kB) Last updated: Nov 14, 2026 at 4:16 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Nov 14, 2026 at 4:16 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Nov 14, 2026 at 4:16 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (41.05 kB) Last updated: Nov 14, 2026 at 4:16 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (41.05 kB) Last updated: Nov 14, 2026 at 4:16 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (44.02 kB) Last updated: Nov 14, 2026 at 4:16 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (44.02 kB) Last updated: Nov 14, 2026 at 4:16 PM EST"
+        }
+      ]
+    },
+    {
+      "at": "2026-11-17T18:40:15.275Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "trap-nutcracker.zip",
+          "verdict": "old",
+          "after": "TrapBeatinLogicProTchaikovskyFlipProjectHighSchoolMusicTech.zip Last updated: Nov 14, 2026 at 3:16 PM EST See Revision History 1.33 MB"
+        },
+        {
+          "slot": "preview",
+          "file": "trap-nutcracker-PREVIEW.pdf",
+          "verdict": "old",
+          "after": "Preview demoTrapBeatinLogicProTchaikovskyFlipProjectHighSchoolMusicTech18343594.pdf (110.5 kB) Last updated: Nov 14, 2026 at 3:16 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (30.19 kB) Last updated: Nov 14, 2026 at 4:16 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Nov 14, 2026 at 4:16 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (41.05 kB) Last updated: Nov 14, 2026 at 4:16 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (44.02 kB) Last updated: Nov 14, 2026 at 4:16 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/040-trap-nutcracker-logic-reupload-recheck.png"
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "trap-nutcracker.zip",
+      "bytes": 1383461,
+      "sha256": "f9709aa07b2ca86222fd50b9b85bc67cd9a02cd05c21b420143937e35bea9d3f"
+    },
+    {
+      "slot": "preview",
+      "file": "trap-nutcracker-PREVIEW.pdf",
+      "bytes": 110604,
+      "sha256": "d727367b10c894eefdbfc11610b643edf0441266c3cf87a3fd52928a1c727518"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 172742,
+      "sha256": "6ef41a973f82f5e0bbccd83272516e3d93c5df722ce9a7b740d8e9d35bd399de"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 661574,
+      "sha256": "661d29928d1b7e9cb734cda4109219a67ec83f31dba3102a46926fd7c95b8152"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 490748,
+      "sha256": "f79f399698a110206aaded58462a830a153d3149ddd96d6b3c60091b3b65ef5a"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 682809,
+      "sha256": "aafabcc226387c978328b85d0457ecab9d7df4213a9a048e570a510756916fba"
+    }
+  ],
+  "old_cards": {
+    "product": "TrapBeatinLogicProTchaikovskyFlipProjectHighSchoolMusicTech.zip Last updated: Nov 14, 2026 at 3:16 PM EST See Revision History 1.33 MB",
+    "preview": "Preview demoTrapBeatinLogicProTchaikovskyFlipProjectHighSchoolMusicTech18343594.pdf (110.5 kB) Last updated: Nov 14, 2026 at 3:16 PM EST See Revision History",
+    "thumb1": "Main Cover cover.png (30.19 kB) Last updated: Nov 14, 2026 at 4:16 PM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (42.51 kB) Last updated: Nov 14, 2026 at 4:16 PM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (41.05 kB) Last updated: Nov 14, 2026 at 4:16 PM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (44.02 kB) Last updated: Nov 14, 2026 at 4:16 PM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://analytics.google.com/g/collect?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.facebook.com/tr/",
+      "+0.2s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.2s <- POST 204 https://analytics.google.com/g/collect?…",
+      "+0.4s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.4s -> POST https://www.teacherspayteachers.com/queue/results?… body job=7e1bd3c9bf165cea9fca7392d88f0f68",
+      "+0.7s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.5s -> POST https://www.teacherspayteachers.com/queue/results?… body job=7e1bd3c9bf165cea9fca7392d88f0f68",
+      "+1.6s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.4s -> POST https://www.teacherspayteachers.com/queue/results?… body job=7e1bd3c9bf165cea9fca7392d88f0f68",
+      "+2.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.8s -> POST https://bat.bing.com/p/insights/c/f",
+      "+2.8s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+3.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=7e1bd3c9bf165cea9fca7392d88f0f68",
+      "+3.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+    ],
+    "bodies": [
+      "+0.7s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.6s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+3.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.2s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}

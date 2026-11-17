@@ -1,0 +1,189 @@
+{
+  "at": "2026-11-17T17:24:19.749Z",
+  "marker_sha256": "48dc411e09f802535d3b1ab6f53d4f68593ba5fb259907badaaf0140f721a810",
+  "url": "https://www.teacherspayteachers.com/Product/Music-Escape-Room-Note-Names-Rhythms-Symbols-Print-and-Go-Gr-3-6-18343603",
+  "edit_url": "https://www.teacherspayteachers.com/itemsDigital/editNext/18343603",
+  "checks": [
+    {
+      "at": "2026-11-17T17:24:28.110Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "winter-music-escape-room.pdf",
+          "verdict": "match",
+          "before": "MusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr36.pdf Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History 380.93 kB",
+          "after": "MusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr36.pdf Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History 380.93 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "winter-music-escape-room-PREVIEW.pdf",
+          "verdict": "match",
+          "before": "Preview demoMusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr3618343603.pdf (133.47 kB) Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History",
+          "after": "Preview demoMusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr3618343603.pdf (133.47 kB) Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "before": "Main Cover cover.png (22.62 kB) Last updated: Nov 14, 2026 at 4:17 PM EST",
+          "after": "Cancel Main Cover cover.png (22.62 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview1.png (32.9 kB) Last updated: Nov 14, 2026 at 4:17 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview1.png (32.9 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview2.png (33.28 kB) Last updated: Nov 14, 2026 at 4:17 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview2.png (33.28 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "before": "Thumbnail (Optional) preview3.png (22.49 kB) Last updated: Nov 14, 2026 at 4:17 PM EST",
+          "after": "Cancel Thumbnail (Optional) preview3.png (22.49 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        }
+      ]
+    },
+    {
+      "at": "2026-11-17T18:40:23.522Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "winter-music-escape-room.pdf",
+          "verdict": "match",
+          "after": "MusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr36.pdf Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History 380.93 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "winter-music-escape-room-PREVIEW.pdf",
+          "verdict": "match",
+          "after": "Preview demoMusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr3618343603.pdf (133.47 kB) Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (22.62 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (32.9 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (33.28 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (22.49 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/042-winter-music-escape-room-reupload-recheck.png"
+    }
+  ],
+  "files": [
+    {
+      "slot": "product",
+      "file": "winter-music-escape-room.pdf",
+      "bytes": 390111,
+      "sha256": "ad9895e1645de01456292bca599785c47865f5a70abadc83d2ffaac9ba32e5d3"
+    },
+    {
+      "slot": "preview",
+      "file": "winter-music-escape-room-PREVIEW.pdf",
+      "bytes": 136673,
+      "sha256": "49cedcd8ff0b00e299f7b164b974e85c57644334b7597657626fabf8a73d06b6"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 156444,
+      "sha256": "e477ce124a51d5a72069645d938944e20461603130c23a9563cb1861e93e4232"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 315803,
+      "sha256": "074470751d3973973e9ce98f17e99a4a8fe8a7b1714aa4533c1a318db566d85a"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 441214,
+      "sha256": "1cefe66805ec8de0463ebee702fb2cf403cf205b1d7f799212dafb741c760424"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 135855,
+      "sha256": "85685b3333e2c2a654ba829ad77c5cb70c65185cf1e9b28b6ed9da5a6108a160"
+    }
+  ],
+  "old_cards": {
+    "product": "MusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr36.pdf Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History 380.93 kB",
+    "preview": "Preview demoMusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr3618343603.pdf (133.47 kB) Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History",
+    "thumb1": "Main Cover cover.png (22.62 kB) Last updated: Nov 14, 2026 at 4:17 PM EST",
+    "thumb2": "Thumbnail (Optional) preview1.png (32.9 kB) Last updated: Nov 14, 2026 at 4:17 PM EST",
+    "thumb3": "Thumbnail (Optional) preview2.png (33.28 kB) Last updated: Nov 14, 2026 at 4:17 PM EST",
+    "thumb4": "Thumbnail (Optional) preview3.png (22.49 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+  },
+  "save": {
+    "how": "TpT answered the save (POST 200)",
+    "status": 200,
+    "messages": [
+      "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+      "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+      "go to My Easel Listings",
+      "Learn more",
+      "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+    ],
+    "loop_errors": [],
+    "requests": [
+      "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.1s -> POST https://www.facebook.com/tr/",
+      "+0.3s <- POST 200 https://www.facebook.com/tr/",
+      "+0.3s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+      "+0.4s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+      "+0.4s -> POST https://www.teacherspayteachers.com/queue/results?… body job=7a01aa8c253ca64c094f307452d8bec5",
+      "+0.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+1.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=7a01aa8c253ca64c094f307452d8bec5",
+      "+1.4s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+2.2s -> POST https://bat.bing.com/p/insights/c/f",
+      "+2.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=7a01aa8c253ca64c094f307452d8bec5",
+      "+2.4s <- POST 204 https://bat.bing.com/p/insights/c/f",
+      "+2.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+      "+3.3s -> POST https://www.teacherspayteachers.com/queue/results?… body job=7a01aa8c253ca64c094f307452d8bec5",
+      "+3.5s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+    ],
+    "bodies": [
+      "+0.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+1.4s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+2.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+      "+3.5s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+    ],
+    "failed": [
+      "+0.3s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+    ],
+    "console": []
+  },
+  "note": "Submitted; the edit page still showed old files right after. The Mac looks again at >= 70 and >= 180 min after the save; it is NOT resubmitted meanwhile."
+}
