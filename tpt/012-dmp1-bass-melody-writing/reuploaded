@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T22:32:37.818Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Melody-Writing-in-Logic-Pro-Basslines-Scales-High-School-Music-Technology-17961588",
+  "marker_sha256": "ac7d8577b05b10fc35a4166dca65062e8b24a41c00b23493398768e418167728",
+  "files": [
+    {
+      "slot": "product",
+      "file": "bass-melody-writing.zip",
+      "bytes": 960545,
+      "sha256": "78fa0140cfff935c49239a9f1d44461364b050001d9bea6afd99b27b58a89941"
+    },
+    {
+      "slot": "preview",
+      "file": "bass-melody-writing-PREVIEW.pdf",
+      "bytes": 67735,
+      "sha256": "c3dca8415fa150f434b8a73898e98b829f642326c846a408f7552f184ef13c96"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 183181,
+      "sha256": "6f2b68fa2eb8818ac6d254997b05d9efdfc2d597dd0f9ca90dfdf16b94121f14"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 620038,
+      "sha256": "c1cba98e325275014d471961f4215ffc59cbaa2eca674c60ab5ee16c967b202f"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 468439,
+      "sha256": "4f6d0015275c5eee7da08f5aa9f03177d80b7e0205cc75efddb6464299881c18"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 583736,
+      "sha256": "038077c8cb42109f3631fc455508df056e36a32765d65a7887bfd6bca5f9e2a1"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "bass-melody-writing.zip",
+      "verdict": "match",
+      "before": "MelodyWritinginLogicProBasslinesScalesHighSchoolMusicTechnology.zip Last updated: Oct 15, 2026 at 10:57 AM EST See Revision History 967.6 kB",
+      "after": "bassmelodywriting.zip Last updated: Nov 17, 2026 at 5:32 PM EST See Revision History 938.03 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "bass-melody-writing-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoMelodyWritinginLogicProBasslinesScalesHighSchoolMusicTechnology17961588.pdf (90.82 kB) Last updated: Oct 15, 2026 at 10:57 AM EST See Revision Histo",
+      "after": "Preview bassmelodywritingPREVIEW.pdf (66.15 kB) Last updated: Nov 17, 2026 at 5:32 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (35.21 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+      "after": "Cancel Main Cover cover.png (35.8 kB) Last updated: Nov 17, 2026 at 6:32 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (43.57 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (43.57 kB) Last updated: Nov 17, 2026 at 6:32 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (43.7 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (43.7 kB) Last updated: Nov 17, 2026 at 6:32 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (41.96 kB) Last updated: Oct 15, 2026 at 10:57 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (41.97 kB) Last updated: Nov 17, 2026 at 6:32 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/17961588)"
+}

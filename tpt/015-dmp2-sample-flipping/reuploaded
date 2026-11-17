@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T22:35:35.955Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Sample-Flipping-in-Logic-Pro-Quick-Sampler-Project-High-School-Music-Tech-17972017",
+  "marker_sha256": "e1c7bff3955bd25d17c595994d9be324c1fcf5eeb95948b97964f32c1793dcb6",
+  "files": [
+    {
+      "slot": "product",
+      "file": "sample-flipping.zip",
+      "bytes": 919292,
+      "sha256": "5cb3a8570d0eca56a943251d30cff376f93868b111005e69ffabc64645552259"
+    },
+    {
+      "slot": "preview",
+      "file": "sample-flipping-PREVIEW.pdf",
+      "bytes": 64604,
+      "sha256": "42685c4d5047e142502f9bd8ecd1a9d11fd66708a42aeee6b2284608ad1e2023"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 181648,
+      "sha256": "44f3d57bdd9943a6674b3843227c816577f22b11742cb5dce70f931456166215"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 590342,
+      "sha256": "774f52be02246e270026de5f95f2e325915430166baceb85c3477a9431def7a6"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 457506,
+      "sha256": "da762673776bc62954881d053ee53f69fdba190a5cb88421cf7322d413ffd2ab"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 625996,
+      "sha256": "2899983d3399490fd0c2dff0f9268d03302f2ddf5f032394eac1aa038523945a"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "sample-flipping.zip",
+      "verdict": "match",
+      "before": "SampleFlippinginLogicProQuickSamplerProjectHighSchoolMusicTech.zip Last updated: Oct 16, 2026 at 7:39 AM EST See Revision History 887.11 kB",
+      "after": "sampleflipping.zip Last updated: Nov 17, 2026 at 5:35 PM EST See Revision History 897.75 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "sample-flipping-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoSampleFlippinginLogicProQuickSamplerProjectHighSchoolMusicTech17972017.pdf (73.68 kB) Last updated: Oct 16, 2026 at 7:38 AM EST See Revision History",
+      "after": "Preview sampleflippingPREVIEW.pdf (63.09 kB) Last updated: Nov 17, 2026 at 5:35 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (33.6 kB) Last updated: Oct 16, 2026 at 7:38 AM EST",
+      "after": "Cancel Main Cover cover.png (34.26 kB) Last updated: Nov 17, 2026 at 6:35 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (40.1 kB) Last updated: Oct 16, 2026 at 7:38 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (40.32 kB) Last updated: Nov 17, 2026 at 6:35 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (41.28 kB) Last updated: Oct 16, 2026 at 7:38 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (41.01 kB) Last updated: Nov 17, 2026 at 6:35 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (40.98 kB) Last updated: Oct 16, 2026 at 7:38 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (40.93 kB) Last updated: Nov 17, 2026 at 6:35 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/17972017)"
+}

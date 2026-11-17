@@ -1,34 +1,31 @@
 {
-  "ran_at": "2026-11-17T21:35:27.882Z",
+  "ran_at": "2026-11-17T22:30:35.132Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T21:35:28.032Z",
+    "ran_at": "2026-11-17T22:30:35.278Z",
     "replaced": [
       {
-        "item": "008-dmp1-beat-from-nothing",
-        "url": "https://www.teacherspayteachers.com/Product/Beat-From-Nothing-Logic-Pro-Drum-Programming-Unit-High-School-Music-Tech-17921029",
+        "item": "012-dmp1-bass-melody-writing",
+        "url": "https://www.teacherspayteachers.com/Product/Melody-Writing-in-Logic-Pro-Basslines-Scales-High-School-Music-Technology-17961588",
         "files": 6
       },
       {
-        "item": "009-dmp1-spooky-tunes",
-        "url": "https://www.teacherspayteachers.com/Product/Film-Scoring-in-Logic-Pro-Halloween-Music-Production-Project-High-School-17953527",
+        "item": "015-dmp2-sample-flipping",
+        "url": "https://www.teacherspayteachers.com/Product/Sample-Flipping-in-Logic-Pro-Quick-Sampler-Project-High-School-Music-Tech-17972017",
         "files": 6
       },
       {
-        "item": "011-dmp1-chords-by-ear",
-        "url": "https://www.teacherspayteachers.com/Product/Chord-Progressions-in-Logic-Pro-Roman-Numerals-High-School-Music-Technology-17953543",
+        "item": "016-dmp2-fx-deep-dive",
+        "url": "https://www.teacherspayteachers.com/Product/FX-Deep-Dive-in-Logic-Pro-EQ-Reverb-Delay-Mixing-Project-High-School-Music-17987346",
         "files": 6
       }
     ],
     "failed": [],
     "waiting": [
-      "012-dmp1-bass-melody-writing",
-      "015-dmp2-sample-flipping",
-      "016-dmp2-fx-deep-dive",
       "017-dmp2-music-for-visual-media",
       "018-dmp2-alchemy-architect",
       "019-dmp2-anti-music-manifesto",

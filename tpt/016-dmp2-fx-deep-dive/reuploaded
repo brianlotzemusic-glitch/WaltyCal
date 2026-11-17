@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T22:38:31.868Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/FX-Deep-Dive-in-Logic-Pro-EQ-Reverb-Delay-Mixing-Project-High-School-Music-17987346",
+  "marker_sha256": "b8288594137d6696b376a3a809f34e89bfdd6e2ef897fc9f27998269bb20250c",
+  "files": [
+    {
+      "slot": "product",
+      "file": "fx-deep-dive.zip",
+      "bytes": 1019792,
+      "sha256": "b49c0a3cd167204804b8befef7fc33501ff3f2f677d446062e5caeb6a6816f4b"
+    },
+    {
+      "slot": "preview",
+      "file": "fx-deep-dive-PREVIEW.pdf",
+      "bytes": 59949,
+      "sha256": "4ab0e82c244e4d8c9c9eb87c53210004645835f46aec6e25c02e225c851a7b09"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 182415,
+      "sha256": "34736734e19990f6cd5370a99d8cd65fee73501da7a809968644f54b96d02b44"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 587104,
+      "sha256": "10b96aebef764c3654fd97e37694e73601bacfb56c489294cbc84c4ec381eeee"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 463586,
+      "sha256": "04b8233d13a2b39ab640c06cf32f1373d4d9b101e4cfb4db68d4d15ace4633e6"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 621230,
+      "sha256": "e97bd34291950a0cdf629b7d5a4da43f2fc377d3979f22d4e45b9a1252e3b167"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "fx-deep-dive.zip",
+      "verdict": "match",
+      "before": "FXDeepDiveinLogicProEQReverbDelayMixingProjectHighSchoolMusic.zip Last updated: Oct 17, 2026 at 2:57 PM EST See Revision History 1004.29 kB",
+      "after": "fxdeepdive.zip Last updated: Nov 17, 2026 at 5:38 PM EST See Revision History 995.89 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "fx-deep-dive-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoFXDeepDiveinLogicProEQReverbDelayMixingProjectHighSchoolMusic17987346.pdf (68.92 kB) Last updated: Oct 17, 2026 at 2:57 PM EST See Revision History",
+      "after": "Preview fxdeepdivePREVIEW.pdf (58.54 kB) Last updated: Nov 17, 2026 at 5:38 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (28.46 kB) Last updated: Oct 17, 2026 at 2:57 PM EST",
+      "after": "Cancel Main Cover cover.png (28.45 kB) Last updated: Nov 17, 2026 at 6:38 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (39.55 kB) Last updated: Oct 17, 2026 at 2:57 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (39.53 kB) Last updated: Nov 17, 2026 at 6:38 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (37.98 kB) Last updated: Oct 17, 2026 at 2:57 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (37.79 kB) Last updated: Nov 17, 2026 at 6:38 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (39.78 kB) Last updated: Oct 17, 2026 at 2:57 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (39.58 kB) Last updated: Nov 17, 2026 at 6:38 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/17987346)"
+}
