@@ -51,7 +51,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [!] HELD (tpt/052-holiday-music-word-puzzles, QA approved; Visual inspector BLOCKING items below; no rescue yet) Holiday Music Word Puzzles: 6 word searches and 4 crosswords, instruments, symbols and winter music words, answer keys (grades 3–6; $3.50; December) || BLOCKING to fix: crossword answer-key clue numbers collide with letters (p17 Crossword 1 key "10" over T; p18 Crosswords 3 and 4 "10" over W, "11" over R, "12"/"13" over M; also preview-2 and PREVIEW p4): number small in the top-left corner
 - [ ] Winter Recorder Songbook, B-A-G: 8 tunes (public-domain and original), fingering charts, practice checklist (grades 3–5; $4; winter)
 - [ ] Holiday Rhythm "I Have, Who Has": two 24-card loop games, level 1 quarter/eighth, level 2 sixteenths, holiday art (grades 2–5; $3.50; December)
-- [ ] Concert Etiquette Lesson and Posters: mini-lesson, 6 posters, audience and performer checklists, exit ticket (grades 3–8; $4; evergreen)
+- [x] Concert Etiquette Lesson and Posters: mini-lesson, 6 posters, audience and performer checklists, exit ticket (grades 3–8; $4; evergreen)
 - [ ] Winter Bucket Drumming: 6 original grooves, play-along charts, notation key, layering activity (grades 3–8; $4.50; winter)
 - [ ] Winter Note Speller: spell-the-word worksheets in treble and bass clef, winter riddles, answer keys (grades 3–6; $3.50; winter)
 - [ ] Winter Holidays Around the World, Music Edition: short readings and listening response pages for Christmas, Hanukkah, Kwanzaa, Las Posadas, Lunar New Year; facts sourced in QA.md (grades 3–6; $5; December)
