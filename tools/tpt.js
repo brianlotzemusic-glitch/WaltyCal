@@ -147,7 +147,7 @@ async function loginFailed(page, why) {
   await page.locator("#lc-password-input").fill("", { timeout: 2000 }).catch(() => {}); // keep the password out of the saved HTML
   await snap(page, path.join(ROOT, "tpt", "_discover"), "00-login-failed").catch(() => {});
   const msgs = await page.locator('[role="alert"], [aria-live="assertive"], [class*="error" i]').allInnerTexts().catch(() => []);
-  const text = msgs.map((m) => m.trim()).filter(Boolean).join(" | ").slice(0, 300);
+  const text = msgs.map((m) => String(m == null ? "" : m).trim()).filter(Boolean).join(" | ").slice(0, 300);
   throw new Error(`login failed: ${why}${text ? `\nTpT says: ${text}` : ""}\nScreenshot: tpt/_discover/00-login-failed.png`);
 }
 
@@ -767,7 +767,7 @@ async function publish(item, dryRun) {
       await snap(page, shots, `${slug}-submit-failed`);
       const msgs = await page.locator('[role="alert"], [aria-live="assertive"], [class*="error" i]').allInnerTexts().catch(() => []);
       throw new Error(`still on the form 2 minutes after Submit; check My Products on TpT before retrying, it may have been created.\n` +
-        `TpT says: ${msgs.map((m) => m.trim()).filter(Boolean).join(" | ").slice(0, 500) || "(nothing)"}\nScreenshot: tpt/_publish/${slug}-submit-failed.png`);
+        `TpT says: ${msgs.map((m) => String(m == null ? "" : m).trim()).filter(Boolean).join(" | ").slice(0, 500) || "(nothing)"}\nScreenshot: tpt/_publish/${slug}-submit-failed.png`);
     }
     await snap(page, shots, `${slug}-submitted`);
     fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} published live by tools/tpt.js\n${page.url()}\n`);
@@ -1184,13 +1184,19 @@ async function submitAndWait(page, submit, editUrl, opts = {}) {
   catch (e) { if (!/click action done|navigation/i.test(e.message)) { cap.stop(); throw e; } }
   const okRe = /(successfully|has been (saved|updated)|changes (were |have been )?saved|product (was |has been )?updated)/i;
   const errRe = /(error|failed|is required|please (correct|fix)|could not)/i;
-  const readMsgs = () => page.locator('[role="alert"], [aria-live="assertive"], [class*="flash" i], [class*="alert" i], [class*="success" i], [class*="error-message" i]')
-    .allInnerTexts().then((a) => a.map((x) => x.replace(/\s+/g, " ").trim()).filter(Boolean).slice(0, 12), () => []);
+  // 17 Nov 2026 (canary 3): an SVG matched by these class selectors (the spinner beside Submit) has NO innerText, so allInnerTexts()
+  // gave null and x.replace threw "Cannot read properties of undefined (reading 'replace')" in the middle of the save; the browser
+  // then closed and very likely cut the save off. SVGs are excluded, a missing text reads as "", and the whole read can never throw.
+  const readMsgs = () => page.locator(':is([role="alert"], [aria-live="assertive"], [class*="flash" i], [class*="alert" i], [class*="success" i], [class*="error-message" i]):not(svg, svg *)')
+    .allInnerTexts().then((a) => a.map((x) => String(x == null ? "" : x).replace(/\s+/g, " ").trim()).filter(Boolean).slice(0, 12)).catch(() => []);
   let how = null, status = null, messages = [];
   let navDone = null, leftDone = false;
   navResp.then((r) => { navDone = r; });
   left.then((v) => { leftDone = v; });
+  const loopErrors = [];
   while (Date.now() - t0 < limit && !how) {
+    // ANY unexpected error in here is logged (with its stack) and the wait goes on: the save is in flight and must not be cut off.
+    try {
     await page.waitForTimeout(500);
     if (navDone) { status = navDone.status(); await page.waitForLoadState("domcontentloaded", { timeout: 60000 }).catch(() => {}); how = `TpT answered the save (${navDone.request().method()} ${status})`; break; }
     if (leftDone) { how = `the page left the edit form (${page.url().replace(/\?.*/, "")})`; break; }
@@ -1200,12 +1206,19 @@ async function submitAndWait(page, submit, editUrl, opts = {}) {
     if (xhr.length && Date.now() - t0 > 3000) { await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {}); status = Number((xhr[xhr.length - 1].match(/ ([23]\d\d) /) || [])[1]) || null; how = `TpT answered the save (${xhr[xhr.length - 1].replace(/^\S+ <- /, "").slice(0, 120)})`; break; }
     messages = await readMsgs();
     if (messages.some((m) => okRe.test(m))) { how = "TpT showed a success message"; break; }
+    } catch (e) {
+      const st = String((e && e.stack) || e).split("\n").slice(0, 8).join(" | ");
+      if (loopErrors.length < 5) loopErrors.push(st);
+      console.error(`save wait: unexpected error (still waiting for TpT): ${st}`);
+      await new Promise((ok) => setTimeout(ok, 1000));
+    }
   }
-  await page.waitForTimeout(opts.settleMs ?? 3000);
+  if (!how) await page.waitForLoadState("networkidle", { timeout: Math.max(1000, limit - (Date.now() - t0)) }).catch(() => {}); // never leave mid-save
+  await page.waitForTimeout(opts.settleMs ?? 3000).catch(() => {});
   messages = await readMsgs();
   const network = cap.stop();
   const bad = (status !== null && status >= 400) || messages.some((m) => errRe.test(m) && !okRe.test(m));
-  return { ok: !!how && !bad, how: how || `no answer from TpT within ${Math.round(limit / 1000)} s`, status, messages,
+  return { ok: !!how && !bad, how: how || `no answer from TpT within ${Math.round(limit / 1000)} s`, status, messages, loop_errors: loopErrors,
     network: { requests: network.requests.slice(-30), bodies: network.bodies.slice(-6), failed: network.failed.slice(-10), console: network.console.slice(-15) } };
 }
 
@@ -1430,7 +1443,7 @@ async function reupload(item, dryRun) {
     const sv = await submitAndWait(page, submit, editUrl);
     console.log(`save: ${sv.how}; messages: ${sv.messages.join(" | ").slice(0, 200) || "(none)"}`);
     await snap(page, shots, `${slug}-reupload-after-submit`).catch(() => {});
-    const saveDiag = { save: { how: sv.how, status: sv.status, messages: sv.messages, ...sv.network } };
+    const saveDiag = { save: { how: sv.how, status: sv.status, messages: sv.messages, loop_errors: sv.loop_errors, ...sv.network } };
     if (!sv.ok) await fail(page, step, `after Submit: ${sv.how}; TpT says: ${sv.messages.join(" | ").slice(0, 300) || "(nothing)"} (Submit WAS clicked: check the product on TpT)`, saveDiag);
 
     step = "verify";
@@ -1485,7 +1498,10 @@ async function reupload(item, dryRun) {
   } catch (e) {
     if (e.recorded) throw e;
     if (step !== "check login" && step !== "open browser") { // unexpected error: same rule, record and hold
-      try { await fail(page, step, e.message.split("\n")[0] + (saved ? " (the save click had already happened: check the product on TpT)" : " (nothing was saved)")); } catch (e2) { throw e2; }
+      // after the Submit click, let TpT finish whatever it is doing before the browser closes (closing can cut a save off)
+      if (saved) await page.waitForLoadState("networkidle", { timeout: 120000 }).catch(() => {});
+      const stack = String(e.stack || e).split("\n").slice(0, 8);
+      try { await fail(page, step, String(e.message || e).split("\n")[0] + (saved ? " (the save click had already happened: check the product on TpT)" : " (nothing was saved)"), { stack }); } catch (e2) { throw e2; }
     }
     throw e;
   } finally {

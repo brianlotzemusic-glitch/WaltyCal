@@ -69,7 +69,7 @@ const ROOT = path.dirname(__dirname);
   try {
     // Everything runs on a FAKE host (tpt.test); every other request is aborted, so nothing ever reaches the real TpT site.
     const ctx = await browser.newContext();
-    await ctx.route("**/*", (route) => /^https:\/\/tpt\.test\//.test(route.request().url()) ? route.fallback() : route.abort());
+    await ctx.route("**/*", (route) => route.abort()); // page routes below answer tpt.test; anything else (and tpt.test after an unroute) is aborted
     const page = await ctx.newPage();
     const EDIT = "https://tpt.test/itemsDigital/editNext/18352419";
     let saves = 0, saveDelay = 0, saveStatus = 302;
@@ -103,6 +103,19 @@ const ROOT = path.dirname(__dirname);
     assert(r.ok && /POST 200/.test(r.how) && saves === 1, JSON.stringify(r));
     console.log("ok save: a background (fetch) save answered 200 counts");
     await page.waitForTimeout(6000);
+
+    // canary 3 (17 Nov): TpT's edit form saves with a background request and shows a spinner SVG beside Submit meanwhile. The SVG
+    // matches the message selectors and has no innerText (null): the old read threw "Cannot read properties of undefined (reading
+    // 'replace')" (reproduced with the old code) and the browser closed mid-save.
+    await page.unroute("https://tpt.test/**"); saves = 0;
+    await page.route("https://tpt.test/**", async (route) => {
+      if (route.request().method() === "POST") { saves++; await new Promise((ok) => setTimeout(ok, 6000)); return route.fulfill({ status: 200, contentType: "application/json", body: "{}" }); }
+      return route.fulfill({ status: 200, contentType: "text/html", body: `<button id="s" onclick="this.insertAdjacentHTML('afterend', '<svg class=&quot;spinner alert-success&quot; width=9 height=9></svg>'); fetch('/itemsDigital/save/1', {method: 'POST', body: 'x'})">Submit</button>` });
+    });
+    await page.goto(EDIT); r = await T.submitAndWait(page, page.locator("#s"), EDIT, { timeoutMs: 20000, settleMs: 200 });
+    assert(r.ok && saves === 1 && /POST 200/.test(r.how), JSON.stringify(r)); assert.deepStrictEqual(r.loop_errors, []);
+    console.log("ok save: the spinner SVG beside Submit (canary 3 crash) no longer throws; the background save is waited for");
+    await page.waitForTimeout(500);
 
     // ---- readCards on TpT's real markup shape: the card text is read from the box around each slot's input
     const F = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "FORM.json"), "utf8"));
