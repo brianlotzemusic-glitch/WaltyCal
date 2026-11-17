@@ -1,42 +1,64 @@
 {
-  "ran_at": "2026-11-17T17:15:09.157Z",
+  "ran_at": "2026-11-17T18:38:12.338Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T17:15:09.306Z",
+    "ran_at": "2026-11-17T18:38:12.497Z",
     "replaced": [],
     "failed": [
       {
-        "item": "020-dmp2-found-sound",
+        "item": "025-dmp2-royalty-free",
         "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
       },
       {
-        "item": "021-dmp2-free-play",
+        "item": "026-dmp2-session-players-studio",
         "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
       },
       {
-        "item": "022-dmp2-genre-exploration",
+        "item": "027-thanksgiving-color-by-note",
         "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
       },
       {
-        "item": "023-dmp2-infinite-horizon",
+        "item": "028-free-color-by-note-sampler",
         "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
       },
       {
-        "item": "024-dmp2-pattern-prodigy",
+        "item": "029-winter-color-by-note",
         "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
       },
       {
-        "item": "044-holiday-boomwhacker-bells-play-alongs",
-        "error": "reupload stopped at \"replace thumb3 (preview-2.png)\": TpT did not accept preview-2.png after 3 tries (#1 setInputFiles: no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty) | #2 setInputFiles: no result in 2 min (box: Cancel Thumbnail (Optional) preview-2.png (372.46 kB); key empty) | #3 TpT's Select-file button + file chooser: could not set the file: page.wai"
+        "item": "030-dmp1-units-1-6-bundle",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "031-carol-flip-logic",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "032-christmas-color-by-note",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "033-thanksgiving-music-sub-plan",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "034-nutcracker-listening-unit",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "035-hanukkah-color-by-note",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+      },
+      {
+        "item": "036-lofi-holiday-beat",
+        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
       }
     ],
-    "waiting": [
-      "044-holiday-boomwhacker-bells-play-alongs"
-    ],
+    "waiting": [],
     "skipped": [
       "002-fall-rhythm-flashcards: failed-hold",
       "005-winter-concert-planner: failed-hold",
@@ -51,11 +73,11 @@
       "017-dmp2-music-for-visual-media: failed-hold",
       "018-dmp2-alchemy-architect: failed-hold",
       "019-dmp2-anti-music-manifesto: failed-hold",
-      "020-dmp2-found-sound: unverified",
-      "021-dmp2-free-play: unverified",
-      "022-dmp2-genre-exploration: unverified",
-      "023-dmp2-infinite-horizon: unverified",
-      "024-dmp2-pattern-prodigy: unverified",
+      "020-dmp2-found-sound: failed-hold",
+      "021-dmp2-free-play: failed-hold",
+      "022-dmp2-genre-exploration: failed-hold",
+      "023-dmp2-infinite-horizon: failed-hold",
+      "024-dmp2-pattern-prodigy: failed-hold",
       "025-dmp2-royalty-free: unverified",
       "026-dmp2-session-players-studio: unverified",
       "027-thanksgiving-color-by-note: unverified",
@@ -67,7 +89,12 @@
       "033-thanksgiving-music-sub-plan: unverified",
       "034-nutcracker-listening-unit: unverified",
       "035-hanukkah-color-by-note: unverified",
-      "036-lofi-holiday-beat: unverified"
+      "036-lofi-holiday-beat: unverified",
+      "037-band-rhythm-counting-worksheets: unverified",
+      "039-winter-color-by-music-symbol: unverified",
+      "040-trap-nutcracker-logic: unverified",
+      "042-winter-music-escape-room: unverified",
+      "044-holiday-boomwhacker-bells-play-alongs: failed-hold"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
@@ -77,18 +104,6 @@
       "043"
     ],
     "unverified": [
-      "025-dmp2-royalty-free",
-      "026-dmp2-session-players-studio",
-      "027-thanksgiving-color-by-note",
-      "028-free-color-by-note-sampler",
-      "029-winter-color-by-note",
-      "030-dmp1-units-1-6-bundle",
-      "031-carol-flip-logic",
-      "032-christmas-color-by-note",
-      "033-thanksgiving-music-sub-plan",
-      "034-nutcracker-listening-unit",
-      "035-hanukkah-color-by-note",
-      "036-lofi-holiday-beat",
       "037-band-rhythm-counting-worksheets",
       "039-winter-color-by-music-symbol",
       "040-trap-nutcracker-logic",

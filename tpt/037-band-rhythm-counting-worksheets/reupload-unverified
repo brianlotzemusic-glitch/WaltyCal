@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (37.89 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T18:39:58.788Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "band-rhythm-counting-worksheets.pdf",
+          "verdict": "match",
+          "after": "BeginningBandRhythmCountingWorksheetsWriteintheCounts44to68.pdf Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History 370.11 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "band-rhythm-counting-worksheets-PREVIEW.pdf",
+          "verdict": "match",
+          "after": "Preview demoBeginningBandRhythmCountingWorksheetsWriteintheCounts44to6818340327.pdf (72.93 kB) Last updated: Nov 14, 2026 at 10:26 AM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (21.61 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (38.64 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (36.98 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (37.89 kB) Last updated: Nov 14, 2026 at 11:26 AM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/037-band-rhythm-counting-worksheets-reupload-recheck.png"
     }
   ],
   "files": [

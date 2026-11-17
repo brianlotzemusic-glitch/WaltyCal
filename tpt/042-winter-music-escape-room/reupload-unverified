@@ -50,6 +50,48 @@
           "after": "Cancel Thumbnail (Optional) preview3.png (22.49 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
         }
       ]
+    },
+    {
+      "at": "2026-11-17T18:40:23.522Z",
+      "verdicts": [
+        {
+          "slot": "product",
+          "file": "winter-music-escape-room.pdf",
+          "verdict": "match",
+          "after": "MusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr36.pdf Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History 380.93 kB"
+        },
+        {
+          "slot": "preview",
+          "file": "winter-music-escape-room-PREVIEW.pdf",
+          "verdict": "match",
+          "after": "Preview demoMusicEscapeRoomNoteNamesRhythmsSymbolsPrintandGoGr3618343603.pdf (133.47 kB) Last updated: Nov 14, 2026 at 3:17 PM EST See Revision History"
+        },
+        {
+          "slot": "thumb1",
+          "file": "cover.png",
+          "verdict": "old",
+          "after": "Cancel Main Cover cover.png (22.62 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        },
+        {
+          "slot": "thumb2",
+          "file": "preview-1.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview1.png (32.9 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        },
+        {
+          "slot": "thumb3",
+          "file": "preview-2.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview2.png (33.28 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        },
+        {
+          "slot": "thumb4",
+          "file": "preview-3.png",
+          "verdict": "old",
+          "after": "Cancel Thumbnail (Optional) preview3.png (22.49 kB) Last updated: Nov 14, 2026 at 4:17 PM EST"
+        }
+      ],
+      "screenshot": "tpt/_publish/042-winter-music-escape-room-reupload-recheck.png"
     }
   ],
   "files": [

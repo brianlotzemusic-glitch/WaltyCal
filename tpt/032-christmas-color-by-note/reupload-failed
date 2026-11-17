@@ -1,0 +1,227 @@
+{
+  "at": "2026-11-17T18:39:18.141Z",
+  "marker_sha256": "816311f4cfda5572eea1addba2bfef33775ab1a28c1e380216d4856f1370d622",
+  "step": "verify (later)",
+  "error": "submitted at 2026-11-17T14:48:38.013Z, but 231 min later the edit page still shows: thumb1 old (Cancel Main Cover cover.png (27.8 kB) Last updated: Nov 12, 2026 at 3:38 PM EST); thumb2 old (Cancel Thumbnail (Optional) preview1.png (33.23 kB) Last updated: Nov 12, 2026 a); thumb3 old (Cancel Thumbnail (Optional) preview2.png (39.71 kB) Last updated: Nov 12, 2026 a); thumb4 old (Cancel Thumbnail (Optional) preview3.png (55.99 kB) Last updated: Nov 12, 2026 a)",
+  "files": [
+    {
+      "slot": "product",
+      "file": "christmas-color-by-note.pdf",
+      "bytes": 1844006,
+      "sha256": "139f074ff73240b3f766a38073a947dc2f699ec453a6db512ab05a6a8c7ca108"
+    },
+    {
+      "slot": "preview",
+      "file": "christmas-color-by-note-PREVIEW.pdf",
+      "bytes": 195067,
+      "sha256": "f9ba3bb3d2e7249a0c4b30cf7985a6da33ea75e8c94577adafabe1ec1e193acd"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 166231,
+      "sha256": "1f6b0870c365fb99b86fdfa01d7ef9c6b6c7fc485db114e0ad8eb9f81f283b73"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 288973,
+      "sha256": "87f06887bb91afc1757b4ae99026757254e01ff195b6cb73d4971c229fc0a280"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 401106,
+      "sha256": "cf6f473364097c78dfdffb0fd000811b635a7029cbf4a449a8eb534a62387b61"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 365658,
+      "sha256": "9580a4ac789242d7bff7260c533e1f03656c90fb5dce7fb6d4c826ff8c32b717"
+    }
+  ],
+  "screenshot": "tpt/_publish/032-christmas-color-by-note-reupload-recheck.png",
+  "diagnostics": {
+    "save": {
+      "how": "TpT answered the save (POST 200)",
+      "status": 200,
+      "messages": [
+        "Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1. Ready Your Store",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings Learn more",
+        "Did you know? To add an Easel Activity and/or Assessments to this product, save your changes then go to My Easel Listings",
+        "go to My Easel Listings",
+        "Learn more",
+        "We cannot generate images from your file. Please upload a different file or your own thumbnail images."
+      ],
+      "loop_errors": [],
+      "requests": [
+        "+0.1s -> POST https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+        "+0.1s -> POST https://www.google.com/rmkt/collect/970729717/?…",
+        "+0.1s -> POST https://analytics.google.com/g/collect?…",
+        "+0.1s -> POST https://www.facebook.com/tr/",
+        "+0.1s <- POST 200 https://www.facebook.com/tr/",
+        "+0.1s <- POST 204 https://analytics.google.com/g/collect?…",
+        "+0.1s <- POST 200 https://www.google.com/rmkt/collect/970729717/?…",
+        "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs?…",
+        "+0.2s -> POST https://www.teacherspayteachers.com/queue/results?… body job=0062c439159d67f4676452e3b88379d7",
+        "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+1.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=0062c439159d67f4676452e3b88379d7",
+        "+1.2s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+2.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=0062c439159d67f4676452e3b88379d7",
+        "+2.1s -> POST https://bat.bing.com/p/insights/c/i",
+        "+2.2s <- POST 204 https://bat.bing.com/p/insights/c/i",
+        "+2.3s <- POST 200 https://www.teacherspayteachers.com/queue/results?…",
+        "+3.1s -> POST https://www.teacherspayteachers.com/queue/results?… body job=0062c439159d67f4676452e3b88379d7",
+        "+3.2s <- POST 200 https://www.teacherspayteachers.com/queue/results?…"
+      ],
+      "bodies": [
+        "+0.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+1.2s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+2.3s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}",
+        "+3.2s POST 200 https://www.teacherspayteachers.com/queue/results?… => {\"status\":0,\"data\":[]}"
+      ],
+      "failed": [
+        "+0.1s POST https://www.google.com/rmkt/collect/970729717/?…: net::ERR_ABORTED"
+      ],
+      "console": []
+    },
+    "checks": [
+      {
+        "at": "2026-11-17T14:48:46.389Z",
+        "verdicts": [
+          {
+            "slot": "product",
+            "file": "christmas-color-by-note.pdf",
+            "verdict": "match",
+            "before": "ColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr26.pdf Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History 1.76 MB",
+            "after": "ColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr26.pdf Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History 1.76 MB"
+          },
+          {
+            "slot": "preview",
+            "file": "christmas-color-by-note-PREVIEW.pdf",
+            "verdict": "match",
+            "before": "Preview demoColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr2618314772.pdf (190.79 kB) Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History",
+            "after": "Preview demoColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr2618314772.pdf (190.79 kB) Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History"
+          },
+          {
+            "slot": "thumb1",
+            "file": "cover.png",
+            "verdict": "old",
+            "before": "Main Cover cover.png (27.8 kB) Last updated: Nov 12, 2026 at 3:38 PM EST",
+            "after": "Cancel Main Cover cover.png (27.8 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          },
+          {
+            "slot": "thumb2",
+            "file": "preview-1.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview1.png (33.23 kB) Last updated: Nov 12, 2026 at 3:38 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview1.png (33.23 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          },
+          {
+            "slot": "thumb3",
+            "file": "preview-2.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview2.png (39.71 kB) Last updated: Nov 12, 2026 at 3:38 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview2.png (39.71 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          },
+          {
+            "slot": "thumb4",
+            "file": "preview-3.png",
+            "verdict": "old",
+            "before": "Thumbnail (Optional) preview3.png (55.99 kB) Last updated: Nov 12, 2026 at 3:38 PM EST",
+            "after": "Cancel Thumbnail (Optional) preview3.png (55.99 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          }
+        ]
+      },
+      {
+        "at": "2026-11-17T17:16:55.539Z",
+        "verdicts": [
+          {
+            "slot": "product",
+            "file": "christmas-color-by-note.pdf",
+            "verdict": "match",
+            "after": "ColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr26.pdf Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History 1.76 MB"
+          },
+          {
+            "slot": "preview",
+            "file": "christmas-color-by-note-PREVIEW.pdf",
+            "verdict": "match",
+            "after": "Preview demoColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr2618314772.pdf (190.79 kB) Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History"
+          },
+          {
+            "slot": "thumb1",
+            "file": "cover.png",
+            "verdict": "old",
+            "after": "Cancel Main Cover cover.png (27.8 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          },
+          {
+            "slot": "thumb2",
+            "file": "preview-1.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview1.png (33.23 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          },
+          {
+            "slot": "thumb3",
+            "file": "preview-2.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview2.png (39.71 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          },
+          {
+            "slot": "thumb4",
+            "file": "preview-3.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview3.png (55.99 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          }
+        ],
+        "screenshot": "tpt/_publish/032-christmas-color-by-note-reupload-recheck.png"
+      },
+      {
+        "at": "2026-11-17T18:39:18.141Z",
+        "verdicts": [
+          {
+            "slot": "product",
+            "file": "christmas-color-by-note.pdf",
+            "verdict": "match",
+            "after": "ColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr26.pdf Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History 1.76 MB"
+          },
+          {
+            "slot": "preview",
+            "file": "christmas-color-by-note-PREVIEW.pdf",
+            "verdict": "match",
+            "after": "Preview demoColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr2618314772.pdf (190.79 kB) Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History"
+          },
+          {
+            "slot": "thumb1",
+            "file": "cover.png",
+            "verdict": "old",
+            "after": "Cancel Main Cover cover.png (27.8 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          },
+          {
+            "slot": "thumb2",
+            "file": "preview-1.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview1.png (33.23 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          },
+          {
+            "slot": "thumb3",
+            "file": "preview-2.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview2.png (39.71 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          },
+          {
+            "slot": "thumb4",
+            "file": "preview-3.png",
+            "verdict": "old",
+            "after": "Cancel Thumbnail (Optional) preview3.png (55.99 kB) Last updated: Nov 12, 2026 at 3:38 PM EST"
+          }
+        ],
+        "screenshot": "tpt/_publish/032-christmas-color-by-note-reupload-recheck.png"
+      }
+    ]
+  }
+}
