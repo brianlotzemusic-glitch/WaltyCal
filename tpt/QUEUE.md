@@ -79,7 +79,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Trap Nutcracker: flip two Tchaikovsky themes (Sugar Plum Fairy, Trepak; 1892) with 808s and hi-hat rolls; note charts given ($9; December)
 - [x] Winter Soundscape: design a snowstorm from scratch with Alchemy and automation, no melody required ($8; winter)
 - [!] HELD (tpt/048-holiday-commercial-jingle-logic, QA approved; Visual inspector BLOCKING items below; no rescue yet) Holiday Commercial Jingle: 30-second jingle for an invented product, from a client brief, with voice-over ($8; winter) || BLOCKING to fix: p25 headed "Step 8" but the project sheet p21 has 7 steps (p26 quotes Step 7); p22 last NOTES ruled line sits ~0.08in above the footer rule (doubled heavy line); deck slides 1 and 15 cover art raster shows a faint grey box on white; the three red pills above the waveform (cover, slides 1 and 15, p1) have no label or legend
-- [ ] 8-Bit Holiday: chiptune arrangement of a public-domain carol with square and triangle waves and arpeggios ($8; winter)
+- [x] 8-Bit Holiday: chiptune arrangement of a public-domain carol with square and triangle waves and arpeggios ($8; winter)
 - [ ] Sleigh Bell Groove: holiday percussion programming in Drum Machine Designer and Step Sequencer, straight versus swing ($7; winter)
 - [ ] Snow Day Film Score: score a 20-second winter scene the student films or storyboards; hit points and mood ($9; winter)
 - [ ] Eight Nights, Eight Layers: a Hanukkah-themed arrangement that adds one track per section; optional Maoz Tzur melody (traditional) ($8; Hanukkah)

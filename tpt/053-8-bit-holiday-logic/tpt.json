@@ -1,0 +1,39 @@
+{
+  "price": "8.00",
+  "license_price": "8.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Computer Science - Technology",
+    "Music Composition"
+  ],
+  "tags": [
+    "Winter",
+    "Christmas-Chanukah-Kwanzaa",
+    "Project-based Learning",
+    "Projects"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 42,
+  "zip_contents": [
+    "8-bit-holiday.pdf",
+    "8-bit-holiday-intro-deck.pptx",
+    "8-bit-holiday-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "8-bit-holiday.zip",
+    "preview": "8-bit-holiday-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
