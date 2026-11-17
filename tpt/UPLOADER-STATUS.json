@@ -1,29 +1,15 @@
 {
-  "ran_at": "2026-11-17T00:47:54.311Z",
-  "published": [
-    {
-      "item": "045-winter-soundscape-logic",
-      "url": "https://www.teacherspayteachers.com/Product/Sound-Design-in-Logic-Pro-Alchemy-Soundscape-Project-High-School-Music-Tech-18380169"
-    }
-  ],
+  "ran_at": "2026-11-17T01:30:05.729Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "045-winter-soundscape-logic"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T00:48:54.515Z",
+    "ran_at": "2026-11-17T01:30:05.970Z",
     "replaced": [],
-    "failed": [
-      {
-        "item": "043-note-naming-speed-drills",
-        "error": "reupload stopped at \"save\": Cannot read properties of undefined (reading 'replace') (the save click had already happened: check the product on TpT) Screenshot: tpt/_publish/043-note-naming-speed-drills-reupload-failed.png. Not retrying this marker."
-      }
-    ],
-    "waiting": [
-      "043-note-naming-speed-drills"
-    ],
+    "failed": [],
+    "waiting": [],
     "skipped": [
       "001-halloween-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "003-winter-rhythm-bingo: paused (tpt/REUPLOAD-PAUSED allows only 043)",
@@ -97,12 +83,13 @@
       "039-winter-color-by-music-symbol: pending",
       "040-trap-nutcracker-logic: pending",
       "042-winter-music-escape-room: pending",
+      "043-note-naming-speed-drills: failed-hold",
       "044-holiday-boomwhacker-bells-play-alongs: pending"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": false,
+    "ok": true,
     "canary": [
       "043"
     ],
