@@ -1233,7 +1233,7 @@ def preview_square_1(img):
 
 def preview_square_2(ws, key):
     pair = "".join(
-        f'<div style="width:420px"><div class="shot"><img src="{src}"></div>'
+        f'<div style="width:445px"><div class="shot"><img src="{src}"></div>'
         f'<div class="lbl">{lab}</div></div>' for src, lab in ((ws, "Daily page"), (key, "Answer key")))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'
@@ -1244,7 +1244,7 @@ def preview_square_2(ws, key):
 
 
 def preview_square_3():
-    cards = "".join(f'<div class="dc" style="width:168px;height:150px"><div class="dn">DAY {i + 1}</div><div class="dt">{escape(d[0])}</div>'
+    cards = "".join(f'<div class="dc" style="width:168px;height:126px"><div class="dn">DAY {i + 1}</div><div class="dt">{escape(d[0])}</div>'
                     f'<div class="df">{escape(d[1])}</div></div>' for i, d in enumerate(DAYS))
     return sq_doc(
         f'<div class="sq"><div class="store">{BRAND}</div>'

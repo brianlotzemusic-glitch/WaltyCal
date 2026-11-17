@@ -11,3 +11,7 @@
 
 **Verdict: REJECTED**
 1. Fix `preview-3.png` layout so the Day 17-20 row sits fully above the footer bar (shorten the empty space in the cards or reduce the card height or gap); regenerate and re-run `gen.py --check`.
+
+## Rescue 2026-11-17
+Held rescue (step 2b): preview-3.png Day 17-20 card row no longer runs under the footer bar (card height reduced), preview-2.png blank band trimmed. Fresh Visual inspector re-checked cover, preview-1..3, all 35 PDF pages and 4 preview-PDF pages at full size: OK, no BLOCKING item. NOTES (not changed): blue counts tight under quarter rests on key pages, blank bands at the bottom of pp31-35, snowy-notes staves left-aligned on pp13-24.
+**Verdict: APPROVED**
