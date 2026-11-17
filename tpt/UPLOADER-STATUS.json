@@ -1,13 +1,19 @@
 {
-  "ran_at": "2026-11-17T01:30:05.729Z",
+  "ran_at": "2026-11-17T01:51:21.389Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T01:30:05.970Z",
-    "replaced": [],
+    "ran_at": "2026-11-17T01:51:21.539Z",
+    "replaced": [
+      {
+        "item": "043-note-naming-speed-drills",
+        "url": "https://www.teacherspayteachers.com/Product/Note-Naming-Worksheets-Treble-Bass-Alto-Clef-Speed-Drills-Grades-3-8-18352419",
+        "files": 6
+      }
+    ],
     "failed": [],
     "waiting": [],
     "skipped": [
@@ -83,7 +89,6 @@
       "039-winter-color-by-music-symbol: pending",
       "040-trap-nutcracker-logic: pending",
       "042-winter-music-escape-room: pending",
-      "043-note-naming-speed-drills: failed-hold",
       "044-holiday-boomwhacker-bells-play-alongs: pending"
     ],
     "needs_login": false,

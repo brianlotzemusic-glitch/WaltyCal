@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T01:53:29.175Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Note-Naming-Worksheets-Treble-Bass-Alto-Clef-Speed-Drills-Grades-3-8-18352419",
+  "marker_sha256": "b5ccdffdef056613864b6a13b33e43a9218f98ca2de56e985fc4aacedf2809db",
+  "files": [
+    {
+      "slot": "product",
+      "file": "note-naming-speed-drills.pdf",
+      "bytes": 311678,
+      "sha256": "e4fe38f10d4fb1276fcc47e2aa4f7c9f53f22022648986d245924a72ed8e64d8"
+    },
+    {
+      "slot": "preview",
+      "file": "note-naming-speed-drills-PREVIEW.pdf",
+      "bytes": 61214,
+      "sha256": "563498419e353eb984e0c6a10c6ec5ea15f5e967d9ed27ab804d398b88161486"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 101942,
+      "sha256": "3eaefeee7b709ec5ccaf54bb828d102febe1f92e8e888f82524a32585c192cdd"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 242884,
+      "sha256": "f77a12864e9f64df4aaa1c565cccb4dc1d2428a323ad56f19575dc983e91516f"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 347601,
+      "sha256": "717c5e05ac5d50a2a4c01d6079174b0bb7e23fc930080761432bcde6ce2adb8a"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 110705,
+      "sha256": "efa82ac0ab20361a7013c9119b2ca5a2d6ae2a4878cecafafe8eb1b8aa79a900"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "note-naming-speed-drills.pdf",
+      "verdict": "match",
+      "before": "NoteNamingWorksheetsTrebleBassAltoClefSpeedDrillsGrades38.pdf Last updated: Nov 15, 2026 at 7:22 AM EST See Revision History 304.37 kB",
+      "after": "notenamingspeeddrills.pdf Last updated: Nov 15, 2026 at 7:22 AM EST See Revision History 304.37 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "note-naming-speed-drills-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoNoteNamingWorksheetsTrebleBassAltoClefSpeedDrillsGrades3818352419.pdf (59.78 kB) Last updated: Nov 15, 2026 at 7:22 AM EST See Revision History",
+      "after": "Preview notenamingspeeddrillsPREVIEW.pdf (59.78 kB) Last updated: Nov 16, 2026 at 8:53 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (22.58 kB) Last updated: Nov 15, 2026 at 8:22 AM EST",
+      "after": "Cancel Main Cover cover.png (22.58 kB) Last updated: Nov 16, 2026 at 9:53 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (34.45 kB) Last updated: Nov 15, 2026 at 8:22 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (34.45 kB) Last updated: Nov 16, 2026 at 9:53 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (35.11 kB) Last updated: Nov 15, 2026 at 8:22 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (35.11 kB) Last updated: Nov 16, 2026 at 9:53 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (25.57 kB) Last updated: Nov 15, 2026 at 8:22 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (25.55 kB) Last updated: Nov 16, 2026 at 9:53 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302)"
+}
