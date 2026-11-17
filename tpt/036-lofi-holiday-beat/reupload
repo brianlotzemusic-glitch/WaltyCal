@@ -1,1 +1,2 @@
 2026-11-16 fix: Straight or swung slide: swing dots kept inside their beats (no bar-line crossings). Deck scored line reworded and raised.
+2026-11-17 13:45 ET re-armed after fix 5 (94c74b9): the uploader now waits for TpT's real save (the 302 after the thumbnail converter); the earlier save was cut off. Owner standing instruction: do all fixes and re-uploads.
