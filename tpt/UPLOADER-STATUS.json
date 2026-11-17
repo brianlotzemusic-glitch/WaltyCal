@@ -1,15 +1,29 @@
 {
-  "ran_at": "2026-11-16T20:19:30.917Z",
-  "published": [],
+  "ran_at": "2026-11-17T00:47:54.311Z",
+  "published": [
+    {
+      "item": "045-winter-soundscape-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Sound-Design-in-Logic-Pro-Alchemy-Soundscape-Project-High-School-Music-Tech-18380169"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "045-winter-soundscape-logic"
+  ],
   "reupload": {
-    "ran_at": "2026-11-16T20:19:31.062Z",
+    "ran_at": "2026-11-17T00:48:54.515Z",
     "replaced": [],
-    "failed": [],
-    "waiting": [],
+    "failed": [
+      {
+        "item": "043-note-naming-speed-drills",
+        "error": "reupload stopped at \"save\": Cannot read properties of undefined (reading 'replace') (the save click had already happened: check the product on TpT) Screenshot: tpt/_publish/043-note-naming-speed-drills-reupload-failed.png. Not retrying this marker."
+      }
+    ],
+    "waiting": [
+      "043-note-naming-speed-drills"
+    ],
     "skipped": [
       "001-halloween-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "003-winter-rhythm-bingo: paused (tpt/REUPLOAD-PAUSED allows only 043)",
@@ -23,6 +37,13 @@
       "016-dmp2-fx-deep-dive: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "017-dmp2-music-for-visual-media: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "018-dmp2-alchemy-architect: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "019-dmp2-anti-music-manifesto: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "020-dmp2-found-sound: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "021-dmp2-free-play: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "022-dmp2-genre-exploration: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "023-dmp2-infinite-horizon: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "024-dmp2-pattern-prodigy: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "025-dmp2-royalty-free: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "026-dmp2-session-players-studio: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "027-thanksgiving-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "028-free-color-by-note-sampler: paused (tpt/REUPLOAD-PAUSED allows only 043)",
@@ -31,12 +52,14 @@
       "031-carol-flip-logic: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "032-christmas-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "033-thanksgiving-music-sub-plan: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "034-nutcracker-listening-unit: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "035-hanukkah-color-by-note: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "036-lofi-holiday-beat: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "037-band-rhythm-counting-worksheets: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "039-winter-color-by-music-symbol: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "040-trap-nutcracker-logic: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "042-winter-music-escape-room: paused (tpt/REUPLOAD-PAUSED allows only 043)",
+      "044-holiday-boomwhacker-bells-play-alongs: paused (tpt/REUPLOAD-PAUSED allows only 043)",
       "001-halloween-color-by-note: pending",
       "002-fall-rhythm-flashcards: failed-hold",
       "003-winter-rhythm-bingo: pending",
@@ -52,6 +75,13 @@
       "016-dmp2-fx-deep-dive: pending",
       "017-dmp2-music-for-visual-media: pending",
       "018-dmp2-alchemy-architect: pending",
+      "019-dmp2-anti-music-manifesto: pending",
+      "020-dmp2-found-sound: pending",
+      "021-dmp2-free-play: pending",
+      "022-dmp2-genre-exploration: pending",
+      "023-dmp2-infinite-horizon: pending",
+      "024-dmp2-pattern-prodigy: pending",
+      "025-dmp2-royalty-free: pending",
       "026-dmp2-session-players-studio: pending",
       "027-thanksgiving-color-by-note: pending",
       "028-free-color-by-note-sampler: pending",
@@ -60,21 +90,23 @@
       "031-carol-flip-logic: pending",
       "032-christmas-color-by-note: pending",
       "033-thanksgiving-music-sub-plan: pending",
+      "034-nutcracker-listening-unit: pending",
       "035-hanukkah-color-by-note: pending",
       "036-lofi-holiday-beat: pending",
       "037-band-rhythm-counting-worksheets: pending",
       "039-winter-color-by-music-symbol: pending",
       "040-trap-nutcracker-logic: pending",
       "042-winter-music-escape-room: pending",
-      "043-note-naming-speed-drills: failed-hold"
+      "044-holiday-boomwhacker-bells-play-alongs: pending"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": true,
+    "ok": false,
     "canary": [
       "043"
-    ]
+    ],
+    "unverified": []
   },
   "ok": true
 }
