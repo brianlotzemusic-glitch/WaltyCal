@@ -1,114 +1,96 @@
 {
-  "ran_at": "2026-11-17T18:38:12.338Z",
-  "published": [],
+  "ran_at": "2026-11-17T20:40:45.295Z",
+  "published": [
+    {
+      "item": "038-december-music-bell-ringers",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Bell-Ringers-20-Daily-Warm-Ups-Rhythm-Note-Names-Symbols-Gr-3-6-18395657"
+    },
+    {
+      "item": "041-band-orchestra-emergency-sub-plans",
+      "url": "https://www.teacherspayteachers.com/Product/Band-and-Orchestra-Sub-Plans-5-No-Prep-Lessons-Worksheets-Keys-Gr-6-12-18395679"
+    },
+    {
+      "item": "053-8-bit-holiday-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Chiptune-Project-8-Bit-Music-Arrangement-High-School-Music-Tech-18395701"
+    },
+    {
+      "item": "054-concert-etiquette-lesson-and-posters",
+      "url": "https://www.teacherspayteachers.com/Product/Concert-Etiquette-Lesson-Posters-Audience-Checklist-Exit-Ticket-Gr-3-8-18395725"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "038-december-music-bell-ringers",
+    "041-band-orchestra-emergency-sub-plans",
+    "053-8-bit-holiday-logic",
+    "054-concert-etiquette-lesson-and-posters"
+  ],
   "reupload": {
-    "ran_at": "2026-11-17T18:38:12.497Z",
-    "replaced": [],
-    "failed": [
+    "ran_at": "2026-11-17T20:45:51.679Z",
+    "replaced": [
       {
-        "item": "025-dmp2-royalty-free",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+        "item": "002-fall-rhythm-flashcards",
+        "url": "https://www.teacherspayteachers.com/Product/Fall-Rhythm-Flashcards-Tracing-Worksheets-Ta-Ti-Ti-Rest-Half-Note-K-2-17886781",
+        "files": 6
       },
       {
-        "item": "026-dmp2-session-players-studio",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+        "item": "005-winter-concert-planner",
+        "url": "https://www.teacherspayteachers.com/Product/Winter-Concert-Planner-Program-Kit-Programs-Seating-Charts-Parent-Letter-17910885",
+        "files": 6
       },
       {
-        "item": "027-thanksgiving-color-by-note",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "028-free-color-by-note-sampler",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "029-winter-color-by-note",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "030-dmp1-units-1-6-bundle",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "031-carol-flip-logic",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "032-christmas-color-by-note",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "033-thanksgiving-music-sub-plan",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "034-nutcracker-listening-unit",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "035-hanukkah-color-by-note",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
-      },
-      {
-        "item": "036-lofi-holiday-beat",
-        "error": "submitted, but the edit page still shows the old files 3 h later (see reupload-failed)"
+        "item": "007-music-sub-plans-k5",
+        "url": "https://www.teacherspayteachers.com/Product/Music-Sub-Plans-K-5-5-No-Prep-Emergency-Days-No-Tech-Worksheets-Games-17914739",
+        "files": 6
       }
     ],
-    "waiting": [],
+    "failed": [],
+    "waiting": [
+      "008-dmp1-beat-from-nothing",
+      "009-dmp1-spooky-tunes",
+      "011-dmp1-chords-by-ear",
+      "012-dmp1-bass-melody-writing",
+      "015-dmp2-sample-flipping",
+      "016-dmp2-fx-deep-dive",
+      "017-dmp2-music-for-visual-media",
+      "018-dmp2-alchemy-architect",
+      "019-dmp2-anti-music-manifesto",
+      "020-dmp2-found-sound",
+      "021-dmp2-free-play",
+      "022-dmp2-genre-exploration",
+      "023-dmp2-infinite-horizon",
+      "024-dmp2-pattern-prodigy",
+      "025-dmp2-royalty-free",
+      "026-dmp2-session-players-studio",
+      "027-thanksgiving-color-by-note",
+      "028-free-color-by-note-sampler",
+      "029-winter-color-by-note",
+      "030-dmp1-units-1-6-bundle",
+      "031-carol-flip-logic",
+      "032-christmas-color-by-note",
+      "033-thanksgiving-music-sub-plan",
+      "034-nutcracker-listening-unit",
+      "035-hanukkah-color-by-note",
+      "036-lofi-holiday-beat",
+      "037-band-rhythm-counting-worksheets",
+      "039-winter-color-by-music-symbol",
+      "040-trap-nutcracker-logic",
+      "042-winter-music-escape-room",
+      "044-holiday-boomwhacker-bells-play-alongs"
+    ],
     "skipped": [
-      "002-fall-rhythm-flashcards: failed-hold",
-      "005-winter-concert-planner: failed-hold",
-      "007-music-sub-plans-k5: failed-hold",
-      "008-dmp1-beat-from-nothing: failed-hold",
-      "009-dmp1-spooky-tunes: failed-hold",
-      "011-dmp1-chords-by-ear: failed-hold",
-      "012-dmp1-bass-melody-writing: failed-hold",
-      "014-dmp2-billboard-top-10: no-url",
-      "015-dmp2-sample-flipping: failed-hold",
-      "016-dmp2-fx-deep-dive: failed-hold",
-      "017-dmp2-music-for-visual-media: failed-hold",
-      "018-dmp2-alchemy-architect: failed-hold",
-      "019-dmp2-anti-music-manifesto: failed-hold",
-      "020-dmp2-found-sound: failed-hold",
-      "021-dmp2-free-play: failed-hold",
-      "022-dmp2-genre-exploration: failed-hold",
-      "023-dmp2-infinite-horizon: failed-hold",
-      "024-dmp2-pattern-prodigy: failed-hold",
-      "025-dmp2-royalty-free: unverified",
-      "026-dmp2-session-players-studio: unverified",
-      "027-thanksgiving-color-by-note: unverified",
-      "028-free-color-by-note-sampler: unverified",
-      "029-winter-color-by-note: unverified",
-      "030-dmp1-units-1-6-bundle: unverified",
-      "031-carol-flip-logic: unverified",
-      "032-christmas-color-by-note: unverified",
-      "033-thanksgiving-music-sub-plan: unverified",
-      "034-nutcracker-listening-unit: unverified",
-      "035-hanukkah-color-by-note: unverified",
-      "036-lofi-holiday-beat: unverified",
-      "037-band-rhythm-counting-worksheets: unverified",
-      "039-winter-color-by-music-symbol: unverified",
-      "040-trap-nutcracker-logic: unverified",
-      "042-winter-music-escape-room: unverified",
-      "044-holiday-boomwhacker-bells-play-alongs: failed-hold"
+      "014-dmp2-billboard-top-10: no-url"
     ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
-    "ok": false,
+    "ok": true,
     "canary": [
       "043"
     ],
-    "unverified": [
-      "037-band-rhythm-counting-worksheets",
-      "039-winter-color-by-music-symbol",
-      "040-trap-nutcracker-logic",
-      "042-winter-music-escape-room"
-    ]
+    "unverified": []
   },
   "ok": true
 }

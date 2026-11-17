@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T20:54:09.392Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Music-Sub-Plans-K-5-5-No-Prep-Emergency-Days-No-Tech-Worksheets-Games-17914739",
+  "marker_sha256": "2a19bd1c6f2efa22a82c84a2de54c7507658d60f9fe0a2585c6e8300eed7fa99",
+  "files": [
+    {
+      "slot": "product",
+      "file": "music-sub-plans-k5.pdf",
+      "bytes": 424213,
+      "sha256": "ff294bd1646b10897a892bba991823a62e9376015950333634c20944abcb1e75"
+    },
+    {
+      "slot": "preview",
+      "file": "music-sub-plans-k5-PREVIEW.pdf",
+      "bytes": 117886,
+      "sha256": "6208b08600e6e86c3d56519225d14baef5825ab680e435813270a76e5b0a5ca6"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 168329,
+      "sha256": "b3a549a5211c66f6319722640a5158efc321040d326d7e6f382fd44a25814f51"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 380375,
+      "sha256": "97d078c2874992ad218424a5a32d6909216ec518a678c5b4658a2bfa5db92529"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 352586,
+      "sha256": "2abc2e1049d6ad4abc72fc58afdd589bde0793e3ad0b2c31ddecc892d5ea8831"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 392221,
+      "sha256": "d8572a3e0ed6e94f35c8b25c4f059db9f76554b8997be64fa983383fd6ded37f"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "music-sub-plans-k5.pdf",
+      "verdict": "match",
+      "before": "MusicSubPlansK55NoPrepEmergencyDaysNoTechWorksheetsGames.pdf Last updated: Oct 11, 2026 at 9:07 AM EST See Revision History 445.49 kB",
+      "after": "musicsubplansk5.pdf Last updated: Oct 11, 2026 at 9:07 AM EST See Revision History 414.27 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "music-sub-plans-k5-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoMusicSubPlansK55NoPrepEmergencyDaysNoTechWorksheetsGames17914739.pdf (133.79 kB) Last updated: Oct 11, 2026 at 9:07 AM EST See Revision History",
+      "after": "Preview musicsubplansk5PREVIEW.pdf (115.12 kB) Last updated: Nov 17, 2026 at 3:54 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (28.65 kB) Last updated: Oct 11, 2026 at 9:07 AM EST",
+      "after": "Cancel Main Cover cover.png (28.78 kB) Last updated: Nov 17, 2026 at 4:53 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (32.17 kB) Last updated: Oct 11, 2026 at 9:07 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (32.17 kB) Last updated: Nov 17, 2026 at 4:53 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (37.51 kB) Last updated: Oct 11, 2026 at 9:07 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (37.48 kB) Last updated: Nov 17, 2026 at 4:53 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (35.44 kB) Last updated: Oct 11, 2026 at 9:07 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (35.46 kB) Last updated: Nov 17, 2026 at 4:54 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/17914739)"
+}
