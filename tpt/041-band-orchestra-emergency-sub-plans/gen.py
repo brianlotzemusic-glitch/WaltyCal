@@ -453,9 +453,9 @@ L3_ORDER_ANS = sorted(L3_ORDER, key=lambda n: COMP[n][0])
 
 # ---- Lesson 4: practice and rehearsal
 STRAT = [  # (problem, strategy)
-    ("I keep missing the same two measures.", "Pull out the hard spot and repeat it slowly until it is right"),
+    ("The same hard spot goes wrong every time I play.", "Pull out the hard spot and repeat it slowly until it is right"),
     ("I speed up whenever the notes get fast.", "Practice with a metronome or a steady foot tap"),
-    ("Playing the whole piece every time never fixes the hard part.", "Break the piece into short chunks and work one at a time"),
+    ("I can play the first line, but I fall apart when I try the full page.", "Break the piece into short chunks and work one at a time"),
     ("I forget where I made mistakes.", "Circle trouble spots in pencil so you can find them next time"),
     ("My practice time feels random and goes nowhere.", "Set one clear goal before you start"),
 ]
@@ -1684,7 +1684,8 @@ def verify_data():
     # key item counts must equal worksheet question counts, every lesson
     ws = {"key1": [len(FAMILIES), len(SOUND_MATCH), len(CARE_TF), N_L1_MC],
           "key2": [len(L2_ADD), len(L2_SHORT), len(L2_CMP), len(L2_CIRCLE), len(L2_SIGS), len(L2_WORDS)],
-          "key3": [len(L3_MC), None, len(L3_MATH)]}
+          "key3": [len(L3_MC), len(L3_MATCH_ORDER), len(L3_MATH), len(L3_ORDER), len(STRAT), 5],
+          "key4": [len(BAND_ZONES), len(ORCH_ZONES), len(DYN_SCRAMBLED), len(TERMS), len(CLOZE), len(SCRAMBLES) + len(RIDDLES)]}
     for kk, secs in key_items().items():
         for j, (head, items) in enumerate(secs):
             want = ws.get(kk, [])[j] if j < len(ws.get(kk, [])) else None
@@ -1716,6 +1717,24 @@ def verify_data():
         errs.append(f"journal totals: {journal_totals()}")
     if not perm(STRAT_ORDER, len(STRAT)) or len(STRAT) != len(L4_STRATS):
         errs.append("L4 strategy match")
+    want_l4 = {"The same hard spot goes wrong every time I play.": "Isolate the hard spot",
+               "I speed up whenever the notes get fast.": "Use a steady beat",
+               "I can play the first line, but I fall apart when I try the full page.": "Work in small chunks",
+               "I forget where I made mistakes.": "Mark your music",
+               "My practice time feels random and goes nowhere.": "Set one goal"}
+    if {p: L4_STRATS[i][0] for i, (p, _) in enumerate(STRAT)} != want_l4:
+        errs.append("L4 problem-to-strategy mapping changed")
+    # the key must print, for each printed item, the letter of its intended strategy (letters follow L4_STRATS order)
+    l4_key = [x for h, xs in key_items()["key3"] if h == "Lesson 4 · Match the strategy" for x in xs]
+    l4_want = [f"M{i + 1}: {lbl([h for h, _ in L4_STRATS].index(want_l4[STRAT[k][0]]))}" for i, k in enumerate(STRAT_ORDER)]
+    if l4_key != l4_want or l4_want != ["M1: D", "M2: A", "M3: E", "M4: C", "M5: B"]:
+        errs.append(f"L4 key {l4_key} != worksheet mapping {l4_want}")
+    # no item may echo another strategy's wording
+    import re as _re
+    for p, _ in STRAT:
+        for h, t in L4_STRATS:
+            if h != want_l4[p] and any(w in p.lower() for w in ("chunk", "metronome", "goal", "circle", "pencil", "whole piece", "measure")):
+                errs.append(f"L4 item echoes strategy wording: {p}")
     # 5. Lesson 5
     if {z for z in BAND_GEOM} != {a for a, _, _ in BAND_ZONES} or {z for z in ORCH_GEOM} != {a for a, _ in ORCH_ZONES}:
         errs.append("seating zones do not match geometry")

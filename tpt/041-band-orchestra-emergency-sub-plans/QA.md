@@ -1,15 +1,34 @@
-# QA: 041 Band and Orchestra Emergency Sub Plans (second-round independent review)
+# QA: 041 Band and Orchestra Emergency Sub Plans (third-round independent review)
 
 ## Checks run
-- `gen.py --check`: CHECK OK. `tools/tpt-validate.py`: OK. PDF 29 pages; preview PDF 4 pages.
-- Rendered all 29 pages and looked at each (page 2 teacher notes intact; nothing clipped, overlapping or blank; footers clear), the 4 preview pages (one watermark each, counts say 29), the cover (reads at thumbnail size, says 29 pages) and the 3 preview PNGs.
-- Round-1 fixes confirmed: Lesson 1 key now D1 B, D2 B only (worksheet has 2 questions); "Italian" capitalised.
-- Answer keys checked by hand against the worksheets, all five lessons, item by item. L1 sort/B/C/D, L2 A to F, L3 A to C and order, L4 sample week (105, 6, 17.5, Sat, YES), L5 zones, loudness order, terms, who-is-who, early-finisher scrambles and riddles: all correct. Only exception: item 1 below.
-- Word search solved independently from the PDF grid (14 x 14 text read, all 8 directions): all 12 words present exactly once.
-- tpt.json (grades 4, subjects Music and Instrumental Music, 6 tags, price 7.00, files exist, pages 29) and UPLOAD.md (title 76 chars, page list totals 29, disclosure present) consistent. No tunes used.
+- `gen.py --check`: CHECK OK (123 key items, problem-to-strategy mapping, word search, timeline math, 29 pages, 4-page preview). `tools/tpt-validate.py`: OK. `git status`: only gen.py, resource.html and the two PDFs modified.
+- Rendered all 29 pages at 110 dpi and looked at each; looked at the 4 preview PDF pages (one watermark each), cover and preview-1..3 at full size. Nothing clipped, overlapping or blank. Cover and preview notation: 4/4, two beamed eighth pairs, quarter, quarter rest, double bar; stems and beams correct.
+
+## Lesson 4 matching (page 16), solved as a student
+Strategies: A isolate hard spot, B steady beat, C small chunks, D mark music, E one goal.
+- M1 "I forget where I made mistakes": D only (marking music is the only strategy about remembering). Key D.
+- M2 "The same hard spot goes wrong every time I play": A (the hard spot, repeat it). A weak argument for D (circle trouble spots) exists but D does not fix the problem; C is not about one spot. Key A.
+- M3 "My practice time feels random and goes nowhere": E (goal keeps practice from drifting). Key E.
+- M4 "I can play the first line, but I fall apart when I try the full page": C (short chunks, then join). A does not fit (no single hard spot). Key C.
+- M5 "I speed up whenever the notes get fast": B (rush or drag, metronome). Key B.
+One clear best answer per item, equal to the key on page 26. Defect closed.
+
+## Other items re-solved (all match the keys)
+- L1: sort (16 instruments), B1-6 B D F A E C, C1-6 T F T F F T, D1 B, D2 B.
+- L2: A 4 5 4 3 5 7; B 2 1 1 2 3 1; C = > = > < =; D Y N Y N N Y Y Y; E 3/4 2/4 2/2 4/4; F 128, 1, 4, 60, 96.
+- L3: A D B A B C; B Beethoven, Bach, Sousa, Mozart; C 71, 6, 14, 72, 1756; order Bach 1, Mozart 2, Beethoven 3, Sousa 4. Facts correct: Bach 1685-1750 (Leipzig from 1723, Brandenburgs 1721), Mozart 1756-1791 age 35, Beethoven 1770-1827 (Ninth, Vienna 1824), Sousa 1854-1932 (Marine Band 1880-92, Stars and Stripes 1896, national march 1987).
+- L4 sample week 105, 6, 17.5, Sat, YES.
+- L5: loudness pp1 p2 mp3 mf4 f5 ff6; terms D H B F J A G I C E; who-is-who conductor, section, concertmaster, first; band zones woodwinds, brass, percussion; orchestra zones match standard layout. Word search: 12 words, each findable, solution page agrees.
+- Early finishers: scrambles clarinet, trumpet, timpani, trombone, bassoon, viola; riddles double bass, trombone, timpani, violin, saxophone.
+- Instrument-family facts correct (saxophone woodwind, tuba, timpani pitched, violin smallest).
+- Read-aloud scripts and timed steps are usable by a non-music sub; step minutes add to the stated class length; page references correct.
+- UPLOAD.md/tpt.json: title 76 chars; disclosure line present on the terms page and in the description; 29 pages (list totals 29); 4 grade entries; subjects Music and Instrumental Music and the 6 tags are exact non-heading entries in the option lists; files exist.
 
 ## Findings
-1. Lesson 4 "Match the problem to the best strategy" (page 16), items 2 and 4 are ambiguous and the key picks the weaker match. Item 4 "Playing the whole piece every time never fixes the hard part" echoes strategy A almost word for word ("Do not play the whole piece again and again... repeat just those"), yet the key says M4 = C. Item 2 "I keep missing the same two measures" also fits A ("one or two measures that go wrong"). A student or teacher who answers A for both is marked wrong on one.
+None blocking.
 
-**Verdict: REJECTED**
-1. Make items 2 and 4 on page 16 unambiguous and the key (page 26) match. For example swap the key to M2 C, M4 A, and reword item 2 so chunking is clearly the fix (e.g. "I can play the first line but fall apart when I try to play the whole page"), or reword item 4 away from the "whole piece" phrase. Then rebuild and re-run `--check`.
+**Verdict: APPROVED**
+
+## Rescue 2026-11-17
+Held rescue (step 2b): Lesson 4 matching (p16) reworded so each item fits exactly one strategy (M1 D, M2 A, M3 E, M4 C, M5 B, key p26 unchanged); --check now asserts the mapping and key counts for Lessons 3-5. QA re-checked the whole product: APPROVED. Visual inspector re-checked cover, previews and the touched pages (15-17, 24-27, preview PDF): OK, no BLOCKING item. Open NOTES (not changed): p15 says 'the four pages for this lesson (page 16, 17, 18)' but lists three; p16 numbers items 1-5 while the p26 key says M1-M5; blank lower areas on pp15-17, 24; 'violins' wraps alone in the word bank on p20.
+**Verdict: APPROVED**
