@@ -1,6 +1,6 @@
 # TpT style: Hudson Beat (Brian Lotze's store)
 
-This is the house look for every item in the owner's TpT music line. It comes from the four covers on https://www.teacherspayteachers.com/store/brian-lotze (see research/tpt-music-2026-10-04.md, section 5). Those covers are monochrome: black line art on white, a tall condensed bold all-caps title stacked and centred under the logo, a light condensed subtitle, lots of white space, no borders and no photos.
+This is the house look for every item in the owner's TpT music line. It comes from the four covers on https://www.teacherspayteachers.com/store/hudson-beat (see research/tpt-music-2026-10-04.md, section 5). Those covers are monochrome: black line art on white, a tall condensed bold all-caps title stacked and centred under the logo, a light condensed subtitle, lots of white space, no borders and no photos.
 
 We copy the look, not the artwork. The speaker/helmet logo belongs to the owner, and we don't have the file. Never redraw it. The owner named the music brand **Hudson Beat** (4 Oct 2026). The brand mark is "HUDSON BEAT" set in type. The copyright holder stays Brian Lotze.
 
