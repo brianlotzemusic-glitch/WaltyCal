@@ -1,56 +1,31 @@
 {
-  "ran_at": "2026-11-17T20:40:45.295Z",
-  "published": [
-    {
-      "item": "038-december-music-bell-ringers",
-      "url": "https://www.teacherspayteachers.com/Product/Music-Bell-Ringers-20-Daily-Warm-Ups-Rhythm-Note-Names-Symbols-Gr-3-6-18395657"
-    },
-    {
-      "item": "041-band-orchestra-emergency-sub-plans",
-      "url": "https://www.teacherspayteachers.com/Product/Band-and-Orchestra-Sub-Plans-5-No-Prep-Lessons-Worksheets-Keys-Gr-6-12-18395679"
-    },
-    {
-      "item": "053-8-bit-holiday-logic",
-      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Chiptune-Project-8-Bit-Music-Arrangement-High-School-Music-Tech-18395701"
-    },
-    {
-      "item": "054-concert-etiquette-lesson-and-posters",
-      "url": "https://www.teacherspayteachers.com/Product/Concert-Etiquette-Lesson-Posters-Audience-Checklist-Exit-Ticket-Gr-3-8-18395725"
-    }
-  ],
+  "ran_at": "2026-11-17T21:35:27.882Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "038-december-music-bell-ringers",
-    "041-band-orchestra-emergency-sub-plans",
-    "053-8-bit-holiday-logic",
-    "054-concert-etiquette-lesson-and-posters"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T20:45:51.679Z",
+    "ran_at": "2026-11-17T21:35:28.032Z",
     "replaced": [
       {
-        "item": "002-fall-rhythm-flashcards",
-        "url": "https://www.teacherspayteachers.com/Product/Fall-Rhythm-Flashcards-Tracing-Worksheets-Ta-Ti-Ti-Rest-Half-Note-K-2-17886781",
+        "item": "008-dmp1-beat-from-nothing",
+        "url": "https://www.teacherspayteachers.com/Product/Beat-From-Nothing-Logic-Pro-Drum-Programming-Unit-High-School-Music-Tech-17921029",
         "files": 6
       },
       {
-        "item": "005-winter-concert-planner",
-        "url": "https://www.teacherspayteachers.com/Product/Winter-Concert-Planner-Program-Kit-Programs-Seating-Charts-Parent-Letter-17910885",
+        "item": "009-dmp1-spooky-tunes",
+        "url": "https://www.teacherspayteachers.com/Product/Film-Scoring-in-Logic-Pro-Halloween-Music-Production-Project-High-School-17953527",
         "files": 6
       },
       {
-        "item": "007-music-sub-plans-k5",
-        "url": "https://www.teacherspayteachers.com/Product/Music-Sub-Plans-K-5-5-No-Prep-Emergency-Days-No-Tech-Worksheets-Games-17914739",
+        "item": "011-dmp1-chords-by-ear",
+        "url": "https://www.teacherspayteachers.com/Product/Chord-Progressions-in-Logic-Pro-Roman-Numerals-High-School-Music-Technology-17953543",
         "files": 6
       }
     ],
     "failed": [],
     "waiting": [
-      "008-dmp1-beat-from-nothing",
-      "009-dmp1-spooky-tunes",
-      "011-dmp1-chords-by-ear",
       "012-dmp1-bass-melody-writing",
       "015-dmp2-sample-flipping",
       "016-dmp2-fx-deep-dive",

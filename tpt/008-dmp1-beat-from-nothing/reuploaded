@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-17T21:37:30.286Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Beat-From-Nothing-Logic-Pro-Drum-Programming-Unit-High-School-Music-Tech-17921029",
+  "marker_sha256": "c77893e8dd42e08484f865cea455a70befe7b241b5775fed6146f07425dc4f69",
+  "files": [
+    {
+      "slot": "product",
+      "file": "beat-from-nothing.zip",
+      "bytes": 766939,
+      "sha256": "5e28f8495dc3c27a671b5e1515d73aa3a5d16365dd9c1f3c668ee84da7d64eec"
+    },
+    {
+      "slot": "preview",
+      "file": "beat-from-nothing-PREVIEW.pdf",
+      "bytes": 67270,
+      "sha256": "601a38850298ddcc8e20552dd08643f3d2b981e204a31e02cf351a9d5b0a6d69"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 184872,
+      "sha256": "239b45b7ac945c821ab6e386abc638b48a1bfc61f131dab1768e5a2e30d3f875"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 469657,
+      "sha256": "a0903e2f996e6221d79f692e9b8e969717e8b392e8ea0efb63c94a9cb7641b77"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 337714,
+      "sha256": "d30d3b2f7724c1d1155bb18fb2cd39cb18b6b3fe58f3f4761487b7148a43fdcc"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 475949,
+      "sha256": "451d9192b3cac7e01a76c6326cda6b908a1a19592ee741a061044a9ba3664638"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "beat-from-nothing.zip",
+      "verdict": "match",
+      "before": "BeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech.zip Last updated: Oct 11, 2026 at 8:31 PM EST See Revision History 769.12 kB",
+      "after": "beatfromnothing.zip Last updated: Nov 17, 2026 at 4:37 PM EST See Revision History 748.96 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "beat-from-nothing-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoBeatFromNothingLogicProDrumProgrammingUnitHighSchoolMusicTech17921029.pdf (80.86 kB) Last updated: Oct 11, 2026 at 8:31 PM EST See Revision History",
+      "after": "Preview beatfromnothingPREVIEW.pdf (65.69 kB) Last updated: Nov 17, 2026 at 4:37 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (32.03 kB) Last updated: Oct 11, 2026 at 8:31 PM EST",
+      "after": "Cancel Main Cover cover.png (32.03 kB) Last updated: Nov 17, 2026 at 5:37 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (32.83 kB) Last updated: Oct 11, 2026 at 8:31 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (34.41 kB) Last updated: Nov 17, 2026 at 5:37 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (33.56 kB) Last updated: Oct 11, 2026 at 8:31 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (33.56 kB) Last updated: Nov 17, 2026 at 5:37 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (38.95 kB) Last updated: Oct 11, 2026 at 8:31 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (38.95 kB) Last updated: Nov 17, 2026 at 5:37 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/17921029)"
+}
