@@ -1,12 +1,34 @@
 {
-  "ran_at": "2026-11-18T14:45:05.991Z",
-  "published": [],
+  "ran_at": "2026-11-18T15:54:44.998Z",
+  "published": [
+    {
+      "item": "051-roll-and-compose-winter",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Composition-Dice-Game-Rhythm-and-Melody-Roll-and-Compose-Gr-2-5-18407825"
+    },
+    {
+      "item": "052-holiday-music-word-puzzles",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Word-Searches-and-Crosswords-Instruments-Symbols-Rhythm-Gr-3-6-18407865"
+    },
+    {
+      "item": "057-sleigh-bell-groove-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Drum-Programming-Straight-vs-Swing-Groove-High-School-Music-Tech-18407891"
+    },
+    {
+      "item": "058-tempo-dynamics-anchor-charts",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Dynamics-Tempo-Posters-Anchor-Charts-Reference-Sheet-Quiz-Gr-2-8-18407932"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "051-roll-and-compose-winter",
+    "052-holiday-music-word-puzzles",
+    "057-sleigh-bell-groove-logic",
+    "058-tempo-dynamics-anchor-charts"
+  ],
   "reupload": {
-    "ran_at": "2026-11-18T14:45:06.148Z",
+    "ran_at": "2026-11-18T16:00:53.167Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
