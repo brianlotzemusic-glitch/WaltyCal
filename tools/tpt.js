@@ -1179,6 +1179,9 @@ function sameFileOnTpt(slot, card, bytes) {
 // "match" (the new file is on the card) | "old" (still the old file) | "unknown". Pure.
 function cardVerdict(oldCard, newCard, file, slot) {
   const o = parseCard(oldCard), n = parseCard(newCard), wantKb = file.bytes / 1024;
+  // 028 (18 Nov): a FREE item's edit form keeps no preview (TpT shows an empty "Select file" box before and after); nothing to verify
+  const empty = (t) => /select file/i.test(t || "") && !parseCard(t).name; // "Up to 30 MB" is not a file
+  if (slot === "preview" && file.free && empty(oldCard) && empty(newCard)) return "match";
   const sizeOk = n.sizeKb !== null && Math.abs(n.sizeKb - wantKb) <= Math.max(0.6, wantKb * 0.005);
   if (sizeOk && !/^thumb/.test(slot)) return "match"; // TpT shows thumbnails at a converted size: only the date counts for them
   if (n.updated && o.updated && n.updated > o.updated) return "match";
@@ -1509,7 +1512,7 @@ async function reupload(item, dryRun) {
     for (const k of Object.keys(before)) if (!(fixPrice && (k === "price" || k === "license_price")) && before[k] !== after[k]) await fail(page, step, `field "${k}" changed during the save (before ${JSON.stringify(before[k])}, after ${JSON.stringify(after[k])})`, saveDiag);
     // Verify by the FILE CARDS, not the hidden key (empty for stored files on a fresh page).
     const newCards = await readCards(page, F, files.map((f) => f.slot));
-    const verdicts = files.map((f) => ({ slot: f.slot, file: f.file, verdict: cardVerdict(oldCards[f.slot], newCards[f.slot], { ...f, savedAt }, f.slot), before: oldCards[f.slot].slice(0, 160), after: newCards[f.slot].slice(0, 160) }));
+    const verdicts = files.map((f) => ({ slot: f.slot, file: f.file, verdict: cardVerdict(oldCards[f.slot], newCards[f.slot], { ...f, savedAt, free: cfg.free === true }, f.slot), before: oldCards[f.slot].slice(0, 160), after: newCards[f.slot].slice(0, 160) }));
     console.log("verify: " + verdicts.map((v) => `${v.slot} ${v.verdict}`).join(", "));
     if (verdicts.some((v) => v.verdict !== "match")) {
       // TpT answered the save but the cards do not show the new files yet ("allow up to one hour"). Look again later; never resubmit.
@@ -1639,7 +1642,8 @@ async function checkUnverified(item, deps = {}) {
     } finally { await context.close(); }
   }
   const savedAt = Date.parse(rec.at);
-  const verdicts = rec.files.map((f) => ({ slot: f.slot, file: f.file, verdict: cardVerdict(rec.old_cards[f.slot] || "", cards[f.slot] || "", { ...f, savedAt }, f.slot), after: (cards[f.slot] || "").slice(0, 160) }));
+  let free = false; try { free = JSON.parse(fs.readFileSync(path.join(item, "tpt.json"), "utf8")).free === true; } catch (e) { /* paid */ }
+  const verdicts = rec.files.map((f) => ({ slot: f.slot, file: f.file, verdict: cardVerdict(rec.old_cards[f.slot] || "", cards[f.slot] || "", { ...f, savedAt, free }, f.slot), after: (cards[f.slot] || "").slice(0, 160) }));
   rec.checks = [...(rec.checks || []), { at: new Date(deps.now || Date.now()).toISOString(), verdicts, screenshot: shot }];
   if (verdicts.every((v) => v.verdict === "match")) {
     fs.writeFileSync(path.join(item, "reuploaded"), JSON.stringify({ at: new Date().toISOString(), tool: "tools/tpt.js reupload (verified later)", url: rec.url, marker_sha256: rec.marker_sha256,

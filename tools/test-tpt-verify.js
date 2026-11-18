@@ -30,6 +30,10 @@ const ROOT = path.dirname(__dirname);
   assert(!T.sameFileOnTpt("thumb1", "cover.png (99.55 kB)", 101942), "never for thumbnails");
   assert(!T.sameFileOnTpt("product", "Processing...", 311678));
   console.log("ok same-size PDFs on TpT are not uploaded again; thumbnails always are");
+  const EMPTY = "Cancel Preview Select file or drag and drop Drop files here Up to 30 MB Last updated: See Revision History";
+  assert.strictEqual(T.cardVerdict(EMPTY, EMPTY, { bytes: 50000, free: true }, "preview"), "match", "free item: TpT keeps no preview");
+  assert.notStrictEqual(T.cardVerdict(EMPTY, EMPTY, { bytes: 50000, free: false }, "preview"), "match", "paid item: an empty preview is NOT fine");
+  console.log("ok 028: a free item's empty preview box is not a failure; a paid item's is");
 
   // 014 (17 Nov): `uploaded` has no URL. My Products lookup by exact title; reuploadState uses `live-url`; `uploaded` untouched.
   {
