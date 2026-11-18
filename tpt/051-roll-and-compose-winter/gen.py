@@ -241,12 +241,16 @@ def snowman(cx, base, r, fill="#fff", accent=ACCENT, sw=1.4):
 PIPS = {1: [5], 2: [1, 9], 3: [1, 5, 9], 4: [1, 3, 7, 9], 5: [1, 3, 5, 7, 9], 6: [1, 3, 4, 6, 7, 9]}
 
 
+DIE_BOX = 120   # die viewBox is 120 wide: 10 units of padding each side (the stroke is 4-5, a rotated corner reaches ~4 beyond the body)
+
+
 def die_svg(n, size=22, unit="pt", fill="#fff", pip="#000", stroke="#000", sw=5, rot=0, inline=True):
     """A die face. Pips are circles with class 'pip' (the checker counts them)."""
     pts = {1: (24, 24), 2: (50, 24), 3: (76, 24), 4: (24, 50), 5: (50, 50), 6: (76, 50), 7: (24, 76), 8: (50, 76), 9: (76, 76)}
     pc = "".join(f'<circle class="pip" cx="{pts[k][0]}" cy="{pts[k][1]}" r="9" fill="{pip}"/>' for k in PIPS[n])
     st = "display:inline-block;vertical-align:middle" if inline else "display:block"
-    return (f'<svg class="die" data-n="{n}" viewBox="0 0 100 100" width="{size}{unit}" height="{size}{unit}" style="{st}">'
+    box = f"{size * DIE_BOX / 100:g}{unit}"   # `size` is the die body; the render box is DIE_BOX% of it, so rotation and stroke never clip
+    return (f'<svg class="die" data-n="{n}" data-sw="{sw}" viewBox="{-(DIE_BOX - 100) / 2:g} {-(DIE_BOX - 100) / 2:g} {DIE_BOX} {DIE_BOX}" width="{box}" height="{box}" style="{st}">'
             f'<g transform="rotate({rot} 50 50)"><rect x="5" y="5" width="90" height="90" rx="18" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>{pc}</g></svg>')
 
 
@@ -585,7 +589,7 @@ WM = '<div class="wm">PREVIEW</div>'
 
 
 def deco_header():
-    s = lambda body: f'<svg width="22pt" height="22pt" viewBox="0 0 24 24">{body}</svg>'
+    s = lambda body: f'<svg data-icon="flake" data-icon-sw="1.6" width="25.7pt" height="25.7pt" viewBox="-2 -2 28 28">{body}</svg>'
     return (die_svg(3, 21) + s(snowflake(12, 12, 10, ACCENT, 1.6)) + die_svg(5, 21) + s(snowflake(12, 12, 10, ACCENT, 1.6)) + die_svg(2, 21))
 
 
@@ -964,7 +968,7 @@ def cover_art(width=900, height=500):
     o.append(f'<g transform="translate(165,34)">{st}</g>')
     for i, (n, rot) in enumerate(((2, -10), (5, 7), (3, -4))):
         cx = 330 + i * 120
-        o.append(f'<g transform="translate({cx - 45},262)">{die_svg(n, 90, "px", fill=ACCENT, pip="#fff", stroke="#000", sw=4, rot=rot, inline=False)}</g>')
+        o.append(f'<g transform="translate({cx - 54},253)">{die_svg(n, 90, "px", fill=ACCENT, pip="#fff", stroke="#000", sw=4, rot=rot, inline=False)}</g>')
     o.append("</svg>")
     return "".join(o)
 
@@ -1122,7 +1126,7 @@ def dice_row(n=5, size=68, flake=30):
         d = [3, 6, 1, 4, 2][i % 5]
         parts.append(die_svg(d, size, "px", fill=ACCENT, pip="#fff", stroke="#000", sw=4, rot=(-8, 6, -4, 8, -6)[i % 5], inline=True))
         if i < n - 1:
-            parts.append(f'<svg width="{flake}" height="{flake}" viewBox="0 0 24 24" style="margin:0 6px">{snowflake(12, 12, 10, "#000", 1.8)}</svg>')
+            parts.append(f'<svg data-icon="flake" data-icon-sw="1.8" width="{flake * 28 / 24:g}" height="{flake * 28 / 24:g}" viewBox="-2 -2 28 28" style="margin:0 4px">{snowflake(12, 12, 10, "#000", 1.8)}</svg>')
     return f'<div style="display:flex;align-items:center;justify-content:center;gap:10px">{"".join(parts)}</div>'
 
 
@@ -1919,6 +1923,67 @@ def verify_layout():
     return json.loads(r.stdout.strip().splitlines()[-1])
 
 
+EDGE_JS = r"""
+const { chromium } = require('playwright');
+const url = require('url');
+(async () => {
+  const b = await chromium.launch();
+  const out = [];
+  const SC = 6;
+  for (const f of process.argv.slice(2)) {
+    const p = await b.newPage({ viewport: { width: 816, height: 1056 } });
+    await p.goto(url.pathToFileURL(f).href, { waitUntil: 'load' });
+    const items = await p.evaluate(() => [...document.querySelectorAll('svg.die, svg[data-icon]')].map(e => {
+      const o = e.cloneNode(true);
+      return { html: o.outerHTML, w: e.getBoundingClientRect().width, h: e.getBoundingClientRect().height, sw: Number(e.getAttribute('data-sw') || e.getAttribute('data-icon-sw') || 2), vb: e.getAttribute('viewBox') };
+    }));
+    const seen = new Set();
+    for (const it of items) {
+      if (seen.has(it.html)) continue;
+      seen.add(it.html);
+      const q = await b.newPage({ viewport: { width: Math.ceil(it.w) + 8, height: Math.ceil(it.h) + 8 }, deviceScaleFactor: SC });
+      await q.setContent('<html><body style="margin:0;background:transparent"><div id="x" style="position:absolute;left:4px;top:4px">' + it.html.replace(/display:inline-block;vertical-align:middle/, 'display:block') + '</div></body></html>');
+      const buf = await q.locator('#x svg').screenshot({ omitBackground: true });
+      const png = buf.toString('base64');
+      const r = await q.evaluate(async (png) => {
+        const im = new Image(); im.src = 'data:image/png;base64,' + png; await im.decode();
+        const c = document.createElement('canvas'); c.width = im.width; c.height = im.height;
+        const g = c.getContext('2d'); g.drawImage(im, 0, 0);
+        const d = g.getImageData(0, 0, c.width, c.height).data;
+        let x0 = 1e9, y0 = 1e9, x1 = -1, y1 = -1;
+        for (let y = 0; y < c.height; y++) for (let x = 0; x < c.width; x++) if (d[(y * c.width + x) * 4 + 3] > 8) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+        return { W: c.width, H: c.height, x0, y0, x1, y1 };
+      }, png);
+      const vbw = Number(it.vb.split(/\s+/)[2]);
+      const upu = r.W / vbw;               // pixels per viewBox unit
+      const need = Math.max(1, it.sw * upu * 0.999);
+      const m = [r.x0, r.y0, r.W - 1 - r.x1, r.H - 1 - r.y1];
+      if (r.x1 < 0) out.push(f.split('/').pop() + ': an icon rendered empty');
+      else if (Math.min(...m) < 1) out.push(f.split('/').pop() + ': ' + (it.html.match(/data-n="(\d)"/) ? 'die ' + it.html.match(/data-n="(\d)"/)[1] : 'icon') + ' touches the edge of its render box (margins ' + m.join('/') + 'px)');
+      else if (Math.min(...m) < need) out.push(f.split('/').pop() + ': ' + (it.html.match(/data-n="(\d)"/) ? 'die ' + it.html.match(/data-n="(\d)"/)[1] : 'icon') + ' has less padding than its stroke (margins ' + m.join('/') + 'px, needs ' + need.toFixed(1) + ')');
+      await q.close();
+    }
+    await p.close();
+  }
+  await b.close();
+  console.log(JSON.stringify(out));
+})().catch(e => { console.error(e); process.exit(1); });
+"""
+
+
+def verify_edges():
+    """Render every die (and other drawn icon) alone on a transparent ground: no ink on the box edge, and padding >= the stroke width."""
+    js = os.path.join(BUILD, "edges.js")
+    with open(js, "w") as f:
+        f.write(EDGE_JS)
+    files = [os.path.join(BUILD, n) for n in ("resource.html", "preview.html", "extra.html", "cover.html")]
+    files = [x for x in files if os.path.exists(x)]
+    r = subprocess.run(["node", js, *files], capture_output=True, text=True, env=node_env())
+    if r.returncode != 0:
+        return [f"edge script failed: {r.stderr[-300:]}"]
+    return json.loads(r.stdout.strip().splitlines()[-1])
+
+
 def verify_images():
     errs = []
     from PIL import Image
@@ -1943,6 +2008,14 @@ def verify_images():
             run, best = (run + 2, max(best, run + 2)) if rows[y // 2] == 0 else (0, best)
         if best > 260 and os.path.basename(p) != "cover.png":
             errs.append(f"{os.path.basename(p)}: blank band of {best}px")
+        # nothing (a die, an icon) may touch the image edges: the top row and the side columns above the bottom band stay background
+        top_ink = sum(1 for x in range(2000) if px[x, 0] < 200)
+        band = 2000
+        while band > 0 and px[0, band - 1] < 200 and px[1999, band - 1] < 200:
+            band -= 1                      # the designed black bottom band reaches the edges; nothing else may
+        side_ink = sum(1 for y in range(0, band) if px[0, y] < 200 or px[1999, y] < 200)
+        if top_ink or side_ink:
+            errs.append(f"{os.path.basename(p)}: ink touches the image edge ({top_ink}px on top, {side_ink}px on the sides)")
         # margins: left and right ink must be roughly even (a mockup must not hug one edge)
         cols = [sum(1 for y in range(130, ytop, 6) if px[x, y] < 200) for x in range(0, 2000, 2)]
         l = next((i * 2 for i, c in enumerate(cols) if c > 0), 0)
@@ -2077,6 +2150,7 @@ def verify_files():
 def check():
     errs, nstaff, nex = verify_html()
     errs += verify_layout()
+    errs += verify_edges()
     errs += verify_files()
     if errs:
         print("CHECK FAILED")

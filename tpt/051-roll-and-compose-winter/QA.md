@@ -21,3 +21,7 @@ None that a buyer would notice or that break a rule.
 **Verdict: APPROVED**
 
 Required fixes: none.
+
+## Rescue 2026-11-18
+Held rescue (step 2b): the BLOCKING item (dice clipped by their own SVG box on cover.png and the 5-dice banners of preview-1 and preview-3) was fixed in gen.py (die viewBox padded to 120, snowflake icons padded too; --check now renders each die and snowflake alone and fails if ink touches the render box or the padding is below the stroke width, and fails on ink at the top/side edges of the cover and previews). Content unchanged. Fresh Visual inspector re-checked cover, preview-1..3, all 16 PDF pages and 4 preview-PDF pages at full size (crops at ~280 dpi): OK, no BLOCKING item; beamed eighth pairs and A4 A4 stems-up unchanged. NOTES (not changed): thin E4 stem on p3, watermark crosses content as intended.
+**Verdict: APPROVED**
