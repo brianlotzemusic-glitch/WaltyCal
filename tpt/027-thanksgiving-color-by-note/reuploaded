@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:19:28.063Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Fall-Color-by-Note-Rhythm-Treble-Bass-Clef-Worksheets-Answer-Keys-18040698",
+  "marker_sha256": "64d93916643e06d4658120c8292c1cc16a82b2c97ac84a76189129cb6b25eb38",
+  "files": [
+    {
+      "slot": "product",
+      "file": "thanksgiving-color-by-note.pdf",
+      "bytes": 2098614,
+      "sha256": "a2ba7c368dffa0bd86857244241e3549deb082f701e2234b9ec1ffcad47ac187"
+    },
+    {
+      "slot": "preview",
+      "file": "thanksgiving-color-by-note-PREVIEW.pdf",
+      "bytes": 180851,
+      "sha256": "5456c8f8099cd6071ad9fde80b6d82d51628320f29175d798adf771dc8bfa258"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 201008,
+      "sha256": "1cbb976f69145359a162d366aaa8d810b006c35fc1b65df58f8976807b22e97c"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 323511,
+      "sha256": "ce0193dc5ce51fddc4c40867ea0a9645700885746d75503734c8fc0b84b716a0"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 392487,
+      "sha256": "59a5f38f9fb601a5157befa83d105ad0699b13ab971439aaf4db368e5f86e0cf"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 461535,
+      "sha256": "4697e04265e0166055082506ec750a7b3ca473ffd2050ba6f8fe68620e29e94e"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "thanksgiving-color-by-note.pdf",
+      "verdict": "match",
+      "before": "FallColorbyNoteRhythmTrebleBassClefWorksheetsAnswerKeys.pdf Last updated: Oct 22, 2026 at 9:17 AM EST See Revision History 1.12 MB",
+      "after": "thanksgivingcolorbynote.pdf Last updated: Oct 22, 2026 at 9:17 AM EST See Revision History 2 MB"
+    },
+    {
+      "slot": "preview",
+      "file": "thanksgiving-color-by-note-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview Select file or drag and drop Up to 30 MB",
+      "after": "Preview thanksgivingcolorbynotePREVIEW.pdf (176.61 kB) Last updated: Nov 17, 2026 at 9:19 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (27.22 kB) Last updated: Oct 22, 2026 at 9:17 AM EST",
+      "after": "Cancel Main Cover cover.png (32.78 kB) Last updated: Nov 17, 2026 at 10:19 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (34.15 kB) Last updated: Oct 22, 2026 at 9:17 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (33.42 kB) Last updated: Nov 17, 2026 at 10:19 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (39.83 kB) Last updated: Oct 22, 2026 at 9:17 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (38.94 kB) Last updated: Nov 17, 2026 at 10:19 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (55.13 kB) Last updated: Oct 22, 2026 at 9:17 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (61.61 kB) Last updated: Nov 17, 2026 at 10:19 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18040698)"
+}

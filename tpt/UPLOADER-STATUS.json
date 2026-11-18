@@ -1,34 +1,26 @@
 {
-  "ran_at": "2026-11-18T02:05:53.458Z",
+  "ran_at": "2026-11-18T02:14:26.354Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-18T02:05:53.603Z",
+    "ran_at": "2026-11-18T02:14:26.489Z",
     "replaced": [
       {
-        "item": "023-dmp2-infinite-horizon",
-        "url": "https://www.teacherspayteachers.com/Product/Infinite-Horizon-in-Logic-Pro-Ambient-Soundscape-Project-High-School-18012547",
+        "item": "026-dmp2-session-players-studio",
+        "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Session-Players-Project-Session-Players-Studio-High-School-18033617",
         "files": 6
       },
       {
-        "item": "024-dmp2-pattern-prodigy",
-        "url": "https://www.teacherspayteachers.com/Product/Pattern-Prodigy-in-Logic-Pro-Step-Sequencer-Beat-Project-High-School-18023936",
-        "files": 6
-      },
-      {
-        "item": "025-dmp2-royalty-free",
-        "url": "https://www.teacherspayteachers.com/Product/Royalty-Free-in-Logic-Pro-Compose-to-a-Creative-Brief-High-School-18023950",
+        "item": "027-thanksgiving-color-by-note",
+        "url": "https://www.teacherspayteachers.com/Product/Fall-Color-by-Note-Rhythm-Treble-Bass-Clef-Worksheets-Answer-Keys-18040698",
         "files": 6
       }
     ],
     "failed": [],
     "waiting": [
-      "026-dmp2-session-players-studio",
-      "027-thanksgiving-color-by-note",
-      "028-free-color-by-note-sampler",
       "029-winter-color-by-note",
       "030-dmp1-units-1-6-bundle",
       "031-carol-flip-logic",
@@ -53,7 +45,9 @@
     "canary": [
       "043"
     ],
-    "unverified": []
+    "unverified": [
+      "028-free-color-by-note-sampler"
+    ]
   },
   "ok": true
 }
