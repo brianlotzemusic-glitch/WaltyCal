@@ -290,6 +290,20 @@ def mitten(cx, cy, size, fill="#fff", accent=ACCENT, sw=1.4, flip=False):
             f'<path d="M24,12 L24,20 M20,16 L28,16" fill="none" stroke="{accent}" stroke-width="2.2"/></g>')
 
 
+CARD_W = 215.0     # cut-out rhythm card width (pt)
+SLOT_GUT = 12.0    # gap between neighbouring dashed BAR boxes on the mats (pt, = 18px at 110 dpi)
+SLOT_W = 235.0 - SLOT_GUT   # BAR box outer width; the card must fit inside it with margin
+
+
+# Snow tip examples (page 3); --check verifies each by staff distance (1 = step, 2 = skip/third, 3 or more = leap)
+TIP_STEP, TIP_SKIP, TIP_SKIP2, TIP_LEAP = ("mi", "re"), ("mi", "sol"), ("do", "mi"), ("do", "sol")
+
+
+def interval_kind(a, b):
+    d = abs(STEP_OF_SYL[a] - STEP_OF_SYL[b])
+    return "step" if d == 1 else "skip" if d == 2 else "leap"
+
+
 def bar_slots(kinds, xl, W, pad=6.0):
     """x centres (head/rest centre) for the events of one bar, justified over [xl, xl+W]."""
     units = sum(UNIT[k] for k in kinds)
@@ -419,7 +433,7 @@ def pitch_bank_svg(syls, w=300.0, S=8.5, kind="bank", pid="BANK"):
     return "".join(o)
 
 
-def rhythm_card_svg(rid, key, w=235.0, S=7.0, px=None, cut=True):
+def rhythm_card_svg(rid, key, w=CARD_W, S=7.0, px=None, cut=True):
     """A one-bar rhythm slot card: single line, stems down on the left of the head, beams below. Same x layout as a mat bar."""
     kinds = RHYTHMS[key]
     ly = 30.0
@@ -491,8 +505,8 @@ def mat_svg(variant):
     W = 235.0
     w = 540.0
     x0 = w - 4 - 2 * W
-    sl_h = 70.0
-    row_h = 218.0
+    sl_h = 78.0
+    row_h = 226.0
     h = 2 * row_h + 6
     o = [f'<svg class="mat" data-variant="{variant}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.0f} {h:.0f}" width="{w:.0f}pt" height="{h:.0f}pt" style="display:block">']
     for r in range(2):
@@ -502,8 +516,9 @@ def mat_svg(variant):
         for b in range(2):
             n = r * 2 + b + 1
             xl = x0 + b * W
-            o.append(f'<rect class="slot" x="{xl + 0.8:.1f}" y="{y0 + 0.8:.1f}" width="{W - 1.6:.1f}" height="{sl_h - 1.6:.1f}" rx="6" fill="#fff" stroke="{ACCENT}" stroke-width="1.5" stroke-dasharray="6 4"/>')
-            o.append(f'<text x="{xl + W / 2:.1f}" y="{y0 + sl_h / 2 + 5:.1f}" text-anchor="middle" font-family="Oswald" font-weight="500" font-size="13" fill="{ACCENT}" letter-spacing=".08em">BAR {n}: GLUE A RHYTHM CARD HERE</text>')
+            sx = xl + SLOT_GUT / 2
+            o.append(f'<rect class="slot" x="{sx + 0.8:.1f}" y="{y0 + 0.8:.1f}" width="{SLOT_W - 1.6:.1f}" height="{sl_h - 1.6:.1f}" rx="6" fill="#fff" stroke="{ACCENT}" stroke-width="1.5" stroke-dasharray="6 4"/>')
+            o.append(f'<text x="{xl + W / 2:.1f}" y="{y0 + sl_h / 2 + 5:.1f}" text-anchor="middle" font-family="Oswald" font-weight="500" font-size="12.5" fill="{ACCENT}" letter-spacing=".08em">BAR {n}: GLUE A RHYTHM CARD HERE</text>')
             if b == 0 or r == 0:
                 o.append(f'<line x1="{xl + W:.1f}" y1="{top:.1f}" x2="{xl + W:.1f}" y2="{bottom:.1f}" stroke="#000" stroke-width="{0.14 * S:.2f}"/>')
             # syllable write-in line
@@ -610,7 +625,7 @@ body { font-family: 'Source Sans 3', sans-serif; -webkit-print-color-adjust: exa
 .trk th { background: #000; color: #fff; font-family: 'Oswald'; font-weight: 500; font-size: 9pt; letter-spacing: .04em; text-transform: uppercase; height: 22pt; }
 .trk td.id { font-family: 'Oswald'; font-weight: 700; font-size: 12pt; text-align: left; padding-left: 6pt; }
 .trk .cap { font-family: 'Oswald'; font-weight: 700; font-size: 12pt; text-transform: uppercase; margin-bottom: 3pt; }
-.rbank { display: grid; grid-template-columns: 235pt 235pt; justify-content: space-between; row-gap: 20pt; margin-top: 14pt; }
+.rbank { display: grid; grid-template-columns: 215pt 215pt; justify-content: space-between; row-gap: 20pt; margin-top: 14pt; }
 """.replace("ACCENT", ACCENT)
 
 
@@ -714,11 +729,12 @@ def key_page(sets, watermark=False):
 
 def cover_art(width=900, height=470):
     o = [f'<svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">']
-    o.append(f'<path d="M0,{height - 66} Q150,{height - 116} 300,{height - 74} T600,{height - 76} T{width},{height - 96} L{width},{height - 2} L0,{height - 2} Z" fill="{TINT}" stroke="#000" stroke-width="3" stroke-linejoin="round"/>')
+    hb = height - 8
+    o.append(f'<path d="M14,{hb - 24} Q14,{height - 70} 70,{height - 78} Q150,{height - 116} 300,{height - 74} T600,{height - 76} T{width - 60},{height - 94} Q{width - 14},{height - 96} {width - 14},{height - 62} L{width - 14},{hb - 24} Q{width - 14},{hb} {width - 40},{hb} L38,{hb} Q14,{hb} 14,{hb - 24} Z" fill="{TINT}" stroke="#000" stroke-width="3" stroke-linejoin="round"/>')
     for fx_, fy_, fr in ((60, 50, 24), (852, 56, 28), (100, 120, 12), (830, 215, 13), (850, 150, 9)):
         o.append(snowflake(fx_, fy_, fr, ACCENT if fr > 15 else "#000", 2.4))
     o.append(snowman(78, height - 48, 46, "#fff", ACCENT, 3))
-    o.append(snow_pile(832, height - 40, 30, 3))
+    o.append(snow_pile(796, height - 40, 30, 3))
     # the card: a real pattern from Set D
     pat = next(p for p in PATTERNS if p["id"] == "D3")
     o.append(f'<rect x="150" y="34" width="600" height="300" rx="20" fill="#fff" stroke="#000" stroke-width="3"/>')
@@ -813,7 +829,7 @@ def ref_page():
             f'<div class="step"><span class="n">4</span><b>Sing again</b><p>Fold the card on the dashed line and sing from the notes alone.</p></div></div>'
             f'<div style="display:flex;gap:16pt;align-items:center;margin-top:12pt">'
             f'<svg width="150pt" height="86pt" viewBox="0 0 150 86">{snowball(58, 54, 20, 1.6, motion=True)}{sparkle(100, 14, 7, ACCENT, 1.6)}{snow_pile(116, 80, 14, 1.5)}{snowflake(40, 14, 11, ACCENT, 1.4)}</svg>'
-            f'<p style="margin:0">Snow tip: a melody moves like a snowball. It can roll in small steps (mi to sol) or leap a little farther (do to mi). '
+            f'<p style="margin:0">Snow tip: a melody moves like a snowball. It can roll by step to a neighbouring note ({TIP_STEP[0]} to {TIP_STEP[1]}), skip over one note to a third ({TIP_SKIP[0]} to {TIP_SKIP[1]} or {TIP_SKIP2[0]} to {TIP_SKIP2[1]}) or leap farther than a third ({TIP_LEAP[0]} to {TIP_LEAP[1]}). '
             f'Watch the noteheads rise and fall as you sing.</p></div>'
             f'<div style="flex:1"></div>{foot(COPY, "Page 3")}</section>')
 
@@ -1686,10 +1702,53 @@ def verify_files():
     return errs
 
 
+def verify_theory_and_mats():
+    """Snow tip examples are right by pitch distance; mat BAR boxes have a gutter and every rhythm card fits its box."""
+    errs = []
+    txt = re.sub(r"<[^>]+>", " ", ref_page())
+    txt = re.sub(r"\s+", " ", txt)
+    found = 0
+    for kind, pat in (("step", r"neighbouring note \((\w+) to (\w+)\)"), ("skip", r"third \((\w+) to (\w+) or (\w+) to (\w+)\)"),
+                      ("leap", r"leap farther than a third \((\w+) to (\w+)\)")):
+        m = re.search(pat, txt)
+        if not m:
+            errs.append(f"Snow tip: no {kind} example found on page 3")
+            continue
+        g = m.groups()
+        for a, b in zip(g[0::2], g[1::2]):
+            found += 1
+            if a not in STEP_OF_SYL or b not in STEP_OF_SYL or interval_kind(a, b) != kind:
+                errs.append(f"Snow tip: '{a} to {b}' is called a {kind} but is a {interval_kind(a, b) if a in STEP_OF_SYL and b in STEP_OF_SYL else '?'}")
+    if found != 4:
+        errs.append(f"Snow tip: expected 4 examples, found {found}")
+    for a, b, k in (("mi", "sol", "skip"), ("do", "mi", "skip"), ("mi", "re", "step"), ("sol", "la", "step"), ("do", "sol", "leap")):
+        if interval_kind(a, b) != k:
+            errs.append(f"interval_kind({a},{b}) != {k}")
+    for v in (1, 2):
+        svg = mat_svg(v)
+        slots = [(float(x), float(w), float(y), float(h)) for x, y, w, h in re.findall(r'class="slot" x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)"', svg)]
+        if len(slots) != 4:
+            errs.append(f"mat {v}: {len(slots)} BAR boxes, expected 4")
+            continue
+        for i in (0, 2):
+            gap = slots[i + 1][0] - (slots[i][0] + slots[i][1])
+            if gap < 12 * 72 / 110:
+                errs.append(f"mat {v}: gutter between BAR {i + 1} and BAR {i + 2} is {gap:.1f}pt (< 12px at 110 dpi)")
+        for x, w, y, h in slots:
+            if CARD_W + 2 > w - 1.5 or 70.0 + 2 > h - 1.5:
+                errs.append(f"mat {v}: a {CARD_W:.0f}x70 rhythm card does not fit a {w:.1f}x{h:.1f} BAR box")
+    m = re.search(r'viewBox="0 0 (\d+) (\d+)"', rhythm_card_svg("R1", BANK[0]))
+    if not m or float(m.group(1)) != CARD_W or float(m.group(2)) != 70.0:
+        errs.append("rhythm card size differs from CARD_W x 70 used in the BAR box fit check")
+    return errs
+
+
 def check():
     errs, ncards, nstaff = verify_html()
     errs += verify_layout()
     errs += verify_files()
+    errs += verify_theory_and_mats()
+    errs += verify_theory_and_mats()
     if errs:
         print("CHECK FAILED")
         print("\n".join(" - " + e for e in errs[:80]))
