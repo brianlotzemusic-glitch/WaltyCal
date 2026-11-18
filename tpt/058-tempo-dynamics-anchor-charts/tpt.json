@@ -1,0 +1,36 @@
+{
+  "price": "4.00",
+  "license_price": "4.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade",
+    "6th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Instrumental Music",
+    "Vocal Music"
+  ],
+  "tags": [
+    "Posters",
+    "Word Walls",
+    "Bulletin Board Ideas",
+    "Printables",
+    "Handouts",
+    "Assessment"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 19,
+  "files": {
+    "product": "tempo-dynamics-anchor-charts.pdf",
+    "preview": "tempo-dynamics-anchor-charts-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
