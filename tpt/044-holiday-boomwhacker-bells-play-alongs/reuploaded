@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:56:57.528Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Color-Coded-Play-Along-Charts-Tuned-Tubes-Bells-Xylophone-Carols-Gr-1-5-18352427",
+  "marker_sha256": "e8108e4af9ce809db097d80234a6916f2ab052e4288f342633f0ff8e3bd95208",
+  "files": [
+    {
+      "slot": "product",
+      "file": "color-coded-carol-play-alongs-tubes-bells.pdf",
+      "bytes": 687363,
+      "sha256": "96723a1789a6b5164dbac278fc77069d7202e8b9481ad0d147df83fc6dd36a60"
+    },
+    {
+      "slot": "preview",
+      "file": "color-coded-carol-play-alongs-tubes-bells-PREVIEW.pdf",
+      "bytes": 169551,
+      "sha256": "a748e8eb1cbb6eb2af1a38150b652c656c8b707770bb2b973701e39c2b231122"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 119029,
+      "sha256": "7bcf3f0e7739fcc8ebaaf1b3990f14ab7bc18cea8e37df4086a8b0ee9d001f9c"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 441448,
+      "sha256": "957812c3a4d614b9e7fee703d214436ef202bfcee404d2601b15d81164ab1e51"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 381403,
+      "sha256": "b6aafbc3e51ca9cee0fb9f62ed903f93c9ba754afc83e7b6c1a7080dd76bae2f"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 187172,
+      "sha256": "6ddaf7632d6291fa628bd7f3180e6220286c43925c9f8950b6f56cc39417de5f"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "color-coded-carol-play-alongs-tubes-bells.pdf",
+      "verdict": "match",
+      "before": "ColorCodedPlayAlongChartsTunedTubesBellsXylophoneCarolsGr15.pdf Last updated: Nov 15, 2026 at 7:24 AM EST See Revision History 671.03 kB",
+      "after": "colorcodedcarolplayalongstubesbells.pdf Last updated: Nov 15, 2026 at 7:24 AM EST See Revision History 671.25 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "color-coded-carol-play-alongs-tubes-bells-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoColorCodedPlayAlongChartsTunedTubesBellsXylophoneCarolsGr1518352427.pdf (165.44 kB) Last updated: Nov 15, 2026 at 7:24 AM EST See Revision History",
+      "after": "Preview colorcodedcarolplayalongstubesbellsPREVIEW.pdf (165.58 kB) Last updated: Nov 17, 2026 at 9:56 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (27.85 kB) Last updated: Nov 15, 2026 at 8:24 AM EST",
+      "after": "Cancel Main Cover cover.png (27.85 kB) Last updated: Nov 17, 2026 at 10:56 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (36.8 kB) Last updated: Nov 15, 2026 at 8:24 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (44.77 kB) Last updated: Nov 17, 2026 at 10:56 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (40.75 kB) Last updated: Nov 15, 2026 at 8:24 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (44.21 kB) Last updated: Nov 17, 2026 at 10:56 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (25.03 kB) Last updated: Nov 15, 2026 at 8:24 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (44.83 kB) Last updated: Nov 17, 2026 at 10:56 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18352427)"
+}

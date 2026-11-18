@@ -1,33 +1,21 @@
 {
-  "ran_at": "2026-11-18T02:46:46.450Z",
+  "ran_at": "2026-11-18T02:54:51.388Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-18T02:46:46.583Z",
+    "ran_at": "2026-11-18T02:54:51.521Z",
     "replaced": [
       {
-        "item": "039-winter-color-by-music-symbol",
-        "url": "https://www.teacherspayteachers.com/Product/Color-by-Music-Symbol-Worksheets-Dynamics-Tempo-Terms-Symbols-Gr-2-5-18339001",
-        "files": 6
-      },
-      {
-        "item": "040-trap-nutcracker-logic",
-        "url": "https://www.teacherspayteachers.com/Product/Trap-Beat-in-Logic-Pro-Tchaikovsky-Flip-Project-High-School-Music-Tech-18343594",
-        "files": 6
-      },
-      {
-        "item": "042-winter-music-escape-room",
-        "url": "https://www.teacherspayteachers.com/Product/Music-Escape-Room-Note-Names-Rhythms-Symbols-Print-and-Go-Gr-3-6-18343603",
+        "item": "044-holiday-boomwhacker-bells-play-alongs",
+        "url": "https://www.teacherspayteachers.com/Product/Color-Coded-Play-Along-Charts-Tuned-Tubes-Bells-Xylophone-Carols-Gr-1-5-18352427",
         "files": 6
       }
     ],
     "failed": [],
-    "waiting": [
-      "044-holiday-boomwhacker-bells-play-alongs"
-    ],
+    "waiting": [],
     "skipped": [
       "014-dmp2-billboard-top-10: no-url",
       "028-free-color-by-note-sampler: unverified"
