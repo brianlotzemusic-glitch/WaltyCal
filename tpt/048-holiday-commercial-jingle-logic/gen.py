@@ -50,6 +50,30 @@ def _deck_pdf_lifted():
     _deck_pdf_orig()
 D.deck_pdf = _deck_pdf_lifted
 
+_render_orig = D.render
+def _render_transparent(jobs):
+    # deck art is placed on white slides: make the white transparent so LibreOffice's PDF export cannot leave a faint grey box
+    _render_orig(jobs)
+    from PIL import Image
+    for j in jobs:
+        if os.path.basename(j.get("png", "")).startswith("deck-"):
+            im = Image.open(j["png"]).convert("RGB")
+            px = im.load()
+            w, h = im.size
+            out = Image.new("RGBA", (w, h))
+            op = out.load()
+            for y in range(h):
+                for x in range(w):
+                    r_, g_, b_ = px[x, y]
+                    a = 255 - min(r_, g_, b_)
+                    if a == 0:
+                        op[x, y] = (255, 255, 255, 0)
+                    else:
+                        op[x, y] = tuple(min(255, max(0, round(255 - (255 - c) * 255 / a))) for c in (r_, g_, b_)) + (a,)
+            out.save(j["png"])
+D.render = _render_transparent
+
+D.CSS += ".lines { margin-bottom: 14pt; } "   # NOTES lines on the project sheet: keep the last rule clear of the footer rule
 D.CSS += "table.rub { table-layout: fixed; } table.rub th:first-child { width: 15%; }"
 
 ORIGINAL = True
@@ -454,6 +478,11 @@ def hero_body():
         t0, t1 = vo_span(i)
         x0, x1 = time_x(t0, gx, pw), time_x(t1, gx, pw)
         out.append(f'<rect x="{x0:.1f}" y="{vy}" width="{x1 - x0:.1f}" height="34" rx="10" fill="{ACCENT}"/>')
+    # legend for the three red pills (the voice-over lines), set in the gap between the first and second pill
+    gx0 = time_x(vo_span(0)[1], gx, pw)
+    gx1 = time_x(vo_span(1)[0], gx, pw)
+    out.append(D.t_((gx0 + gx1) / 2, vy + 27, "VOICE-OVER LINES", 32, 700, fill_=ACCENT))
+    D.lab("hero", "VOICE-OVER LINES", 32, gx1 - gx0 - 40)
     # sections
     ty = vy + 34 + 56
     for nm, a, b in EX_SECTIONS:
@@ -1095,7 +1124,7 @@ def loop_page(n, wm=False):
 
 def plan_page(n, wm=False):
     secs = "".join("<tr>" + f"<td style='height:30pt'><b>{nm}</b></td>" + "<td></td>" * 5 + "</tr>" for nm in ("Intro", "Verse", "Hook", "Tag"))
-    inner = (f'<p style="margin:0 0 4pt;font-size:10.2pt;line-height:1.36">Step 1: plan exactly 30 seconds. One bar of 4/4 has 4 beats and lasts <b>240 ÷ BPM</b> seconds, '
+    inner = (f'<p style="margin:0 0 4pt;font-size:10.2pt;line-height:1.36">Step 2: plan exactly 30 seconds. One bar of 4/4 has 4 beats and lasts <b>240 ÷ BPM</b> seconds, '
              f'so <b>bars in 30 seconds = BPM ÷ 8</b>. Only tempos that divide by 8 give a whole number of bars. Pick one from the table, then decide how many bars each section gets. '
              f'Compare your plan with the worked example (page {D.IX("example")}).</p>'
              f'<table class="t" style="font-size:9.6pt;table-layout:fixed"><tr><th>Tempo (BPM)</th><th>One beat</th><th>One bar</th><th>Bars in 30 s</th><th>Check: bars × 240 ÷ BPM</th></tr>{tempo_rows()}</table>'
@@ -1257,7 +1286,7 @@ def voice_page(n, wm=False):
 
 def duck_page(n, wm=False):
     rows = "".join("<tr>" + f"<td style='height:28pt'>{i}</td>" + "<td></td>" * 4 + "</tr>" for i in (1, 2, 3, 4))
-    inner = (f'<p style="margin:0 0 3pt;font-size:10.4pt;line-height:1.36">Step 6: duck the music. <b>Ducking</b> turns the music down while the voice speaks, then back up. About <b>4 to 6 dB</b> is '
+    inner = (f'<p style="margin:0 0 3pt;font-size:10.4pt;line-height:1.36">Step 5, continued: duck the music. <b>Ducking</b> turns the music down while the voice speaks, then back up. About <b>4 to 6 dB</b> is '
              f'enough. The picture is the worked example: the colored lines are the voice, and the line below is the music level.</p>'
              f'<div style="margin:2pt 0 4pt">{D.body_svg(duck_body(1250, "page duck", 22, 18))}</div>'
              f'<div class="cols" style="gap:10pt"><div class="box acc-b" style="padding:5pt 9pt"><span class="k">Method A · sidechain</span><ol style="margin:0;padding-left:13pt">'
@@ -1290,7 +1319,7 @@ def bounce_page(n, wm=False):
            ("The voice starts late or clips", "Check the take is still on its bar after editing, and lower the voice fader before bouncing."),
            ("The tempo changed", "Check there is only one tempo in the whole project.")]
     frows = "".join(f"<tr><td style='width:34%'><b>{a}</b></td><td>{b}</td></tr>" for a, b in fix)
-    inner = (f'<p style="margin:0 0 4pt;font-size:10.4pt;line-height:1.36">Step 7: bounce exactly 30 seconds. The clock starts at bar 1 and stops at the start of the bar after your last one, '
+    inner = (f'<p style="margin:0 0 4pt;font-size:10.4pt;line-height:1.36">Step 6: bounce exactly 30 seconds. The clock starts at bar 1 and stops at the start of the bar after your last one, '
              f'so for a whole number of bars the end locator sits at <b>bar (bars + 1)</b>. At 120 BPM that is bar 16, because 15 bars × 2 seconds = 30 seconds.</p>'
              f'<table class="t" style="font-size:9.6pt;table-layout:fixed"><tr><th>Tempo (BPM)</th><th>Bars</th><th>End locator at</th><th>Length</th></tr>{rows}</table>'
              f'<div class="cols" style="gap:10pt;margin-top:4pt"><div class="box acc-b" style="padding:5pt 9pt"><span class="k">Bounce it</span><ol style="margin:0;padding-left:13pt">'
@@ -1319,7 +1348,7 @@ def feedback_page(n, wm=False):
             "I could hear every word of the voice-over", "The music and voice sit well together (the music steps aside)", "The jingle feels like 30 seconds, with a clear ending"]
     CB = D.checkbox(13)
     rows = "".join(f"<tr><td style='height:31pt;font-size:10.6pt'>{c}</td><td style='text-align:center'>{CB}</td><td style='text-align:center'>{CB}</td><td style='text-align:center'>{CB}</td></tr>" for c in crit)
-    inner = (f'<p style="margin:0 0 5pt;font-size:10.8pt;line-height:1.38">Step 8: the <b>client feedback sheet</b>. A classmate acts as the client. The writer plays the jingle once, the client reads the '
+    inner = (f'<p style="margin:0 0 5pt;font-size:10.8pt;line-height:1.38">Step 7: the <b>client feedback sheet</b>. A classmate acts as the client. The writer plays the jingle once, the client reads the '
              f'brief card and fills in this sheet, and the writer answers the client’s questions. Be honest and kind: say what works and what you would change.</p>'
              f'<div class="fl" style="margin:0 0 5pt"><b>Product:</b><span></span><b>Writer:</b><span></span><b>Client:</b><span></span></div>'
              f'<table class="map" style="font-size:10pt"><tr><th style="width:61%">When I listened to this jingle…</th><th>Yes</th><th>Mostly</th><th>Not yet</th></tr>{rows}</table>'
@@ -1532,11 +1561,27 @@ def has_words(need, text):
     return all(w in have for w in words)
 
 
+P_PREVIEW = os.path.join(HERE, SLUG + "-PREVIEW.pdf")
+P_DECKPDF = os.path.join(HERE, SLUG + "-intro-deck.pdf")
+
+
 def verify_outputs(flat, stext, notes):
     import subprocess
     errs = []
     alldeck = " ".join(stext + notes)
     txt = re.sub(r"\s+", " ", " ".join(flat))
+    # every 'Step N' anywhere must exist on the project sheet (STEPS)
+    extra = []
+    for f in (P_PREVIEW, P_DECKPDF):
+        if os.path.exists(f):
+            extra.append(subprocess.run(["pdftotext", f, "-"], capture_output=True, text=True).stdout)
+    up = os.path.join(HERE, "UPLOAD.md")
+    if os.path.exists(up):
+        extra.append(open(up, encoding="utf8").read())
+    for src in [txt0 := " ".join(flat), alldeck] + extra:
+        for m in re.finditer(r"\bstep\s+(\d+)\b", re.sub(r"\s+", " ", src), re.I):
+            if not 1 <= int(m.group(1)) <= len(STEPS):
+                errs.append(f"'Step {m.group(1)}' is referenced but the project sheet has {len(STEPS)} steps")
     if "No audio" not in notes[0]:
         errs.append("deck slide 1 notes must say 'No audio'")
     for need in ("No audio, recordings, loops, lyrics, jingles, artists or brands", "invented plan on paper", "Drummer", "Alchemy", "Quick Sampler",
