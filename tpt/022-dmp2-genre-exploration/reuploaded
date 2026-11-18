@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T01:38:11.551Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Genre-Exploration-in-Logic-Pro-Production-Research-Project-High-School-18007480",
+  "marker_sha256": "69e0e9c5ab8203b8b04d355091e6831c9be6cc5c72a08b7e2f95d505d17c8b40",
+  "files": [
+    {
+      "slot": "product",
+      "file": "genre-exploration.zip",
+      "bytes": 1014035,
+      "sha256": "f25a950d8aa0ea71d22918fe8e059c8115735b3f93006439159ad9a4fdfbbfef"
+    },
+    {
+      "slot": "preview",
+      "file": "genre-exploration-PREVIEW.pdf",
+      "bytes": 100738,
+      "sha256": "ba99363667f0fe0d1fd7edea1d1771e53129f660107815c348b19fd294fc2314"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 222577,
+      "sha256": "340094bc5718cc71b25a45684a0c677079240802cdf62539c4821407d7524e29"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 726153,
+      "sha256": "0ca9ba333eb6e84789ec9e755415f19883f1949852b7f72fc68160d2294c167d"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 455535,
+      "sha256": "2bb5ba7f30c5ac7be3f409d64f8040d91c1665c65f7f7dc053a6de215f81a18e"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 616539,
+      "sha256": "43db52dca3d9452fd28040dc95c27f94402206fd492cc135e3562cffb6851cb3"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "genre-exploration.zip",
+      "verdict": "match",
+      "before": "GenreExplorationinLogicProProductionResearchProjectHighSchool.zip Last updated: Oct 19, 2026 at 12:25 PM EST See Revision History 1012.05 kB",
+      "after": "genreexploration.zip Last updated: Nov 17, 2026 at 8:38 PM EST See Revision History 990.27 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "genre-exploration-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoGenreExplorationinLogicProProductionResearchProjectHighSchool18007480.pdf (112.45 kB) Last updated: Oct 19, 2026 at 12:25 PM EST See Revision Histor",
+      "after": "Preview genreexplorationPREVIEW.pdf (98.38 kB) Last updated: Nov 17, 2026 at 8:38 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (29.09 kB) Last updated: Oct 19, 2026 at 12:25 PM EST",
+      "after": "Cancel Main Cover cover.png (29.09 kB) Last updated: Nov 17, 2026 at 9:37 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (43.34 kB) Last updated: Oct 19, 2026 at 12:25 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (43.33 kB) Last updated: Nov 17, 2026 at 9:38 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (42.16 kB) Last updated: Oct 19, 2026 at 12:25 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (42.19 kB) Last updated: Nov 17, 2026 at 9:38 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (41.06 kB) Last updated: Oct 19, 2026 at 12:25 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (41.06 kB) Last updated: Nov 17, 2026 at 9:38 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18007480)"
+}

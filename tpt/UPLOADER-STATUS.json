@@ -1,34 +1,31 @@
 {
-  "ran_at": "2026-11-17T22:45:06.129Z",
+  "ran_at": "2026-11-18T01:30:06.616Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-17T22:45:06.273Z",
+    "ran_at": "2026-11-18T01:30:06.764Z",
     "replaced": [
       {
-        "item": "017-dmp2-music-for-visual-media",
-        "url": "https://www.teacherspayteachers.com/Product/Film-Scoring-in-Logic-Pro-Music-for-Visual-Media-Project-High-School-Music-17987355",
+        "item": "020-dmp2-found-sound",
+        "url": "https://www.teacherspayteachers.com/Product/Found-Sound-in-Logic-Pro-Quick-Sampler-Sound-Design-Project-High-School-17995322",
         "files": 6
       },
       {
-        "item": "018-dmp2-alchemy-architect",
-        "url": "https://www.teacherspayteachers.com/Product/Alchemy-Synth-in-Logic-Pro-Sound-Design-Synthesis-Project-High-School-Music-17987375",
+        "item": "021-dmp2-free-play",
+        "url": "https://www.teacherspayteachers.com/Product/Free-Play-Project-in-Logic-Pro-Open-Ended-Music-Production-High-School-18000854",
         "files": 6
       },
       {
-        "item": "019-dmp2-anti-music-manifesto",
-        "url": "https://www.teacherspayteachers.com/Product/Anti-Music-in-Logic-Pro-Experimental-Music-Manifesto-Project-High-School-17991267",
+        "item": "022-dmp2-genre-exploration",
+        "url": "https://www.teacherspayteachers.com/Product/Genre-Exploration-in-Logic-Pro-Production-Research-Project-High-School-18007480",
         "files": 6
       }
     ],
     "failed": [],
     "waiting": [
-      "020-dmp2-found-sound",
-      "021-dmp2-free-play",
-      "022-dmp2-genre-exploration",
       "023-dmp2-infinite-horizon",
       "024-dmp2-pattern-prodigy",
       "025-dmp2-royalty-free",
