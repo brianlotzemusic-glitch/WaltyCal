@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:08:19.382Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Infinite-Horizon-in-Logic-Pro-Ambient-Soundscape-Project-High-School-18012547",
+  "marker_sha256": "8b7fa6574df657b4bf073af6b0ba1cf72bfa61937de0d1841f7a0605b1d4d2a4",
+  "files": [
+    {
+      "slot": "product",
+      "file": "infinite-horizon.zip",
+      "bytes": 1029110,
+      "sha256": "c13ebccdea112969a5f14e182e5854e857f0ac9a4e6be680e1f01033f21e155c"
+    },
+    {
+      "slot": "preview",
+      "file": "infinite-horizon-PREVIEW.pdf",
+      "bytes": 76829,
+      "sha256": "6009889b6f082a148a3881c2875b05a5d1d5242203bf58a4650ee83ddb2490bb"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 157238,
+      "sha256": "78a0f03d6c524342d484e8dacb936ea6cf1426ba360ec582e3dd7ea83da2074f"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 685602,
+      "sha256": "cd0e7b1336d5b8efb4af59505e811740a4507849289b9c40edf21a7a8146b3e5"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 448409,
+      "sha256": "02d2f6730d8fe668f6b273a8666d779e9c57942f41267f25def0d756e8479941"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 628530,
+      "sha256": "d23424778b8875992ded32c6ea98fa57b70c3006d0f2a50f3e0b22af310887ca"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "infinite-horizon.zip",
+      "verdict": "match",
+      "before": "InfiniteHorizoninLogicProAmbientSoundscapeProjectHighSchool.zip Last updated: Oct 19, 2026 at 8:31 PM EST See Revision History 1 MB",
+      "after": "infinitehorizon.zip Last updated: Nov 17, 2026 at 9:08 PM EST See Revision History 1004.99 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "infinite-horizon-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoInfiniteHorizoninLogicProAmbientSoundscapeProjectHighSchool18012547.pdf (88.76 kB) Last updated: Oct 19, 2026 at 8:31 PM EST See Revision History",
+      "after": "Preview infinitehorizonPREVIEW.pdf (75.03 kB) Last updated: Nov 17, 2026 at 9:08 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (23.99 kB) Last updated: Oct 19, 2026 at 8:31 PM EST",
+      "after": "Cancel Main Cover cover.png (23.99 kB) Last updated: Nov 17, 2026 at 10:08 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (43.03 kB) Last updated: Oct 19, 2026 at 8:31 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (43.05 kB) Last updated: Nov 17, 2026 at 10:08 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (41.61 kB) Last updated: Oct 19, 2026 at 8:31 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (41.45 kB) Last updated: Nov 17, 2026 at 10:08 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (41.04 kB) Last updated: Oct 19, 2026 at 8:31 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (41.04 kB) Last updated: Nov 17, 2026 at 10:08 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18012547)"
+}

@@ -1,34 +1,31 @@
 {
-  "ran_at": "2026-11-18T01:30:06.616Z",
+  "ran_at": "2026-11-18T02:05:53.458Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-18T01:30:06.764Z",
+    "ran_at": "2026-11-18T02:05:53.603Z",
     "replaced": [
       {
-        "item": "020-dmp2-found-sound",
-        "url": "https://www.teacherspayteachers.com/Product/Found-Sound-in-Logic-Pro-Quick-Sampler-Sound-Design-Project-High-School-17995322",
+        "item": "023-dmp2-infinite-horizon",
+        "url": "https://www.teacherspayteachers.com/Product/Infinite-Horizon-in-Logic-Pro-Ambient-Soundscape-Project-High-School-18012547",
         "files": 6
       },
       {
-        "item": "021-dmp2-free-play",
-        "url": "https://www.teacherspayteachers.com/Product/Free-Play-Project-in-Logic-Pro-Open-Ended-Music-Production-High-School-18000854",
+        "item": "024-dmp2-pattern-prodigy",
+        "url": "https://www.teacherspayteachers.com/Product/Pattern-Prodigy-in-Logic-Pro-Step-Sequencer-Beat-Project-High-School-18023936",
         "files": 6
       },
       {
-        "item": "022-dmp2-genre-exploration",
-        "url": "https://www.teacherspayteachers.com/Product/Genre-Exploration-in-Logic-Pro-Production-Research-Project-High-School-18007480",
+        "item": "025-dmp2-royalty-free",
+        "url": "https://www.teacherspayteachers.com/Product/Royalty-Free-in-Logic-Pro-Compose-to-a-Creative-Brief-High-School-18023950",
         "files": 6
       }
     ],
     "failed": [],
     "waiting": [
-      "023-dmp2-infinite-horizon",
-      "024-dmp2-pattern-prodigy",
-      "025-dmp2-royalty-free",
       "026-dmp2-session-players-studio",
       "027-thanksgiving-color-by-note",
       "028-free-color-by-note-sampler",

@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:11:13.533Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Pattern-Prodigy-in-Logic-Pro-Step-Sequencer-Beat-Project-High-School-18023936",
+  "marker_sha256": "8b7fa6574df657b4bf073af6b0ba1cf72bfa61937de0d1841f7a0605b1d4d2a4",
+  "files": [
+    {
+      "slot": "product",
+      "file": "pattern-prodigy.zip",
+      "bytes": 1183350,
+      "sha256": "ee9f70b39eaf3bf090f0bc5f4e89370b0f938c20f835654aa928f07a46666cbb"
+    },
+    {
+      "slot": "preview",
+      "file": "pattern-prodigy-PREVIEW.pdf",
+      "bytes": 115775,
+      "sha256": "c03e6154d4b06c4d900e01065c9873d88b0e2395a970d439cd366c3b5a14856c"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 162302,
+      "sha256": "2f730566f7e2072012fd7e07498902bafb82d874cbdf946a6d5e2a2395ef91df"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 695768,
+      "sha256": "1592e4a56c6ad679b0939b92b874d1249cc3f33f666b1736386e94051d6b4ae6"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 471061,
+      "sha256": "19cdeda40705c8ed6614014c402fdd7fd425ec20351dbd7dee1117847281c8bf"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 595332,
+      "sha256": "1235532704ff8b0d3be7eba0044bd6cfbd12a4ba64f7741f2da9648a2865ad13"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "pattern-prodigy.zip",
+      "verdict": "match",
+      "before": "PatternProdigyinLogicProStepSequencerBeatProjectHighSchool.zip Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History 1.15 MB",
+      "after": "patternprodigy.zip Last updated: Nov 17, 2026 at 9:11 PM EST See Revision History 1.13 MB"
+    },
+    {
+      "slot": "preview",
+      "file": "pattern-prodigy-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoPatternProdigyinLogicProStepSequencerBeatProjectHighSchool18023936.pdf (127.27 kB) Last updated: Oct 20, 2026 at 6:46 PM EST See Revision History",
+      "after": "Preview patternprodigyPREVIEW.pdf (113.06 kB) Last updated: Nov 17, 2026 at 9:11 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (29.26 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+      "after": "Cancel Main Cover cover.png (29.26 kB) Last updated: Nov 17, 2026 at 10:11 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (42.8 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (42.79 kB) Last updated: Nov 17, 2026 at 10:11 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (43.19 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (43.02 kB) Last updated: Nov 17, 2026 at 10:11 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (41.57 kB) Last updated: Oct 20, 2026 at 6:46 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (41.56 kB) Last updated: Nov 17, 2026 at 10:11 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18023936)"
+}
