@@ -1,19 +1,13 @@
 {
-  "ran_at": "2026-11-18T02:54:51.388Z",
+  "ran_at": "2026-11-18T02:57:07.336Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-18T02:54:51.521Z",
-    "replaced": [
-      {
-        "item": "044-holiday-boomwhacker-bells-play-alongs",
-        "url": "https://www.teacherspayteachers.com/Product/Color-Coded-Play-Along-Charts-Tuned-Tubes-Bells-Xylophone-Carols-Gr-1-5-18352427",
-        "files": 6
-      }
-    ],
+    "ran_at": "2026-11-18T02:57:07.473Z",
+    "replaced": [],
     "failed": [],
     "waiting": [],
     "skipped": [
