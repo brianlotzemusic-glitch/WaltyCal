@@ -1,19 +1,12 @@
 {
-  "ran_at": "2026-11-18T12:15:07.697Z",
-  "published": [
-    {
-      "item": "056-holiday-rhythm-i-have-who-has",
-      "url": "https://www.teacherspayteachers.com/Product/I-Have-Who-Has-Rhythm-Games-Quarter-Eighth-Sixteenth-Notes-48-Cards-18404912"
-    }
-  ],
+  "ran_at": "2026-11-18T14:45:05.991Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "056-holiday-rhythm-i-have-who-has"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-18T12:16:33.010Z",
+    "ran_at": "2026-11-18T14:45:06.148Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
