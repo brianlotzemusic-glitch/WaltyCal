@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:40:43.342Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Color-by-Note-Music-Worksheets-Menorah-Dreidel-Star-Rhythm-Treble-Bass-18324781",
+  "marker_sha256": "9506a827f3d19262e4b0c475f7386f9d0a1d794e0a2daae4123766a783151fc7",
+  "files": [
+    {
+      "slot": "product",
+      "file": "hanukkah-color-by-note.pdf",
+      "bytes": 1281954,
+      "sha256": "82c84c410cb0c77b711540e3e7d4e54312328de21ff1808b570bb71a56de1232"
+    },
+    {
+      "slot": "preview",
+      "file": "hanukkah-color-by-note-PREVIEW.pdf",
+      "bytes": 110894,
+      "sha256": "e32a5ebb0e54c00a332918c7f9268b8e9305aa51e381d51b163198099106960e"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 112322,
+      "sha256": "d21a587ecef1290b860281f531057bc9c5b6287fd01eba32a2595a84c91fd608"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 250641,
+      "sha256": "f4471f1b659c31ede9ecd5c82831fdcdc4718df2ebe6512335832c6fab9e81e9"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 310486,
+      "sha256": "d3d6f7ea922d1f46f64e4c570fba44dcd0151311e33d8e0cae24474b7327269a"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 304661,
+      "sha256": "5d918bd55633b817afdcafaf6ddd5e80960ebd8efe09f70fe16e7bcc634eb4ac"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "hanukkah-color-by-note.pdf",
+      "verdict": "match",
+      "before": "ColorbyNoteMusicWorksheetsMenorahDreidelStarRhythmTrebleBass.pdf Last updated: Nov 13, 2026 at 8:39 AM EST See Revision History 1.24 MB",
+      "after": "hanukkahcolorbynote.pdf Last updated: Nov 13, 2026 at 8:39 AM EST See Revision History 1.22 MB"
+    },
+    {
+      "slot": "preview",
+      "file": "hanukkah-color-by-note-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoColorbyNoteMusicWorksheetsMenorahDreidelStarRhythmTrebleBass18324781.pdf (107.16 kB) Last updated: Nov 13, 2026 at 8:39 AM EST See Revision History",
+      "after": "Preview hanukkahcolorbynotePREVIEW.pdf (108.29 kB) Last updated: Nov 17, 2026 at 9:40 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (26.74 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+      "after": "Cancel Main Cover cover.png (26.91 kB) Last updated: Nov 17, 2026 at 10:40 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (32.61 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (32.59 kB) Last updated: Nov 17, 2026 at 10:40 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (35.76 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (35.43 kB) Last updated: Nov 17, 2026 at 10:40 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (55.38 kB) Last updated: Nov 13, 2026 at 9:39 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (55.45 kB) Last updated: Nov 17, 2026 at 10:40 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18324781)"
+}

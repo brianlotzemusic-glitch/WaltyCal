@@ -1,34 +1,31 @@
 {
-  "ran_at": "2026-11-18T02:30:52.224Z",
+  "ran_at": "2026-11-18T02:38:38.050Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-18T02:30:52.361Z",
+    "ran_at": "2026-11-18T02:38:38.188Z",
     "replaced": [
       {
-        "item": "032-christmas-color-by-note",
-        "url": "https://www.teacherspayteachers.com/Product/Color-by-Note-Holiday-Music-Worksheets-Rhythm-Treble-Bass-Clef-Gr-2-6-18314772",
+        "item": "035-hanukkah-color-by-note",
+        "url": "https://www.teacherspayteachers.com/Product/Color-by-Note-Music-Worksheets-Menorah-Dreidel-Star-Rhythm-Treble-Bass-18324781",
         "files": 6
       },
       {
-        "item": "033-thanksgiving-music-sub-plan",
-        "url": "https://www.teacherspayteachers.com/Product/Fall-Music-Sub-Plan-K-5-3-No-Prep-Lessons-Rhythm-Reading-Lyric-Writing-18314799",
+        "item": "036-lofi-holiday-beat",
+        "url": "https://www.teacherspayteachers.com/Product/Lo-Fi-Beat-in-Logic-Pro-Holiday-Carol-Project-High-School-Music-Tech-18340317",
         "files": 6
       },
       {
-        "item": "034-nutcracker-listening-unit",
-        "url": "https://www.teacherspayteachers.com/Product/Nutcracker-Ballet-Music-Listening-Unit-Gr-2-6-Listening-Maps-Quiz-Key-18340304",
+        "item": "037-band-rhythm-counting-worksheets",
+        "url": "https://www.teacherspayteachers.com/Product/Beginning-Band-Rhythm-Counting-Worksheets-Write-in-the-Counts-44-to-68-18340327",
         "files": 6
       }
     ],
     "failed": [],
     "waiting": [
-      "035-hanukkah-color-by-note",
-      "036-lofi-holiday-beat",
-      "037-band-rhythm-counting-worksheets",
       "039-winter-color-by-music-symbol",
       "040-trap-nutcracker-logic",
       "042-winter-music-escape-room",
