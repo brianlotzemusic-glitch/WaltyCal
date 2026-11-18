@@ -1,19 +1,12 @@
 {
-  "ran_at": "2026-11-18T20:15:06.081Z",
-  "published": [
-    {
-      "item": "055-winter-recorder-songbook-bag",
-      "url": "https://www.teacherspayteachers.com/Product/Beginner-Recorder-Songbook-B-A-G-Songs-Fingering-Charts-Practice-Checklist-18412052"
-    }
-  ],
+  "ran_at": "2026-11-18T20:59:39.225Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "055-winter-recorder-songbook-bag"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-18T20:16:32.682Z",
+    "ran_at": "2026-11-18T20:59:39.367Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
