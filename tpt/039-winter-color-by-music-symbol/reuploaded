@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:48:51.664Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Color-by-Music-Symbol-Worksheets-Dynamics-Tempo-Terms-Symbols-Gr-2-5-18339001",
+  "marker_sha256": "3c1ccebe99af4607a2d9d8f04ccce4289fb2cdc8e51f81a2dd372d16c6dba224",
+  "files": [
+    {
+      "slot": "product",
+      "file": "winter-color-by-music-symbol.pdf",
+      "bytes": 1281797,
+      "sha256": "851e53223040e9bdeab52b3918d4d5dc09e18f6d6c2aee3870780b34b9a446f3"
+    },
+    {
+      "slot": "preview",
+      "file": "winter-color-by-music-symbol-PREVIEW.pdf",
+      "bytes": 121263,
+      "sha256": "202791cec70202748bd125b599c8a1b8c34dc8cf4718671d74dbfa61109a683d"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 163139,
+      "sha256": "917b82232767a554f3799f89a32df521171396cf820b70e64d40bb604ea8e7e7"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 294949,
+      "sha256": "6bea8ddfa3beed7514c114fe0b91b5ddd3c5461a3dc54e060f5bb6a519b2eefd"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 342022,
+      "sha256": "019be193af88788d80ab5bb24de4c2328c241a4fbbe43544fc05c7e4a79170c2"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 333195,
+      "sha256": "7ba5d991ea020f46a516be1ebb0581fc146ca22fe11b97008868bc4346a16375"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "winter-color-by-music-symbol.pdf",
+      "verdict": "match",
+      "before": "ColorbyMusicSymbolWorksheetsDynamicsTempoTermsSymbolsGr25.pdf Last updated: Nov 14, 2026 at 8:05 AM EST See Revision History 1.22 MB",
+      "after": "wintercolorbymusicsymbol.pdf Last updated: Nov 14, 2026 at 8:05 AM EST See Revision History 1.22 MB"
+    },
+    {
+      "slot": "preview",
+      "file": "winter-color-by-music-symbol-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoColorbyMusicSymbolWorksheetsDynamicsTempoTermsSymbolsGr2518339001.pdf (118.18 kB) Last updated: Nov 14, 2026 at 8:05 AM EST See Revision History",
+      "after": "Preview wintercolorbymusicsymbolPREVIEW.pdf (118.42 kB) Last updated: Nov 17, 2026 at 9:48 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (25.71 kB) Last updated: Nov 14, 2026 at 9:05 AM EST",
+      "after": "Cancel Main Cover cover.png (25.4 kB) Last updated: Nov 17, 2026 at 10:48 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (32.76 kB) Last updated: Nov 14, 2026 at 9:05 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (31.99 kB) Last updated: Nov 17, 2026 at 10:48 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (35.29 kB) Last updated: Nov 14, 2026 at 9:05 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (35.31 kB) Last updated: Nov 17, 2026 at 10:48 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (48.92 kB) Last updated: Nov 14, 2026 at 9:05 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (48.98 kB) Last updated: Nov 17, 2026 at 10:48 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18339001)"
+}

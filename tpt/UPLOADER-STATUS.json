@@ -1,34 +1,31 @@
 {
-  "ran_at": "2026-11-18T02:38:38.050Z",
+  "ran_at": "2026-11-18T02:46:46.450Z",
   "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-18T02:38:38.188Z",
+    "ran_at": "2026-11-18T02:46:46.583Z",
     "replaced": [
       {
-        "item": "035-hanukkah-color-by-note",
-        "url": "https://www.teacherspayteachers.com/Product/Color-by-Note-Music-Worksheets-Menorah-Dreidel-Star-Rhythm-Treble-Bass-18324781",
+        "item": "039-winter-color-by-music-symbol",
+        "url": "https://www.teacherspayteachers.com/Product/Color-by-Music-Symbol-Worksheets-Dynamics-Tempo-Terms-Symbols-Gr-2-5-18339001",
         "files": 6
       },
       {
-        "item": "036-lofi-holiday-beat",
-        "url": "https://www.teacherspayteachers.com/Product/Lo-Fi-Beat-in-Logic-Pro-Holiday-Carol-Project-High-School-Music-Tech-18340317",
+        "item": "040-trap-nutcracker-logic",
+        "url": "https://www.teacherspayteachers.com/Product/Trap-Beat-in-Logic-Pro-Tchaikovsky-Flip-Project-High-School-Music-Tech-18343594",
         "files": 6
       },
       {
-        "item": "037-band-rhythm-counting-worksheets",
-        "url": "https://www.teacherspayteachers.com/Product/Beginning-Band-Rhythm-Counting-Worksheets-Write-in-the-Counts-44-to-68-18340327",
+        "item": "042-winter-music-escape-room",
+        "url": "https://www.teacherspayteachers.com/Product/Music-Escape-Room-Note-Names-Rhythms-Symbols-Print-and-Go-Gr-3-6-18343603",
         "files": 6
       }
     ],
     "failed": [],
     "waiting": [
-      "039-winter-color-by-music-symbol",
-      "040-trap-nutcracker-logic",
-      "042-winter-music-escape-room",
       "044-holiday-boomwhacker-bells-play-alongs"
     ],
     "skipped": [
