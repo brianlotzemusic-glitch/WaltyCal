@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:24:46.230Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Winter-Color-by-Note-Rhythm-Treble-Bass-Clef-Worksheets-Answer-Keys-18051673",
+  "marker_sha256": "0f3c429dd5b87966f2ea8aab127e4ef03f51e1fdfcf19da48b6cfd4f40ec0a89",
+  "files": [
+    {
+      "slot": "product",
+      "file": "winter-color-by-note.pdf",
+      "bytes": 2130119,
+      "sha256": "95362baa46a1226adace2561bd02ab821c2572be6da38a959c3c78e2424f9d24"
+    },
+    {
+      "slot": "preview",
+      "file": "winter-color-by-note-PREVIEW.pdf",
+      "bytes": 187026,
+      "sha256": "a984d206955111ee51d38cb86708632461b062540062417c0a158888e081be7e"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 196558,
+      "sha256": "9a106e018ef4086eba6e83ccea022ddca10aae8fd9fade7c21d9abcd7160bd06"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 292753,
+      "sha256": "8f8af42404989bc8011150e8324b0dfd300a5200c394c5de67bc6ffa69181be0"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 361736,
+      "sha256": "3d3de3f8677b33eb1bb0749ceeceaafbcf295752215f0d825f2f03a4286d92a0"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 385161,
+      "sha256": "5d9eb40edf6001e1d0506da9efdd435bcdc159fedc79de2eb2333f971d5b368e"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "winter-color-by-note.pdf",
+      "verdict": "match",
+      "before": "WinterColorbyNoteRhythmTrebleBassClefWorksheetsAnswerKeys.pdf Last updated: Oct 23, 2026 at 7:49 AM EST See Revision History 2.05 MB",
+      "after": "wintercolorbynote.pdf Last updated: Oct 23, 2026 at 7:49 AM EST See Revision History 2.03 MB"
+    },
+    {
+      "slot": "preview",
+      "file": "winter-color-by-note-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoWinterColorbyNoteRhythmTrebleBassClefWorksheetsAnswerKeys18051673.pdf (188.82 kB) Last updated: Oct 23, 2026 at 7:49 AM EST See Revision History",
+      "after": "Preview wintercolorbynotePREVIEW.pdf (182.64 kB) Last updated: Nov 17, 2026 at 9:24 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (33.26 kB) Last updated: Oct 23, 2026 at 7:49 AM EST",
+      "after": "Cancel Main Cover cover.png (33.26 kB) Last updated: Nov 17, 2026 at 10:24 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (33.76 kB) Last updated: Oct 23, 2026 at 7:49 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (33.68 kB) Last updated: Nov 17, 2026 at 10:24 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (38.98 kB) Last updated: Oct 23, 2026 at 7:49 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (38.85 kB) Last updated: Nov 17, 2026 at 10:24 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (57.29 kB) Last updated: Oct 23, 2026 at 7:49 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (57.09 kB) Last updated: Nov 17, 2026 at 10:24 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18051673)"
+}

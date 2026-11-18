@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:27:50.560Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Digital-Music-Production-Bundle-Logic-Pro-Units-1-6-High-School-Music-Tech-18315428",
+  "marker_sha256": "7eb2c787fa97243b6ae75147c02de0a0e1546bc7910f3e10365767c77f909178",
+  "files": [
+    {
+      "slot": "product",
+      "file": "dmp1-units-1-6-bundle.zip",
+      "bytes": 6462177,
+      "sha256": "ed21f5130b909dceb867f3468269dee60d9395056395f217e803fe8aeb3233b9"
+    },
+    {
+      "slot": "preview",
+      "file": "dmp1-units-1-6-bundle-PREVIEW.pdf",
+      "bytes": 149910,
+      "sha256": "37598280c1153ab90e20487f4aeed868d656a6a2f9256ed0e00b1b5b43333f89"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 188489,
+      "sha256": "5f75b3390c3f343acafed3c474c358323e8d0a98fc9bca9582e13c1d714513b2"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 414713,
+      "sha256": "b8df5bbf3c772b47f724b4f04c84e65c6320aa4d3bfc2cc50a32c47de027ead7"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 437562,
+      "sha256": "c906905acf28f014812da9587da8e0a6e7c8ea54d17365c36b09136d22aa49dd"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 554017,
+      "sha256": "f70ee83e0bbe578189551e507d25c74a69fba4c1342aa240a55f87740c1b8e70"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "dmp1-units-1-6-bundle.zip",
+      "verdict": "match",
+      "before": "DigitalMusicProductionBundleLogicProUnits16HighSchoolMusicTech.zip Last updated: Nov 12, 2026 at 3:15 PM EST See Revision History 6.26 MB",
+      "after": "dmp1units16bundle.zip Last updated: Nov 17, 2026 at 9:27 PM EST See Revision History 6.16 MB"
+    },
+    {
+      "slot": "preview",
+      "file": "dmp1-units-1-6-bundle-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoDigitalMusicProductionBundleLogicProUnits16HighSchoolMusicTech18315428.pdf (169.05 kB) Last updated: Nov 12, 2026 at 3:15 PM EST See Revision Histor",
+      "after": "Preview dmp1units16bundlePREVIEW.pdf (146.4 kB) Last updated: Nov 17, 2026 at 9:27 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (32.18 kB) Last updated: Nov 12, 2026 at 4:15 PM EST",
+      "after": "Cancel Main Cover cover.png (32.18 kB) Last updated: Nov 17, 2026 at 10:27 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (45.45 kB) Last updated: Nov 12, 2026 at 4:15 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (38.98 kB) Last updated: Nov 17, 2026 at 10:27 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (30.06 kB) Last updated: Nov 12, 2026 at 4:15 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (30.06 kB) Last updated: Nov 17, 2026 at 10:27 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (42.54 kB) Last updated: Nov 12, 2026 at 4:15 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (38.36 kB) Last updated: Nov 17, 2026 at 10:27 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18315428)"
+}
