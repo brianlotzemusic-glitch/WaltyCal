@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:33:05.733Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Color-by-Note-Holiday-Music-Worksheets-Rhythm-Treble-Bass-Clef-Gr-2-6-18314772",
+  "marker_sha256": "d0abeba1c75d7442e8a65e7cd88c2556c1e0973e761954843f0ec5bcafd32a32",
+  "files": [
+    {
+      "slot": "product",
+      "file": "christmas-color-by-note.pdf",
+      "bytes": 1844006,
+      "sha256": "139f074ff73240b3f766a38073a947dc2f699ec453a6db512ab05a6a8c7ca108"
+    },
+    {
+      "slot": "preview",
+      "file": "christmas-color-by-note-PREVIEW.pdf",
+      "bytes": 195067,
+      "sha256": "f9ba3bb3d2e7249a0c4b30cf7985a6da33ea75e8c94577adafabe1ec1e193acd"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 166231,
+      "sha256": "1f6b0870c365fb99b86fdfa01d7ef9c6b6c7fc485db114e0ad8eb9f81f283b73"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 288973,
+      "sha256": "87f06887bb91afc1757b4ae99026757254e01ff195b6cb73d4971c229fc0a280"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 401106,
+      "sha256": "cf6f473364097c78dfdffb0fd000811b635a7029cbf4a449a8eb534a62387b61"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 365658,
+      "sha256": "9580a4ac789242d7bff7260c533e1f03656c90fb5dce7fb6d4c826ff8c32b717"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "christmas-color-by-note.pdf",
+      "verdict": "match",
+      "before": "ColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr26.pdf Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History 1.76 MB",
+      "after": "christmascolorbynote.pdf Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History 1.76 MB"
+    },
+    {
+      "slot": "preview",
+      "file": "christmas-color-by-note-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoColorbyNoteHolidayMusicWorksheetsRhythmTrebleBassClefGr2618314772.pdf (190.79 kB) Last updated: Nov 12, 2026 at 2:38 PM EST See Revision History",
+      "after": "Preview christmascolorbynotePREVIEW.pdf (190.5 kB) Last updated: Nov 17, 2026 at 9:32 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (27.8 kB) Last updated: Nov 12, 2026 at 3:38 PM EST",
+      "after": "Cancel Main Cover cover.png (27.6 kB) Last updated: Nov 17, 2026 at 10:32 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (33.23 kB) Last updated: Nov 12, 2026 at 3:38 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (32.47 kB) Last updated: Nov 17, 2026 at 10:32 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (39.71 kB) Last updated: Nov 12, 2026 at 3:38 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (39.47 kB) Last updated: Nov 17, 2026 at 10:32 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (55.99 kB) Last updated: Nov 12, 2026 at 3:38 PM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (55.9 kB) Last updated: Nov 17, 2026 at 10:32 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18314772)"
+}

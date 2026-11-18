@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-18T02:38:23.830Z",
+  "tool": "tools/tpt.js reupload",
+  "url": "https://www.teacherspayteachers.com/Product/Nutcracker-Ballet-Music-Listening-Unit-Gr-2-6-Listening-Maps-Quiz-Key-18340304",
+  "marker_sha256": "b6d7be0f4d17a5276ccaff627ffaf6b93029db61130b38bfdaac9f55300df2f2",
+  "files": [
+    {
+      "slot": "product",
+      "file": "nutcracker-listening-unit.pdf",
+      "bytes": 459358,
+      "sha256": "ccc9de77db63aeaf542eb048ec293e8215ffadc5d2dc5bb338b4e2779da05181"
+    },
+    {
+      "slot": "preview",
+      "file": "nutcracker-listening-unit-PREVIEW.pdf",
+      "bytes": 90529,
+      "sha256": "990b76994146d5a8217256d2306281a9aecb356c53b1b19579996e139df511f3"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "bytes": 121463,
+      "sha256": "e98c28592a75498b42138bcf39cb9dbec032d06f48ec51f91a2dbd7feda0c0aa"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "bytes": 406931,
+      "sha256": "ff5f5abc4e51bc2a61cc82cddfb3f5c7d8c92af2439fc52959098be53c0d48eb"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "bytes": 490485,
+      "sha256": "9d794e2cf041b4dfc2ffd956427cfa4adea211a53fc834c2d8aaf14e5a70a177"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "bytes": 481054,
+      "sha256": "55e9a043bf6eae8a0ae82b1fcf8631cb0cf2ff592b7161cc6791d44d6a282364"
+    }
+  ],
+  "fix": [],
+  "verified_by": "file cards on the edit page",
+  "verdicts": [
+    {
+      "slot": "product",
+      "file": "nutcracker-listening-unit.pdf",
+      "verdict": "match",
+      "before": "NutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey.pdf Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History 447.06 kB",
+      "after": "nutcrackerlisteningunit.pdf Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History 448.59 kB"
+    },
+    {
+      "slot": "preview",
+      "file": "nutcracker-listening-unit-PREVIEW.pdf",
+      "verdict": "match",
+      "before": "Preview demoNutcrackerBalletMusicListeningUnitGr26ListeningMapsQuizKey18340304.pdf (88.5 kB) Last updated: Nov 14, 2026 at 10:24 AM EST See Revision History",
+      "after": "Preview nutcrackerlisteningunitPREVIEW.pdf (88.41 kB) Last updated: Nov 17, 2026 at 9:38 PM EST See Revision History"
+    },
+    {
+      "slot": "thumb1",
+      "file": "cover.png",
+      "verdict": "match",
+      "before": "Main Cover cover.png (21.18 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+      "after": "Cancel Main Cover cover.png (21.66 kB) Last updated: Nov 17, 2026 at 10:38 PM EST"
+    },
+    {
+      "slot": "thumb2",
+      "file": "preview-1.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview1.png (31.06 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview1.png (31.1 kB) Last updated: Nov 17, 2026 at 10:38 PM EST"
+    },
+    {
+      "slot": "thumb3",
+      "file": "preview-2.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview2.png (37.29 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview2.png (34.52 kB) Last updated: Nov 17, 2026 at 10:38 PM EST"
+    },
+    {
+      "slot": "thumb4",
+      "file": "preview-3.png",
+      "verdict": "match",
+      "before": "Thumbnail (Optional) preview3.png (36.44 kB) Last updated: Nov 14, 2026 at 11:24 AM EST",
+      "after": "Cancel Thumbnail (Optional) preview3.png (36.52 kB) Last updated: Nov 17, 2026 at 10:38 PM EST"
+    }
+  ],
+  "save": "TpT answered the save (POST 302 https://www.teacherspayteachers.com/itemsDigital/editNext/18340304)"
+}
