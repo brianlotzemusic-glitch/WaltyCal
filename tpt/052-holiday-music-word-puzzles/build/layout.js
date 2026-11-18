@@ -10,6 +10,17 @@ const url = require('url');
     await p.evaluate(() => document.fonts.ready);
     const r = await p.evaluate(() => {
       const res = [];
+      const ink = el => {
+        const cv = document.createElement('canvas').getContext('2d');
+        const fs = parseFloat(el.getAttribute('font-size'));
+        cv.font = `${el.getAttribute('font-weight')} 100px ${getComputedStyle(el).fontFamily}`;
+        const m = cv.measureText(el.textContent), k = fs / 100;
+        const x = parseFloat(el.getAttribute('x')), y = parseFloat(el.getAttribute('y'));
+        const sh = el.getAttribute('text-anchor') === 'middle' ? m.width * k / 2 : 0;
+        const x0 = x - sh - m.actualBoundingBoxLeft * k, x1 = x - sh + m.actualBoundingBoxRight * k;
+        return { x: x0, y: y - m.actualBoundingBoxAscent * k, width: x1 - x0, height: (m.actualBoundingBoxAscent + m.actualBoundingBoxDescent) * k };
+      };
+      const boxHit = (a, b) => a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
       const cls = el => (el.className && el.className.baseVal !== undefined ? el.className.baseVal : el.className);
       document.querySelectorAll('.page').forEach((pg, i) => {
         const pr = pg.getBoundingClientRect();
@@ -32,6 +43,13 @@ const url = require('url');
           const gy = Math.max(A.top, C.top) - Math.min(A.bottom, C.bottom);
           if (gx < 8 && gy < 8) res.push(`page ${i + 1}: two boxes closer than 8px (${cls(boxes[a][0])} / ${cls(boxes[c][0])})`);
         }
+        // crossword: a clue number's box may not touch the letter box in the same cell
+        pg.querySelectorAll('svg.cwgrid, svg.excw, svg.minicw').forEach(sv => {
+          sv.querySelectorAll('text.cwn').forEach(n => {
+            const l = sv.querySelector(`text.cwl[data-r="${n.dataset.r}"][data-c="${n.dataset.c}"]`);
+            if (l && boxHit(ink(n), ink(l))) res.push(`page ${i + 1}: clue number ${n.textContent} overlaps its letter ${l.textContent} (${cls(sv)})`);
+          });
+        });
         // title versus the icons next to it
         const tt = pg.querySelector('.top .tt'), ic = pg.querySelector('.top .icons'), tg = pg.querySelector('.top .tag');
         if (tt && ic && tg) {

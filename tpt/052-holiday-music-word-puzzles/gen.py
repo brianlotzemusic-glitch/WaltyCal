@@ -524,6 +524,11 @@ def ws_svg(ws, key=False, w_pt=440.0, grid=None, placed=None, cls="wsgrid", mini
     return "".join(o)
 
 
+# crossword cell metrics (cell = 10 units): clue number small in the top-left corner, letter centred and shifted down/right
+CW_NUM_X, CW_NUM_Y, CW_NUM_FS = 0.8, 3.3, 3.0
+CW_LET_X, CW_LET_Y, CW_LET_FS = 5.7, 8.6, 5.6
+
+
 def cw_svg(cw, key=False, w_pt=400.0, cls="cwgrid", max_h_pt=None, unit="pt"):
     cells, num = cw["cells"], cw["num"]
     nr, nc = cw["rows"], cw["cols"]
@@ -538,10 +543,10 @@ def cw_svg(cw, key=False, w_pt=400.0, cls="cwgrid", max_h_pt=None, unit="pt"):
     for (r, c), ch in sorted(cells.items()):
         o.append(f'<rect class="cwc" data-r="{r}" data-c="{c}" x="{c * u}" y="{r * u}" width="{u}" height="{u}" fill="#fff" stroke="#000" stroke-width="{lw}"/>')
     for (r, c), n in sorted(num.items()):
-        o.append(f'<text class="cwn" data-r="{r}" data-c="{c}" x="{c * u + 0.9}" y="{r * u + 3.5}" font-family="{FONT_SS}" font-weight="600" font-size="3.4" fill="#000">{n}</text>')
+        o.append(f'<text class="cwn" data-r="{r}" data-c="{c}" x="{c * u + CW_NUM_X}" y="{r * u + CW_NUM_Y}" font-family="{FONT_SS}" font-weight="600" font-size="{CW_NUM_FS}" fill="#000">{n}</text>')
     if key:
         for (r, c), ch in sorted(cells.items()):
-            o.append(f'<text class="cwl" data-r="{r}" data-c="{c}" x="{c * u + u / 2}" y="{r * u + 7.9}" text-anchor="middle" font-family="{FONT_SS}" font-weight="700" font-size="6.6" fill="#000">{ch}</text>')
+            o.append(f'<text class="cwl" data-r="{r}" data-c="{c}" x="{c * u + CW_LET_X}" y="{r * u + CW_LET_Y}" text-anchor="middle" font-family="{FONT_SS}" font-weight="700" font-size="{CW_LET_FS}" fill="#000">{ch}</text>')
     o.append("</svg>")
     return "".join(o)
 
@@ -1545,6 +1550,17 @@ const url = require('url');
     await p.evaluate(() => document.fonts.ready);
     const r = await p.evaluate(() => {
       const res = [];
+      const ink = el => {
+        const cv = document.createElement('canvas').getContext('2d');
+        const fs = parseFloat(el.getAttribute('font-size'));
+        cv.font = `${el.getAttribute('font-weight')} 100px ${getComputedStyle(el).fontFamily}`;
+        const m = cv.measureText(el.textContent), k = fs / 100;
+        const x = parseFloat(el.getAttribute('x')), y = parseFloat(el.getAttribute('y'));
+        const sh = el.getAttribute('text-anchor') === 'middle' ? m.width * k / 2 : 0;
+        const x0 = x - sh - m.actualBoundingBoxLeft * k, x1 = x - sh + m.actualBoundingBoxRight * k;
+        return { x: x0, y: y - m.actualBoundingBoxAscent * k, width: x1 - x0, height: (m.actualBoundingBoxAscent + m.actualBoundingBoxDescent) * k };
+      };
+      const boxHit = (a, b) => a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
       const cls = el => (el.className && el.className.baseVal !== undefined ? el.className.baseVal : el.className);
       document.querySelectorAll('.page').forEach((pg, i) => {
         const pr = pg.getBoundingClientRect();
@@ -1567,6 +1583,13 @@ const url = require('url');
           const gy = Math.max(A.top, C.top) - Math.min(A.bottom, C.bottom);
           if (gx < 8 && gy < 8) res.push(`page ${i + 1}: two boxes closer than 8px (${cls(boxes[a][0])} / ${cls(boxes[c][0])})`);
         }
+        // crossword: a clue number's box may not touch the letter box in the same cell
+        pg.querySelectorAll('svg.cwgrid, svg.excw, svg.minicw').forEach(sv => {
+          sv.querySelectorAll('text.cwn').forEach(n => {
+            const l = sv.querySelector(`text.cwl[data-r="${n.dataset.r}"][data-c="${n.dataset.c}"]`);
+            if (l && boxHit(ink(n), ink(l))) res.push(`page ${i + 1}: clue number ${n.textContent} overlaps its letter ${l.textContent} (${cls(sv)})`);
+          });
+        });
         // title versus the icons next to it
         const tt = pg.querySelector('.top .tt'), ic = pg.querySelector('.top .icons'), tg = pg.querySelector('.top .tag');
         if (tt && ic && tg) {
@@ -1609,6 +1632,57 @@ const url = require('url');
   console.log(JSON.stringify(out));
 })().catch(e => { console.error(e); process.exit(1); });
 """
+
+
+SYN_JS = r"""
+const { chromium } = require('playwright');
+const url = require('url');
+(async () => {
+  const b = await chromium.launch();
+  const p = await b.newPage();
+  await p.goto(url.pathToFileURL(process.argv[2]).href, { waitUntil: 'load' });
+  await p.evaluate(() => document.fonts.ready);
+  const r = await p.evaluate(() => {
+    const res = [];
+    const ink = el => {
+      const cv = document.createElement('canvas').getContext('2d');
+      const fs = parseFloat(el.getAttribute('font-size'));
+      cv.font = `${el.getAttribute('font-weight')} 100px ${getComputedStyle(el).fontFamily}`;
+      const m = cv.measureText(el.textContent), k = fs / 100;
+      const x = parseFloat(el.getAttribute('x')), y = parseFloat(el.getAttribute('y'));
+      const sh = el.getAttribute('text-anchor') === 'middle' ? m.width * k / 2 : 0;
+      const x0 = x - sh - m.actualBoundingBoxLeft * k, x1 = x - sh + m.actualBoundingBoxRight * k;
+      return { x: x0, y: y - m.actualBoundingBoxAscent * k, width: x1 - x0, height: (m.actualBoundingBoxAscent + m.actualBoundingBoxDescent) * k };
+    };
+    document.querySelectorAll('svg').forEach(sv => sv.querySelectorAll('text.cwn').forEach(n => {
+      const l = sv.querySelector(`text.cwl[data-r="${n.dataset.r}"][data-c="${n.dataset.c}"]`);
+      const a = ink(n), c = ink(l);
+      const cell = sv.querySelector(`rect.cwc[data-r="${n.dataset.r}"][data-c="${n.dataset.c}"]`).getBBox();
+      if (a.x < c.x + c.width && c.x < a.x + a.width && a.y < c.y + c.height && c.y < a.y + a.height) res.push(`number ${n.textContent} overlaps letter ${l.textContent}`);
+      for (const t of [a, c]) if (t.x < cell.x + 0.3 || t.y < cell.y || t.x + t.width > cell.x + cell.width || t.y + t.height > cell.y + cell.height) res.push(`number ${n.textContent} or letter ${l.textContent} leaves its cell`);
+    }));
+    return res;
+  });
+  await b.close();
+  console.log(JSON.stringify(r));
+})().catch(e => { console.error(e); process.exit(1); });
+"""
+
+
+def verify_clue_numbers():
+    """Synthetic grid with 1-, 2- and 3-digit numbers over the widest letters; DOM boxes of number and letter must not intersect."""
+    letters = "MWMWQ"
+    cells = {(0, i): letters[i] for i in range(5)}
+    nums = {(0, 0): 1, (0, 1): 9, (0, 2): 12, (0, 3): 88, (0, 4): 123}
+    svg = "".join(cw_svg({"cells": cells, "num": nums, "rows": 1, "cols": 5, "n": 0}, True, w_pt=w) for w in (150.0, 268.0, 470.0))
+    f = write("numtest.html", f"<!doctype html><html><head><meta charset='utf-8'><style>{font_css()}</style></head><body>{svg}</body></html>")
+    js = os.path.join(BUILD, "numtest.js")
+    with open(js, "w") as fh:
+        fh.write(SYN_JS)
+    r = subprocess.run(["node", js, f], capture_output=True, text=True, env=node_env())
+    if r.returncode != 0:
+        return [f"clue-number test failed: {r.stderr[-300:]}"]
+    return [f"synthetic grid: {x}" for x in json.loads(r.stdout.strip().splitlines()[-1])]
 
 
 def verify_layout():
@@ -1820,6 +1894,7 @@ def check():
     e2, nc = verify_crosswords(html)
     errs += e1 + e2
     errs += verify_layout()
+    errs += verify_clue_numbers()
     errs += verify_icons()
     errs += verify_files()
     if errs:

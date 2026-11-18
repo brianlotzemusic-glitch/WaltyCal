@@ -16,3 +16,7 @@
 The round-1 defect is fixed. I found nothing a buyer would notice.
 
 **Verdict: APPROVED**
+
+## Rescue 2026-11-18
+Held rescue (step 2b): the BLOCKING item (two-digit crossword clue numbers colliding with letters in the answer-key grids, also preview-2 and PREVIEW p4) was fixed in gen.py (clue numbers small in the top-left corner, letter centred and shifted down/right, shared metrics for every crossword grid; --check tests number against letter boxes for 1-, 2- and 3-digit numbers). Puzzles, words and keys unchanged. Fresh Visual inspector re-checked cover, preview-1..3, all 19 PDF pages and 4 preview-PDF pages at full size, with 250 dpi crops of every crossword grid: OK, no BLOCKING item. NOTES (not changed): clue numbers are small (about 6 pt at print size, readable; dots in the preview thumbnails), blank bands between crossword grids and clue lists, one-word last columns in word lists, blank gap on p3.
+**Verdict: APPROVED**
