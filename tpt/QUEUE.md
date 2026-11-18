@@ -80,7 +80,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Winter Soundscape: design a snowstorm from scratch with Alchemy and automation, no melody required ($8; winter)
 - [x] Holiday Commercial Jingle: 30-second jingle for an invented product, from a client brief, with voice-over ($8; winter)
 - [x] 8-Bit Holiday: chiptune arrangement of a public-domain carol with square and triangle waves and arpeggios ($8; winter)
-- [ ] Sleigh Bell Groove: holiday percussion programming in Drum Machine Designer and Step Sequencer, straight versus swing ($7; winter)
+- [x] Sleigh Bell Groove: holiday percussion programming in Drum Machine Designer and Step Sequencer, straight versus swing ($7; winter)
 - [ ] Snow Day Film Score: score a 20-second winter scene the student films or storyboards; hit points and mood ($9; winter)
 - [ ] Eight Nights, Eight Layers: a Hanukkah-themed arrangement that adds one track per section; optional Maoz Tzur melody (traditional) ($8; Hanukkah)
 - [ ] New Year's Countdown: build-up and drop with risers, snare rolls, filter sweeps and a 10-second countdown ($8; late December)
