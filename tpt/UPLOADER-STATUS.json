@@ -1,40 +1,23 @@
 {
-  "ran_at": "2026-11-18T11:03:11.381Z",
+  "ran_at": "2026-11-18T12:15:07.697Z",
   "published": [
     {
-      "item": "014-dmp2-billboard-top-10",
-      "url": "https://www.teacherspayteachers.com/Product/Song-Form-in-Logic-Pro-Billboard-Top-10-Remake-High-School-Music-Technology-18404369"
-    },
-    {
-      "item": "048-holiday-commercial-jingle-logic",
-      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Jingle-Project-30-Second-Ad-Music-Voice-Over-High-School-Music-18404372"
-    },
-    {
-      "item": "050-solfege-snowball-melody-cards",
-      "url": "https://www.teacherspayteachers.com/Product/Pentatonic-Melody-Cards-Solfege-Read-Sing-Patterns-Music-Gr-2-4-18404384"
+      "item": "056-holiday-rhythm-i-have-who-has",
+      "url": "https://www.teacherspayteachers.com/Product/I-Have-Who-Has-Rhythm-Games-Quarter-Eighth-Sixteenth-Notes-48-Cards-18404912"
     }
   ],
   "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "014-dmp2-billboard-top-10",
-    "048-holiday-commercial-jingle-logic",
-    "050-solfege-snowball-melody-cards"
+    "056-holiday-rhythm-i-have-who-has"
   ],
   "reupload": {
-    "ran_at": "2026-11-18T11:06:02.138Z",
-    "replaced": [
-      {
-        "item": "028-free-color-by-note-sampler",
-        "note": "verified on a later run"
-      }
-    ],
+    "ran_at": "2026-11-18T12:16:33.010Z",
+    "replaced": [],
     "failed": [],
     "waiting": [],
-    "skipped": [
-      "028-free-color-by-note-sampler: unverified"
-    ],
+    "skipped": [],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
