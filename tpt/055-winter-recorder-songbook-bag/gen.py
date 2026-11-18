@@ -85,35 +85,35 @@ def transpose_bars_c_to_g(bars):
 TUNES = [
     {"id": "T1", "n": 1, "title": "Snow Settles", "kind": "original", "meter": 4, "letters": True, "bpm": 60, "bars": "Bw | Bh Ah | Gh Ah | Gw",
      "tongue": "Say a soft \"too\" on every note. Hold the whole note for four counts without changing your breath.",
-     "breath": "Take one easy breath before bar 1 and another before bar 3."},
+     "breath_after": [2], "breath": "Take one easy breath at the start and another after bar {A}."},
     {"id": "T2", "n": 2, "title": "Mitten Walk", "kind": "original", "meter": 4, "letters": True, "bpm": 66,
      "bars": "Gq Aq Bq Aq | Gq Aq Bh | Bq -q Aq -q | Gh Ah | Bq Bq Aq Aq | Gq Aq Bq -q | Aq Bq Aq Gq | Gw",
      "tongue": "Tongue each quarter note with a gentle \"too\". On a rest, stop the air and keep counting.",
-     "breath": "Breathe on the quarter rests in bars 3 and 6, not in the middle of a phrase."},
+     "breath_after": [3, 6], "breath": "Breathe after bars {A}, where the bar ends on a quarter rest, not in the middle of a phrase."},
     {"id": "T3", "n": 3, "title": "Au Clair de la Lune", "kind": "public domain", "meter": 4, "letters": True, "bpm": 72, "bars": None,
      "source": "Traditional French tune, 18th century, composer unknown (first phrase). Public domain.",
      "tongue": "Repeat the same note with a fresh \"too\" each time, with a little space between notes.",
-     "breath": "Play the four bars in one breath, or breathe after bar 2."},
+     "breath_after": [2], "breath": "Play the four bars in one breath, or breathe after bar {A}, on the half note."},
     {"id": "T4", "n": 4, "title": "Frosty Window", "kind": "original", "meter": 3, "letters": True, "bpm": 72,
      "bars": "Bh Gq | Ah Gq | Bq Aq Gq | Ah -q | Gq Aq Bq | Bh Aq | Aq Gq Aq | Gh -q",
      "tongue": "Count 1-2-3 and tongue the first beat of every bar a little more clearly.",
-     "breath": "Breathe on the quarter rests at the end of bars 4 and 8."},
+     "breath_after": [4, 8], "breath": "Breathe after bars {A}, where each bar ends on a quarter rest."},
     {"id": "T5", "n": 5, "title": "Icicle Steps", "kind": "original", "meter": 4, "letters": False, "bpm": 66,
      "bars": "Aw | Bh Bh | Aq Gq Gh | Bq Aq Bq Aq | Gh Gh | Aq Aq Bh | Bq Aq Gq Aq | Gw",
      "tongue": "Keep every \"too\" the same length and softness, like drops falling one by one.",
-     "breath": "Breathe after bars 2, 4 and 6."},
+     "breath_after": [3, 6], "breath": "Breathe after bars {A}, where each bar ends on a half note."},
     {"id": "T6", "n": 6, "title": "Cocoa Break", "kind": "original", "meter": 4, "letters": False, "bpm": 66,
      "bars": "Gq -q Gq -q | Aq Aq Bh | Bq -q Aq -q | Gh Gh | Aq Gq Aq Bq | Bq -q Bq -q | Aq Aq Gq Aq | Gw",
      "tongue": "Make the notes before each rest short and crisp, then listen to the silence.",
-     "breath": "Use the quarter rests as breathing spots."},
+     "breath_after": [3, 6], "breath": "Breathe after bars {A}, where each bar ends on a quarter rest."},
     {"id": "T7", "n": 7, "title": "Hot Cross Buns", "kind": "public domain", "meter": 4, "letters": False, "bpm": 72, "bars": None,
      "source": "Traditional English street cry. In print by 1733. Public domain.",
      "tongue": "Each pair of eighth notes is two quick \"too-too\" taps in the time of one beat. Keep them light and even.",
-     "breath": "Breathe before bar 3 and again before bar 4."},
+     "breath_after": [2, 4], "breath": "Breathe after bars {A}, on the half notes. Bar 3 ends on a quick eighth note, so keep playing through it."},
     {"id": "T8", "n": 8, "title": "Skating Pond", "kind": "original", "meter": 4, "letters": False, "bpm": 72,
      "bars": "Gq Aq Bh | Be Be Ae Ae Gh | Gq Aq Ae Ae Gq | Bh Aq -q | Gq Gq Ge Ge Aq | Aq Bq Be Be Aq | Be Be Aq Gq Aq | Gw",
      "tongue": "Eighth notes are quick and light: think \"too-too\" for each pair, then settle back to \"too\".",
-     "breath": "Breathe after bars 2, 4 and 6, on the half note or the rest."},
+     "breath_after": [2, 4], "breath": "Breathe after bars {A}, on the half note and on the quarter rest."},
 ]
 for _t in TUNES:
     if _t["id"] in PD_PRIMARY_C:
@@ -122,8 +122,14 @@ for _t in TUNES:
         _t["second"] = PD_SECOND_G[_t["id"]]
     else:
         _t["bars"] = parse_bars(_t["bars"])
+    _t["breath"] = _t["breath"].replace("{A}", " and ".join([", ".join(map(str, _t["breath_after"][:-1])), str(_t["breath_after"][-1])]) if len(_t["breath_after"]) > 1 else str(_t["breath_after"][0]))
 TUNE = {t["id"]: t for t in TUNES}
 FAMOUS_CELLS = ["BAGABBB", "BAGBAG", "GGGAB", "BBBBBB", "AAABBB"]   # known tunes the ORIGINAL tunes must not contain
+
+
+def breath_ok_bars(bars):
+    """1-based bars whose last event is a rest or a note of at least two beats."""
+    return [i + 1 for i, b in enumerate(bars) if b[-1][0] == "r" or BEATS[b[-1][1]] >= 2.0]
 
 
 def tune_letters(t):
@@ -535,7 +541,7 @@ def cover_page():
 def teacher_page(wm=False):
     pace = [("Week 1", "Posture, breath and the soft \"too\" (page 3). Teach B, then A, then G with the fingering charts. Tunes 1 and 2.", f"pp. {tune_page_no(1)}"),
             ("Week 2", "Steady beat and quarter rests. Tune 3 (Au Clair de la Lune) and tune 4 in 3/4.", f"pp. {tune_page_no(3)}"),
-            ("Week 3", "Write the note names for tunes 5 and 6. Breathe only on the rests and half notes.", f"pp. {tune_page_no(5)}"),
+            ("Week 3", "Write the note names for tunes 5 and 6. Breathe only after bars that end on a rest or half note.", f"pp. {tune_page_no(5)}"),
             ("Week 4", "Eighth notes in tunes 7 and 8. Finish the tracker, then give the quizzes.", f"pp. {tune_page_no(7)}, {P_Q1}–{P_Q2}")]
     prow = "".join(f"<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td></tr>" for a, b, c in pace)
     tx = xref(P_TEACH, P_FING, f"page {P_FING}")
@@ -590,7 +596,7 @@ def tune_block(t):
         xref(tune_page_no(t["n"]), P_KEY, f"page {P_KEY}")
     meter = f"{t['meter']}/4"
     info = (f'<div class="info"><b>{meter}</b> · <b>Tempo:</b> about {t["bpm"]} beats per minute · <b>Notes:</b> B, A, G. {letters}</div>'
-            f'<div class="info"><b>Tonguing:</b> {t["tongue"]}</div><div class="info"><b>Breath:</b> {t["breath"]}</div>')
+            f'<div class="info"><b>Tonguing:</b> {t["tongue"]}</div><div class="info" data-breath="{t["id"]}"><b>Breath:</b> {t["breath"]}</div>')
     src = f'<div class="src">{t["source"]}</div>' if t.get("source") else ""
     ticks = (f'<div class="ticks"><span><b>Played it:</b></span><span><span class="cb"></span>1</span><span><span class="cb"></span>2</span>'
              f'<span><span class="cb"></span>3</span><span><span class="cb"></span>4</span></div>')
@@ -1144,6 +1150,30 @@ def verify_html():
             tunes_seen.setdefault(tid, []).extend([[(e["p"], e["d"]) for e in bar] for bar in bars])
         elif kind in ("quiz", "keynote"):
             pass
+    # breath hints: every named bar must end on a half note, whole note or rest, in the data AND in the re-read notation
+    for t in TUNES:
+        got = tunes_seen.get(t["id"], [])
+        m = re.search(r'data-breath="%s"><b>Breath:</b> ([^<]*)<' % t["id"], html)
+        if not m:
+            errs.append(f"{t['id']}: breath hint missing from the rendered page")
+            continue
+        txt = m.group(1)
+        named = [int(x) for mm in re.finditer(r"after bars? ([0-9][0-9, and]*)", txt) for x in re.findall(r"\d+", mm.group(1))]
+        if not named or named != t["breath_after"]:
+            errs.append(f"{t['id']}: rendered breath hint names bars {named}, data says {t['breath_after']}")
+        if re.search(r"before bar", txt):
+            errs.append(f"{t['id']}: breath hint uses 'before bar' (use 'after bar N')")
+        for src_name, bars in (("data", t["bars"]), ("drawn notation", got)):
+            ok = breath_ok_bars(bars)
+            for n in named:
+                if n not in ok:
+                    errs.append(f"{t['id']}: breath hint bar {n} does not end on a half note, whole note or rest ({src_name})")
+        for n in named:
+            if n <= len(got) and got[n - 1] and got[n - 1][-1][1] in ("q", "e") and got[n - 1][-1][0] != "r":
+                errs.append(f"{t['id']}: breath hint bar {n} ends on a short note")
+        if ("quarter rest" in txt and not any(got[n - 1][-1] == ("r", "r") for n in named if n <= len(got))) or \
+           ("half note" in txt and not any(got[n - 1][-1][1] == "h" for n in named if n <= len(got))):
+            errs.append(f"{t['id']}: breath hint wording does not match the bar endings")
     # compare re-read tunes with the data, count tunes
     if sorted(tunes_seen) != sorted(t["id"] for t in TUNES) or len(tunes_seen) != 8:
         errs.append(f"tune count: found {sorted(tunes_seen)}, expected 8")
