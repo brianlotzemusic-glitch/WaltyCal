@@ -1,0 +1,34 @@
+{
+  "price": "3.50",
+  "license_price": "3.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "2nd-grade",
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Winter",
+    "Games",
+    "Activities",
+    "Printables",
+    "Centers"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 13,
+  "answer_key": "Included",
+  "files": {
+    "product": "holiday-rhythm-i-have-who-has.pdf",
+    "preview": "holiday-rhythm-i-have-who-has-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
