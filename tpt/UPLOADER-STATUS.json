@@ -1,17 +1,38 @@
 {
-  "ran_at": "2026-11-18T02:57:07.336Z",
-  "published": [],
+  "ran_at": "2026-11-18T11:03:11.381Z",
+  "published": [
+    {
+      "item": "014-dmp2-billboard-top-10",
+      "url": "https://www.teacherspayteachers.com/Product/Song-Form-in-Logic-Pro-Billboard-Top-10-Remake-High-School-Music-Technology-18404369"
+    },
+    {
+      "item": "048-holiday-commercial-jingle-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Jingle-Project-30-Second-Ad-Music-Voice-Over-High-School-Music-18404372"
+    },
+    {
+      "item": "050-solfege-snowball-melody-cards",
+      "url": "https://www.teacherspayteachers.com/Product/Pentatonic-Melody-Cards-Solfege-Read-Sing-Patterns-Music-Gr-2-4-18404384"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "014-dmp2-billboard-top-10",
+    "048-holiday-commercial-jingle-logic",
+    "050-solfege-snowball-melody-cards"
+  ],
   "reupload": {
-    "ran_at": "2026-11-18T02:57:07.473Z",
-    "replaced": [],
+    "ran_at": "2026-11-18T11:06:02.138Z",
+    "replaced": [
+      {
+        "item": "028-free-color-by-note-sampler",
+        "note": "verified on a later run"
+      }
+    ],
     "failed": [],
     "waiting": [],
     "skipped": [
-      "014-dmp2-billboard-top-10: no-url",
       "028-free-color-by-note-sampler: unverified"
     ],
     "needs_login": false,
@@ -21,9 +42,7 @@
     "canary": [
       "043"
     ],
-    "unverified": [
-      "028-free-color-by-note-sampler"
-    ]
+    "unverified": []
   },
   "ok": true
 }

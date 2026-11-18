@@ -1,1 +1,0 @@
-2026-11-16 fix: Deck 'How it's scored' line now reads '...out of 25' (no stray dot) and sits clear of the footer rule. The audit's rubric-page P1 was a false alarm: the real page says 'Final Grade = Average of Student + Teacher = ___ / 25'.
