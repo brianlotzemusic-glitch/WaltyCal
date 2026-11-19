@@ -1,12 +1,29 @@
 {
-  "ran_at": "2026-11-19T17:14:20.915Z",
+  "ran_at": "2026-11-19T20:18:41.068Z",
   "published": [],
-  "failed": [],
+  "failed": [
+    {
+      "item": "059-winter-bucket-drumming",
+      "error": "publish stopped at step \"upload preview (winter-bucket-drumming-PREVIEW.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: preview: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/059-winter-bucket-drumming-preview-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hi"
+    },
+    {
+      "item": "060-winter-note-speller",
+      "error": "publish stopped at step \"upload thumb4 (preview-3.png), attempt 2 via the file picker\" (nothing was submitted): not submitted: thumb4: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/060-winter-note-speller-thumb4-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview "
+    },
+    {
+      "item": "061-snow-day-film-score-logic",
+      "error": "still on the form 2 minutes after Submit; check My Products on TpT before retrying, it may have been created. TpT says: Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1.   Ready Your Store | We cannot generate images from your file. Please upload a different file or your own thumbnail images. | Free Resource | Preschool | 4th Grade | 9th Grade | Higher Education | K"
+    }
+  ],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "059-winter-bucket-drumming",
+    "060-winter-note-speller",
+    "061-snow-day-film-score-logic"
+  ],
   "reupload": {
-    "ran_at": "2026-11-19T17:14:21.075Z",
+    "ran_at": "2026-11-19T20:54:06.118Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -20,9 +37,5 @@
     ],
     "unverified": []
   },
-  "held": [
-    "059-winter-bucket-drumming",
-    "060-winter-note-speller"
-  ],
-  "ok": true
+  "ok": false
 }
