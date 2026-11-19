@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-19T20:48:32.558Z",
-  "release_sha256": "79c55d3077872095e1f9ed5202f65b1cb8f51bb6fe5c418c71be1d1851d0c235",
-  "count": 1,
-  "error": "publish stopped at step \"upload thumb4 (preview-3.png), attempt 2 via the file picker\" (nothing was submitted): not submitted: thumb4: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/060-winter-note-speller-thumb4-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview "
-}
