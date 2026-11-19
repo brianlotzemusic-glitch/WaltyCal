@@ -1,24 +1,12 @@
 {
-  "ran_at": "2026-11-19T14:51:29.298Z",
+  "ran_at": "2026-11-19T17:14:20.915Z",
   "published": [],
-  "failed": [
-    {
-      "item": "059-winter-bucket-drumming",
-      "error": "publish stopped at step \"upload preview (winter-bucket-drumming-PREVIEW.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: preview: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/059-winter-bucket-drumming-preview-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hi"
-    },
-    {
-      "item": "060-winter-note-speller",
-      "error": "publish stopped at step \"upload product (winter-note-speller.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/060-winter-note-speller-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #Upload"
-    }
-  ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "059-winter-bucket-drumming",
-    "060-winter-note-speller"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-19T14:55:48.337Z",
+    "ran_at": "2026-11-19T17:14:21.075Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -32,5 +20,9 @@
     ],
     "unverified": []
   },
-  "ok": false
+  "held": [
+    "059-winter-bucket-drumming",
+    "060-winter-note-speller"
+  ],
+  "ok": true
 }
