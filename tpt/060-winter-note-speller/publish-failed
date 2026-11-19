@@ -1,0 +1,6 @@
+{
+  "at": "2026-11-19T12:28:55.038Z",
+  "release_sha256": "496ca78423e163b7590440c60f4c905e24ae84a1af0de5d01bbf920236aa73cb",
+  "count": 1,
+  "error": "publish stopped at step \"upload thumb1 (cover.png), attempt 2 via the file picker\" (nothing was submitted): not submitted: thumb1: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/060-winter-note-speller-thumb1-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name"
+}
