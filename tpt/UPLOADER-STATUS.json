@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-11-19T12:15:06.799Z",
+  "ran_at": "2026-11-19T14:51:29.298Z",
   "published": [],
   "failed": [
     {
       "item": "059-winter-bucket-drumming",
-      "error": "still on the form 2 minutes after Submit; check My Products on TpT before retrying, it may have been created. TpT says: Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1.   Ready Your Store | We cannot generate images from your file. Please upload a different file or your own thumbnail images. | Error during file upload, please try again. | Free Resource | Preschool "
+      "error": "publish stopped at step \"upload preview (winter-bucket-drumming-PREVIEW.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: preview: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/059-winter-bucket-drumming-preview-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hi"
     },
     {
       "item": "060-winter-note-speller",
-      "error": "publish stopped at step \"upload thumb1 (cover.png), attempt 2 via the file picker\" (nothing was submitted): not submitted: thumb1: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/060-winter-note-speller-thumb1-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name"
+      "error": "publish stopped at step \"upload product (winter-note-speller.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/060-winter-note-speller-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #Upload"
     }
   ],
   "needs_login": false,
@@ -18,7 +18,7 @@
     "060-winter-note-speller"
   ],
   "reupload": {
-    "ran_at": "2026-11-19T12:28:55.370Z",
+    "ran_at": "2026-11-19T14:55:48.337Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
