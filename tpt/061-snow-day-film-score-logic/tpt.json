@@ -1,0 +1,39 @@
+{
+  "price": "9.00",
+  "license_price": "9.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Computer Science - Technology",
+    "Music Composition"
+  ],
+  "tags": [
+    "Winter",
+    "Project-based Learning",
+    "Projects",
+    "Activities"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 39,
+  "zip_contents": [
+    "snow-day-film-score.pdf",
+    "snow-day-film-score-intro-deck.pptx",
+    "snow-day-film-score-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "snow-day-film-score.zip",
+    "preview": "snow-day-film-score-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

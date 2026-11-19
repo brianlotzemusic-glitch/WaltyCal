@@ -8,3 +8,4 @@
 2026-11-18 | 058 | hero.png (metronome)
 2026-11-19 | 059 | hero.png (bucket-drums)
 2026-11-19 | 060 | hero.png (winter-note-speller)
+2026-11-19 | 061 | hero.png (snow-day-film-score)
