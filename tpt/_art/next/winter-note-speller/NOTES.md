@@ -1,2 +1,0 @@
-Concept: snowman with a pencil beside a row of five blank tiles (spelling worksheets; no letters drawn).
-Credits: 3. Picked variant 3 (pencil tip tucked behind the tiles, clean hands). Art touched the top edge of the 2048 canvas (about 1%), so it was trimmed and re-centred with a 7% margin (no redraw). Rejected: variant 1 (pencil tip fused into a tile, tight top), variant 2 (pencil tip fused into tile 4, tiles 40px from the edge).
