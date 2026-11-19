@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-19T14:55:48.207Z",
-  "release_sha256": "496ca78423e163b7590440c60f4c905e24ae84a1af0de5d01bbf920236aa73cb",
-  "count": 2,
-  "error": "publish stopped at step \"upload product (winter-note-speller.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/060-winter-note-speller-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #Upload"
-}

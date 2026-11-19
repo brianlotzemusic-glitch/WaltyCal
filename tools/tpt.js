@@ -559,6 +559,14 @@ async function publish(item, dryRun) {
       }
       await input.setInputFiles(fp, { timeout: 30000 });
       if (await keySet(spec.key, 45000)) return;
+      // 19 Nov 2026 (059, 060): the screenshots show TpT HAD taken the file (its name and size card was on the page) but the hidden key
+      // was slow to fill; the "Select file" button is gone once a file is attached, so attempt 2 could only fail. If the card shows
+      // the file, keep waiting for the key instead of trying the picker.
+      const shown = await page.getByText(path.basename(file), { exact: false }).first().isVisible().catch(() => false);
+      if (shown) {
+        console.log(`${slot}: TpT shows ${file} but the key is not set yet; waiting up to ${minutes} min more`);
+        if (await keySet(spec.key, minutes * 60000)) { console.log(`${slot}: key set after the longer wait`); return; }
+      }
       step = `upload ${slot} (${file}), attempt 2 via the file picker`;
       console.log(`${slot}: TpT didn't take the file after 45 s; trying its "Select file" button instead`);
       try {

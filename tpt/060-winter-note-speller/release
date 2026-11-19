@@ -1,1 +1,1 @@
-2026-11-19 released
+2026-11-19 released (re-armed after tools/tpt.js upload() fix: wait for TpT to finish processing an attached file before retrying the picker)
