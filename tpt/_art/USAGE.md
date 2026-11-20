@@ -11,3 +11,4 @@
 2026-11-19 | 061 | hero.png (snow-day-film-score)
 2026-11-20 | 062 | hero.png (headphones)
 2026-11-20 | 062 | spot-metronome.png (metronome)
+2026-11-20 | 063 | hero.png (eight-nights-eight-layers)
