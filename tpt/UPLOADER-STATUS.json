@@ -1,12 +1,19 @@
 {
-  "ran_at": "2026-11-20T14:46:43.230Z",
-  "published": [],
+  "ran_at": "2026-11-20T20:15:37.484Z",
+  "published": [
+    {
+      "item": "064-winter-holidays-around-the-world",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Listening-Response-Readings-Around-the-World-Music-Edition-Gr-3-6-18445741"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "064-winter-holidays-around-the-world"
+  ],
   "reupload": {
-    "ran_at": "2026-11-20T14:46:43.357Z",
+    "ran_at": "2026-11-20T20:31:54.737Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -20,5 +27,6 @@
     ],
     "unverified": []
   },
+  "warning": "released items NOT published: 063-eight-nights-eight-layers-logic: QA.md last verdict is not APPROVE",
   "ok": true
 }
