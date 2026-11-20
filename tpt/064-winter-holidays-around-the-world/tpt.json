@@ -1,0 +1,36 @@
+{
+  "price": "5.00",
+  "license_price": "5.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade",
+    "6th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Instrumental Music",
+    "Vocal Music"
+  ],
+  "tags": [
+    "Christmas-Chanukah-Kwanzaa",
+    "Cultural Activities",
+    "Worksheets",
+    "Printables",
+    "Activities"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 21,
+  "answer_key": "Included",
+  "files": {
+    "product": "around-the-world-music-edition.pdf",
+    "preview": "around-the-world-music-edition-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

@@ -54,7 +54,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Concert Etiquette Lesson and Posters: mini-lesson, 6 posters, audience and performer checklists, exit ticket (grades 3–8; $4; evergreen)
 - [x] Winter Bucket Drumming: 6 original grooves, play-along charts, notation key, layering activity (grades 3–8; $4.50; winter)
 - [x] Winter Note Speller: spell-the-word worksheets in treble and bass clef, winter riddles, answer keys (grades 3–6; $3.50; winter)
-- [ ] Winter Holidays Around the World, Music Edition: short readings and listening response pages for Christmas, Hanukkah, Kwanzaa, Las Posadas, Lunar New Year; facts sourced in QA.md (grades 3–6; $5; December)
+- [x] Winter Holidays Around the World, Music Edition: short readings and listening response pages for Christmas, Hanukkah, Kwanzaa, Las Posadas, Lunar New Year; facts sourced in QA.md (grades 3–6; $5; December)
 - [x] Tempo and Dynamics Anchor Charts: 12 posters plus student reference sheet and quiz with key (grades 2–8; $4; evergreen)
 - [ ] Music Symbols Scavenger Hunt, Winter: find-and-colour symbols, tempo and dynamics review, answer keys (grades 3–5; $3.50; winter)
 - [ ] Beat vs Rhythm Winter Movement Cards: 24 steady-beat movement cards plus rhythm echo strips (K–2; $3.50; winter)
