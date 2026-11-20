@@ -1,30 +1,12 @@
 {
-  "ran_at": "2026-11-19T22:52:37.645Z",
-  "published": [
-    {
-      "item": "059-winter-bucket-drumming",
-      "url": "https://www.teacherspayteachers.com/Product/Bucket-Drumming-Play-Along-Charts-6-Rhythm-Grooves-Layering-Grades-3-8-18431778"
-    },
-    {
-      "item": "060-winter-note-speller",
-      "url": "https://www.teacherspayteachers.com/Product/Note-Naming-Worksheets-Spell-the-Word-Treble-Bass-Clef-Riddles-Gr-3-6-18431815"
-    }
-  ],
-  "failed": [
-    {
-      "item": "061-snow-day-film-score-logic",
-      "error": "page.screenshot: Timeout 30000ms exceeded. Call log:   - taking page screenshot"
-    }
-  ],
+  "ran_at": "2026-11-20T01:30:09.151Z",
+  "published": [],
+  "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "059-winter-bucket-drumming",
-    "060-winter-note-speller",
-    "061-snow-day-film-score-logic"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-19T23:08:10.934Z",
+    "ran_at": "2026-11-20T01:30:09.286Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -38,5 +20,8 @@
     ],
     "unverified": []
   },
-  "ok": false
+  "held": [
+    "061-snow-day-film-score-logic"
+  ],
+  "ok": true
 }
