@@ -9,3 +9,5 @@
 2026-11-19 | 059 | hero.png (bucket-drums)
 2026-11-19 | 060 | hero.png (winter-note-speller)
 2026-11-19 | 061 | hero.png (snow-day-film-score)
+2026-11-20 | 062 | hero.png (headphones)
+2026-11-20 | 062 | spot-metronome.png (metronome)
