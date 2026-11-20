@@ -1,2 +1,5 @@
 # Art made for upcoming products (written by the daily art session; builders read it)
 - Winter Holidays Around the World, Music Edition: short readings and listening response pages -> tpt/_art/next/winter-holidays-around-the-world/ (hero)
+- Music Symbols Scavenger Hunt, Winter: find-and-colour symbols, tempo and dynamics review -> tpt/_art/next/music-symbols-scavenger-hunt-winter/ (hero)
+- Beat vs Rhythm Winter Movement Cards: 24 steady-beat movement cards plus rhythm echo strips -> tpt/_art/next/beat-vs-rhythm-winter-movement-cards/ (hero)
+- Eight Nights, Eight Layers: a Hanukkah-themed arrangement that adds one track per section -> tpt/_art/next/eight-nights-eight-layers/ (hero)

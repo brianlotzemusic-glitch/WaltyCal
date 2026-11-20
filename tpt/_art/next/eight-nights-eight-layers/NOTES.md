@@ -1,0 +1,2 @@
+Concept (Logic kit): nine-candle menorah with studio gear (monitors, headphones, laptop with abstract waveform, interface, controller); no text.
+Credits: 3. Picked variant 3 (all outlines closed, nine candles, even margins). Rejected: variant 1 (menorah centre stem has no outline at its lower end), variant 2 (solid black blob inside the right earcup, crowded bottom). Busy by design: use large on the cover only.
