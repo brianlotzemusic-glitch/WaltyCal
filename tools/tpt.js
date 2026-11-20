@@ -151,10 +151,19 @@ async function loginFailed(page, why) {
   throw new Error(`login failed: ${why}${text ? `\nTpT says: ${text}` : ""}\nScreenshot: tpt/_discover/00-login-failed.png`);
 }
 
+// Diagnostics must never turn a possibly successful submit into a reported failure (061, 19 Nov 2026: with TpT's page busy after Submit
+// (spinner left spinning), a bare page.screenshot timed out after 30 s and its error replaced the real one). So: short timeouts, CSS
+// animations frozen (the Submit spinner), caret hidden, a viewport-only fallback, a bounded page.content(), and NEVER a throw.
 async function snap(page, dir, name) {
-  fs.mkdirSync(dir, { recursive: true });
-  await page.screenshot({ path: path.join(dir, `${name}.png`), fullPage: true });
-  fs.writeFileSync(path.join(dir, `${name}.html`), await page.content());
+  try { fs.mkdirSync(dir, { recursive: true }); } catch (e) { return; }
+  const png = path.join(dir, `${name}.png`);
+  try { await page.screenshot({ path: png, fullPage: true, timeout: 10000, animations: "disabled", caret: "initial" }); }
+  catch (e) {
+    try { await page.screenshot({ path: png, timeout: 5000, animations: "disabled" }); }
+    catch (e2) { console.warn(`screenshot ${name} skipped (page busy): ${String(e2.message).split("\n")[0]}`); }
+  }
+  try { fs.writeFileSync(path.join(dir, `${name}.html`), await Promise.race([page.content(), new Promise((_, no) => setTimeout(() => no(new Error("content() timed out")), 10000))])); }
+  catch (e) { console.warn(`page HTML ${name} skipped: ${String(e.message).split("\n")[0]}`); }
 }
 
 // Shared by the new-item flow and the reupload fix. Opens a listbox combobox and picks `want`.
@@ -768,21 +777,35 @@ async function publish(item, dryRun) {
     }
 
     step = "submit";
-    await page.locator(F.submit).click();
+    // 20 Nov 2026 (061, 3.4 MB zip): TpT converts thumbnails and saves in the background after Submit and can take several minutes
+    // (the edit form's wait allows 4+). noWaitAfter so a slow navigation never throws out of click(); wait up to 5 min for the page to leave.
+    try { await page.locator(F.submit).click({ noWaitAfter: true, timeout: 30000 }); }
+    catch (e) { if (!/click action done|navigation/i.test(e.message)) throw e; }
+    let liveFromStore = null;
     try {
-      await page.waitForURL((u) => !u.toString().includes("/My-Products/New/"), { timeout: 120000 });
+      await page.waitForURL((u) => !u.toString().includes("/My-Products/New/"), { timeout: 300000 });
     } catch (e) {
       await snap(page, shots, `${slug}-submit-failed`);
-      const msgs = await page.locator('[role="alert"], [aria-live="assertive"], [class*="error" i]').allInnerTexts().catch(() => []);
-      throw new Error(`still on the form 2 minutes after Submit; check My Products on TpT before retrying, it may have been created.\n` +
-        `TpT says: ${msgs.map((m) => String(m == null ? "" : m).trim()).filter(Boolean).join(" | ").slice(0, 500) || "(nothing)"}\nScreenshot: tpt/_publish/${slug}-submit-failed.png`);
+      // No clear success. The product may still have been created: look for it on the public store page (same title match as the
+      // duplicate guard), up to 4 looks 30 s apart, before declaring failure.
+      for (let look = 0; look < 4 && !liveFromStore; look++) {
+        if (look) await new Promise((ok) => setTimeout(ok, 30000));
+        try { const html = await fetchStoreHtml(); if (html) liveFromStore = liveUrlForTitle(it.title, html); } catch (e2) { /* keep looking */ }
+      }
+      if (!liveFromStore) {
+        const msgs = await page.locator('[role="alert"], [aria-live="assertive"], [class*="error" i]').allInnerTexts().catch(() => []);
+        throw new Error(`still on the form 5 minutes after Submit and the product is not on the store page yet; check My Products on TpT before retrying, it may have been created (TpT can take up to an hour to list it).\n` +
+          `TpT says: ${msgs.map((m) => String(m == null ? "" : m).trim()).filter(Boolean).join(" | ").slice(0, 500) || "(nothing)"}\nScreenshot: tpt/_publish/${slug}-submit-failed.png`);
+      }
+      console.warn(`Submit gave no answer, but ${it.title} is live on the store page: ${liveFromStore}`);
     }
     await snap(page, shots, `${slug}-submitted`);
-    fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} published live by tools/tpt.js\n${page.url()}\n`);
-    console.log(`Published: ${it.title}\nTpT went to ${page.url()}\nWrote ${path.relative(ROOT, item)}/uploaded`);
+    const doneUrl = liveFromStore || page.url();
+    fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} published live by tools/tpt.js${liveFromStore ? " (found on the store page after Submit gave no answer)" : ""}\n${doneUrl}\n`);
+    console.log(`Published: ${it.title}\nTpT went to ${doneUrl}\nWrote ${path.relative(ROOT, item)}/uploaded`);
     // Verify the PUBLIC page against tpt.json (price, isFree, preview, pages). The item is already live, so a
     // mismatch is recorded (UPLOADER-STATUS.json live_mismatch, `live-mismatch` file) rather than thrown.
-    const liveUrl = page.url(), id = (liveUrl.match(PRODUCT_URL_RE) || [])[1];
+    const liveUrl = doneUrl, id = (liveUrl.match(PRODUCT_URL_RE) || [])[1];
     let verify = { ok: false, problems: ["could not read the public page"] };
     for (let attempt = 0; attempt < 4; attempt++) {
       try {

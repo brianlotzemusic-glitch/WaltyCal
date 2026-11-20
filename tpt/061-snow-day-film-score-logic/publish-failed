@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-19T23:08:10.758Z",
-  "release_sha256": "496ca78423e163b7590440c60f4c905e24ae84a1af0de5d01bbf920236aa73cb",
-  "count": 2,
-  "error": "page.screenshot: Timeout 30000ms exceeded. Call log:   - taking page screenshot"
-}
