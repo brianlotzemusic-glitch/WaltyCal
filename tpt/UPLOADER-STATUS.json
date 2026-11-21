@@ -1,12 +1,29 @@
 {
-  "ran_at": "2026-11-20T22:54:44.814Z",
-  "published": [],
+  "ran_at": "2026-11-21T12:20:13.666Z",
+  "published": [
+    {
+      "item": "063-eight-nights-eight-layers-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Layered-Arrangement-8-Sections-8-Tracks-High-School-Music-Tech-18452138"
+    },
+    {
+      "item": "065-key-signature-scale-worksheets-band",
+      "url": "https://www.teacherspayteachers.com/Product/Key-Signature-Scale-Worksheets-for-Band-Transposition-Charts-Keys-Gr-6-12-18452282"
+    },
+    {
+      "item": "066-music-symbols-scavenger-hunt-winter",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Symbols-Scavenger-Hunt-Find-Color-Review-Pages-Gr-3-5-18452288"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "063-eight-nights-eight-layers-logic",
+    "065-key-signature-scale-worksheets-band",
+    "066-music-symbols-scavenger-hunt-winter"
+  ],
   "reupload": {
-    "ran_at": "2026-11-20T22:54:44.960Z",
+    "ran_at": "2026-11-21T12:41:28.848Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -20,6 +37,5 @@
     ],
     "unverified": []
   },
-  "warning": "released items NOT published: 063-eight-nights-eight-layers-logic: QA.md last verdict is not APPROVE | SANITY: 0 pending but release files without `uploaded` exist (063-eight-nights-eight-layers-logic); check the repo is current and tools/tpt.js is up to date on this machine",
   "ok": true
 }
