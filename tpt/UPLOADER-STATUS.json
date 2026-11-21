@@ -1,12 +1,25 @@
 {
-  "ran_at": "2026-11-21T14:45:06.185Z",
-  "published": [],
-  "failed": [],
+  "ran_at": "2026-11-21T20:17:14.258Z",
+  "published": [
+    {
+      "item": "067-new-years-countdown-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Build-Up-and-Drop-Risers-Snare-Rolls-Countdown-High-School-18456390"
+    }
+  ],
+  "failed": [
+    {
+      "item": "068-music-production-vocabulary-word-wall",
+      "error": "publish stopped at step \"upload thumb3 (preview-2.png), attempt 2 via the file picker\" (nothing was submitted): not submitted: thumb3: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/068-music-production-vocabulary-word-wall-thumb3-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #U"
+    }
+  ],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "067-new-years-countdown-logic",
+    "068-music-production-vocabulary-word-wall"
+  ],
   "reupload": {
-    "ran_at": "2026-11-21T14:45:06.329Z",
+    "ran_at": "2026-11-21T20:55:35.963Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -20,5 +33,5 @@
     ],
     "unverified": []
   },
-  "ok": true
+  "ok": false
 }
