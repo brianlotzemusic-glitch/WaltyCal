@@ -1,0 +1,39 @@
+{
+  "price": "8.00",
+  "license_price": "8.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Computer Science - Technology",
+    "Music Composition"
+  ],
+  "tags": [
+    "New Year",
+    "Project-based Learning",
+    "Projects",
+    "Activities"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 37,
+  "zip_contents": [
+    "new-years-countdown.pdf",
+    "new-years-countdown-intro-deck.pptx",
+    "new-years-countdown-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "new-years-countdown.zip",
+    "preview": "new-years-countdown-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

@@ -83,7 +83,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Sleigh Bell Groove: holiday percussion programming in Drum Machine Designer and Step Sequencer, straight versus swing ($7; winter)
 - [x] Snow Day Film Score: score a 20-second winter scene the student films or storyboards; hit points and mood ($9; winter)
 - [x] Eight Nights, Eight Layers: a Hanukkah-themed arrangement that adds one track per section; optional Maoz Tzur melody (traditional) ($8; Hanukkah)
-- [ ] New Year's Countdown: build-up and drop with risers, snare rolls, filter sweeps and a 10-second countdown ($8; late December)
+- [x] New Year's Countdown: build-up and drop with risers, snare rolls, filter sweeps and a 10-second countdown ($8; late December)
 - [ ] Auld Lang Syne Reharmonized: new chords under a public-domain melody in pop, ballad or EDM style ($8; late December)
 - [ ] Holiday Mashup: match the tempo and key of two public-domain carols with Smart Tempo and Flex ($9; winter)
 - [ ] Holiday Radio Ident: voice, music bed and sound effects; recording, EQ, compression and ducking ($8; winter)
