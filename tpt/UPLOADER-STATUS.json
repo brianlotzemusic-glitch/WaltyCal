@@ -1,25 +1,19 @@
 {
-  "ran_at": "2026-11-21T20:17:14.258Z",
-  "published": [
-    {
-      "item": "067-new-years-countdown-logic",
-      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Build-Up-and-Drop-Risers-Snare-Rolls-Countdown-High-School-18456390"
-    }
-  ],
+  "ran_at": "2026-11-21T22:45:12.871Z",
+  "published": [],
   "failed": [
     {
       "item": "068-music-production-vocabulary-word-wall",
-      "error": "publish stopped at step \"upload thumb3 (preview-2.png), attempt 2 via the file picker\" (nothing was submitted): not submitted: thumb3: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/068-music-production-vocabulary-word-wall-thumb3-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #U"
+      "error": "still on the form 5 minutes after Submit and the product is not on the store page yet; check My Products on TpT before retrying, it may have been created (TpT can take up to an hour to list it). TpT says: Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1.   Ready Your Store | We cannot generate images from your file. Please upload a different file or your own thumbna"
     }
   ],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "067-new-years-countdown-logic",
     "068-music-production-vocabulary-word-wall"
   ],
   "reupload": {
-    "ran_at": "2026-11-21T20:55:35.963Z",
+    "ran_at": "2026-11-21T23:12:02.327Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
