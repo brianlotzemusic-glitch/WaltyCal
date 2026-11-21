@@ -13,3 +13,4 @@
 2026-11-20 | 062 | spot-metronome.png (metronome)
 2026-11-20 | 063 | hero.png (eight-nights-eight-layers)
 2026-11-20 | 064 | hero.png (winter-holidays-around-the-world)
+2026-11-21 | 065 | hero.png (clarinet)

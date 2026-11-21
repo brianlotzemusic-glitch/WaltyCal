@@ -60,7 +60,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [ ] Beat vs Rhythm Winter Movement Cards: 24 steady-beat movement cards plus rhythm echo strips (K–2; $3.50; winter)
 - [ ] FREE Winter Rhythm Warm-Ups: 5 pages, with a "see the full sets" page linking the paid winter items ($0; follower magnet; December)
 - [x] Rhythm Dictation, Levels 1–3: teacher scripts, student pages, answer keys, 30 exercises (grades 3–8; $4; evergreen)
-- [ ] Key Signature and Scale Worksheets for Band: by instrument transposition (C, B-flat, E-flat, F), concert pitch chart, answer keys (grades 6–12; $5; evergreen)
+- [x] Key Signature and Scale Worksheets for Band: by instrument transposition (C, B-flat, E-flat, F), concert pitch chart, answer keys (grades 6–12; $5; evergreen)
 - [ ] New Year Music Goals and Practice Tracker: reflection pages, goal setting, 30-day logs, instrument-neutral (grades 5–8; $3.50; January)
 - [ ] Music Production Vocabulary Posters and Word Wall: DAW-neutral terms (EQ, compression, loop, MIDI, BPM…), quiz with key (grades 9–12; $5; evergreen)
 - [ ] Listening Journal and Listening Glyphs: 10 reusable response pages, 4 glyphs, vocabulary bank (grades 2–8; $3.50; evergreen)

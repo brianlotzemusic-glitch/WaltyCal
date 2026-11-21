@@ -1,0 +1,35 @@
+{
+  "price": "5.00",
+  "license_price": "5.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "6th-grade",
+    "8th-grade",
+    "10th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Instrumental Music"
+  ],
+  "tags": [
+    "Worksheets",
+    "Printables",
+    "Activities",
+    "Assessment",
+    "Study Guides"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 32,
+  "answer_key": "Included",
+  "files": {
+    "product": "key-signature-scale-worksheets-band.pdf",
+    "preview": "key-signature-scale-worksheets-band-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
