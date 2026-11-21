@@ -16,3 +16,4 @@
 2026-11-21 | 065 | hero.png (clarinet)
 2026-11-21 | 066 | hero.png (music-symbols-scavenger-hunt-winter)
 2026-11-21 | 067 | hero.png (new-years-countdown)
+2026-11-21 | 068 | hero.png (laptop-daw)
