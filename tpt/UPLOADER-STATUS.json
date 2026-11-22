@@ -1,19 +1,12 @@
 {
-  "ran_at": "2026-11-21T22:45:12.871Z",
+  "ran_at": "2026-11-22T01:30:06.586Z",
   "published": [],
-  "failed": [
-    {
-      "item": "068-music-production-vocabulary-word-wall",
-      "error": "still on the form 5 minutes after Submit and the product is not on the store page yet; check My Products on TpT before retrying, it may have been created (TpT can take up to an hour to list it). TpT says: Hello Teacher-Author! The TPT Cyber Sale is coming up November 30 and December 1.   Ready Your Store | We cannot generate images from your file. Please upload a different file or your own thumbna"
-    }
-  ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "068-music-production-vocabulary-word-wall"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-21T23:12:02.327Z",
+    "ran_at": "2026-11-22T01:30:06.760Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -27,5 +20,8 @@
     ],
     "unverified": []
   },
-  "ok": false
+  "held": [
+    "068-music-production-vocabulary-word-wall"
+  ],
+  "ok": true
 }
