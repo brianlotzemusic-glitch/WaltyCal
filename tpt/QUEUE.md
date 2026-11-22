@@ -57,7 +57,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Winter Holidays Around the World, Music Edition: short readings and listening response pages for Christmas, Hanukkah, Kwanzaa, Las Posadas, Lunar New Year; facts sourced in QA.md (grades 3–6; $5; December)
 - [x] Tempo and Dynamics Anchor Charts: 12 posters plus student reference sheet and quiz with key (grades 2–8; $4; evergreen)
 - [x] Music Symbols Scavenger Hunt, Winter: find-and-colour symbols, tempo and dynamics review, answer keys (grades 3–5; $3.50; winter)
-- [ ] Beat vs Rhythm Winter Movement Cards: 24 steady-beat movement cards plus rhythm echo strips (K–2; $3.50; winter)
+- [x] Beat vs Rhythm Winter Movement Cards: 24 steady-beat movement cards plus rhythm echo strips (K–2; $3.50; winter)
 - [ ] FREE Winter Rhythm Warm-Ups: 5 pages, with a "see the full sets" page linking the paid winter items ($0; follower magnet; December)
 - [x] Rhythm Dictation, Levels 1–3: teacher scripts, student pages, answer keys, 30 exercises (grades 3–8; $4; evergreen)
 - [x] Key Signature and Scale Worksheets for Band: by instrument transposition (C, B-flat, E-flat, F), concert pitch chart, answer keys (grades 6–12; $5; evergreen)

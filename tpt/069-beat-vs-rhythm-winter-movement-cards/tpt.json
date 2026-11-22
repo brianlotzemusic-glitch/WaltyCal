@@ -1,0 +1,35 @@
+{
+  "price": "3.50",
+  "license_price": "3.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "kindergarten",
+    "1st-grade",
+    "2nd-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Physical Education"
+  ],
+  "tags": [
+    "Winter",
+    "Task Cards",
+    "Games",
+    "Activities",
+    "Printables",
+    "Centers"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 15,
+  "answer_key": "Not Included",
+  "files": {
+    "product": "beat-vs-rhythm-movement-cards.pdf",
+    "preview": "beat-vs-rhythm-movement-cards-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
