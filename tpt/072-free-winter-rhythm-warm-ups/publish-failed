@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-22T20:28:10.528Z",
-  "release_sha256": "7e52f6cebd05c6a2498aaa49585289776a91756cb22d6fb2a07540bd037f6b1e",
-  "count": 1,
-  "error": "publish stopped at step \"upload preview (free-rhythm-warm-ups-PREVIEW.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: preview: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/072-free-winter-rhythm-warm-ups-preview-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- "
-}
