@@ -1,12 +1,24 @@
 {
-  "ran_at": "2026-11-22T01:30:06.586Z",
-  "published": [],
+  "ran_at": "2026-11-22T12:23:43.331Z",
+  "published": [
+    {
+      "item": "068-music-production-vocabulary-word-wall",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Production-Vocabulary-Posters-and-Word-Wall-DAW-Terms-Quiz-Gr-9-12-18462490"
+    },
+    {
+      "item": "069-beat-vs-rhythm-winter-movement-cards",
+      "url": "https://www.teacherspayteachers.com/Product/Beat-vs-Rhythm-Movement-Cards-and-Echo-Strips-Music-Games-K-2-18462530"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "068-music-production-vocabulary-word-wall",
+    "069-beat-vs-rhythm-winter-movement-cards"
+  ],
   "reupload": {
-    "ran_at": "2026-11-22T01:30:06.760Z",
+    "ran_at": "2026-11-22T12:37:02.373Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -20,8 +32,5 @@
     ],
     "unverified": []
   },
-  "held": [
-    "068-music-production-vocabulary-word-wall"
-  ],
   "ok": true
 }
