@@ -20,3 +20,4 @@
 2026-11-22 | 069 | hero.png (beat-vs-rhythm-winter-movement-cards)
 2026-11-22 | 070 | hero.png (auld-lang-syne-reharmonized)
 2026-11-22 | 071 | hero.png (headphones)
+2026-11-22 | 072 | hero.png (free-winter-rhythm-warm-ups)
