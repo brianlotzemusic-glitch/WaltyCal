@@ -1,0 +1,36 @@
+{
+  "price": "3.50",
+  "license_price": "3.50",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "2nd-grade",
+    "4th-grade",
+    "6th-grade",
+    "8th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Speaking & Listening"
+  ],
+  "tags": [
+    "Worksheets",
+    "Graphic Organizers",
+    "Printables",
+    "Rubrics",
+    "Activities",
+    "Handouts"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 19,
+  "answer_key": "Not Included",
+  "files": {
+    "product": "listening-journal-and-glyphs.pdf",
+    "preview": "listening-journal-and-glyphs-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
