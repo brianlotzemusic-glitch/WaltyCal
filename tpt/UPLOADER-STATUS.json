@@ -1,12 +1,30 @@
 {
-  "ran_at": "2026-11-22T14:49:44.927Z",
-  "published": [],
-  "failed": [],
+  "ran_at": "2026-11-22T20:15:25.159Z",
+  "published": [
+    {
+      "item": "070-auld-lang-syne-reharmonized-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Reharmonize-a-Melody-Pop-Ballad-EDM-Chords-High-School-18467159"
+    },
+    {
+      "item": "071-listening-journal-and-glyphs",
+      "url": "https://www.teacherspayteachers.com/Product/Listening-Journal-and-Listening-Glyphs-10-Music-Response-Pages-Gr-2-8-18467171"
+    }
+  ],
+  "failed": [
+    {
+      "item": "072-free-winter-rhythm-warm-ups",
+      "error": "publish stopped at step \"upload preview (free-rhythm-warm-ups-PREVIEW.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: preview: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/072-free-winter-rhythm-warm-ups-preview-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- "
+    }
+  ],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "070-auld-lang-syne-reharmonized-logic",
+    "071-listening-journal-and-glyphs",
+    "072-free-winter-rhythm-warm-ups"
+  ],
   "reupload": {
-    "ran_at": "2026-11-22T14:49:45.081Z",
+    "ran_at": "2026-11-22T20:28:20.672Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -20,5 +38,5 @@
     ],
     "unverified": []
   },
-  "ok": true
+  "ok": false
 }
