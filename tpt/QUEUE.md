@@ -103,9 +103,9 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [ ] Second Line Groove: Mardi Gras parade rhythms, syncopated snare and bass drum programming ($8; February)
 - [ ] Jig in 6/8: a St. Patrick's Day study in compound metre programming ($8; March, list in February)
 
-## Bundles (each takes a classroom slot; build only when the condition is true)
-- [ ] DMP2 Projects Bundle: kits 014–026 in one ZIP, about 35% off the sum. Condition: `tpt/030-dmp1-units-1-6-bundle/uploaded` exists (proves the bundle upload works)
-- [ ] Holiday Logic Pro Project Pack, Volume 1: the first 8 winter Logic kits, about 30% off. Condition: 8 holiday Logic kits have `uploaded`
-- [ ] Winter and Holiday Music Mega Bundle (elementary): every winter classroom item live so far, about 30% off. Condition: 8 winter classroom items have `uploaded`
-- [ ] Color by Note Mega Bundle: 001, 027, 029 and every later color-by-note set, about 30% off. Condition: 5 color-by-note sets have `uploaded`
-- [ ] Holiday Logic Pro Project Mega Pack: all holiday Logic kits (16 or more), about 35% off. Condition: 16 holiday Logic kits have `uploaded`
+## Bundles: BUILD THESE FIRST, one per shift, in this order (owner approved 23 Nov 2026; rules in TPT-FACTORY.md "Bundles"; each takes a classroom slot)
+- [ ] 1. Winter and Holiday Music Mega Bundle (elementary): 23 resources: 003 005 006 034 038 042 044 046 047 050 051 052 055 056 059 060 064 066 069 and the winter sets 029 032 035 039 (not the free 072, not Logic kits). About 35% under the sum of their prices, rounded to .00 or .50 (sum about $100). Condition met. LIVE BY 1 DEC 2026.
+- [ ] 2. Color by Note Growing Bundle: 001 027 029 032 035 039 (6 paid sets, not the free sampler 028), 35% off the sum (about $15 today). GROWING: the description says the price rises with every new set (Valentine's, St. Patrick's and later ones) and that buyers keep every future set at today's price. Condition met.
+- [ ] 3. DMP2 Projects Bundle: kits 014 to 026 (13 kits, sum about $136) in one ZIP, 35% off (about $88). Condition met (030 is live).
+- [ ] 4. Holiday Logic Pro Project Pack, Volume 1: the first 8 winter Logic kits (031 036 040 045 048 053 057 are live; build when the 8th holiday Logic kit is live), about 30-35% off. Condition: 8 holiday Logic kits have `uploaded`.
+- [ ] 5. Holiday Logic Pro Project Mega Pack: all holiday Logic kits (16 or more), about 35% off. Condition: 16 holiday Logic kits have `uploaded`

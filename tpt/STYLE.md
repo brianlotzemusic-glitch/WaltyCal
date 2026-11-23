@@ -54,6 +54,19 @@ Render at 1000 × 1000 CSS px with deviceScaleFactor 2. The layout is the owner'
 
 The **PDF cover** (page 1, US Letter) uses the same stack: store line, art, title block, black band.
 
+### 3b. Cover 2.0 (owner approved 23 Nov 2026; applies to every NEW build; research: `tpt/_research/MARKET-RESEARCH-2026-11-23.md`)
+The top sellers' covers are loud at thumbnail size. Keep the Hudson Beat type and house line art, and add what sells:
+- **Fill the square.** Hero art (library or `art/hero.png`) at 60-65% of the height, no empty bands. The big title line is at least 12% of the height.
+- **One colour block.** A solid accent-colour panel (the product's `ACCENT`) behind the title block or hero, so the cover shows colour in a 350 px thumbnail.
+  Still black type; white where the block is dark.
+- **Two callout ribbons**, true and short, in accent or black with white caps (Oswald 700): the strongest two of NO PREP, PRINT AND GO, 3 LEVELS,
+  27 PAGES, ANSWER KEYS INCLUDED, GOOGLE SLIDES, BUNDLE, SAVE 30%.
+- **A page mockup:** a small real page of the product (slightly rotated, thin shadow) overlapping a corner of the hero.
+- **A series bar** at the bottom for products in a series ("HUDSON BEAT · COLOR BY NOTE SERIES"); the black grade/count band stays.
+- **Thumbnails 2-4 each have one job:** 2 = the real page full size with a callout about the count ("30 DRILL PAGES + KEYS"); 3 = HOW IT WORKS in three
+  numbered steps with a page crop each; 4 = what's included / teacher notes / the bonus. Each carries the store line.
+- Everything printed on a cover is true and countable. The Visual inspector blocks on clipped art, overlaps and unreadable callouts as before.
+
 ## 4. Interior pages (US Letter, 8.5 × 11 in)
 
 - Margins are about 0.42 in at the top, 0.5 in at the sides and 0.38 in at the bottom. Nothing important goes within 0.35 in of the edge.

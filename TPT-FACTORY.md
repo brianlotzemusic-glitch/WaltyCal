@@ -10,7 +10,9 @@ project kits.
 ## Daily output (Eastern day)
 - **3 classroom products** (2 is acceptable if one fails QA), from `tpt/QUEUE.md` "Classroom".
 - **1 holiday-themed Logic Pro project kit**, from `tpt/QUEUE.md` "Holiday Logic kits". Every day.
-- Bundles from `tpt/QUEUE.md` "Bundles" when their condition is met. A bundle takes a classroom slot.
+- **Bundles first** (owner, 23 Nov 2026, after the market research in `tpt/_research/MARKET-RESEARCH-2026-11-23.md`: bundles carry about 69%
+  of the revenue guide). Every `tpt/QUEUE.md` "Bundles" line whose condition is met is built BEFORE single products, one per shift,
+  in queue order (winter and holiday first, live by 1 Dec). A bundle takes a classroom slot. See "Bundles" below.
 
 Two shifts: **5:42am** builds 2 classroom products. **1:42pm** builds the Logic kit first, then classroom products until the
 day has 3 (at most 3 builds in one shift, so a missed morning is partly caught up). Count today's builds from `tpt/LOG.md`.
@@ -85,6 +87,7 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 > from gen.py), delete its `tpt/_art/next/<slug>/` folder and INDEX line, and append `YYYY-MM-DD | NNN | file` to `tpt/_art/USAGE.md`. Use only art that fits
 > the product: no filler. If nothing fits, draw simple
 > art in code and say "needs art: <subject>" in your reply. Missing Python module: pip install it.
+> Cover 2.0 (owner, 23 Nov 2026): follow `tpt/STYLE.md` section 3b for the cover and for thumbnails 2-4 (colour block, two callouts, page mockup, series bar).
 > Drawing rules (the inspector blocks releases on these): every drawn symbol (dice, hills, snowballs, banners, beams) sits inside
 > its box with padding at least as wide as its stroke, so nothing is clipped by a viewBox or an image edge; check the four edges
 > of `cover.png` and each preview for art touching them. In grids and crosswords put clue numbers small in the top-left corner and
@@ -144,8 +147,20 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
   No AI art for notation, text, grids, answer-key pictures or colour-by-note regions. The listing's disclosure line already covers it.
 - **Never copy another seller's product.** Take the format and subject only.
 - **Titles** ≤ 80 characters, plain search words first (holiday, format, clefs or grades). **Headings are not choices.** TpT's Subject and Tag menus mix category headings in with the real entries, and picking a heading wipes the field and stops the upload (13 Nov 2026: subject "Performing Arts", tags "Holiday" and "Student Practice"). Safe subjects: Music, Instrumental Music, Music Composition, Computer Science - Technology. Safe tags that have published: Winter, Autumn, Thanksgiving, Halloween, Christmas-Chanukah-Kwanzaa, Worksheets, Printables, Activities, Unit Plans, Project-based Learning, Projects, Career and Technical Education. `tools/tpt-validate.py` rejects headings. **Tags** 1–6 exact entries from `tpt/TAG-OPTIONS.json` (the uploader rejects anything else; the old guide's "High School" and "Technology" are not tags),
+  **Title formula (market research):** the thing and its format first ("Christmas Music Bingo Game"), then the use-case words buyers type
+  ("Fun Friday", "Whole Class Reward", "Brain Break", "Sub Plans", "No Prep", "Print and Go", only when true), then grade band or season;
+  no cute names; median 56 characters, never over 80.
   **grades** 1–4, **subjects** 1–3 from `tpt/SUBJECT-OPTIONS.json`.
-- **Prices:** classroom $3–5 (sub plans and units up to $7); holiday Logic kits $7–9; free items $0 only when the queue says so.
+- **Prices (revised 23 Nov 2026 from the market data: top music singles have a $6.50 median and 59% sit under $8):** classroom singles with 20+ pages
+  $4.50–6.50 (small 8–15 page items $3.50–4.50; sub plans and units up to $8); holiday Logic kits $8–12; bundles per "Bundles"; free items $0
+  only when the queue says so. Odd prices like $5.25 are fine.
+
+### Descriptions (market research, 23 Nov 2026)
+Open with the teacher's problem and the payoff in the first two lines ("Short on sub plans? ..."), then WHAT'S INCLUDED with page counts, then
+how it works, then **Standard closing lines** on every new listing and in `UPLOAD.md`: (1) "Part of the <series> Bundle: save 30% when you
+buy the set" when a bundle exists or is queued; (2) "Please leave a rating: you earn TpT credits for feedback, and it helps other teachers
+find this"; (3) "Follow the Hudson Beat store for new music resources every week". Every new PDF ends with a one-page "Thank you and please
+rate this resource" page (terms-of-use page can carry it). Keep the disclosure line. No claims of sales, awards or bestseller status.
 
 ### Holiday Logic kits
 - Same format as the owner's DMP2 kits (`tpt/014`–`026`): project sheet, rubric, vocabulary, teacher notes with pacing,
@@ -160,7 +175,14 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 
 ### Bundles
 One ZIP holding the member kits' files, plus its own cover, preview and a guide page (template: `tpt/030-dmp1-units-1-6-bundle`).
-Price 25–35% below the sum. Never change or re-upload the member listings.
+Price 30–35% below the sum, ending in .00 or .50 (growing bundles: start at the current sum minus 35%, and raise the price by the new
+set's share each time one is added; say so in the description). Never change or re-upload the member listings.
+- Cover: a collage of the member covers, a "SAVE 30%" ribbon and an item-count callout ("8 PROJECTS", "7 SETS · 190 PAGES").
+- Description: open with the buyer's problem, then a numbered list of every member with its page count and grade, the saving in dollars,
+  and a line that each member is also sold separately. Title: the theme and "Bundle" first ("Winter Music Mega Bundle | ...").
+- Preview: guide page plus two real member pages. Members keep their own listings; never touch them.
+- Later (engineer task, owner approved): create the bundle as a native TpT Bundle so each member shows "Also included in". Until the
+  Mac can do that, the ZIP bundle is the live version; the engineer will say when to switch.
 
 ## QA checklist
 1. `gen.py --check` passes, and every answer key recomputed by hand matches.
