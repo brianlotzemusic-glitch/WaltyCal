@@ -1,16 +1,31 @@
 {
-  "ran_at": "2026-11-23T01:30:05.869Z",
-  "published": [],
-  "failed": [],
+  "ran_at": "2026-11-23T12:29:48.260Z",
+  "published": [
+    {
+      "item": "074-winter-holiday-music-mega-bundle",
+      "url": "https://www.teacherspayteachers.com/Product/Music-Mega-Bundle-23-Resources-Rhythm-Color-by-Note-Games-Gr-K-6-18475132"
+    }
+  ],
+  "failed": [
+    {
+      "item": "073-december-music-sub-plans-k5",
+      "error": "publish stopped at step \"upload product (december-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/073-december-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- ("
+    }
+  ],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "073-december-music-sub-plans-k5",
+    "074-winter-holiday-music-mega-bundle"
+  ],
   "reupload": {
-    "ran_at": "2026-11-23T01:30:06.024Z",
+    "ran_at": "2026-11-23T12:53:40.942Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
-    "skipped": [],
+    "skipped": [
+      "030-dmp1-units-1-6-bundle: tpt-bundle"
+    ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
@@ -20,5 +35,5 @@
     ],
     "unverified": []
   },
-  "ok": true
+  "ok": false
 }
