@@ -21,6 +21,8 @@ assert.strictEqual(T.reuploadState(mk("nourl", { reupload: "m1\n" })).state, "no
 assert.strictEqual(T.reuploadState(mk("badurl", { reupload: "m1\n", uploaded: "x\nhttps://evil.example/Product/a-1\n" })).state, "no-url");
 const d = mk("ok", { reupload: "m1\n", uploaded: up });
 let st = T.reuploadState(d); assert.strictEqual(st.state, "pending"); assert.strictEqual(st.productId, "18040698");
+assert.strictEqual(T.reuploadState(mk("bundle", { reupload: "m1\n", uploaded: up, "tpt-bundle": "upgraded\n" })).state, "tpt-bundle");
+assert(T.prepareReupload(path.join(tmp, "bundle"), F, ef).problems[0].includes("TpT Bundle"));
 console.log("ok refusals and pending");
 
 let pl = T.prepareReupload(d, F, ef);

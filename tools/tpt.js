@@ -972,8 +972,12 @@ const FILE_SLOTS = ["product", "preview", "thumb1", "thumb2", "thumb3", "thumb4"
 function sha256File(fp) { return crypto.createHash("sha256").update(fs.readFileSync(fp)).digest("hex"); }
 function readTrim(fp) { try { return fs.readFileSync(fp, "utf8"); } catch (e) { return null; } }
 
-// One of: no-marker | no-url | not-approved | done | failed-hold | pending. Pure file reads.
+// One of: tpt-bundle | no-marker | no-url | not-approved | done | failed-hold | pending. Pure file reads.
+// `tpt-bundle` (23 Nov 2026, 030): the listing was upgraded on TpT to a real Bundle (it links the single units; no ZIP slot), so the
+// ZIP-replacing flow must never touch it, whatever the `reupload` marker says. Delete the file only if the listing goes back to a ZIP.
 function reuploadState(item) {
+  const bundle = readTrim(path.join(item, "tpt-bundle"));
+  if (bundle !== null) return { state: "tpt-bundle", reason: "`tpt-bundle` file: this listing is a TpT Bundle (linked units, no product ZIP); file replacement is never done here. Edit it on TpT by hand" };
   const marker = readTrim(path.join(item, "reupload"));
   if (marker === null || !marker.trim()) return { state: "no-marker", reason: "no `reupload` marker (the Manager writes it after QA approves the rebuild)" };
   const markerHash = crypto.createHash("sha256").update(marker).digest("hex");
