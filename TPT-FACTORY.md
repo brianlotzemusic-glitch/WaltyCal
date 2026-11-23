@@ -58,7 +58,7 @@ subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one a
       failed rescue on a later shift turns the line into `[!] SHELVED` (no more attempts) with one LOG line the owner will see.
 3. For each product this shift owes:
    1. **First, a monthly sub plan bundle:** take the top unchecked line of `tpt/QUEUE.md` "Monthly Sub Plan Bundles" (in order; the Season rule does not
-      apply). Its builder brief is `tpt/SUB-PLAN-BUNDLES.md` plus `tpt/007-music-sub-plans-k5` as the template; its extra QA rules are in that file. Winter and
+      apply). Its builder brief is "Sub plan bundle builder brief" below; its extra QA rules are in `tpt/SUB-PLAN-BUNDLES.md`. Winter and
       Holiday Mega Bundle (a queue line in that section) is a ZIP bundle: use the "Bundles" section and template `tpt/030-dmp1-units-1-6-bundle`.
       When that section is done: the top unchecked line of "Bundles" whose condition is met (one per shift); otherwise the top unchecked queue item that
       is in season (see "Season rule"). Its id is the highest `tpt/NNN-*` number + 1. Member lists and prices for ZIP bundles are in the queue line
@@ -102,6 +102,17 @@ Push notifications to the owner: only the three cases under "The Mac uploader", 
 > Run `gen.py` and `gen.py --check` until clean, then look once at low-resolution renders (60–100 dpi) of every page.
 > Don't commit. Don't touch other folders, except that a Logic kit may extend `tpt/_dmp2_common/dmp2.py`.
 > Reply in at most 8 lines: what you made, page count, price, open questions.
+
+### Sub plan bundle builder brief (monthly bundles; copy, fill in the brackets)
+> Build TpT product `tpt/[NNN-slug]/`: [queue line], a monthly sub plan bundle for [month]. Read `tpt/SUB-PLAN-BUNDLES.md` completely first (hard rules: no technology, no music
+> skills needed by the sub, original or public-domain only; the eight-day recipe; the calendar row for this month with its exact tags; listing and price rules; QA additions),
+> then `TPT-FACTORY.md` "Product rules" and `tpt/STYLE.md` including 3b Cover 2.0. Start from `tpt/007-music-sub-plans-k5`: read its `gen.py`, copy its structure and page
+> functions, look at its rendered pages, and extend it to eight days (16 student sheets), themed to the month. Hero art: this item's entry in `tpt/_art/next/INDEX.md` (copy to
+> `art/hero.png`, log it in `tpt/_art/USAGE.md`, delete the `next/` folder and index line), else the closest piece in `tpt/_art/library/`. Deliver in the folder: `gen.py` (builds
+> everything; `--check` verifies timings, keys and layout), the product PDF, a 4-page watermarked preview PDF, `cover.png` (2000x2000), `preview-1..3.png`, `UPLOAD.md` and `tpt.json`
+> (formats in `tpt/README.md`: title at most 80 characters, price "15.00", tags exactly from the calendar row), and `SOURCES.md` listing the source of every date, name and fact.
+> Everything is drawn in code except the hero art. Run `gen.py`, `gen.py --check` and `python3 tools/tpt-validate.py tpt/[NNN-slug]` until clean, then look once at low-resolution
+> renders of every page. Don't commit. Reply in at most 8 lines: what you made, page count, open questions.
 
 ### QA brief
 > Review `tpt/[NNN-slug]/` independently; you did not build it. Read `TPT-FACTORY.md` "QA checklist".

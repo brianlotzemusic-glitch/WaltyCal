@@ -48,7 +48,7 @@ Vary the activity names and art each month so the 12 bundles are not clones; kee
 ## Calendar (monthly bundles; valid TpT tags in brackets: use 1-6, exactly as written, check with `tools/tpt-validate.py`)
 | Month | Theme ideas (pick the 8 days' topics) | Tags |
 |---|---|---|
-| December | Winter holidays around the world (Hanukkah, Christmas, Kwanzaa, Las Posadas, winter solstice), instruments of the season, New Year's Eve | Winter, Christmas-Chanukah-Kwanzaa, Holiday, New Year |
+| December | Winter holidays around the world (Hanukkah, Christmas, Kwanzaa, Las Posadas, winter solstice), instruments of the season, New Year's Eve | Winter, Christmas-Chanukah-Kwanzaa, New Year |
 | January | New Year goals, winter, snow sounds, Martin Luther King Jr. Day (facts only, no speech quotes), a music resolution | New Year, Winter, Martin Luther King Day |
 | February | Black History Month musicians (Joplin, Ellington, Fitzgerald, Armstrong, Price: facts), Valentine's heart beats, Lunar New Year instruments, Groundhog Day | Black History Month, Valentine's Day, Lunar New Year, Groundhog Day, Presidents' Day |
 | March | Music In Our Schools Month, Women's History Month composers (Hildegard, Clara Schumann, Fanny Mendelssohn), St. Patrick's Day folk-tune facts, spring | Women's History Month, St. Patrick's Day, Spring |
@@ -63,11 +63,11 @@ Vary the activity names and art each month so the 12 bundles are not clones; kee
 Then the **Year-Long Music Sub Plans Bundle** (all 12 months, 96 days): **$149** (owner's price; about 17% under the $180 sum).
 
 ## Listing
-- Title (<= 80): `<Month> Music Sub Plans K-5 | <theme words> | No Prep, No Tech` (e.g. "December Music Sub Plans K-5 | Winter Holidays Around the World | No Prep, No Tech"). The words "Music Sub Plans", "No Prep", "No Tech" stay.
+- Title (<= 80): `<Month> Music Sub Plans K-5 | <theme words> | No Prep, No Tech` (e.g. "December Music Sub Plans K-5 | Winter Holidays Worldwide | No Prep, No Tech", 75 characters; count yours: 80 is the limit). The words "Music Sub Plans", "No Prep", "No Tech" stay.
 - Description: follow the structure of 007's description (the teacher's problem first, WHAT'S INCLUDED with page counts, THE EIGHT DAYS, WHY IT WORKS
   FOR SUBS: no tech, no instruments, no music reading needed), then the Standard closing lines (bundle and save link to the year-long bundle,
   feedback request, follow the store) and the disclosure line.
-- Price **$15.00** each (owner, 23 Nov 2026); the Year-Long Bundle **$149**. Subjects: Music. Grades as 007 (kindergarten, 2nd-grade, 3rd-grade, 5th-grade). Tags from the table.
+- Price **$15.00** each (owner, 23 Nov 2026); the Year-Long Bundle **$149**. Subjects: Music. Grades as 007 (kindergarten, 2nd-grade, 3rd-grade, 5th-grade). Tags from the table, exactly (do not add "Holiday": it is a menu heading and the uploader would stop); run `python3 tools/tpt-validate.py` on the folder.
 - Cover 2.0 (`tpt/STYLE.md` section 3b): hero art from `tpt/_art/next/` or the library; callouts NO PREP, NO TECH, 8 DAYS; series bar "MONTHLY MUSIC SUB PLANS"; the month in the big
   title line. Thumbnails 2-4: a real sub plan page with a callout; "HOW IT WORKS" in three steps; what's included.
 
