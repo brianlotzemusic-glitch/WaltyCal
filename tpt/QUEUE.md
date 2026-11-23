@@ -104,7 +104,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [ ] Jig in 6/8: a St. Patrick's Day study in compound metre programming ($8; March, list in February)
 
 ## Monthly Sub Plan Bundles: THE TOP PRIORITY (owner, 23 Nov 2026). Build these first, in this order. Spec: tpt/SUB-PLAN-BUNDLES.md. The Season rule does not apply to them
-- [ ] December Music Sub Plans K-5 (monthly sub plan bundle): Winter holidays around the world; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 1 Dec 2026
+- [x] December Music Sub Plans K-5 (monthly sub plan bundle): Winter holidays around the world; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 1 Dec 2026
 - [ ] 2. Winter and Holiday Music Mega Bundle (build second, before the January bundle) (elementary): 23 resources: 003 005 006 034 038 042 044 046 047 050 051 052 055 056 059 060 064 066 069 and the winter sets 029 032 035 039 (not the free 072, not Logic kits). About 35% under the sum of their prices, rounded to .00 or .50 (sum about $100). Condition met. LIVE BY 1 DEC 2026.
 - [ ] January Music Sub Plans K-5 (monthly sub plan bundle): New Year goals, winter, MLK Day facts; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 1 Jan 2027
 - [ ] February Music Sub Plans K-5 (monthly sub plan bundle): Black History Month musicians, Valentine's, Lunar New Year; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 Jan 2027
