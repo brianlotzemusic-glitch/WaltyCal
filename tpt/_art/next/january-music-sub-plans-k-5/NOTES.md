@@ -1,2 +1,0 @@
-Concept (monthly sub plan bundle, January): snow-covered pine, mittens, steaming mug, blank calendar page with a star (new year, winter).
-Credits: 3 images. Picked variant 2 (cleanest layout, margins 77px+). Rejected: variant 1 (fireworks splashes add a crowded top and the calendar corner is malformed), variant 3 (calendar corner curl overlaps the steam, tight left side). All three have a faint soft halo behind the steam lines; barely visible on white.
