@@ -197,7 +197,10 @@ Price 30–35% below the sum, ending in .00 or .50 (growing bundles: start at th
 set's share each time one is added; say so in the description). Never change or re-upload the member listings.
 - Cover: a collage of the member covers, a "SAVE 30%" ribbon and an item-count callout ("8 PROJECTS", "7 SETS · 190 PAGES").
 - Description: open with the buyer's problem, then a numbered list of every member with its page count and grade, the saving in dollars,
-  and a line that each member is also sold separately. Title: the theme and "Bundle" first ("Winter Music Mega Bundle | ...").
+  and a line that each member is also sold separately. Title: the theme and "Bundle" first ("Music Mega Bundle | 23 Resources: Rhythm, Color by Note, Games | Gr K-6"). Seasonal words: TpT's "Seasonal Titles"
+  notice blocked a holiday-named title once (027, Oct 2026), but "December Music Sub Plans K-5 | Winter Holidays Worldwide | No Prep, No Tech" published fine on
+  23 Nov 2026 (073). Keep the month in monthly sub bundle titles; for other bundles leave the season in the tags, description and cover art. If the Mac records a
+  Seasonal Titles block, retitle without the holiday word (keep the month), re-arm, and log it.
 - Preview: guide page plus two real member pages. Members keep their own listings; never touch them.
 - Later (engineer task, owner approved): create the bundle as a native TpT Bundle so each member shows "Also included in". Until the
   Mac can do that, the ZIP bundle is the live version; the engineer will say when to switch.
