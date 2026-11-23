@@ -8,7 +8,8 @@ It only makes art. It never builds, QAs, releases or touches markers. Never touc
 1. `git fetch origin shop-factory && git checkout -B shop-factory origin/shop-factory`.
 2. Read `tpt/_art/README.md` (rules) and `tpt/_art/next/INDEX.md` (what is already made). Credit guard: call Higgsfield `balance`.
    If under 60 credits, add one LOG line saying so and STOP. Never buy credits, change the plan, start a trial or turn on auto-refill.
-3. Work list = ONLY what the next shifts will actually build: count today's builds in `tpt/LOG.md` and take the top unchecked queue lines for
+3. Work list = ONLY what the next shifts will actually build: first the top unchecked lines of `tpt/QUEUE.md` "Monthly Sub Plan Bundles" (the current priority: 3 a day;
+   hero art for a month is its theme: the month's holiday or season as simple friendly objects, no text), then Logic kits and classroom items: count today's builds in `tpt/LOG.md` and take the top unchecked queue lines for
    the build slots still to come in the next 24 hours (the day owes 3 classroom products and 1 Logic kit; at most 4 items). Skip lines
    marked `[!]` or `[~]` and items already in INDEX.md (slug = title lowercased, words joined by `-`, at most 40 characters). Add a held
    product that a rescue is about to rebuild only if its LOG line says "needs art". Nothing for later days, nothing speculative: the owner

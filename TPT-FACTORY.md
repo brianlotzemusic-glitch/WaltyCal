@@ -10,9 +10,11 @@ project kits.
 ## Daily output (Eastern day)
 - **3 classroom products** (2 is acceptable if one fails QA), from `tpt/QUEUE.md` "Classroom".
 - **1 holiday-themed Logic Pro project kit**, from `tpt/QUEUE.md` "Holiday Logic kits". Every day.
-- **Bundles first** (owner, 23 Nov 2026, after the market research in `tpt/_research/MARKET-RESEARCH-2026-11-23.md`: bundles carry about 69%
-  of the revenue guide). Every `tpt/QUEUE.md` "Bundles" line whose condition is met is built BEFORE single products, one per shift,
-  in queue order (winter and holiday first, live by 1 Dec). A bundle takes a classroom slot. See "Bundles" below.
+- **CURRENT PRIORITY (owner, 23 Nov 2026): the Monthly Sub Plan Bundles** in `tpt/QUEUE.md` (12 monthly bundles, then the Year-Long Bundle). Spec and rules:
+  `tpt/SUB-PLAN-BUNDLES.md`. Until that section is done, the words "classroom products" in the shift prompt mean the next bundles from it, in queue order:
+  **morning shift 2 of them; afternoon shift 1 of them, then the holiday Logic kit; no classroom single.** Count them as the day's builds.
+  When the section is done, go back to 3 classroom products + 1 Logic kit a day, with the "Bundles" section first (owner, 23 Nov 2026, after the
+  market research in `tpt/_research/MARKET-RESEARCH-2026-11-23.md`: bundles carry about 69% of the revenue guide): one per shift, in queue order. See "Bundles".
 
 Two shifts: **5:42am** builds 2 classroom products. **1:42pm** builds the Logic kit first, then classroom products until the
 day has 3 (at most 3 builds in one shift, so a missed morning is partly caught up). Count today's builds from `tpt/LOG.md`.
@@ -55,10 +57,12 @@ subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one a
    4. Still BLOCKING after that → leave it HELD, write the remaining BLOCKING items into its queue line, and note "rescue 1"; a second
       failed rescue on a later shift turns the line into `[!] SHELVED` (no more attempts) with one LOG line the owner will see.
 3. For each product this shift owes:
-   1. **First, a bundle:** if the top unchecked line of `tpt/QUEUE.md` "Bundles" has its condition met, that is this shift's first build
-      (one bundle per shift). Its builder brief is the "Bundles" section plus `tpt/030-dmp1-units-1-6-bundle` as the template; member lists and
-      prices are in the queue line (compute the sum from each member's `tpt.json`). QA and the Visual inspector run as for any product.
-      Otherwise take the top unchecked queue item that is in season (see "Season rule"). Its id is the highest `tpt/NNN-*` number + 1.
+   1. **First, a monthly sub plan bundle:** take the top unchecked line of `tpt/QUEUE.md` "Monthly Sub Plan Bundles" (in order; the Season rule does not
+      apply). Its builder brief is `tpt/SUB-PLAN-BUNDLES.md` plus `tpt/007-music-sub-plans-k5` as the template; its extra QA rules are in that file. Winter and
+      Holiday Mega Bundle (a queue line in that section) is a ZIP bundle: use the "Bundles" section and template `tpt/030-dmp1-units-1-6-bundle`.
+      When that section is done: the top unchecked line of "Bundles" whose condition is met (one per shift); otherwise the top unchecked queue item that
+      is in season (see "Season rule"). Its id is the highest `tpt/NNN-*` number + 1. Member lists and prices for ZIP bundles are in the queue line
+      (compute the sum from each member's `tpt.json`). QA and the Visual inspector run as for any product.
    2. **Builder agent**, brief below.
    3. **QA agent** (a different agent), brief below.
    3b. **Visual inspector** (a third fresh Sonnet agent that did not build or QA it; brief "Visual inspector" below). It must reply
@@ -201,10 +205,11 @@ set's share each time one is added; say so in the description). Never change or 
 6. Listing: title ≤ 80, description matches the product exactly (page count, what's included), disclosure line present, price
    set, `tpt.json` valid: files exist, grades 1–4, every subject is in `tpt/SUBJECT-OPTIONS.json` and every tag is in `tpt/TAG-OPTIONS.json`, spelled exactly.
 7. Logic kits: steps are real Logic Pro features, pacing adds up, the rubric total is right.
+8. Monthly sub plan bundles: also the "QA additions" in `tpt/SUB-PLAN-BUNDLES.md` (no device, recording, singing, playing or reading notation by the sub; facts sourced).
 
 ## Season rule
 Build for holidays 2–8 weeks away. Don't build a holiday item fewer than 6 days before its holiday: mark it `[next year]` and
-take the next one. Evergreen items are always in season; take one after every two holiday items so the catalogue isn't all seasonal.
+take the next one. Exception: the Monthly Sub Plan Bundles are built in queue order whatever the month. Evergreen items are always in season; take one after every two holiday items so the catalogue isn't all seasonal.
 
 ## Queue refill
 When fewer than 6 classroom items or fewer than 5 Logic kits are unchecked: one Sonnet agent appends 30 classroom or 15 Logic
