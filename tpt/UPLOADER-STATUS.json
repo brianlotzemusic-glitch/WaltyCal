@@ -1,16 +1,25 @@
 {
-  "ran_at": "2026-11-23T01:30:05.869Z",
-  "published": [],
+  "ran_at": "2026-11-23T12:57:10.335Z",
+  "published": [
+    {
+      "item": "073-december-music-sub-plans-k5",
+      "url": "https://www.teacherspayteachers.com/Product/December-Music-Sub-Plans-K-5-Winter-Holidays-Worldwide-No-Prep-No-Tech-18475185"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "073-december-music-sub-plans-k5"
+  ],
   "reupload": {
-    "ran_at": "2026-11-23T01:30:06.024Z",
+    "ran_at": "2026-11-23T12:58:43.553Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
-    "skipped": [],
+    "skipped": [
+      "030-dmp1-units-1-6-bundle: tpt-bundle"
+    ],
     "needs_login": false,
     "needs_edit_fields": false,
     "discovered_edit": false,
