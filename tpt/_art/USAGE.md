@@ -23,3 +23,4 @@
 2026-11-22 | 072 | hero.png (free-winter-rhythm-warm-ups)
 2026-11-23 | 073 | hero.png (december-music-sub-plans-k-5)
 2026-11-23 | 075 | hero.png (january-music-sub-plans-k-5)
+2026-11-23 | 076 | hero.png (mixing-console)
