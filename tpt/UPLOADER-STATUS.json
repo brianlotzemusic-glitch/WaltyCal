@@ -1,12 +1,24 @@
 {
-  "ran_at": "2026-11-23T15:08:08.450Z",
-  "published": [],
+  "ran_at": "2026-11-23T20:15:08.777Z",
+  "published": [
+    {
+      "item": "075-january-music-sub-plans-k5",
+      "url": "https://www.teacherspayteachers.com/Product/January-Music-Sub-Plans-K-5-Goals-Rhythm-Words-Music-Jobs-No-Prep-No-Tech-18481882"
+    },
+    {
+      "item": "076-holiday-mashup-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Mashup-Project-Match-Tempo-and-Key-Smart-Tempo-Flex-High-School-18481898"
+    }
+  ],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "075-january-music-sub-plans-k5",
+    "076-holiday-mashup-logic"
+  ],
   "reupload": {
-    "ran_at": "2026-11-23T15:08:08.622Z",
+    "ran_at": "2026-11-23T20:17:47.709Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
