@@ -1,19 +1,12 @@
 {
-  "ran_at": "2026-11-22T22:45:31.871Z",
-  "published": [
-    {
-      "item": "072-free-winter-rhythm-warm-ups",
-      "url": "https://www.teacherspayteachers.com/Product/FREE-Rhythm-Warm-Ups-Clap-and-Say-Rhythm-Reading-Gr-2-5-18469110"
-    }
-  ],
+  "ran_at": "2026-11-23T01:30:05.869Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "072-free-winter-rhythm-warm-ups"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-22T22:56:52.062Z",
+    "ran_at": "2026-11-23T01:30:06.024Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -27,14 +20,5 @@
     ],
     "unverified": []
   },
-  "live_mismatch": [
-    {
-      "item": "072-free-winter-rhythm-warm-ups",
-      "url": "https://www.teacherspayteachers.com/Product/FREE-Rhythm-Warm-Ups-Clap-and-Say-Rhythm-Reading-Gr-2-5-18469110",
-      "problems": [
-        "previewUrl: live page has no preview file (tpt.json declares one)"
-      ]
-    }
-  ],
-  "ok": false
+  "ok": true
 }
