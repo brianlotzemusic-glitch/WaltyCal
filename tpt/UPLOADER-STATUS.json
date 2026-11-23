@@ -1,25 +1,19 @@
 {
-  "ran_at": "2026-11-23T12:29:48.260Z",
+  "ran_at": "2026-11-23T12:57:10.335Z",
   "published": [
     {
-      "item": "074-winter-holiday-music-mega-bundle",
-      "url": "https://www.teacherspayteachers.com/Product/Music-Mega-Bundle-23-Resources-Rhythm-Color-by-Note-Games-Gr-K-6-18475132"
-    }
-  ],
-  "failed": [
-    {
       "item": "073-december-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload product (december-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/073-december-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- ("
+      "url": "https://www.teacherspayteachers.com/Product/December-Music-Sub-Plans-K-5-Winter-Holidays-Worldwide-No-Prep-No-Tech-18475185"
     }
   ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "073-december-music-sub-plans-k5",
-    "074-winter-holiday-music-mega-bundle"
+    "073-december-music-sub-plans-k5"
   ],
   "reupload": {
-    "ran_at": "2026-11-23T12:53:40.942Z",
+    "ran_at": "2026-11-23T12:58:43.553Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -35,5 +29,5 @@
     ],
     "unverified": []
   },
-  "ok": false
+  "ok": true
 }
