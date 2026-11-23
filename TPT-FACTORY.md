@@ -55,7 +55,10 @@ subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one a
    4. Still BLOCKING after that → leave it HELD, write the remaining BLOCKING items into its queue line, and note "rescue 1"; a second
       failed rescue on a later shift turns the line into `[!] SHELVED` (no more attempts) with one LOG line the owner will see.
 3. For each product this shift owes:
-   1. Take the top unchecked queue item that is in season (see "Season rule"). Its id is the highest `tpt/NNN-*` number + 1.
+   1. **First, a bundle:** if the top unchecked line of `tpt/QUEUE.md` "Bundles" has its condition met, that is this shift's first build
+      (one bundle per shift). Its builder brief is the "Bundles" section plus `tpt/030-dmp1-units-1-6-bundle` as the template; member lists and
+      prices are in the queue line (compute the sum from each member's `tpt.json`). QA and the Visual inspector run as for any product.
+      Otherwise take the top unchecked queue item that is in season (see "Season rule"). Its id is the highest `tpt/NNN-*` number + 1.
    2. **Builder agent**, brief below.
    3. **QA agent** (a different agent), brief below.
    3b. **Visual inspector** (a third fresh Sonnet agent that did not build or QA it; brief "Visual inspector" below). It must reply
