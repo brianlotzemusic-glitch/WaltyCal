@@ -1,12 +1,24 @@
 {
-  "ran_at": "2026-11-23T23:31:37.189Z",
+  "ran_at": "2026-11-24T12:21:53.948Z",
   "published": [],
-  "failed": [],
+  "failed": [
+    {
+      "item": "077-february-music-sub-plans-k5",
+      "error": "browserType.launchPersistentContext: Timeout 180000ms exceeded. Call log:   - <launching> /Users/brianlotze/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forwar"
+    },
+    {
+      "item": "078-march-music-sub-plans-k5",
+      "error": "publish stopped at step \"upload product (march-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/078-march-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden"
+    }
+  ],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "077-february-music-sub-plans-k5",
+    "078-march-music-sub-plans-k5"
+  ],
   "reupload": {
-    "ran_at": "2026-11-23T23:31:37.337Z",
+    "ran_at": "2026-11-24T13:04:43.120Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -22,5 +34,5 @@
     ],
     "unverified": []
   },
-  "ok": true
+  "ok": false
 }
