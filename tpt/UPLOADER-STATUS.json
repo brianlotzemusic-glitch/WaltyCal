@@ -1,24 +1,12 @@
 {
-  "ran_at": "2026-11-24T13:44:09.796Z",
-  "published": [
-    {
-      "item": "077-february-music-sub-plans-k5",
-      "url": "https://www.teacherspayteachers.com/Product/February-Music-Sub-Plans-K-5-Black-History-Month-Musicians-No-Prep-No-Tech-18490935"
-    },
-    {
-      "item": "078-march-music-sub-plans-k5",
-      "url": "https://www.teacherspayteachers.com/Product/March-Music-Sub-Plans-K-5-Women-Composers-Rhythm-Words-No-Prep-No-Tech-18490952"
-    }
-  ],
+  "ran_at": "2026-11-24T14:45:05.523Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "077-february-music-sub-plans-k5",
-    "078-march-music-sub-plans-k5"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-24T13:47:17.615Z",
+    "ran_at": "2026-11-24T14:45:05.674Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
