@@ -1,0 +1,38 @@
+# QA: 077 February Music Sub Plans K-5
+
+Reviewed independently (QA agent, 24 Nov 2026). Folder: `tpt/077-february-music-sub-plans-k5/`.
+
+## Checks run
+- `python3 gen.py --check`: OK before and after my fix. `python3 tools/tpt-validate.py`: OK.
+- Hard-rules scan of the pdftotext of all 48 pages, both preview files and UPLOAD.md: no device, recording, projector, speaker, QR code, video, website or app. The sub never reads notation, sings, plays or names a pitch (only miming a pretend trumpet/piano/tuning key, clapping and patting). No lyrics, no song words, no speech quotes. Secular wording; Lunar New Year described without stereotypes (lanterns, lion dance drums, cymbals and gong; "many families in China, other Asian countries and communities around the world"); Groundhog Day framed as a tradition.
+- Answer keys recomputed independently with my own script: all 12 word-search words found exactly once at the printed row/col/direction (FEBRUARY r1c2 diag, ELLINGTON r4c12 down, ARMSTRONG r1c1 diag, FITZGERALD r10c2 across, JOPLIN r1c3, PRICE r3c1 diag, TRUMPET r3c2 diag, LANTERN r12c1, HEARTBEAT r2c4 diag, RAGTIME r2c6, CYMBAL r4c1 down, DRUM r4c8 diag); decode numbers spell YOUR HEARTBEAT IS A STEADY BEAT; all syllable counts (K-2 drum 1, heart 1, trumpet 2, cymbal 2, valentine 3, piano 3, jazz 1, ragtime 2, orchestra 3, groundhog 2; 3-5 price 1, armstrong 2, ellington 3, fitzgerald 3, composer 3, cymbal 2, heartbeat 2, valentine 3; sort 1/2/3 boxes) and chart/card ta, ti-ti, shh labels are right; Day 6 match B/E/D/A/C is right; bingo word banks equal the clue answers (12 K-2 on a 3x4 board, 16 3-5 on a 4x4 board; K-2 "three across in a row", 3-5 row, column or corner-to-corner line are consistent on plan, sheet, clue page and key); Day 1 quiz answers are supported by the readings (K-2 reading has 8 sentences; 3-5 about 200 words); match-and-trace key lines are right.
+- Timings: Day 1 40, Day 2 40, Day 3 40, Day 4 40, Day 5 40, Day 6 40, Day 7 40, Day 8 35 minutes (all 30-45). Material lists match the plans (crayons on Days 1, 2, 3, 6; optional Days 5, 7; Day 4 clear space and cards p. 22; Day 7 cards p. 32 and chant book p. 33; Day 8 quiz p. 37).
+- Page references: plan pages 10/13/16/19/23/26/29/34, sheets 11-12, 14-15, 17-18, 20-21, 24-25, 27-28, 30-31, 35-36, cards 22, word cards 32, chant book 33, quiz 37, early finishers 38-39, exit tickets 40, keys 41-43, sub report 44, labels 45, awards 46, terms 47, thank you 48; every "answer key on page N" matches. UPLOAD.md page list totals 48; description counts total 48.
+- Listing: title 79 characters (limit 80); price 15.00; tags exactly Black History Month, Valentine's Day, Lunar New Year, Groundhog Day, Presidents' Day, all present in `tpt/TAG-OPTIONS.json`; subject Music; grades same as 075 (kindergarten, 2nd, 3rd, 5th); disclosure line verbatim; US spelling (no British forms found); complete sentences.
+- Cut-out cards complete: 8 Day 4 move cards, 12 Day 7 word cards (11 words plus shh), 8 folder labels plus the big tub label, 2 awards, 8 exit tickets.
+
+## Facts, checked live (WebFetch/WebSearch, 24 Nov 2026)
+- Florence Price: https://en.wikipedia.org/wiki/Florence_Price (born April 9, 1887, some sources 1888; died June 3, 1953; Symphony No. 1 in E minor, Chicago Symphony under Frederick Stock, 1933; Wikipedia words it "first African-American woman to have her music played by a major U.S. orchestra"). Britannica, Classic FM and CSO results via search (https://www.britannica.com/biography/Florence-Price, https://cso.org/experience/article/17666/florence-prices-symphony-no-1; Britannica fetch itself returned 403) word it "first African American woman composer to have a symphony performed by a major American orchestra". The page wording "first African American woman to have a symphony performed by a major U.S. orchestra" matches Britannica and her work was a symphony, so acceptable; the page names it "Symphony No. 1" (full title Symphony No. 1 in E minor).
+- Joplin: https://en.wikipedia.org/wiki/Scott_Joplin (traditional 1868, Berlin says mid-1867 to January 1868, so "about 1868" is acceptable and the facts page says sources differ; died April 1, 1917; King of Ragtime; Maple Leaf Rag published 1899).
+- Ellington: https://en.wikipedia.org/wiki/Duke_Ellington (April 29, 1899 Washington, D.C.; May 24, 1974; pianist, composer, bandleader; led his orchestra from 1924 through the rest of his life).
+- Fitzgerald: https://en.wikipedia.org/wiki/Ella_Fitzgerald (April 25, 1917 to June 15, 1996; "Lady Ella"; horn-like scat singing).
+- Armstrong: https://en.wikipedia.org/wiki/Louis_Armstrong (born August 4, 1901 believed; he claimed July 4, 1900; New Orleans; died July 6, 1971; trumpet, vocals; Satchmo). The facts page words this honestly ("often said 1900, records point to 1901").
+- Black History Month: https://www.presidency.ucsb.edu/documents/message-the-observance-black-history-month-february-1976 (fetched: Ford's February 10, 1976 message calls on Americans to honor the often-overlooked achievements of Black Americans and to join in tribute to Black History Month, and credits Woodson). The page wording "asked Americans to honor it" is supported and does not overclaim (it does not say Ford created it). Woodson/Negro History Week February 1926: web search results (Smithsonian, Britannica, National Geographic, Library of Virginia).
+- Lunar New Year: web search (timeanddate, Yamaha, Scholastic, National Geographic). Window January 21-February 20 is the common statement (one source says to February 21); drums, cymbals and gongs are standard lion dance instruments. Page wording is acceptable.
+- Groundhog Day: web search (History.com, Hagley, CBS, Time): first official Groundhog Day February 2, 1887 at Gobbler's Knob, Punxsutawney; some historians note earlier 1886 notices; page says "official celebrations date back to 1887", acceptable.
+- Presidents' Day: web search (OPM, govinfo): official name Washington's Birthday (5 U.S.C. 6103), third Monday of February since the 1968 Uniform Monday Holiday Act, so February 15-21. Correct.
+- Heartbeat: web search (Cleveland Clinic, Nature pediatrics): heart rate rises with activity and settles at rest; page prints no numbers. Correct.
+- Jobs: https://www.bls.gov/ooh/entertainment-and-sports/music-directors-and-composers.htm (fetched): composers write and arrange original music; music directors lead orchestras and groups and make musicians blend into one sound. Piano tuner and radio host statements are general and consistent with SOURCES.md.
+SOURCES.md items 1-17 remain accurate; no text change needed.
+
+## Defects found and fixed
+1. Trumpet drawing (Day 4 cards p. 22, Day 4 K-2 sheet p. 20, Day 5 K-2 match p. 24, key p. 42, preview images) looked like a megaphone with a U tube. Redrew it in `gen.py` (mouthpiece, long tube, three valves with finger buttons, flared bell, lower loop); viewed at 300 dpi: clearly a trumpet now. Rebuilt; `--check` and validator OK.
+
+## Notes (not blocking)
+- Quick start says "pencils and crayons are all the days need"; Day 8 plan lists optional scrap paper (or draw circles) and Day 4 a clear space. Harmless.
+- The cover includes a snowflake alongside the heart drum and lantern; it is in the accent color and acceptable for February.
+
+## Viewed
+All 48 pages at 110 dpi one at a time; word search page 25 at 250 dpi; trumpet crops at 300 dpi before and after the fix; the 4 preview-PDF pages (watermarked, correct pages); cover.png (all four edges, nothing clipped) and preview-1..3.png at full size (store line, headlines, black bands, drop shadows and watermarks correct).
+
+**Verdict: APPROVED**

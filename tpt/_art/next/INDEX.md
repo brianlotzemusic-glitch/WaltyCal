@@ -1,6 +1,5 @@
 # Art made for upcoming products (written by the daily art session; builders read it)
 - New Year Music Goals and Practice Tracker: reflection pages, goal setting, 30-day logs -> tpt/_art/next/new-year-music-goals-and-practice-tracker/ (hero)
-- February Music Sub Plans K-5 (monthly sub plan bundle): Black History Month, Valentine's, Lunar New Year -> tpt/_art/next/february-music-sub-plans-k-5/ (hero)
 - March Music Sub Plans K-5 (monthly sub plan bundle): Music In Our Schools Month, Women's History Month, St. Patrick's, spring -> tpt/_art/next/march-music-sub-plans-k-5/ (hero)
 - April Music Sub Plans K-5 (monthly sub plan bundle): Jazz Appreciation Month, Poetry Month, Earth Day, spring -> tpt/_art/next/april-music-sub-plans-k-5/ (hero)
 - Holiday Radio Ident: voice, music bed and sound effects; recording, EQ, compression -> tpt/_art/next/holiday-radio-ident/ (hero)

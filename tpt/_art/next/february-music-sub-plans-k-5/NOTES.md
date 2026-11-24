@@ -1,2 +1,0 @@
-Concept (monthly sub plan bundle, February): heart-shaped hand drum with crossed sticks, paper lantern, snowflake (Valentine's, Lunar New Year, winter; no people, no text).
-Credits: 3 images. Picked variant 2 (clean, nothing fused). Rejected: variant 1 (bow sits oddly across the drum top, left stick clipped by crowding), variant 3 (sticks cross the drum face and bow overlaps the drum rim, crowded).
