@@ -1,11 +1,6 @@
 {
-  "ran_at": "2026-11-24T20:15:23.924Z",
-  "published": [
-    {
-      "item": "080-holiday-radio-ident-logic",
-      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Radio-Ident-Project-Voice-Music-Bed-Ducking-EQ-High-School-18497270"
-    }
-  ],
+  "ran_at": "2026-11-24T23:01:57.021Z",
+  "published": [],
   "failed": [
     {
       "item": "079-april-music-sub-plans-k5",
@@ -15,11 +10,10 @@
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "079-april-music-sub-plans-k5",
-    "080-holiday-radio-ident-logic"
+    "079-april-music-sub-plans-k5"
   ],
   "reupload": {
-    "ran_at": "2026-11-24T21:19:15.425Z",
+    "ran_at": "2026-11-24T23:38:37.471Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
