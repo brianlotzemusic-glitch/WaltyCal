@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-24T12:25:01.548Z",
-  "release_sha256": "7d765d91733965bc755bc94e725fc06ef7efe2b489090c657d07ab8d4ee0b2fd",
-  "count": 1,
-  "error": "browserType.launchPersistentContext: Timeout 180000ms exceeded. Call log:   - <launching> /Users/brianlotze/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forwar"
-}
