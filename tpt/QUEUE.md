@@ -87,7 +87,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Auld Lang Syne Reharmonized: new chords under a public-domain melody in pop, ballad or EDM style ($8; late December)
 - [x] Holiday Mashup: match the tempo and key of two public-domain carols with Smart Tempo and Flex ($9; winter)
 - [x] Holiday Radio Ident: voice, music bed and sound effects; recording, EQ, compression and ducking ($8; winter)
-- [ ] Winter Vocal Chop: record one hummed phrase and chop it into a hook in Quick Sampler ($8; winter)
+- [x] Winter Vocal Chop: record one hummed phrase and chop it into a hook in Quick Sampler ($8; winter)
 - [ ] Bell Ostinato Lab: build a piece from the four-note 1916 Leontovych motif; layering, dynamics, automation; melody only, no lyrics ($8; winter)
 - [ ] Gift Wrap Foley Beat: a found-sound beat from wrapping paper, tape, boxes and bells ($8; winter)
 - [ ] Silent Night Ambient: slow ambient rework with pads, reverb and sidechain; melody 1818 ($8; winter)
