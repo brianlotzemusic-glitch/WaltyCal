@@ -571,10 +571,25 @@ async function publish(item, dryRun) {
       // 19 Nov 2026 (059, 060): the screenshots show TpT HAD taken the file (its name and size card was on the page) but the hidden key
       // was slow to fill; the "Select file" button is gone once a file is attached, so attempt 2 could only fail. If the card shows
       // the file, keep waiting for the key instead of trying the picker.
-      const shown = await page.getByText(path.basename(file), { exact: false }).first().isVisible().catch(() => false);
+      // 25 Nov 2026 (079): the preview card WAS on the page with a progress bar still running (TpT slow), but .first() can hit a hidden
+      // node, so test every match, and also treat the card's "Cancel" link / progress bar as "TpT has the file".
+      const attached = () => page.evaluate((name) => {
+        const vis = (e) => !!(e.offsetParent || e.getClientRects().length);
+        const hit = [...document.querySelectorAll("body *")].some((e) => e.children.length === 0 && (e.textContent || "").includes(name) && vis(e));
+        const busy = [...document.querySelectorAll('[role="progressbar"], progress, [class*="progress" i]')].some(vis);
+        return hit || busy;
+      }, path.basename(file)).catch(() => false);
+      const shown = await attached();
       if (shown) {
         console.log(`${slot}: TpT shows ${file} but the key is not set yet; waiting up to ${minutes} min more`);
         if (await keySet(spec.key, minutes * 60000)) { console.log(`${slot}: key set after the longer wait`); return; }
+      }
+      if (await keySet(spec.key, 1000)) return; // it may have attached while we were deciding
+      if (await attached()) { // never open the picker over a file TpT already holds; give it a last long wait
+        console.log(`${slot}: file still shown by TpT after the wait; waiting ${minutes} more min`);
+        if (await keySet(spec.key, minutes * 60000)) return;
+        await snap(page, shots, `${slug}-${slot}-timeout`).catch(() => {});
+        return fail(`upload of ${file} (${slot}) shown by TpT but its key never filled within ${minutes * 2} min (screenshot tpt/_publish/${slug}-${slot}-timeout.png)`);
       }
       step = `upload ${slot} (${file}), attempt 2 via the file picker`;
       console.log(`${slot}: TpT didn't take the file after 45 s; trying its "Select file" button instead`);
