@@ -1,0 +1,2 @@
+Concept (Logic kit): studio microphone, laptop with an abstract waveform, monitors, headphones, audio interface, pad controller (no screen text).
+Credits: 3 images. Picked variant 1. Art was 40px from the left edge of the 2048 canvas, so it was trimmed and re-centred with a 5% margin (no redraw). Rejected: variant 2 (art 30px from the left and right edges, tight), variant 3 (desk lamp and plant add clutter, 63px margin). Busy by design: use large on the cover only.
