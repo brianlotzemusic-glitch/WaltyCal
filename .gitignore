@@ -5,3 +5,5 @@ node_modules/
 package.json
 package-lock.json
 tpt/_publish/
+# local note written before every TpT Submit (tools/tpt.js); stays on the Mac
+tpt/*/publish-submitted-at

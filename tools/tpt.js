@@ -29,6 +29,10 @@
 //   is ticked instead of filling the price boxes; a missing selector stops with a clear message.
 //   Offline test: node tools/test-tpt-free.js
 //
+//   Duplicate safety (25 Nov 2026, 080 went live twice): every browser command takes ~/.tpt-state/uploader.lock; publish() reads
+//   the logged-in My Products list before filling the form and writes a publish-submitted-at note before clicking Submit (see
+//   takeLock below). Offline test: node tools/test-tpt-dupguard.js
+//
 //   node tools/tpt.js publish-pending
 //                                     publish items the cloud Manager has released (a `release` file), at most 6
 //                                     per run, unless tpt/PAUSED exists; writes tpt/UPLOADER-STATUS.json.
@@ -81,6 +85,90 @@ const HEADLESS = process.env.TPT_HEADLESS === "1";
 // One saved browser profile (cookies = the logged-in session) reused by every run, outside the repo.
 const PROFILE = process.env.TPT_PROFILE_DIR || path.join(require("os").homedir(), ".tpt-profile");
 const MY_PRODUCTS_URL = "https://www.teacherspayteachers.com/My-Products";
+
+// ---- one uploader at a time, and never two Submits for one item (25 Nov 2026) ------------------------------------------------------
+// 080 went live TWICE on 24 Nov (18497270 at 16:03:37 ET, 18497424 at 16:15:29 ET). publish() clicks Submit once per call and
+// publish-pending calls it once per item per run, so the second Submit came from outside that run: the nightly lock
+// (~/.tpt-nightly.lock, taken by tools/tpt-nightly.sh) never covered a manual `node tools/tpt.js publish[-pending]` from another
+// Terminal or Claude session, possibly in another clone; and the public store page that the duplicate guard read lags new listings.
+// Now: (1) every browser command of this file takes ~/.tpt-state/uploader.lock (all clones on this Mac share it); (2) a note
+// ~/.tpt-state/submitted/<slug>.json (and tpt/<slug>/publish-submitted-at, gitignored) is written just BEFORE any Submit click and
+// removed only when the outcome is known; while it exists the item is not submitted again until the logged-in My Products list,
+// read at least 15 minutes after that Submit, shows the title (-> `uploaded`) or does not (-> the note is cleared, the next Submit may
+// go); (3) the duplicate guard before every publish reads My Products, never the public store page. A My Products read that fails
+// or finds no products is "unknown" and stops the publish (nothing is submitted).
+const os = require("os");
+const STATE_DIR = () => process.env.TPT_STATE_DIR || path.join(os.homedir(), ".tpt-state");
+const LOCK_STALE_MS = 6 * 3600 * 1000; // a lock whose process is gone, or older than this, is a crash
+const SUBMIT_SETTLE_MS = 15 * 60 * 1000;
+function pidAlive(pid) { try { process.kill(pid, 0); return true; } catch (e) { return e.code === "EPERM"; } }
+// Takes the lock or returns { held: owner } without taking it. Released when this process exits.
+function takeLock(label, now = Date.now()) {
+  const dir = path.join(STATE_DIR(), "uploader.lock"), own = path.join(dir, "owner.json");
+  fs.mkdirSync(STATE_DIR(), { recursive: true });
+  for (let i = 0; i < 2; i++) {
+    try { fs.mkdirSync(dir); }
+    catch (e) {
+      if (e.code !== "EEXIST") throw e;
+      let o = null; try { o = JSON.parse(fs.readFileSync(own, "utf8")); } catch (e2) { /* being written, or a crash between mkdir and write */ }
+      const age = o ? now - Date.parse(o.at) : now - fs.statSync(dir).mtimeMs;
+      const stale = o ? (!pidAlive(o.pid) || age > LOCK_STALE_MS) : age > 60000;
+      if (!stale) return { held: o || { pid: null, at: null, cmd: "(starting)" } };
+      console.warn(`removing a stale uploader lock (${o ? `pid ${o.pid}, ${o.cmd}, since ${o.at}` : "no owner file"})`);
+      fs.rmSync(dir, { recursive: true, force: true });
+      continue;
+    }
+    fs.writeFileSync(own, JSON.stringify({ pid: process.pid, at: new Date(now).toISOString(), cmd: label, clone: ROOT, host: os.hostname() }) + "\n");
+    process.on("exit", () => { try { if (JSON.parse(fs.readFileSync(own, "utf8")).pid === process.pid) fs.rmSync(dir, { recursive: true, force: true }); } catch (e) { /* gone */ } });
+    return { held: null };
+  }
+  return { held: { pid: null, at: null, cmd: "(lock could not be taken)" } };
+}
+function submittedNotePaths(item) { return [path.join(STATE_DIR(), "submitted", `${path.basename(item)}.json`), path.join(item, "publish-submitted-at")]; }
+function readSubmitted(item) {
+  for (const f of submittedNotePaths(item)) { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { /* none */ } }
+  return null;
+}
+function writeSubmitted(item, title, now = Date.now()) {
+  const note = JSON.stringify({ at: new Date(now).toISOString(), title, release_sha256: releaseSha(item), host: os.hostname(), pid: process.pid, clone: ROOT }, null, 2) + "\n";
+  for (const f of submittedNotePaths(item)) { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, note); }
+}
+function clearSubmitted(item) { for (const f of submittedNotePaths(item)) fs.rmSync(f, { force: true }); }
+// What to do about an earlier Submit. Pure. note: readSubmitted(); found: My Products URL or null; read: did My Products answer?
+//   "none" (no note) | "uploaded" (it is live: write the marker) | "wait" (unknown yet: submit nothing) | "resubmit" (15 min after, not there)
+function submittedDecision(note, read, found, now = Date.now()) {
+  if (read && found) return "uploaded";
+  if (!note) return "none";
+  if (!read) return "wait";
+  const at = Date.parse(note.at);
+  return Number.isFinite(at) && now - at >= SUBMIT_SETTLE_MS ? "resubmit" : "wait";
+}
+// Read-only: every product link on the logged-in My Products list (up to 10 pages). Opens nothing else, clicks nothing.
+async function readMyProductsLinks(page, url = MY_PRODUCTS_URL) {
+  const links = [];
+  for (let p = 1; p <= 10; p++) {
+    await page.goto(p === 1 ? url : `${url}?page=${p}`, { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    if (/\/login/i.test(page.url())) throw new Error("not logged in, or the saved session expired: run `node tools/tpt.js login` and finish logging in in the browser window");
+    const got = await page.evaluate(() => [...document.querySelectorAll("a[href]")].map((a) => ({ href: a.getAttribute("href"), text: (a.innerText || "").replace(/\s+/g, " ").trim().slice(0, 160) }))
+      .filter((l) => /\/Product\/|editNext|\/items/i.test(l.href)));
+    const before = links.length;
+    for (const l of got) if (!links.some((x) => x.href === l.href)) links.push(l);
+    if (links.length === before) break;
+  }
+  return links;
+}
+// { read, url }: read=false when My Products could not be read or showed no products (unknown, never "not live").
+async function findOnMyProducts(page, title, url = MY_PRODUCTS_URL) {
+  try {
+    const links = await readMyProductsLinks(page, url);
+    if (!links.length) return { read: false, url: null, why: "My Products showed no product links" };
+    return { read: true, url: matchMyProducts(title, links), links: links.length };
+  } catch (e) {
+    if (/not logged in/i.test(e.message)) throw e;
+    return { read: false, url: null, why: e.message.split("\n")[0] };
+  }
+}
 
 async function openBrowser() {
   if (!chromium) throw new Error("playwright is not installed here (this command needs the owner's Mac): see tpt/LOCAL-SETUP.md");
@@ -542,6 +630,22 @@ async function publish(item, dryRun) {
   try {
     step = "check login";
     await ensureLoggedIn(page);
+    // Duplicate guard (25 Nov 2026): the logged-in My Products list, never the public store page (it lags new listings), and an
+    // earlier Submit for this item (publish-submitted-at) blocks a new one until My Products has been read 15 minutes after it.
+    if (!dryRun) {
+      step = "duplicate guard (My Products)";
+      const note = readSubmitted(item), mp = await findOnMyProducts(page, it.title);
+      const d = submittedDecision(note, mp.read, mp.url);
+      if (d === "uploaded") {
+        fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} found already on My Products by its exact title (not uploaded again${note ? `; Submit was clicked at ${note.at}` : ""})\n${mp.url}\n`);
+        clearSubmitted(item);
+        console.log(`${slug}: already on My Products at ${mp.url}; marked uploaded and NOT uploading it again.`);
+        return { url: mp.url, already: true };
+      }
+      if (!mp.read) { const e = new Error(`not submitted: duplicate guard could not read My Products (${mp.why}); nothing is submitted while it is unknown`); e.unknown = true; throw e; }
+      if (d === "wait") { const e = new Error(`not submitted: Submit was already clicked for this item at ${note.at} (${note.clone || "?"}, pid ${note.pid}); waiting until My Products has been read ${SUBMIT_SETTLE_MS / 60000} minutes after it`); e.waiting = true; throw e; }
+      if (d === "resubmit") { console.warn(`${slug}: Submit at ${note.at} left nothing on My Products ${Math.round((Date.now() - Date.parse(note.at)) / 60000)} min later (${mp.links} products read); clearing the note and submitting again.`); clearSubmitted(item); }
+    }
     step = "open the listing form";
     await page.goto(F.form_url, { waitUntil: "domcontentloaded" });
     await page.locator(F.title).waitFor({ state: "visible", timeout: 30000 });
@@ -792,31 +896,42 @@ async function publish(item, dryRun) {
     }
 
     step = "submit";
+    // Written BEFORE the click: if anything dies after it, the item is not submitted again blind (see takeLock above).
+    const submittedAt = Date.now();
+    writeSubmitted(item, it.title, submittedAt);
     // 20 Nov 2026 (061, 3.4 MB zip): TpT converts thumbnails and saves in the background after Submit and can take several minutes
     // (the edit form's wait allows 4+). noWaitAfter so a slow navigation never throws out of click(); wait up to 5 min for the page to leave.
     try { await page.locator(F.submit).click({ noWaitAfter: true, timeout: 30000 }); }
     catch (e) { if (!/click action done|navigation/i.test(e.message)) throw e; }
-    let liveFromStore = null;
+    const leftForm = () => { try { return !page.url().includes("/My-Products/New/"); } catch (e) { return false; } };
+    let liveFromList = null;
     try {
       await page.waitForURL((u) => !u.toString().includes("/My-Products/New/"), { timeout: 300000 });
     } catch (e) {
       await snap(page, shots, `${slug}-submit-failed`);
-      // No clear success. The product may still have been created: look for it on the public store page (same title match as the
-      // duplicate guard), up to 4 looks 30 s apart, before declaring failure.
-      for (let look = 0; look < 4 && !liveFromStore; look++) {
-        if (look) await new Promise((ok) => setTimeout(ok, 30000));
-        try { const html = await fetchStoreHtml(); if (html) liveFromStore = liveUrlForTitle(it.title, html); } catch (e2) { /* keep looking */ }
+      // No clear success. The product may still have been created. Look for it on the logged-in My Products list in a SECOND tab (the
+      // form tab is left alone so TpT's save is never cut off) once a minute until 15 minutes after the click. Never Submit again here.
+      let tab = null, last = { read: false, why: "not read yet" };
+      try { tab = await context.newPage(); } catch (e2) { last.why = "could not open a tab: " + e2.message.split("\n")[0]; }
+      while (tab && !liveFromList && !leftForm()) {
+        try { last = await findOnMyProducts(tab, it.title); } catch (e2) { last = { read: false, why: e2.message.split("\n")[0] }; }
+        if (last.url) { liveFromList = last.url; break; }
+        if (Date.now() - submittedAt >= SUBMIT_SETTLE_MS) break;
+        await new Promise((ok) => setTimeout(ok, 60000));
       }
-      if (!liveFromStore) {
+      if (tab) await tab.close().catch(() => {});
+      if (!liveFromList && !leftForm()) {
         const msgs = await page.locator('[role="alert"], [aria-live="assertive"], [class*="error" i]').allInnerTexts().catch(() => []);
-        throw new Error(`still on the form 5 minutes after Submit and the product is not on the store page yet; check My Products on TpT before retrying, it may have been created (TpT can take up to an hour to list it).\n` +
+        throw new Error(`still on the form after Submit and the title is not on My Products ${Math.round((Date.now() - submittedAt) / 60000)} min later (${last.read ? "read OK" : "My Products unreadable: " + last.why}). ` +
+          `The publish-submitted-at note stays: no run submits this item again until My Products, read 15+ min after this Submit, settles it.\n` +
           `TpT says: ${msgs.map((m) => String(m == null ? "" : m).trim()).filter(Boolean).join(" | ").slice(0, 500) || "(nothing)"}\nScreenshot: tpt/_publish/${slug}-submit-failed.png`);
       }
-      console.warn(`Submit gave no answer, but ${it.title} is live on the store page: ${liveFromStore}`);
+      if (liveFromList) console.warn(`Submit gave no answer, but ${it.title} is on My Products: ${liveFromList}`);
     }
     await snap(page, shots, `${slug}-submitted`);
-    const doneUrl = liveFromStore || page.url();
-    fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} published live by tools/tpt.js${liveFromStore ? " (found on the store page after Submit gave no answer)" : ""}\n${doneUrl}\n`);
+    const doneUrl = liveFromList || page.url();
+    fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} published live by tools/tpt.js${liveFromList ? " (found on My Products after Submit gave no answer)" : ""}\n${doneUrl}\n`);
+    clearSubmitted(item);
     console.log(`Published: ${it.title}\nTpT went to ${doneUrl}\nWrote ${path.relative(ROOT, item)}/uploaded`);
     // Verify the PUBLIC page against tpt.json (price, isFree, preview, pages). The item is already live, so a
     // mismatch is recorded (UPLOADER-STATUS.json live_mismatch, `live-mismatch` file) rather than thrown.
@@ -839,7 +954,7 @@ async function publish(item, dryRun) {
     } else console.log(`Verified on the public page: price ${verify.live.price}, isFree ${verify.live.isFree}, preview ${verify.live.previewUrl ? "yes" : "no"}.`);
     return { url: liveUrl, verify };
   } catch (e) {
-    if (step === "submit" || step === "check login") throw e;
+    if (step === "submit" || step === "check login" || e.waiting || e.unknown) throw e;
     await snap(page, shots, `${slug}-failed`).catch(() => {});
     throw new Error(`${dryRun ? "dry run" : "publish"} stopped at step "${step}" (nothing was submitted): ${e.message.split("\n")[0]}\n` +
       `Screenshot: tpt/_publish/${slug}-failed.png\nFile inputs on the page: ${await fileInputs().catch(() => "(unreadable)")}`);
@@ -939,20 +1054,19 @@ async function publishPending() {
     console.warn("WARNING: " + status.warning);
   }
   console.log(items.length ? `Released and waiting: ${status.pending_before.join(", ")}` : "Nothing released to publish.");
-  const storeHtml = items.length ? await fetchStoreHtml() : null;
+  // The duplicate guard is inside publish(): the logged-in My Products list, read before every Submit (25 Nov 2026).
   for (const item of items) {
     const slug = path.basename(item);
+    const note = readSubmitted(item);
+    if (note && submittedDecision(note, true, null) === "wait") {  // too early to settle: don't even open a browser
+      (status.waiting = status.waiting || []).push({ item: slug, submitted_at: note.at, note: "Submit already clicked; settles on My Products 15 min after it" });
+      console.log(`${slug}: Submit was clicked at ${note.at}; not submitting again until My Products settles it (15 min after).`);
+      continue;
+    }
     try {
-      let already = null;
-      if (storeHtml) { try { const t = loadItem(item).title; already = t && liveUrlForTitle(t, storeHtml); } catch (e) { /* the normal checks report it */ } }
-      if (already) {
-        fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} found already live on TpT by its title (not uploaded again)\n${already}\n`);
-        status.published.push({ item: slug, url: already, note: "already live; marker written, nothing uploaded" });
-        console.log(`${slug}: already live at ${already}; marked uploaded and NOT uploading it again.`);
-        continue;
-      }
       const r = await publish(item, false);
-      status.published.push({ item: slug, url: (fs.readFileSync(path.join(item, "uploaded"), "utf8").split("\n")[1] || "").trim() });
+      status.published.push({ item: slug, url: (fs.readFileSync(path.join(item, "uploaded"), "utf8").split("\n")[1] || "").trim(), ...(r && r.already ? { note: "already on My Products; marker written, nothing uploaded" } : {}) });
+      if (r && r.already) continue;
       try { fs.unlinkSync(path.join(item, "publish-failed")); } catch (e) { /* none */ }
       if (r && r.verify && !r.verify.ok) (status.live_mismatch = status.live_mismatch || []).push({ item: slug, url: r.url, problems: r.verify.problems });
     } catch (e) {
@@ -960,6 +1074,8 @@ async function publishPending() {
       status.failed.push({ item: slug, error: msg });
       console.error(`${slug}: ${msg}`);
       if (/not logged in|session expired|login failed/i.test(msg)) { status.needs_login = true; break; }
+      if (e.waiting) { status.failed.pop(); (status.waiting = status.waiting || []).push({ item: slug, note: msg }); continue; }
+      if (e.unknown) continue; // My Products unreadable: reported, not counted against the item
       // Count the failure (a login problem above is not the item's fault and is not counted).
       fs.writeFileSync(path.join(item, "publish-failed"), JSON.stringify({ at: new Date().toISOString(), release_sha256: releaseSha(item), count: publishFails(item) + 1, error: msg }, null, 2) + "\n");
     }
@@ -1832,9 +1948,18 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { takeLock, readSubmitted, writeSubmitted, clearSubmitted, submittedDecision, readMyProductsLinks, findOnMyProducts, SUBMIT_SETTLE_MS, matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
+// Every command that opens the TpT browser profile takes the uploader lock (only offline dry-run reupload does not).
+const LOCKED = new Set(["login", "discover", "publish", "publish-pending", "reupload", "reupload-pending", "discover-edit"]);
+if (require.main === module && LOCKED.has(cmd) && !(cmd === "reupload" && dryRun)) {
+  const { held } = takeLock(`${cmd}${arg && !arg.startsWith("--") ? " " + arg : ""}`);
+  if (held) {
+    console.log(`another tools/tpt.js run holds the uploader lock (pid ${held.pid}, "${held.cmd}", since ${held.at}${held.clone ? ", " + held.clone : ""}); doing nothing.`);
+    process.exit(/-pending$/.test(cmd) ? 0 : 1);
+  }
+}
 if (require.main === module)
 (cmd === "login" ? loginCmd() : cmd === "discover" ? discover() : cmd === "publish" ? publish(arg, dryRun)
   : cmd === "publish-pending" ? publishPending()
