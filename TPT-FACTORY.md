@@ -243,8 +243,14 @@ Uploads lag whenever the Mac is closed or off. That is expected: don't hold buil
 repo still said "waiting". So at the start of each shift run `python3 tools/tpt-live-check.py` (reads TpT's public store page,
 needs no login). Every item it prints as `LIVE` is on TpT: count it as uploaded for bundle conditions and counts. **Never write
 an `uploaded` file yourself**: the Mac owns those files, and one created in both places makes the Mac's next `git pull` fail.
-`tools/tpt.js` also checks the store page before each upload and skips anything already live, so a lost marker can't cause a
-duplicate listing.
+`tools/tpt.js` also checks the logged-in My Products list before each upload and skips anything already there, so a lost marker can't
+cause a duplicate listing (25 Nov 2026, after 080 went live twice: the public store page lags new listings, so it is no longer used for
+this). Two more guards since then: every browser command of `tools/tpt.js` takes `~/.tpt-state/uploader.lock` (a manual `publish` or
+`publish-pending` from another Terminal, Claude session or clone waits its turn, exit "holds the uploader lock"); and a note
+`~/.tpt-state/submitted/<slug>.json` (copy `tpt/<slug>/publish-submitted-at`, not committed) is written before every Submit click and
+removed only when the outcome is known. While it exists the item is never submitted again until My Products, read 15+ minutes after
+that Submit, shows the title (-> `uploaded`) or not (-> next Submit allowed). UPLOADER-STATUS.json `waiting` lists such items.
+Offline test: `node tools/test-tpt-dupguard.js`.
 
 At the start of each shift read `tpt/UPLOADER-STATUS.json` and act only on these:
 - `needs_login` true → push the owner once: "TpT login expired. On your Mac run: source ~/.tpt-env && node tools/tpt.js login, then click Log in."
