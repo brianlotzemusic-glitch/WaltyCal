@@ -1,2 +1,0 @@
-Concept (monthly sub plan bundle, May): flower bouquet with ribbon, folding paper fan, small drum, sparkles (Mother's Day, spring, end of year, AAPI Heritage Month: generic flowers and fan, no flags, no people, no text).
-Credits: 3 images. Picked variant 1 (cleanest overlaps, margins 70px+). Rejected: variant 2 (bouquet leaf 34px from the left edge, crowded centre), variant 3 (drum tucked behind the bow, fan cropped by the bouquet).
