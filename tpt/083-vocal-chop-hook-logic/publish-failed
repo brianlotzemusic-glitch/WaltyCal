@@ -1,0 +1,6 @@
+{
+  "at": "2026-11-25T23:02:05.658Z",
+  "release_sha256": "19f2f1f122b60b17a38cd04e1ffe290b2943ee01da0b99c41fbee6e58e06168f",
+  "count": 1,
+  "error": "page.goto: Timeout 30000ms exceeded. Call log:   - navigating to \"https://www.teacherspayteachers.com/My-Products\", waiting until \"domcontentloaded\""
+}
