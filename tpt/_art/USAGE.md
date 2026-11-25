@@ -29,3 +29,4 @@
 2026-11-24 | 079 | hero.png (april-music-sub-plans-k-5)
 2026-11-24 | 080 | hero.png (holiday-radio-ident)
 2026-11-25 | 081 | hero.png (may-music-sub-plans-k-5)
+2026-11-25 | 082 | hero.png (june-music-sub-plans-k-5)
