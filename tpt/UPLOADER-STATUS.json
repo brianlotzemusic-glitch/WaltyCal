@@ -1,19 +1,12 @@
 {
-  "ran_at": "2026-11-24T23:01:57.021Z",
+  "ran_at": "2026-11-25T01:30:05.350Z",
   "published": [],
-  "failed": [
-    {
-      "item": "079-april-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload preview (april-music-sub-plans-k5-PREVIEW.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: preview: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/079-april-music-sub-plans-k5-preview-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=-"
-    }
-  ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "079-april-music-sub-plans-k5"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-24T23:38:37.471Z",
+    "ran_at": "2026-11-25T01:30:05.513Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -29,5 +22,8 @@
     ],
     "unverified": []
   },
-  "ok": false
+  "held": [
+    "079-april-music-sub-plans-k5"
+  ],
+  "ok": true
 }
