@@ -1,3 +1,6 @@
 # Art made for upcoming products (written by the daily art session; builders read it)
-- New Year Music Goals and Practice Tracker: reflection pages, goal setting, 30-day logs -> tpt/_art/next/new-year-music-goals-and-practice-tracker/ (hero)
 - September Music Sub Plans K-5 (monthly sub plan bundle): Hispanic Heritage Month, Labor Day, fall begins -> tpt/_art/next/september-music-sub-plans-k-5/ (hero)
+- October Music Sub Plans K-5 (monthly sub plan bundle): Halloween, Day of the Dead, fall harvest -> tpt/_art/next/october-music-sub-plans-k-5/ (hero)
+- November Music Sub Plans K-5 (monthly sub plan bundle): Veterans Day, Thanksgiving, Native American Heritage Month -> tpt/_art/next/november-music-sub-plans-k-5/ (hero)
+- August Music Sub Plans K-5 (monthly sub plan bundle): Back to school -> tpt/_art/next/august-music-sub-plans-k-5/ (hero)
+- Bell Ostinato Lab: build a piece from the four-note 1916 Leontovych motif; layering -> tpt/_art/next/bell-ostinato-lab/ (hero)
