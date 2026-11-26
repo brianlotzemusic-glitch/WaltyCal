@@ -33,3 +33,5 @@
 2026-11-25 | 083 | hero.png (winter-vocal-chop)
 2026-11-26 | 084 | hero.png (september-music-sub-plans-k-5)
 2026-11-26 | 085 | hero.png (october-music-sub-plans-k-5)
+2026-11-26 | 086 | hero.png (november-music-sub-plans-k-5)
+2026-11-26 | 087 | hero.png (bell-ostinato-lab)
