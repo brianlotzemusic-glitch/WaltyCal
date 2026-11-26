@@ -1,0 +1,39 @@
+{
+  "price": "8.00",
+  "license_price": "8.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "9th-grade",
+    "10th-grade",
+    "11th-grade",
+    "12th-grade"
+  ],
+  "subjects": [
+    "Music",
+    "Music Composition",
+    "Computer Science - Technology"
+  ],
+  "tags": [
+    "Winter",
+    "Project-based Learning",
+    "Projects",
+    "Activities"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 42,
+  "zip_contents": [
+    "bell-ostinato-lab.pdf",
+    "bell-ostinato-lab-intro-deck.pptx",
+    "bell-ostinato-lab-intro-deck.pdf"
+  ],
+  "files": {
+    "product": "bell-ostinato-lab.zip",
+    "preview": "bell-ostinato-lab-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}
