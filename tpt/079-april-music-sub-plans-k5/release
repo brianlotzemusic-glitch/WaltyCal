@@ -1,1 +1,1 @@
-2026-11-24 released
+2026-11-26 released; re-armed after the 24 Nov preview-upload failure (TpT slow, not a bad file: tools/tpt.js upload() now waits on a file TpT already holds instead of opening the picker)
