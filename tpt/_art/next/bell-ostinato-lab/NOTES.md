@@ -1,0 +1,2 @@
+Concept (Logic kit): row of five handbells, laptop with an abstract waveform, headphones on a stand, audio interface, three stacked layer blocks (layering a bell ostinato).
+Credits: 3 images. Picked variant 3 (clean overlaps, 71px+ margins, laptop is the clear focus). Rejected: variant 1 (microphone stand fused to the headphones, crowded), variant 2 (mic arm crosses the speaker, crowded). Bell clappers look like small dots: keep this art small on the cover or crop to the laptop and bells.

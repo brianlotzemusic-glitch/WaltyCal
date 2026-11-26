@@ -1,0 +1,2 @@
+Concept (monthly sub plan bundle, October): friendly smiling pumpkin, marigold flowers, autumn leaves, small drum (Halloween not scary, Day of the Dead shown only through marigolds, fall harvest; no skulls, no text).
+Credits: 3 images. Picked variant 1 (clean overlaps, margins 79px+). Rejected: variant 2 (pumpkin leaf and drum stick near the edges, 28px left margin), variant 3 (33px left margin, flowers crowd the pumpkin).

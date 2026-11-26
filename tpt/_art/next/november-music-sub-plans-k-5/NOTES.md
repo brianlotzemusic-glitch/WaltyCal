@@ -1,0 +1,2 @@
+Concept (monthly sub plan bundle, November): cornucopia with apples, pears and grapes, autumn leaves, acorns, small drum (Thanksgiving, Veterans Day and Native American Heritage Month handled in the text; no people, no costume symbols).
+Credits: 3 images. Picked variant 3 (margins 65px+, clean). Rejected: variant 1 (sticks lying on the drum look fused, 43px left margin), variant 2 (grape bunch fused with the pear, 39px left margin).
