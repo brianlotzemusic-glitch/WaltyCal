@@ -31,3 +31,4 @@
 2026-11-25 | 081 | hero.png (may-music-sub-plans-k-5)
 2026-11-25 | 082 | hero.png (june-music-sub-plans-k-5)
 2026-11-25 | 083 | hero.png (winter-vocal-chop)
+2026-11-26 | 084 | hero.png (september-music-sub-plans-k-5)
