@@ -1,40 +1,34 @@
 {
-  "ran_at": "2026-11-27T17:15:32.204Z",
-  "published": [
-    {
-      "item": "083-vocal-chop-hook-logic",
-      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Vocal-Chop-Project-Quick-Sampler-Slices-Hook-High-School-18530555"
-    },
-    {
-      "item": "086-november-music-sub-plans-k5",
-      "url": "https://www.teacherspayteachers.com/Product/November-Music-Sub-Plans-K-5-Gratitude-Veterans-Day-Fall-No-Prep-No-Tech-18530952"
-    }
-  ],
+  "ran_at": "2026-11-27T20:19:01.078Z",
+  "published": [],
   "failed": [
     {
-      "item": "079-april-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload product (april-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/079-april-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden"
-    },
-    {
       "item": "084-september-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload preview (september-music-sub-plans-k5-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of september-music-sub-plans-k5-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/084-september-music-sub-plans-k5-preview-timeout.png) Screenshot: tpt/_publish/084-september-music-sub-plans-k5-failed.png File inputs on "
+      "error": "publish stopped at step \"upload product (september-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/084-september-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=-"
     },
     {
       "item": "088-august-music-sub-plans-k5",
-      "error": "not submitted: duplicate guard could not read My Products (page.goto: Timeout 30000ms exceeded.); nothing is submitted while it is unknown"
+      "error": "publish stopped at step \"upload product (august-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/088-august-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidd"
+    },
+    {
+      "item": "089-july-music-sub-plans-k5",
+      "error": "publish stopped at step \"upload product (july-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/089-july-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden),"
+    },
+    {
+      "item": "090-found-sound-foley-beat-logic",
+      "error": "publish stopped at step \"upload product (found-sound-foley-beat.zip), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/090-found-sound-foley-beat-logic-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidd"
     }
   ],
   "needs_login": false,
   "paused": false,
   "pending_before": [
-    "079-april-music-sub-plans-k5",
-    "083-vocal-chop-hook-logic",
     "084-september-music-sub-plans-k5",
-    "086-november-music-sub-plans-k5",
-    "088-august-music-sub-plans-k5"
+    "088-august-music-sub-plans-k5",
+    "089-july-music-sub-plans-k5",
+    "090-found-sound-foley-beat-logic"
   ],
   "reupload": {
-    "ran_at": "2026-11-27T18:13:21.586Z",
+    "ran_at": "2026-11-27T21:38:47.814Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -50,29 +44,8 @@
     ],
     "unverified": []
   },
-  "duplicate_check": "184 product links read, 3 duplicate title(s)",
-  "duplicates": [
-    {
-      "slug": "may-music-sub-plans-k-5-aapi-heritage-instruments-spring-no-prep-no-tech",
-      "ids": [
-        "18518940",
-        "18519136"
-      ]
-    },
-    {
-      "slug": "logic-pro-radio-ident-project-voice-music-bed-ducking-eq-high-school",
-      "ids": [
-        "18497270",
-        "18497424"
-      ]
-    },
-    {
-      "slug": "music-listening-response-readings-around-the-world-music-edition-gr-3-6",
-      "ids": [
-        "18445741",
-        "18445822"
-      ]
-    }
+  "held": [
+    "079-april-music-sub-plans-k5"
   ],
   "ok": false
 }
