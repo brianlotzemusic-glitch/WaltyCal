@@ -707,6 +707,64 @@ async function chipsOf(input) {
   return (await control.innerText()).split("\n").map((t) => t.trim().toLowerCase()).filter(Boolean);
 }
 
+// ---- TpT's own upload error on a file card (27 Nov 2026: 083 preview stuck at 99%, 086 thumbnail 4 at 90%) --------------------------
+// TpT shows "Error during file upload, please try again" under the card's progress bar and never fills the key; upload() used to wait
+// the whole step limit for nothing. Now the wait polls for that text on THIS file's card; the first time it shows, the card's own
+// Cancel is clicked and the same file is attached again (at most once per file); a second error ends the wait at once.
+const UPLOAD_ERROR_RE = /error during file upload|upload failed|please try again/i;
+// In the page: the smallest visible block that names the file (or holds the input) AND shows the error. Marks its Cancel control with
+// data-tpt-cancel="1". Returns { error, cancel } or null. Hidden error templates (TpT keeps some in the page) never count.
+async function uploadErrorCard(page, fileName, inputSel) {
+  return page.evaluate(({ name, sel, src }) => {
+    const re = new RegExp(src, "i");
+    const vis = (e) => !!(e && (e.offsetParent || e.getClientRects().length)) && getComputedStyle(e).visibility !== "hidden";
+    document.querySelectorAll("[data-tpt-cancel]").forEach((e) => e.removeAttribute("data-tpt-cancel"));
+    const starts = [...document.querySelectorAll("body *")].filter((e) => e.children.length === 0 && (e.textContent || "").includes(name) && vis(e));
+    const input = sel && document.querySelector(sel); if (input) starts.push(input);
+    for (const st of starts) {
+      let card = st;
+      for (let up = 0; up < 8 && card && card !== document.body; up++, card = card.parentElement) {
+        if (card.querySelectorAll('input[type="file"]').length > 1) break; // past this file's box: another slot's card
+        const errEl = [...card.querySelectorAll("*")].find((e) => e.children.length === 0 && vis(e) && re.test(e.textContent || ""));
+        if (!errEl) continue;
+        const cancel = [...card.querySelectorAll('button, a, [role="button"], span, div')].find((e) => vis(e) && (/^\s*(cancel|remove|try again)\s*$/i.test(e.textContent || "") || /^(cancel|remove)/i.test(e.getAttribute("aria-label") || "")));
+        if (cancel) cancel.setAttribute("data-tpt-cancel", "1");
+        return { error: (errEl.textContent || "").replace(/\s+/g, " ").trim().slice(0, 200), cancel: !!cancel };
+      }
+    }
+    return null;
+  }, { name: fileName, sel: inputSel || null, src: UPLOAD_ERROR_RE.source }).catch(() => null);
+}
+// A wait for one file's key that also watches for TpT's upload error. wait(ms) -> true (key set) | false (time up, or a second error).
+// st.errors lists what TpT said; st.retried is true once the one re-attach happened.
+function uploadWaiter({ page, keySel, inputSel, fp, fileName, pollMs = 5000, log = console.log }) {
+  const st = { retried: false, errors: [], gaveUp: false };
+  const keyNow = (ms) => page.waitForFunction((s) => { const el = document.querySelector(s); return el && el.value; }, keySel, { timeout: Math.max(1, ms) }).then(() => true, () => false);
+  const wait = async (ms) => {
+    if (st.gaveUp) return false;
+    let end = Date.now() + ms;
+    for (;;) {
+      if (await keyNow(Math.min(pollMs, end - Date.now()))) return true;
+      const err = await uploadErrorCard(page, fileName, inputSel);
+      if (err) {
+        st.errors.push(err.error);
+        if (st.retried || !err.cancel) { st.gaveUp = true; log(`${fileName}: TpT says "${err.error}"${st.retried ? " again after the re-attach" : " and the card has no Cancel"}; giving up on this file`); return false; }
+        st.retried = true;
+        log(`${fileName}: TpT says "${err.error}"; clicking the card's Cancel and attaching the file once more`);
+        try {
+          await page.locator('[data-tpt-cancel="1"]').first().click({ timeout: 10000 });
+          await page.waitForTimeout(1500);
+          await page.locator(inputSel).setInputFiles(fp, { timeout: 30000 });
+        } catch (e) { st.gaveUp = true; log(`${fileName}: the re-attach failed (${e.message.split("\n")[0]})`); return false; }
+        end = Date.now() + ms; // a fresh full wait for the second try
+        continue;
+      }
+      if (Date.now() >= end) return false;
+    }
+  };
+  return { wait, st };
+}
+
 async function publish(item, dryRun) {
   if (!item) throw new Error("usage: node tools/tpt.js publish tpt/NNN-slug [--dry-run]");
   item = path.resolve(item);
@@ -769,7 +827,15 @@ async function publish(item, dryRun) {
         return fail(`${slot}: no upload box matching ${spec.input} (screenshot tpt/_publish/${slug}-${slot}-box.png). File inputs on the page: ${await fileInputs()}`);
       }
       await input.setInputFiles(fp, { timeout: 30000 });
-      if (await keySet(spec.key, 45000)) return;
+      const W = uploadWaiter({ page, keySel: spec.key, inputSel: spec.input, fp, fileName: path.basename(file) });
+      const tpTError = async () => {
+        if (!W.st.gaveUp) return false;
+        await snap(page, shots, `${slug}-${slot}-upload-error`).catch(() => {});
+        fail(`upload of ${file} (${slot}): TpT said "${W.st.errors[W.st.errors.length - 1]}"${W.st.retried ? " again after Cancel and one re-attach" : ""} (screenshot tpt/_publish/${slug}-${slot}-upload-error.png)`);
+        return true;
+      };
+      if (await W.wait(45000)) return;
+      if (await tpTError()) return;
       // 19 Nov 2026 (059, 060): the screenshots show TpT HAD taken the file (its name and size card was on the page) but the hidden key
       // was slow to fill; the "Select file" button is gone once a file is attached, so attempt 2 could only fail. If the card shows
       // the file, keep waiting for the key instead of trying the picker.
@@ -786,12 +852,14 @@ async function publish(item, dryRun) {
       const shown = await attached();
       if (shown) {
         console.log(`${slot}: TpT shows ${file} but the key is not set yet; waiting up to ${minutes} min more`);
-        if (await keySet(spec.key, minutes * 60000)) { console.log(`${slot}: key set after the longer wait`); return; }
+        if (await W.wait(minutes * 60000)) { console.log(`${slot}: key set after the longer wait`); return; }
+        if (await tpTError()) return;
       }
       if (await keySet(spec.key, 1000)) return; // it may have attached while we were deciding
       if (await attached()) { // never open the picker over a file TpT already holds; give it a last long wait
         console.log(`${slot}: file still shown by TpT after the wait; waiting ${minutes} more min`);
-        if (await keySet(spec.key, minutes * 60000)) return;
+        if (await W.wait(minutes * 60000)) return;
+        if (await tpTError()) return;
         await snap(page, shots, `${slug}-${slot}-timeout`).catch(() => {});
         return fail(`upload of ${file} (${slot}) shown by TpT but its key never filled within ${minutes * 2} min (screenshot tpt/_publish/${slug}-${slot}-timeout.png)`);
       }
@@ -2093,7 +2161,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { takeLock, readUnverified, writeUnverified, clearUnverified, unverifiedBlocks, publishLookDue, checkPublishUnverified, lookForUnverified, productIdFrom, productUrlFor, submitNewItem, duplicateTitles, duplicateCheck, readMyProductsLinks, findOnMyProducts, matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { uploadErrorCard, uploadWaiter, takeLock, readUnverified, writeUnverified, clearUnverified, unverifiedBlocks, publishLookDue, checkPublishUnverified, lookForUnverified, productIdFrom, productUrlFor, submitNewItem, duplicateTitles, duplicateCheck, readMyProductsLinks, findOnMyProducts, matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 // Every command that opens the TpT browser profile takes the uploader lock (only offline dry-run reupload does not).
