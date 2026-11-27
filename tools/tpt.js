@@ -782,6 +782,20 @@ function uploadWaiter({ page, keySel, inputSel, fp, fileName, pollMs = 5000, log
   return { wait, st };
 }
 
+// Runs the form fill; if it failed because a file box was dead (dead() names the slot), loads a blank page and runs the WHOLE fill once
+// more on a fresh form. Any other failure, a dry run, or a second dead box: the error goes up (nothing was submitted). Pre-Submit only.
+async function fillWithFreshRetry({ page, fill, dead, reset, dryRun, onRetry = async () => {} }) {
+  try { return await fill(); }
+  catch (e) {
+    const slot = dead();
+    if (!slot || dryRun) throw e;
+    await onRetry(slot);
+    reset();
+    await page.goto("about:blank", { timeout: 10000 }).catch(() => {});
+    return await fill();
+  }
+}
+
 async function publish(item, dryRun) {
   if (!item) throw new Error("usage: node tools/tpt.js publish tpt/NNN-slug [--dry-run]");
   item = path.resolve(item);
@@ -798,6 +812,20 @@ async function publish(item, dryRun) {
   const fileInputs = () => page.evaluate(() => [...document.querySelectorAll('input[type="file"]')]
     .map((e) => `#${e.id || "-"} name=${e.name || "-"}${e.offsetParent ? "" : " (hidden)"}`).join(", ") || "(none)");
   const { context, page } = await openBrowser();
+  // 27 Nov 2026 (079, 084, 088, 089, 090): the form loaded but its file box ignored the file AND its Select file button did nothing, as
+  // if the page's scripts were not live. The page's console errors, pageerror events and failed request URLs (no query strings, no
+  // headers, no cookies) go to tpt/_publish/<slug>-console.json when that happens or the publish fails.
+  const cap = startCapture(page);
+  const writeConsole = (why) => {
+    try {
+      // the repo is public: no query strings, no e-mail addresses (entries are already redact()ed for tokens and cookies)
+      const strip = (l) => redact(l).replace(/(https?:\/\/[^\s?#]+)[?#]\S*/g, "$1").replace(/[\w.+-]+@[\w-]+\.[\w.-]+/g, "[email]");
+      fs.mkdirSync(shots, { recursive: true });
+      fs.writeFileSync(path.join(shots, `${slug}-console.json`), JSON.stringify({ at: new Date().toISOString(), why, step,
+        console: cap.log.console.map(strip).slice(-60), failed_requests: cap.log.failed.map(strip).slice(-40) }, null, 2) + "\n");
+    } catch (e) { /* diagnostics only */ }
+  };
+  let deadPicker = null; // the slot whose box ignored the file and whose Select file button opened no picker
   try {
     step = "check login";
     await ensureLoggedIn(page);
@@ -819,8 +847,18 @@ async function publish(item, dryRun) {
       if (!mp.read) { const e = new Error(`not submitted: duplicate guard could not read My Products (${mp.why}); nothing is submitted while it is unknown`); e.unknown = true; throw e; }
       if (rec) { console.warn(`${slug}: the cloud rewrote \`release\` after the final look (absent 3 h after the Submit at ${rec.submitted_at}); one new Submit is allowed.`); clearUnverified(item); }
     }
+    // The whole form fill, from loading the form to the read-back. Run again ONCE on a fresh page when a file box ignored its file and
+    // its Select file button opened no picker (deadPicker); nothing has been submitted at that point. Never after a Submit click.
+    const settle = async () => {
+      await page.waitForLoadState("networkidle", { timeout: 20000 }).catch(() => {});
+      await page.waitForFunction(() => document.readyState === "complete", null, { timeout: 20000 }).catch(() => {});
+    };
+    let settled = false;
+    const fillForm = async () => {
+      settled = false;
     step = "open the listing form";
     await gotoRetry(page, F.form_url, () => page.locator(F.title).waitFor({ state: "visible", timeout: GOTO_MS }));
+    await settle();
 
     step = "title";
     await page.locator(F.title).fill(it.title || "");
@@ -842,6 +880,7 @@ async function publish(item, dryRun) {
         await snap(page, shots, `${slug}-${slot}-box`).catch(() => {});
         return fail(`${slot}: no upload box matching ${spec.input} (screenshot tpt/_publish/${slug}-${slot}-box.png). File inputs on the page: ${await fileInputs()}`);
       }
+      if (!settled) { await settle(); settled = true; } // never hand the first file to a form whose scripts are still loading
       await input.setInputFiles(fp, { timeout: 30000 });
       const W = uploadWaiter({ page, keySel: spec.key, inputSel: spec.input, fp, fileName: path.basename(file) });
       const tpTError = async () => {
@@ -887,6 +926,7 @@ async function publish(item, dryRun) {
         await chooser.setFiles(fp);
       } catch (e) {
         await snap(page, shots, `${slug}-${slot}-picker`).catch(() => {});
+        if (!(await keySet(spec.key, 1000))) deadPicker = slot;
         return fail(`${slot}: TpT ignored the file, and its "Select file" button didn't open a file picker (screenshot tpt/_publish/${slug}-${slot}-picker.png). File inputs on the page: ${await fileInputs()}`);
       }
       if (await keySet(spec.key, minutes * 60000)) { console.log(`${slot}: uploaded on attempt 2`); return; }
@@ -1072,6 +1112,13 @@ async function publish(item, dryRun) {
       }
     }
 
+    };
+    await fillWithFreshRetry({ page, fill: fillForm, dead: () => deadPicker, reset: () => { deadPicker = null; }, dryRun,
+      onRetry: async (slot) => {
+        writeConsole(`${slot}: TpT ignored the file and its Select file button opened no picker; reloading the form once`);
+        console.warn(`${slug}: the ${slot} box ignored the file and its Select file button did nothing; loading a fresh form and filling it once more (nothing was submitted)`);
+        await snap(page, shots, `${slug}-dead-form`).catch(() => {});
+      } });
     await snap(page, shots, `${slug}-filled`);
     if (dryRun) {
       console.log(problems.length ? "DRY RUN: problems to fix before publishing:\n- " + problems.join("\n- ") : "DRY RUN: every field filled with no problems.");
@@ -1079,6 +1126,7 @@ async function publish(item, dryRun) {
       return;
     }
 
+    cap.stop();
     step = "submit";
     // ONE click, ONE save request: submitNewItem() blocks any repeat of the save that TpT's page sends by itself, waits up to 25 min
     // for TpT (it saves in the background), and reads the new product id from TpT's answers. The record is written BEFORE the click.
@@ -1125,6 +1173,7 @@ async function publish(item, dryRun) {
     return { url: liveUrl, verify };
   } catch (e) {
     if (step === "submit" || step === "check login" || e.unverified || e.unknown) throw e;
+    writeConsole(e.message.split("\n")[0]);
     await snap(page, shots, `${slug}-failed`).catch(() => {});
     throw new Error(`${dryRun ? "dry run" : "publish"} stopped at step "${step}" (nothing was submitted): ${e.message.split("\n")[0]}\n` +
       `Screenshot: tpt/_publish/${slug}-failed.png\nFile inputs on the page: ${await fileInputs().catch(() => "(unreadable)")}`);
@@ -2177,7 +2226,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { gotoRetry, uploadErrorCard, uploadWaiter, takeLock, readUnverified, writeUnverified, clearUnverified, unverifiedBlocks, publishLookDue, checkPublishUnverified, lookForUnverified, productIdFrom, productUrlFor, submitNewItem, duplicateTitles, duplicateCheck, readMyProductsLinks, findOnMyProducts, matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { fillWithFreshRetry, gotoRetry, uploadErrorCard, uploadWaiter, takeLock, readUnverified, writeUnverified, clearUnverified, unverifiedBlocks, publishLookDue, checkPublishUnverified, lookForUnverified, productIdFrom, productUrlFor, submitNewItem, duplicateTitles, duplicateCheck, readMyProductsLinks, findOnMyProducts, matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 // Every command that opens the TpT browser profile takes the uploader lock (only offline dry-run reupload does not).
