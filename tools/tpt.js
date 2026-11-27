@@ -29,9 +29,9 @@
 //   is ticked instead of filling the price boxes; a missing selector stops with a clear message.
 //   Offline test: node tools/test-tpt-free.js
 //
-//   Duplicate safety (25 Nov 2026, 080 went live twice): every browser command takes ~/.tpt-state/uploader.lock; publish() reads
-//   the logged-in My Products list before filling the form and writes a publish-submitted-at note before clicking Submit (see
-//   takeLock below). Offline test: node tools/test-tpt-dupguard.js
+//   Duplicate safety (25 + 27 Nov 2026, 064/080/081 went live twice): the uploader lock, ONE save request per Submit click,
+//   `publish-unverified` (never a second Submit), the My Products + store guard, and `node tools/tpt.js duplicates` (read-only: lists
+//   titles that are on My Products twice; run after every publishing run). See takeLock below. Offline test: node tools/test-tpt-dupguard.js
 //
 //   node tools/tpt.js publish-pending
 //                                     publish items the cloud Manager has released (a `release` file), at most 6
@@ -86,21 +86,21 @@ const HEADLESS = process.env.TPT_HEADLESS === "1";
 const PROFILE = process.env.TPT_PROFILE_DIR || path.join(require("os").homedir(), ".tpt-profile");
 const MY_PRODUCTS_URL = "https://www.teacherspayteachers.com/My-Products";
 
-// ---- one uploader at a time, and never two Submits for one item (25 Nov 2026) ------------------------------------------------------
-// 080 went live TWICE on 24 Nov (18497270 at 16:03:37 ET, 18497424 at 16:15:29 ET). publish() clicks Submit once per call and
-// publish-pending calls it once per item per run, so the second Submit came from outside that run: the nightly lock
-// (~/.tpt-nightly.lock, taken by tools/tpt-nightly.sh) never covered a manual `node tools/tpt.js publish[-pending]` from another
-// Terminal or Claude session, possibly in another clone; and the public store page that the duplicate guard read lags new listings.
-// Now: (1) every browser command of this file takes ~/.tpt-state/uploader.lock (all clones on this Mac share it); (2) a note
-// ~/.tpt-state/submitted/<slug>.json (and tpt/<slug>/publish-submitted-at, gitignored) is written just BEFORE any Submit click and
-// removed only when the outcome is known; while it exists the item is not submitted again until the logged-in My Products list,
-// read at least 15 minutes after that Submit, shows the title (-> `uploaded`) or does not (-> the note is cleared, the next Submit may
-// go); (3) the duplicate guard before every publish reads My Products, never the public store page. A My Products read that fails
-// or finds no products is "unknown" and stops the publish (nothing is submitted).
+// ---- one uploader at a time, and never two Submits for one item (25 + 27 Nov 2026) ------------------------------------------------
+// Duplicates on TpT: 064 (20 Nov, 9 min apart), 080 (24 Nov, 12 min), 081 (26 Nov, 26 min, AFTER the 25 Nov fix). 081's run clicked
+// Submit once: one publish() call (one outcome in its status, the lock held), no earlier Submit for 081 (every earlier run stopped at
+// the guard), so the 15-minute resubmit branch never ran. Both copies came from ONE click: the second was sent by the browser page
+// itself (TpT's front end re-sending a save that hung), and the run then found the first copy on My Products 13 s after the second.
+// My Products and the store page also lag new listings by 25+ min.
+// Now: (1) every browser command takes ~/.tpt-state/uploader.lock (all clones; stale only when its process is gone, or after 24 h);
+// (2) submitNewItem() lets exactly ONE save request through after the click and aborts any repeat of it, waits up to 25 min and reads
+// the new product id from TpT's answers; (3) a Submit that did not clearly fail leaves `publish-unverified` and is NEVER followed by
+// another Submit from this tool (looks at 70 min and 3 h on My Products and the store page; absent at 3 h -> the owner is told, and
+// only a rewritten `release` allows one new Submit); (4) the guard before every publish reads My Products and the store page; (5) after
+// a run that submitted anything, My Products is read once for duplicate titles (status `duplicates`, Mac notification).
 const os = require("os");
 const STATE_DIR = () => process.env.TPT_STATE_DIR || path.join(os.homedir(), ".tpt-state");
-const LOCK_STALE_MS = 6 * 3600 * 1000; // a lock whose process is gone, or older than this, is a crash
-const SUBMIT_SETTLE_MS = 15 * 60 * 1000;
+const LOCK_STALE_MS = 24 * 3600 * 1000; // a lock whose process is gone, or older than this, is a crash (26 Nov: one run took 7 h 20 min)
 function pidAlive(pid) { try { process.kill(pid, 0); return true; } catch (e) { return e.code === "EPERM"; } }
 // Takes the lock or returns { held: owner } without taking it. Released when this process exits.
 function takeLock(label, now = Date.now()) {
@@ -124,24 +124,120 @@ function takeLock(label, now = Date.now()) {
   }
   return { held: { pid: null, at: null, cmd: "(lock could not be taken)" } };
 }
-function submittedNotePaths(item) { return [path.join(STATE_DIR(), "submitted", `${path.basename(item)}.json`), path.join(item, "publish-submitted-at")]; }
-function readSubmitted(item) {
-  for (const f of submittedNotePaths(item)) { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { /* none */ } }
-  return null;
+// ---- publish-unverified (27 Nov 2026, 081 went live twice AFTER the 15-minute rule) -------------------------------------------------
+// A Submit that did not clearly fail is never followed by another Submit for that item. `tpt/<slug>/publish-unverified` (JSON, owned by
+// the Mac, committed by tools/tpt-nightly.sh; copy in ~/.tpt-state/submitted/<slug>.json for other clones) is written BEFORE the click
+// and removed only when the outcome is known: TpT answered with the new product (-> `uploaded`), or TpT clearly refused the form (an
+// error on the form, no product id anywhere in its answers). Otherwise it stays and the item is looked for at >= 70 min and >= 3 h after
+// the click, on My Products AND the public store page (either one listing the title -> `uploaded`). Still absent at 3 h -> the record
+// turns `final` and the owner is told (UPLOADER-STATUS.json `needs_owner`, a Mac notification); even then nothing is submitted until
+// the cloud rewrites `release` after the owner has checked My Products by hand.
+const PUBLISH_LOOKS_MIN = [70, 180];
+function unverifiedPaths(item) { return [path.join(item, "publish-unverified"), path.join(STATE_DIR(), "submitted", `${path.basename(item)}.json`)]; }
+function readUnverified(item) {
+  for (const f of unverifiedPaths(item)) {
+    try { const r = JSON.parse(fs.readFileSync(f, "utf8")); if (!r.submitted_at && r.at) { r.submitted_at = r.at; r.looks = r.looks || []; } return r; } catch (e) { /* none */ }
+  }
+  try { const o = JSON.parse(fs.readFileSync(path.join(item, "publish-submitted-at"), "utf8")); return { submitted_at: o.at, title: o.title, release_sha256: o.release_sha256, looks: [], why: "note from the 25 Nov code" }; } catch (e) { return null; }
 }
-function writeSubmitted(item, title, now = Date.now()) {
-  const note = JSON.stringify({ at: new Date(now).toISOString(), title, release_sha256: releaseSha(item), host: os.hostname(), pid: process.pid, clone: ROOT }, null, 2) + "\n";
-  for (const f of submittedNotePaths(item)) { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, note); }
+function writeUnverified(item, rec) { const t = JSON.stringify(rec, null, 2) + "\n"; for (const f of unverifiedPaths(item)) { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, t); } }
+function clearUnverified(item) { for (const f of [...unverifiedPaths(item), path.join(item, "publish-submitted-at")]) fs.rmSync(f, { force: true }); }
+// May this item be submitted? Pure. A record blocks it, except a `final` one whose release the cloud has rewritten since (owner told).
+function unverifiedBlocks(rec, releaseNow) { return !!rec && !(rec.final && releaseNow && rec.release_sha256 && releaseNow !== rec.release_sha256); }
+// Is a look due? Pure. { due, final }: looks at >= 70 and >= 180 min after the click; the 180-min look is the last.
+function publishLookDue(rec, now = Date.now()) {
+  if (!rec || rec.final) return { due: false, final: !!(rec && rec.final) };
+  const t0 = Date.parse(rec.submitted_at), age = (now - t0) / 60000;
+  const looked = (rec.looks || []).map((l) => (Date.parse(l.at) - t0) / 60000);
+  const next = PUBLISH_LOOKS_MIN.find((m) => !looked.some((l) => l >= m));
+  if (next === undefined) return { due: false, final: true };
+  return { due: age >= next, final: next === PUBLISH_LOOKS_MIN[PUBLISH_LOOKS_MIN.length - 1] };
 }
-function clearSubmitted(item) { for (const f of submittedNotePaths(item)) fs.rmSync(f, { force: true }); }
-// What to do about an earlier Submit. Pure. note: readSubmitted(); found: My Products URL or null; read: did My Products answer?
-//   "none" (no note) | "uploaded" (it is live: write the marker) | "wait" (unknown yet: submit nothing) | "resubmit" (15 min after, not there)
-function submittedDecision(note, read, found, now = Date.now()) {
-  if (read && found) return "uploaded";
-  if (!note) return "none";
-  if (!read) return "wait";
-  const at = Date.parse(note.at);
-  return Number.isFinite(at) && now - at >= SUBMIT_SETTLE_MS ? "resubmit" : "wait";
+// One look for an unverified item. deps.look(title) -> { my_products: {read,url,why}, store: {read,url,why} }. Never submits anything.
+// Returns { state: "not-due" | "uploaded" | "absent" | "final-absent", url? }.
+async function checkPublishUnverified(item, deps = {}) {
+  const now = deps.now || Date.now(), rec = readUnverified(item);
+  if (!rec) return { state: "none" };
+  const d = publishLookDue(rec, now);
+  if (!d.due) return { state: "not-due", final: d.final };
+  const r = await deps.look(rec.title);
+  const url = (r.my_products && r.my_products.url) || (r.store && r.store.url) || null;
+  const look = { at: new Date(now).toISOString(), my_products: r.my_products && (r.my_products.url || (r.my_products.read ? "absent" : "unreadable: " + r.my_products.why)), store: r.store && (r.store.url || (r.store.read ? "absent" : "unreadable")) };
+  if (url) {
+    fs.writeFileSync(path.join(item, "uploaded"), `${new Date(now).toISOString()} published live by tools/tpt.js (found ${Math.round((now - Date.parse(rec.submitted_at)) / 60000)} min after a Submit TpT did not answer, on ${r.my_products && r.my_products.url ? "My Products" : "the public store page"}; not submitted again)\n${url}\n`);
+    clearUnverified(item);
+    return { state: "uploaded", url };
+  }
+  // a look is proof of absence only when BOTH lists were read; otherwise it is not counted and the next run looks again
+  const proof = !!(r.my_products && r.my_products.read && r.store && r.store.read);
+  if (proof) rec.looks = [...(rec.looks || []), look]; else rec.last_unreadable = look;
+  if (d.final && proof) { rec.final = true; rec.final_at = look.at; }
+  writeUnverified(item, rec);
+  return { state: rec.final ? "final-absent" : "absent" };
+}
+// The new product's id from TpT's answers (a Location header, a URL, or a response body). Pure.
+function productIdFrom(text) {
+  const s = String(text || "");
+  const m = s.match(/\/Product\/[^"'\s?#<>]+-(\d{6,10})(?![\d])/) || s.match(/\/(?:editNext|items|itemsDigital|My-Products\/[\w-]+)\/(\d{6,10})(?![\d])/i)
+    || s.match(/"(?:item_?id|itemId|product_?id|productId)"\s*:\s*"?(\d{6,10})/i);
+  return m ? m[1] : null;
+}
+function productUrlFor(title, id) { return `https://www.teacherspayteachers.com/Product/${slugNorm(title).split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join("-")}-${id}`; }
+// Click Submit on the new-item form ONCE and wait for TpT (default 25 min). From the click on, any repeat of the save request (same
+// method and path, sent again by TpT's page) is ABORTED: 081's two copies came 26 minutes apart from a run that clicked once.
+// Returns { outcome: "created" | "refused" | "unverified", id, url, how, messages, saves, blocked, network }.
+async function submitNewItem(page, submitSel, opts = {}) {
+  const limit = opts.limitMs || 25 * 60 * 1000, formMark = opts.formMark || "/My-Products/New/";
+  const isTpt = (u) => /^https:\/\/(www\.)?(teacherspayteachers\.com|tpt\.test)\//i.test(u);
+  // TpT's save URL has never been recorded (27 Nov), so every non-GET request to TpT counts, except the ones the page legitimately
+  // repeats while it saves: file uploads, thumbnail conversion and the conversion queue polls (17 Nov diagnostics), and analytics.
+  const BUSY = /\/(converter|queue|uploads)\/|\/(track|analytics|beacon|log|events?)(\/|$|\?)/i;
+  const saveLike = (u) => isTpt(u) && !BUSY.test(new URL(u).pathname);
+  const saves = [], blocked = [], ids = [], log = [], saveAnswers = [];
+  const t0 = Date.now(), at = () => `+${((Date.now() - t0) / 1000).toFixed(1)}s`;
+  let firstKey = null;
+  const handler = (route) => {
+    const q = route.request();
+    if (q.method() === "GET") return route.fallback();
+    const key = q.method() + " " + q.url().split(/[?#]/)[0];
+    if (firstKey === null) { firstKey = key; saves.push(`${at()} ${key}`); return route.fallback(); }
+    if (key === firstKey) { blocked.push(`${at()} ${key}`); console.warn(`BLOCKED a second save request from TpT's page (${key}): one Submit, one save`); return route.abort("blockedbyclient"); }
+    saves.push(`${at()} ${key}`); return route.fallback();
+  };
+  await page.route(saveLike, handler);
+  const onResp = async (r) => {
+    try {
+      const u = r.url(); if (!isTpt(u)) return;
+      const q = r.request(), loc = (r.headers() || {}).location || "";
+      let id = productIdFrom(loc) || (q.method() !== "GET" || r.status() >= 300 ? productIdFrom(u) : null);
+      if (q.method() !== "GET" && saveLike(u)) { saveAnswers.push(r.status()); if (!id) id = productIdFrom(await r.text().catch(() => "")); }
+      if (q.method() !== "GET" || loc) log.push(`${at()} <- ${q.method()} ${r.status()} ${u.split("?")[0].slice(0, 120)}${loc ? " -> " + loc.slice(0, 120) : ""}`);
+      if (id && !ids.includes(id)) ids.push(id);
+    } catch (e) { /* diagnostics only */ }
+  };
+  page.on("response", onResp);
+  const readMsgs = () => page.locator(':is([role="alert"], [aria-live="assertive"], [class*="alert" i], [class*="error-message" i], [class*="error" i]):not(svg, svg *)')
+    .evaluateAll((els) => els.filter((e) => { const r = e.getBoundingClientRect(), cs = getComputedStyle(e); return r.width > 0 && r.height > 0 && cs.visibility !== "hidden" && cs.display !== "none"; })
+      .map((e) => String(e.innerText == null ? "" : e.innerText).replace(/\s+/g, " ").trim()).filter(Boolean).filter((t, i, a) => a.indexOf(t) === i).slice(0, 12)).catch(() => []);
+  const leftForm = () => { try { const u = page.url(); return !u.includes(formMark) && !BUSY.test(new URL(u).pathname) && !/^about:/.test(u); } catch (e) { return false; } };
+  try { await page.locator(submitSel).click({ noWaitAfter: true, timeout: 30000 }); }
+  catch (e) { if (!/click action done|navigation/i.test(e.message)) { page.off("response", onResp); throw e; } }
+  let how = null, messages = [];
+  while (Date.now() - t0 < limit) {
+    await new Promise((ok) => setTimeout(ok, opts.pollMs || 2000));
+    if (ids.length) { how = "TpT answered with the new product id"; break; }
+    if (leftForm()) { how = `the page left the form (${page.url().split("?")[0]})`; const id = productIdFrom(page.url()); if (id && !ids.includes(id)) ids.push(id); break; }
+    // a save that came back as the form (2xx) with an error shown = TpT refused it
+    if (saveAnswers.some((st) => st >= 200 && st < 300 || st >= 400)) {
+      messages = await readMsgs();
+      if (messages.length) { how = "TpT showed the form again with an error"; break; }
+    }
+  }
+  page.off("response", onResp); // the route stays until the browser closes: a late repeat is still blocked
+  const id = ids[0] || null;
+  // "refused" only when TpT answered the save with the form again AND showed an error; anything else unclear is "unverified".
+  const outcome = id || (how && how.startsWith("the page left")) ? "created" : how === "TpT showed the form again with an error" ? "refused" : "unverified";
+  return { outcome, id, ids, url: id && opts.title ? productUrlFor(opts.title, id) : null, how: how || `no answer from TpT within ${Math.round(limit / 60000)} min`, messages, saves, blocked, network: log.slice(-25) };
 }
 // Read-only: every product link on the logged-in My Products list (up to 10 pages). Opens nothing else, clicks nothing.
 async function readMyProductsLinks(page, url = MY_PRODUCTS_URL) {
@@ -630,21 +726,23 @@ async function publish(item, dryRun) {
   try {
     step = "check login";
     await ensureLoggedIn(page);
-    // Duplicate guard (25 Nov 2026): the logged-in My Products list, never the public store page (it lags new listings), and an
-    // earlier Submit for this item (publish-submitted-at) blocks a new one until My Products has been read 15 minutes after it.
+    // Duplicate guard (25 + 27 Nov 2026): the logged-in My Products list AND the public store page (either one listing the exact
+    // title = already live), and a publish-unverified record from an earlier Submit blocks any new one (see unverifiedPaths above).
     if (!dryRun) {
-      step = "duplicate guard (My Products)";
-      const note = readSubmitted(item), mp = await findOnMyProducts(page, it.title);
-      const d = submittedDecision(note, mp.read, mp.url);
-      if (d === "uploaded") {
-        fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} found already on My Products by its exact title (not uploaded again${note ? `; Submit was clicked at ${note.at}` : ""})\n${mp.url}\n`);
-        clearSubmitted(item);
-        console.log(`${slug}: already on My Products at ${mp.url}; marked uploaded and NOT uploading it again.`);
-        return { url: mp.url, already: true };
+      step = "duplicate guard";
+      const rec = readUnverified(item);
+      if (unverifiedBlocks(rec, releaseSha(item))) { const e = new Error(`not submitted: Submit was already clicked for this item at ${rec.submitted_at} and TpT never answered (publish-unverified); it is looked for at 70 min and 3 h and never submitted again by this tool`); e.unverified = true; throw e; }
+      const mp = await findOnMyProducts(page, it.title);
+      let st = null; try { const html = await fetchStoreHtml(); st = html ? liveUrlForTitle(it.title, html) : null; } catch (e) { /* the store page is the second opinion only */ }
+      const found = mp.url || st;
+      if (found) {
+        fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} found already on ${mp.url ? "My Products" : "the public store page"} by its exact title (not uploaded again)\n${found}\n`);
+        clearUnverified(item);
+        console.log(`${slug}: already on TpT at ${found}; marked uploaded and NOT uploading it again.`);
+        return { url: found, already: true };
       }
       if (!mp.read) { const e = new Error(`not submitted: duplicate guard could not read My Products (${mp.why}); nothing is submitted while it is unknown`); e.unknown = true; throw e; }
-      if (d === "wait") { const e = new Error(`not submitted: Submit was already clicked for this item at ${note.at} (${note.clone || "?"}, pid ${note.pid}); waiting until My Products has been read ${SUBMIT_SETTLE_MS / 60000} minutes after it`); e.waiting = true; throw e; }
-      if (d === "resubmit") { console.warn(`${slug}: Submit at ${note.at} left nothing on My Products ${Math.round((Date.now() - Date.parse(note.at)) / 60000)} min later (${mp.links} products read); clearing the note and submitting again.`); clearSubmitted(item); }
+      if (rec) { console.warn(`${slug}: the cloud rewrote \`release\` after the final look (absent 3 h after the Submit at ${rec.submitted_at}); one new Submit is allowed.`); clearUnverified(item); }
     }
     step = "open the listing form";
     await page.goto(F.form_url, { waitUntil: "domcontentloaded" });
@@ -896,42 +994,28 @@ async function publish(item, dryRun) {
     }
 
     step = "submit";
-    // Written BEFORE the click: if anything dies after it, the item is not submitted again blind (see takeLock above).
+    // ONE click, ONE save request: submitNewItem() blocks any repeat of the save that TpT's page sends by itself, waits up to 25 min
+    // for TpT (it saves in the background), and reads the new product id from TpT's answers. The record is written BEFORE the click.
     const submittedAt = Date.now();
-    writeSubmitted(item, it.title, submittedAt);
-    // 20 Nov 2026 (061, 3.4 MB zip): TpT converts thumbnails and saves in the background after Submit and can take several minutes
-    // (the edit form's wait allows 4+). noWaitAfter so a slow navigation never throws out of click(); wait up to 5 min for the page to leave.
-    try { await page.locator(F.submit).click({ noWaitAfter: true, timeout: 30000 }); }
-    catch (e) { if (!/click action done|navigation/i.test(e.message)) throw e; }
-    const leftForm = () => { try { return !page.url().includes("/My-Products/New/"); } catch (e) { return false; } };
-    let liveFromList = null;
-    try {
-      await page.waitForURL((u) => !u.toString().includes("/My-Products/New/"), { timeout: 300000 });
-    } catch (e) {
+    writeUnverified(item, { submitted_at: new Date(submittedAt).toISOString(), title: it.title, release_sha256: releaseSha(item), host: os.hostname(), pid: process.pid, clone: ROOT, state: "submitting", looks: [] });
+    const sub = await submitNewItem(page, F.submit, { title: it.title, limitMs: Number(process.env.TPT_SUBMIT_WAIT_MS) || undefined });
+    try { fs.mkdirSync(shots, { recursive: true }); fs.writeFileSync(path.join(shots, `${slug}-submit-network.json`), JSON.stringify({ at: new Date().toISOString(), ...sub }, null, 2) + "\n"); } catch (e) { /* diagnostics only */ }
+    if (sub.blocked.length) console.warn(`${slug}: blocked ${sub.blocked.length} repeated save request(s) from TpT's page: ${sub.blocked.join("; ")}`);
+    if (sub.outcome === "refused") {
       await snap(page, shots, `${slug}-submit-failed`);
-      // No clear success. The product may still have been created. Look for it on the logged-in My Products list in a SECOND tab (the
-      // form tab is left alone so TpT's save is never cut off) once a minute until 15 minutes after the click. Never Submit again here.
-      let tab = null, last = { read: false, why: "not read yet" };
-      try { tab = await context.newPage(); } catch (e2) { last.why = "could not open a tab: " + e2.message.split("\n")[0]; }
-      while (tab && !liveFromList && !leftForm()) {
-        try { last = await findOnMyProducts(tab, it.title); } catch (e2) { last = { read: false, why: e2.message.split("\n")[0] }; }
-        if (last.url) { liveFromList = last.url; break; }
-        if (Date.now() - submittedAt >= SUBMIT_SETTLE_MS) break;
-        await new Promise((ok) => setTimeout(ok, 60000));
-      }
-      if (tab) await tab.close().catch(() => {});
-      if (!liveFromList && !leftForm()) {
-        const msgs = await page.locator('[role="alert"], [aria-live="assertive"], [class*="error" i]').allInnerTexts().catch(() => []);
-        throw new Error(`still on the form after Submit and the title is not on My Products ${Math.round((Date.now() - submittedAt) / 60000)} min later (${last.read ? "read OK" : "My Products unreadable: " + last.why}). ` +
-          `The publish-submitted-at note stays: no run submits this item again until My Products, read 15+ min after this Submit, settles it.\n` +
-          `TpT says: ${msgs.map((m) => String(m == null ? "" : m).trim()).filter(Boolean).join(" | ").slice(0, 500) || "(nothing)"}\nScreenshot: tpt/_publish/${slug}-submit-failed.png`);
-      }
-      if (liveFromList) console.warn(`Submit gave no answer, but ${it.title} is on My Products: ${liveFromList}`);
+      clearUnverified(item);
+      throw new Error(`TpT refused the form (${sub.how}): ${sub.messages.join(" | ").slice(0, 400)}\nScreenshot: tpt/_publish/${slug}-submit-failed.png`);
+    }
+    if (sub.outcome === "unverified") {
+      await snap(page, shots, `${slug}-submit-unverified`);
+      writeUnverified(item, { ...readUnverified(item), state: "no answer", why: sub.how, saves: sub.saves, blocked: sub.blocked, network: sub.network.slice(-10), messages: sub.messages });
+      const e = new Error(`Submit clicked at ${new Date(submittedAt).toISOString()}, ${sub.how}; NOT submitting again: publish-unverified written, looked for at 70 min and 3 h on My Products and the store page\nScreenshot: tpt/_publish/${slug}-submit-unverified.png`);
+      e.unverified = true; throw e;
     }
     await snap(page, shots, `${slug}-submitted`);
-    const doneUrl = liveFromList || page.url();
-    fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} published live by tools/tpt.js${liveFromList ? " (found on My Products after Submit gave no answer)" : ""}\n${doneUrl}\n`);
-    clearSubmitted(item);
+    const doneUrl = sub.url || page.url();
+    fs.writeFileSync(path.join(item, "uploaded"), `${new Date().toISOString()} published live by tools/tpt.js (${sub.how}${sub.id ? ", product id " + sub.id + " from TpT's answer" : ""})\n${doneUrl}\n`);
+    clearUnverified(item);
     console.log(`Published: ${it.title}\nTpT went to ${doneUrl}\nWrote ${path.relative(ROOT, item)}/uploaded`);
     // Verify the PUBLIC page against tpt.json (price, isFree, preview, pages). The item is already live, so a
     // mismatch is recorded (UPLOADER-STATUS.json live_mismatch, `live-mismatch` file) rather than thrown.
@@ -954,7 +1038,7 @@ async function publish(item, dryRun) {
     } else console.log(`Verified on the public page: price ${verify.live.price}, isFree ${verify.live.isFree}, preview ${verify.live.previewUrl ? "yes" : "no"}.`);
     return { url: liveUrl, verify };
   } catch (e) {
-    if (step === "submit" || step === "check login" || e.waiting || e.unknown) throw e;
+    if (step === "submit" || step === "check login" || e.unverified || e.unknown) throw e;
     await snap(page, shots, `${slug}-failed`).catch(() => {});
     throw new Error(`${dryRun ? "dry run" : "publish"} stopped at step "${step}" (nothing was submitted): ${e.message.split("\n")[0]}\n` +
       `Screenshot: tpt/_publish/${slug}-failed.png\nFile inputs on the page: ${await fileInputs().catch(() => "(unreadable)")}`);
@@ -985,7 +1069,8 @@ function pendingItems() {
   const dir = path.join(ROOT, "tpt");
   return fs.readdirSync(dir).filter((d) => /^\d{3}-/.test(d)).map((d) => path.join(dir, d))
     .filter((d) => fs.existsSync(path.join(d, "tpt.json")) && fs.existsSync(path.join(d, "release"))
-      && (isApproved(d) || releasedOverQA(d)) && !fs.existsSync(path.join(d, "uploaded")) && !publishHeld(d))
+      && (isApproved(d) || releasedOverQA(d)) && !fs.existsSync(path.join(d, "uploaded")) && !publishHeld(d)
+      && !unverifiedBlocks(readUnverified(d), releaseSha(d)))
     .sort();
 }
 
@@ -1033,13 +1118,74 @@ async function fetchStoreHtml() {
   return all;
 }
 
+// Items with an open publish-unverified record: one look each when due (70 min, 3 h after the click). Read-only; never submits.
+async function lookForUnverified(status, deps = {}) {
+  const dir = path.join(ROOT, "tpt");
+  const open = fs.readdirSync(dir).filter((n) => /^\d{3}-/.test(n)).map((n) => path.join(dir, n))
+    .filter((d) => !fs.existsSync(path.join(d, "uploaded")) && readUnverified(d));
+  if (!open.length) return;
+  let br = null, storeHtml;
+  const look = deps.look || (async (title) => {
+    if (!br) { br = await openBrowser(); await ensureLoggedIn(br.page); }
+    if (storeHtml === undefined) storeHtml = await fetchStoreHtml().catch(() => null);
+    return { my_products: await findOnMyProducts(br.page, title), store: storeHtml ? { read: true, url: liveUrlForTitle(title, storeHtml) } : { read: false, why: "store page unreadable" } };
+  });
+  try {
+    for (const d of open) {
+      const slug = path.basename(d), rec = readUnverified(d);
+      let r;
+      try { r = await checkPublishUnverified(d, { now: deps.now, look }); }
+      catch (e) { if (/not logged in/i.test(e.message)) { status.needs_login = true; break; } r = { state: "error", error: e.message.split("\n")[0] }; }
+      const after = readUnverified(d);
+      (status.publish_unverified = status.publish_unverified || []).push({ item: slug, submitted_at: rec.submitted_at, state: r.state, ...(r.url ? { url: r.url } : {}), looks: ((after || rec).looks || []).length });
+      if (r.state === "uploaded") { status.published.push({ item: slug, url: r.url, note: "found after an unanswered Submit; not submitted again" }); status.publish_unverified.pop(); console.log(`${slug}: found on TpT at ${r.url}; marked uploaded.`); }
+      if (r.state === "final-absent" || (after && after.final)) {
+        (status.needs_owner = status.needs_owner || []).push({ item: slug, why: `Submit at ${rec.submitted_at} got no answer and the title is on neither My Products nor the store page 3 h later. Owner: check My Products by hand; the cloud rewrites \`release\` only after that, which allows ONE new Submit.` });
+        console.warn(`${slug}: NEEDS THE OWNER: absent 3 h after an unanswered Submit; nothing is submitted until \`release\` is rewritten.`);
+      }
+    }
+  } finally { if (br) await br.context.close().catch(() => {}); }
+}
+// Pure: [{ slug, ids }] for every title slug that more than one product link carries.
+function duplicateTitles(links) {
+  const by = new Map();
+  for (const l of links) {
+    const m = String(l.href || "").match(/\/Product\/([^"?#\/]+?)-(\d{6,})(?:[?#]|$)/);
+    if (!m) continue;
+    const k = slugNorm(m[1]); if (!by.has(k)) by.set(k, new Set()); by.get(k).add(m[2]);
+  }
+  return [...by].filter(([, ids]) => ids.size > 1).map(([slug, ids]) => ({ slug, ids: [...ids].sort() }));
+}
+// Read-only: My Products once; duplicate titles go to status.duplicates, ~/.tpt-state/duplicates.json and tpt/_publish/duplicates.txt
+// (gitignored); tools/tpt-nightly.sh shows a Mac notification for them.
+async function duplicateCheck(status, deps = {}) {
+  let links = null;
+  try {
+    if (deps.links) links = deps.links;
+    else { const { context, page } = await openBrowser(); try { await ensureLoggedIn(page); links = await readMyProductsLinks(page); } finally { await context.close().catch(() => {}); } }
+  } catch (e) { status.duplicate_check = "could not read My Products: " + e.message.split("\n")[0]; return null; }
+  if (!links.length) { status.duplicate_check = "My Products showed no products"; return null; }
+  const d = duplicateTitles(links);
+  status.duplicate_check = `${links.length} product links read, ${d.length} duplicate title(s)`;
+  if (d.length) status.duplicates = d;
+  const text = d.map((x) => `DUPLICATE ${x.ids.join(" ")} ${x.slug}`).join("\n");
+  try { fs.mkdirSync(STATE_DIR(), { recursive: true }); fs.writeFileSync(path.join(STATE_DIR(), "duplicates.json"), JSON.stringify({ at: new Date().toISOString(), duplicates: d }, null, 2) + "\n"); } catch (e) { /* note only */ }
+  try { fs.mkdirSync(path.join(ROOT, "tpt", "_publish"), { recursive: true }); fs.writeFileSync(path.join(ROOT, "tpt", "_publish", "duplicates.txt"), (text || "no duplicate titles") + "\n"); } catch (e) { /* note only */ }
+  if (d.length) console.warn(text);
+  return d;
+}
+async function duplicatesCmd() { const st = {}; const d = await duplicateCheck(st); console.log(st.duplicate_check); if (d && d.length) process.exitCode = 3; }
+
 async function publishPending() {
   const status = { ran_at: new Date().toISOString(), published: [], failed: [], needs_login: false, paused: false, pending_before: [] };
   try { status.reupload = JSON.parse(fs.readFileSync(path.join(ROOT, "tpt", "UPLOADER-STATUS.json"), "utf8")).reupload; } catch (e) { /* none yet */ }
   if (!status.reupload) delete status.reupload;
   const write = () => fs.writeFileSync(path.join(ROOT, "tpt", "UPLOADER-STATUS.json"), JSON.stringify(status, null, 2) + "\n");
+  // Read-only, also while paused: look for items whose Submit TpT never answered (70 min, 3 h), then check for duplicate titles.
+  await lookForUnverified(status);
   if (fs.existsSync(path.join(ROOT, "tpt", "PAUSED"))) {
-    status.paused = true; status.ok = true; write();
+    if ((status.publish_unverified || []).length) await duplicateCheck(status);
+    status.paused = true; status.ok = !(status.duplicates || []).length && !(status.needs_owner || []).length; write();
     console.log("tpt/PAUSED exists: publishing nothing."); return;
   }
   const items = pendingItems().slice(0, MAX_PER_RUN);
@@ -1054,15 +1200,9 @@ async function publishPending() {
     console.warn("WARNING: " + status.warning);
   }
   console.log(items.length ? `Released and waiting: ${status.pending_before.join(", ")}` : "Nothing released to publish.");
-  // The duplicate guard is inside publish(): the logged-in My Products list, read before every Submit (25 Nov 2026).
+  // The duplicate guard is inside publish(): My Products and the store page, read before every Submit; one Submit per release.
   for (const item of items) {
     const slug = path.basename(item);
-    const note = readSubmitted(item);
-    if (note && submittedDecision(note, true, null) === "wait") {  // too early to settle: don't even open a browser
-      (status.waiting = status.waiting || []).push({ item: slug, submitted_at: note.at, note: "Submit already clicked; settles on My Products 15 min after it" });
-      console.log(`${slug}: Submit was clicked at ${note.at}; not submitting again until My Products settles it (15 min after).`);
-      continue;
-    }
     try {
       const r = await publish(item, false);
       status.published.push({ item: slug, url: (fs.readFileSync(path.join(item, "uploaded"), "utf8").split("\n")[1] || "").trim(), ...(r && r.already ? { note: "already on My Products; marker written, nothing uploaded" } : {}) });
@@ -1074,13 +1214,16 @@ async function publishPending() {
       status.failed.push({ item: slug, error: msg });
       console.error(`${slug}: ${msg}`);
       if (/not logged in|session expired|login failed/i.test(msg)) { status.needs_login = true; break; }
-      if (e.waiting) { status.failed.pop(); (status.waiting = status.waiting || []).push({ item: slug, note: msg }); continue; }
+      if (e.unverified) { status.failed.pop(); (status.publish_unverified = status.publish_unverified || []).push({ item: slug, state: "no answer", note: msg }); continue; }
       if (e.unknown) continue; // My Products unreadable: reported, not counted against the item
       // Count the failure (a login problem above is not the item's fault and is not counted).
       fs.writeFileSync(path.join(item, "publish-failed"), JSON.stringify({ at: new Date().toISOString(), release_sha256: releaseSha(item), count: publishFails(item) + 1, error: msg }, null, 2) + "\n");
     }
   }
-  status.ok = !status.needs_login && status.failed.length === 0 && !(status.live_mismatch || []).length;
+  // After any run that clicked Submit, or while a Submit is unverified: My Products once, two listings with one title -> tell the owner.
+  if (status.published.some((p) => !p.note) || (status.publish_unverified || []).length) await duplicateCheck(status);
+  status.ok = !status.needs_login && status.failed.length === 0 && !(status.live_mismatch || []).length && !(status.publish_unverified || []).length
+    && !(status.duplicates || []).length && !(status.needs_owner || []).length;
   write();
   console.log(`Published ${status.published.length}, failed ${status.failed.length}${status.needs_login ? " (TpT login expired: run node tools/tpt.js login)" : ""}.`);
   if (!status.ok) process.exitCode = 1;
@@ -1948,11 +2091,11 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { takeLock, readSubmitted, writeSubmitted, clearSubmitted, submittedDecision, readMyProductsLinks, findOnMyProducts, SUBMIT_SETTLE_MS, matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { takeLock, readUnverified, writeUnverified, clearUnverified, unverifiedBlocks, publishLookDue, checkPublishUnverified, lookForUnverified, productIdFrom, productUrlFor, submitNewItem, duplicateTitles, duplicateCheck, readMyProductsLinks, findOnMyProducts, matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 // Every command that opens the TpT browser profile takes the uploader lock (only offline dry-run reupload does not).
-const LOCKED = new Set(["login", "discover", "publish", "publish-pending", "reupload", "reupload-pending", "discover-edit"]);
+const LOCKED = new Set(["login", "discover", "publish", "publish-pending", "reupload", "reupload-pending", "discover-edit", "duplicates"]);
 if (require.main === module && LOCKED.has(cmd) && !(cmd === "reupload" && dryRun)) {
   const { held } = takeLock(`${cmd}${arg && !arg.startsWith("--") ? " " + arg : ""}`);
   if (held) {
@@ -1963,6 +2106,7 @@ if (require.main === module && LOCKED.has(cmd) && !(cmd === "reupload" && dryRun
 if (require.main === module)
 (cmd === "login" ? loginCmd() : cmd === "discover" ? discover() : cmd === "publish" ? publish(arg, dryRun)
   : cmd === "publish-pending" ? publishPending()
+  : cmd === "duplicates" ? duplicatesCmd()
   : cmd === "reupload" ? reupload(arg, dryRun)
   : cmd === "reupload-pending" ? reuploadPending()
   : cmd === "discover-edit" ? discoverEdit(arg && !arg.startsWith("--") ? arg : null)

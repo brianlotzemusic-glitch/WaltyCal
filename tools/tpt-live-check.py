@@ -59,8 +59,34 @@ def match(title, products):
     return None
 
 
+def find_duplicates():
+    """Public store: any two listings with the same title (slug without id). Prints 'DUPLICATE <ids> <title>' per pair."""
+    import collections
+    by = collections.defaultdict(list)
+    for pg in range(1, 9):
+        url = STORE + ("" if pg == 1 else f"&page={pg}")
+        try:
+            html = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=40).read().decode("utf-8", "ignore")
+        except Exception:
+            break
+        items = store_products(html)
+        if not items:
+            break
+        for slug, u in items:
+            by[slug].append(u.rsplit("-", 1)[-1])
+    dups = {k: sorted(set(v)) for k, v in by.items() if len(set(v)) > 1}
+    for k, ids in sorted(dups.items()):
+        print("DUPLICATE", " ".join(ids), k[:80])
+    if not dups:
+        print("no duplicate titles on the store page")
+    return dups
+
+
 def main():
     args = sys.argv[1:]
+    if "--dups" in args:
+        find_duplicates()
+        return
     if "--html" in args:
         html = open(args[args.index("--html") + 1], encoding="utf-8", errors="ignore").read()
     else:

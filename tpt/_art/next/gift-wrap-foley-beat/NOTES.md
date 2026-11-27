@@ -1,0 +1,2 @@
+Concept (Logic kit): wrapping paper roll with snowflakes, tape dispenser, gift box with bow, jingle bells, studio microphone, headphones, pad controller (found-sound beat; no text).
+Credits: 3 images. Picked variant 1 (clear shapes, margins 91px+). Rejected: variant 2 (art 29px from the left edge, bells and tape fused), variant 3 (wrapping-paper roll hidden behind the mic stand). Busy by design: use large on the cover only.

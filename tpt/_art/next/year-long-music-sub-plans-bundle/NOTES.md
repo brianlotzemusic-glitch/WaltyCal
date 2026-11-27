@@ -1,0 +1,2 @@
+Concept (Year-Long Music Sub Plans Bundle): blank desk calendar with four season icons (snowflake, tulip, sun, maple leaf) and a small drum with a stick (12 months, 96 days).
+Credits: 3 images. Picked variant 1 (cleanest). All three were nearly full-width (40px edges), so the art was trimmed and re-centred at 88% of the canvas (no redraw). Rejected: variant 2 (snowflake fused with the calendar rings, sticks overlap), variant 3 (drumsticks cut across the calendar, sun fused with the rings).

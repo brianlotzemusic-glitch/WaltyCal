@@ -1,1 +1,1 @@
-2026-11-25 released
+2026-11-27 released; re-armed after publish failed twice with ERR_INTERNET_DISCONNECTED on the Mac's My Products check (the Mac was offline; the 083 files are unchanged and fine)
