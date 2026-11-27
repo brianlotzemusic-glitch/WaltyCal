@@ -1,9 +1,13 @@
 {
-  "ran_at": "2026-11-27T12:20:08.422Z",
+  "ran_at": "2026-11-27T17:15:32.204Z",
   "published": [
     {
-      "item": "087-bell-ostinato-lab-logic",
-      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Ostinato-Project-Layering-Dynamics-Automation-High-School-18528898"
+      "item": "083-vocal-chop-hook-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Vocal-Chop-Project-Quick-Sampler-Slices-Hook-High-School-18530555"
+    },
+    {
+      "item": "086-november-music-sub-plans-k5",
+      "url": "https://www.teacherspayteachers.com/Product/November-Music-Sub-Plans-K-5-Gratitude-Veterans-Day-Fall-No-Prep-No-Tech-18530952"
     }
   ],
   "failed": [
@@ -12,16 +16,12 @@
       "error": "publish stopped at step \"upload product (april-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/079-april-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden"
     },
     {
-      "item": "083-vocal-chop-hook-logic",
-      "error": "publish stopped at step \"upload preview (vocal-chop-hook-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of vocal-chop-hook-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/083-vocal-chop-hook-logic-preview-timeout.png) Screenshot: tpt/_publish/083-vocal-chop-hook-logic-failed.png File inputs on the page: #ItemDigitalProduct name=- (hi"
-    },
-    {
-      "item": "086-november-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload thumb4 (preview-3.png)\" (nothing was submitted): not submitted: upload of preview-3.png (thumb4) shown by TpT but its key never filled within 6 min (screenshot tpt/_publish/086-november-music-sub-plans-k5-thumb4-timeout.png) Screenshot: tpt/_publish/086-november-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalP"
+      "item": "084-september-music-sub-plans-k5",
+      "error": "publish stopped at step \"upload preview (september-music-sub-plans-k5-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of september-music-sub-plans-k5-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/084-september-music-sub-plans-k5-preview-timeout.png) Screenshot: tpt/_publish/084-september-music-sub-plans-k5-failed.png File inputs on "
     },
     {
       "item": "088-august-music-sub-plans-k5",
-      "error": "publish stopped at step \"open the listing form\" (nothing was submitted): page.goto: Timeout 30000ms exceeded. Screenshot: tpt/_publish/088-august-music-sub-plans-k5-failed.png File inputs on the page: (unreadable)"
+      "error": "not submitted: duplicate guard could not read My Products (page.goto: Timeout 30000ms exceeded.); nothing is submitted while it is unknown"
     }
   ],
   "needs_login": false,
@@ -29,12 +29,12 @@
   "pending_before": [
     "079-april-music-sub-plans-k5",
     "083-vocal-chop-hook-logic",
+    "084-september-music-sub-plans-k5",
     "086-november-music-sub-plans-k5",
-    "087-bell-ostinato-lab-logic",
     "088-august-music-sub-plans-k5"
   ],
   "reupload": {
-    "ran_at": "2026-11-27T15:11:16.279Z",
+    "ran_at": "2026-11-27T18:13:21.586Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -50,9 +50,29 @@
     ],
     "unverified": []
   },
-  "held": [
-    "084-september-music-sub-plans-k5"
+  "duplicate_check": "184 product links read, 3 duplicate title(s)",
+  "duplicates": [
+    {
+      "slug": "may-music-sub-plans-k-5-aapi-heritage-instruments-spring-no-prep-no-tech",
+      "ids": [
+        "18518940",
+        "18519136"
+      ]
+    },
+    {
+      "slug": "logic-pro-radio-ident-project-voice-music-bed-ducking-eq-high-school",
+      "ids": [
+        "18497270",
+        "18497424"
+      ]
+    },
+    {
+      "slug": "music-listening-response-readings-around-the-world-music-edition-gr-3-6",
+      "ids": [
+        "18445741",
+        "18445822"
+      ]
+    }
   ],
-  "duplicate_check": "could not read My Products: page.goto: Timeout 30000ms exceeded.",
   "ok": false
 }

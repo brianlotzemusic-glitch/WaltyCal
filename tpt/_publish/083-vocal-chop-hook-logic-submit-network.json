@@ -1,0 +1,23 @@
+{
+  "at": "2026-11-27T17:28:56.702Z",
+  "outcome": "created",
+  "id": "18530555",
+  "ids": [
+    "18530555"
+  ],
+  "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Vocal-Chop-Project-Quick-Sampler-Slices-Hook-High-School-18530555",
+  "how": "TpT answered with the new product id",
+  "messages": [],
+  "saves": [
+    "+71.1s POST https://www.teacherspayteachers.com/My-Products/New/Digital-Next",
+    "+76.6s POST https://www.teacherspayteachers.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/b9d4778be3d9/0.19771705445234333:1795796736:jvZufokpOxG1pSqD8OVFK6cY5PFA1hPtCbejBQ87QRQ/a612da272c06950a"
+  ],
+  "blocked": [],
+  "network": [
+    "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs",
+    "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+71.0s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+76.1s <- POST 302 https://www.teacherspayteachers.com/My-Products/New/Digital-Next -> /Product/Logic-Pro-Vocal-Chop-Project-Quick-Sampler-Slices-Hook-High-School-18530555",
+    "+76.5s <- GET 302 https://www.teacherspayteachers.com/cdn-cgi/challenge-platform/scripts/jsd/main.js -> /cdn-cgi/challenge-platform/h/g/scripts/jsd/b9d4778be3d9/main.js?ray=a612da272c06950a"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "at": "2026-11-27T18:08:44.149Z",
+  "outcome": "created",
+  "id": "18530952",
+  "ids": [
+    "18530952"
+  ],
+  "url": "https://www.teacherspayteachers.com/Product/November-Music-Sub-Plans-K-5-Gratitude-Veterans-Day-Fall-No-Prep-No-Tech-18530952",
+  "how": "TpT answered with the new product id",
+  "messages": [],
+  "saves": [
+    "+8.1s POST https://www.teacherspayteachers.com/My-Products/New/Digital-Next",
+    "+16.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+16.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+16.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+16.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.3s POST https://www.teacherspayteachers.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/b9d4778be3d9/0.8991752412006537:1795800317:2C10CRNzVC_Y5MaukG24RaQOKWoKIV4u_7zQ-Ds5ZqU/a6131469996c23e8",
+    "+16.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+16.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+16.4s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.4s POST https://www.teacherspayteachers.com/graph/graphql"
+  ],
+  "blocked": [],
+  "network": [
+    "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs",
+    "+0.4s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+1.4s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+2.4s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+3.3s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+6.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+7.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+8.1s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+15.7s <- POST 302 https://www.teacherspayteachers.com/My-Products/New/Digital-Next -> /Product/November-Music-Sub-Plans-K-5-Gratitude-Veterans-Day-Fall-No-Prep-No-Tech-18530952",
+    "+16.2s <- GET 302 https://www.teacherspayteachers.com/cdn-cgi/challenge-platform/scripts/jsd/main.js -> /cdn-cgi/challenge-platform/h/g/scripts/jsd/b9d4778be3d9/main.js?ray=a6131469996c23e8",
+    "+16.3s <- POST 200 https://www.teacherspayteachers.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/b9d4778be3d9/0.8991752412006537:179580031",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+16.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+16.5s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+16.6s <- POST 200 https://www.teacherspayteachers.com/graph/graphql"
+  ]
+}
