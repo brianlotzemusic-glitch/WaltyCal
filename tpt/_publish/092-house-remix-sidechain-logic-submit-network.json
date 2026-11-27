@@ -1,0 +1,51 @@
+{
+  "at": "2026-11-27T22:47:06.042Z",
+  "outcome": "created",
+  "id": "18533867",
+  "ids": [
+    "18533867"
+  ],
+  "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-House-Remix-128-Bpm-Sidechain-Four-On-The-Floor-High-School-18533867",
+  "how": "TpT answered with the new product id",
+  "messages": [],
+  "saves": [
+    "+6.8s POST https://www.teacherspayteachers.com/My-Products/New/Digital-Next",
+    "+12.9s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+12.9s POST https://www.teacherspayteachers.com/graph/graphql"
+  ],
+  "blocked": [],
+  "network": [
+    "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs",
+    "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+1.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+2.1s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+3.1s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+4.0s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+4.9s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+5.9s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+6.8s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+12.2s <- POST 302 https://www.teacherspayteachers.com/My-Products/New/Digital-Next -> /Product/Logic-Pro-House-Remix-128-BPM-Sidechain-Four-on-the-Floor-High-School-18533867",
+    "+12.9s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+12.9s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+12.9s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.0s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+13.0s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.0s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+13.0s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.0s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.0s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+13.0s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.0s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+13.1s <- POST 200 https://www.teacherspayteachers.com/graph/graphql"
+  ]
+}
