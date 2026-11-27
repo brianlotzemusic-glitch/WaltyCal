@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-26T18:37:09.640Z",
-  "release_sha256": "19f2f1f122b60b17a38cd04e1ffe290b2943ee01da0b99c41fbee6e58e06168f",
-  "count": 1,
-  "error": "publish stopped at step \"upload product (june-music-sub-plans-k5.pdf)\" (nothing was submitted): not submitted: upload of june-music-sub-plans-k5.pdf (product) shown by TpT but its key never filled within 30 min (screenshot tpt/_publish/082-june-music-sub-plans-k5-product-timeout.png) Screenshot: tpt/_publish/082-june-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigitalProduct name=-"
-}

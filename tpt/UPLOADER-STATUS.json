@@ -1,13 +1,9 @@
 {
-  "ran_at": "2026-11-26T12:18:55.268Z",
+  "ran_at": "2026-11-26T22:59:28.655Z",
   "published": [
     {
-      "item": "081-may-music-sub-plans-k5",
-      "url": "https://www.teacherspayteachers.com/Product/May-Music-Sub-Plans-K-5-AAPI-Heritage-Instruments-Spring-No-Prep-No-Tech-18518940"
-    },
-    {
-      "item": "085-october-music-sub-plans-k5",
-      "url": "https://www.teacherspayteachers.com/Product/October-Music-Sub-Plans-K-5-Fall-Harvest-Rhythm-Words-No-Prep-No-Tech-18522075"
+      "item": "082-june-music-sub-plans-k5",
+      "url": "https://www.teacherspayteachers.com/Product/June-Music-Sub-Plans-K-5-Summer-Parades-End-of-Year-No-Prep-No-Tech-18525544"
     }
   ],
   "failed": [
@@ -16,25 +12,29 @@
       "error": "publish stopped at step \"upload product (april-music-sub-plans-k5.pdf)\" (nothing was submitted): not submitted: upload of april-music-sub-plans-k5.pdf (product) shown by TpT but its key never filled within 30 min (screenshot tpt/_publish/079-april-music-sub-plans-k5-product-timeout.png) Screenshot: tpt/_publish/079-april-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigitalProduct na"
     },
     {
-      "item": "082-june-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload product (june-music-sub-plans-k5.pdf)\" (nothing was submitted): not submitted: upload of june-music-sub-plans-k5.pdf (product) shown by TpT but its key never filled within 30 min (screenshot tpt/_publish/082-june-music-sub-plans-k5-product-timeout.png) Screenshot: tpt/_publish/082-june-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigitalProduct name=-"
+      "item": "084-september-music-sub-plans-k5",
+      "error": "publish stopped at step \"upload preview (september-music-sub-plans-k5-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of september-music-sub-plans-k5-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/084-september-music-sub-plans-k5-preview-timeout.png) Screenshot: tpt/_publish/084-september-music-sub-plans-k5-failed.png File inputs on "
     },
     {
-      "item": "084-september-music-sub-plans-k5",
-      "error": "publish stopped at step \"subjects: Music\" (nothing was submitted): locator.click: Timeout 30000ms exceeded. Screenshot: tpt/_publish/084-september-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalThumb1 name=- (hidden), #ItemDigitalThumb2 name=- (hidden), #ItemDigitalThu"
+      "item": "086-november-music-sub-plans-k5",
+      "error": "publish stopped at step \"upload product (november-music-sub-plans-k5.pdf)\" (nothing was submitted): not submitted: upload of november-music-sub-plans-k5.pdf (product) shown by TpT but its key never filled within 30 min (screenshot tpt/_publish/086-november-music-sub-plans-k5-product-timeout.png) Screenshot: tpt/_publish/086-november-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigit"
+    },
+    {
+      "item": "087-bell-ostinato-lab-logic",
+      "error": "publish stopped at step \"upload preview (bell-ostinato-lab-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of bell-ostinato-lab-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/087-bell-ostinato-lab-logic-preview-timeout.png) Screenshot: tpt/_publish/087-bell-ostinato-lab-logic-failed.png File inputs on the page: #ItemDigitalProduct na"
     }
   ],
   "needs_login": false,
   "paused": false,
   "pending_before": [
     "079-april-music-sub-plans-k5",
-    "081-may-music-sub-plans-k5",
     "082-june-music-sub-plans-k5",
     "084-september-music-sub-plans-k5",
-    "085-october-music-sub-plans-k5"
+    "086-november-music-sub-plans-k5",
+    "087-bell-ostinato-lab-logic"
   ],
   "reupload": {
-    "ran_at": "2026-11-26T19:36:44.061Z",
+    "ran_at": "2026-11-27T10:31:59.660Z",
     "replaced": [],
     "failed": [],
     "waiting": [],

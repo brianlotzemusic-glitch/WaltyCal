@@ -1,6 +1,6 @@
 {
-  "at": "2026-11-26T19:02:11.698Z",
+  "at": "2026-11-27T05:26:32.308Z",
   "release_sha256": "8c0982c9f1847015f79c83f120ad99aaa1a2bd66116f5b4cf724857a96f7624e",
-  "count": 1,
-  "error": "publish stopped at step \"subjects: Music\" (nothing was submitted): locator.click: Timeout 30000ms exceeded. Screenshot: tpt/_publish/084-september-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden), #UploadVideopreview name=- (hidden), #ItemDigitalThumb1 name=- (hidden), #ItemDigitalThumb2 name=- (hidden), #ItemDigitalThu"
+  "count": 2,
+  "error": "publish stopped at step \"upload preview (september-music-sub-plans-k5-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of september-music-sub-plans-k5-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/084-september-music-sub-plans-k5-preview-timeout.png) Screenshot: tpt/_publish/084-september-music-sub-plans-k5-failed.png File inputs on "
 }
