@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-26T09:54:02.302Z",
-  "release_sha256": "19f2f1f122b60b17a38cd04e1ffe290b2943ee01da0b99c41fbee6e58e06168f",
-  "count": 2,
-  "error": "page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.teacherspayteachers.com/My-Products Call log:   - navigating to \"https://www.teacherspayteachers.com/My-Products\", waiting until \"domcontentloaded\""
-}
