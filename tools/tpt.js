@@ -239,11 +239,28 @@ async function submitNewItem(page, submitSel, opts = {}) {
   const outcome = id || (how && how.startsWith("the page left")) ? "created" : how === "TpT showed the form again with an error" ? "refused" : "unverified";
   return { outcome, id, ids, url: id && opts.title ? productUrlFor(opts.title, id) : null, how: how || `no answer from TpT within ${Math.round(limit / 60000)} min`, messages, saves, blocked, network: log.slice(-25) };
 }
+// Page loads before any Submit (27 Nov 2026: My Products and the listing form both hit Playwright's 30 s goto limit on a slow TpT).
+// 90 s, then ONE reload-and-retry; `ready` (optional) must also pass. Still failing -> the error goes up and nothing is submitted.
+// Never used after a Submit click.
+const GOTO_MS = Number(process.env.TPT_GOTO_MS) || 90000;
+async function gotoRetry(page, url, ready, log = console.warn) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      await page.goto(url, { waitUntil: "domcontentloaded", timeout: GOTO_MS });
+      if (ready) await ready();
+      return;
+    } catch (e) {
+      if (attempt >= 2) throw e;
+      log(`loading ${url.split("?")[0]} failed (${e.message.split("\n")[0]}); reloading once`);
+      await page.goto("about:blank", { timeout: 10000 }).catch(() => {}); // drop the hung load first, or it aborts the retry
+    }
+  }
+}
 // Read-only: every product link on the logged-in My Products list (up to 10 pages). Opens nothing else, clicks nothing.
 async function readMyProductsLinks(page, url = MY_PRODUCTS_URL) {
   const links = [];
   for (let p = 1; p <= 10; p++) {
-    await page.goto(p === 1 ? url : `${url}?page=${p}`, { waitUntil: "domcontentloaded" });
+    await gotoRetry(page, p === 1 ? url : `${url}?page=${p}`);
     await page.waitForTimeout(3000);
     if (/\/login/i.test(page.url())) throw new Error("not logged in, or the saved session expired: run `node tools/tpt.js login` and finish logging in in the browser window");
     const got = await page.evaluate(() => [...document.querySelectorAll("a[href]")].map((a) => ({ href: a.getAttribute("href"), text: (a.innerText || "").replace(/\s+/g, " ").trim().slice(0, 160) }))
@@ -276,7 +293,7 @@ async function openBrowser() {
 
 // discover and publish never type the password: they use the session saved by `login`.
 async function ensureLoggedIn(page) {
-  await page.goto(MY_PRODUCTS_URL, { waitUntil: "domcontentloaded" });
+  await gotoRetry(page, MY_PRODUCTS_URL);
   await page.waitForTimeout(2000);
   if (/\/login/i.test(page.url())) throw new Error("not logged in, or the saved session expired: run `node tools/tpt.js login` and finish logging in in the browser window");
 }
@@ -803,8 +820,7 @@ async function publish(item, dryRun) {
       if (rec) { console.warn(`${slug}: the cloud rewrote \`release\` after the final look (absent 3 h after the Submit at ${rec.submitted_at}); one new Submit is allowed.`); clearUnverified(item); }
     }
     step = "open the listing form";
-    await page.goto(F.form_url, { waitUntil: "domcontentloaded" });
-    await page.locator(F.title).waitFor({ state: "visible", timeout: 30000 });
+    await gotoRetry(page, F.form_url, () => page.locator(F.title).waitFor({ state: "visible", timeout: GOTO_MS }));
 
     step = "title";
     await page.locator(F.title).fill(it.title || "");
@@ -2161,7 +2177,7 @@ async function discoverEdit(arg) {
   console.log(`Recorded the edit form (${out.fields.length} fields, file boxes: ${out.file_input_ids.join(", ") || "none"}) in tpt/EDIT-FIELDS.json. Nothing was changed on TpT.`);
 }
 
-module.exports = { uploadErrorCard, uploadWaiter, takeLock, readUnverified, writeUnverified, clearUnverified, unverifiedBlocks, publishLookDue, checkPublishUnverified, lookForUnverified, productIdFrom, productUrlFor, submitNewItem, duplicateTitles, duplicateCheck, readMyProductsLinks, findOnMyProducts, matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
+module.exports = { gotoRetry, uploadErrorCard, uploadWaiter, takeLock, readUnverified, writeUnverified, clearUnverified, unverifiedBlocks, publishLookDue, checkPublishUnverified, lookForUnverified, productIdFrom, productUrlFor, submitNewItem, duplicateTitles, duplicateCheck, readMyProductsLinks, findOnMyProducts, matchMyProducts, liveUrlForTitle, fetchStoreHtml, sameFileOnTpt, parseCard, cardVerdict, readCards, submitAndWait, unverifiedDue, checkUnverified, reuploadPending, uploadEditSlot, classifyWidget, redact, parsePause, pauseAllows, widgetState, resetWidget, startCapture, removeExistingFile, dumpMenu, closeMenu, chipsOf, pickListbox, freeIsOn, typeaheadPrefixes, matchOption, publishSteps, parseMarker, pendingItems, releasedButSkipped, releasedOverQA, checkItem, loadItem, isApproved, reuploadState, prepareReupload, sha256File, idOf };
 const [cmd, arg] = process.argv.slice(2);
 const dryRun = process.argv.includes("--dry-run");
 // Every command that opens the TpT browser profile takes the uploader lock (only offline dry-run reupload does not).
