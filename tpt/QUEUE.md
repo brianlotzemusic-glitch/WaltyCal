@@ -89,7 +89,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Holiday Radio Ident: voice, music bed and sound effects; recording, EQ, compression and ducking ($8; winter)
 - [x] Winter Vocal Chop: record one hummed phrase and chop it into a hook in Quick Sampler ($8; winter)
 - [x] Bell Ostinato Lab: build a piece from the four-note 1916 Leontovych motif; layering, dynamics, automation; melody only, no lyrics ($8; winter)
-- [ ] Gift Wrap Foley Beat: a found-sound beat from wrapping paper, tape, boxes and bells ($8; winter)
+- [x] Gift Wrap Foley Beat: a found-sound beat from wrapping paper, tape, boxes and bells ($8; winter)
 - [ ] Silent Night Ambient: slow ambient rework with pads, reverb and sidechain; melody 1818 ($8; winter)
 - [ ] Holiday House Remix: a 128 BPM four-on-the-floor version of a public-domain carol with sidechain ($8; winter)
 - [ ] Write a Holiday Song: an original 32-bar AABA tune; form, chords and melody ($9; winter)
@@ -116,7 +116,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] October Music Sub Plans K-5 (monthly sub plan bundle): Halloween, Day of the Dead, fall harvest; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 Aug 2027
 - [x] November Music Sub Plans K-5 (monthly sub plan bundle): Veterans Day, Thanksgiving, Native American Heritage Month; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 Sep 2027
 - [x] August Music Sub Plans K-5 (monthly sub plan bundle): Back to school; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 Jun 2027
-- [ ] July Music Sub Plans K-5 (monthly sub plan bundle): Summer, Independence Day; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 May 2027
+- [x] July Music Sub Plans K-5 (monthly sub plan bundle): Summer, Independence Day; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 May 2027
 - [ ] Year-Long Music Sub Plans Bundle: all 12 monthly bundles (96 days), ZIP, $149 (owner's price; sum $180). Condition: all 12 monthly bundles are built; spec `tpt/SUB-PLAN-BUNDLES.md`
 
 ## Bundles (after the Monthly Sub Plan Bundles section is done; one per shift, in this order) (owner approved 23 Nov 2026; rules in TPT-FACTORY.md "Bundles"; each takes a classroom slot)
