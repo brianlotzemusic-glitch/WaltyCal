@@ -39,3 +39,4 @@
 2026-11-27 | 089 | hero.png (july-music-sub-plans-k-5)
 2026-11-27 | 090 | hero.png (gift-wrap-foley-beat)
 2026-11-27 | 091 | hero.png (year-long-music-sub-plans-bundle)
+2026-11-27 | 092 | studio-monitors.png (house-remix-sidechain)

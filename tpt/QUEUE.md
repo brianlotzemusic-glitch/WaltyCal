@@ -91,7 +91,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Bell Ostinato Lab: build a piece from the four-note 1916 Leontovych motif; layering, dynamics, automation; melody only, no lyrics ($8; winter)
 - [x] Gift Wrap Foley Beat: a found-sound beat from wrapping paper, tape, boxes and bells ($8; winter)
 - [ ] Silent Night Ambient: slow ambient rework with pads, reverb and sidechain; melody 1818 ($8; winter)
-- [ ] Holiday House Remix: a 128 BPM four-on-the-floor version of a public-domain carol with sidechain ($8; winter)
+- [x] Holiday House Remix: a 128 BPM four-on-the-floor version of a public-domain carol with sidechain ($8; winter)
 - [ ] Write a Holiday Song: an original 32-bar AABA tune; form, chords and melody ($9; winter)
 - [ ] Kwanzaa Celebration Groove: layered hand-drum polyrhythms in Step Sequencer; cultural notes sourced in QA.md ($8; late December)
 - [ ] New Year, New Sound: design 3 synth patches from an initialised preset ($8; January)
