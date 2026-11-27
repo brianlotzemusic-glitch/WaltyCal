@@ -1,0 +1,52 @@
+{
+  "at": "2026-11-27T22:18:23.603Z",
+  "outcome": "created",
+  "id": "18533556",
+  "ids": [
+    "18533556"
+  ],
+  "url": "https://www.teacherspayteachers.com/Product/July-Music-Sub-Plans-K-5-Summer-Sounds-Parades-No-Prep-No-Tech-18533556",
+  "how": "TpT answered with the new product id",
+  "messages": [],
+  "saves": [
+    "+7.9s POST https://www.teacherspayteachers.com/My-Products/New/Digital-Next",
+    "+13.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+13.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+13.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+13.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.3s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+13.3s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+13.4s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.4s POST https://www.teacherspayteachers.com/graph/graphql"
+  ],
+  "blocked": [],
+  "network": [
+    "+0.2s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs",
+    "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+1.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+2.3s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+3.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+4.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+5.1s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+6.0s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+6.9s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+7.9s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+12.8s <- POST 302 https://www.teacherspayteachers.com/My-Products/New/Digital-Next -> /Product/July-Music-Sub-Plans-K-5-Summer-Sounds-Parades-No-Prep-No-Tech-18533556",
+    "+13.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.4s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+13.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.4s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+13.4s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+13.4s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.4s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+13.5s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.5s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+13.5s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+13.6s <- POST 200 https://www.teacherspayteachers.com/graph/graphql"
+  ]
+}
