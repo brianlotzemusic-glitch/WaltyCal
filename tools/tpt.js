@@ -778,7 +778,9 @@ async function publish(item, dryRun) {
       const attached = () => page.evaluate((name) => {
         const vis = (e) => !!(e.offsetParent || e.getClientRects().length);
         const hit = [...document.querySelectorAll("body *")].some((e) => e.children.length === 0 && (e.textContent || "").includes(name) && vis(e));
-        const busy = [...document.querySelectorAll('[role="progressbar"], progress, [class*="progress" i]')].some(vis);
+        // 27 Nov 2026: only real progress bars count. The earlier [class*="progress" i] also matched page furniture (steppers etc.), so a
+        // file TpT had IGNORED looked "attached", the picker retry was skipped and 079, 084, 086, 087 waited 10-30 min and failed.
+        const busy = [...document.querySelectorAll('[role="progressbar"], progress')].some(vis);
         return hit || busy;
       }, path.basename(file)).catch(() => false);
       const shown = await attached();

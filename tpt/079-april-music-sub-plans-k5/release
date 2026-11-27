@@ -1,1 +1,1 @@
-2026-11-26 released; re-armed after the 24 Nov preview-upload failure (TpT slow, not a bad file: tools/tpt.js upload() now waits on a file TpT already holds instead of opening the picker)
+2026-11-27 released; re-armed after the 27 Nov uploader fix (tools/tpt.js upload() no longer treats page furniture with a 'progress' class as an attached file, so a file TpT ignores gets the picker retry again)
