@@ -17,13 +17,20 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PAT
 cd "$REPO" || exit 1
 echo "=== $(date -u +%Y-%m-%dT%H:%M:%SZ) tpt-nightly in $REPO (${1:-nightly})"
 
-# One run at a time (the two launchd jobs can fire together). A lock older than 90 minutes is a crash.
+# One run at a time (the two launchd jobs can fire together). The lock holds the run's pid: it is stale only when that process is
+# gone (27 Nov 2026: the old "older than 90 minutes" rule let a second run start while a 7-hour run was still publishing).
+# tools/tpt.js also takes its own lock (~/.tpt-state/uploader.lock) for every browser command, manual runs included.
 LOCK="$HOME/.tpt-nightly.lock"
 if [ -z "${TPT_REEXEC:-}" ]; then
-  if [ -d "$LOCK" ] && [ -n "$(find "$LOCK" -maxdepth 0 -mmin +90 2>/dev/null)" ]; then echo "removing a stale lock"; rmdir "$LOCK" 2>/dev/null; fi
-  mkdir "$LOCK" 2>/dev/null || { echo "another run is in progress; nothing to do"; exit 0; }
+  if [ -d "$LOCK" ]; then
+    old_pid="$(cat "$LOCK/pid" 2>/dev/null)"
+    if [ -n "$old_pid" ] && ! kill -0 "$old_pid" 2>/dev/null; then echo "removing a stale lock (pid $old_pid is gone)"; rm -rf "$LOCK"; fi
+    if [ -z "$old_pid" ] && [ -n "$(find "$LOCK" -maxdepth 0 -mmin +1440 2>/dev/null)" ]; then echo "removing a day-old lock without a pid"; rm -rf "$LOCK"; fi
+  fi
+  mkdir "$LOCK" 2>/dev/null || { echo "another run is in progress (pid $(cat "$LOCK/pid" 2>/dev/null)); nothing to do"; exit 0; }
+  echo $$ > "$LOCK/pid"
 fi
-trap 'rmdir "$LOCK" 2>/dev/null' EXIT
+trap 'rm -rf "$LOCK" 2>/dev/null' EXIT
 
 git checkout -q shop-factory || { echo "not on shop-factory and can't switch; stopping"; exit 1; }
 # Right after a wake the network is often not up yet: try for about 5 minutes before giving up.
@@ -101,13 +108,13 @@ rc2=$?
 
 # One path at a time: a single `git add` with a pathspec that matches nothing (e.g. no reupload-failed
 # markers) aborts the WHOLE add and stages nothing.
-for f in tpt/UPLOADER-STATUS.json tpt/EDIT-FIELDS.json tpt/*/uploaded tpt/*/publish-failed tpt/*/reuploaded tpt/*/reupload-failed tpt/*/reupload-unverified tpt/*/live-url tpt/*/live-url-lookup; do
+for f in tpt/UPLOADER-STATUS.json tpt/EDIT-FIELDS.json tpt/*/uploaded tpt/*/publish-failed tpt/*/publish-unverified tpt/*/reuploaded tpt/*/reupload-failed tpt/*/reupload-unverified tpt/*/live-url tpt/*/live-url-lookup; do
   [ -e "$f" ] && { git add -- "$f" || echo "git add $f FAILED (exit $?)"; }
 done
 # A `publish-failed` / `reupload-unverified` marker removed later (success, or the final look) must leave git too.
-git ls-files 'tpt/*/publish-failed' 'tpt/*/reupload-unverified' | while IFS= read -r f; do [ -e "$f" ] || git rm -q --cached -- "$f"; done
+git ls-files 'tpt/*/publish-failed' 'tpt/*/reupload-unverified' 'tpt/*/publish-unverified' | while IFS= read -r f; do [ -e "$f" ] || git rm -q --cached -- "$f"; done
 # Edit-form upload diagnostics (network, TpT's answers, console errors, the upload box's HTML), written next to the screenshots.
-for f in tpt/_publish/*-reupload-*-diag.json tpt/_publish/*-my-products-links.json tpt/_publish/*-reupload-after-submit.png tpt/_publish/*-reupload-unverified.png tpt/_publish/*-reupload-recheck.png; do
+for f in tpt/_publish/*-submit-network.json tpt/_publish/*-submit-unverified.png tpt/_publish/*-reupload-*-diag.json tpt/_publish/*-my-products-links.json tpt/_publish/*-reupload-after-submit.png tpt/_publish/*-reupload-unverified.png tpt/_publish/*-reupload-recheck.png; do
   [ -f "$f" ] || continue
   [ "$(wc -c < "$f" | tr -d ' ')" -le 1572864 ] && { git add -f -- "$f" || echo "git add -f $f FAILED"; }
 done
@@ -144,6 +151,12 @@ if ! git diff --cached --quiet; then
   fi
   git status -sb | head -3
 fi
+# 27 Nov 2026: a product live twice, or a Submit TpT never answered (3 h), must reach the owner within the hour.
+if grep -q '"duplicates"' tpt/UPLOADER-STATUS.json 2>/dev/null; then
+  ids="$(grep -o 'DUPLICATE [0-9 ]*' tpt/_publish/duplicates.txt 2>/dev/null | tr -cd '0-9 ' | tr ' ' '-')"
+  notify "dup-$ids" "A product is listed TWICE on TpT (ids ${ids//-/ }). Delete the newer copy in My Products. List: tpt/_publish/duplicates.txt"
+fi
+grep -q '"needs_owner"' tpt/UPLOADER-STATUS.json 2>/dev/null && notify needs-owner "A TpT Submit got no answer and the product is not on TpT 3 h later. Check My Products before anything is resubmitted."
 grep -q '"needs_login": true' tpt/UPLOADER-STATUS.json 2>/dev/null && notify login "TpT login expired. In Terminal run: source ~/.tpt-env && node tools/tpt.js login, then click Log in"
 echo "=== done (publish-pending/reupload-pending exit $rc)"
 exit $rc
