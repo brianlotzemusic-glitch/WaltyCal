@@ -25,7 +25,8 @@ of `tpt/QUEUE.md`, the last 6 lines of `tpt/LOG.md` and `tpt/UPLOADER-STATUS.jso
 subagents, **all on Sonnet** (`model: "sonnet"`), run in the **foreground, one at a time**.
 
 1. `git fetch origin shop-factory && git checkout -B shop-factory origin/shop-factory`
-2. Uploader check (see "The Mac uploader"). One line in LOG if something is wrong.
+2. Uploader check (see "The Mac uploader"). One line in LOG if something is wrong. Also run `python3 tools/tpt-live-check.py --dups` (no login needed): any
+   `DUPLICATE <ids> <title>` line means TpT shows two listings with one title; add a LOG line naming the ids and the product, and leave the deleting to the owner.
    Then **fixes first**: take unchecked `- [ ] [fix]` lines at the top of `tpt/QUEUE.md`, at most 3 per shift, before the day's builds; they
    do not count toward them. Lines marked `- [~]` belong to the fix crew (`tpt/FIX-CREW.md`): never touch them. Procedure for a defect in a LIVE product (owner reports it, or QA/the live check finds it):
    1. Fresh Sonnet agent. First read that item's section of `tpt/AUDIT-2026-11-15.md` (or the owner's report) and **look at each
