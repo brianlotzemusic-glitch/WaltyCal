@@ -1,0 +1,52 @@
+{
+  "at": "2026-11-27T22:10:59.953Z",
+  "outcome": "created",
+  "id": "18533486",
+  "ids": [
+    "18533486"
+  ],
+  "url": "https://www.teacherspayteachers.com/Product/April-Music-Sub-Plans-K-5-Jazz-Poetry-Earth-Day-No-Prep-No-Tech-18533486",
+  "how": "TpT answered with the new product id",
+  "messages": [],
+  "saves": [
+    "+7.8s POST https://www.teacherspayteachers.com/My-Products/New/Digital-Next",
+    "+15.5s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.5s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+15.5s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.5s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+15.5s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+15.5s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.5s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.5s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.5s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+15.5s POST https://www.teacherspayteachers.com/graph/graphql",
+    "+15.6s POST https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.6s POST https://www.teacherspayteachers.com/graph/graphql"
+  ],
+  "blocked": [],
+  "network": [
+    "+0.3s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs",
+    "+0.4s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+1.3s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+2.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+3.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+4.1s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+5.0s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+5.9s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+6.8s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+7.8s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+14.9s <- POST 302 https://www.teacherspayteachers.com/My-Products/New/Digital-Next -> /Product/April-Music-Sub-Plans-K-5-Jazz-Poetry-Earth-Day-No-Prep-No-Tech-18533486",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/gateway/graphql",
+    "+15.6s <- POST 200 https://www.teacherspayteachers.com/graph/graphql",
+    "+15.8s <- POST 200 https://www.teacherspayteachers.com/graph/graphql"
+  ]
+}

@@ -1,34 +1,44 @@
 {
-  "ran_at": "2026-11-27T20:19:01.078Z",
-  "published": [],
-  "failed": [
+  "ran_at": "2026-11-27T22:08:54.063Z",
+  "published": [
+    {
+      "item": "079-april-music-sub-plans-k5",
+      "url": "https://www.teacherspayteachers.com/Product/April-Music-Sub-Plans-K-5-Jazz-Poetry-Earth-Day-No-Prep-No-Tech-18533486"
+    },
     {
       "item": "084-september-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload product (september-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/084-september-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=-"
+      "url": "https://www.teacherspayteachers.com/Product/September-Music-Sub-Plans-K-5-Hispanic-Heritage-Labor-Day-No-Prep-No-Tech-18533508"
     },
     {
       "item": "088-august-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload product (august-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/088-august-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidd"
+      "url": "https://www.teacherspayteachers.com/Product/August-Music-Sub-Plans-K-5-Back-To-School-Instruments-No-Prep-No-Tech-18533537"
     },
     {
       "item": "089-july-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload product (july-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/089-july-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden),"
+      "url": "https://www.teacherspayteachers.com/Product/July-Music-Sub-Plans-K-5-Summer-Sounds-Parades-No-Prep-No-Tech-18533556"
     },
     {
       "item": "090-found-sound-foley-beat-logic",
-      "error": "publish stopped at step \"upload product (found-sound-foley-beat.zip), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/090-found-sound-foley-beat-logic-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidd"
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Found-Sound-Beat-Foley-Samples-Step-Sequencer-High-School-18533577"
+    },
+    {
+      "item": "091-year-long-music-sub-plans-bundle",
+      "url": "https://www.teacherspayteachers.com/Product/Year-Long-Music-Sub-Plans-K-5-Bundle-12-Months-96-Days-No-Prep-No-Tech-18533603"
     }
   ],
+  "failed": [],
   "needs_login": false,
   "paused": false,
   "pending_before": [
+    "079-april-music-sub-plans-k5",
     "084-september-music-sub-plans-k5",
     "088-august-music-sub-plans-k5",
     "089-july-music-sub-plans-k5",
-    "090-found-sound-foley-beat-logic"
+    "090-found-sound-foley-beat-logic",
+    "091-year-long-music-sub-plans-bundle"
   ],
   "reupload": {
-    "ran_at": "2026-11-27T21:38:47.814Z",
+    "ran_at": "2026-11-27T22:22:50.676Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -44,8 +54,15 @@
     ],
     "unverified": []
   },
-  "held": [
-    "079-april-music-sub-plans-k5"
+  "duplicate_check": "192 product links read, 1 duplicate title(s)",
+  "duplicates": [
+    {
+      "slug": "music-listening-response-readings-around-the-world-music-edition-gr-3-6",
+      "ids": [
+        "18445741",
+        "18445822"
+      ]
+    }
   ],
   "ok": false
 }

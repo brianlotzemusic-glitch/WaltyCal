@@ -1,1 +1,1 @@
-2026-11-27 released; re-armed after the 27 Nov uploader fix (tools/tpt.js upload() no longer treats page furniture with a 'progress' class as an attached file, so a file TpT ignores gets the picker retry again)
+2026-11-27 released; re-armed after the dead-form fix 525330f (TpT ignored the product file and the Select file button did nothing; nothing was submitted; the files are unchanged and fine)

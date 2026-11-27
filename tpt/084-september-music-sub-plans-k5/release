@@ -1,1 +1,1 @@
-2026-11-27 released; re-armed after two publish failures that were TpT's own 'Error during file upload' on a preview/thumbnail (nothing submitted; files unchanged and fine)
+2026-11-27 released; re-armed after the dead-form fix 525330f (TpT ignored the product file and the Select file button did nothing; nothing was submitted; the files are unchanged and fine)

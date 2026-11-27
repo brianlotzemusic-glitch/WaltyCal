@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-27T17:22:38.244Z",
-  "release_sha256": "cfbbe09dc3c8196f3c89b90718fba3c71a589288ab15bb67e5d54f7bf0382cc7",
-  "count": 2,
-  "error": "publish stopped at step \"upload product (april-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/079-april-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden"
-}

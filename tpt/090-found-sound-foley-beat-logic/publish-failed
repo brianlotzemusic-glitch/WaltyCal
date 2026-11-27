@@ -1,6 +1,0 @@
-{
-  "at": "2026-11-27T21:32:24.971Z",
-  "release_sha256": "e03a8558ad4ab62378a1ff844bacc0d1042c2786228961e4fd1f3c8553bde333",
-  "count": 1,
-  "error": "publish stopped at step \"upload product (found-sound-foley-beat.zip), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/090-found-sound-foley-beat-logic-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidd"
-}
