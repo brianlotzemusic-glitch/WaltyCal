@@ -1,0 +1,6 @@
+{
+  "at": "2026-11-27T15:06:44.571Z",
+  "release_sha256": "e03a8558ad4ab62378a1ff844bacc0d1042c2786228961e4fd1f3c8553bde333",
+  "count": 1,
+  "error": "publish stopped at step \"open the listing form\" (nothing was submitted): page.goto: Timeout 30000ms exceeded. Screenshot: tpt/_publish/088-august-music-sub-plans-k5-failed.png File inputs on the page: (unreadable)"
+}

@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-27T15:00:28.922Z",
+  "outcome": "created",
+  "id": "18528898",
+  "ids": [
+    "18528898"
+  ],
+  "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Ostinato-Project-Layering-Dynamics-Automation-High-School-18528898",
+  "how": "TpT answered with the new product id",
+  "messages": [],
+  "saves": [
+    "+65.9s POST https://www.teacherspayteachers.com/My-Products/New/Digital-Next"
+  ],
+  "blocked": [],
+  "network": [
+    "+0.1s <- POST 200 https://www.teacherspayteachers.com/converter/convert_thumbs",
+    "+0.3s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+1.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+2.2s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+3.1s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+4.0s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+4.9s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+5.8s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+65.9s <- POST 200 https://www.teacherspayteachers.com/queue/results",
+    "+89.2s <- POST 302 https://www.teacherspayteachers.com/My-Products/New/Digital-Next -> /Product/Logic-Pro-Ostinato-Project-Layering-Dynamics-Automation-High-School-18528898"
+  ]
+}

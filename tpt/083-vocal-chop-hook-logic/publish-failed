@@ -1,0 +1,6 @@
+{
+  "at": "2026-11-27T13:47:54.483Z",
+  "release_sha256": "7fee387d74a21a30ab597b61c3ba8521848f0a83f854ecefeac01bb30a9c12d8",
+  "count": 1,
+  "error": "publish stopped at step \"upload preview (vocal-chop-hook-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of vocal-chop-hook-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/083-vocal-chop-hook-logic-preview-timeout.png) Screenshot: tpt/_publish/083-vocal-chop-hook-logic-failed.png File inputs on the page: #ItemDigitalProduct name=- (hi"
+}

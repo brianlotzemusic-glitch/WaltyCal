@@ -1,40 +1,40 @@
 {
-  "ran_at": "2026-11-26T22:59:28.655Z",
+  "ran_at": "2026-11-27T12:20:08.422Z",
   "published": [
     {
-      "item": "082-june-music-sub-plans-k5",
-      "url": "https://www.teacherspayteachers.com/Product/June-Music-Sub-Plans-K-5-Summer-Parades-End-of-Year-No-Prep-No-Tech-18525544"
+      "item": "087-bell-ostinato-lab-logic",
+      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-Ostinato-Project-Layering-Dynamics-Automation-High-School-18528898"
     }
   ],
   "failed": [
     {
       "item": "079-april-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload product (april-music-sub-plans-k5.pdf)\" (nothing was submitted): not submitted: upload of april-music-sub-plans-k5.pdf (product) shown by TpT but its key never filled within 30 min (screenshot tpt/_publish/079-april-music-sub-plans-k5-product-timeout.png) Screenshot: tpt/_publish/079-april-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigitalProduct na"
+      "error": "publish stopped at step \"upload product (april-music-sub-plans-k5.pdf), attempt 2 via the file picker\" (nothing was submitted): not submitted: product: TpT ignored the file, and its \"Select file\" button didn't open a file picker (screenshot tpt/_publish/079-april-music-sub-plans-k5-product-picker.png). File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalPreview name=- (hidden"
     },
     {
-      "item": "084-september-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload preview (september-music-sub-plans-k5-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of september-music-sub-plans-k5-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/084-september-music-sub-plans-k5-preview-timeout.png) Screenshot: tpt/_publish/084-september-music-sub-plans-k5-failed.png File inputs on "
+      "item": "083-vocal-chop-hook-logic",
+      "error": "publish stopped at step \"upload preview (vocal-chop-hook-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of vocal-chop-hook-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/083-vocal-chop-hook-logic-preview-timeout.png) Screenshot: tpt/_publish/083-vocal-chop-hook-logic-failed.png File inputs on the page: #ItemDigitalProduct name=- (hi"
     },
     {
       "item": "086-november-music-sub-plans-k5",
-      "error": "publish stopped at step \"upload product (november-music-sub-plans-k5.pdf)\" (nothing was submitted): not submitted: upload of november-music-sub-plans-k5.pdf (product) shown by TpT but its key never filled within 30 min (screenshot tpt/_publish/086-november-music-sub-plans-k5-product-timeout.png) Screenshot: tpt/_publish/086-november-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigit"
+      "error": "publish stopped at step \"upload thumb4 (preview-3.png)\" (nothing was submitted): not submitted: upload of preview-3.png (thumb4) shown by TpT but its key never filled within 6 min (screenshot tpt/_publish/086-november-music-sub-plans-k5-thumb4-timeout.png) Screenshot: tpt/_publish/086-november-music-sub-plans-k5-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigitalP"
     },
     {
-      "item": "087-bell-ostinato-lab-logic",
-      "error": "publish stopped at step \"upload preview (bell-ostinato-lab-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of bell-ostinato-lab-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/087-bell-ostinato-lab-logic-preview-timeout.png) Screenshot: tpt/_publish/087-bell-ostinato-lab-logic-failed.png File inputs on the page: #ItemDigitalProduct na"
+      "item": "088-august-music-sub-plans-k5",
+      "error": "publish stopped at step \"open the listing form\" (nothing was submitted): page.goto: Timeout 30000ms exceeded. Screenshot: tpt/_publish/088-august-music-sub-plans-k5-failed.png File inputs on the page: (unreadable)"
     }
   ],
   "needs_login": false,
   "paused": false,
   "pending_before": [
     "079-april-music-sub-plans-k5",
-    "082-june-music-sub-plans-k5",
-    "084-september-music-sub-plans-k5",
+    "083-vocal-chop-hook-logic",
     "086-november-music-sub-plans-k5",
-    "087-bell-ostinato-lab-logic"
+    "087-bell-ostinato-lab-logic",
+    "088-august-music-sub-plans-k5"
   ],
   "reupload": {
-    "ran_at": "2026-11-27T10:31:59.660Z",
+    "ran_at": "2026-11-27T15:11:16.279Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -51,7 +51,8 @@
     "unverified": []
   },
   "held": [
-    "083-vocal-chop-hook-logic"
+    "084-september-music-sub-plans-k5"
   ],
+  "duplicate_check": "could not read My Products: page.goto: Timeout 30000ms exceeded.",
   "ok": false
 }
