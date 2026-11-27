@@ -116,7 +116,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] October Music Sub Plans K-5 (monthly sub plan bundle): Halloween, Day of the Dead, fall harvest; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 Aug 2027
 - [x] November Music Sub Plans K-5 (monthly sub plan bundle): Veterans Day, Thanksgiving, Native American Heritage Month; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 Sep 2027
 - [x] August Music Sub Plans K-5 (monthly sub plan bundle): Back to school; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 Jun 2027
-- [ ] July Music Sub Plans K-5 (monthly sub plan bundle): Summer, Independence Day; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 May 2027
+- [x] July Music Sub Plans K-5 (monthly sub plan bundle): Summer, Independence Day; 8 no-prep, no-tech days, K-2 and 3-5 sheets; spec `tpt/SUB-PLAN-BUNDLES.md`; $15.00; live by 15 May 2027
 - [ ] Year-Long Music Sub Plans Bundle: all 12 monthly bundles (96 days), ZIP, $149 (owner's price; sum $180). Condition: all 12 monthly bundles are built; spec `tpt/SUB-PLAN-BUNDLES.md`
 
 ## Bundles (after the Monthly Sub Plan Bundles section is done; one per shift, in this order) (owner approved 23 Nov 2026; rules in TPT-FACTORY.md "Bundles"; each takes a classroom slot)
