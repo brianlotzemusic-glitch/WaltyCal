@@ -1,19 +1,12 @@
 {
-  "ran_at": "2026-11-27T22:45:06.265Z",
-  "published": [
-    {
-      "item": "092-house-remix-sidechain-logic",
-      "url": "https://www.teacherspayteachers.com/Product/Logic-Pro-House-Remix-128-Bpm-Sidechain-Four-On-The-Floor-High-School-18533867"
-    }
-  ],
+  "ran_at": "2026-11-28T01:30:05.334Z",
+  "published": [],
   "failed": [],
   "needs_login": false,
   "paused": false,
-  "pending_before": [
-    "092-house-remix-sidechain-logic"
-  ],
+  "pending_before": [],
   "reupload": {
-    "ran_at": "2026-11-27T22:47:20.999Z",
+    "ran_at": "2026-11-28T01:30:05.483Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -29,15 +22,5 @@
     ],
     "unverified": []
   },
-  "duplicate_check": "194 product links read, 1 duplicate title(s)",
-  "duplicates": [
-    {
-      "slug": "music-listening-response-readings-around-the-world-music-edition-gr-3-6",
-      "ids": [
-        "18445741",
-        "18445822"
-      ]
-    }
-  ],
-  "ok": false
+  "ok": true
 }
