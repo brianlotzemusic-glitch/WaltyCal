@@ -1,0 +1,44 @@
+{
+  "price": "15.00",
+  "license_price": "15.00",
+  "tax_code": "Other Digital Goods - No Physical Media",
+  "grades": [
+    "2nd-grade",
+    "3rd-grade",
+    "4th-grade",
+    "5th-grade"
+  ],
+  "subjects": [
+    "Music"
+  ],
+  "tags": [
+    "Halloween",
+    "Thanksgiving",
+    "Christmas-Chanukah-Kwanzaa",
+    "Winter",
+    "Printables",
+    "Activities"
+  ],
+  "formats": [
+    "PDF"
+  ],
+  "pages": 352,
+  "answer_key": "Included",
+  "zip_contents": [
+    "00 START HERE - Bundle Guide.pdf",
+    "01-Halloween/halloween-color-by-note.pdf",
+    "02-Thanksgiving-Fall/thanksgiving-color-by-note.pdf",
+    "03-Winter/winter-color-by-note.pdf",
+    "04-Christmas/christmas-color-by-note.pdf",
+    "05-Hanukkah/hanukkah-color-by-note.pdf",
+    "06-Winter-Music-Symbols/winter-color-by-music-symbol.pdf"
+  ],
+  "files": {
+    "product": "color-by-note-growing-bundle.zip",
+    "preview": "color-by-note-growing-bundle-PREVIEW.pdf",
+    "thumb1": "cover.png",
+    "thumb2": "preview-1.png",
+    "thumb3": "preview-2.png",
+    "thumb4": "preview-3.png"
+  }
+}

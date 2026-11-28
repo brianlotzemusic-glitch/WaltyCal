@@ -120,7 +120,7 @@ Format: `- [ ] title (grades; what's in it; price; season)`. Tick when released.
 - [x] Year-Long Music Sub Plans Bundle: all 12 monthly bundles (96 days), ZIP, $149 (owner's price; sum $180). Condition: all 12 monthly bundles are built; spec `tpt/SUB-PLAN-BUNDLES.md`
 
 ## Bundles (after the Monthly Sub Plan Bundles section is done; one per shift, in this order) (owner approved 23 Nov 2026; rules in TPT-FACTORY.md "Bundles"; each takes a classroom slot)
-- [ ] 1. Color by Note Growing Bundle: 001 027 029 032 035 039 (6 paid sets, not the free sampler 028), 35% off the sum (about $15 today). GROWING: the description says the price rises with every new set (Valentine's, St. Patrick's and later ones) and that buyers keep every future set at today's price. Condition met.
+- [x] 1. Color by Note Growing Bundle: 001 027 029 032 035 039 (6 paid sets, not the free sampler 028), 35% off the sum (about $15 today). GROWING: the description says the price rises with every new set (Valentine's, St. Patrick's and later ones) and that buyers keep every future set at today's price. Condition met.
 - [ ] 2. DMP2 Projects Bundle: kits 014 to 026 (13 kits, sum about $136) in one ZIP, 35% off (about $88). Condition met (030 is live).
 - [ ] 3. Holiday Logic Pro Project Pack, Volume 1: the first 8 winter Logic kits (031 036 040 045 048 053 057 are live; build when the 8th holiday Logic kit is live), about 30-35% off. Condition: 8 holiday Logic kits have `uploaded`.
 - [ ] 4. Holiday Logic Pro Project Mega Pack: all holiday Logic kits (16 or more), about 35% off. Condition: 16 holiday Logic kits have `uploaded`
