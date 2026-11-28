@@ -1,5 +1,4 @@
 # Art made for upcoming products (written by the daily art session; builders read it)
-- New Year Music Goals and Practice Tracker: reflection pages, goal setting, 30-day logs -> tpt/_art/next/new-year-music-goals-and-practice-tracker/ (hero)
 - Black History Month Musician Biographies: 8 one-page readings with questions and keys -> tpt/_art/next/black-history-month-musician-biographies/ (hero)
 - Valentine's Day Color by Note: rhythm, treble and bass clef, 3 levels, answer keys -> tpt/_art/next/valentines-day-color-by-note/ (hero)
 - Silent Night Ambient: slow ambient rework with pads, reverb and sidechain; melody 1818 -> tpt/_art/next/silent-night-ambient/ (hero)
