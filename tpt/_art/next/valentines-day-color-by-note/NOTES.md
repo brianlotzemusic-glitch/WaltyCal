@@ -1,0 +1,2 @@
+Concept: large heart with a bow, crayon box, paintbrush, small drum, small hearts (Valentine's; a cover hero only: the colour-by-note pictures themselves are computed in code, never AI art).
+Credits: 3 images. Picked variant 1 (margins 100px+, heart on the crayon box). Rejected: variant 2 (brush crosses the crayon box and drum, crowded), variant 3 (brush crosses the box, left heart clipped by the box).
