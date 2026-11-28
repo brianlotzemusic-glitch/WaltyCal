@@ -1,0 +1,6 @@
+{
+  "at": "2026-11-28T18:09:56.593Z",
+  "release_sha256": "8f4ec8c6a39660f53087485514d7952779d3a8ee57b445976effc403159e4bbc",
+  "count": 1,
+  "error": "publish stopped at step \"upload thumb4 (preview-3.png)\" (nothing was submitted): not submitted: upload of preview-3.png (thumb4) shown by TpT but its key never filled within 6 min (screenshot tpt/_publish/093-color-by-note-growing-bundle-thumb4-timeout.png) Screenshot: tpt/_publish/093-color-by-note-growing-bundle-failed.png File inputs on the page: #ItemDigitalProduct name=- (hidden), #ItemDigita"
+}

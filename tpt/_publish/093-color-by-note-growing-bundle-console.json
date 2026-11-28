@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-28T18:09:56.405Z",
+  "why": "not submitted: upload of preview-3.png (thumb4) shown by TpT but its key never filled within 6 min (screenshot tpt/_publish/093-color-by-note-growing-bundle-thumb4-timeout.png)",
+  "step": "upload thumb4 (preview-3.png)",
+  "console": [
+    "+3.2s warning: %cairgap.js%c Privileged API authorization checks disabled font-size:larger;font-weight:bold;border-radius:0.25em;padding:0.08em 0.25em;;color:amber;background-color:#6e3e00 ",
+    "+6.1s warning: %cairgap.js%c Privileged API authorization checks disabled font-size:larger;font-weight:bold;border-radius:0.25em;padding:0.08em 0.25em;;color:amber;background-color:#6e3e00 ",
+    "+7.4s warning: Pinterest Tag Warning: '%s' is not a standard event name. In order to use it in Pinterest services, please go to event overview page and select as custom event. Seller Pageview",
+    "+9.8s warning: %cairgap.js%c Privileged API authorization checks disabled font-size:larger;font-weight:bold;border-radius:0.25em;padding:0.08em 0.25em;;color:amber;background-color:#6e3e00 ",
+    "+10.1s warning: Pinterest Tag Warning: '%s' is not a standard event name. In order to use it in Pinterest services, please go to event overview page and select as custom event. Seller Pageview",
+    "+15.7s warning: %cairgap.js%c Privileged API authorization checks disabled font-size:larger;font-weight:bold;border-radius:0.25em;padding:0.08em 0.25em;;color:amber;background-color:#6e3e00 ",
+    "+16.5s warning: Pinterest Tag Warning: '%s' is not a standard event name. In order to use it in Pinterest services, please go to event overview page and select as custom event. Seller Pageview"
+  ],
+  "failed_requests": [
+    "+4.1s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+4.4s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+4.5s POST https://www.google.com/rmkt/collect/970729717/ net::ERR_ABORTED",
+    "+4.6s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+6.0s GET https://www.google.com/recaptcha/enterprise/anchor net::ERR_ABORTED",
+    "+6.3s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+6.3s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+6.3s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+6.3s POST https://www.google.com/rmkt/collect/970729717/ net::ERR_ABORTED",
+    "+7.8s GET https://www.google.com/pagead/1p-conversion/970729717/ net::ERR_ABORTED",
+    "+7.9s POST https://www.google.com/recaptcha/enterprise/clr net::ERR_ABORTED",
+    "+10.0s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+10.0s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+10.0s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+10.0s POST https://www.google.com/rmkt/collect/970729717/ net::ERR_ABORTED",
+    "+10.5s POST https://www.google.com/recaptcha/enterprise/clr net::ERR_ABORTED",
+    "+10.5s GET https://www.google.com/pagead/1p-conversion/970729717/ net::ERR_ABORTED",
+    "+15.8s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+15.8s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+15.8s POST https://www.google.com/rmkt/collect/970729717/ net::ERR_ABORTED",
+    "+15.8s POST https://www.google.com/ccm/collect net::ERR_ABORTED",
+    "+16.8s GET https://www.google.com/pagead/1p-conversion/970729717/ net::ERR_ABORTED",
+    "+17.5s POST https://www.google.com/recaptcha/enterprise/clr net::ERR_ABORTED",
+    "+221.5s POST https://www.google.com/rmkt/collect/970729717/ net::ERR_ABORTED"
+  ]
+}
