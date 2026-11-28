@@ -1,0 +1,6 @@
+{
+  "at": "2026-11-28T13:46:03.914Z",
+  "release_sha256": "8f4ec8c6a39660f53087485514d7952779d3a8ee57b445976effc403159e4bbc",
+  "count": 1,
+  "error": "publish stopped at step \"upload preview (music-goals-practice-tracker-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of music-goals-practice-tracker-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/094-music-goals-practice-tracker-preview-timeout.png) Screenshot: tpt/_publish/094-music-goals-practice-tracker-failed.png File inputs on "
+}

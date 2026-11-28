@@ -1,12 +1,24 @@
 {
-  "ran_at": "2026-11-28T01:30:05.334Z",
+  "ran_at": "2026-11-28T12:20:27.142Z",
   "published": [],
-  "failed": [],
+  "failed": [
+    {
+      "item": "093-color-by-note-growing-bundle",
+      "error": "not submitted: duplicate guard could not read My Products (page.goto: Navigation to \"https://www.teacherspayteachers.com/My-Products?page=2\" is interrupted by another navigation to \"about:blank\"); nothing is submitted while it is unknown"
+    },
+    {
+      "item": "094-music-goals-practice-tracker",
+      "error": "publish stopped at step \"upload preview (music-goals-practice-tracker-PREVIEW.pdf)\" (nothing was submitted): not submitted: upload of music-goals-practice-tracker-PREVIEW.pdf (preview) shown by TpT but its key never filled within 10 min (screenshot tpt/_publish/094-music-goals-practice-tracker-preview-timeout.png) Screenshot: tpt/_publish/094-music-goals-practice-tracker-failed.png File inputs on "
+    }
+  ],
   "needs_login": false,
   "paused": false,
-  "pending_before": [],
+  "pending_before": [
+    "093-color-by-note-growing-bundle",
+    "094-music-goals-practice-tracker"
+  ],
   "reupload": {
-    "ran_at": "2026-11-28T01:30:05.483Z",
+    "ran_at": "2026-11-28T13:46:13.996Z",
     "replaced": [],
     "failed": [],
     "waiting": [],
@@ -22,5 +34,5 @@
     ],
     "unverified": []
   },
-  "ok": true
+  "ok": false
 }
